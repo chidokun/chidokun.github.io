@@ -3,8 +3,8 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://chidokun.github.io/2019/07/my-first-post/</loc>
-    <lastmod>2019-07-27T22:13:33+07:00</lastmod>
+    <loc>https://chidokun.github.io/2019/12/query-with-javascript-ep1/</loc>
+    <lastmod>2019-12-13T22:11:33+07:00</lastmod>
   </url>
   
   <url>
@@ -18,32 +18,44 @@
   </url>
   
   <url>
-    <loc>https://chidokun.github.io/categories/hehe/</loc>
-    <lastmod>2019-07-27T22:13:33+07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://chidokun.github.io/tags/life/</loc>
-    <lastmod>2019-07-27T22:13:33+07:00</lastmod>
+    <loc>https://chidokun.github.io/tags/javascript/</loc>
+    <lastmod>2019-12-13T22:11:33+07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://chidokun.github.io/</loc>
-    <lastmod>2019-07-27T22:13:33+07:00</lastmod>
+    <lastmod>2019-12-13T22:11:33+07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://chidokun.github.io/post/</loc>
-    <lastmod>2019-07-27T22:13:33+07:00</lastmod>
+    <lastmod>2019-12-13T22:11:33+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://chidokun.github.io/tags/programming/</loc>
+    <lastmod>2019-12-13T22:11:33+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://chidokun.github.io/categories/programming/</loc>
+    <lastmod>2019-12-13T22:11:33+07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://chidokun.github.io/tags/</loc>
-    <lastmod>2019-07-27T22:13:33+07:00</lastmod>
+    <lastmod>2019-12-13T22:11:33+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://chidokun.github.io/tags/tips/</loc>
+    <lastmod>2019-12-13T22:11:33+07:00</lastmod>
     <priority>0</priority>
   </url>
   
