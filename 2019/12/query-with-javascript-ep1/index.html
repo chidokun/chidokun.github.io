@@ -526,6 +526,36 @@ if (!doNotTrack) {
 
 <h1 id="4-tìm-ra-các-phần-tử-phân-biệt">4. Tìm ra các phần tử phân biệt</h1>
 
+<p>Yêu cầu: <em>Đếm số lượng trường đại học xuất hiện trong tập dữ liệu trên</em></p>
+
+<p>Có thể thấy trong tập dữ liệu trên, có thể có nhiều sinh viên thuộc về một trường đại học. Nhiệm vụ của chúng ta là xác định một trường đại học có xuất hiện trong tập dữ liệu trên hay không.</p>
+
+<p>Nếu biết nhiều cấu trúc dữ liệu khác nhau, chúng ta có thể xác định dùng <code>Set</code> để chứa các trường học. Set là cấu trúc dữ liệu chứa các phần tử không trùng nhau. Như vậy, chúng ta sẽ dùng <code>map()</code> để lấy thông tin trường học. Sau đó bỏ vào <code>Set</code> để loại bỏ những trường học trùng nhau. Cuối cùng là đếm số lượng phần tử trong <code>Set</code>.</p>
+
+<pre><code class="language-js">// Lấy mảng chứ các trường
+let school = data.map((e) =&gt; e.school);
+
+// Đưa vào Set để loại bỏ phần tử trùng
+let schoolSet = new Set(school);
+
+// Cuối cùng là đếm số lượng phần tử
+// Vì Set là Object nên cần phải chuyển thành mảng dùng spread operator
+let result = [ ...schoolSet ].length;
+</code></pre>
+
+<p>Viết gọn lại như sau:</p>
+
+<pre><code class="language-js">[ ...new Set(data.map((e) =&gt; e.school))].length
+</code></pre>
+
+<div class="alert info ">
+  <p><ul>
+<li>Có thể dùng <code>Set</code> để loại bỏ các phần tử trùng.</li>
+<li>Để lấy được <code>length</code> của một <code>Set</code> cần chuyển nó thành mảng. Vì <code>Set</code> là một object</li>
+</ul>
+</p>
+</div>
+
 <h1 id="5-kết-luận">5. Kết luận</h1>
 
 <p>Bài viết cũng khá dài rồi nên mình tạm dừng ở đây nhé. Trong phần tiếp theo mình sẽ hướng dẫn một số thủ thuật thú vị nữa để truy vấn và thống kê với JavaScript.</p>
