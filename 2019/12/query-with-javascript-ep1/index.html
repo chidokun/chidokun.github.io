@@ -280,7 +280,8 @@ if (!doNotTrack) {
 <li><a href="#2-lọc-và-đếm-các-phần-tử-với-điều-kiện">2. Lọc và đếm các phần tử với điều kiện</a></li>
 <li><a href="#3-biến-đổi-phần-tử">3. Biến đổi phần tử</a></li>
 <li><a href="#4-tìm-ra-các-phần-tử-phân-biệt">4. Tìm ra các phần tử phân biệt</a></li>
-<li><a href="#5-kết-luận">5. Kết luận</a>
+<li><a href="#5-sắp-xếp-đảo-ngược-danh-sách">5. Sắp xếp, đảo ngược danh sách</a></li>
+<li><a href="#6-kết-luận">6. Kết luận</a>
 <ul>
 <li><a href="#tham-khảo">Tham khảo</a></li>
 </ul></li>
@@ -554,7 +555,7 @@ let result = [ ...schoolSet ].length;
 
 <p>Viết gọn lại như sau:</p>
 
-<pre><code class="language-js">[ ...new Set(data.map((e) =&gt; e.school))].length
+<pre><code class="language-js">[ ...new Set(data.map((e) =&gt; e.school))].length;
 </code></pre>
 
 <div class="alert info ">
@@ -565,7 +566,35 @@ let result = [ ...schoolSet ].length;
 </p>
 </div>
 
-<h1 id="5-kết-luận">5. Kết luận</h1>
+<h1 id="5-sắp-xếp-đảo-ngược-danh-sách">5. Sắp xếp, đảo ngược danh sách</h1>
+
+<p>Yêu cầu: <em>Sắp xếp danh sách sinh viên tăng dần theo điểm</em></p>
+
+<p>Phương thức <code>sort()</code> sẽ giúp đơn giản hóa thao tác này.</p>
+
+<p>Tham số đầu vào là một <em>hàm so sánh</em>. Lưu ý về giá trị trả về của <em>hàm so sánh</em> nhé. Tham khảo tại <a href="https://developer.mozilla.org/vi/docs/Web/JavaScript/Reference/Global_Objects/Array/S%E1%BA%AFp_x%E1%BA%BFp">đây</a></p>
+
+<pre><code class="language-js">[ ...data ].sort((a, b) =&gt; a.gpa - b.gpa);
+</code></pre>
+
+<p>Phương thức <code>sort()</code> sẽ làm biến đổi thứ tự của mảng nên để giữ lại mảng hiện tại, chúng ta cần tạo 1 mảng mới bằng <em>spread operator</em> <code>[ ...data ]</code>.</p>
+
+<p>Yêu cầu: <em>Đảo ngược danh sách sinh viên ban đầu</em></p>
+
+<p>Chúng ta sử dụng <code>reverse()</code> để đảo ngược thứ tự 1 mảng. Tương tự như <code>sort()</code>, <code>reverse()</code> cũng làm thay đổi trên chính mảng đó, để giữ lại mảng cũ, chúng ta cũng tạo mảng mới bằng spread operator nhé.</p>
+
+<pre><code class="language-js">[ ...data ].reverse();
+</code></pre>
+
+<div class="alert info ">
+  <p><ul>
+<li>Dùng <code>sort()</code> để sắp xếp 1 mảng theo 1 điều kiện.</li>
+<li>Dùng <code>reverse()</code> để đảo ngược mảng.</li>
+</ul>
+</p>
+</div>
+
+<h1 id="6-kết-luận">6. Kết luận</h1>
 
 <p>Bài viết cũng khá dài rồi nên mình tạm dừng ở đây nhé. Trong phần tiếp theo mình sẽ hướng dẫn một số thủ thuật thú vị nữa để truy vấn và thống kê với JavaScript.</p>
 
@@ -578,6 +607,8 @@ let result = [ ...schoolSet ].length;
 <li><a href="https://developer.mozilla.org/vi/docs/Web/JavaScript/Reference/Global_Objects/Array/%08length">Array.length</a></li>
 <li><a href="https://developer.mozilla.org/vi/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce">Array.prototype.reduce()</a></li>
 <li><a href="https://developer.mozilla.org/vi/docs/Web/JavaScript/Reference/Global_Objects/Array/map">Array.prototype.map()</a></li>
+<li><a href="https://developer.mozilla.org/vi/docs/Web/JavaScript/Reference/Global_Objects/Array/S%E1%BA%AFp_x%E1%BA%BFp">Array.prototype.sort()</a></li>
+<li><a href="https://developer.mozilla.org/vi/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Array.prototype.reverse()</a></li>
 </ul>
               
             </div>
