@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://chidokun.github.io/2019/12/query-with-javascript-p2/</loc>
+    <loc>https://chidokun.github.io/2019/12/query-with-javascript-ep2/</loc>
     <lastmod>2019-12-24T18:00:00+07:00</lastmod>
   </url>
   
@@ -41,13 +41,13 @@
   </url>
   
   <url>
-    <loc>https://chidokun.github.io/tags/programming/</loc>
+    <loc>https://chidokun.github.io/categories/programming/</loc>
     <lastmod>2019-12-24T18:00:00+07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://chidokun.github.io/categories/programming/</loc>
+    <loc>https://chidokun.github.io/tags/programming/</loc>
     <lastmod>2019-12-24T18:00:00+07:00</lastmod>
     <priority>0</priority>
   </url>
