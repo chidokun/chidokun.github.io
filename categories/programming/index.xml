@@ -6,10 +6,19 @@
     <description>Recent content in Programming on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Fri, 13 Dec 2019 22:11:33 +0700</lastBuildDate>
+    <lastBuildDate>Tue, 24 Dec 2019 18:00:00 +0700</lastBuildDate>
     
 	<atom:link href="https://chidokun.github.io/categories/programming/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Truy vấn với JavaScript (Phần 2)</title>
+      <link>https://chidokun.github.io/2019/12/query-with-javascript-p2/</link>
+      <pubDate>Tue, 24 Dec 2019 18:00:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2019/12/query-with-javascript-p2/</guid>
+      <description>&lt;p&gt;Ở phần 1, mình đã giới thiệu một số cách dùng JavaScript để truy vấn thống kê trên 1 tập dữ liệu. Tiếp tục phần này, mình sẽ giới thiệu thêm một số cách dùng JavaScript để giải quyết một số vấn đề thường gặp liên quan đến mối quan hệ giữa nhiều tập dữ liệu nhé.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Truy vấn với JavaScript (Phần 1)</title>
