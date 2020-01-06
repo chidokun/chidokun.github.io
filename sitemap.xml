@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://chidokun.github.io/2020/01/useful-things-of-binary-numbers/</loc>
+    <lastmod>2020-01-04T22:27:00+07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://chidokun.github.io/2019/12/query-with-javascript-ep2/</loc>
     <lastmod>2019-12-24T18:00:00+07:00</lastmod>
   </url>
@@ -30,25 +35,25 @@
   
   <url>
     <loc>https://chidokun.github.io/</loc>
-    <lastmod>2019-12-24T18:00:00+07:00</lastmod>
+    <lastmod>2020-01-04T22:27:00+07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://chidokun.github.io/post/</loc>
-    <lastmod>2019-12-24T18:00:00+07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://chidokun.github.io/tags/programming/</loc>
-    <lastmod>2019-12-24T18:00:00+07:00</lastmod>
+    <lastmod>2020-01-04T22:27:00+07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://chidokun.github.io/categories/programming/</loc>
-    <lastmod>2019-12-24T18:00:00+07:00</lastmod>
+    <lastmod>2020-01-04T22:27:00+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://chidokun.github.io/tags/programming/</loc>
+    <lastmod>2020-01-04T22:27:00+07:00</lastmod>
     <priority>0</priority>
   </url>
   
