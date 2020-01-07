@@ -381,6 +381,12 @@ result = (a &amp; 1) != 0;
 result = ((a &gt;&gt; n) &amp; 1) != 0;
 </code></pre>
 
+<p>Hoặc một cách khác là:</p>
+
+<pre><code>// cần test bit thứ `n` của biến `a`
+result = (a &amp; (1 &lt;&lt; n)) != 0;
+</code></pre>
+
 <h2 id="3-2-kiểm-tra-1-chuỗi-n-bit-dùng-phép-toán-and">3.2. Kiểm tra 1 chuỗi n-bit dùng phép toán AND</h2>
 
 <p>Tương tự với trường hợp kiểm tra 1 bit, bạn có thể kiểm tra một chuỗi n-bit có phải toàn là <code>0</code> hay không bằng cách tạo ra 1 <code>mask</code> với toàn giá trị <code>1</code>, rồi dùng phép toán AND để kiểm tra.</p>
@@ -403,7 +409,7 @@ result = (a &amp; 15) != 0;
 <p>Vậy có thể kiểm tra chuỗi n-bit như sau:</p>
 
 <pre><code>// biến `a` là biến cần test chuỗi `n` bit cuối cùng
-result = (a &amp; ((1 &lt;&lt; 4) - 1)) != 0;
+result = (a &amp; ((1 &lt;&lt; n) - 1)) != 0;
 </code></pre>
 
 <p>Thật đơn giản phải không nào!</p>
@@ -431,7 +437,7 @@ result = (a &amp; ((1 &lt;&lt; 4) - 1)) != 0;
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2020/01/performance-testing-terminology/" data-tooltip="Performance Testing Terminology">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -520,7 +526,7 @@ result = (a &amp; ((1 &lt;&lt; 4) - 1)) != 0;
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2020/01/performance-testing-terminology/" data-tooltip="Performance Testing Terminology">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>

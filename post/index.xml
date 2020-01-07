@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Sat, 04 Jan 2020 22:27:00 +0700</lastBuildDate>
+    <lastBuildDate>Tue, 07 Jan 2020 13:32:29 +0700</lastBuildDate>
     
 	<atom:link href="https://chidokun.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Performance Testing Terminology</title>
+      <link>https://chidokun.github.io/2020/01/performance-testing-terminology/</link>
+      <pubDate>Tue, 07 Jan 2020 13:32:29 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2020/01/performance-testing-terminology/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Những điều thú vị của số nhị phân trong máy tính</title>
