@@ -6,9 +6,19 @@
     <description>Recent content in Categories on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
+    <lastBuildDate>Fri, 31 Jan 2020 22:00:00 +0700</lastBuildDate>
     
 	<atom:link href="https://chidokun.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Analysis</title>
+      <link>https://chidokun.github.io/categories/analysis/</link>
+      <pubDate>Fri, 31 Jan 2020 22:00:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/categories/analysis/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Programming</title>

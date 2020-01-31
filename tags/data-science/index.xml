@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data Science on Nguyễn Tuấn&#39;s Blog</title>
+    <link>https://chidokun.github.io/tags/data-science/</link>
+    <description>Recent content in Data Science on Nguyễn Tuấn&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>vi</language>
+    <lastBuildDate>Fri, 31 Jan 2020 22:00:00 +0700</lastBuildDate>
+    
+	<atom:link href="https://chidokun.github.io/tags/data-science/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Biểu diễn dữ liệu sử dụng Biểu đồ Tròn (Pie Chart)</title>
+      <link>https://chidokun.github.io/2020/01/pie-chart-and-how-to-use/</link>
+      <pubDate>Fri, 31 Jan 2020 22:00:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2020/01/pie-chart-and-how-to-use/</guid>
+      <description>&lt;p&gt;Biểu đồ tròn (Pie Chart) rất hay được dùng để biểu diễn/trực quan hóa dữ liệu trong những báo cáo/bảng biểu trong trong Phân tích dữ liệu cũng như một số ngành nghề khác, giúp cho người đọc dễ dàng hiểu dữ liệu hơn. Tuy nhiên, các dạng Pie Chart nếu sử dụng không khéo sẽ khiến cho biểu đồ trở nên mơ hồ và không diễn đạt được hết ý nghĩa của dữ liệu. Mình xin giới thiệu một số lưu ý để dùng Pie chart một cách trực quan hơn.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

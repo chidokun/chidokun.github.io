@@ -6,10 +6,37 @@
     <description>Recent content in Tags on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Tue, 24 Dec 2019 18:00:00 +0700</lastBuildDate>
+    <lastBuildDate>Fri, 31 Jan 2020 22:00:00 +0700</lastBuildDate>
     
 	<atom:link href="https://chidokun.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Data Analysis</title>
+      <link>https://chidokun.github.io/tags/data-analysis/</link>
+      <pubDate>Fri, 31 Jan 2020 22:00:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/tags/data-analysis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data Science</title>
+      <link>https://chidokun.github.io/tags/data-science/</link>
+      <pubDate>Fri, 31 Jan 2020 22:00:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/tags/data-science/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data Visualization</title>
+      <link>https://chidokun.github.io/tags/data-visualization/</link>
+      <pubDate>Fri, 31 Jan 2020 22:00:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/tags/data-visualization/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Javascript</title>
