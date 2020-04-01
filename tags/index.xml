@@ -6,10 +6,19 @@
     <description>Recent content in Tags on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Fri, 31 Jan 2020 22:00:00 +0700</lastBuildDate>
+    <lastBuildDate>Wed, 01 Apr 2020 22:30:30 +0700</lastBuildDate>
     
 	<atom:link href="https://chidokun.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Book</title>
+      <link>https://chidokun.github.io/tags/book/</link>
+      <pubDate>Wed, 01 Apr 2020 22:30:30 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/tags/book/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Data Analysis</title>
