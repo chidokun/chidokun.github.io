@@ -6,10 +6,19 @@
     <description>Recent content in Programming on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Sat, 04 Jan 2020 22:27:00 +0700</lastBuildDate>
+    <lastBuildDate>Sun, 31 May 2020 21:37:27 +0700</lastBuildDate>
     
 	<atom:link href="https://chidokun.github.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Tập tành crawl dữ liệu product của Tiki</title>
+      <link>https://chidokun.github.io/2020/05/crawl-tiki-products/</link>
+      <pubDate>Sun, 31 May 2020 21:37:27 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2020/05/crawl-tiki-products/</guid>
+      <description>&lt;p&gt;Tiki là một trong những trang thương mại điện tử lớn nhất Việt Nam. Với chính sách gắt gao để hạn chế hàng nhái, hàng giả nên những thông tin product trên Tiki có thể &amp;ldquo;tin tưởng&amp;rdquo; được. Nếu có nhu cầu lấy dữ liệu sản phẩm thì dữ liệu trên Tiki cũng là một nguồn tham khảo đáng tin cậy. Bên cạnh đó, mình cũng đang tập tành viết crawler nên trong bài này mình sẽ giới thiệu cách mình đã làm để lấy dữ liệu về sản phẩm trên Tiki nhé.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Những điều thú vị của số nhị phân trong máy tính</title>
