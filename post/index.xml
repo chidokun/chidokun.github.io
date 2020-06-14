@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Sun, 31 May 2020 21:37:27 +0700</lastBuildDate>
+    <lastBuildDate>Sun, 14 Jun 2020 17:05:24 +0700</lastBuildDate>
     
 	<atom:link href="https://chidokun.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Order Brushing Problem (Shopee Code League 2020)</title>
+      <link>https://chidokun.github.io/2020/06/order-brushing/</link>
+      <pubDate>Sun, 14 Jun 2020 17:05:24 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2020/06/order-brushing/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Shopee Code League&lt;/strong&gt; là một thử thách lập trình trực tuyến kéo dài 02 tháng bao gồm một loạt các cuộc thi, câu hỏi về thuật toán trực tuyến và hội thảo đào tạo trực tuyến dành cho tất cả sinh viên và các chuyên gia trên toàn khu vực (xem thêm tại &lt;a href=&#34;https://careers.shopee.sg/codeleague/&#34;&gt;Shopee Code League 2020&lt;/a&gt;). Challenge đầu tiên vừa diễn ra là &lt;strong&gt;Order Brushing Problem&lt;/strong&gt; (Chủ đề Data Analytics). Mình cùng teammate vừa hoàn thành xong challenge này, dù chưa xây dựng được giải pháp tối ưu nhất (score: 0,&lt;sup&gt;89933&lt;/sup&gt;&amp;frasl;&lt;sub&gt;1&lt;/sub&gt;,0) nhưng cũng giới thiệu đến các bạn giải pháp của nhóm trong bài toán này.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Tập tành crawl dữ liệu product của Tiki</title>
