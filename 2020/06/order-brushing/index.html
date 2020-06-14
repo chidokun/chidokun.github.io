@@ -331,7 +331,7 @@ if (!doNotTrack) {
 <li><strong>orderid</strong>: Mã đơn hàng, duy nhất trên toàn bộ dữ liệu.</li>
 <li><strong>shopid</strong>: Mã shop, là một người bán hàng trên nền tảng Shopee.</li>
 <li><strong>userid</strong>: Mã user, là một người mua hàng của shop đó trên nền tảng Shopee.</li>
-<li><strong>event_time</strong>: Thời điểm diễn ra sự kiện này.</li>
+<li><strong>event_time</strong>: Thời điểm user đặt hàng của shop.</li>
 </ul>
 
 <p>Như vậy, một dòng dữ liệu thể hiện cho <strong>một lần user đặt hàng của một shop</strong> trên nền tảng Shopee.</p>
@@ -399,7 +399,7 @@ d1.dtypes
 </div>
 
 
-<p>Để tính <strong>concentrate rate</strong> cho từng <code>shopid</code> trong mỗi interval 1 giờ, chúng ta query dữ liệu theo điều kiện <code>shopid</code>, <code>event_time</code> và <code>end_time</code> với từng đơn hàng.</p>
+<p>Để tính <strong>concentrate rate</strong> cho từng <code>shopid</code> trong mỗi interval 1 giờ, chúng ta query dữ liệu theo điều kiện <code>shopid</code>, <code>event_time</code> và <code>end_time</code> (nếu chọn <code>event_time</code> là thời điểm bắt đầu interval thì <code>end_time</code> là thời điểm kết thúc interval) với từng đơn hàng.</p>
 
 <p>Sau khi xác định shop có brushing, ta giữ lại <code>orderid</code> của shop đó và tất cả các <code>orderid</code> trong khoảng thời gian <em>brushing time</em>.</p>
 
@@ -444,7 +444,7 @@ while i &lt; row:
     return max_value, set(max_user)
 </code></pre>
 
-<p>Tương tự, cùng một <code>shopid</code> có thể có nhiều <em>brushing time</em> khác nhau. Mỗi <em>brushing time</em> sẽ phải tìm <code>userid</code> có <em>user proportion</em> cao nhất và chọn <code>userid</code> có <em>user proportion</em> cao nhất trong các <code>userid</code> đã tìm được từ các <em>brushing time</em>. Nếu có nhiều <code>userid</code> có cùng <em>user proportion</em> cao nhất thì chọn tất cả.</p>
+<p>Tương tự, cùng một <code>shopid</code> có thể có nhiều <em>brushing time</em> khác nhau. Mỗi <em>brushing time</em> sẽ phải tìm ra <code>userid</code> có <em>user proportion</em> cao nhất. Ta sẽ chọn <code>userid</code> có <em>user proportion</em> cao nhất trong các <code>userid</code> đã tìm được từ các <em>brushing time</em>. Nếu có nhiều <code>userid</code> có cùng <em>user proportion</em> cao nhất thì chọn tất cả.</p>
 
 <pre><code class="language-python">d2 = d1[d1.orderid.isin(order_brushing)]
 d3 = d1[d1.orderid.isin(order_list)]
