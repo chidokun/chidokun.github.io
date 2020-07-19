@@ -6,10 +6,19 @@
     <description>Recent content in Data on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Sun, 14 Jun 2020 17:05:24 +0700</lastBuildDate>
+    <lastBuildDate>Sun, 19 Jul 2020 11:55:24 +0700</lastBuildDate>
     
 	<atom:link href="https://chidokun.github.io/tags/data/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Logistics Problem (Shopee Code League 2020)</title>
+      <link>https://chidokun.github.io/2020/07/logistics-problem/</link>
+      <pubDate>Sun, 19 Jul 2020 11:55:24 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2020/07/logistics-problem/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Logistics Problem&lt;/strong&gt; là challenge thứ x của Shopee Code League 2020 - một cuộc thi về Code và Data kéo dài 2 tháng với các challenge khác nhau. Bài toán Data Analytics lần này tiếp tục là một chủ đề về Logistics - hay nói nôm na là &lt;em&gt;&amp;ldquo;ship hàng&amp;rdquo;&lt;/em&gt;. Nhiệm vụ của các đội là xác định các đơn hàng giao trễ hẹn dựa trên data và bộ rule cho sẵn. Sau một khoảng thời gian tìm hiểu và implement thì mình xin giới thiệu đến các bạn giải pháp của team (score: 1.0/1.0).&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Order Brushing Problem (Shopee Code League 2020)</title>
