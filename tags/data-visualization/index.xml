@@ -6,10 +6,19 @@
     <description>Recent content in Data Visualization on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Fri, 31 Jan 2020 22:00:00 +0700</lastBuildDate>
+    <lastBuildDate>Mon, 01 Feb 2021 22:00:00 +0700</lastBuildDate>
     
 	<atom:link href="https://chidokun.github.io/tags/data-visualization/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Biểu diễn dữ liệu với Box and Whisker Plot</title>
+      <link>https://chidokun.github.io/2021/02/box-and-whisker-plot/</link>
+      <pubDate>Mon, 01 Feb 2021 22:00:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2021/02/box-and-whisker-plot/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Box and Whisker Plot&lt;/strong&gt; (còn gọi là &lt;strong&gt;Boxplot&lt;/strong&gt;) là một dạng biểu đồ hay được dùng trong khoa học dữ liệu và thống kê. Trong bài này chúng ta cùng khám phá về Boxplot và một số điểm thú vị của loại biểu đồ này.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Biểu diễn dữ liệu sử dụng Biểu đồ Tròn (Pie Chart)</title>
