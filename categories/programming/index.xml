@@ -6,10 +6,19 @@
     <description>Recent content in Programming on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Sat, 30 Jan 2021 12:28:27 +0700</lastBuildDate>
+    <lastBuildDate>Tue, 22 Jun 2021 21:51:01 +0700</lastBuildDate>
     
 	<atom:link href="https://chidokun.github.io/categories/programming/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Tổng quan về Đồ thị</title>
+      <link>https://chidokun.github.io/2021/06/graph-overview/</link>
+      <pubDate>Tue, 22 Jun 2021 21:51:01 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2021/06/graph-overview/</guid>
+      <description>&lt;p&gt;Cấu trúc &lt;strong&gt;Graph&lt;/strong&gt; (đồ thị) có rất nhiều ứng dụng trong thực tiễn. Bài viết này sẽ note lại tổng quan những điểm chính về việc implement cấu trúc dữ liệu này.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Tập tành crawl dữ liệu product của Tiki (Phần 2)</title>
