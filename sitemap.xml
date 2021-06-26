@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://chidokun.github.io/2021/06/graph-dfs-algorithm/</loc>
+    <lastmod>2021-06-26T21:10:21+07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://chidokun.github.io/2021/06/graph-overview/</loc>
     <lastmod>2021-06-22T21:51:01+07:00</lastmod>
   </url>
@@ -74,13 +79,13 @@
   </url>
   
   <url>
-    <loc>https://chidokun.github.io/categories/book/</loc>
+    <loc>https://chidokun.github.io/tags/book/</loc>
     <lastmod>2020-04-01T22:30:30+07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://chidokun.github.io/tags/book/</loc>
+    <loc>https://chidokun.github.io/categories/book/</loc>
     <lastmod>2020-04-01T22:30:30+07:00</lastmod>
     <priority>0</priority>
   </url>
@@ -117,7 +122,7 @@
   
   <url>
     <loc>https://chidokun.github.io/tags/data-structures/</loc>
-    <lastmod>2021-06-22T21:51:01+07:00</lastmod>
+    <lastmod>2021-06-26T21:10:21+07:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -135,25 +140,25 @@
   
   <url>
     <loc>https://chidokun.github.io/</loc>
-    <lastmod>2021-06-22T21:51:01+07:00</lastmod>
+    <lastmod>2021-06-26T21:10:21+07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://chidokun.github.io/post/</loc>
-    <lastmod>2021-06-22T21:51:01+07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://chidokun.github.io/categories/programming/</loc>
-    <lastmod>2021-06-22T21:51:01+07:00</lastmod>
+    <lastmod>2021-06-26T21:10:21+07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://chidokun.github.io/tags/programming/</loc>
     <lastmod>2021-01-30T12:28:27+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://chidokun.github.io/categories/programming/</loc>
+    <lastmod>2021-06-26T21:10:21+07:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -170,13 +175,13 @@
   </url>
   
   <url>
-    <loc>https://chidokun.github.io/categories/tips/</loc>
+    <loc>https://chidokun.github.io/tags/tips/</loc>
     <lastmod>2020-04-15T22:30:00+07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://chidokun.github.io/tags/tips/</loc>
+    <loc>https://chidokun.github.io/categories/tips/</loc>
     <lastmod>2020-04-15T22:30:00+07:00</lastmod>
     <priority>0</priority>
   </url>
