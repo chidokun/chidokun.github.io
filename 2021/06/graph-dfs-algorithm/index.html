@@ -286,7 +286,8 @@ if (!doNotTrack) {
 <li><a href="#2-1-đệ-quy">2.1. Đệ quy</a></li>
 <li><a href="#2-2-khử-đệ-quy">2.2. Khử đệ quy</a></li>
 </ul></li>
-<li><a href="#3-đánh-giá">3. Đánh giá</a>
+<li><a href="#3-áp-dụng">3. Áp dụng</a></li>
+<li><a href="#4-đánh-giá">4. Đánh giá</a>
 <ul>
 <li><a href="#references">References</a></li>
 </ul></li>
@@ -478,7 +479,227 @@ if (!doNotTrack) {
 </p>
 </div>
 
-<h1 id="3-đánh-giá">3. Đánh giá</h1>
+<h1 id="3-áp-dụng">3. Áp dụng</h1>
+
+<p><strong>Bài toán</strong>: <em>Cho đồ thị <code>g</code> và đỉnh gốc <code>s</code>. Trả lời câu hỏi, có đường đi nào từ đỉnh gốc <code>s</code> tới một đỉnh <code>w</code> nào đó không. Nếu có, hãy tìm đường đi đó.</em></p>
+
+<p>Chúng ta sẽ dùng thuật toán DFS để duyệt qua các đỉnh. Trong quá trình duyệt đó, lưu lại đỉnh gần nhất tới đỉnh <code>a</code> nào đó sử dụng <code>edgeTo[]</code>.
+Nếu các đỉnh được duyệt qua trong <code>marked[]</code>, chứng tỏ có đường đi đến đỉnh đó và có thể truy hồi lại đường đi dùng <code>edgeTo[]</code>.</p>
+
+<p>Code tham khảo:</p>
+
+
+
+  
+  
+  
+  
+  
+
+
+  
+    
+  
+  
+
+<figure class="codeblock codeblock--tabbed">
+  <figcaption>
+    
+      <span>DepthFirstPaths</span>
+    
+    <ul class="tabs">
+      
+        <li class="tab active">java</li>
+      
+    </ul>
+  </figcaption> 
+  <div class="tabs-content">
+    
+      
+      <figure class="highlight language-java" style="display: block;">   
+        <table>
+          <tbody>
+            <tr>
+              <td class="gutter">
+                <pre><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br></pre>
+              </td>
+              <td class="code">
+                <pre class="code-highlight language-java"><code class="java">public class DepthFirstPaths {
+    private boolean[] marked;
+    private int[] edgeTo;
+    private int s;
+    public DepthFirstPaths(Graph g, int s) {
+        marked = new boolean[g.V()];
+        edgeTo = new int[g.V()];
+        this.s = s;
+        dfs(g, s);
+    }
+    private void dfs(Graph g, int v) {
+        marked[v] = true;
+        for (Integer i : g.adj(v))
+            if (!marked[i]) {
+                edgeTo[i] = v;
+                dfs(g, i);
+            }
+    }
+    public boolean hasPathTo(int w) { return marked[w]; }
+    public Iterable&lt;Integer&gt; pathTo(int w) {
+        if (!hasPathTo(w)) return null;
+        List&lt;Integer&gt; path = new LinkedList&lt;&gt;();
+        for (int i = w; i != s; i = edgeTo[i])
+            path.add(0, i);
+        path.add(0, s);
+        return path;
+    }
+}
+    </code></pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </figure>
+    
+  </div>
+</figure>
+
+<p>Cùng thử nghiệm với đồ thị sau đây:</p>
+
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/graph-overview/1.svg" title="Đồ thị 1" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/graph-overview/1.svg" style="width: 60%;" alt="Đồ thị 1">
+  
+    </a>
+  
+   
+    <span class="caption">Đồ thị 1</span>
+  
+</div>
+
+
+<p>Viết hàm <code>main</code> để test:</p>
+
+
+
+  
+  
+  
+  
+  
+
+
+  
+    
+  
+  
+
+<figure class="codeblock codeblock--tabbed">
+  <figcaption>
+    
+      <span>DepthFirstPaths</span>
+    
+    <ul class="tabs">
+      
+        <li class="tab active">java</li>
+      
+    </ul>
+  </figcaption> 
+  <div class="tabs-content">
+    
+      
+      <figure class="highlight language-java" style="display: block;">   
+        <table>
+          <tbody>
+            <tr>
+              <td class="gutter">
+                <pre><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br></pre>
+              </td>
+              <td class="code">
+                <pre class="code-highlight language-java"><code class="java">public static void main(String[] args) {
+    Graph g = new Graph(6);
+    g.addEdge(0, 1);
+    g.addEdge(0, 2);
+    g.addEdge(0, 3);
+    g.addEdge(1, 4);
+    g.addEdge(2, 4);
+    g.addEdge(2, 5);
+
+    DepthFirstPaths path = new DepthFirstPaths(g, 0);
+    for (int i = 0; i &lt; 6; i&#43;&#43;) {
+        Iterable&lt;Integer&gt; rs = path.pathTo(i);
+        System.out.println(rs);
+    }
+}
+    </code></pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </figure>
+    
+  </div>
+</figure>
+
+<p>Kết quả là:</p>
+
+<pre><code>[0]
+[0, 1]
+[0, 1, 4, 2]
+[0, 3]
+[0, 1, 4]
+[0, 1, 4, 2, 5]
+</code></pre>
+
+<p>Và đường đi mà thuật toán cho kết quả là:</p>
+
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/graph-dfs-algorithm/1.svg" title="Đường đi cho Đồ thị 1" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/graph-dfs-algorithm/1.svg" style="width: 60%;" alt="Đường đi cho Đồ thị 1">
+  
+    </a>
+  
+   
+    <span class="caption">Đường đi cho Đồ thị 1</span>
+  
+</div>
+
+
+<p>Có gì đó sai sai đúng không 😆</p>
+
+<p>Thật ra DFS là thuật toán tìm kiếm mù và do cách duyệt vét cạn này, nó sẽ bị ảnh hưởng bởi thứ tự thêm cạnh vào đồ thị. Thử đặt dòng <code>g.addEdge(0, 2);</code> lên trên dòng <code>g.addEdge(0, 1);</code> rồi chạy lại. Bạn sẽ thấy sự khác biệt.</p>
+
+<h1 id="4-đánh-giá">4. Đánh giá</h1>
 
 <p>Thuật toán sẽ duyệt qua tất cả các đỉnh nếu đồ thị liên thông. Tuy vậy, nó là thuật toán tìm kiếm mù, mang tính chất vét cạn và sẽ kém hiệu quả nếu tập đỉnh quá lớn.</p>
 
