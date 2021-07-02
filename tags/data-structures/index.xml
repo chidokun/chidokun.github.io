@@ -6,10 +6,19 @@
     <description>Recent content in Data Structures on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Sun, 27 Jun 2021 20:03:25 +0700</lastBuildDate>
+    <lastBuildDate>Fri, 02 Jul 2021 22:33:25 +0700</lastBuildDate>
     
 	<atom:link href="https://chidokun.github.io/tags/data-structures/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Thuật toán nén Huffman Coding</title>
+      <link>https://chidokun.github.io/2021/07/huffman-coding-p1/</link>
+      <pubDate>Fri, 02 Jul 2021 22:33:25 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2021/07/huffman-coding-p1/</guid>
+      <description>&lt;p&gt;Nén dữ liệu là phương pháp loại bỏ những thông tin dư thừa trong việc biểu diễn dữ liệu. Nó có nhiều ứng dụng, đặc biệt là trong việc truyền tin vì giúp rút gọn thông tin gửi đi. Có nhiều thuật toán nén dữ liệu và &lt;em&gt;Huffman Coding&lt;/em&gt; là một trong số đó. Bài viết này chủ yếu bàn về ý tưởng của thuật toán này.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Thuật toán Breath First Search</title>
