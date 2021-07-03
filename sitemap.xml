@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://chidokun.github.io/2021/07/huffman-coding-p2/</loc>
+    <lastmod>2021-07-02T22:34:25+07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://chidokun.github.io/2021/07/huffman-coding-p1/</loc>
     <lastmod>2021-07-02T22:33:25+07:00</lastmod>
   </url>
@@ -132,7 +137,7 @@
   
   <url>
     <loc>https://chidokun.github.io/tags/data-structures/</loc>
-    <lastmod>2021-07-02T22:33:25+07:00</lastmod>
+    <lastmod>2021-07-02T22:34:25+07:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -150,13 +155,13 @@
   
   <url>
     <loc>https://chidokun.github.io/</loc>
-    <lastmod>2021-07-02T22:33:25+07:00</lastmod>
+    <lastmod>2021-07-02T22:34:25+07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://chidokun.github.io/post/</loc>
-    <lastmod>2021-07-02T22:33:25+07:00</lastmod>
+    <lastmod>2021-07-02T22:34:25+07:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -168,7 +173,7 @@
   
   <url>
     <loc>https://chidokun.github.io/categories/programming/</loc>
-    <lastmod>2021-07-02T22:33:25+07:00</lastmod>
+    <lastmod>2021-07-02T22:34:25+07:00</lastmod>
     <priority>0</priority>
   </url>
   

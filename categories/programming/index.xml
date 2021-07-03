@@ -6,10 +6,19 @@
     <description>Recent content in Programming on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Fri, 02 Jul 2021 22:33:25 +0700</lastBuildDate>
+    <lastBuildDate>Fri, 02 Jul 2021 22:34:25 +0700</lastBuildDate>
     
 	<atom:link href="https://chidokun.github.io/categories/programming/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Cài đặt thuật toán Huffman Coding</title>
+      <link>https://chidokun.github.io/2021/07/huffman-coding-p2/</link>
+      <pubDate>Fri, 02 Jul 2021 22:34:25 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2021/07/huffman-coding-p2/</guid>
+      <description>&lt;p&gt;Với những ý tưởng của thuật toán Huffman Coding ở bài viết &lt;a href=&#34;https://chidokun.github.io/2021/07/huffman-coding-p1/&#34;&gt;Thuật toán nén Huffman Coding&lt;/a&gt;, trong bài viết này chúng ta cùng bàn về cách hiện thực thuật toán này với ngôn ngữ Java.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Thuật toán nén Huffman Coding</title>
