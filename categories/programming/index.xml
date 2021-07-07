@@ -6,10 +6,19 @@
     <description>Recent content in Programming on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Sun, 04 Jul 2021 17:45:23 +0700</lastBuildDate>
+    <lastBuildDate>Wed, 07 Jul 2021 17:54:21 +0700</lastBuildDate>
     
 	<atom:link href="https://chidokun.github.io/categories/programming/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Tạo Progress Bar trong Java Console</title>
+      <link>https://chidokun.github.io/2021/07/console-progress-bar/</link>
+      <pubDate>Wed, 07 Jul 2021 17:54:21 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2021/07/console-progress-bar/</guid>
+      <description>&lt;p&gt;Là một lập trình viên làm việc khá nhiều với terminal, mình thường xuyên thấy các lệnh chạy trên console cũng có thanh tiến trình để thể hiện phần trăm hoàn thành công việc cũng khá hay ho. Vì vậy, trong bài viết này, chúng ta cùng thử làm một thanh Progress Bar với Java nhé.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Huffman Decoding: Quá trình giải nén</title>
