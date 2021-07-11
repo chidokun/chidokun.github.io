@@ -281,10 +281,10 @@ if (!doNotTrack) {
 <h1 id="table-of-contents">Mục lục</h1><nav id="TableOfContents">
 <ul>
 <li><a href="#1-giới-thiệu">1. Giới thiệu</a></li>
-<li><a href="#2-hiệu-chỉnh-heap">2. Hiệu chỉnh Heap</a></li>
-<li><a href="#2-1-bottom-up">2.1. Bottom-up</a></li>
-<li><a href="#2-2-top-down">2.2. Top-down</a>
+<li><a href="#2-hiệu-chỉnh-heap">2. Hiệu chỉnh Heap</a>
 <ul>
+<li><a href="#2-1-bottom-up">2.1. Bottom-up</a></li>
+<li><a href="#2-2-top-down">2.2. Top-down</a></li>
 <li><a href="#references">References</a></li>
 </ul></li>
 </ul>
@@ -332,7 +332,7 @@ if (!doNotTrack) {
 
 <p><em>Hiệu chỉnh Heap</em> là quá trình điều chỉnh các phần tử để thỏa tính chất của <em>Heap</em>. Nếu một Heap được biểu diễn bằng mảng một chiều thì phần tử đầu tiên luôn là phần tử lớn nhất (Max Heap) hoặc nhỏ nhất (Min Heap).</p>
 
-<h1 id="2-1-bottom-up">2.1. Bottom-up</h1>
+<h2 id="2-1-bottom-up">2.1. Bottom-up</h2>
 
 <p>Chiến lược hiệu chỉnh Bottom-up được thực hiện khi nút đang xét có giá trị lớn hơn nút cha của nó. Lúc này chúng ta sẽ tráo nút hiện tại với nút cha. Lúc này nút cha của nút đang xét sẽ lớn hơn 2 nút con hiện tại. Tuy nhiên, nút cha này vẫn có thể lớn hơn nút ông nội của nó. Vì vậy chúng ta cần thực hiện xuyên suốt ngược lên trên.</p>
 
@@ -412,7 +412,7 @@ public void swap(int[] a, int i, int j) {
 
 <p>Chiến lược này được ứng dụng trong trường hợp khi thêm một phần tử vào cuối mảng. Lúc này chúng ta xét phần tử cuối mảng và thực hiện hiệu chỉnh Heap ngược lên trên.</p>
 
-<h1 id="2-2-top-down">2.2. Top-down</h1>
+<h2 id="2-2-top-down">2.2. Top-down</h2>
 
 <p>Tương tự, chiến lược hiệu chỉnh Top-down được thực hiện khi nút đang xét có giá trị lớn hơn một hoặc cả hai nút con của nó. Lúc này chúng ta sẽ tráo nút hiện tại với nút lớn nhất trong 2 nút con. Tuy nhiên, nút con này vẫn có thể nhỏ hơn nút con của nó. Vì vậy chúng ta cần thực hiện xuyên suốt xuống dưới.</p>
 
