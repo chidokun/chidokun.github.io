@@ -6,10 +6,19 @@
     <description>Recent content on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Wed, 07 Jul 2021 17:54:21 +0700</lastBuildDate>
+    <lastBuildDate>Sun, 11 Jul 2021 12:46:28 +0700</lastBuildDate>
     
 	<atom:link href="https://chidokun.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Heap và một số ghi chú</title>
+      <link>https://chidokun.github.io/2021/07/heap-note/</link>
+      <pubDate>Sun, 11 Jul 2021 12:46:28 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2021/07/heap-note/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Heap&lt;/em&gt; được ứng dụng khá nhiều trong các cấu trúc dữ liệu và giải thuật. Nếu bạn đã nghe qua Heap sort thì chắc chắn sẽ làm quen với khái niệm này. Ngoài ra, &lt;em&gt;Heap&lt;/em&gt; cũng còn được ứng dụng trong Prority Queue - một cấu trúc dữ liệu hoạt động theo cơ chế vào trước ra trước. Bài viết này sẽ note một số ý chính về &lt;em&gt;Heap&lt;/em&gt;.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Tạo Progress Bar trong Java Console</title>
