@@ -7,26 +7,26 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.6-BETA">
 <meta name="author" content="Nguyễn Tuấn">
-<meta name="keywords" content="heap, java, development, programming, chidokun, lập trình">
-<meta name="description" content="Heap được ứng dụng khá nhiều trong các cấu trúc dữ liệu và giải thuật. Nếu bạn đã nghe qua Heap sort thì chắc chắn sẽ làm quen với khái niệm này. Ngoài ra, Heap cũng còn được ứng dụng trong Prority Queue - một cấu trúc dữ liệu hoạt động theo cơ chế vào trước ra trước. Bài viết này sẽ note một số ý chính về Heap.">
+<meta name="keywords" content="sleep sort, sort, java, development, programming, chidokun, lập trình">
+<meta name="description" content="Nghe tên có thể bạn nghĩ rằng khi dùng thuật toán này thì chúng ta có thể rung đùi mà ngủ không cần làm gì hết? Bạn có từng nghe qua thuật toán sort nào mà số phép so sánh bằng 0 chưa? Nếu chưa thì Sleep Sort là một thuật toán bá đạo như vậy đấy.">
 
 
-<meta property="og:description" content="Heap được ứng dụng khá nhiều trong các cấu trúc dữ liệu và giải thuật. Nếu bạn đã nghe qua Heap sort thì chắc chắn sẽ làm quen với khái niệm này. Ngoài ra, Heap cũng còn được ứng dụng trong Prority Queue - một cấu trúc dữ liệu hoạt động theo cơ chế vào trước ra trước. Bài viết này sẽ note một số ý chính về Heap.">
+<meta property="og:description" content="Nghe tên có thể bạn nghĩ rằng khi dùng thuật toán này thì chúng ta có thể rung đùi mà ngủ không cần làm gì hết? Bạn có từng nghe qua thuật toán sort nào mà số phép so sánh bằng 0 chưa? Nếu chưa thì Sleep Sort là một thuật toán bá đạo như vậy đấy.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Heap và một số ghi chú">
-<meta name="twitter:title" content="Heap và một số ghi chú">
-<meta property="og:url" content="https://chidokun.github.io/2021/07/heap-note/">
-<meta property="twitter:url" content="https://chidokun.github.io/2021/07/heap-note/">
+<meta property="og:title" content="Sleep Sort: Thuật toán sort bá đạo">
+<meta name="twitter:title" content="Sleep Sort: Thuật toán sort bá đạo">
+<meta property="og:url" content="https://chidokun.github.io/2021/07/sleep-sort/">
+<meta property="twitter:url" content="https://chidokun.github.io/2021/07/sleep-sort/">
 <meta property="og:site_name" content="Nguyễn Tuấn&#39;s Blog">
-<meta property="og:description" content="Heap được ứng dụng khá nhiều trong các cấu trúc dữ liệu và giải thuật. Nếu bạn đã nghe qua Heap sort thì chắc chắn sẽ làm quen với khái niệm này. Ngoài ra, Heap cũng còn được ứng dụng trong Prority Queue - một cấu trúc dữ liệu hoạt động theo cơ chế vào trước ra trước. Bài viết này sẽ note một số ý chính về Heap.">
-<meta name="twitter:description" content="Heap được ứng dụng khá nhiều trong các cấu trúc dữ liệu và giải thuật. Nếu bạn đã nghe qua Heap sort thì chắc chắn sẽ làm quen với khái niệm này. Ngoài ra, Heap cũng còn được ứng dụng trong Prority Queue - một cấu trúc dữ liệu hoạt động theo cơ chế vào trước ra trước. Bài viết này sẽ note một số ý chính về Heap.">
+<meta property="og:description" content="Nghe tên có thể bạn nghĩ rằng khi dùng thuật toán này thì chúng ta có thể rung đùi mà ngủ không cần làm gì hết? Bạn có từng nghe qua thuật toán sort nào mà số phép so sánh bằng 0 chưa? Nếu chưa thì Sleep Sort là một thuật toán bá đạo như vậy đấy.">
+<meta name="twitter:description" content="Nghe tên có thể bạn nghĩ rằng khi dùng thuật toán này thì chúng ta có thể rung đùi mà ngủ không cần làm gì hết? Bạn có từng nghe qua thuật toán sort nào mà số phép so sánh bằng 0 chưa? Nếu chưa thì Sleep Sort là một thuật toán bá đạo như vậy đấy.">
 <meta property="og:locale" content="vi">
 
   
-    <meta property="article:published_time" content="2021-07-11T12:46:28">
+    <meta property="article:published_time" content="2021-07-12T22:52:28">
   
   
-    <meta property="article:modified_time" content="2021-07-11T12:46:28">
+    <meta property="article:modified_time" content="2021-07-12T22:52:28">
   
   
   
@@ -36,7 +36,7 @@
   
   
     
-      <meta property="article:tag" content="data structures">
+      <meta property="article:tag" content="algorithms">
     
   
 
@@ -51,8 +51,8 @@
 
 
 
-  <meta property="og:image" content="https://chidokun.github.io/thumbnails/heap.png">
-  <meta property="twitter:image" content="https://chidokun.github.io/thumbnails/heap.png">
+  <meta property="og:image" content="https://chidokun.github.io/thumbnails/sleep-sort.png">
+  <meta property="twitter:image" content="https://chidokun.github.io/thumbnails/sleep-sort.png">
 
 
 
@@ -62,14 +62,14 @@
   <meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
 
 
-    <title>Heap và một số ghi chú</title>
+    <title>Sleep Sort: Thuật toán sort bá đạo</title>
     <meta name="google-site-verification" content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI" />
     <link rel="icon" href="https://chidokun.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://chidokun.github.io/2021/07/heap-note/">
+    <link rel="canonical" href="https://chidokun.github.io/2021/07/sleep-sort/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -235,19 +235,19 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Heap và một số ghi chú
+      Sleep Sort: Thuật toán sort bá đạo
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2021-07-11T12:46:28&#43;07:00">
+      <time itemprop="datePublished" datetime="2021-07-12T22:52:28&#43;07:00">
         
   
   
   
   
-    11 tháng 7 2021
+    12 tháng 7 2021
   
 
       </time>
@@ -265,7 +265,7 @@ if (!doNotTrack) {
 
   <div>
   <div class="fb-like" 
-    data-href="https://chidokun.github.io/2021/07/heap-note/" 
+    data-href="https://chidokun.github.io/2021/07/sleep-sort/" 
     data-width="" 
     data-layout="button_count" 
     data-action="like" 
@@ -276,15 +276,13 @@ if (!doNotTrack) {
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p><em>Heap</em> được ứng dụng khá nhiều trong các cấu trúc dữ liệu và giải thuật. Nếu bạn đã nghe qua Heap sort thì chắc chắn sẽ làm quen với khái niệm này. Ngoài ra, <em>Heap</em> cũng còn được ứng dụng trong Prority Queue - một cấu trúc dữ liệu hoạt động theo cơ chế vào trước ra trước. Bài viết này sẽ note một số ý chính về <em>Heap</em>.</p>
+              <p>Nghe tên có thể bạn nghĩ rằng khi dùng thuật toán này thì chúng ta có thể rung đùi mà ngủ không cần làm gì hết? Bạn có từng nghe qua thuật toán sort nào mà số phép so sánh bằng 0 chưa? Nếu chưa thì <em>Sleep Sort</em> là một thuật toán bá đạo như vậy đấy.</p>
 
 <h1 id="table-of-contents">Mục lục</h1><nav id="TableOfContents">
 <ul>
 <li><a href="#1-giới-thiệu">1. Giới thiệu</a></li>
-<li><a href="#2-hiệu-chỉnh-heap">2. Hiệu chỉnh Heap</a>
+<li><a href="#2-cài-đặt-ngay-thôi">2. Cài đặt ngay thôi</a>
 <ul>
-<li><a href="#2-1-bottom-up">2.1. Bottom-up</a></li>
-<li><a href="#2-2-top-down">2.2. Top-down</a></li>
 <li><a href="#references">References</a></li>
 </ul></li>
 </ul>
@@ -292,65 +290,29 @@ if (!doNotTrack) {
 
 <h1 id="1-giới-thiệu">1. Giới thiệu</h1>
 
-<p><em>Binary Heap</em> là một <em>cây nhị phân đầy đủ</em> mà mỗi nút gốc đều <em>lớn hơn</em> (hoặc <em>nhỏ hơn</em>) hai nút con của nó. <em>Heap</em> có nút gốc lớn hơn hai nút con còn gọi là <em>Max Heap</em> (ngược lại là <em>Min Heap</em>).</p>
+<p>Mấu chốt của thuật toán này là với mỗi giá trị trong mảng sẽ tạo ra một thread và thread đó sẽ sleep một khoảng thời gian bằng đúng giá trị của phần tử trong mảng rồi mới in ra giá trị đó.</p>
 
-<p>Ngoài ra cũng có thể dùng cây tam phân làm Heap thì lúc này nó sẽ được gọi là <em>Ternary Heap</em>. Bài viết này chủ yếu đề cập đến <em>Binary Heap</em> và sẽ gọi là <em>Heap</em> cho ngắn gọn.</p>
+<p>Điều đó nghĩa là, phần tử có giá trị nhỏ nhất sẽ được in trước tiên. Và chúng ta phải chờ đến khi phần tử lớn nhất được in ra, thuật toán kết thúc.</p>
 
-<p><em>Heap</em> có thể được biểu diễn bằng một mảng một chiều và lúc này, nút gốc có chỉ số <code>i</code> sẽ có 2 nút con ở chỉ số <code>2i+1</code> và <code>2i+2</code> ($0 \leq i \leq \frac{n}{2}-1$).</p>
+<p>Do đó, thuật toán luôn in ra giá trị mảng đã được sắp xếp từ nhỏ đến lớn.</p>
 
-<p>Ví dụ: Một heap được biểu diễn dưới dạng mảng một chiều.</p>
+<p>Tất cả quá trình này được thực hiện bởi hệ điều hành và chúng ta không biết điều gì xảy ra bên dưới.</p>
 
+<p style="text-align:center"><img style="display:inline-block" src="https://media.giphy.com/media/XHqLWPZtKNCN0Np2Gx/source.gif" width="480" height="270" /></p>
 
+<h1 id="2-cài-đặt-ngay-thôi">2. Cài đặt ngay thôi</h1>
 
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure center" >
-  
-    <a class="fancybox" href="https://chidokun.github.io/images/post/heap-note/1.svg" title="Một heap được biểu diễn dưới dạng mảng một chiều và cây tương ứng" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://chidokun.github.io/images/post/heap-note/1.svg" style="width: 80%;" alt="Một heap được biểu diễn dưới dạng mảng một chiều và cây tương ứng">
-  
-    </a>
-  
-   
-    <span class="caption">Một heap được biểu diễn dưới dạng mảng một chiều và cây tương ứng</span>
-  
-</div>
-
-
-<h1 id="2-hiệu-chỉnh-heap">2. Hiệu chỉnh Heap</h1>
-
-<p><em>Hiệu chỉnh Heap</em> là quá trình điều chỉnh các phần tử để thỏa tính chất của <em>Heap</em>. Nếu một Heap được biểu diễn bằng mảng một chiều thì phần tử đầu tiên luôn là phần tử lớn nhất (Max Heap) hoặc nhỏ nhất (Min Heap).</p>
-
-<h2 id="2-1-bottom-up">2.1. Bottom-up</h2>
-
-<p>Chiến lược hiệu chỉnh Bottom-up được thực hiện khi nút đang xét có giá trị lớn hơn nút cha của nó. Lúc này chúng ta sẽ tráo nút hiện tại với nút cha. Lúc này nút cha của nút đang xét sẽ lớn hơn 2 nút con hiện tại. Tuy nhiên, nút cha này vẫn có thể lớn hơn nút ông nội của nó. Vì vậy chúng ta cần thực hiện xuyên suốt ngược lên trên.</p>
-
-<p>Nút <code>i</code> sẽ có nút cha là <code>(i-1)/2</code> (nếu <code>i</code> bắt đầu từ <code>0</code>).</p>
-
-<p>Các bước thực hiện:</p>
+<p>Các bước thực hiện bao gồm:</p>
 
 <ul>
-<li><em>1.</em> Ở nút <code>i</code> hiện tại, nếu nút hiện tại lớn hơn nút cha của nó (không thỏa Heap):
+<li>Duyệt qua toàn bộ mảng <code>arr</code>, với mỗi phần tử <code>arr[i]</code>:
 
 <ul>
-<li>Tráo giá trị nút <code>i</code> và nút cha của nó.</li>
+<li>Tạo một thread với và sleep trong <code>arr[i]</code>.</li>
+<li>Sau khi sleep xong, in phần tử ra màn hình.</li>
 </ul></li>
-<li><em>2.</em> Di chuyển lên nút cha và lặp lại bước 1.</li>
-<li><em>3.</em> Dừng lại khi đã đến nút gốc.</li>
+<li>Thuật toán hoàn tất khi tất cả các thread chạy xong.</li>
 </ul>
-
-<p>Cách cài đặt tham khảo sử dụng Java:</p>
 
 
 
@@ -369,7 +331,7 @@ if (!doNotTrack) {
 <figure class="codeblock codeblock--tabbed">
   <figcaption>
     
-      <span>Heap</span>
+      <span>SleepSort</span>
     
     <ul class="tabs">
       
@@ -385,20 +347,31 @@ if (!doNotTrack) {
           <tbody>
             <tr>
               <td class="gutter">
-                <pre><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br></pre>
+                <pre><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br></pre>
               </td>
               <td class="code">
-                <pre class="code-highlight language-java"><code class="java">public void swim(int[] a, int i) {
-    while (i &gt; 0 &amp;&amp; a[(i-1)/2] &lt; a[i]) {
-        swap(a, (i-1)/2, i);
-        i = (i-1)/2;
+                <pre class="code-highlight language-java"><code class="java">public class SleepSort {
+    public void sort(int[] arr) {
+        for (int i = 0; i &lt; arr.length; i&#43;&#43;)
+            sleep(arr[i]);
     }
-}
 
-public void swap(int[] a, int i, int j) {
-    int t = a[i];
-    a[i] = a[j];
-    a[j] = t;
+    private void sleep(int s) {
+        new Thread(() -&gt; {
+            try {
+                Thread.sleep(s);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.print(s &#43; &#34; &#34;);
+        }).start();
+    }
+
+    public static void main(String[] args) {
+        int[] arr = new int[] { 5, 3, 2, 4, 7, 6, 8, 10 };
+        SleepSort s = new SleepSort();
+        s.sort(arr);
+    }
 }
     </code></pre>
               </td>
@@ -410,107 +383,27 @@ public void swap(int[] a, int i, int j) {
   </div>
 </figure>
 
-<p>Chiến lược này được ứng dụng trong trường hợp khi thêm một phần tử vào cuối mảng. Lúc này chúng ta xét phần tử cuối mảng và thực hiện hiệu chỉnh Heap ngược lên trên.</p>
+<p>Kết quả là:</p>
 
-<h2 id="2-2-top-down">2.2. Top-down</h2>
+<pre><code>2 3 4 5 6 7 8 10 
+</code></pre>
 
-<p>Tương tự, chiến lược hiệu chỉnh Top-down được thực hiện khi nút đang xét có giá trị lớn hơn một hoặc cả hai nút con của nó. Lúc này chúng ta sẽ tráo nút hiện tại với nút lớn nhất trong 2 nút con. Tuy nhiên, nút con này vẫn có thể nhỏ hơn nút con của nó. Vì vậy chúng ta cần thực hiện xuyên suốt xuống dưới.</p>
+<p>Thời gian chạy của thuật toán phụ thuộc vào phần tử lớn nhất của mảng. Ngoài ra thuật toán cũng bị ảnh hưởng bởi việc định thời của hệ điều hành. Hệ điều hành định thời dựa trên heap-based priority queue thì quá trình tạo thread và thêm tất cả các thread vào queue sẽ tốn $O(NlogN)$. Do đó, có thể xem độ phức tạp của thuật toán là $O(NlogN + max(array))$.</p>
 
-<p>Các bước thực hiện:</p>
-
-<ul>
-<li><em>1.</em> Ở nút <code>i</code> hiện tại, tìm nút có giá trị lớn nhất <code>l</code> trong 2 nút con của nút <code>i</code>.</li>
-<li><em>2.</em> Nếu nút con <code>l</code> có giá trị lớn hơn nút cha <code>i</code> hiện tại (không thỏa Heap):
+<p>Ngoài ra nó cũng có một số hạn chế như:</p>
 
 <ul>
-<li>Tráo giá trị nút cha <code>i</code> và nút con <code>l</code>.</li>
-</ul></li>
-<li><em>3.</em> Do đã tráo nút <code>l</code> nên nhánh <code>l</code> bị ảnh hưởng, ta di chuyển xuống nút <code>l</code> và lặp lại bước 1 và 2.</li>
-<li><em>4.</em> Dừng lại khi đã hết nút con.</li>
+<li>Không chạy được với số âm.</li>
+<li>Không ổn định và nhạy cảm với độ lớn của các phần tử. Đôi khi chỉ sort 2 phần tử <code>1</code> và <code>9999</code> mà chúng ta phải tốn <code>10000 ms</code>.</li>
+<li>Trong trường hợp số lượng phần tử quá lớn, đôi khi một số thread chạy xong trước khi chạy qua xong tất cả các phần tử sẽ dẫn đến kết quả không chính xác.</li>
 </ul>
 
-<p>Cách cài đặt tham khảo sử dụng Java:</p>
-
-
-
-  
-  
-  
-  
-  
-
-
-  
-    
-  
-  
-
-<figure class="codeblock codeblock--tabbed">
-  <figcaption>
-    
-      <span>Heap</span>
-    
-    <ul class="tabs">
-      
-        <li class="tab active">java</li>
-      
-    </ul>
-  </figcaption> 
-  <div class="tabs-content">
-    
-      
-      <figure class="highlight language-java" style="display: block;">   
-        <table>
-          <tbody>
-            <tr>
-              <td class="gutter">
-                <pre><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br></pre>
-              </td>
-              <td class="code">
-                <pre class="code-highlight language-java"><code class="java">private void sink(int[] a, int n, int i) {
-    while (2*i &#43; 1 &lt;= n-1) {
-        // Find the largest element among children of `i`
-        int largest = 2*i &#43; 1;
-        if (largest &lt; n-1 &amp;&amp; a[largest] &lt; a[largest&#43;1])
-            largest&#43;&#43;;
-
-        // It&#39;s ok if root is larger than largest child
-        if (a[i] &gt;= a[largest])
-            break;
-
-        // Else swap parent and largest child
-        swap(a, i, largest);
-
-        // Heapify the affected subtree
-        i = largest;
-    }
-}
-
-public void sinkRecursively(int []a, int n, int i) {
-    int largest = 2*i &#43; 1;
-    if (largest &lt; n-1 &amp;&amp; a[largest] &lt; a[largest&#43;1])
-        largest&#43;&#43;;
-    if (largest &gt;= n || a[i] &gt;= a[largest])
-        return;
-    swap(a, i, largest);
-    sinkRecursively(a, n, largest);
-}
-    </code></pre>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </figure>
-    
-  </div>
-</figure>
-
-<p>Chiến lược này được ứng dụng trong trường hợp khi loại bỏ phần tử ở đầu mảng (tức phần tử lớn nhất/nhỏ nhất). Lúc này chúng ta sẽ tráo với phần tử cuối mảng rồi thực hiện hiệu chỉnh Heap.</p>
+<p>Nhìn chung, thuật toán này chủ yếu để vui là chính chứ không có quá nhiều ứng dụng trong thực tế.</p>
 
 <h2 id="references">References</h2>
 
 <ul>
-<li><a href="https://algs4.cs.princeton.edu/home/">Algorithms, 4th Edition by Robert Sedgewick and Kevin Wayne</a></li>
+<li><a href="https://iq.opengenus.org/sleep-sort/">Sleep sort</a></li>
 </ul>
               
             </div>
@@ -523,7 +416,7 @@ public void sinkRecursively(int []a, int n, int i) {
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/data-structures/">data structures</a>
+  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/algorithms/">algorithms</a>
 
                   </div>
                 
@@ -536,7 +429,7 @@ public void sinkRecursively(int []a, int n, int i) {
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/07/sleep-sort/" data-tooltip="Sleep Sort: Thuật toán sort bá đạo">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -544,7 +437,7 @@ public void sinkRecursively(int []a, int n, int i) {
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/07/console-progress-bar/" data-tooltip="Tạo Progress Bar trong Java Console">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/07/heap-note/" data-tooltip="Heap và một số ghi chú">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -562,19 +455,19 @@ public void sinkRecursively(int []a, int n, int i) {
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/07/heap-note/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/07/sleep-sort/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/07/heap-note/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/07/sleep-sort/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2021/07/heap-note/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2021/07/sleep-sort/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -604,7 +497,7 @@ public void sinkRecursively(int []a, int n, int i) {
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2021/07/heap-note/" data-width="100%"></div>
+<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2021/07/sleep-sort/" data-width="100%"></div>
 
               
             
@@ -625,7 +518,7 @@ public void sinkRecursively(int []a, int n, int i) {
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/07/sleep-sort/" data-tooltip="Sleep Sort: Thuật toán sort bá đạo">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -633,7 +526,7 @@ public void sinkRecursively(int []a, int n, int i) {
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/07/console-progress-bar/" data-tooltip="Tạo Progress Bar trong Java Console">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/07/heap-note/" data-tooltip="Heap và một số ghi chú">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -651,19 +544,19 @@ public void sinkRecursively(int []a, int n, int i) {
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/07/heap-note/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/07/sleep-sort/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/07/heap-note/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/07/sleep-sort/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2021/07/heap-note/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2021/07/sleep-sort/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -687,19 +580,19 @@ public void sinkRecursively(int []a, int n, int i) {
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fheap-note%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fsleep-sort%2F">
           <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fheap-note%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fsleep-sort%2F">
           <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fheap-note%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fsleep-sort%2F">
           <i class="fa fa-google-plus"></i><span>Chia sẻ với Google&#43;</span>
         </a>
       </li>
