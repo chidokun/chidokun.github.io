@@ -6,10 +6,19 @@
     <description>Recent content on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Mon, 12 Jul 2021 22:52:28 +0700</lastBuildDate>
+    <lastBuildDate>Wed, 14 Jul 2021 18:03:38 +0700</lastBuildDate>
     
 	<atom:link href="https://chidokun.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Priority Queue và những cách cài đặt</title>
+      <link>https://chidokun.github.io/2021/07/priority-queue/</link>
+      <pubDate>Wed, 14 Jul 2021 18:03:38 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2021/07/priority-queue/</guid>
+      <description>&lt;p&gt;Hôm nay chúng ta cùng điểm qua một cấu trúc dữ liệu thuộc dòng họ nhà Queue có một tính chất khá đặc biệt - đẩy vào và lấy ra theo độ ưu tiên - chính là &lt;em&gt;Priority Queue&lt;/em&gt;. Nó có rất nhiều ứng dụng, điển hình là trong &lt;a href=&#34;https://chidokun.github.io/2021/07/huffman-coding-p2/&#34;&gt;Thuật toán nén Huffman Coding&lt;/a&gt; mà mình từng đề cập. Trong bài này chúng ta sẽ đi qua một số cách cài đặt của Priority Queue.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Sleep Sort: Thuật toán sort bá đạo</title>

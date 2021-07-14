@@ -7,26 +7,26 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Tuấn">
-<meta name="keywords" content="heap, java, development, programming, chidokun, lập trình">
-<meta name="description" content="Heap được ứng dụng khá nhiều trong các cấu trúc dữ liệu và giải thuật. Nếu bạn đã nghe qua Heap sort thì chắc chắn sẽ làm quen với khái niệm này. Ngoài ra, Heap cũng còn được ứng dụng trong Prority Queue - một cấu trúc dữ liệu hoạt động theo cơ chế vào trước ra trước. Bài viết này sẽ note một số ý chính về Heap.">
+<meta name="keywords" content="queue, java, priority queue, development, programming, chidokun, lập trình">
+<meta name="description" content="Hôm nay chúng ta cùng điểm qua một cấu trúc dữ liệu thuộc dòng họ nhà Queue có một tính chất khá đặc biệt - đẩy vào và lấy ra theo độ ưu tiên - chính là Priority Queue. Nó có rất nhiều ứng dụng, điển hình là trong Thuật toán nén Huffman Coding mà mình từng đề cập. Trong bài này chúng ta sẽ đi qua một số cách cài đặt của Priority Queue.">
 
 
-<meta property="og:description" content="Heap được ứng dụng khá nhiều trong các cấu trúc dữ liệu và giải thuật. Nếu bạn đã nghe qua Heap sort thì chắc chắn sẽ làm quen với khái niệm này. Ngoài ra, Heap cũng còn được ứng dụng trong Prority Queue - một cấu trúc dữ liệu hoạt động theo cơ chế vào trước ra trước. Bài viết này sẽ note một số ý chính về Heap.">
+<meta property="og:description" content="Hôm nay chúng ta cùng điểm qua một cấu trúc dữ liệu thuộc dòng họ nhà Queue có một tính chất khá đặc biệt - đẩy vào và lấy ra theo độ ưu tiên - chính là Priority Queue. Nó có rất nhiều ứng dụng, điển hình là trong Thuật toán nén Huffman Coding mà mình từng đề cập. Trong bài này chúng ta sẽ đi qua một số cách cài đặt của Priority Queue.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Heap và một số ghi chú">
-<meta name="twitter:title" content="Heap và một số ghi chú">
-<meta property="og:url" content="https://chidokun.github.io/2021/07/heap-note/">
-<meta property="twitter:url" content="https://chidokun.github.io/2021/07/heap-note/">
+<meta property="og:title" content="Priority Queue và những cách cài đặt">
+<meta name="twitter:title" content="Priority Queue và những cách cài đặt">
+<meta property="og:url" content="https://chidokun.github.io/2021/07/priority-queue/">
+<meta property="twitter:url" content="https://chidokun.github.io/2021/07/priority-queue/">
 <meta property="og:site_name" content="Nguyễn Tuấn&#39;s Blog">
-<meta property="og:description" content="Heap được ứng dụng khá nhiều trong các cấu trúc dữ liệu và giải thuật. Nếu bạn đã nghe qua Heap sort thì chắc chắn sẽ làm quen với khái niệm này. Ngoài ra, Heap cũng còn được ứng dụng trong Prority Queue - một cấu trúc dữ liệu hoạt động theo cơ chế vào trước ra trước. Bài viết này sẽ note một số ý chính về Heap.">
-<meta name="twitter:description" content="Heap được ứng dụng khá nhiều trong các cấu trúc dữ liệu và giải thuật. Nếu bạn đã nghe qua Heap sort thì chắc chắn sẽ làm quen với khái niệm này. Ngoài ra, Heap cũng còn được ứng dụng trong Prority Queue - một cấu trúc dữ liệu hoạt động theo cơ chế vào trước ra trước. Bài viết này sẽ note một số ý chính về Heap.">
+<meta property="og:description" content="Hôm nay chúng ta cùng điểm qua một cấu trúc dữ liệu thuộc dòng họ nhà Queue có một tính chất khá đặc biệt - đẩy vào và lấy ra theo độ ưu tiên - chính là Priority Queue. Nó có rất nhiều ứng dụng, điển hình là trong Thuật toán nén Huffman Coding mà mình từng đề cập. Trong bài này chúng ta sẽ đi qua một số cách cài đặt của Priority Queue.">
+<meta name="twitter:description" content="Hôm nay chúng ta cùng điểm qua một cấu trúc dữ liệu thuộc dòng họ nhà Queue có một tính chất khá đặc biệt - đẩy vào và lấy ra theo độ ưu tiên - chính là Priority Queue. Nó có rất nhiều ứng dụng, điển hình là trong Thuật toán nén Huffman Coding mà mình từng đề cập. Trong bài này chúng ta sẽ đi qua một số cách cài đặt của Priority Queue.">
 <meta property="og:locale" content="vi">
 
   
-    <meta property="article:published_time" content="2021-07-11T12:46:28">
+    <meta property="article:published_time" content="2021-07-14T18:03:38">
   
   
-    <meta property="article:modified_time" content="2021-07-11T12:46:28">
+    <meta property="article:modified_time" content="2021-07-14T18:03:38">
   
   
   
@@ -51,8 +51,8 @@
 
 
 
-  <meta property="og:image" content="https://chidokun.github.io/thumbnails/heap.png">
-  <meta property="twitter:image" content="https://chidokun.github.io/thumbnails/heap.png">
+  <meta property="og:image" content="https://chidokun.github.io/thumbnails/priority-queue.png">
+  <meta property="twitter:image" content="https://chidokun.github.io/thumbnails/priority-queue.png">
 
 
 
@@ -62,14 +62,14 @@
   <meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
 
 
-    <title>Heap và một số ghi chú</title>
+    <title>Priority Queue và những cách cài đặt</title>
     <meta name="google-site-verification" content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI" />
     <link rel="icon" href="https://chidokun.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://chidokun.github.io/2021/07/heap-note/">
+    <link rel="canonical" href="https://chidokun.github.io/2021/07/priority-queue/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -235,19 +235,19 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Heap và một số ghi chú
+      Priority Queue và những cách cài đặt
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2021-07-11T12:46:28&#43;07:00">
+      <time itemprop="datePublished" datetime="2021-07-14T18:03:38&#43;07:00">
         
   
   
   
   
-    11 tháng 7 2021
+    14 tháng 7 2021
   
 
       </time>
@@ -265,7 +265,7 @@ if (!doNotTrack) {
 
   <div>
   <div class="fb-like" 
-    data-href="https://chidokun.github.io/2021/07/heap-note/" 
+    data-href="https://chidokun.github.io/2021/07/priority-queue/" 
     data-width="" 
     data-layout="button_count" 
     data-action="like" 
@@ -276,29 +276,155 @@ if (!doNotTrack) {
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p><em>Heap</em> được ứng dụng khá nhiều trong các cấu trúc dữ liệu và giải thuật. Nếu bạn đã nghe qua Heap sort thì chắc chắn sẽ làm quen với khái niệm này. Ngoài ra, <em>Heap</em> cũng còn được ứng dụng trong Prority Queue - một cấu trúc dữ liệu hoạt động theo cơ chế vào trước ra trước. Bài viết này sẽ note một số ý chính về <em>Heap</em>.</p>
+              <p>Hôm nay chúng ta cùng điểm qua một cấu trúc dữ liệu thuộc dòng họ nhà Queue có một tính chất khá đặc biệt - đẩy vào và lấy ra theo độ ưu tiên - chính là <em>Priority Queue</em>. Nó có rất nhiều ứng dụng, điển hình là trong <a href="https://chidokun.github.io/2021/07/huffman-coding-p2/">Thuật toán nén Huffman Coding</a> mà mình từng đề cập. Trong bài này chúng ta sẽ đi qua một số cách cài đặt của Priority Queue.</p>
 
 <h1 id="table-of-contents">Mục lục</h1><nav id="TableOfContents">
 <ul>
-<li><a href="#1-giới-thiệu">1. Giới thiệu</a></li>
-<li><a href="#2-hiệu-chỉnh-heap">2. Hiệu chỉnh Heap</a>
+<li><a href="#1-ý-tưởng-và-api">1. Ý tưởng và API</a></li>
+<li><a href="#2-cài-đặt">2. Cài đặt</a>
 <ul>
-<li><a href="#2-1-bottom-up">2.1. Bottom-up</a></li>
-<li><a href="#2-2-top-down">2.2. Top-down</a></li>
-<li><a href="#references">References</a></li>
+<li><a href="#2-1-cơ-bản">2.1. Cơ bản</a></li>
+<li><a href="#2-2-sử-dụng-heap">2.2. Sử dụng Heap</a></li>
 </ul></li>
+<li><a href="#references">References</a></li>
 </ul>
 </nav>
 
-<h1 id="1-giới-thiệu">1. Giới thiệu</h1>
+<h1 id="1-ý-tưởng-và-api">1. Ý tưởng và API</h1>
 
-<p><em>Binary Heap</em> là một <em>cây nhị phân đầy đủ</em> mà mỗi nút gốc đều <em>lớn hơn</em> (hoặc <em>nhỏ hơn</em>) hai nút con của nó. <em>Heap</em> có nút gốc lớn hơn hai nút con còn gọi là <em>Max Heap</em> (ngược lại là <em>Min Heap</em>).</p>
+<p>Có thể liên tưởng các thao tác trên <code>PriorityQueue</code> cũng giống như một Queue bình thường. Quan trọng nhất là việc tổ chức lưu trữ các phần tử và cài đặt các hành vi thỏa yêu cầu: <em>Phần tử ưu tiên nhất sẽ được lấy ra trước tiên</em>.</p>
 
-<p>Ngoài ra cũng có thể dùng cây tam phân làm Heap thì lúc này nó sẽ được gọi là <em>Ternary Heap</em>. Bài viết này chủ yếu đề cập đến <em>Binary Heap</em> và sẽ gọi là <em>Heap</em> cho ngắn gọn.</p>
+<p>Về định nghĩa <em>ưu tiên</em>, có thể định nghĩa <em>giá trị lớn hơn là ưu tiên hơn</em> hoặc <em>giá trị nhỏ hơn là ưu tiên hơn</em>. Ví dụ như một giao dịch sẽ bao gồm người thực hiện, giá tiền và ngày thực hiện. Có thể định nghĩa <em>ngày thực hiện gần hiện tại hơn là ưu tiên hơn</em> hoặc ngược lại.</p>
 
-<p><em>Heap</em> có thể được biểu diễn bằng một mảng một chiều và lúc này, nút gốc có chỉ số <code>i</code> sẽ có 2 nút con ở chỉ số <code>2i+1</code> và <code>2i+2</code> ($0 \leq i \leq \frac{n}{2}-1$).</p>
+<p>API của <code>PriorityQueue</code> có thể được định nghĩa như sau:</p>
 
-<p>Ví dụ: Một heap được biểu diễn dưới dạng mảng một chiều.</p>
+<pre><code>    public class PriorityQueue&lt;T extends Comparable&lt;T&gt;&gt;
+------------------------------------------------------------
+                 PriorityQueue(int maxSize)
+            void enqueue(T t)
+               T peek()
+               T dequeue()
+         boolean isEmpty()
+             int size()
+</code></pre>
+
+<p>Các phương thức cơ bản như sau:</p>
+
+<ul>
+<li><em>enqueue(T t)</em>: Thêm mới phần tử thuộc kiểu T.</li>
+<li><em>peek()</em>: Lấy ra phần tử ưu tiên nhất. Trường hợp này giá trị lớn hơn thì ưu tiên hơn.</li>
+<li><em>dequeue()</em>: Lấy và xóa phần tử ưu tiên nhất.</li>
+<li><em>isEmpty()</em>: Kiểm tra queue có rỗng hay không.</li>
+<li><em>size()</em>: Lấy kích thước queue.</li>
+</ul>
+
+<h1 id="2-cài-đặt">2. Cài đặt</h1>
+
+<p>Phần này sẽ bàn về một số phương pháp cài đặt <code>PriorityQueue</code>.</p>
+
+<h2 id="2-1-cơ-bản">2.1. Cơ bản</h2>
+
+<p>Với cách này, chúng ta sẽ dùng mảng, hoặc danh sách liên kết, và cài đặt hành vi của các phương thức để thỏa mãn yêu cầu của PriorityQueue. Để cài đặt PriorityQueue theo cách này, chúng ta có thể suy nghĩ theo 2 hướng:</p>
+
+<ul>
+<li><p><em>Không sắp xếp trước (lazy approach)</em>: Với thao tác <code>insert()</code>, chỉ việc đơn giản là thêm mới một phần tử vào danh sách mà không cần làm gì thêm. Do đó, độ phức tạp của thao tác này là $O(1)$. Nhưng đối với thao tác <code>poll()</code>, chúng ta cần phải duyệt qua danh sách để tìm phần tử có độ ưu tiên cao nhất sau đó remove phần tử này khỏi danh sách nên độ phức tạp là $O(N)$.</p></li>
+
+<li><p><em>Sắp xếp trước (eager approach)</em>: Ở hướng này, chúng ta sẽ sắp xếp danh sách mỗi khi thêm vào để cho thao tác lấy là ít tốn kém nhất. Mỗi khi thêm vào, chúng ta cần duyệt danh sách để thêm vào đúng vị trí đảm bảo danh sách luôn được sắp xếp. Do đó, độ phức tạp là $O(N)$. Khi lấy ra, chỉ đơn giản lấy ra phần tử đầu tiên của danh sách vì mặc nhiên nó có độ ưu tiên cao nhất. Chẳng hạn, nếu ta định nghĩa <em>lớn hơn là ưu tiên hơn</em>, thì danh sách sẽ được sắp xếp giảm dần. Mặc nhiên phần tử đầu tiên sẽ là phần tử lớn nhất. Do vậy nên độ phức tạp của thao tác này là $O(1)$.</p></li>
+</ul>
+
+<p>Code dưới đây là ví dụ cho trường hợp sắp xếp trước với danh sách liên kết:</p>
+
+
+
+  
+  
+  
+  
+  
+
+
+  
+    
+  
+  
+
+<figure class="codeblock codeblock--tabbed">
+  <figcaption>
+    
+      <span>BasicPriorityQueue</span>
+    
+    <ul class="tabs">
+      
+        <li class="tab active">java</li>
+      
+    </ul>
+  </figcaption> 
+  <div class="tabs-content">
+    
+      
+      <figure class="highlight language-java" style="display: block;">   
+        <table>
+          <tbody>
+            <tr>
+              <td class="gutter">
+                <pre><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br></pre>
+              </td>
+              <td class="code">
+                <pre class="code-highlight language-java"><code class="java">public class BasicPriorityQueue&lt;T extends Comparable&lt;T&gt;&gt; {
+    private LinkedList&lt;T&gt; list;
+    public BasicPriorityQueue() { list = new LinkedList&lt;&gt;(); }
+    public void enqueue(T t) {
+        ListIterator&lt;T&gt; it = list.listIterator();
+        while (it.hasNext()) {
+            if (it.next().compareTo(t) &lt; 0) {
+                it.previous();
+                break;
+            }
+        }
+        it.add(t);
+    }
+    public T peek() { return list.getFirst(); }
+    public T dequeue() {
+        T result = peek();
+        list.removeFirst();
+        return result;
+    }
+    public boolean isEmpty() { return size() == 0; }
+    public int size() { return list.size(); }
+    public String toString() { return list.toString(); }
+
+    public static void main(String[] args) {
+        BasicPriorityQueue&lt;Integer&gt; q = new BasicPriorityQueue&lt;&gt;();
+        q.enqueue(4);
+        q.enqueue(5);
+        q.enqueue(7);
+        q.enqueue(3);
+        q.enqueue(1);
+        q.enqueue(2);
+        System.out.println(q);
+        q.dequeue();
+        q.dequeue();
+        System.out.println(q);
+        q.enqueue(7);
+        System.out.println(q);
+    }
+}</code></pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </figure>
+    
+  </div>
+</figure>
+
+<p>Phương pháp cơ bản sẽ hiệu quả đối với số lượng nhỏ các phần tử. Cả 2 hướng trên đều có thao tác có độ phức tạp <em>linear</em>. Trong thực tế, để đảm bảo hiệu năng người ta sẽ dùng Heap có độ phức tạp <em>logarit</em> cho cả 2 thao tác trên sẽ đảm bảo hiệu năng hơn.</p>
+
+<h2 id="2-2-sử-dụng-heap">2.2. Sử dụng Heap</h2>
+
+<p>Trong phương pháp này, chúng ta dùng một mảng đảm bảo tính chất của <em>Heap</em> để lưu trữ các phần tử. Các bạn có thể tham khảo ở bài viết: <a href="https://chidokun.github.io/2021/07/heap-note/">Heap và một số ghi chú</a>.</p>
+
+<p><b><em>Thao tác thêm mới</em></b> sẽ thêm một phần tử vào cuối mảng. Hãy tưởng tượng mảng Heap đang được biểu diễn dưới dạng cây nhị phân. Khi thêm mới vào cuối có nghĩa là sẽ thêm vào nút lá. Và nút lá này có thể vi phạm tính chất của Heap. Vậy nên chúng ta sẽ <em>hiệu chỉnh Heap</em> theo chiến lược <em>Bottom-Up</em>, nghĩa là điều chỉnh từ dưới lên.</p>
 
 
 
@@ -316,41 +442,49 @@ if (!doNotTrack) {
 
 <div class="figure center" >
   
-    <a class="fancybox" href="https://chidokun.github.io/images/post/heap-note/1.svg" title="Một heap được biểu diễn dưới dạng mảng một chiều và cây tương ứng" data-fancybox-group="">
+    <a class="fancybox" href="https://chidokun.github.io/images/post/priority-queue/1.svg" title="Ví dụ về việc thêm phần tử 12 vào Heap, sau đó hiệu chỉnh theo chiến lược Bottom-up" data-fancybox-group="">
   
-    <img class="fig-img" src="https://chidokun.github.io/images/post/heap-note/1.svg" style="width: 80%;" alt="Một heap được biểu diễn dưới dạng mảng một chiều và cây tương ứng">
+    <img class="fig-img" src="https://chidokun.github.io/images/post/priority-queue/1.svg" style="width: 70%;" alt="Ví dụ về việc thêm phần tử 12 vào Heap, sau đó hiệu chỉnh theo chiến lược Bottom-up">
   
     </a>
   
    
-    <span class="caption">Một heap được biểu diễn dưới dạng mảng một chiều và cây tương ứng</span>
+    <span class="caption">Ví dụ về việc thêm phần tử 12 vào Heap, sau đó hiệu chỉnh theo chiến lược Bottom-up</span>
   
 </div>
 
 
-<h1 id="2-hiệu-chỉnh-heap">2. Hiệu chỉnh Heap</h1>
+<p>Với <b><em>thao tác loại bỏ</em></b>, phần tử được loại bỏ chắc chắn sẽ là phần tử đầu tiên. Để loại bỏ phần tử này, ta sẽ tráo nó với phần tử ở cuối mảng rồi loại bỏ phần tử cuối này. Lúc này nút gốc sẽ vi phạm tính chất của Heap. Do đó, chúng ta sẽ <em>hiệu chỉnh Heap</em> theo chiến lược <em>Top-down</em>, nghĩa là điều chỉnh từ trên xuống.</p>
 
-<p><em>Hiệu chỉnh Heap</em> là quá trình điều chỉnh các phần tử để thỏa tính chất của <em>Heap</em>. Nếu một Heap được biểu diễn bằng mảng một chiều thì phần tử đầu tiên luôn là phần tử lớn nhất (Max Heap) hoặc nhỏ nhất (Min Heap).</p>
 
-<h2 id="2-1-bottom-up">2.1. Bottom-up</h2>
 
-<p>Chiến lược hiệu chỉnh Bottom-up được thực hiện khi nút đang xét có giá trị lớn hơn nút cha của nó. Lúc này chúng ta sẽ tráo nút hiện tại với nút cha. Lúc này nút cha của nút đang xét sẽ lớn hơn 2 nút con hiện tại. Tuy nhiên, nút cha này vẫn có thể lớn hơn nút ông nội của nó. Vì vậy chúng ta cần thực hiện xuyên suốt ngược lên trên.</p>
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
 
-<p>Nút <code>i</code> sẽ có nút cha là <code>(i-1)/2</code> (nếu <code>i</code> bắt đầu từ <code>0</code>).</p>
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/priority-queue/2.svg" title="Ví dụ về việc xóa phần tử 15, tráo với phần tử cuối sau đó hiệu chỉnh theo chiến lược Top-down" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/priority-queue/2.svg" style="width: 70%;" alt="Ví dụ về việc xóa phần tử 15, tráo với phần tử cuối sau đó hiệu chỉnh theo chiến lược Top-down">
+  
+    </a>
+  
+   
+    <span class="caption">Ví dụ về việc xóa phần tử 15, tráo với phần tử cuối sau đó hiệu chỉnh theo chiến lược Top-down</span>
+  
+</div>
 
-<p>Các bước thực hiện:</p>
 
-<ul>
-<li><em>1.</em> Ở nút <code>i</code> hiện tại, nếu nút hiện tại lớn hơn nút cha của nó (không thỏa Heap):
-
-<ul>
-<li>Tráo giá trị nút <code>i</code> và nút cha của nó.</li>
-</ul></li>
-<li><em>2.</em> Di chuyển lên nút cha và lặp lại bước 1.</li>
-<li><em>3.</em> Dừng lại khi đã đến nút gốc.</li>
-</ul>
-
-<p>Cách cài đặt tham khảo sử dụng Java:</p>
+<p>Code minh họa cho <code>PriorityQueue</code> sử dụng Heap.</p>
 
 
 
@@ -369,7 +503,7 @@ if (!doNotTrack) {
 <figure class="codeblock codeblock--tabbed">
   <figcaption>
     
-      <span>Heap</span>
+      <span>PriorityQueue</span>
     
     <ul class="tabs">
       
@@ -385,22 +519,33 @@ if (!doNotTrack) {
           <tbody>
             <tr>
               <td class="gutter">
-                <pre><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br></pre>
+                <pre><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br></pre>
               </td>
               <td class="code">
-                <pre class="code-highlight language-java"><code class="java">public void swim(int[] a, int i) {
-    while (i &gt; 0 &amp;&amp; a[(i-1)/2] &lt; a[i]) {
-        swap(a, (i-1)/2, i);
-        i = (i-1)/2;
+                <pre class="code-highlight language-java"><code class="java">public class PriorityQueue&lt;T extends Comparable&lt;T&gt;&gt; {
+    private T[] arr;
+    private int size = 0;
+    public PriorityQueue(int maxSize) { arr = (T[]) new Comparable[maxSize]; }
+    public void enqueue(T t) {
+        arr[size&#43;&#43;] = t;
+        swim(size - 1);
     }
-}
+    public T peek() { return arr[0]; }
+    public T dequeue() {
+        T result = arr[0];
+        swap(0, size-1);
+        size--;
+        arr[size&#43;1] = null;
+        sink(size, 0);
+        return result;
+    }
+    public boolean isEmpty() { return size == 0; }
+    public int size() { return size; }
 
-public void swap(int[] a, int i, int j) {
-    int t = a[i];
-    a[i] = a[j];
-    a[j] = t;
-}
-    </code></pre>
+    public void swim(int i);
+    public void swap(int i, int j);
+    private void sink(int n, int i);
+}</code></pre>
               </td>
             </tr>
           </tbody>
@@ -410,104 +555,9 @@ public void swap(int[] a, int i, int j) {
   </div>
 </figure>
 
-<p>Chiến lược này được ứng dụng trong trường hợp khi thêm một phần tử vào cuối mảng. Lúc này chúng ta xét phần tử cuối mảng và thực hiện hiệu chỉnh Heap ngược lên trên.</p>
+<p>Riêng hàm <code>swim()</code>, <code>swap()</code>, và <code>sink()</code> các bạn có thể xem lại bài viết <a href="https://chidokun.github.io/2021/07/heap-note/">Heap và một số ghi chú</a> nhé.</p>
 
-<h2 id="2-2-top-down">2.2. Top-down</h2>
-
-<p>Tương tự, chiến lược hiệu chỉnh Top-down được thực hiện khi nút đang xét có giá trị lớn hơn một hoặc cả hai nút con của nó. Lúc này chúng ta sẽ tráo nút hiện tại với nút lớn nhất trong 2 nút con. Tuy nhiên, nút con này vẫn có thể nhỏ hơn nút con của nó. Vì vậy chúng ta cần thực hiện xuyên suốt xuống dưới.</p>
-
-<p>Các bước thực hiện:</p>
-
-<ul>
-<li><em>1.</em> Ở nút <code>i</code> hiện tại, tìm nút có giá trị lớn nhất <code>l</code> trong 2 nút con của nút <code>i</code>.</li>
-<li><em>2.</em> Nếu nút con <code>l</code> có giá trị lớn hơn nút cha <code>i</code> hiện tại (không thỏa Heap):
-
-<ul>
-<li>Tráo giá trị nút cha <code>i</code> và nút con <code>l</code>.</li>
-</ul></li>
-<li><em>3.</em> Do đã tráo nút <code>l</code> nên nhánh <code>l</code> bị ảnh hưởng, ta di chuyển xuống nút <code>l</code> và lặp lại bước 1 và 2.</li>
-<li><em>4.</em> Dừng lại khi đã hết nút con.</li>
-</ul>
-
-<p>Cách cài đặt tham khảo sử dụng Java:</p>
-
-
-
-  
-  
-  
-  
-  
-
-
-  
-    
-  
-  
-
-<figure class="codeblock codeblock--tabbed">
-  <figcaption>
-    
-      <span>Heap</span>
-    
-    <ul class="tabs">
-      
-        <li class="tab active">java</li>
-      
-    </ul>
-  </figcaption> 
-  <div class="tabs-content">
-    
-      
-      <figure class="highlight language-java" style="display: block;">   
-        <table>
-          <tbody>
-            <tr>
-              <td class="gutter">
-                <pre><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br></pre>
-              </td>
-              <td class="code">
-                <pre class="code-highlight language-java"><code class="java">private void sink(int[] a, int n, int i) {
-    while (2*i &#43; 1 &lt;= n-1) {
-        // Find the largest element among children of `i`
-        int largest = 2*i &#43; 1;
-        if (largest &lt; n-1 &amp;&amp; a[largest] &lt; a[largest&#43;1])
-            largest&#43;&#43;;
-
-        // It&#39;s ok if root is larger than largest child
-        if (a[i] &gt;= a[largest])
-            break;
-
-        // Else swap parent and largest child
-        swap(a, i, largest);
-
-        // Heapify the affected subtree
-        i = largest;
-    }
-}
-
-public void sinkRecursively(int []a, int n, int i) {
-    int largest = 2*i &#43; 1;
-    if (largest &lt; n-1 &amp;&amp; a[largest] &lt; a[largest&#43;1])
-        largest&#43;&#43;;
-    if (largest &gt;= n || a[i] &gt;= a[largest])
-        return;
-    swap(a, i, largest);
-    sinkRecursively(a, n, largest);
-}
-    </code></pre>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </figure>
-    
-  </div>
-</figure>
-
-<p>Chiến lược này được ứng dụng trong trường hợp khi loại bỏ phần tử ở đầu mảng (tức phần tử lớn nhất/nhỏ nhất). Lúc này chúng ta sẽ tráo với phần tử cuối mảng rồi thực hiện hiệu chỉnh Heap.</p>
-
-<h2 id="references">References</h2>
+<h1 id="references">References</h1>
 
 <ul>
 <li><a href="https://algs4.cs.princeton.edu/home/">Algorithms, 4th Edition by Robert Sedgewick and Kevin Wayne</a></li>
@@ -536,7 +586,7 @@ public void sinkRecursively(int []a, int n, int i) {
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/07/sleep-sort/" data-tooltip="Sleep Sort: Thuật toán sort bá đạo">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -544,7 +594,7 @@ public void sinkRecursively(int []a, int n, int i) {
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/07/console-progress-bar/" data-tooltip="Tạo Progress Bar trong Java Console">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/07/sleep-sort/" data-tooltip="Sleep Sort: Thuật toán sort bá đạo">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -562,19 +612,19 @@ public void sinkRecursively(int []a, int n, int i) {
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/07/heap-note/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/07/priority-queue/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/07/heap-note/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/07/priority-queue/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2021/07/heap-note/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2021/07/priority-queue/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -604,7 +654,7 @@ public void sinkRecursively(int []a, int n, int i) {
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2021/07/heap-note/" data-width="100%"></div>
+<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2021/07/priority-queue/" data-width="100%"></div>
 
               
             
@@ -625,7 +675,7 @@ public void sinkRecursively(int []a, int n, int i) {
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/07/sleep-sort/" data-tooltip="Sleep Sort: Thuật toán sort bá đạo">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -633,7 +683,7 @@ public void sinkRecursively(int []a, int n, int i) {
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/07/console-progress-bar/" data-tooltip="Tạo Progress Bar trong Java Console">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/07/sleep-sort/" data-tooltip="Sleep Sort: Thuật toán sort bá đạo">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -651,19 +701,19 @@ public void sinkRecursively(int []a, int n, int i) {
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/07/heap-note/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/07/priority-queue/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/07/heap-note/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/07/priority-queue/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2021/07/heap-note/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2021/07/priority-queue/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -687,19 +737,19 @@ public void sinkRecursively(int []a, int n, int i) {
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fheap-note%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fpriority-queue%2F">
           <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fheap-note%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fpriority-queue%2F">
           <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fheap-note%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fpriority-queue%2F">
           <i class="fa fa-google-plus"></i><span>Chia sẻ với Google&#43;</span>
         </a>
       </li>
