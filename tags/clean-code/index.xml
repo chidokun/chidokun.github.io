@@ -1,1 +1,24 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>clean code on Nguyễn Tuấn's Blog</title><link>https://chidokun.github.io/tags/clean-code/</link><description>Recent content in clean code on Nguyễn Tuấn's Blog</description><generator>Hugo -- gohugo.io</generator><language>vi</language><lastBuildDate>Fri, 06 Aug 2021 19:00:39 +0700</lastBuildDate><atom:link href="https://chidokun.github.io/tags/clean-code/index.xml" rel="self" type="application/rss+xml"/><item><title>Clean Code: Bạn đã đặt tên biến, hàm đủ "clean"?</title><link>https://chidokun.github.io/2021/08/clean-code-meaningful-name/</link><pubDate>Fri, 06 Aug 2021 19:00:39 +0700</pubDate><guid>https://chidokun.github.io/2021/08/clean-code-meaningful-name/</guid><description>&lt;p>Mỗi lần đọc lại quyển sách &lt;em>Clean Code&lt;/em> của tác giả &lt;em>Robert C. Martin&lt;/em>, mình lại nhận ra những điều mới để có thể giúp bản thân viết code chuyên nghiệp hơn. Cách đặt tên biến, hàm cũng ảnh hưởng khá nhiều đến độ &lt;em>&amp;ldquo;clean&amp;rdquo;&lt;/em> của code mà đôi lúc chúng ta lại quên mất hoặc không để ý và khiến cho nó trở thành một đống hỗn độn theo thời gian.&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Clean Code on Nguyễn Tuấn&#39;s Blog</title>
+    <link>https://chidokun.github.io/tags/clean-code/</link>
+    <description>Recent content in Clean Code on Nguyễn Tuấn&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>vi</language>
+    <lastBuildDate>Fri, 06 Aug 2021 19:00:39 +0700</lastBuildDate>
+    
+	<atom:link href="https://chidokun.github.io/tags/clean-code/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Clean Code: Bạn đã đặt tên biến, hàm đủ &#34;clean&#34;?</title>
+      <link>https://chidokun.github.io/2021/08/clean-code-meaningful-name/</link>
+      <pubDate>Fri, 06 Aug 2021 19:00:39 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2021/08/clean-code-meaningful-name/</guid>
+      <description>&lt;p&gt;Mỗi lần đọc lại quyển sách &lt;em&gt;Clean Code&lt;/em&gt; của tác giả &lt;em&gt;Robert C. Martin&lt;/em&gt;, mình lại nhận ra những điều mới để có thể giúp bản thân viết code chuyên nghiệp hơn. Cách đặt tên biến, hàm cũng ảnh hưởng khá nhiều đến độ &lt;em&gt;&amp;ldquo;clean&amp;rdquo;&lt;/em&gt; của code mà đôi lúc chúng ta lại quên mất hoặc không để ý và khiến cho nó trở thành một đống hỗn độn theo thời gian.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

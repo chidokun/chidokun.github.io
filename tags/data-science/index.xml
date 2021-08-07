@@ -1,1 +1,33 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>data science on Nguyễn Tuấn's Blog</title><link>https://chidokun.github.io/tags/data-science/</link><description>Recent content in data science on Nguyễn Tuấn's Blog</description><generator>Hugo -- gohugo.io</generator><language>vi</language><lastBuildDate>Wed, 03 Feb 2021 22:00:00 +0700</lastBuildDate><atom:link href="https://chidokun.github.io/tags/data-science/index.xml" rel="self" type="application/rss+xml"/><item><title>Biểu diễn dữ liệu với Box and Whisker Plot</title><link>https://chidokun.github.io/2021/02/box-and-whisker-plot/</link><pubDate>Wed, 03 Feb 2021 22:00:00 +0700</pubDate><guid>https://chidokun.github.io/2021/02/box-and-whisker-plot/</guid><description>&lt;p>&lt;strong>Box and Whisker Plot&lt;/strong> (còn gọi là &lt;strong>Boxplot&lt;/strong>) là một dạng biểu đồ hay được dùng trong khoa học dữ liệu và thống kê. Trong bài này chúng ta cùng khám phá về Boxplot và một số điểm thú vị của loại biểu đồ này.&lt;/p></description></item><item><title>Biểu diễn dữ liệu sử dụng Biểu đồ Tròn (Pie Chart)</title><link>https://chidokun.github.io/2020/01/pie-chart-and-how-to-use/</link><pubDate>Fri, 31 Jan 2020 22:00:00 +0700</pubDate><guid>https://chidokun.github.io/2020/01/pie-chart-and-how-to-use/</guid><description>&lt;p>Biểu đồ tròn (Pie Chart) rất hay được dùng để biểu diễn/trực quan hóa dữ liệu trong những báo cáo/bảng biểu trong trong Phân tích dữ liệu cũng như một số ngành nghề khác, giúp cho người đọc dễ dàng hiểu dữ liệu hơn. Tuy nhiên, các dạng Pie Chart nếu sử dụng không khéo sẽ khiến cho biểu đồ trở nên mơ hồ và không diễn đạt được hết ý nghĩa của dữ liệu. Mình xin giới thiệu một số lưu ý để dùng Pie chart một cách trực quan hơn.&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data Science on Nguyễn Tuấn&#39;s Blog</title>
+    <link>https://chidokun.github.io/tags/data-science/</link>
+    <description>Recent content in Data Science on Nguyễn Tuấn&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>vi</language>
+    <lastBuildDate>Wed, 03 Feb 2021 22:00:00 +0700</lastBuildDate>
+    
+	<atom:link href="https://chidokun.github.io/tags/data-science/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Biểu diễn dữ liệu với Box and Whisker Plot</title>
+      <link>https://chidokun.github.io/2021/02/box-and-whisker-plot/</link>
+      <pubDate>Wed, 03 Feb 2021 22:00:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2021/02/box-and-whisker-plot/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Box and Whisker Plot&lt;/strong&gt; (còn gọi là &lt;strong&gt;Boxplot&lt;/strong&gt;) là một dạng biểu đồ hay được dùng trong khoa học dữ liệu và thống kê. Trong bài này chúng ta cùng khám phá về Boxplot và một số điểm thú vị của loại biểu đồ này.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Biểu diễn dữ liệu sử dụng Biểu đồ Tròn (Pie Chart)</title>
+      <link>https://chidokun.github.io/2020/01/pie-chart-and-how-to-use/</link>
+      <pubDate>Fri, 31 Jan 2020 22:00:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2020/01/pie-chart-and-how-to-use/</guid>
+      <description>&lt;p&gt;Biểu đồ tròn (Pie Chart) rất hay được dùng để biểu diễn/trực quan hóa dữ liệu trong những báo cáo/bảng biểu trong trong Phân tích dữ liệu cũng như một số ngành nghề khác, giúp cho người đọc dễ dàng hiểu dữ liệu hơn. Tuy nhiên, các dạng Pie Chart nếu sử dụng không khéo sẽ khiến cho biểu đồ trở nên mơ hồ và không diễn đạt được hết ý nghĩa của dữ liệu. Mình xin giới thiệu một số lưu ý để dùng Pie chart một cách trực quan hơn.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

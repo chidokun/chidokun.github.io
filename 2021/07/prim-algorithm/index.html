@@ -1,337 +1,961 @@
-<!doctype html><html lang=vi>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=generator content="Hugo 0.87.0 with theme Tranquilpeak 0.4.8-BETA">
-<meta name=author content="Nguyễn Tuấn">
-<meta name=keywords content="graph,java,prim,spanning tree,cây khung,development,programming,chidokun,lập trình">
-<meta name=description content="Hôm nay mình xin chia sẻ một số ghi chú về Thuật toán Prim dùng để giải bài toán tìm cây khung nhỏ nhất (Minimum Spanning Tree) cho đồ thị vô hướng có trọng số. Prim cũng là một trong những thuật toán cổ điển để giải bài toán này.">
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="author" content="Nguyễn Tuấn">
+<meta name="keywords" content="graph, java, prim, spanning tree, cây khung, development, programming, chidokun, lập trình">
+<meta name="description" content="Hôm nay mình xin chia sẻ một số ghi chú về Thuật toán Prim dùng để giải bài toán tìm cây khung nhỏ nhất (Minimum Spanning Tree) cho đồ thị vô hướng có trọng số. Prim cũng là một trong những thuật toán cổ điển để giải bài toán này.">
+
+
 <meta property="og:description" content="Hôm nay mình xin chia sẻ một số ghi chú về Thuật toán Prim dùng để giải bài toán tìm cây khung nhỏ nhất (Minimum Spanning Tree) cho đồ thị vô hướng có trọng số. Prim cũng là một trong những thuật toán cổ điển để giải bài toán này.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Thuật toán Prim: Tìm cây khung nhỏ nhất">
-<meta name=twitter:title content="Thuật toán Prim: Tìm cây khung nhỏ nhất">
+<meta name="twitter:title" content="Thuật toán Prim: Tìm cây khung nhỏ nhất">
 <meta property="og:url" content="https://chidokun.github.io/2021/07/prim-algorithm/">
 <meta property="twitter:url" content="https://chidokun.github.io/2021/07/prim-algorithm/">
-<meta property="og:site_name" content="Nguyễn Tuấn's Blog">
+<meta property="og:site_name" content="Nguyễn Tuấn&#39;s Blog">
 <meta property="og:description" content="Hôm nay mình xin chia sẻ một số ghi chú về Thuật toán Prim dùng để giải bài toán tìm cây khung nhỏ nhất (Minimum Spanning Tree) cho đồ thị vô hướng có trọng số. Prim cũng là một trong những thuật toán cổ điển để giải bài toán này.">
-<meta name=twitter:description content="Hôm nay mình xin chia sẻ một số ghi chú về Thuật toán Prim dùng để giải bài toán tìm cây khung nhỏ nhất (Minimum Spanning Tree) cho đồ thị vô hướng có trọng số. Prim cũng là một trong những thuật toán cổ điển để giải bài toán này.">
+<meta name="twitter:description" content="Hôm nay mình xin chia sẻ một số ghi chú về Thuật toán Prim dùng để giải bài toán tìm cây khung nhỏ nhất (Minimum Spanning Tree) cho đồ thị vô hướng có trọng số. Prim cũng là một trong những thuật toán cổ điển để giải bài toán này.">
 <meta property="og:locale" content="vi">
-<meta property="article:published_time" content="2021-07-22T22:00:25">
-<meta property="article:modified_time" content="2021-07-22T22:00:25">
-<meta property="article:section" content="programming">
-<meta property="article:tag" content="algorithms">
-<meta name=twitter:card content="summary">
-<meta property="fb:app_id" content="445006706177461">
-<meta property="og:image" content="https://chidokun.github.io/thumbnails/graph.png">
-<meta property="twitter:image" content="https://chidokun.github.io/thumbnails/graph.png">
-<meta property="og:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
-<meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
-<title>Thuật toán Prim: Tìm cây khung nhỏ nhất</title>
-<meta name=google-site-verification content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI">
-<link rel=icon href=https://chidokun.github.io/favicon.png>
-<link rel=canonical href=https://chidokun.github.io/2021/07/prim-algorithm/>
-<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin=anonymous>
-<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin=anonymous>
-<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin=anonymous>
-<link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700|Roboto+Mono&display=swap&subset=vietnamese" rel=stylesheet>
-<link rel=stylesheet href=https://chidokun.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css>
-<link rel=stylesheet crossorigin=anonymous href=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css integrity=sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei>
-<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-64965138-2','auto'),ga('send','pageview'))</script>
-</head>
-<body>
-<div id=blog>
-<header id=header data-behavior=5>
-<i id=btn-open-sidebar class="fa fa-lg fa-bars"></i>
-<div class=header-title>
-<a class=header-title-link href=https://chidokun.github.io/>Nguyễn Tuấn's Blog</a>
-</div>
-<a class="header-right-icon st-search-show-outputs" href=https://chidokun.github.io/#search>
-<i class="fa fa-lg fa-search"></i>
-</a>
+
+  
+    <meta property="article:published_time" content="2021-07-22T22:00:25">
+  
+  
+    <meta property="article:modified_time" content="2021-07-22T22:00:25">
+  
+  
+  
+    
+      <meta property="article:section" content="programming">
+    
+  
+  
+    
+      <meta property="article:tag" content="algorithms">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+  <meta property="fb:app_id" content="445006706177461">
+
+
+
+
+  <meta property="og:image" content="https://chidokun.github.io/thumbnails/graph.png">
+  <meta property="twitter:image" content="https://chidokun.github.io/thumbnails/graph.png">
+
+
+
+
+
+  <meta property="og:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
+  <meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
+
+
+    <title>Thuật toán Prim: Tìm cây khung nhỏ nhất</title>
+    <meta name="google-site-verification" content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI" />
+    <link rel="icon" href="https://chidokun.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://chidokun.github.io/2021/07/prim-algorithm/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700|Roboto+Mono&display=swap&subset=vietnamese" rel="stylesheet">
+    
+    
+    <link rel="stylesheet" href="https://chidokun.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" integrity="sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei">
+      
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-64965138-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://chidokun.github.io/">Nguyễn Tuấn&#39;s Blog</a>
+  </div>
+  
+    
+      <a class="header-right-icon st-search-show-outputs"
+         href="https://chidokun.github.io/#search">
+    
+    
+      <i class="fa fa-lg fa-search"></i>
+    
+    
+    </a>
+  
 </header>
-<nav id=sidebar data-behavior=5>
-<div class=sidebar-container>
-<div class=sidebar-profile>
-<a href=https://chidokun.github.io/#about>
-<img class=sidebar-profile-picture src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện">
-</a>
-<h4 class=sidebar-profile-name>Nguyễn Tuấn</h4>
-<h5 class=sidebar-profile-bio>A guy with passionate at the code</h5>
-</div>
-<ul class=sidebar-buttons>
-<li class=sidebar-button>
-<a class=sidebar-button-link href=https://chidokun.github.io/>
-<i class="sidebar-button-icon fa fa-lg fa-home"></i>
-<span class=sidebar-button-desc>Trang chủ</span>
-</a>
-</li>
-<li class=sidebar-button>
-<a class=sidebar-button-link href=https://chidokun.github.io/categories>
-<i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
-<span class=sidebar-button-desc>Danh mục</span>
-</a>
-</li>
-<li class=sidebar-button>
-<a class=sidebar-button-link href=https://chidokun.github.io/tags>
-<i class="sidebar-button-icon fa fa-lg fa-tags"></i>
-<span class=sidebar-button-desc>Thẻ thông tin</span>
-</a>
-</li>
-<li class=sidebar-button>
-<a class=sidebar-button-link href=https://chidokun.github.io/archives>
-<i class="sidebar-button-icon fa fa-lg fa-archive"></i>
-<span class=sidebar-button-desc>Lưu trữ</span>
-</a>
-</li>
-<li class=sidebar-button>
-<a class=sidebar-button-link href=https://chidokun.github.io/#about>
-<i class="sidebar-button-icon fa fa-lg fa-question"></i>
-<span class=sidebar-button-desc>Thông tin</span>
-</a>
-</li>
-</ul>
-<ul class=sidebar-buttons>
-<li class=sidebar-button>
-<a class=sidebar-button-link href=https://github.com/chidokun target=_blank rel=noopener>
-<i class="sidebar-button-icon fa fa-lg fa-github"></i>
-<span class=sidebar-button-desc>GitHub</span>
-</a>
-</li>
-</ul>
-<ul class=sidebar-buttons>
-<li class=sidebar-button>
-<a class=sidebar-button-link href=https://chidokun.github.io/index.xml>
-<i class="sidebar-button-icon fa fa-lg fa-rss"></i>
-<span class=sidebar-button-desc>RSS</span>
-</a>
-</li>
-</ul>
-</div>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://chidokun.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện" />
+        </a>
+        <h4 class="sidebar-profile-name">Nguyễn Tuấn</h4>
+        
+          <h5 class="sidebar-profile-bio">A guy with passionate at the code</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Trang chủ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Danh mục</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Thẻ thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Lưu trữ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">Thông tin</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/chidokun" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
 </nav>
-<div id=main data-behavior=5 class=hasCoverMetaIn>
-<article class=post itemscope itemtype=http://schema.org/BlogPosting>
-<div class="post-header main-content-wrap text-left">
-<h1 class=post-title itemprop=headline>
-Thuật toán Prim: Tìm cây khung nhỏ nhất
-</h1>
-<div class="postShorten-meta post-meta">
-<time itemprop=datePublished datetime=2021-07-22T22:00:25+07:00>
-22 tháng 7 2021
-</time>
-<span>mục</span>
-<a class=category-link href=https://chidokun.github.io/categories/programming>programming</a>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Thuật toán Prim: Tìm cây khung nhỏ nhất
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2021-07-22T22:00:25&#43;07:00">
+        
+  
+  
+  
+  
+    22 tháng 7 2021
+  
+
+      </time>
+    
+    
+  
+  
+    <span>mục</span>
+    
+      <a class="category-link" href="https://chidokun.github.io/categories/programming">programming</a>
+    
+  
+
+  </div>
+
+  <div>
+  <div class="fb-like" 
+    data-href="https://chidokun.github.io/2021/07/prim-algorithm/" 
+    data-width="" 
+    data-layout="button_count" 
+    data-action="like" 
+    data-size="large" 
+    data-share="false"></div>
 </div>
-<div>
-<div class=fb-like data-href=https://chidokun.github.io/2021/07/prim-algorithm/ data-width data-layout=button_count data-action=like data-size=large data-share=false></div>
 </div>
-</div>
-<div class="post-content markdown" itemprop=articleBody>
-<div class=main-content-wrap>
-<p>Hôm nay mình xin chia sẻ một số ghi chú về <em>Thuật toán Prim</em> dùng để giải bài toán tìm cây khung nhỏ nhất (<strong>Minimum Spanning Tree</strong>) cho đồ thị vô hướng có trọng số. Prim cũng là một trong những thuật toán cổ điển để giải bài toán này.</p>
-<h1 id=1-ý-tưởng>1. Ý tưởng</h1>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>Hôm nay mình xin chia sẻ một số ghi chú về <em>Thuật toán Prim</em> dùng để giải bài toán tìm cây khung nhỏ nhất (<strong>Minimum Spanning Tree</strong>) cho đồ thị vô hướng có trọng số. Prim cũng là một trong những thuật toán cổ điển để giải bài toán này.</p>
+
+<h1 id="table-of-contents">Mục lục</h1><nav id="TableOfContents">
+<ul>
+<li><a href="#1-ý-tưởng">1. Ý tưởng</a></li>
+<li><a href="#2-ví-dụ">2. Ví dụ</a></li>
+<li><a href="#3-kết-luận">3. Kết luận</a>
+<ul>
+<li><a href="#references">References</a></li>
+</ul></li>
+</ul>
+</nav>
+
+<h1 id="1-ý-tưởng">1. Ý tưởng</h1>
+
 <p><em>Cây khung</em> (spanning tree) của một đồ thị là một đồ thị con liên thông không có chu trình đi qua tất cả các đỉnh. Một đồ thị sẽ có nhiều cây khung và bài toán của chúng ta là phải tìm ra cây khung nhỏ nhất.</p>
+
 <p>Ý tưởng cơ bản của thuật toán Prim như sau:</p>
+
 <ul>
-<li><em>Bước 1</em>: Chọn một đỉnh <code>v</code> bất kỳ làm đỉnh bắt đầu và đưa đỉnh <code>v</code> vào cây khung.</li>
-<li><em>Bước 2</em>: Thêm tất cả các cạnh nối với <code>v</code> vào danh sách cạnh đang xét .</li>
-<li><em>Bước 3</em>: Xét các cạnh trong danh sách đến khi hết:
+<li><u><em>Bước 1</em></u>: Chọn một đỉnh <code>v</code> bất kỳ làm đỉnh bắt đầu và đưa đỉnh <code>v</code> vào cây khung.</li>
+<li><u><em>Bước 2</em></u>: Thêm tất cả các cạnh nối với <code>v</code> vào danh sách cạnh đang xét .</li>
+<li><u><em>Bước 3</em></u>: Xét các cạnh trong danh sách đến khi hết:
+
 <ul>
-<li><em>Bước 3.1</em>: Lấy ra cạnh có trọng số nhỏ nhất nối từ <code>v1</code> đến một đỉnh <code>v2</code> chưa nằm trong cây khung. Đưa cạnh này và đỉnh <code>v2</code> vào cây khung.</li>
-<li><em>Bước 3.2</em>: Đưa các cạnh nối từ đỉnh <code>v2</code> đến các đỉnh chưa nằm trong cây khung vào danh sách cạnh đang xét.</li>
+<li><u><em>Bước 3.1</em></u>: Lấy ra cạnh có trọng số nhỏ nhất nối từ <code>v1</code> đến một đỉnh <code>v2</code> chưa nằm trong cây khung. Đưa cạnh này và đỉnh <code>v2</code> vào cây khung.</li>
+<li><u><em>Bước 3.2</em></u>: Đưa các cạnh nối từ đỉnh <code>v2</code> đến các đỉnh chưa nằm trong cây khung vào danh sách cạnh đang xét.</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h1 id=2-ví-dụ>2. Ví dụ</h1>
+
+<h1 id="2-ví-dụ">2. Ví dụ</h1>
+
 <p>Để giải thích rõ hơn các bước thực hiện của thuật toán, mình xin chạy thuật toán với đồ thị $G$ bên dưới:</p>
+
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/prim-algorithm/1.svg" title="Đồ thị $G$" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/prim-algorithm/1.svg" style="width: 80%;" alt="Đồ thị $G$">
+  
+    </a>
+  
+   
+    <span class="caption">Đồ thị $G$</span>
+  
+</div>
+
+
 <p>Chọn đỉnh $0$ làm đỉnh bắt đầu, đưa đỉnh này vào cây khung (màu xanh). Đưa các cạnh 0-1, 0-2, 0-3 vào danh sách cạnh đang xét (màu cam). Ta thấy cạnh 0-2 là cạnh có trọng số nhỏ nhất.</p>
-<p>Đưa cạnh 0-2 và đỉnh $2$ vào cây khung. Đưa các cạnh 2-4 và 2-5 vào danh sách đang xét. Lúc này ta thấy cạnh 2-4 có trọng số nhỏ nhất.</p>
+
+<p>
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/prim-algorithm/2.svg" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/prim-algorithm/2.svg" style="width: 80%;">
+  
+    </a>
+  
+  
+</div>
+<p>
+
+Đưa cạnh 0-2 và đỉnh $2$ vào cây khung. Đưa các cạnh 2-4 và 2-5 vào danh sách đang xét. Lúc này ta thấy cạnh 2-4 có trọng số nhỏ nhất.
+
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/prim-algorithm/3.svg" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/prim-algorithm/3.svg" style="width: 80%;">
+  
+    </a>
+  
+  
+</div>
+
+
 <p>Đưa cạnh 2-4 và đỉnh $4$ vào cây khung. Đưa các cạnh 4-1 và 4-6 vào danh sách đang xét. Lúc này ta thấy cạnh 4-1 có trọng số nhỏ nhất.</p>
+
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/prim-algorithm/4.svg" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/prim-algorithm/4.svg" style="width: 80%;">
+  
+    </a>
+  
+  
+</div>
+
+
 <p>Đưa cạnh 4-1 và đỉnh $1$ vào cây khung. Các đỉnh nối từ $1$ là $0$ và $4$ đều đã nằm trong cây khung nên chúng ta sẽ không đưa các cạnh nối các đỉnh này vào danh sách đang xét. Lúc này, ta xét các cạnh còn lại và thấy cạnh 2-5 có trọng số nhỏ nhất.</p>
+
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/prim-algorithm/5.svg" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/prim-algorithm/5.svg" style="width: 80%;">
+  
+    </a>
+  
+  
+</div>
+
+
 <p>Đưa cạnh 2-5 và đỉnh $5$ vào cây khung. Tiếp tục đưa ba cạnh 5-3, 5-6 và 5-7 vào danh sách đang xét. Cạnh 5-6 lúc này có trọng số nhỏ nhất.</p>
+
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/prim-algorithm/6.svg" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/prim-algorithm/6.svg" style="width: 80%;">
+  
+    </a>
+  
+  
+</div>
+
+
 <p>Đưa cạnh 5-6 và đỉnh $6$ vào cây khung. Tiếp tục đưa cạnh 6-7 và 6-8 vào danh sách đang xét, không đưa cạnh 6-4 vì đỉnh $4$ đã nằm trong cây khung. Cạnh 6-8 lúc này có trọng số nhỏ nhất.</p>
+
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/prim-algorithm/7.svg" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/prim-algorithm/7.svg" style="width: 80%;">
+  
+    </a>
+  
+  
+</div>
+
+
 <p>Đưa cạnh 6-8 và đỉnh $8$ vào cây khung. Đưa cạnh 8-7 vào danh sách đang xét. Lúc này danh sách có cạnh 6-7 có trọng số nhỏ nhất.</p>
+
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/prim-algorithm/8.svg" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/prim-algorithm/8.svg" style="width: 80%;">
+  
+    </a>
+  
+  
+</div>
+
+
 <p>Đưa cạnh 6-7 và đỉnh $7$ vào cây khung. Không có cạnh nào được đưa tiếp vào danh sách đang xét vì các đỉnh kề của $7$ đều đã nằm trong cây khung. Lúc này cạnh 5-7 và 8-7 đều có trọng số nhỏ nhất. Tuy nhiên, cả 3 đỉnh $5$, $7$, $8$ đều đã nằm trong cây khung nên sẽ bị loại bỏ. Vậy cạnh 0-3 là cạnh có trọng số nhỏ nhất.</p>
+
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/prim-algorithm/9.svg" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/prim-algorithm/9.svg" style="width: 80%;">
+  
+    </a>
+  
+  
+</div>
+
+
 <p>Các cạnh còn lại được lấy ra nhưng các đỉnh đều đã nằm trong cây khung nên sẽ bị loại bỏ.</p>
+
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/prim-algorithm/10.svg" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/prim-algorithm/10.svg" style="width: 80%;">
+  
+    </a>
+  
+  
+</div>
+
+
 <p>Thuật toán kết thúc và chúng ta tìm được cây khung có trọng số nhỏ nhất.</p>
-<h1 id=3-kết-luận>3. Kết luận</h1>
+
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/prim-algorithm/11.svg" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/prim-algorithm/11.svg" style="width: 80%;">
+  
+    </a>
+  
+  
+</div>
+
+
+<h1 id="3-kết-luận">3. Kết luận</h1>
+
 <p>Trên đây mình đã trình bày cụ thể thuật toán Prim và các bước thực hiện thông qua ví dụ. Vì bài viết đã khá dài nên mình sẽ trình bày cách cài đặt thuật toán này trong bài viết sau.</p>
-<h2 id=references>References</h2>
+
+<h2 id="references">References</h2>
+
 <ul>
-<li><a href=https://algs4.cs.princeton.edu/home/>Algorithms, 4th Edition by Robert Sedgewick and Kevin Wayne</a></li>
+<li><a href="https://algs4.cs.princeton.edu/home/">Algorithms, 4th Edition by Robert Sedgewick and Kevin Wayne</a></li>
 </ul>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/algorithms/">algorithms</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/07/prim-algorithm-implement/" data-tooltip="Thuật toán Prim: Cài đặt thuật toán">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/07/complexity-of-time/" data-tooltip="Độ phức tạp thời gian của thuật toán">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/07/prim-algorithm/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/07/prim-algorithm/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2021/07/prim-algorithm/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
 </div>
-</div>
-<div id=post-footer class="post-footer main-content-wrap">
-<div class=post-footer-tags>
-<span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br>
-<a class="tag tag--primary tag--small" href=https://chidokun.github.io/tags/algorithms/>algorithms</a>
-</div>
-<div class=post-actions-wrap>
-<nav>
-<ul class="post-actions post-action-nav">
-<li class=post-action>
-<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2021/07/prim-algorithm-implement/ data-tooltip="Thuật toán Prim: Cài đặt thuật toán">
-<i class="fa fa-angle-left"></i>
-<span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
-</a>
-</li>
-<li class=post-action>
-<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2021/07/complexity-of-time/ data-tooltip="Độ phức tạp thời gian của thuật toán">
-<span class="hide-xs hide-sm text-small icon-mr">Trước</span>
-<i class="fa fa-angle-right"></i>
-</a>
-</li>
-</ul>
-</nav>
-<ul class="post-actions post-action-share">
-<li class="post-action hide-lg hide-md hide-sm">
-<a class="post-action-btn btn btn--default btn-open-shareoptions" href=#btn-open-shareoptions>
-<i class="fa fa-share-alt"></i>
-</a>
-</li>
-<li class="post-action hide-xs">
-<a class="post-action-btn btn btn--default" target=new href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/07/prim-algorithm/">
-<i class="fa fa-facebook-official"></i>
-</a>
-</li>
-<li class="post-action hide-xs">
-<a class="post-action-btn btn btn--default" target=new href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/07/prim-algorithm/">
-<i class="fa fa-twitter"></i>
-</a>
-</li>
-<li class="post-action hide-xs">
-<a class="post-action-btn btn btn--default" target=new href="https://plus.google.com/share?url=https://chidokun.github.io/2021/07/prim-algorithm/">
-<i class="fa fa-google-plus"></i>
-</a>
-</li>
-<li class=post-action>
-<a class="post-action-btn btn btn--default" href=#disqus_thread>
-<i class="fa fa-comment-o"></i>
-</a>
-</li>
-<li class=post-action>
-<a class="post-action-btn btn btn--default" href=#>
-<i class="fa fa-list"></i>
-</a>
-</li>
-</ul>
-</div>
-<div id=fb-root></div>
-<script>(function(b,c,d){var a,e=b.getElementsByTagName(c)[0];if(b.getElementById(d))return;a=b.createElement(c),a.id=d,a.src='https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.1&appId=445006706177461&autoLogAppEvents=1',e.parentNode.insertBefore(a,e)})(document,'script','facebook-jssdk')</script>
-<div id=fb-cmt-thread class=fb-comments data-href=https://chidokun.github.io/2021/07/prim-algorithm/ data-width=100%></div>
-</div>
-</article>
-<footer id=footer class=main-content-wrap>
-<span class=copyrights>
-&copy; 2021 <a href=https://github.com/chidokun>Nguyễn Tuấn</a>. All Rights Reserved
-</span>
+
+            
+              
+                <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.1&appId=445006706177461&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2021/07/prim-algorithm/" data-width="100%"></div>
+
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 <a href="https://github.com/chidokun">Nguyễn Tuấn</a>. All Rights Reserved
+  </span>
 </footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/07/prim-algorithm-implement/" data-tooltip="Thuật toán Prim: Cài đặt thuật toán">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/07/complexity-of-time/" data-tooltip="Độ phức tạp thời gian của thuật toán">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/07/prim-algorithm/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/07/prim-algorithm/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2021/07/prim-algorithm/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
 </div>
-<div id=bottom-bar class=post-bottom-bar data-behavior=5>
-<div class=post-actions-wrap>
-<nav>
-<ul class="post-actions post-action-nav">
-<li class=post-action>
-<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2021/07/prim-algorithm-implement/ data-tooltip="Thuật toán Prim: Cài đặt thuật toán">
-<i class="fa fa-angle-left"></i>
-<span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
-</a>
-</li>
-<li class=post-action>
-<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2021/07/complexity-of-time/ data-tooltip="Độ phức tạp thời gian của thuật toán">
-<span class="hide-xs hide-sm text-small icon-mr">Trước</span>
-<i class="fa fa-angle-right"></i>
-</a>
-</li>
-</ul>
-</nav>
-<ul class="post-actions post-action-share">
-<li class="post-action hide-lg hide-md hide-sm">
-<a class="post-action-btn btn btn--default btn-open-shareoptions" href=#btn-open-shareoptions>
-<i class="fa fa-share-alt"></i>
-</a>
-</li>
-<li class="post-action hide-xs">
-<a class="post-action-btn btn btn--default" target=new href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/07/prim-algorithm/">
-<i class="fa fa-facebook-official"></i>
-</a>
-</li>
-<li class="post-action hide-xs">
-<a class="post-action-btn btn btn--default" target=new href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/07/prim-algorithm/">
-<i class="fa fa-twitter"></i>
-</a>
-</li>
-<li class="post-action hide-xs">
-<a class="post-action-btn btn btn--default" target=new href="https://plus.google.com/share?url=https://chidokun.github.io/2021/07/prim-algorithm/">
-<i class="fa fa-google-plus"></i>
-</a>
-</li>
-<li class=post-action>
-<a class="post-action-btn btn btn--default" href=#disqus_thread>
-<i class="fa fa-comment-o"></i>
-</a>
-</li>
-<li class=post-action>
-<a class="post-action-btn btn btn--default" href=#>
-<i class="fa fa-list"></i>
-</a>
-</li>
-</ul>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fprim-algorithm%2F">
+          <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fprim-algorithm%2F">
+          <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fprim-algorithm%2F">
+          <i class="fa fa-google-plus"></i><span>Chia sẻ với Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
 </div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện" />
+    
+    <h4 id="about-card-name">Nguyễn Tuấn</h4>
+    
+      <div id="about-card-bio">A guy with passionate at the code</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Software Engineer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Saigon, Vietnam
+      </div>
+    
+  </div>
 </div>
-<div id=share-options-bar class=share-options-bar data-behavior=5>
-<i id=btn-close-shareoptions class="fa fa-close"></i>
-<ul class=share-options>
-<li class=share-option>
-<a class=share-option-btn target=new href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fprim-algorithm%2F">
-<i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
-</a>
-</li>
-<li class=share-option>
-<a class=share-option-btn target=new href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fprim-algorithm%2F">
-<i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
-</a>
-</li>
-<li class=share-option>
-<a class=share-option-btn target=new href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fprim-algorithm%2F">
-<i class="fa fa-google-plus"></i><span>Chia sẻ với Google+</span>
-</a>
-</li>
-</ul>
-</div>
-<div id=share-options-mask class=share-options-mask></div>
-</div>
-<div id=about>
-<div id=about-card>
-<div id=about-btn-close>
-<i class="fa fa-remove"></i>
-</div>
-<img id=about-card-picture src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện">
-<h4 id=about-card-name>Nguyễn Tuấn</h4>
-<div id=about-card-bio>A guy with passionate at the code</div>
-<div id=about-card-job>
-<i class="fa fa-briefcase"></i>
-<br>
-Software Engineer
-</div>
-<div id=about-card-location>
-<i class="fa fa-map-marker"></i>
-<br>
-Saigon, Vietnam
-</div>
-</div>
-</div>
-<div id=cover style=background-image:url(https://chidokun.github.io/images/background.jpg)></div>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin=anonymous></script>
-<script src=https://chidokun.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js></script>
-<script crossorigin=anonymous integrity=sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js></script>
-<script crossorigin=anonymous integrity=sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js></script>
-<script src=https://chidokun.github.io/js/main.js></script>
-<script lang=javascript>window.onload=updateMinWidth,window.onresize=updateMinWidth,document.getElementById("sidebar").addEventListener("transitionend",updateMinWidth);function updateMinWidth(){var b=document.getElementById("sidebar"),a=document.getElementById("main"),c,d,e;a.style.minWidth="",c=getComputedStyle(a).getPropertyValue("min-width"),d=getComputedStyle(b).getPropertyValue("width"),e=getComputedStyle(b).getPropertyValue("left"),a.style.minWidth=`calc(${c} - ${d} - ${e})`}</script>
-<script>$(document).ready(function(){hljs.configure({classPrefix:'',useBR:!1}),$('pre.code-highlight > code, pre > code').each(function(b,a){$(this).hasClass('codeblock')||$(this).addClass('codeblock'),hljs.highlightBlock(a)})})</script>
-<script>var disqus_config=function(){this.page.url='https://chidokun.github.io/2021/07/prim-algorithm/',this.page.identifier='/2021/07/prim-algorithm/'};(function(){var a,b,c;if(window.location.hostname=="localhost")return;a=document,b=a.createElement('script'),c='nguyentuanit96',b.src='//'+c+'.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script>
-</body>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://chidokun.github.io/images/background.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://chidokun.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+  
+    <script crossorigin="anonymous" integrity="sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq" src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js"></script>
+  
+
+  
+    <script crossorigin="anonymous" integrity="sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc" src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js"></script>
+  
+
+  
+    <script src="https://chidokun.github.io/js/main.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/chidokun.github.io\/2021\/07\/prim-algorithm\/';
+          
+            this.page.identifier = '\/2021\/07\/prim-algorithm\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'nguyentuanit96';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
 </html>
+

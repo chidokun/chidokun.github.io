@@ -1,1 +1,24 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>tips on Nguyễn Tuấn's Blog</title><link>https://chidokun.github.io/categories/tips/</link><description>Recent content in tips on Nguyễn Tuấn's Blog</description><generator>Hugo -- gohugo.io</generator><language>vi</language><lastBuildDate>Wed, 15 Apr 2020 22:30:00 +0700</lastBuildDate><atom:link href="https://chidokun.github.io/categories/tips/index.xml" rel="self" type="application/rss+xml"/><item><title>Định dạng màu cho text khi viết Bash script</title><link>https://chidokun.github.io/2020/04/bash-script-text-format-tips/</link><pubDate>Wed, 15 Apr 2020 22:30:00 +0700</pubDate><guid>https://chidokun.github.io/2020/04/bash-script-text-format-tips/</guid><description>&lt;p>Với dân developer thì viết script để tự động hóa một số công việc cũng là một việc thường gặp. Mọi người thường nghĩ chỉ có thể hiển thị trên nền trắng đen đơn thuần. Thực ra terminal trên Linux và macOS cũng hỗ trợ hiển thị màu mè hoa lá nữa. Cùng xem cách định dạng chữ và màu để hiển thị trên terminal như thế nào nhé.&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tips on Nguyễn Tuấn&#39;s Blog</title>
+    <link>https://chidokun.github.io/categories/tips/</link>
+    <description>Recent content in Tips on Nguyễn Tuấn&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>vi</language>
+    <lastBuildDate>Wed, 15 Apr 2020 22:30:00 +0700</lastBuildDate>
+    
+	<atom:link href="https://chidokun.github.io/categories/tips/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Định dạng màu cho text khi viết Bash script</title>
+      <link>https://chidokun.github.io/2020/04/bash-script-text-format-tips/</link>
+      <pubDate>Wed, 15 Apr 2020 22:30:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2020/04/bash-script-text-format-tips/</guid>
+      <description>&lt;p&gt;Với dân developer thì viết script để tự động hóa một số công việc cũng là một việc thường gặp. Mọi người thường nghĩ chỉ có thể hiển thị trên nền trắng đen đơn thuần. Thực ra terminal trên Linux và macOS cũng hỗ trợ hiển thị màu mè hoa lá nữa. Cùng xem cách định dạng chữ và màu để hiển thị trên terminal như thế nào nhé.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

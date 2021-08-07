@@ -1,1 +1,69 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>data structures on Nguyễn Tuấn's Blog</title><link>https://chidokun.github.io/tags/data-structures/</link><description>Recent content in data structures on Nguyễn Tuấn's Blog</description><generator>Hugo -- gohugo.io</generator><language>vi</language><lastBuildDate>Thu, 29 Jul 2021 20:17:38 +0700</lastBuildDate><atom:link href="https://chidokun.github.io/tags/data-structures/index.xml" rel="self" type="application/rss+xml"/><item><title>Index Priority Queue: Cải tiến Priority Queue</title><link>https://chidokun.github.io/2021/07/index-priority-queue/</link><pubDate>Thu, 29 Jul 2021 20:17:38 +0700</pubDate><guid>https://chidokun.github.io/2021/07/index-priority-queue/</guid><description>&lt;p>Ở bài viết &lt;a href="https://chidokun.github.io/2021/07/priority-queue/">Priority Queue và những cách cài đặt&lt;/a>, mình đã giới thiệu qua cấu trúc Priority Queue, những đặc trưng và cách cài đặt. Tuy nhiên trong một số trường hợp, chúng ta sẽ có nhu cầu cập nhật hoặc xóa phần tử khỏi Queue thông qua một index. Trong bài viết này chúng ta sẽ cùng cải tiến Priority Queue để có thể thực hiện các chức năng trên.&lt;/p></description></item><item><title>Priority Queue và những cách cài đặt</title><link>https://chidokun.github.io/2021/07/priority-queue/</link><pubDate>Wed, 14 Jul 2021 18:03:38 +0700</pubDate><guid>https://chidokun.github.io/2021/07/priority-queue/</guid><description>&lt;p>Hôm nay chúng ta cùng điểm qua một cấu trúc dữ liệu thuộc dòng họ nhà Queue có một tính chất khá đặc biệt - đẩy vào và lấy ra theo độ ưu tiên - chính là &lt;em>Priority Queue&lt;/em>. Nó có rất nhiều ứng dụng, điển hình là trong &lt;a href="https://chidokun.github.io/2021/07/huffman-coding-p2/">Thuật toán nén Huffman Coding&lt;/a> mà mình từng đề cập. Trong bài này chúng ta sẽ đi qua một số cách cài đặt của Priority Queue.&lt;/p></description></item><item><title>Heap và một số ghi chú</title><link>https://chidokun.github.io/2021/07/heap-note/</link><pubDate>Sun, 11 Jul 2021 12:46:28 +0700</pubDate><guid>https://chidokun.github.io/2021/07/heap-note/</guid><description>&lt;p>&lt;em>Heap&lt;/em> được ứng dụng khá nhiều trong các cấu trúc dữ liệu và giải thuật. Nếu bạn đã nghe qua Heap sort thì chắc chắn sẽ làm quen với khái niệm này. Ngoài ra, &lt;em>Heap&lt;/em> cũng còn được ứng dụng trong Prority Queue - một cấu trúc dữ liệu hoạt động theo cơ chế vào trước ra trước. Bài viết này sẽ note một số ý chính về &lt;em>Heap&lt;/em>.&lt;/p></description></item><item><title>Thuật toán Breath First Search</title><link>https://chidokun.github.io/2021/06/graph-bfs-algorithm/</link><pubDate>Sun, 27 Jun 2021 20:03:25 +0700</pubDate><guid>https://chidokun.github.io/2021/06/graph-bfs-algorithm/</guid><description>&lt;p>&lt;strong>Breath First Search&lt;/strong> (BFS) cùng với &lt;strong>Depth First Search&lt;/strong> là những thuật toán cơ bản dùng để duyệt qua đồ thị. Trong bài viết này, chúng ta sẽ cùng làm rõ ý tưởng cũng như cách hiện thực thuật toán này.&lt;/p></description></item><item><title>Thuật toán Depth First Search</title><link>https://chidokun.github.io/2021/06/graph-dfs-algorithm/</link><pubDate>Sat, 26 Jun 2021 21:10:21 +0700</pubDate><guid>https://chidokun.github.io/2021/06/graph-dfs-algorithm/</guid><description>&lt;p>Cấu trúc &lt;strong>Graph&lt;/strong> (đồ thị) gồm tập các đỉnh kết nối với nhau qua các cạnh. &lt;strong>Depth First Search&lt;/strong> (DFS) là một trong những thuật toán có thể dùng để duyệt qua đồ thị.&lt;/p></description></item><item><title>Tổng quan về Đồ thị</title><link>https://chidokun.github.io/2021/06/graph-overview/</link><pubDate>Tue, 22 Jun 2021 21:51:01 +0700</pubDate><guid>https://chidokun.github.io/2021/06/graph-overview/</guid><description>&lt;p>Cấu trúc &lt;strong>Graph&lt;/strong> (đồ thị) có rất nhiều ứng dụng trong thực tiễn. Bài viết này sẽ note lại tổng quan những điểm chính về việc implement cấu trúc dữ liệu này.&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data Structures on Nguyễn Tuấn&#39;s Blog</title>
+    <link>https://chidokun.github.io/tags/data-structures/</link>
+    <description>Recent content in Data Structures on Nguyễn Tuấn&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>vi</language>
+    <lastBuildDate>Thu, 29 Jul 2021 20:17:38 +0700</lastBuildDate>
+    
+	<atom:link href="https://chidokun.github.io/tags/data-structures/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Index Priority Queue: Cải tiến Priority Queue</title>
+      <link>https://chidokun.github.io/2021/07/index-priority-queue/</link>
+      <pubDate>Thu, 29 Jul 2021 20:17:38 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2021/07/index-priority-queue/</guid>
+      <description>&lt;p&gt;Ở bài viết &lt;a href=&#34;https://chidokun.github.io/2021/07/priority-queue/&#34;&gt;Priority Queue và những cách cài đặt&lt;/a&gt;, mình đã giới thiệu qua cấu trúc Priority Queue, những đặc trưng và cách cài đặt. Tuy nhiên trong một số trường hợp, chúng ta sẽ có nhu cầu cập nhật hoặc xóa phần tử khỏi Queue thông qua một index. Trong bài viết này chúng ta sẽ cùng cải tiến Priority Queue để có thể thực hiện các chức năng trên.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Priority Queue và những cách cài đặt</title>
+      <link>https://chidokun.github.io/2021/07/priority-queue/</link>
+      <pubDate>Wed, 14 Jul 2021 18:03:38 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2021/07/priority-queue/</guid>
+      <description>&lt;p&gt;Hôm nay chúng ta cùng điểm qua một cấu trúc dữ liệu thuộc dòng họ nhà Queue có một tính chất khá đặc biệt - đẩy vào và lấy ra theo độ ưu tiên - chính là &lt;em&gt;Priority Queue&lt;/em&gt;. Nó có rất nhiều ứng dụng, điển hình là trong &lt;a href=&#34;https://chidokun.github.io/2021/07/huffman-coding-p2/&#34;&gt;Thuật toán nén Huffman Coding&lt;/a&gt; mà mình từng đề cập. Trong bài này chúng ta sẽ đi qua một số cách cài đặt của Priority Queue.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Heap và một số ghi chú</title>
+      <link>https://chidokun.github.io/2021/07/heap-note/</link>
+      <pubDate>Sun, 11 Jul 2021 12:46:28 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2021/07/heap-note/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Heap&lt;/em&gt; được ứng dụng khá nhiều trong các cấu trúc dữ liệu và giải thuật. Nếu bạn đã nghe qua Heap sort thì chắc chắn sẽ làm quen với khái niệm này. Ngoài ra, &lt;em&gt;Heap&lt;/em&gt; cũng còn được ứng dụng trong Prority Queue - một cấu trúc dữ liệu hoạt động theo cơ chế vào trước ra trước. Bài viết này sẽ note một số ý chính về &lt;em&gt;Heap&lt;/em&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Thuật toán Breath First Search</title>
+      <link>https://chidokun.github.io/2021/06/graph-bfs-algorithm/</link>
+      <pubDate>Sun, 27 Jun 2021 20:03:25 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2021/06/graph-bfs-algorithm/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Breath First Search&lt;/strong&gt; (BFS) cùng với &lt;strong&gt;Depth First Search&lt;/strong&gt; là những thuật toán cơ bản dùng để duyệt qua đồ thị. Trong bài viết này, chúng ta sẽ cùng làm rõ ý tưởng cũng như cách hiện thực thuật toán này.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Thuật toán Depth First Search</title>
+      <link>https://chidokun.github.io/2021/06/graph-dfs-algorithm/</link>
+      <pubDate>Sat, 26 Jun 2021 21:10:21 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2021/06/graph-dfs-algorithm/</guid>
+      <description>&lt;p&gt;Cấu trúc &lt;strong&gt;Graph&lt;/strong&gt; (đồ thị) gồm tập các đỉnh kết nối với nhau qua các cạnh. &lt;strong&gt;Depth First Search&lt;/strong&gt; (DFS) là một trong những thuật toán có thể dùng để duyệt qua đồ thị.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Tổng quan về Đồ thị</title>
+      <link>https://chidokun.github.io/2021/06/graph-overview/</link>
+      <pubDate>Tue, 22 Jun 2021 21:51:01 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2021/06/graph-overview/</guid>
+      <description>&lt;p&gt;Cấu trúc &lt;strong&gt;Graph&lt;/strong&gt; (đồ thị) có rất nhiều ứng dụng trong thực tiễn. Bài viết này sẽ note lại tổng quan những điểm chính về việc implement cấu trúc dữ liệu này.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

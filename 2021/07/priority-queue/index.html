@@ -1,146 +1,316 @@
-<!doctype html><html lang=vi>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=generator content="Hugo 0.87.0 with theme Tranquilpeak 0.4.8-BETA">
-<meta name=author content="Nguyễn Tuấn">
-<meta name=keywords content="queue,java,priority queue,development,programming,chidokun,lập trình">
-<meta name=description content="Hôm nay chúng ta cùng điểm qua một cấu trúc dữ liệu thuộc dòng họ nhà Queue có một tính chất khá đặc biệt - đẩy vào và lấy ra theo độ ưu tiên - chính là Priority Queue. Nó có rất nhiều ứng dụng, điển hình là trong Thuật toán nén Huffman Coding mà mình từng đề cập. Trong bài này chúng ta sẽ đi qua một số cách cài đặt của Priority Queue.">
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="author" content="Nguyễn Tuấn">
+<meta name="keywords" content="queue, java, priority queue, development, programming, chidokun, lập trình">
+<meta name="description" content="Hôm nay chúng ta cùng điểm qua một cấu trúc dữ liệu thuộc dòng họ nhà Queue có một tính chất khá đặc biệt - đẩy vào và lấy ra theo độ ưu tiên - chính là Priority Queue. Nó có rất nhiều ứng dụng, điển hình là trong Thuật toán nén Huffman Coding mà mình từng đề cập. Trong bài này chúng ta sẽ đi qua một số cách cài đặt của Priority Queue.">
+
+
 <meta property="og:description" content="Hôm nay chúng ta cùng điểm qua một cấu trúc dữ liệu thuộc dòng họ nhà Queue có một tính chất khá đặc biệt - đẩy vào và lấy ra theo độ ưu tiên - chính là Priority Queue. Nó có rất nhiều ứng dụng, điển hình là trong Thuật toán nén Huffman Coding mà mình từng đề cập. Trong bài này chúng ta sẽ đi qua một số cách cài đặt của Priority Queue.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Priority Queue và những cách cài đặt">
-<meta name=twitter:title content="Priority Queue và những cách cài đặt">
+<meta name="twitter:title" content="Priority Queue và những cách cài đặt">
 <meta property="og:url" content="https://chidokun.github.io/2021/07/priority-queue/">
 <meta property="twitter:url" content="https://chidokun.github.io/2021/07/priority-queue/">
-<meta property="og:site_name" content="Nguyễn Tuấn's Blog">
+<meta property="og:site_name" content="Nguyễn Tuấn&#39;s Blog">
 <meta property="og:description" content="Hôm nay chúng ta cùng điểm qua một cấu trúc dữ liệu thuộc dòng họ nhà Queue có một tính chất khá đặc biệt - đẩy vào và lấy ra theo độ ưu tiên - chính là Priority Queue. Nó có rất nhiều ứng dụng, điển hình là trong Thuật toán nén Huffman Coding mà mình từng đề cập. Trong bài này chúng ta sẽ đi qua một số cách cài đặt của Priority Queue.">
-<meta name=twitter:description content="Hôm nay chúng ta cùng điểm qua một cấu trúc dữ liệu thuộc dòng họ nhà Queue có một tính chất khá đặc biệt - đẩy vào và lấy ra theo độ ưu tiên - chính là Priority Queue. Nó có rất nhiều ứng dụng, điển hình là trong Thuật toán nén Huffman Coding mà mình từng đề cập. Trong bài này chúng ta sẽ đi qua một số cách cài đặt của Priority Queue.">
+<meta name="twitter:description" content="Hôm nay chúng ta cùng điểm qua một cấu trúc dữ liệu thuộc dòng họ nhà Queue có một tính chất khá đặc biệt - đẩy vào và lấy ra theo độ ưu tiên - chính là Priority Queue. Nó có rất nhiều ứng dụng, điển hình là trong Thuật toán nén Huffman Coding mà mình từng đề cập. Trong bài này chúng ta sẽ đi qua một số cách cài đặt của Priority Queue.">
 <meta property="og:locale" content="vi">
-<meta property="article:published_time" content="2021-07-14T18:03:38">
-<meta property="article:modified_time" content="2021-07-14T18:03:38">
-<meta property="article:section" content="programming">
-<meta property="article:tag" content="data structures">
-<meta name=twitter:card content="summary">
-<meta property="fb:app_id" content="445006706177461">
-<meta property="og:image" content="https://chidokun.github.io/thumbnails/priority-queue.png">
-<meta property="twitter:image" content="https://chidokun.github.io/thumbnails/priority-queue.png">
-<meta property="og:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
-<meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
-<title>Priority Queue và những cách cài đặt</title>
-<meta name=google-site-verification content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI">
-<link rel=icon href=https://chidokun.github.io/favicon.png>
-<link rel=canonical href=https://chidokun.github.io/2021/07/priority-queue/>
-<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin=anonymous>
-<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin=anonymous>
-<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin=anonymous>
-<link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700|Roboto+Mono&display=swap&subset=vietnamese" rel=stylesheet>
-<link rel=stylesheet href=https://chidokun.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css>
-<link rel=stylesheet crossorigin=anonymous href=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css integrity=sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei>
-<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-64965138-2','auto'),ga('send','pageview'))</script>
-</head>
-<body>
-<div id=blog>
-<header id=header data-behavior=5>
-<i id=btn-open-sidebar class="fa fa-lg fa-bars"></i>
-<div class=header-title>
-<a class=header-title-link href=https://chidokun.github.io/>Nguyễn Tuấn's Blog</a>
-</div>
-<a class="header-right-icon st-search-show-outputs" href=https://chidokun.github.io/#search>
-<i class="fa fa-lg fa-search"></i>
-</a>
+
+  
+    <meta property="article:published_time" content="2021-07-14T18:03:38">
+  
+  
+    <meta property="article:modified_time" content="2021-07-14T18:03:38">
+  
+  
+  
+    
+      <meta property="article:section" content="programming">
+    
+  
+  
+    
+      <meta property="article:tag" content="data structures">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+  <meta property="fb:app_id" content="445006706177461">
+
+
+
+
+  <meta property="og:image" content="https://chidokun.github.io/thumbnails/priority-queue.png">
+  <meta property="twitter:image" content="https://chidokun.github.io/thumbnails/priority-queue.png">
+
+
+
+
+
+  <meta property="og:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
+  <meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
+
+
+    <title>Priority Queue và những cách cài đặt</title>
+    <meta name="google-site-verification" content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI" />
+    <link rel="icon" href="https://chidokun.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://chidokun.github.io/2021/07/priority-queue/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700|Roboto+Mono&display=swap&subset=vietnamese" rel="stylesheet">
+    
+    
+    <link rel="stylesheet" href="https://chidokun.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" integrity="sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei">
+      
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-64965138-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://chidokun.github.io/">Nguyễn Tuấn&#39;s Blog</a>
+  </div>
+  
+    
+      <a class="header-right-icon st-search-show-outputs"
+         href="https://chidokun.github.io/#search">
+    
+    
+      <i class="fa fa-lg fa-search"></i>
+    
+    
+    </a>
+  
 </header>
-<nav id=sidebar data-behavior=5>
-<div class=sidebar-container>
-<div class=sidebar-profile>
-<a href=https://chidokun.github.io/#about>
-<img class=sidebar-profile-picture src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện">
-</a>
-<h4 class=sidebar-profile-name>Nguyễn Tuấn</h4>
-<h5 class=sidebar-profile-bio>A guy with passionate at the code</h5>
-</div>
-<ul class=sidebar-buttons>
-<li class=sidebar-button>
-<a class=sidebar-button-link href=https://chidokun.github.io/>
-<i class="sidebar-button-icon fa fa-lg fa-home"></i>
-<span class=sidebar-button-desc>Trang chủ</span>
-</a>
-</li>
-<li class=sidebar-button>
-<a class=sidebar-button-link href=https://chidokun.github.io/categories>
-<i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
-<span class=sidebar-button-desc>Danh mục</span>
-</a>
-</li>
-<li class=sidebar-button>
-<a class=sidebar-button-link href=https://chidokun.github.io/tags>
-<i class="sidebar-button-icon fa fa-lg fa-tags"></i>
-<span class=sidebar-button-desc>Thẻ thông tin</span>
-</a>
-</li>
-<li class=sidebar-button>
-<a class=sidebar-button-link href=https://chidokun.github.io/archives>
-<i class="sidebar-button-icon fa fa-lg fa-archive"></i>
-<span class=sidebar-button-desc>Lưu trữ</span>
-</a>
-</li>
-<li class=sidebar-button>
-<a class=sidebar-button-link href=https://chidokun.github.io/#about>
-<i class="sidebar-button-icon fa fa-lg fa-question"></i>
-<span class=sidebar-button-desc>Thông tin</span>
-</a>
-</li>
-</ul>
-<ul class=sidebar-buttons>
-<li class=sidebar-button>
-<a class=sidebar-button-link href=https://github.com/chidokun target=_blank rel=noopener>
-<i class="sidebar-button-icon fa fa-lg fa-github"></i>
-<span class=sidebar-button-desc>GitHub</span>
-</a>
-</li>
-</ul>
-<ul class=sidebar-buttons>
-<li class=sidebar-button>
-<a class=sidebar-button-link href=https://chidokun.github.io/index.xml>
-<i class="sidebar-button-icon fa fa-lg fa-rss"></i>
-<span class=sidebar-button-desc>RSS</span>
-</a>
-</li>
-</ul>
-</div>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://chidokun.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện" />
+        </a>
+        <h4 class="sidebar-profile-name">Nguyễn Tuấn</h4>
+        
+          <h5 class="sidebar-profile-bio">A guy with passionate at the code</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Trang chủ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Danh mục</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Thẻ thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Lưu trữ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">Thông tin</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/chidokun" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
 </nav>
-<div id=main data-behavior=5 class=hasCoverMetaIn>
-<article class=post itemscope itemtype=http://schema.org/BlogPosting>
-<div class="post-header main-content-wrap text-left">
-<h1 class=post-title itemprop=headline>
-Priority Queue và những cách cài đặt
-</h1>
-<div class="postShorten-meta post-meta">
-<time itemprop=datePublished datetime=2021-07-14T18:03:38+07:00>
-14 tháng 7 2021
-</time>
-<span>mục</span>
-<a class=category-link href=https://chidokun.github.io/categories/programming>programming</a>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Priority Queue và những cách cài đặt
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2021-07-14T18:03:38&#43;07:00">
+        
+  
+  
+  
+  
+    14 tháng 7 2021
+  
+
+      </time>
+    
+    
+  
+  
+    <span>mục</span>
+    
+      <a class="category-link" href="https://chidokun.github.io/categories/programming">programming</a>
+    
+  
+
+  </div>
+
+  <div>
+  <div class="fb-like" 
+    data-href="https://chidokun.github.io/2021/07/priority-queue/" 
+    data-width="" 
+    data-layout="button_count" 
+    data-action="like" 
+    data-size="large" 
+    data-share="false"></div>
 </div>
-<div>
-<div class=fb-like data-href=https://chidokun.github.io/2021/07/priority-queue/ data-width data-layout=button_count data-action=like data-size=large data-share=false></div>
 </div>
-</div>
-<div class="post-content markdown" itemprop=articleBody>
-<div class=main-content-wrap>
-<p>Hôm nay chúng ta cùng điểm qua một cấu trúc dữ liệu thuộc dòng họ nhà Queue có một tính chất khá đặc biệt - đẩy vào và lấy ra theo độ ưu tiên - chính là <em>Priority Queue</em>. Nó có rất nhiều ứng dụng, điển hình là trong <a href=https://chidokun.github.io/2021/07/huffman-coding-p2/>Thuật toán nén Huffman Coding</a> mà mình từng đề cập. Trong bài này chúng ta sẽ đi qua một số cách cài đặt của Priority Queue.</p>
-<h1 id=1-ý-tưởng-và-api>1. Ý tưởng và API</h1>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>Hôm nay chúng ta cùng điểm qua một cấu trúc dữ liệu thuộc dòng họ nhà Queue có một tính chất khá đặc biệt - đẩy vào và lấy ra theo độ ưu tiên - chính là <em>Priority Queue</em>. Nó có rất nhiều ứng dụng, điển hình là trong <a href="https://chidokun.github.io/2021/07/huffman-coding-p2/">Thuật toán nén Huffman Coding</a> mà mình từng đề cập. Trong bài này chúng ta sẽ đi qua một số cách cài đặt của Priority Queue.</p>
+
+<h1 id="table-of-contents">Mục lục</h1><nav id="TableOfContents">
+<ul>
+<li><a href="#1-ý-tưởng-và-api">1. Ý tưởng và API</a></li>
+<li><a href="#2-cài-đặt">2. Cài đặt</a>
+<ul>
+<li><a href="#2-1-cơ-bản">2.1. Cơ bản</a></li>
+<li><a href="#2-2-sử-dụng-heap">2.2. Sử dụng Heap</a></li>
+</ul></li>
+<li><a href="#3-tổng-quát-hóa-phép-so-sánh">3. Tổng quát hóa phép so sánh</a></li>
+<li><a href="#4-độ-phức-tạp">4. Độ phức tạp</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+</nav>
+
+<h1 id="1-ý-tưởng-và-api">1. Ý tưởng và API</h1>
+
 <p>Có thể liên tưởng các thao tác trên <code>PriorityQueue</code> cũng giống như một Queue bình thường. Quan trọng nhất là việc tổ chức lưu trữ các phần tử và cài đặt các hành vi thỏa yêu cầu: <em>Phần tử ưu tiên nhất sẽ được lấy ra trước tiên</em>.</p>
+
 <p>Về định nghĩa <em>ưu tiên</em>, có thể định nghĩa <em>giá trị lớn hơn là ưu tiên hơn</em> hoặc <em>giá trị nhỏ hơn là ưu tiên hơn</em>. Ví dụ như một giao dịch sẽ bao gồm người thực hiện, giá tiền và ngày thực hiện. Có thể định nghĩa <em>ngày thực hiện gần hiện tại hơn là ưu tiên hơn</em> hoặc ngược lại.</p>
+
 <p>API của <code>PriorityQueue</code> có thể được định nghĩa như sau:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>interface</span> <span style=color:#a6e22e>PriorityQueue</span><span style=color:#f92672>&lt;</span>T <span style=color:#66d9ef>extends</span> Comparable<span style=color:#f92672>&lt;</span>T<span style=color:#f92672>&gt;&gt;</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>enqueue</span><span style=color:#f92672>(</span>T t<span style=color:#f92672>);</span>
-    T <span style=color:#a6e22e>peek</span><span style=color:#f92672>();</span>
-    T <span style=color:#a6e22e>dequeue</span><span style=color:#f92672>();</span>
-    <span style=color:#66d9ef>boolean</span> <span style=color:#a6e22e>isEmpty</span><span style=color:#f92672>();</span>
-    <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>size</span><span style=color:#f92672>();</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>Các phương thức cơ bản như sau:</p>
+
+<pre><code class="language-java">public interface PriorityQueue&lt;T extends Comparable&lt;T&gt;&gt; {
+    void enqueue(T t);
+    T peek();
+    T dequeue();
+    boolean isEmpty();
+    int size();
+}
+</code></pre>
+
+<p>Các phương thức cơ bản như sau:</p>
+
 <ul>
 <li><em>enqueue(T t)</em>: Thêm mới phần tử thuộc kiểu T.</li>
 <li><em>peek()</em>: Lấy ra phần tử ưu tiên nhất. Trường hợp này giá trị lớn hơn thì ưu tiên hơn.</li>
@@ -148,36 +318,60 @@ Priority Queue và những cách cài đặt
 <li><em>isEmpty()</em>: Kiểm tra queue có rỗng hay không.</li>
 <li><em>size()</em>: Lấy kích thước queue.</li>
 </ul>
-<h1 id=2-cài-đặt>2. Cài đặt</h1>
+
+<h1 id="2-cài-đặt">2. Cài đặt</h1>
+
 <p>Phần này sẽ bàn về một số phương pháp cài đặt <code>PriorityQueue</code>.</p>
-<h2 id=21-cơ-bản>2.1. Cơ bản</h2>
+
+<h2 id="2-1-cơ-bản">2.1. Cơ bản</h2>
+
 <p>Với cách này, chúng ta sẽ dùng mảng, hoặc danh sách liên kết, và cài đặt hành vi của các phương thức để thỏa mãn yêu cầu của PriorityQueue. Để cài đặt PriorityQueue theo cách này, chúng ta có thể suy nghĩ theo 2 hướng:</p>
+
 <ul>
-<li>
-<p><em>Không sắp xếp trước (lazy approach)</em>: Với thao tác <code>enqueue()</code>, chỉ việc đơn giản là thêm mới một phần tử vào danh sách mà không cần làm gì thêm. Do đó, độ phức tạp của thao tác này là $O(1)$. Nhưng đối với thao tác <code>dequeue()</code>, chúng ta cần phải duyệt qua danh sách để tìm phần tử có độ ưu tiên cao nhất sau đó remove phần tử này khỏi danh sách nên độ phức tạp là $O(N)$.</p>
-</li>
-<li>
-<p><em>Sắp xếp trước (eager approach)</em>: Ở hướng này, chúng ta sẽ sắp xếp danh sách mỗi khi thêm vào để cho thao tác lấy là ít tốn kém nhất. Mỗi khi thêm vào, chúng ta cần duyệt danh sách để thêm vào đúng vị trí đảm bảo danh sách luôn được sắp xếp. Do đó, độ phức tạp là $O(N)$. Khi lấy ra, chỉ đơn giản lấy ra phần tử đầu tiên của danh sách vì mặc nhiên nó có độ ưu tiên cao nhất. Chẳng hạn, nếu ta định nghĩa <em>lớn hơn là ưu tiên hơn</em>, thì danh sách sẽ được sắp xếp giảm dần. Mặc nhiên phần tử đầu tiên sẽ là phần tử lớn nhất. Do vậy nên độ phức tạp của thao tác này là $O(1)$.</p>
-</li>
+<li><p><em>Không sắp xếp trước (lazy approach)</em>: Với thao tác <code>enqueue()</code>, chỉ việc đơn giản là thêm mới một phần tử vào danh sách mà không cần làm gì thêm. Do đó, độ phức tạp của thao tác này là $O(1)$. Nhưng đối với thao tác <code>dequeue()</code>, chúng ta cần phải duyệt qua danh sách để tìm phần tử có độ ưu tiên cao nhất sau đó remove phần tử này khỏi danh sách nên độ phức tạp là $O(N)$.</p></li>
+
+<li><p><em>Sắp xếp trước (eager approach)</em>: Ở hướng này, chúng ta sẽ sắp xếp danh sách mỗi khi thêm vào để cho thao tác lấy là ít tốn kém nhất. Mỗi khi thêm vào, chúng ta cần duyệt danh sách để thêm vào đúng vị trí đảm bảo danh sách luôn được sắp xếp. Do đó, độ phức tạp là $O(N)$. Khi lấy ra, chỉ đơn giản lấy ra phần tử đầu tiên của danh sách vì mặc nhiên nó có độ ưu tiên cao nhất. Chẳng hạn, nếu ta định nghĩa <em>lớn hơn là ưu tiên hơn</em>, thì danh sách sẽ được sắp xếp giảm dần. Mặc nhiên phần tử đầu tiên sẽ là phần tử lớn nhất. Do vậy nên độ phức tạp của thao tác này là $O(1)$.</p></li>
 </ul>
+
 <p>Code dưới đây là ví dụ cho trường hợp sắp xếp trước với danh sách liên kết:</p>
+
+
+
+  
+  
+  
+  
+  
+
+
+  
+    
+  
+  
+
 <figure class="codeblock codeblock--tabbed">
-<figcaption>
-<span>BasicPQ</span>
-<ul class=tabs>
-<li class="tab active">java</li>
-</ul>
-</figcaption>
-<div class=tabs-content>
-<figure class="highlight language-java" style=display:block>
-<table>
-<tbody>
-<tr>
-<td class=gutter>
-<pre><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br></pre>
-</td>
-<td class=code>
-<pre class="code-highlight language-java"><code class=java>public class BasicPQ&lt;T extends Comparable&lt;T&gt;&gt; implements PriorityQueue&lt;T&gt; {
+  <figcaption>
+    
+      <span>BasicPQ</span>
+    
+    <ul class="tabs">
+      
+        <li class="tab active">java</li>
+      
+    </ul>
+  </figcaption> 
+  <div class="tabs-content">
+    
+      
+      <figure class="highlight language-java" style="display: block;">   
+        <table>
+          <tbody>
+            <tr>
+              <td class="gutter">
+                <pre><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br></pre>
+              </td>
+              <td class="code">
+                <pre class="code-highlight language-java"><code class="java">public class BasicPQ&lt;T extends Comparable&lt;T&gt;&gt; implements PriorityQueue&lt;T&gt; {
     private LinkedList&lt;T&gt; list;
 
     public BasicPQ() { list = new LinkedList&lt;&gt;(); }
@@ -213,68 +407,146 @@ Priority Queue và những cách cài đặt
     @Override
     public String toString() { return list.toString(); }
 }</code></pre>
-</td>
-</tr>
-</tbody>
-</table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </figure>
+    
+  </div>
 </figure>
-</div>
-</figure>
+
 <p>Hàm <code>main</code> để test thử.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[]</span> args<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-    PriorityQueue<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;</span> q <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> BasicPQ<span style=color:#f92672>&lt;&gt;();</span>
-    q<span style=color:#f92672>.</span><span style=color:#a6e22e>enqueue</span><span style=color:#f92672>(</span>4<span style=color:#f92672>);</span>
-    q<span style=color:#f92672>.</span><span style=color:#a6e22e>enqueue</span><span style=color:#f92672>(</span>5<span style=color:#f92672>);</span>
-    q<span style=color:#f92672>.</span><span style=color:#a6e22e>enqueue</span><span style=color:#f92672>(</span>7<span style=color:#f92672>);</span>
-    q<span style=color:#f92672>.</span><span style=color:#a6e22e>enqueue</span><span style=color:#f92672>(</span>3<span style=color:#f92672>);</span>
-    q<span style=color:#f92672>.</span><span style=color:#a6e22e>enqueue</span><span style=color:#f92672>(</span>1<span style=color:#f92672>);</span>
-    q<span style=color:#f92672>.</span><span style=color:#a6e22e>enqueue</span><span style=color:#f92672>(</span>2<span style=color:#f92672>);</span>
-    System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span>q<span style=color:#f92672>);</span>
-    q<span style=color:#f92672>.</span><span style=color:#a6e22e>dequeue</span><span style=color:#f92672>();</span>
-    q<span style=color:#f92672>.</span><span style=color:#a6e22e>dequeue</span><span style=color:#f92672>();</span>
-    System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span>q<span style=color:#f92672>);</span>
-    q<span style=color:#f92672>.</span><span style=color:#a6e22e>enqueue</span><span style=color:#f92672>(</span>7<span style=color:#f92672>);</span>
-    System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span>q<span style=color:#f92672>);</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>Kết quả là:</p>
+
+<pre><code class="language-java">public static void main(String[] args) {
+    PriorityQueue&lt;Integer&gt; q = new BasicPQ&lt;&gt;();
+    q.enqueue(4);
+    q.enqueue(5);
+    q.enqueue(7);
+    q.enqueue(3);
+    q.enqueue(1);
+    q.enqueue(2);
+    System.out.println(q);
+    q.dequeue();
+    q.dequeue();
+    System.out.println(q);
+    q.enqueue(7);
+    System.out.println(q);
+}
+</code></pre>
+
+<p>Kết quả là:</p>
+
 <pre><code>[7, 5, 4, 3, 2, 1]
 [4, 3, 2, 1]
 [7, 4, 3, 2, 1]
-</code></pre><p>Phương pháp cơ bản sẽ hiệu quả đối với số lượng nhỏ các phần tử. Cả 2 hướng trên đều có thao tác có độ phức tạp <em>linear</em>. Trong thực tế, để đảm bảo hiệu năng người ta sẽ dùng Heap có độ phức tạp <em>logarit</em> cho cả 2 thao tác trên sẽ đảm bảo hiệu năng hơn.</p>
-<h2 id=22-sử-dụng-heap>2.2. Sử dụng Heap</h2>
-<p>Trong phương pháp này, chúng ta dùng một mảng đảm bảo tính chất của <em>Heap</em> để lưu trữ các phần tử. Các bạn có thể tham khảo ở bài viết: <a href=https://chidokun.github.io/2021/07/heap-note/>Heap và một số ghi chú</a>.</p>
-<p><em>Thao tác thêm mới</em> sẽ thêm một phần tử vào cuối mảng. Hãy tưởng tượng mảng Heap đang được biểu diễn dưới dạng cây nhị phân. Khi thêm mới vào cuối có nghĩa là sẽ thêm vào nút lá. Và nút lá này có thể vi phạm tính chất của Heap. Vậy nên chúng ta sẽ <em>hiệu chỉnh Heap</em> theo chiến lược <em>Bottom-Up</em>, nghĩa là điều chỉnh từ dưới lên.</p>
-<div class="figure center">
-<a class=fancybox href=https://chidokun.github.io/images/post/priority-queue/1.svg title="Ví dụ về việc thêm phần tử 12 vào Heap, sau đó hiệu chỉnh theo chiến lược Bottom-up" data-fancybox-group>
-<img class=fig-img src=https://chidokun.github.io/images/post/priority-queue/1.svg style=width:70% alt="Ví dụ về việc thêm phần tử 12 vào Heap, sau đó hiệu chỉnh theo chiến lược Bottom-up">
-</a>
-<span class=caption>Ví dụ về việc thêm phần tử 12 vào Heap, sau đó hiệu chỉnh theo chiến lược Bottom-up</span>
+</code></pre>
+
+<p>Phương pháp cơ bản sẽ hiệu quả đối với số lượng nhỏ các phần tử. Cả 2 hướng trên đều có thao tác có độ phức tạp <em>linear</em>. Trong thực tế, để đảm bảo hiệu năng người ta sẽ dùng Heap có độ phức tạp <em>logarit</em> cho cả 2 thao tác trên sẽ đảm bảo hiệu năng hơn.</p>
+
+<h2 id="2-2-sử-dụng-heap">2.2. Sử dụng Heap</h2>
+
+<p>Trong phương pháp này, chúng ta dùng một mảng đảm bảo tính chất của <em>Heap</em> để lưu trữ các phần tử. Các bạn có thể tham khảo ở bài viết: <a href="https://chidokun.github.io/2021/07/heap-note/">Heap và một số ghi chú</a>.</p>
+
+<p><b><em>Thao tác thêm mới</em></b> sẽ thêm một phần tử vào cuối mảng. Hãy tưởng tượng mảng Heap đang được biểu diễn dưới dạng cây nhị phân. Khi thêm mới vào cuối có nghĩa là sẽ thêm vào nút lá. Và nút lá này có thể vi phạm tính chất của Heap. Vậy nên chúng ta sẽ <em>hiệu chỉnh Heap</em> theo chiến lược <em>Bottom-Up</em>, nghĩa là điều chỉnh từ dưới lên.</p>
+
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/priority-queue/1.svg" title="Ví dụ về việc thêm phần tử 12 vào Heap, sau đó hiệu chỉnh theo chiến lược Bottom-up" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/priority-queue/1.svg" style="width: 70%;" alt="Ví dụ về việc thêm phần tử 12 vào Heap, sau đó hiệu chỉnh theo chiến lược Bottom-up">
+  
+    </a>
+  
+   
+    <span class="caption">Ví dụ về việc thêm phần tử 12 vào Heap, sau đó hiệu chỉnh theo chiến lược Bottom-up</span>
+  
 </div>
-<p>Với <em>thao tác loại bỏ</em>, phần tử được loại bỏ chắc chắn sẽ là phần tử đầu tiên. Để loại bỏ phần tử này, ta sẽ tráo nó với phần tử ở cuối mảng rồi loại bỏ phần tử cuối này. Lúc này nút gốc sẽ vi phạm tính chất của Heap. Do đó, chúng ta sẽ <em>hiệu chỉnh Heap</em> theo chiến lược <em>Top-down</em>, nghĩa là điều chỉnh từ trên xuống.</p>
-<div class="figure center">
-<a class=fancybox href=https://chidokun.github.io/images/post/priority-queue/2.svg title="Ví dụ về việc xóa phần tử 15, tráo với phần tử cuối sau đó hiệu chỉnh theo chiến lược Top-down" data-fancybox-group>
-<img class=fig-img src=https://chidokun.github.io/images/post/priority-queue/2.svg style=width:70% alt="Ví dụ về việc xóa phần tử 15, tráo với phần tử cuối sau đó hiệu chỉnh theo chiến lược Top-down">
-</a>
-<span class=caption>Ví dụ về việc xóa phần tử 15, tráo với phần tử cuối sau đó hiệu chỉnh theo chiến lược Top-down</span>
+
+
+<p>Với <b><em>thao tác loại bỏ</em></b>, phần tử được loại bỏ chắc chắn sẽ là phần tử đầu tiên. Để loại bỏ phần tử này, ta sẽ tráo nó với phần tử ở cuối mảng rồi loại bỏ phần tử cuối này. Lúc này nút gốc sẽ vi phạm tính chất của Heap. Do đó, chúng ta sẽ <em>hiệu chỉnh Heap</em> theo chiến lược <em>Top-down</em>, nghĩa là điều chỉnh từ trên xuống.</p>
+
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/priority-queue/2.svg" title="Ví dụ về việc xóa phần tử 15, tráo với phần tử cuối sau đó hiệu chỉnh theo chiến lược Top-down" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/priority-queue/2.svg" style="width: 70%;" alt="Ví dụ về việc xóa phần tử 15, tráo với phần tử cuối sau đó hiệu chỉnh theo chiến lược Top-down">
+  
+    </a>
+  
+   
+    <span class="caption">Ví dụ về việc xóa phần tử 15, tráo với phần tử cuối sau đó hiệu chỉnh theo chiến lược Top-down</span>
+  
 </div>
+
+
 <p>Code minh họa cho <code>PriorityQueue</code> sử dụng Heap.</p>
+
+
+
+  
+  
+  
+  
+  
+
+
+  
+    
+  
+  
+
 <figure class="codeblock codeblock--tabbed">
-<figcaption>
-<span>HeapPQ</span>
-<ul class=tabs>
-<li class="tab active">java</li>
-</ul>
-</figcaption>
-<div class=tabs-content>
-<figure class="highlight language-java" style=display:block>
-<table>
-<tbody>
-<tr>
-<td class=gutter>
-<pre><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br><span>40</span><br><span>41</span><br><span>42</span><br><span>43</span><br><span>44</span><br><span>45</span><br><span>46</span><br><span>47</span><br><span>48</span><br><span>49</span><br><span>50</span><br><span>51</span><br><span>52</span><br><span>53</span><br><span>54</span><br><span>55</span><br><span>56</span><br><span>57</span><br><span>58</span><br><span>59</span><br><span>60</span><br><span>61</span><br><span>62</span><br><span>63</span><br><span>64</span><br></pre>
-</td>
-<td class=code>
-<pre class="code-highlight language-java"><code class=java>public class HeapPQ&lt;T extends Comparable&lt;T&gt;&gt; implements PriorityQueue&lt;T&gt; {
+  <figcaption>
+    
+      <span>HeapPQ</span>
+    
+    <ul class="tabs">
+      
+        <li class="tab active">java</li>
+      
+    </ul>
+  </figcaption> 
+  <div class="tabs-content">
+    
+      
+      <figure class="highlight language-java" style="display: block;">   
+        <table>
+          <tbody>
+            <tr>
+              <td class="gutter">
+                <pre><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br><span>40</span><br><span>41</span><br><span>42</span><br><span>43</span><br><span>44</span><br><span>45</span><br><span>46</span><br><span>47</span><br><span>48</span><br><span>49</span><br><span>50</span><br><span>51</span><br><span>52</span><br><span>53</span><br><span>54</span><br><span>55</span><br><span>56</span><br><span>57</span><br><span>58</span><br><span>59</span><br><span>60</span><br><span>61</span><br><span>62</span><br><span>63</span><br><span>64</span><br></pre>
+              </td>
+              <td class="code">
+                <pre class="code-highlight language-java"><code class="java">public class HeapPQ&lt;T extends Comparable&lt;T&gt;&gt; implements PriorityQueue&lt;T&gt; {
     private T[] arr;
     private int size = 0;
 
@@ -338,50 +610,67 @@ Priority Queue và những cách cài đặt
         }
     }
 }</code></pre>
-</td>
-</tr>
-</tbody>
-</table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </figure>
+    
+  </div>
 </figure>
-</div>
-</figure>
-<p>Riêng hàm <code>swim()</code>, <code>swap()</code>, và <code>sink()</code>, để hiểu hơn các bạn có thể xem lại bài viết <a href=https://chidokun.github.io/2021/07/heap-note/>Heap và một số ghi chú</a> nhé.</p>
-<h1 id=3-tổng-quát-hóa-phép-so-sánh>3. Tổng quát hóa phép so sánh</h1>
+
+<p>Riêng hàm <code>swim()</code>, <code>swap()</code>, và <code>sink()</code>, để hiểu hơn các bạn có thể xem lại bài viết <a href="https://chidokun.github.io/2021/07/heap-note/">Heap và một số ghi chú</a> nhé.</p>
+
+<h1 id="3-tổng-quát-hóa-phép-so-sánh">3. Tổng quát hóa phép so sánh</h1>
+
 <p>Priority Queue được cài đặt như trên chỉ dùng được như Max Priority Queue, nghĩa là <em>phần tử lớn hơn thì ưu tiên hơn</em>. Trong trường hợp chúng ta cần Min Priority Queue thì phải viết lại một class khác tương tự. Để có thể hỗ trợ cả hai loại trong một class, chúng ta có thể tổng quát hóa phép so sánh bên trong Priority Queue và truyền từ bên ngoài vào phép so sánh này.</p>
-<p>Để làm điều này, chúng ta có thể dùng <code>Comparator&lt;T></code> của Java.</p>
+
+<p>Để làm điều này, chúng ta có thể dùng <code>Comparator&lt;T&gt;</code> của Java.</p>
+
 <p>Đầu tiên, khai báo một field <code>comparator</code> và thêm một tham số vào constructor.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>private</span> Comparator<span style=color:#f92672>&lt;</span>T<span style=color:#f92672>&gt;</span> comparator<span style=color:#f92672>;</span>
 
-<span style=color:#66d9ef>public</span> <span style=color:#a6e22e>HeapPQ</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> maxSize<span style=color:#f92672>,</span> Comparator<span style=color:#f92672>&lt;</span>T<span style=color:#f92672>&gt;</span> comparator<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-    arr <span style=color:#f92672>=</span> <span style=color:#f92672>(</span>T<span style=color:#f92672>[])</span> <span style=color:#66d9ef>new</span> Comparable<span style=color:#f92672>[</span>maxSize<span style=color:#f92672>];</span>
-    <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>comparator</span> <span style=color:#f92672>=</span> comparator<span style=color:#f92672>;</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>Field <code>comparator</code> này đại diện cho một phép so sánh, chúng ta sẽ dùng field này để thực hiện so sánh trong các hàm <code>swim()</code> và <code>sink()</code>.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>swim</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>i <span style=color:#f92672>&gt;</span> 0 <span style=color:#f92672>&amp;&amp;</span> comparator<span style=color:#f92672>.</span><span style=color:#a6e22e>compare</span><span style=color:#f92672>(</span>arr<span style=color:#f92672>[(</span>i<span style=color:#f92672>-</span>1<span style=color:#f92672>)/</span>2<span style=color:#f92672>],</span> arr<span style=color:#f92672>[</span>i<span style=color:#f92672>])</span> <span style=color:#f92672>&lt;</span> 0<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-        swap<span style=color:#f92672>((</span>i<span style=color:#f92672>-</span>1<span style=color:#f92672>)/</span>2<span style=color:#f92672>,</span> i<span style=color:#f92672>);</span>
-        i <span style=color:#f92672>=</span> <span style=color:#f92672>(</span>i<span style=color:#f92672>-</span>1<span style=color:#f92672>)/</span>2<span style=color:#f92672>;</span>
-    <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
+<pre><code class="language-java">private Comparator&lt;T&gt; comparator;
 
-<span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>sink</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> n<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> i<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>2<span style=color:#f92672>*</span>i <span style=color:#f92672>+</span> 1 <span style=color:#f92672>&lt;=</span> n<span style=color:#f92672>-</span>1<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-        <span style=color:#66d9ef>int</span> largest <span style=color:#f92672>=</span> 2<span style=color:#f92672>*</span>i <span style=color:#f92672>+</span> 1<span style=color:#f92672>;</span>
-        <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>largest <span style=color:#f92672>&lt;</span> n<span style=color:#f92672>-</span>1 <span style=color:#f92672>&amp;&amp;</span> comparator<span style=color:#f92672>.</span><span style=color:#a6e22e>compare</span><span style=color:#f92672>(</span>arr<span style=color:#f92672>[</span>largest<span style=color:#f92672>],</span> arr<span style=color:#f92672>[</span>largest<span style=color:#f92672>+</span>1<span style=color:#f92672>])</span> <span style=color:#f92672>&lt;</span> 0<span style=color:#f92672>)</span>
-            largest<span style=color:#f92672>++;</span>
-        <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>comparator<span style=color:#f92672>.</span><span style=color:#a6e22e>compare</span><span style=color:#f92672>(</span>arr<span style=color:#f92672>[</span>i<span style=color:#f92672>],</span> arr<span style=color:#f92672>[</span>largest<span style=color:#f92672>])</span> <span style=color:#f92672>&gt;=</span> 0<span style=color:#f92672>)</span>
-            <span style=color:#66d9ef>break</span><span style=color:#f92672>;</span>
-        swap<span style=color:#f92672>(</span>i<span style=color:#f92672>,</span> largest<span style=color:#f92672>);</span>
-        i <span style=color:#f92672>=</span> largest<span style=color:#f92672>;</span>
-    <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>Và như thế, ta có thể khai báo Priority Queue với lambda function như sau:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#75715e>// For max priority queue
-</span><span style=color:#75715e></span>PriorityQueue<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;</span> q <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> HeapPQ<span style=color:#f92672>&lt;&gt;(</span>50<span style=color:#f92672>,</span> <span style=color:#f92672>(</span>a<span style=color:#f92672>,</span> b<span style=color:#f92672>)</span> <span style=color:#f92672>-&gt;</span> a <span style=color:#f92672>-</span> b<span style=color:#f92672>);</span>
-<span style=color:#75715e>// For min priority queue
-</span><span style=color:#75715e></span>PriorityQueue<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;</span> q <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> HeapPQ<span style=color:#f92672>&lt;&gt;(</span>50<span style=color:#f92672>,</span> <span style=color:#f92672>(</span>a<span style=color:#f92672>,</span> b<span style=color:#f92672>)</span> <span style=color:#f92672>-&gt;</span> b <span style=color:#f92672>-</span> a<span style=color:#f92672>);</span>
-</code></pre></div><h1 id=4-độ-phức-tạp>4. Độ phức tạp</h1>
+public HeapPQ(int maxSize, Comparator&lt;T&gt; comparator) {
+    arr = (T[]) new Comparable[maxSize];
+    this.comparator = comparator;
+}
+</code></pre>
+
+<p>Field <code>comparator</code> này đại diện cho một phép so sánh, chúng ta sẽ dùng field này để thực hiện so sánh trong các hàm <code>swim()</code> và <code>sink()</code>.</p>
+
+<pre><code class="language-java">private void swim(int i) {
+    while (i &gt; 0 &amp;&amp; comparator.compare(arr[(i-1)/2], arr[i]) &lt; 0) {
+        swap((i-1)/2, i);
+        i = (i-1)/2;
+    }
+}
+
+private void sink(int n, int i) {
+    while (2*i + 1 &lt;= n-1) {
+        int largest = 2*i + 1;
+        if (largest &lt; n-1 &amp;&amp; comparator.compare(arr[largest], arr[largest+1]) &lt; 0)
+            largest++;
+        if (comparator.compare(arr[i], arr[largest]) &gt;= 0)
+            break;
+        swap(i, largest);
+        i = largest;
+    }
+}
+</code></pre>
+
+<p>Và như thế, ta có thể khai báo Priority Queue với lambda function như sau:</p>
+
+<pre><code class="language-java">// For max priority queue
+PriorityQueue&lt;Integer&gt; q = new HeapPQ&lt;&gt;(50, (a, b) -&gt; a - b);
+// For min priority queue
+PriorityQueue&lt;Integer&gt; q = new HeapPQ&lt;&gt;(50, (a, b) -&gt; b - a);
+</code></pre>
+
+<h1 id="4-độ-phức-tạp">4. Độ phức tạp</h1>
+
 <p>Bảng sau mô tả độ phức tạp của các phương pháp cài đặt Priority Queue.</p>
+
 <table>
 <thead>
 <tr>
@@ -390,27 +679,32 @@ Priority Queue và những cách cài đặt
 <th>Heap-based</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>enqueue</td>
-<td><em>Lazy approach</em>: $O(1)$<em>Eager approach</em>: $O(N)$</td>
+<td><em>Lazy approach</em>: $O(1)$<br /><em>Eager approach</em>: $O(N)$</td>
 <td>$O(\log{N})$</td>
 </tr>
+
 <tr>
 <td>peek</td>
-<td><em>Lazy approach</em>: $O(N)$<em>Eager approach</em>: $O(1)$</td>
+<td><em>Lazy approach</em>: $O(N)$<br /><em>Eager approach</em>: $O(1)$</td>
 <td>$O(1)$</td>
 </tr>
+
 <tr>
 <td>dequeue</td>
-<td><em>Lazy approach</em>: $O(N)$<em>Eager approach</em>: $O(1)$</td>
+<td><em>Lazy approach</em>: $O(N)$<br /><em>Eager approach</em>: $O(1)$</td>
 <td>$O(\log{N})$</td>
 </tr>
+
 <tr>
 <td>isEmpty</td>
 <td>$O(1)$</td>
 <td>$O(1)$</td>
 </tr>
+
 <tr>
 <td>size</td>
 <td>$O(1)$</td>
@@ -418,182 +712,341 @@ Priority Queue và những cách cài đặt
 </tr>
 </tbody>
 </table>
-<h1 id=references>References</h1>
+
+<h1 id="references">References</h1>
+
 <ul>
-<li><a href=https://algs4.cs.princeton.edu/home/>Algorithms, 4th Edition by Robert Sedgewick and Kevin Wayne</a></li>
+<li><a href="https://algs4.cs.princeton.edu/home/">Algorithms, 4th Edition by Robert Sedgewick and Kevin Wayne</a></li>
 </ul>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/data-structures/">data structures</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/07/complexity-of-time/" data-tooltip="Độ phức tạp thời gian của thuật toán">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/07/sleep-sort/" data-tooltip="Sleep Sort: Thuật toán sort bá đạo">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/07/priority-queue/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/07/priority-queue/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2021/07/priority-queue/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
 </div>
-</div>
-<div id=post-footer class="post-footer main-content-wrap">
-<div class=post-footer-tags>
-<span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br>
-<a class="tag tag--primary tag--small" href=https://chidokun.github.io/tags/data-structures/>data structures</a>
-</div>
-<div class=post-actions-wrap>
-<nav>
-<ul class="post-actions post-action-nav">
-<li class=post-action>
-<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2021/07/complexity-of-time/ data-tooltip="Độ phức tạp thời gian của thuật toán">
-<i class="fa fa-angle-left"></i>
-<span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
-</a>
-</li>
-<li class=post-action>
-<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2021/07/sleep-sort/ data-tooltip="Sleep Sort: Thuật toán sort bá đạo">
-<span class="hide-xs hide-sm text-small icon-mr">Trước</span>
-<i class="fa fa-angle-right"></i>
-</a>
-</li>
-</ul>
-</nav>
-<ul class="post-actions post-action-share">
-<li class="post-action hide-lg hide-md hide-sm">
-<a class="post-action-btn btn btn--default btn-open-shareoptions" href=#btn-open-shareoptions>
-<i class="fa fa-share-alt"></i>
-</a>
-</li>
-<li class="post-action hide-xs">
-<a class="post-action-btn btn btn--default" target=new href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/07/priority-queue/">
-<i class="fa fa-facebook-official"></i>
-</a>
-</li>
-<li class="post-action hide-xs">
-<a class="post-action-btn btn btn--default" target=new href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/07/priority-queue/">
-<i class="fa fa-twitter"></i>
-</a>
-</li>
-<li class="post-action hide-xs">
-<a class="post-action-btn btn btn--default" target=new href="https://plus.google.com/share?url=https://chidokun.github.io/2021/07/priority-queue/">
-<i class="fa fa-google-plus"></i>
-</a>
-</li>
-<li class=post-action>
-<a class="post-action-btn btn btn--default" href=#disqus_thread>
-<i class="fa fa-comment-o"></i>
-</a>
-</li>
-<li class=post-action>
-<a class="post-action-btn btn btn--default" href=#>
-<i class="fa fa-list"></i>
-</a>
-</li>
-</ul>
-</div>
-<div id=fb-root></div>
-<script>(function(b,c,d){var a,e=b.getElementsByTagName(c)[0];if(b.getElementById(d))return;a=b.createElement(c),a.id=d,a.src='https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.1&appId=445006706177461&autoLogAppEvents=1',e.parentNode.insertBefore(a,e)})(document,'script','facebook-jssdk')</script>
-<div id=fb-cmt-thread class=fb-comments data-href=https://chidokun.github.io/2021/07/priority-queue/ data-width=100%></div>
-</div>
-</article>
-<footer id=footer class=main-content-wrap>
-<span class=copyrights>
-&copy; 2021 <a href=https://github.com/chidokun>Nguyễn Tuấn</a>. All Rights Reserved
-</span>
+
+            
+              
+                <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.1&appId=445006706177461&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2021/07/priority-queue/" data-width="100%"></div>
+
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 <a href="https://github.com/chidokun">Nguyễn Tuấn</a>. All Rights Reserved
+  </span>
 </footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/07/complexity-of-time/" data-tooltip="Độ phức tạp thời gian của thuật toán">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/07/sleep-sort/" data-tooltip="Sleep Sort: Thuật toán sort bá đạo">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/07/priority-queue/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/07/priority-queue/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2021/07/priority-queue/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
 </div>
-<div id=bottom-bar class=post-bottom-bar data-behavior=5>
-<div class=post-actions-wrap>
-<nav>
-<ul class="post-actions post-action-nav">
-<li class=post-action>
-<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2021/07/complexity-of-time/ data-tooltip="Độ phức tạp thời gian của thuật toán">
-<i class="fa fa-angle-left"></i>
-<span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
-</a>
-</li>
-<li class=post-action>
-<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2021/07/sleep-sort/ data-tooltip="Sleep Sort: Thuật toán sort bá đạo">
-<span class="hide-xs hide-sm text-small icon-mr">Trước</span>
-<i class="fa fa-angle-right"></i>
-</a>
-</li>
-</ul>
-</nav>
-<ul class="post-actions post-action-share">
-<li class="post-action hide-lg hide-md hide-sm">
-<a class="post-action-btn btn btn--default btn-open-shareoptions" href=#btn-open-shareoptions>
-<i class="fa fa-share-alt"></i>
-</a>
-</li>
-<li class="post-action hide-xs">
-<a class="post-action-btn btn btn--default" target=new href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/07/priority-queue/">
-<i class="fa fa-facebook-official"></i>
-</a>
-</li>
-<li class="post-action hide-xs">
-<a class="post-action-btn btn btn--default" target=new href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/07/priority-queue/">
-<i class="fa fa-twitter"></i>
-</a>
-</li>
-<li class="post-action hide-xs">
-<a class="post-action-btn btn btn--default" target=new href="https://plus.google.com/share?url=https://chidokun.github.io/2021/07/priority-queue/">
-<i class="fa fa-google-plus"></i>
-</a>
-</li>
-<li class=post-action>
-<a class="post-action-btn btn btn--default" href=#disqus_thread>
-<i class="fa fa-comment-o"></i>
-</a>
-</li>
-<li class=post-action>
-<a class="post-action-btn btn btn--default" href=#>
-<i class="fa fa-list"></i>
-</a>
-</li>
-</ul>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fpriority-queue%2F">
+          <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fpriority-queue%2F">
+          <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fpriority-queue%2F">
+          <i class="fa fa-google-plus"></i><span>Chia sẻ với Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
 </div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện" />
+    
+    <h4 id="about-card-name">Nguyễn Tuấn</h4>
+    
+      <div id="about-card-bio">A guy with passionate at the code</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Software Engineer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Saigon, Vietnam
+      </div>
+    
+  </div>
 </div>
-<div id=share-options-bar class=share-options-bar data-behavior=5>
-<i id=btn-close-shareoptions class="fa fa-close"></i>
-<ul class=share-options>
-<li class=share-option>
-<a class=share-option-btn target=new href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fpriority-queue%2F">
-<i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
-</a>
-</li>
-<li class=share-option>
-<a class=share-option-btn target=new href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fpriority-queue%2F">
-<i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
-</a>
-</li>
-<li class=share-option>
-<a class=share-option-btn target=new href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fpriority-queue%2F">
-<i class="fa fa-google-plus"></i><span>Chia sẻ với Google+</span>
-</a>
-</li>
-</ul>
-</div>
-<div id=share-options-mask class=share-options-mask></div>
-</div>
-<div id=about>
-<div id=about-card>
-<div id=about-btn-close>
-<i class="fa fa-remove"></i>
-</div>
-<img id=about-card-picture src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện">
-<h4 id=about-card-name>Nguyễn Tuấn</h4>
-<div id=about-card-bio>A guy with passionate at the code</div>
-<div id=about-card-job>
-<i class="fa fa-briefcase"></i>
-<br>
-Software Engineer
-</div>
-<div id=about-card-location>
-<i class="fa fa-map-marker"></i>
-<br>
-Saigon, Vietnam
-</div>
-</div>
-</div>
-<div id=cover style=background-image:url(https://chidokun.github.io/images/background.jpg)></div>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin=anonymous></script>
-<script src=https://chidokun.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js></script>
-<script crossorigin=anonymous integrity=sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js></script>
-<script crossorigin=anonymous integrity=sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js></script>
-<script src=https://chidokun.github.io/js/main.js></script>
-<script lang=javascript>window.onload=updateMinWidth,window.onresize=updateMinWidth,document.getElementById("sidebar").addEventListener("transitionend",updateMinWidth);function updateMinWidth(){var b=document.getElementById("sidebar"),a=document.getElementById("main"),c,d,e;a.style.minWidth="",c=getComputedStyle(a).getPropertyValue("min-width"),d=getComputedStyle(b).getPropertyValue("width"),e=getComputedStyle(b).getPropertyValue("left"),a.style.minWidth=`calc(${c} - ${d} - ${e})`}</script>
-<script>$(document).ready(function(){hljs.configure({classPrefix:'',useBR:!1}),$('pre.code-highlight > code, pre > code').each(function(b,a){$(this).hasClass('codeblock')||$(this).addClass('codeblock'),hljs.highlightBlock(a)})})</script>
-<script>var disqus_config=function(){this.page.url='https://chidokun.github.io/2021/07/priority-queue/',this.page.identifier='/2021/07/priority-queue/'};(function(){var a,b,c;if(window.location.hostname=="localhost")return;a=document,b=a.createElement('script'),c='nguyentuanit96',b.src='//'+c+'.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script>
-</body>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://chidokun.github.io/images/background.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://chidokun.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+  
+    <script crossorigin="anonymous" integrity="sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq" src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js"></script>
+  
+
+  
+    <script crossorigin="anonymous" integrity="sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc" src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js"></script>
+  
+
+  
+    <script src="https://chidokun.github.io/js/main.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/chidokun.github.io\/2021\/07\/priority-queue\/';
+          
+            this.page.identifier = '\/2021\/07\/priority-queue\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'nguyentuanit96';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
 </html>
+

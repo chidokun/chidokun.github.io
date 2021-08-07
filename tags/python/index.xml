@@ -1,7 +1,59 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>python on Nguyễn Tuấn's Blog</title><link>https://chidokun.github.io/tags/python/</link><description>Recent content in python on Nguyễn Tuấn's Blog</description><generator>Hugo -- gohugo.io</generator><language>vi</language><lastBuildDate>Sat, 30 Jan 2021 12:28:27 +0700</lastBuildDate><atom:link href="https://chidokun.github.io/tags/python/index.xml" rel="self" type="application/rss+xml"/><item><title>Tập tành crawl dữ liệu product của Tiki (Phần 2)</title><link>https://chidokun.github.io/2021/01/crawl-tiki-products-p2/</link><pubDate>Sat, 30 Jan 2021 12:28:27 +0700</pubDate><guid>https://chidokun.github.io/2021/01/crawl-tiki-products-p2/</guid><description>&lt;p>Qua một khoảng thời gian dài, nhiều bạn feedback với mình là code trong bài viết &lt;a href="https://chidokun.github.io/2020/05/crawl-tiki-products/">Tập tành crawl dữ liệu product của Tiki&lt;/a> không thể chạy được nữa. Không bất ngờ lắm với vấn đề này, mình sẽ hướng dẫn các bạn lấy lại dữ liệu về sản phẩm trên Tiki.&lt;/p>
-&lt;div class="alert info ">
-&lt;p>Nhớ đọc lại bài viết &lt;a href="https://chidokun.github.io/2020/05/crawl-tiki-products/">Tập tành crawl dữ liệu product của Tiki&lt;/a> để hiểu ý tưởng nhé các bạn.&lt;/p>
-&lt;/div></description></item><item><title>Logistics Problem (Shopee Code League 2020)</title><link>https://chidokun.github.io/2020/07/logistics-problem/</link><pubDate>Sun, 19 Jul 2020 11:55:24 +0700</pubDate><guid>https://chidokun.github.io/2020/07/logistics-problem/</guid><description>&lt;p>&lt;strong>Logistics Problem&lt;/strong> là challenge thứ x của Shopee Code League 2020 - một cuộc thi về Code và Data kéo dài 2 tháng với các challenge khác nhau. Bài toán Data Analytics lần này tiếp tục là một chủ đề về Logistics - hay nói nôm na là &lt;em>&amp;ldquo;ship hàng&amp;rdquo;&lt;/em>. Nhiệm vụ của các đội là xác định các đơn hàng giao trễ hẹn dựa trên data và bộ rule cho sẵn. Sau một khoảng thời gian tìm hiểu và implement thì mình xin giới thiệu đến các bạn giải pháp của team (score: 1.0/1.0).&lt;/p></description></item><item><title>Order Brushing Problem (Shopee Code League 2020)</title><link>https://chidokun.github.io/2020/06/order-brushing/</link><pubDate>Sun, 14 Jun 2020 17:05:24 +0700</pubDate><guid>https://chidokun.github.io/2020/06/order-brushing/</guid><description>&lt;p>&lt;strong>Shopee Code League&lt;/strong> là một thử thách lập trình trực tuyến kéo dài 02 tháng bao gồm một loạt các cuộc thi, câu hỏi về thuật toán trực tuyến và hội thảo đào tạo trực tuyến dành cho tất cả sinh viên và các chuyên gia trên toàn khu vực (xem thêm tại &lt;a href="https://careers.shopee.sg/codeleague/">Shopee Code League 2020&lt;/a>). Challenge đầu tiên vừa diễn ra là &lt;strong>Order Brushing Problem&lt;/strong> (Chủ đề Data Analytics). Mình cùng teammate vừa hoàn thành xong challenge này, dù chưa xây dựng được giải pháp tối ưu nhất (score: 0,98/1,0) nhưng cũng giới thiệu đến các bạn giải pháp của nhóm trong bài toán này.&lt;/p></description></item><item><title>Tập tành crawl dữ liệu product của Tiki</title><link>https://chidokun.github.io/2020/05/crawl-tiki-products/</link><pubDate>Sun, 31 May 2020 21:37:27 +0700</pubDate><guid>https://chidokun.github.io/2020/05/crawl-tiki-products/</guid><description>&lt;p>Tiki là một trong những trang thương mại điện tử lớn nhất Việt Nam. Với chính sách gắt gao để hạn chế hàng nhái, hàng giả nên những thông tin product trên Tiki có thể &amp;ldquo;tin tưởng&amp;rdquo; được. Nếu có nhu cầu lấy dữ liệu sản phẩm thì dữ liệu trên Tiki cũng là một nguồn tham khảo đáng tin cậy. Bên cạnh đó, mình cũng đang tập tành viết crawler nên trong bài này mình sẽ giới thiệu cách mình đã làm để lấy dữ liệu về sản phẩm trên Tiki.&lt;/p>
-&lt;div class="alert info ">
-&lt;p>Qua một khoảng thời gian dài, nhiều bạn feedback với mình là code trong bài viết này không thể chạy được nữa. Không bất ngờ lắm với vấn đề này, mình sẽ hướng dẫn các bạn lấy lại dữ liệu về sản phẩm trên Tiki với Phần 2 nhé: &lt;a href="https://chidokun.github.io/2021/01/crawl-tiki-products-p2/">Tập tành crawl dữ liệu product của Tiki (Phần 2)&lt;/a>&lt;/p>
-&lt;/div></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on Nguyễn Tuấn&#39;s Blog</title>
+    <link>https://chidokun.github.io/tags/python/</link>
+    <description>Recent content in Python on Nguyễn Tuấn&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>vi</language>
+    <lastBuildDate>Sat, 30 Jan 2021 12:28:27 +0700</lastBuildDate>
+    
+	<atom:link href="https://chidokun.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Tập tành crawl dữ liệu product của Tiki (Phần 2)</title>
+      <link>https://chidokun.github.io/2021/01/crawl-tiki-products-p2/</link>
+      <pubDate>Sat, 30 Jan 2021 12:28:27 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2021/01/crawl-tiki-products-p2/</guid>
+      <description>&lt;p&gt;Qua một khoảng thời gian dài, nhiều bạn feedback với mình là code trong bài viết &lt;a href=&#34;https://chidokun.github.io/2020/05/crawl-tiki-products/&#34;&gt;Tập tành crawl dữ liệu product của Tiki&lt;/a&gt; không thể chạy được nữa. Không bất ngờ lắm với vấn đề này, mình sẽ hướng dẫn các bạn lấy lại dữ liệu về sản phẩm trên Tiki.&lt;/p&gt;
+
+&lt;div class=&#34;alert info &#34;&gt;
+  &lt;p&gt;Nhớ đọc lại bài viết &lt;a href=&#34;https://chidokun.github.io/2020/05/crawl-tiki-products/&#34;&gt;Tập tành crawl dữ liệu product của Tiki&lt;/a&gt; để hiểu ý tưởng nhé các bạn.&lt;/p&gt;
+&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>Logistics Problem (Shopee Code League 2020)</title>
+      <link>https://chidokun.github.io/2020/07/logistics-problem/</link>
+      <pubDate>Sun, 19 Jul 2020 11:55:24 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2020/07/logistics-problem/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Logistics Problem&lt;/strong&gt; là challenge thứ x của Shopee Code League 2020 - một cuộc thi về Code và Data kéo dài 2 tháng với các challenge khác nhau. Bài toán Data Analytics lần này tiếp tục là một chủ đề về Logistics - hay nói nôm na là &lt;em&gt;&amp;ldquo;ship hàng&amp;rdquo;&lt;/em&gt;. Nhiệm vụ của các đội là xác định các đơn hàng giao trễ hẹn dựa trên data và bộ rule cho sẵn. Sau một khoảng thời gian tìm hiểu và implement thì mình xin giới thiệu đến các bạn giải pháp của team (score: 1.0/1.0).&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Order Brushing Problem (Shopee Code League 2020)</title>
+      <link>https://chidokun.github.io/2020/06/order-brushing/</link>
+      <pubDate>Sun, 14 Jun 2020 17:05:24 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2020/06/order-brushing/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Shopee Code League&lt;/strong&gt; là một thử thách lập trình trực tuyến kéo dài 02 tháng bao gồm một loạt các cuộc thi, câu hỏi về thuật toán trực tuyến và hội thảo đào tạo trực tuyến dành cho tất cả sinh viên và các chuyên gia trên toàn khu vực (xem thêm tại &lt;a href=&#34;https://careers.shopee.sg/codeleague/&#34;&gt;Shopee Code League 2020&lt;/a&gt;). Challenge đầu tiên vừa diễn ra là &lt;strong&gt;Order Brushing Problem&lt;/strong&gt; (Chủ đề Data Analytics). Mình cùng teammate vừa hoàn thành xong challenge này, dù chưa xây dựng được giải pháp tối ưu nhất (score: 0,&lt;sup&gt;98&lt;/sup&gt;&amp;frasl;&lt;sub&gt;1&lt;/sub&gt;,0) nhưng cũng giới thiệu đến các bạn giải pháp của nhóm trong bài toán này.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Tập tành crawl dữ liệu product của Tiki</title>
+      <link>https://chidokun.github.io/2020/05/crawl-tiki-products/</link>
+      <pubDate>Sun, 31 May 2020 21:37:27 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2020/05/crawl-tiki-products/</guid>
+      <description>&lt;p&gt;Tiki là một trong những trang thương mại điện tử lớn nhất Việt Nam. Với chính sách gắt gao để hạn chế hàng nhái, hàng giả nên những thông tin product trên Tiki có thể &amp;ldquo;tin tưởng&amp;rdquo; được. Nếu có nhu cầu lấy dữ liệu sản phẩm thì dữ liệu trên Tiki cũng là một nguồn tham khảo đáng tin cậy. Bên cạnh đó, mình cũng đang tập tành viết crawler nên trong bài này mình sẽ giới thiệu cách mình đã làm để lấy dữ liệu về sản phẩm trên Tiki.&lt;/p&gt;
+
+&lt;div class=&#34;alert info &#34;&gt;
+  &lt;p&gt;Qua một khoảng thời gian dài, nhiều bạn feedback với mình là code trong bài viết này không thể chạy được nữa. Không bất ngờ lắm với vấn đề này, mình sẽ hướng dẫn các bạn lấy lại dữ liệu về sản phẩm trên Tiki với Phần 2 nhé: &lt;a href=&#34;https://chidokun.github.io/2021/01/crawl-tiki-products-p2/&#34;&gt;Tập tành crawl dữ liệu product của Tiki (Phần 2)&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,149 +1,319 @@
-<!doctype html><html lang=vi>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=generator content="Hugo 0.87.0 with theme Tranquilpeak 0.4.8-BETA">
-<meta name=author content="Nguyễn Tuấn">
-<meta name=keywords content="queue,java,priority queue,index priority queue,indexed priority queue,development,programming,chidokun,lập trình">
-<meta name=description content="Ở bài viết Priority Queue và những cách cài đặt, mình đã giới thiệu qua cấu trúc Priority Queue, những đặc trưng và cách cài đặt. Tuy nhiên trong một số trường hợp, chúng ta sẽ có nhu cầu cập nhật hoặc xóa phần tử khỏi Queue thông qua một index. Trong bài viết này chúng ta sẽ cùng cải tiến Priority Queue để có thể thực hiện các chức năng trên.">
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="author" content="Nguyễn Tuấn">
+<meta name="keywords" content="queue, java, priority queue, index priority queue, indexed priority queue, development, programming, chidokun, lập trình">
+<meta name="description" content="Ở bài viết Priority Queue và những cách cài đặt, mình đã giới thiệu qua cấu trúc Priority Queue, những đặc trưng và cách cài đặt. Tuy nhiên trong một số trường hợp, chúng ta sẽ có nhu cầu cập nhật hoặc xóa phần tử khỏi Queue thông qua một index. Trong bài viết này chúng ta sẽ cùng cải tiến Priority Queue để có thể thực hiện các chức năng trên.">
+
+
 <meta property="og:description" content="Ở bài viết Priority Queue và những cách cài đặt, mình đã giới thiệu qua cấu trúc Priority Queue, những đặc trưng và cách cài đặt. Tuy nhiên trong một số trường hợp, chúng ta sẽ có nhu cầu cập nhật hoặc xóa phần tử khỏi Queue thông qua một index. Trong bài viết này chúng ta sẽ cùng cải tiến Priority Queue để có thể thực hiện các chức năng trên.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Index Priority Queue: Cải tiến Priority Queue">
-<meta name=twitter:title content="Index Priority Queue: Cải tiến Priority Queue">
+<meta name="twitter:title" content="Index Priority Queue: Cải tiến Priority Queue">
 <meta property="og:url" content="https://chidokun.github.io/2021/07/index-priority-queue/">
 <meta property="twitter:url" content="https://chidokun.github.io/2021/07/index-priority-queue/">
-<meta property="og:site_name" content="Nguyễn Tuấn's Blog">
+<meta property="og:site_name" content="Nguyễn Tuấn&#39;s Blog">
 <meta property="og:description" content="Ở bài viết Priority Queue và những cách cài đặt, mình đã giới thiệu qua cấu trúc Priority Queue, những đặc trưng và cách cài đặt. Tuy nhiên trong một số trường hợp, chúng ta sẽ có nhu cầu cập nhật hoặc xóa phần tử khỏi Queue thông qua một index. Trong bài viết này chúng ta sẽ cùng cải tiến Priority Queue để có thể thực hiện các chức năng trên.">
-<meta name=twitter:description content="Ở bài viết Priority Queue và những cách cài đặt, mình đã giới thiệu qua cấu trúc Priority Queue, những đặc trưng và cách cài đặt. Tuy nhiên trong một số trường hợp, chúng ta sẽ có nhu cầu cập nhật hoặc xóa phần tử khỏi Queue thông qua một index. Trong bài viết này chúng ta sẽ cùng cải tiến Priority Queue để có thể thực hiện các chức năng trên.">
+<meta name="twitter:description" content="Ở bài viết Priority Queue và những cách cài đặt, mình đã giới thiệu qua cấu trúc Priority Queue, những đặc trưng và cách cài đặt. Tuy nhiên trong một số trường hợp, chúng ta sẽ có nhu cầu cập nhật hoặc xóa phần tử khỏi Queue thông qua một index. Trong bài viết này chúng ta sẽ cùng cải tiến Priority Queue để có thể thực hiện các chức năng trên.">
 <meta property="og:locale" content="vi">
-<meta property="article:published_time" content="2021-07-29T20:17:38">
-<meta property="article:modified_time" content="2021-07-29T20:17:38">
-<meta property="article:section" content="programming">
-<meta property="article:tag" content="data structures">
-<meta name=twitter:card content="summary">
-<meta property="fb:app_id" content="445006706177461">
-<meta property="og:image" content="https://chidokun.github.io/thumbnails/priority-queue.png">
-<meta property="twitter:image" content="https://chidokun.github.io/thumbnails/priority-queue.png">
-<meta property="og:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
-<meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
-<title>Index Priority Queue: Cải tiến Priority Queue</title>
-<meta name=google-site-verification content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI">
-<link rel=icon href=https://chidokun.github.io/favicon.png>
-<link rel=canonical href=https://chidokun.github.io/2021/07/index-priority-queue/>
-<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin=anonymous>
-<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin=anonymous>
-<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin=anonymous>
-<link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700|Roboto+Mono&display=swap&subset=vietnamese" rel=stylesheet>
-<link rel=stylesheet href=https://chidokun.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css>
-<link rel=stylesheet crossorigin=anonymous href=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css integrity=sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei>
-<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-64965138-2','auto'),ga('send','pageview'))</script>
-</head>
-<body>
-<div id=blog>
-<header id=header data-behavior=5>
-<i id=btn-open-sidebar class="fa fa-lg fa-bars"></i>
-<div class=header-title>
-<a class=header-title-link href=https://chidokun.github.io/>Nguyễn Tuấn's Blog</a>
-</div>
-<a class="header-right-icon st-search-show-outputs" href=https://chidokun.github.io/#search>
-<i class="fa fa-lg fa-search"></i>
-</a>
+
+  
+    <meta property="article:published_time" content="2021-07-29T20:17:38">
+  
+  
+    <meta property="article:modified_time" content="2021-07-29T20:17:38">
+  
+  
+  
+    
+      <meta property="article:section" content="programming">
+    
+  
+  
+    
+      <meta property="article:tag" content="data structures">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+  <meta property="fb:app_id" content="445006706177461">
+
+
+
+
+  <meta property="og:image" content="https://chidokun.github.io/thumbnails/priority-queue.png">
+  <meta property="twitter:image" content="https://chidokun.github.io/thumbnails/priority-queue.png">
+
+
+
+
+
+  <meta property="og:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
+  <meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
+
+
+    <title>Index Priority Queue: Cải tiến Priority Queue</title>
+    <meta name="google-site-verification" content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI" />
+    <link rel="icon" href="https://chidokun.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://chidokun.github.io/2021/07/index-priority-queue/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700|Roboto+Mono&display=swap&subset=vietnamese" rel="stylesheet">
+    
+    
+    <link rel="stylesheet" href="https://chidokun.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" integrity="sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei">
+      
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-64965138-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://chidokun.github.io/">Nguyễn Tuấn&#39;s Blog</a>
+  </div>
+  
+    
+      <a class="header-right-icon st-search-show-outputs"
+         href="https://chidokun.github.io/#search">
+    
+    
+      <i class="fa fa-lg fa-search"></i>
+    
+    
+    </a>
+  
 </header>
-<nav id=sidebar data-behavior=5>
-<div class=sidebar-container>
-<div class=sidebar-profile>
-<a href=https://chidokun.github.io/#about>
-<img class=sidebar-profile-picture src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện">
-</a>
-<h4 class=sidebar-profile-name>Nguyễn Tuấn</h4>
-<h5 class=sidebar-profile-bio>A guy with passionate at the code</h5>
-</div>
-<ul class=sidebar-buttons>
-<li class=sidebar-button>
-<a class=sidebar-button-link href=https://chidokun.github.io/>
-<i class="sidebar-button-icon fa fa-lg fa-home"></i>
-<span class=sidebar-button-desc>Trang chủ</span>
-</a>
-</li>
-<li class=sidebar-button>
-<a class=sidebar-button-link href=https://chidokun.github.io/categories>
-<i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
-<span class=sidebar-button-desc>Danh mục</span>
-</a>
-</li>
-<li class=sidebar-button>
-<a class=sidebar-button-link href=https://chidokun.github.io/tags>
-<i class="sidebar-button-icon fa fa-lg fa-tags"></i>
-<span class=sidebar-button-desc>Thẻ thông tin</span>
-</a>
-</li>
-<li class=sidebar-button>
-<a class=sidebar-button-link href=https://chidokun.github.io/archives>
-<i class="sidebar-button-icon fa fa-lg fa-archive"></i>
-<span class=sidebar-button-desc>Lưu trữ</span>
-</a>
-</li>
-<li class=sidebar-button>
-<a class=sidebar-button-link href=https://chidokun.github.io/#about>
-<i class="sidebar-button-icon fa fa-lg fa-question"></i>
-<span class=sidebar-button-desc>Thông tin</span>
-</a>
-</li>
-</ul>
-<ul class=sidebar-buttons>
-<li class=sidebar-button>
-<a class=sidebar-button-link href=https://github.com/chidokun target=_blank rel=noopener>
-<i class="sidebar-button-icon fa fa-lg fa-github"></i>
-<span class=sidebar-button-desc>GitHub</span>
-</a>
-</li>
-</ul>
-<ul class=sidebar-buttons>
-<li class=sidebar-button>
-<a class=sidebar-button-link href=https://chidokun.github.io/index.xml>
-<i class="sidebar-button-icon fa fa-lg fa-rss"></i>
-<span class=sidebar-button-desc>RSS</span>
-</a>
-</li>
-</ul>
-</div>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://chidokun.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện" />
+        </a>
+        <h4 class="sidebar-profile-name">Nguyễn Tuấn</h4>
+        
+          <h5 class="sidebar-profile-bio">A guy with passionate at the code</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Trang chủ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Danh mục</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Thẻ thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Lưu trữ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">Thông tin</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/chidokun" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
 </nav>
-<div id=main data-behavior=5 class=hasCoverMetaIn>
-<article class=post itemscope itemtype=http://schema.org/BlogPosting>
-<div class="post-header main-content-wrap text-left">
-<h1 class=post-title itemprop=headline>
-Index Priority Queue: Cải tiến Priority Queue
-</h1>
-<div class="postShorten-meta post-meta">
-<time itemprop=datePublished datetime=2021-07-29T20:17:38+07:00>
-29 tháng 7 2021
-</time>
-<span>mục</span>
-<a class=category-link href=https://chidokun.github.io/categories/programming>programming</a>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Index Priority Queue: Cải tiến Priority Queue
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2021-07-29T20:17:38&#43;07:00">
+        
+  
+  
+  
+  
+    29 tháng 7 2021
+  
+
+      </time>
+    
+    
+  
+  
+    <span>mục</span>
+    
+      <a class="category-link" href="https://chidokun.github.io/categories/programming">programming</a>
+    
+  
+
+  </div>
+
+  <div>
+  <div class="fb-like" 
+    data-href="https://chidokun.github.io/2021/07/index-priority-queue/" 
+    data-width="" 
+    data-layout="button_count" 
+    data-action="like" 
+    data-size="large" 
+    data-share="false"></div>
 </div>
-<div>
-<div class=fb-like data-href=https://chidokun.github.io/2021/07/index-priority-queue/ data-width data-layout=button_count data-action=like data-size=large data-share=false></div>
 </div>
-</div>
-<div class="post-content markdown" itemprop=articleBody>
-<div class=main-content-wrap>
-<p>Ở bài viết <a href=https://chidokun.github.io/2021/07/priority-queue/>Priority Queue và những cách cài đặt</a>, mình đã giới thiệu qua cấu trúc Priority Queue, những đặc trưng và cách cài đặt. Tuy nhiên trong một số trường hợp, chúng ta sẽ có nhu cầu cập nhật hoặc xóa phần tử khỏi Queue thông qua một index. Trong bài viết này chúng ta sẽ cùng cải tiến Priority Queue để có thể thực hiện các chức năng trên.</p>
-<h1 id=1-ý-tưởng-và-api>1. Ý tưởng và API</h1>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>Ở bài viết <a href="https://chidokun.github.io/2021/07/priority-queue/">Priority Queue và những cách cài đặt</a>, mình đã giới thiệu qua cấu trúc Priority Queue, những đặc trưng và cách cài đặt. Tuy nhiên trong một số trường hợp, chúng ta sẽ có nhu cầu cập nhật hoặc xóa phần tử khỏi Queue thông qua một index. Trong bài viết này chúng ta sẽ cùng cải tiến Priority Queue để có thể thực hiện các chức năng trên.</p>
+
+<h1 id="table-of-contents">Mục lục</h1><nav id="TableOfContents">
+<ul>
+<li><a href="#1-ý-tưởng-và-api">1. Ý tưởng và API</a></li>
+<li><a href="#2-cài-đặt">2. Cài đặt</a>
+<ul>
+<li><a href="#2-1-các-thao-tác-cơ-bản">2.1. Các thao tác cơ bản</a></li>
+<li><a href="#2-2-insert-và-change">2.2. Insert và Change</a></li>
+<li><a href="#2-3-thao-tác-xóa">2.3. Thao tác xóa</a></li>
+</ul></li>
+<li><a href="#3-tổng-quát-hóa-phép-so-sánh">3. Tổng quát hóa phép so sánh</a></li>
+<li><a href="#4-độ-phức-tạp">4. Độ phức tạp</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+</nav>
+
+<h1 id="1-ý-tưởng-và-api">1. Ý tưởng và API</h1>
+
 <p>Index Priority Queue cũng là một Priority Queue nhưng hỗ trợ thêm tính năng tham chiếu đến một phần tử trong queue thông qua index.</p>
+
 <p>Các phương thức giao tiếp với bên ngoài của <code>IndexPriorityQueue</code> có thể được định nghĩa dưới dạng interface như sau:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>interface</span> <span style=color:#a6e22e>IndexPriorityQueue</span><span style=color:#f92672>&lt;</span>T <span style=color:#66d9ef>extends</span> Comparable<span style=color:#f92672>&lt;</span>T<span style=color:#f92672>&gt;&gt;</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>insert</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i<span style=color:#f92672>,</span> T item<span style=color:#f92672>);</span>
-    <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>change</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i<span style=color:#f92672>,</span> T item<span style=color:#f92672>);</span>
-    <span style=color:#66d9ef>boolean</span> <span style=color:#a6e22e>contains</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i<span style=color:#f92672>);</span>
-    <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>delete</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i<span style=color:#f92672>);</span>
-    T <span style=color:#a6e22e>peek</span><span style=color:#f92672>();</span>
-    <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>peekIndex</span><span style=color:#f92672>();</span>
-    <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>removePeek</span><span style=color:#f92672>();</span>
-    <span style=color:#66d9ef>boolean</span> <span style=color:#a6e22e>isEmpty</span><span style=color:#f92672>();</span>
-    <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>size</span><span style=color:#f92672>();</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>Các phương thức cơ bản như sau:</p>
+
+<pre><code class="language-java">public interface IndexPriorityQueue&lt;T extends Comparable&lt;T&gt;&gt; {
+    void insert(int i, T item);
+    void change(int i, T item);
+    boolean contains(int i);
+    void delete(int i);
+    T peek();
+    int peekIndex();
+    int removePeek();
+    boolean isEmpty();
+    int size();
+}
+</code></pre>
+
+<p>Các phương thức cơ bản như sau:</p>
+
 <ul>
 <li><em>insert(int i, T item)</em>: Thêm mới phần tử thuộc kiểu <code>T</code> có index là <code>i</code>.</li>
 <li><em>change(int i, T item)</em>: Thay đổi bằng một phần tử kiểu <code>T</code> khác ở index <code>i</code> .</li>
@@ -155,146 +325,193 @@ Index Priority Queue: Cải tiến Priority Queue
 <li><em>isEmpty()</em>: Kiểm tra queue có rỗng hay không.</li>
 <li><em>size()</em>: Lấy kích thước queue.</li>
 </ul>
+
 <p>Công việc của chúng ta là cài đặt cấu trúc dữ liệu Index Priority Queue dựa trên cách cài đặt Priority Queue ở bài viết trước.</p>
-<h1 id=2-cài-đặt>2. Cài đặt</h1>
-<p>Tương tự Priority Queue, Index Priority Queue sẽ được cài đặt dựa trên Heap. Nếu chưa biết Heap là gì, các bạn có thể xem lại bài viết <a href=https://chidokun.github.io/2021/07/heap-note/>Heap và một số ghi chú</a>.</p>
+
+<h1 id="2-cài-đặt">2. Cài đặt</h1>
+
+<p>Tương tự Priority Queue, Index Priority Queue sẽ được cài đặt dựa trên Heap. Nếu chưa biết Heap là gì, các bạn có thể xem lại bài viết <a href="https://chidokun.github.io/2021/07/heap-note/">Heap và một số ghi chú</a>.</p>
+
 <p>Để lưu trữ các phần tử dựa trên index, mình sử dụng mảng <code>keys</code> với chỉ số mảng chính là index. Lúc này không thể dựng Heap trên <code>keys</code>, ta cần có một mảng <code>pq</code> với giá trị là index của phần tử trong <code>keys</code>. Nghĩa là, Heap của chúng ta sẽ nằm trên <code>pq</code>, khi lấy ra phần tử ưu tiên nhất trong <code>pq</code> thì giá trị của nó chính là index của phần tử ưu tiên nhất, tra cứu trong mảng <code>keys</code> sẽ được phần tử cần tìm.</p>
+
 <p>Ngoài ra, khi thực hiện một số thao tác như xóa phần tử có index <code>i</code> thì phải tìm ra vị trí của index <code>i</code> trong <code>pq</code>. Để làm điều này đơn giản hơn, ta có thể lưu một mảng <code>qp</code> với chỉ số là index và giá trị là vị trí của index <code>i</code> trong <code>pq</code>. Nói cách khác, mảng <code>qp</code> chính là tham chiếu ngược của <code>pq</code>.</p>
-<h2 id=21-các-thao-tác-cơ-bản>2.1. Các thao tác cơ bản</h2>
+
+<h2 id="2-1-các-thao-tác-cơ-bản">2.1. Các thao tác cơ bản</h2>
+
 <p>Ở phần này, chúng ta sẽ cài đặt các thao tác đơn giản trước để có thể cài đặt các thao tác khó hơn.</p>
+
 <p>Trước hết cài đặt class <code>IndexPQ</code> là một implementation của <code>IndexPriorityQueue</code>.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>IndexPQ</span><span style=color:#f92672>&lt;</span>T <span style=color:#66d9ef>extends</span> Comparable<span style=color:#f92672>&lt;</span>T<span style=color:#f92672>&gt;&gt;</span> <span style=color:#66d9ef>implements</span> IndexPriorityQueue<span style=color:#f92672>&lt;</span>T<span style=color:#f92672>&gt;</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span> size<span style=color:#f92672>;</span>
-    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span> maxSize<span style=color:#f92672>;</span>
-    <span style=color:#66d9ef>private</span> T<span style=color:#f92672>[]</span> keys<span style=color:#f92672>;</span>
-    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> pq<span style=color:#f92672>;</span>
-    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> qp<span style=color:#f92672>;</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>Mảng <code>qp</code> tham chiếu từ index đến vị trí trong <code>pq</code> nên còn có thể dùng để kiểm tra index có tồn tại trong queue hay không. Giá trị <code>-1</code> được dùng để biểu thị không tồn tại index <code>i</code> trong queue. Do vậy, constructor sẽ khởi tạo các mảng cần dùng và giá trị -1 cho mảng <code>qp</code>.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#a6e22e>IndexPQ</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> maxSize<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>maxSize <span style=color:#f92672>&lt;</span> 0<span style=color:#f92672>)</span>
-        <span style=color:#66d9ef>throw</span> <span style=color:#66d9ef>new</span> IllegalArgumentException<span style=color:#f92672>();</span>
-    <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>maxSize</span> <span style=color:#f92672>=</span> maxSize<span style=color:#f92672>;</span>
-    <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>size</span> <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
-    <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>keys</span> <span style=color:#f92672>=</span> <span style=color:#f92672>(</span>T<span style=color:#f92672>[])</span> <span style=color:#66d9ef>new</span> Comparable<span style=color:#f92672>[</span>maxSize<span style=color:#f92672>];</span>
-    <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>pq</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[</span>maxSize<span style=color:#f92672>];</span>
-    <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>qp</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[</span>maxSize<span style=color:#f92672>];</span>
-    Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>fill</span><span style=color:#f92672>(</span>qp<span style=color:#f92672>,</span> <span style=color:#f92672>-</span>1<span style=color:#f92672>);</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>Phương thức <code>contains()</code> sẽ kiểm tra trong mảng <code>qp</code> để biết được index đã có trong queue hay chưa.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#a6e22e>@Override</span>
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>boolean</span> <span style=color:#a6e22e>contains</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>return</span> qp<span style=color:#f92672>[</span>i<span style=color:#f92672>]</span> <span style=color:#f92672>!=</span> <span style=color:#f92672>-</span>1<span style=color:#f92672>;</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>Kiểm tra mảng rỗng và lấy kích thước cũng khá đơn giản.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#a6e22e>@Override</span>
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>boolean</span> <span style=color:#a6e22e>isEmpty</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>return</span> size <span style=color:#f92672>==</span> 0<span style=color:#f92672>;</span>
-<span style=color:#f92672>}</span>
 
-<span style=color:#a6e22e>@Override</span>
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>size</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>return</span> size<span style=color:#f92672>;</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>Để lấy phần tử ưu tiên nhất, trước hết phải lấy được index của phần tử này trong <code>pq</code> rồi sao đó tham chiếu vào <code>keys</code> để lấy ra phần tử này.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> T <span style=color:#a6e22e>peek</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>size <span style=color:#f92672>==</span> 0<span style=color:#f92672>)</span>
-        <span style=color:#66d9ef>throw</span> <span style=color:#66d9ef>new</span> NoSuchElementException<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Priority queue underflow&#34;</span><span style=color:#f92672>);</span>
-    <span style=color:#66d9ef>return</span> keys<span style=color:#f92672>[</span>pq<span style=color:#f92672>[</span>0<span style=color:#f92672>]];</span>
-<span style=color:#f92672>}</span>
+<pre><code class="language-java">public class IndexPQ&lt;T extends Comparable&lt;T&gt;&gt; implements IndexPriorityQueue&lt;T&gt; {
+    private int size;
+    private int maxSize;
+    private T[] keys;
+    private int[] pq;
+    private int[] qp;
+}
+</code></pre>
 
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>peekIndex</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>size <span style=color:#f92672>==</span> 0<span style=color:#f92672>)</span>
-        <span style=color:#66d9ef>throw</span> <span style=color:#66d9ef>new</span> NoSuchElementException<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Priority queue underflow&#34;</span><span style=color:#f92672>);</span>
-    <span style=color:#66d9ef>return</span> pq<span style=color:#f92672>[</span>0<span style=color:#f92672>];</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>Ngoài ra, để thao tác trên Heap chúng ta cần cài đặt các hàm utility để hiệu chỉnh Heap theo cơ chế Bottom-Up và Top-Down. Việc hiệu chỉnh Heap sẽ thực hiện trên cả <code>pq</code> và <code>qp</code>. Tham khảo bài viết <a href=https://chidokun.github.io/2021/07/heap-note/>Heap và một số ghi chú</a> để hiểu thêm về các hàm này. Định nghĩa <em>ưu tiên</em> ở đây là <em>lớn hơn thì ưu tiên hơn</em>.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>swim</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>i <span style=color:#f92672>&gt;</span> 0 <span style=color:#f92672>&amp;&amp;</span> keys<span style=color:#f92672>[(</span>i <span style=color:#f92672>-</span> 1<span style=color:#f92672>)</span> <span style=color:#f92672>/</span> 2<span style=color:#f92672>].</span><span style=color:#a6e22e>compareTo</span><span style=color:#f92672>(</span>keys<span style=color:#f92672>[</span>i<span style=color:#f92672>])</span> <span style=color:#f92672>&lt;</span> 0<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-        swap<span style=color:#f92672>((</span>i <span style=color:#f92672>-</span> 1<span style=color:#f92672>)</span> <span style=color:#f92672>/</span> 2<span style=color:#f92672>,</span> i<span style=color:#f92672>);</span>
-        i <span style=color:#f92672>=</span> <span style=color:#f92672>(</span>i <span style=color:#f92672>-</span> 1<span style=color:#f92672>)</span> <span style=color:#f92672>/</span> 2<span style=color:#f92672>;</span>
-    <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
+<p>Mảng <code>qp</code> tham chiếu từ index đến vị trí trong <code>pq</code> nên còn có thể dùng để kiểm tra index có tồn tại trong queue hay không. Giá trị <code>-1</code> được dùng để biểu thị không tồn tại index <code>i</code> trong queue. Do vậy, constructor sẽ khởi tạo các mảng cần dùng và giá trị -1 cho mảng <code>qp</code>.</p>
 
-<span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>swap</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> j<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>int</span> t <span style=color:#f92672>=</span> pq<span style=color:#f92672>[</span>i<span style=color:#f92672>];</span>
-    pq<span style=color:#f92672>[</span>i<span style=color:#f92672>]</span> <span style=color:#f92672>=</span> pq<span style=color:#f92672>[</span>j<span style=color:#f92672>];</span>
-    pq<span style=color:#f92672>[</span>j<span style=color:#f92672>]</span> <span style=color:#f92672>=</span> t<span style=color:#f92672>;</span>
-    qp<span style=color:#f92672>[</span>pq<span style=color:#f92672>[</span>i<span style=color:#f92672>]]</span> <span style=color:#f92672>=</span> i<span style=color:#f92672>;</span>
-    qp<span style=color:#f92672>[</span>pq<span style=color:#f92672>[</span>j<span style=color:#f92672>]]</span> <span style=color:#f92672>=</span> j<span style=color:#f92672>;</span>
-<span style=color:#f92672>}</span>
+<pre><code class="language-java">public IndexPQ(int maxSize) {
+    if (maxSize &lt; 0)
+        throw new IllegalArgumentException();
+    this.maxSize = maxSize;
+    this.size = 0;
+    this.keys = (T[]) new Comparable[maxSize];
+    this.pq = new int[maxSize];
+    this.qp = new int[maxSize];
+    Arrays.fill(qp, -1);
+}
+</code></pre>
 
-<span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>sink</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>2<span style=color:#f92672>*</span>i <span style=color:#f92672>+</span> 1 <span style=color:#f92672>&lt;=</span> size <span style=color:#f92672>-</span> 1<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-        <span style=color:#66d9ef>int</span> largest <span style=color:#f92672>=</span> 2<span style=color:#f92672>*</span>i <span style=color:#f92672>+</span> 1<span style=color:#f92672>;</span>
-        <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>largest <span style=color:#f92672>&lt;</span> size <span style=color:#f92672>-</span> 1 <span style=color:#f92672>&amp;&amp;</span> keys<span style=color:#f92672>[</span>largest<span style=color:#f92672>].</span><span style=color:#a6e22e>compareTo</span><span style=color:#f92672>(</span>keys<span style=color:#f92672>[</span>largest <span style=color:#f92672>+</span> 1<span style=color:#f92672>])</span> <span style=color:#f92672>&lt;</span> 0<span style=color:#f92672>)</span>
-        largest<span style=color:#f92672>++;</span>
-        <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>keys<span style=color:#f92672>[</span>i<span style=color:#f92672>].</span><span style=color:#a6e22e>compareTo</span><span style=color:#f92672>(</span>keys<span style=color:#f92672>[</span>largest<span style=color:#f92672>])</span> <span style=color:#f92672>&gt;=</span> 0<span style=color:#f92672>)</span>
-        <span style=color:#66d9ef>break</span><span style=color:#f92672>;</span>
-        swap<span style=color:#f92672>(</span>i<span style=color:#f92672>,</span> largest<span style=color:#f92672>);</span>
-        i <span style=color:#f92672>=</span> largest<span style=color:#f92672>;</span>
-    <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><h2 id=22-insert-và-change>2.2. Insert và Change</h2>
+<p>Phương thức <code>contains()</code> sẽ kiểm tra trong mảng <code>qp</code> để biết được index đã có trong queue hay chưa.</p>
+
+<pre><code class="language-java">@Override
+public boolean contains(int i) {
+    return qp[i] != -1;
+}
+</code></pre>
+
+<p>Kiểm tra mảng rỗng và lấy kích thước cũng khá đơn giản.</p>
+
+<pre><code class="language-java">@Override
+public boolean isEmpty() {
+    return size == 0;
+}
+
+@Override
+public int size() {
+    return size;
+}
+</code></pre>
+
+<p>Để lấy phần tử ưu tiên nhất, trước hết phải lấy được index của phần tử này trong <code>pq</code> rồi sao đó tham chiếu vào <code>keys</code> để lấy ra phần tử này.</p>
+
+<pre><code class="language-java">public T peek() {
+    if (size == 0)
+        throw new NoSuchElementException(&quot;Priority queue underflow&quot;);
+    return keys[pq[0]];
+}
+
+public int peekIndex() {
+    if (size == 0)
+        throw new NoSuchElementException(&quot;Priority queue underflow&quot;);
+    return pq[0];
+}
+</code></pre>
+
+<p>Ngoài ra, để thao tác trên Heap chúng ta cần cài đặt các hàm utility để hiệu chỉnh Heap theo cơ chế Bottom-Up và Top-Down. Việc hiệu chỉnh Heap sẽ thực hiện trên cả <code>pq</code> và <code>qp</code>. Tham khảo bài viết <a href="https://chidokun.github.io/2021/07/heap-note/">Heap và một số ghi chú</a> để hiểu thêm về các hàm này. Định nghĩa <em>ưu tiên</em> ở đây là <em>lớn hơn thì ưu tiên hơn</em>.</p>
+
+<pre><code class="language-java">private void swim(int i) {
+    while (i &gt; 0 &amp;&amp; keys[(i - 1) / 2].compareTo(keys[i]) &lt; 0) {
+        swap((i - 1) / 2, i);
+        i = (i - 1) / 2;
+    }
+}
+
+private void swap(int i, int j) {
+    int t = pq[i];
+    pq[i] = pq[j];
+    pq[j] = t;
+    qp[pq[i]] = i;
+    qp[pq[j]] = j;
+}
+
+private void sink(int i) {
+    while (2*i + 1 &lt;= size - 1) {
+        int largest = 2*i + 1;
+        if (largest &lt; size - 1 &amp;&amp; keys[largest].compareTo(keys[largest + 1]) &lt; 0)
+        largest++;
+        if (keys[i].compareTo(keys[largest]) &gt;= 0)
+        break;
+        swap(i, largest);
+        i = largest;
+    }
+}
+</code></pre>
+
+<h2 id="2-2-insert-và-change">2.2. Insert và Change</h2>
+
 <p><em>Thao tác insert</em> sẽ thêm một phần tử với index <code>i</code> vào <code>keys</code>, đồng thời thêm <code>i</code> cuối mảng <code>pq</code>. Do đó có thể vi phạm tính chất của Heap nên cần được hiệu chỉnh theo chiến lược Bottom-Up.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#a6e22e>@Override</span>
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>insert</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i<span style=color:#f92672>,</span> T item<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>contains<span style=color:#f92672>(</span>i<span style=color:#f92672>))</span>
-        <span style=color:#66d9ef>throw</span> <span style=color:#66d9ef>new</span> IllegalArgumentException<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;index already in priority queue&#34;</span><span style=color:#f92672>);</span>
-    <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>++;</span>
-    <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>keys</span><span style=color:#f92672>[</span>i<span style=color:#f92672>]</span> <span style=color:#f92672>=</span> item<span style=color:#f92672>;</span>
-    <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>pq</span><span style=color:#f92672>[</span>size <span style=color:#f92672>-</span> 1<span style=color:#f92672>]</span> <span style=color:#f92672>=</span> i<span style=color:#f92672>;</span>
-    <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>qp</span><span style=color:#f92672>[</span>i<span style=color:#f92672>]</span> <span style=color:#f92672>=</span> size <span style=color:#f92672>-</span> 1<span style=color:#f92672>;</span>
-    swim<span style=color:#f92672>(</span>size <span style=color:#f92672>-</span> 1<span style=color:#f92672>);</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p><em>Thao tác change</em> không xóa đi hay thêm vào một phần tử mới nhưng nó thay thế một phần tử này bằng một phần tử khác có độ ưu tiên khác biệt. Do đó, nó có thể vi phạm tính chất của Heap nên cần được hiệu chỉnh lại. Phần tử được thay thế có thể nằm ở giữa của mảng Heap nên cần phải được hiệu chỉnh theo cả hai chiến lược Bottom-Up và Top-Down.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#a6e22e>@Override</span>
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>change</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i<span style=color:#f92672>,</span> T item<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>if</span> <span style=color:#f92672>(!</span>contains<span style=color:#f92672>(</span>i<span style=color:#f92672>))</span>
-        <span style=color:#66d9ef>throw</span> <span style=color:#66d9ef>new</span> NoSuchElementException<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;index is not in the priority queue&#34;</span><span style=color:#f92672>);</span>
-    keys<span style=color:#f92672>[</span>i<span style=color:#f92672>]</span> <span style=color:#f92672>=</span> item<span style=color:#f92672>;</span>
-    swim<span style=color:#f92672>(</span>qp<span style=color:#f92672>[</span>i<span style=color:#f92672>]);</span>
-    sink<span style=color:#f92672>(</span>qp<span style=color:#f92672>[</span>i<span style=color:#f92672>]);</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><h2 id=23-thao-tác-xóa>2.3. Thao tác xóa</h2>
-<p>Để thực hiện thao tác xóa một phần tử có index <code>i</code>, trước hết lấy vị trí của nó trong <code>pq</code> bằng cách sử dụng <code>qp</code>. Sau khi có vị trí trong <code>pq</code>, ta tráo phần tử đó với phần tử cuối của <code>pq</code> rồi loại bỏ phần tử này. Tại vị trí tráo sẽ vi phạm tính chất của Heap. Do index <code>i</code> có thể nằm giữa Heap nên cần hiệu chỉnh theo cả hai chiến lược Bottom-Up và Top-Down.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#a6e22e>@Override</span>
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>delete</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>if</span> <span style=color:#f92672>(!</span>contains<span style=color:#f92672>(</span>i<span style=color:#f92672>))</span>
-        <span style=color:#66d9ef>throw</span> <span style=color:#66d9ef>new</span> NoSuchElementException<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;index is not in the priority queue&#34;</span><span style=color:#f92672>);</span>
-    <span style=color:#66d9ef>int</span> index <span style=color:#f92672>=</span> qp<span style=color:#f92672>[</span>i<span style=color:#f92672>];</span>
-    swap<span style=color:#f92672>(</span>index<span style=color:#f92672>,</span> size<span style=color:#f92672>--);</span>
-    swim<span style=color:#f92672>(</span>index<span style=color:#f92672>);</span>
-    sink<span style=color:#f92672>(</span>index<span style=color:#f92672>);</span>
-    keys<span style=color:#f92672>[</span>i<span style=color:#f92672>]</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>;</span>
-    qp<span style=color:#f92672>[</span>i<span style=color:#f92672>]</span> <span style=color:#f92672>=</span> <span style=color:#f92672>-</span>1<span style=color:#f92672>;</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>Thao tác xóa phần tử ưu tiên nhất cũng tương tự thao tác xóa ở trên, nhưng vị trí tráo là đầu mảng nên ta chỉ cần hiệu chỉnh theo chiến lược Top-down.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#a6e22e>@Override</span>
-<span style=color:#66d9ef>int</span> <span style=color:#a6e22e>removePeek</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>size <span style=color:#f92672>==</span> 0<span style=color:#f92672>)</span>
-        <span style=color:#66d9ef>throw</span> <span style=color:#66d9ef>new</span> NoSuchElementException<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Priority queue underflow&#34;</span><span style=color:#f92672>);</span>
-    <span style=color:#66d9ef>int</span> peek <span style=color:#f92672>=</span> pq<span style=color:#f92672>[</span>0<span style=color:#f92672>];</span>
-    swap<span style=color:#f92672>(</span>0<span style=color:#f92672>,</span> size<span style=color:#f92672>);</span>
-    <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>--;</span>
-    sink<span style=color:#f92672>(</span>0<span style=color:#f92672>);</span>
-    qp<span style=color:#f92672>[</span>peek<span style=color:#f92672>]</span> <span style=color:#f92672>=</span> <span style=color:#f92672>-</span>1<span style=color:#f92672>;</span>               
-    keys<span style=color:#f92672>[</span>peek<span style=color:#f92672>]</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>;</span>         
-    pq<span style=color:#f92672>[</span>size <span style=color:#f92672>+</span> 1<span style=color:#f92672>]</span> <span style=color:#f92672>=</span> <span style=color:#f92672>-</span>1<span style=color:#f92672>;</span>     
-    <span style=color:#66d9ef>return</span> peek<span style=color:#f92672>;</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><h1 id=3-tổng-quát-hóa-phép-so-sánh>3. Tổng quát hóa phép so sánh</h1>
-<p>Tương tự như với Priority Queue trong bài viết <a href=https://chidokun.github.io/2021/07/priority-queue/>Priority Queue và những cách cài đặt</a>, chúng ta có thể tổng quát hóa phép so sánh nhằm xử lý cả hai trường hợp Max Priority Queue và Min Priority Queue.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>private</span> Comparator<span style=color:#f92672>&lt;</span>T<span style=color:#f92672>&gt;</span> comparator<span style=color:#f92672>;</span>
 
-<span style=color:#66d9ef>public</span> <span style=color:#a6e22e>IndexPQ</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> maxSize<span style=color:#f92672>,</span> Comparator<span style=color:#f92672>&lt;</span>T<span style=color:#f92672>&gt;</span> comparator<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-    <span style=color:#75715e>// ...omit
-</span><span style=color:#75715e></span>
-    <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>comparator</span> <span style=color:#f92672>=</span> comparator<span style=color:#f92672>;</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p><em>Lưu ý</em>: Khi dùng với <code>Comparator</code> chúng ta cần sửa lại hàm <code>swim()</code> và <code>sink()</code> bằng cách thay thế phép so sánh bằng hàm so sánh của <code>comparator</code>.</p>
-<h1 id=4-độ-phức-tạp>4. Độ phức tạp</h1>
+<pre><code class="language-java">@Override
+public void insert(int i, T item) {
+    if (contains(i))
+        throw new IllegalArgumentException(&quot;index already in priority queue&quot;);
+    this.size++;
+    this.keys[i] = item;
+    this.pq[size - 1] = i;
+    this.qp[i] = size - 1;
+    swim(size - 1);
+}
+</code></pre>
+
+<p><em>Thao tác change</em> không xóa đi hay thêm vào một phần tử mới nhưng nó thay thế một phần tử này bằng một phần tử khác có độ ưu tiên khác biệt. Do đó, nó có thể vi phạm tính chất của Heap nên cần được hiệu chỉnh lại. Phần tử được thay thế có thể nằm ở giữa của mảng Heap nên cần phải được hiệu chỉnh theo cả hai chiến lược Bottom-Up và Top-Down.</p>
+
+<pre><code class="language-java">@Override
+public void change(int i, T item) {
+    if (!contains(i))
+        throw new NoSuchElementException(&quot;index is not in the priority queue&quot;);
+    keys[i] = item;
+    swim(qp[i]);
+    sink(qp[i]);
+}
+</code></pre>
+
+<h2 id="2-3-thao-tác-xóa">2.3. Thao tác xóa</h2>
+
+<p>Để thực hiện thao tác xóa một phần tử có index <code>i</code>, trước hết lấy vị trí của nó trong <code>pq</code> bằng cách sử dụng <code>qp</code>. Sau khi có vị trí trong <code>pq</code>, ta tráo phần tử đó với phần tử cuối của <code>pq</code> rồi loại bỏ phần tử này. Tại vị trí tráo sẽ vi phạm tính chất của Heap. Do index <code>i</code> có thể nằm giữa Heap nên cần hiệu chỉnh theo cả hai chiến lược Bottom-Up và Top-Down.</p>
+
+<pre><code class="language-java">@Override
+public void delete(int i) {
+    if (!contains(i))
+        throw new NoSuchElementException(&quot;index is not in the priority queue&quot;);
+    int index = qp[i];
+    swap(index, size--);
+    swim(index);
+    sink(index);
+    keys[i] = null;
+    qp[i] = -1;
+}
+</code></pre>
+
+<p>Thao tác xóa phần tử ưu tiên nhất cũng tương tự thao tác xóa ở trên, nhưng vị trí tráo là đầu mảng nên ta chỉ cần hiệu chỉnh theo chiến lược Top-down.</p>
+
+<pre><code class="language-java">@Override
+int removePeek() {
+    if (size == 0)
+        throw new NoSuchElementException(&quot;Priority queue underflow&quot;);
+    int peek = pq[0];
+    swap(0, size);
+    this.size--;
+    sink(0);
+    qp[peek] = -1;               
+    keys[peek] = null;         
+    pq[size + 1] = -1;     
+    return peek;
+}
+</code></pre>
+
+<h1 id="3-tổng-quát-hóa-phép-so-sánh">3. Tổng quát hóa phép so sánh</h1>
+
+<p>Tương tự như với Priority Queue trong bài viết <a href="https://chidokun.github.io/2021/07/priority-queue/">Priority Queue và những cách cài đặt</a>, chúng ta có thể tổng quát hóa phép so sánh nhằm xử lý cả hai trường hợp Max Priority Queue và Min Priority Queue.</p>
+
+<pre><code class="language-java">private Comparator&lt;T&gt; comparator;
+
+public IndexPQ(int maxSize, Comparator&lt;T&gt; comparator) {
+    // ...omit
+
+    this.comparator = comparator;
+}
+</code></pre>
+
+<p><em>Lưu ý</em>: Khi dùng với <code>Comparator</code> chúng ta cần sửa lại hàm <code>swim()</code> và <code>sink()</code> bằng cách thay thế phép so sánh bằng hàm so sánh của <code>comparator</code>.</p>
+
+<h1 id="4-độ-phức-tạp">4. Độ phức tạp</h1>
+
 <p>Dưới đây là độ phức tạp của các thao tác trong Index Priority Queue.</p>
+
 <table>
 <thead>
 <tr>
@@ -302,221 +519,389 @@ Index Priority Queue: Cải tiến Priority Queue
 <th>Độ phức tạp</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>insert</td>
 <td>$O(\log{N})$</td>
 </tr>
+
 <tr>
 <td>change</td>
 <td>$O(\log{N})$</td>
 </tr>
+
 <tr>
 <td>contains</td>
 <td>$O(1)$</td>
 </tr>
+
 <tr>
 <td>delete</td>
 <td>$O(\log{N})$</td>
 </tr>
+
 <tr>
 <td>peek</td>
 <td>$O(1)$</td>
 </tr>
+
 <tr>
 <td>peekIndex</td>
 <td>$O(1)$</td>
 </tr>
+
 <tr>
 <td>removePeek</td>
 <td>$O(\log{N})$</td>
 </tr>
+
 <tr>
 <td>isEmpty</td>
 <td>$O(1)$</td>
 </tr>
+
 <tr>
 <td>size</td>
 <td>$O(1)$</td>
 </tr>
 </tbody>
 </table>
-<h1 id=references>References</h1>
+
+<h1 id="references">References</h1>
+
 <ul>
-<li><a href=https://algs4.cs.princeton.edu/home/>Algorithms, 4th Edition by Robert Sedgewick and Kevin Wayne</a></li>
+<li><a href="https://algs4.cs.princeton.edu/home/">Algorithms, 4th Edition by Robert Sedgewick and Kevin Wayne</a></li>
 </ul>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/data-structures/">data structures</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/08/clean-code-meaningful-name/" data-tooltip="Clean Code: Bạn đã đặt tên biến, hàm đủ &#34;clean&#34;?">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/07/prim-algorithm-implement/" data-tooltip="Thuật toán Prim: Cài đặt thuật toán">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/07/index-priority-queue/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/07/index-priority-queue/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2021/07/index-priority-queue/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
 </div>
-</div>
-<div id=post-footer class="post-footer main-content-wrap">
-<div class=post-footer-tags>
-<span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br>
-<a class="tag tag--primary tag--small" href=https://chidokun.github.io/tags/data-structures/>data structures</a>
-</div>
-<div class=post-actions-wrap>
-<nav>
-<ul class="post-actions post-action-nav">
-<li class=post-action>
-<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2021/08/clean-code-meaningful-name/ data-tooltip='Clean Code: Bạn đã đặt tên biến, hàm đủ "clean"?'>
-<i class="fa fa-angle-left"></i>
-<span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
-</a>
-</li>
-<li class=post-action>
-<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2021/07/prim-algorithm-implement/ data-tooltip="Thuật toán Prim: Cài đặt thuật toán">
-<span class="hide-xs hide-sm text-small icon-mr">Trước</span>
-<i class="fa fa-angle-right"></i>
-</a>
-</li>
-</ul>
-</nav>
-<ul class="post-actions post-action-share">
-<li class="post-action hide-lg hide-md hide-sm">
-<a class="post-action-btn btn btn--default btn-open-shareoptions" href=#btn-open-shareoptions>
-<i class="fa fa-share-alt"></i>
-</a>
-</li>
-<li class="post-action hide-xs">
-<a class="post-action-btn btn btn--default" target=new href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/07/index-priority-queue/">
-<i class="fa fa-facebook-official"></i>
-</a>
-</li>
-<li class="post-action hide-xs">
-<a class="post-action-btn btn btn--default" target=new href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/07/index-priority-queue/">
-<i class="fa fa-twitter"></i>
-</a>
-</li>
-<li class="post-action hide-xs">
-<a class="post-action-btn btn btn--default" target=new href="https://plus.google.com/share?url=https://chidokun.github.io/2021/07/index-priority-queue/">
-<i class="fa fa-google-plus"></i>
-</a>
-</li>
-<li class=post-action>
-<a class="post-action-btn btn btn--default" href=#disqus_thread>
-<i class="fa fa-comment-o"></i>
-</a>
-</li>
-<li class=post-action>
-<a class="post-action-btn btn btn--default" href=#>
-<i class="fa fa-list"></i>
-</a>
-</li>
-</ul>
-</div>
-<div id=fb-root></div>
-<script>(function(b,c,d){var a,e=b.getElementsByTagName(c)[0];if(b.getElementById(d))return;a=b.createElement(c),a.id=d,a.src='https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.1&appId=445006706177461&autoLogAppEvents=1',e.parentNode.insertBefore(a,e)})(document,'script','facebook-jssdk')</script>
-<div id=fb-cmt-thread class=fb-comments data-href=https://chidokun.github.io/2021/07/index-priority-queue/ data-width=100%></div>
-</div>
-</article>
-<footer id=footer class=main-content-wrap>
-<span class=copyrights>
-&copy; 2021 <a href=https://github.com/chidokun>Nguyễn Tuấn</a>. All Rights Reserved
-</span>
+
+            
+              
+                <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.1&appId=445006706177461&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2021/07/index-priority-queue/" data-width="100%"></div>
+
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 <a href="https://github.com/chidokun">Nguyễn Tuấn</a>. All Rights Reserved
+  </span>
 </footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/08/clean-code-meaningful-name/" data-tooltip="Clean Code: Bạn đã đặt tên biến, hàm đủ &#34;clean&#34;?">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/07/prim-algorithm-implement/" data-tooltip="Thuật toán Prim: Cài đặt thuật toán">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/07/index-priority-queue/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/07/index-priority-queue/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2021/07/index-priority-queue/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
 </div>
-<div id=bottom-bar class=post-bottom-bar data-behavior=5>
-<div class=post-actions-wrap>
-<nav>
-<ul class="post-actions post-action-nav">
-<li class=post-action>
-<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2021/08/clean-code-meaningful-name/ data-tooltip='Clean Code: Bạn đã đặt tên biến, hàm đủ "clean"?'>
-<i class="fa fa-angle-left"></i>
-<span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
-</a>
-</li>
-<li class=post-action>
-<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2021/07/prim-algorithm-implement/ data-tooltip="Thuật toán Prim: Cài đặt thuật toán">
-<span class="hide-xs hide-sm text-small icon-mr">Trước</span>
-<i class="fa fa-angle-right"></i>
-</a>
-</li>
-</ul>
-</nav>
-<ul class="post-actions post-action-share">
-<li class="post-action hide-lg hide-md hide-sm">
-<a class="post-action-btn btn btn--default btn-open-shareoptions" href=#btn-open-shareoptions>
-<i class="fa fa-share-alt"></i>
-</a>
-</li>
-<li class="post-action hide-xs">
-<a class="post-action-btn btn btn--default" target=new href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/07/index-priority-queue/">
-<i class="fa fa-facebook-official"></i>
-</a>
-</li>
-<li class="post-action hide-xs">
-<a class="post-action-btn btn btn--default" target=new href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/07/index-priority-queue/">
-<i class="fa fa-twitter"></i>
-</a>
-</li>
-<li class="post-action hide-xs">
-<a class="post-action-btn btn btn--default" target=new href="https://plus.google.com/share?url=https://chidokun.github.io/2021/07/index-priority-queue/">
-<i class="fa fa-google-plus"></i>
-</a>
-</li>
-<li class=post-action>
-<a class="post-action-btn btn btn--default" href=#disqus_thread>
-<i class="fa fa-comment-o"></i>
-</a>
-</li>
-<li class=post-action>
-<a class="post-action-btn btn btn--default" href=#>
-<i class="fa fa-list"></i>
-</a>
-</li>
-</ul>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Findex-priority-queue%2F">
+          <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Findex-priority-queue%2F">
+          <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Findex-priority-queue%2F">
+          <i class="fa fa-google-plus"></i><span>Chia sẻ với Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
 </div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện" />
+    
+    <h4 id="about-card-name">Nguyễn Tuấn</h4>
+    
+      <div id="about-card-bio">A guy with passionate at the code</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Software Engineer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Saigon, Vietnam
+      </div>
+    
+  </div>
 </div>
-<div id=share-options-bar class=share-options-bar data-behavior=5>
-<i id=btn-close-shareoptions class="fa fa-close"></i>
-<ul class=share-options>
-<li class=share-option>
-<a class=share-option-btn target=new href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Findex-priority-queue%2F">
-<i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
-</a>
-</li>
-<li class=share-option>
-<a class=share-option-btn target=new href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Findex-priority-queue%2F">
-<i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
-</a>
-</li>
-<li class=share-option>
-<a class=share-option-btn target=new href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Findex-priority-queue%2F">
-<i class="fa fa-google-plus"></i><span>Chia sẻ với Google+</span>
-</a>
-</li>
-</ul>
-</div>
-<div id=share-options-mask class=share-options-mask></div>
-</div>
-<div id=about>
-<div id=about-card>
-<div id=about-btn-close>
-<i class="fa fa-remove"></i>
-</div>
-<img id=about-card-picture src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện">
-<h4 id=about-card-name>Nguyễn Tuấn</h4>
-<div id=about-card-bio>A guy with passionate at the code</div>
-<div id=about-card-job>
-<i class="fa fa-briefcase"></i>
-<br>
-Software Engineer
-</div>
-<div id=about-card-location>
-<i class="fa fa-map-marker"></i>
-<br>
-Saigon, Vietnam
-</div>
-</div>
-</div>
-<div id=cover style=background-image:url(https://chidokun.github.io/images/background.jpg)></div>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin=anonymous></script>
-<script src=https://chidokun.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js></script>
-<script crossorigin=anonymous integrity=sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js></script>
-<script crossorigin=anonymous integrity=sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js></script>
-<script src=https://chidokun.github.io/js/main.js></script>
-<script lang=javascript>window.onload=updateMinWidth,window.onresize=updateMinWidth,document.getElementById("sidebar").addEventListener("transitionend",updateMinWidth);function updateMinWidth(){var b=document.getElementById("sidebar"),a=document.getElementById("main"),c,d,e;a.style.minWidth="",c=getComputedStyle(a).getPropertyValue("min-width"),d=getComputedStyle(b).getPropertyValue("width"),e=getComputedStyle(b).getPropertyValue("left"),a.style.minWidth=`calc(${c} - ${d} - ${e})`}</script>
-<script>$(document).ready(function(){hljs.configure({classPrefix:'',useBR:!1}),$('pre.code-highlight > code, pre > code').each(function(b,a){$(this).hasClass('codeblock')||$(this).addClass('codeblock'),hljs.highlightBlock(a)})})</script>
-<script>var disqus_config=function(){this.page.url='https://chidokun.github.io/2021/07/index-priority-queue/',this.page.identifier='/2021/07/index-priority-queue/'};(function(){var a,b,c;if(window.location.hostname=="localhost")return;a=document,b=a.createElement('script'),c='nguyentuanit96',b.src='//'+c+'.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script>
-</body>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://chidokun.github.io/images/background.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://chidokun.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+  
+    <script crossorigin="anonymous" integrity="sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq" src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js"></script>
+  
+
+  
+    <script crossorigin="anonymous" integrity="sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc" src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js"></script>
+  
+
+  
+    <script src="https://chidokun.github.io/js/main.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/chidokun.github.io\/2021\/07\/index-priority-queue\/';
+          
+            this.page.identifier = '\/2021\/07\/index-priority-queue\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'nguyentuanit96';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
 </html>
+

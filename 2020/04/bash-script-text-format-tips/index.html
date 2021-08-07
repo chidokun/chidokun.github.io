@@ -1,158 +1,384 @@
-<!doctype html><html lang=vi>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=generator content="Hugo 0.87.0 with theme Tranquilpeak 0.4.8-BETA">
-<meta name=author content="Nguyễn Tuấn">
-<meta name=keywords content="bash script,shell script,development,programming,chidokun,lập trình">
-<meta name=description content="Với dân developer thì viết script để tự động hóa một số công việc cũng là một việc thường gặp. Mọi người thường nghĩ chỉ có thể hiển thị trên nền trắng đen đơn thuần. Thực ra terminal trên Linux và macOS cũng hỗ trợ hiển thị màu mè hoa lá nữa. Cùng xem cách định dạng chữ và màu để hiển thị trên terminal như thế nào nhé.">
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="author" content="Nguyễn Tuấn">
+<meta name="keywords" content="bash script, shell script, development, programming, chidokun, lập trình">
+<meta name="description" content="Với dân developer thì viết script để tự động hóa một số công việc cũng là một việc thường gặp. Mọi người thường nghĩ chỉ có thể hiển thị trên nền trắng đen đơn thuần. Thực ra terminal trên Linux và macOS cũng hỗ trợ hiển thị màu mè hoa lá nữa. Cùng xem cách định dạng chữ và màu để hiển thị trên terminal như thế nào nhé.">
+
+
 <meta property="og:description" content="Với dân developer thì viết script để tự động hóa một số công việc cũng là một việc thường gặp. Mọi người thường nghĩ chỉ có thể hiển thị trên nền trắng đen đơn thuần. Thực ra terminal trên Linux và macOS cũng hỗ trợ hiển thị màu mè hoa lá nữa. Cùng xem cách định dạng chữ và màu để hiển thị trên terminal như thế nào nhé.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Định dạng màu cho text khi viết Bash script">
-<meta name=twitter:title content="Định dạng màu cho text khi viết Bash script">
+<meta name="twitter:title" content="Định dạng màu cho text khi viết Bash script">
 <meta property="og:url" content="https://chidokun.github.io/2020/04/bash-script-text-format-tips/">
 <meta property="twitter:url" content="https://chidokun.github.io/2020/04/bash-script-text-format-tips/">
-<meta property="og:site_name" content="Nguyễn Tuấn's Blog">
+<meta property="og:site_name" content="Nguyễn Tuấn&#39;s Blog">
 <meta property="og:description" content="Với dân developer thì viết script để tự động hóa một số công việc cũng là một việc thường gặp. Mọi người thường nghĩ chỉ có thể hiển thị trên nền trắng đen đơn thuần. Thực ra terminal trên Linux và macOS cũng hỗ trợ hiển thị màu mè hoa lá nữa. Cùng xem cách định dạng chữ và màu để hiển thị trên terminal như thế nào nhé.">
-<meta name=twitter:description content="Với dân developer thì viết script để tự động hóa một số công việc cũng là một việc thường gặp. Mọi người thường nghĩ chỉ có thể hiển thị trên nền trắng đen đơn thuần. Thực ra terminal trên Linux và macOS cũng hỗ trợ hiển thị màu mè hoa lá nữa. Cùng xem cách định dạng chữ và màu để hiển thị trên terminal như thế nào nhé.">
+<meta name="twitter:description" content="Với dân developer thì viết script để tự động hóa một số công việc cũng là một việc thường gặp. Mọi người thường nghĩ chỉ có thể hiển thị trên nền trắng đen đơn thuần. Thực ra terminal trên Linux và macOS cũng hỗ trợ hiển thị màu mè hoa lá nữa. Cùng xem cách định dạng chữ và màu để hiển thị trên terminal như thế nào nhé.">
 <meta property="og:locale" content="vi">
-<meta property="article:published_time" content="2020-04-15T22:30:00">
-<meta property="article:modified_time" content="2020-04-15T22:30:00">
-<meta property="article:section" content="tips">
-<meta property="article:tag" content="tips">
-<meta name=twitter:card content="summary">
-<meta property="fb:app_id" content="445006706177461">
-<meta property="og:image" content="https://chidokun.github.io/thumbnails/terminal.png">
-<meta property="twitter:image" content="https://chidokun.github.io/thumbnails/terminal.png">
-<meta property="og:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
-<meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
-<title>Định dạng màu cho text khi viết Bash script</title>
-<meta name=google-site-verification content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI">
-<link rel=icon href=https://chidokun.github.io/favicon.png>
-<link rel=canonical href=https://chidokun.github.io/2020/04/bash-script-text-format-tips/>
-<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin=anonymous>
-<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin=anonymous>
-<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin=anonymous>
-<link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700|Roboto+Mono&display=swap&subset=vietnamese" rel=stylesheet>
-<link rel=stylesheet href=https://chidokun.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css>
-<link rel=stylesheet crossorigin=anonymous href=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css integrity=sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei>
-<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-64965138-2','auto'),ga('send','pageview'))</script>
-</head>
-<body>
-<div id=blog>
-<header id=header data-behavior=5>
-<i id=btn-open-sidebar class="fa fa-lg fa-bars"></i>
-<div class=header-title>
-<a class=header-title-link href=https://chidokun.github.io/>Nguyễn Tuấn's Blog</a>
-</div>
-<a class="header-right-icon st-search-show-outputs" href=https://chidokun.github.io/#search>
-<i class="fa fa-lg fa-search"></i>
-</a>
+
+  
+    <meta property="article:published_time" content="2020-04-15T22:30:00">
+  
+  
+    <meta property="article:modified_time" content="2020-04-15T22:30:00">
+  
+  
+  
+    
+      <meta property="article:section" content="tips">
+    
+  
+  
+    
+      <meta property="article:tag" content="tips">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+  <meta property="fb:app_id" content="445006706177461">
+
+
+
+
+  <meta property="og:image" content="https://chidokun.github.io/thumbnails/terminal.png">
+  <meta property="twitter:image" content="https://chidokun.github.io/thumbnails/terminal.png">
+
+
+
+
+
+  <meta property="og:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
+  <meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
+
+
+    <title>Định dạng màu cho text khi viết Bash script</title>
+    <meta name="google-site-verification" content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI" />
+    <link rel="icon" href="https://chidokun.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://chidokun.github.io/2020/04/bash-script-text-format-tips/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700|Roboto+Mono&display=swap&subset=vietnamese" rel="stylesheet">
+    
+    
+    <link rel="stylesheet" href="https://chidokun.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" integrity="sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei">
+      
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-64965138-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://chidokun.github.io/">Nguyễn Tuấn&#39;s Blog</a>
+  </div>
+  
+    
+      <a class="header-right-icon st-search-show-outputs"
+         href="https://chidokun.github.io/#search">
+    
+    
+      <i class="fa fa-lg fa-search"></i>
+    
+    
+    </a>
+  
 </header>
-<nav id=sidebar data-behavior=5>
-<div class=sidebar-container>
-<div class=sidebar-profile>
-<a href=https://chidokun.github.io/#about>
-<img class=sidebar-profile-picture src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện">
-</a>
-<h4 class=sidebar-profile-name>Nguyễn Tuấn</h4>
-<h5 class=sidebar-profile-bio>A guy with passionate at the code</h5>
-</div>
-<ul class=sidebar-buttons>
-<li class=sidebar-button>
-<a class=sidebar-button-link href=https://chidokun.github.io/>
-<i class="sidebar-button-icon fa fa-lg fa-home"></i>
-<span class=sidebar-button-desc>Trang chủ</span>
-</a>
-</li>
-<li class=sidebar-button>
-<a class=sidebar-button-link href=https://chidokun.github.io/categories>
-<i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
-<span class=sidebar-button-desc>Danh mục</span>
-</a>
-</li>
-<li class=sidebar-button>
-<a class=sidebar-button-link href=https://chidokun.github.io/tags>
-<i class="sidebar-button-icon fa fa-lg fa-tags"></i>
-<span class=sidebar-button-desc>Thẻ thông tin</span>
-</a>
-</li>
-<li class=sidebar-button>
-<a class=sidebar-button-link href=https://chidokun.github.io/archives>
-<i class="sidebar-button-icon fa fa-lg fa-archive"></i>
-<span class=sidebar-button-desc>Lưu trữ</span>
-</a>
-</li>
-<li class=sidebar-button>
-<a class=sidebar-button-link href=https://chidokun.github.io/#about>
-<i class="sidebar-button-icon fa fa-lg fa-question"></i>
-<span class=sidebar-button-desc>Thông tin</span>
-</a>
-</li>
-</ul>
-<ul class=sidebar-buttons>
-<li class=sidebar-button>
-<a class=sidebar-button-link href=https://github.com/chidokun target=_blank rel=noopener>
-<i class="sidebar-button-icon fa fa-lg fa-github"></i>
-<span class=sidebar-button-desc>GitHub</span>
-</a>
-</li>
-</ul>
-<ul class=sidebar-buttons>
-<li class=sidebar-button>
-<a class=sidebar-button-link href=https://chidokun.github.io/index.xml>
-<i class="sidebar-button-icon fa fa-lg fa-rss"></i>
-<span class=sidebar-button-desc>RSS</span>
-</a>
-</li>
-</ul>
-</div>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://chidokun.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện" />
+        </a>
+        <h4 class="sidebar-profile-name">Nguyễn Tuấn</h4>
+        
+          <h5 class="sidebar-profile-bio">A guy with passionate at the code</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Trang chủ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Danh mục</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Thẻ thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Lưu trữ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">Thông tin</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/chidokun" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
 </nav>
-<div id=main data-behavior=5 class=hasCoverMetaIn>
-<article class=post itemscope itemtype=http://schema.org/BlogPosting>
-<div class="post-header main-content-wrap text-left">
-<h1 class=post-title itemprop=headline>
-Định dạng màu cho text khi viết Bash script
-</h1>
-<div class="postShorten-meta post-meta">
-<time itemprop=datePublished datetime=2020-04-15T22:30:00+07:00>
-15 tháng 4 2020
-</time>
-<span>mục</span>
-<a class=category-link href=https://chidokun.github.io/categories/tips>tips</a>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Định dạng màu cho text khi viết Bash script
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-04-15T22:30:00&#43;07:00">
+        
+  
+  
+  
+  
+    15 tháng 4 2020
+  
+
+      </time>
+    
+    
+  
+  
+    <span>mục</span>
+    
+      <a class="category-link" href="https://chidokun.github.io/categories/tips">tips</a>
+    
+  
+
+  </div>
+
+  <div>
+  <div class="fb-like" 
+    data-href="https://chidokun.github.io/2020/04/bash-script-text-format-tips/" 
+    data-width="" 
+    data-layout="button_count" 
+    data-action="like" 
+    data-size="large" 
+    data-share="false"></div>
 </div>
-<div>
-<div class=fb-like data-href=https://chidokun.github.io/2020/04/bash-script-text-format-tips/ data-width data-layout=button_count data-action=like data-size=large data-share=false></div>
 </div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>Với dân developer thì viết script để tự động hóa một số công việc cũng là một việc thường gặp. Mọi người thường nghĩ chỉ có thể hiển thị trên nền trắng đen đơn thuần. Thực ra terminal trên Linux và macOS cũng hỗ trợ hiển thị màu mè hoa lá nữa. Cùng xem cách định dạng chữ và màu để hiển thị trên terminal như thế nào nhé.</p>
+
+<h1 id="table-of-contents">Mục lục</h1><nav id="TableOfContents">
+<ul>
+<li><a href="#1-escape-sequence">1. Escape sequence</a>
+<ul>
+<li><a href="#1-1-định-dạng">1.1. Định dạng</a></li>
+<li><a href="#1-2-rest-định-dạng">1.2. Rest định dạng</a></li>
+<li><a href="#1-3-kết-hợp-format-code">1.3. Kết hợp format code</a></li>
+<li><a href="#1-4-tính-tương-thích">1.4. Tính tương thích</a></li>
+</ul></li>
+<li><a href="#2-định-dạng-màu-sắc">2. Định dạng màu sắc</a>
+<ul>
+<li><a href="#2-1-màu-8-và-16">2.1. Màu 8 và 16</a></li>
+<li><a href="#2-2-màu-88-và-256">2.2. Màu 88 và 256</a></li>
+</ul></li>
+<li><a href="#3-kết-luận">3. Kết luận</a>
+<ul>
+<li><a href="#tham-khảo">Tham khảo</a></li>
+</ul></li>
+</ul>
+</nav>
+
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/bash-script-text-format/bash-script-1.png" title="Terminal cũng có thể hiển thị màu mè thế này đây" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/bash-script-text-format/bash-script-1.png" style="width: 90%;" alt="Terminal cũng có thể hiển thị màu mè thế này đây">
+  
+    </a>
+  
+   
+    <span class="caption">Terminal cũng có thể hiển thị màu mè thế này đây</span>
+  
 </div>
-<div class="post-content markdown" itemprop=articleBody>
-<div class=main-content-wrap>
-<p>Với dân developer thì viết script để tự động hóa một số công việc cũng là một việc thường gặp. Mọi người thường nghĩ chỉ có thể hiển thị trên nền trắng đen đơn thuần. Thực ra terminal trên Linux và macOS cũng hỗ trợ hiển thị màu mè hoa lá nữa. Cùng xem cách định dạng chữ và màu để hiển thị trên terminal như thế nào nhé.</p>
-<div class="figure center">
-<a class=fancybox href=https://chidokun.github.io/images/post/bash-script-text-format/bash-script-1.png title="Terminal cũng có thể hiển thị màu mè thế này đây" data-fancybox-group>
-<img class=fig-img src=https://chidokun.github.io/images/post/bash-script-text-format/bash-script-1.png style=width:90% alt="Terminal cũng có thể hiển thị màu mè thế này đây">
-</a>
-<span class=caption>Terminal cũng có thể hiển thị màu mè thế này đây</span>
-</div>
-<h1 id=1-escape-sequence>1. Escape sequence</h1>
-<p>Các trình terminal hỗ trợ màu sắc và định dạng thông qua <strong>Escape sequence</strong>. <strong>Escapse sequence</strong> bắt đầu bằng ký tự Esc và theo sau là mã định dạng: <code>&lt;Esc>[&lt;Format code>m</code>.</p>
+
+
+<h1 id="1-escape-sequence">1. Escape sequence</h1>
+
+<p>Các trình terminal hỗ trợ màu sắc và định dạng thông qua <strong>Escape sequence</strong>. <strong>Escapse sequence</strong> bắt đầu bằng ký tự Esc và theo sau là mã định dạng: <code>&lt;Esc&gt;[&lt;Format code&gt;m</code>.</p>
+
 <p>Trong bash script, ký tự esc có thể viết là <code>\e</code>, <code>\033</code> hoặc <code>\x1B</code>. Vì vậy có thể dùng lệnh sau để hiển thị text có định dạng:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>echo <span style=color:#e6db74>&#34;&lt;Esc&gt;[&lt;Format code&gt;mMy text&lt;Esc&gt;[0m&#34;</span>
-</code></pre></div><p>Sau đây là một số ví dụ:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>echo -e <span style=color:#e6db74>&#34;Hello \033[4;91meverybody\033[0m&#34;</span> <span style=color:#75715e># gạch dưới, màu đỏ</span>
-echo -e <span style=color:#e6db74>&#34;Hello \e[1;34meverybody\e[0m&#34;</span> <span style=color:#75715e># in đậm, màu xanh dương</span>
-echo -e <span style=color:#e6db74>&#34;Hello \x1B[42;33meverybody\x1B[0m&#34;</span> <span style=color:#75715e># chữ vàng, nền xanh lá</span>
-</code></pre></div><p>Kết quả là:</p>
-<div class="figure center">
-<a class=fancybox href=https://chidokun.github.io/images/post/bash-script-text-format/bash-script-2.png data-fancybox-group>
-<img class=fig-img src=https://chidokun.github.io/images/post/bash-script-text-format/bash-script-2.png style=width:90%>
-</a>
+
+<pre><code class="language-sh">echo &quot;&lt;Esc&gt;[&lt;Format code&gt;mMy text&lt;Esc&gt;[0m&quot;
+</code></pre>
+
+<p>Sau đây là một số ví dụ:</p>
+
+<pre><code class="language-sh">echo -e &quot;Hello \033[4;91meverybody\033[0m&quot; # gạch dưới, màu đỏ
+echo -e &quot;Hello \e[1;34meverybody\e[0m&quot; # in đậm, màu xanh dương
+echo -e &quot;Hello \x1B[42;33meverybody\x1B[0m&quot; # chữ vàng, nền xanh lá
+</code></pre>
+
+<p>Kết quả là:</p>
+
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/bash-script-text-format/bash-script-2.png" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/bash-script-text-format/bash-script-2.png" style="width: 90%;">
+  
+    </a>
+  
+  
 </div>
+
+
 <p>Lệnh <code>echo -e</code> cho parse Escapse sequence. Format code <code>0</code> sẽ đặt lại tất cả các format trước đó, nên nó thường được để ở cuối để tránh ảnh hưởng đến các lệnh hiển thị phía sau. Escapse sequence cũng có thể sử dụng ở các ngôn ngữ lập trình khác ngoài Bash.</p>
+
 <p>Kế tiếp mình sẽ giới thiệu một số format code hữu ích.</p>
-<h2 id=11-định-dạng>1.1. Định dạng</h2>
+
+<h2 id="1-1-định-dạng">1.1. Định dạng</h2>
+
 <p>Bảng sau đây là một số format code để định dạng text, chưa bao gồm màu sắc:</p>
+
 <table>
 <thead>
 <tr>
@@ -160,43 +386,75 @@ echo -e <span style=color:#e6db74>&#34;Hello \x1B[42;33meverybody\x1B[0m&#34;</s
 <th>Mô tả</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>1</td>
 <td>Bold/Bright</td>
 </tr>
+
 <tr>
 <td>2</td>
 <td>Dim</td>
 </tr>
+
 <tr>
 <td>4</td>
 <td>Underlined</td>
 </tr>
+
 <tr>
 <td>5</td>
 <td>Blink (nhấp nháy)</td>
 </tr>
+
 <tr>
 <td>7</td>
 <td>Invert (đảo màu text và màu nền)</td>
 </tr>
+
 <tr>
 <td>8</td>
 <td>Hidden (thường dùng cho password)</td>
 </tr>
 </tbody>
 </table>
+
 <p>Cùng xem preview nhé:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=color:#66d9ef>for</span> i in <span style=color:#f92672>{</span>1,2,4,5,7,8<span style=color:#f92672>}</span> ; <span style=color:#66d9ef>do</span> echo -e <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>i<span style=color:#e6db74>}</span><span style=color:#e6db74>. Hello \e[</span><span style=color:#e6db74>${</span>i<span style=color:#e6db74>}</span><span style=color:#e6db74>meverybody\e[0m&#34;</span> ; <span style=color:#66d9ef>done</span> ; echo
-</code></pre></div>
-<div class="figure center">
-<a class=fancybox href=https://chidokun.github.io/images/post/bash-script-text-format/bash-script-3.gif data-fancybox-group>
-<img class=fig-img src=https://chidokun.github.io/images/post/bash-script-text-format/bash-script-3.gif style=width:90%>
-</a>
+
+<pre><code class="language-sh">for i in {1,2,4,5,7,8} ; do echo -e &quot;${i}. Hello \e[${i}meverybody\e[0m&quot; ; done ; echo
+</code></pre>
+
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/bash-script-text-format/bash-script-3.gif" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/bash-script-text-format/bash-script-3.gif" style="width: 90%;">
+  
+    </a>
+  
+  
 </div>
-<h2 id=12-rest-định-dạng>1.2. Rest định dạng</h2>
+
+
+<h2 id="1-2-rest-định-dạng">1.2. Rest định dạng</h2>
+
 <p>Format code để reset định dạng thường dùng để hủy bỏ một định dạng đã set trước đó:</p>
+
 <table>
 <thead>
 <tr>
@@ -204,59 +462,120 @@ echo -e <span style=color:#e6db74>&#34;Hello \x1B[42;33meverybody\x1B[0m&#34;</s
 <th>Mô tả</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>0</td>
 <td>Reset tất cả format</td>
 </tr>
+
 <tr>
 <td>21</td>
 <td>Reset Bold/Bright</td>
 </tr>
+
 <tr>
 <td>22</td>
 <td>Reset Dim</td>
 </tr>
+
 <tr>
 <td>24</td>
 <td>Reset Underlined</td>
 </tr>
+
 <tr>
 <td>25</td>
 <td>Reset Blink</td>
 </tr>
+
 <tr>
 <td>27</td>
 <td>Reset Invert</td>
 </tr>
+
 <tr>
 <td>28</td>
 <td>Reset Hidden</td>
 </tr>
 </tbody>
 </table>
-<h2 id=13-kết-hợp-format-code>1.3. Kết hợp format code</h2>
-<p>Nếu bạn muốn đoạn text vừa <strong>in đậm</strong> vừa gạch dưới thì có thể kết hợp các format code lại theo định dạng: <code>&lt;Esc>[&lt;Format code 1>;&lt;Format code 2>;...;&lt;Format code n>m</code></p>
+
+<h2 id="1-3-kết-hợp-format-code">1.3. Kết hợp format code</h2>
+
+<p>Nếu bạn muốn đoạn text vừa <strong>in đậm</strong> vừa <u>gạch dưới</u> thì có thể kết hợp các format code lại theo định dạng: <code>&lt;Esc&gt;[&lt;Format code 1&gt;;&lt;Format code 2&gt;;...;&lt;Format code n&gt;m</code></p>
+
 <p>Ví dụ:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>echo -e <span style=color:#e6db74>&#34;Hello \e[1;4meverybody\e[0m&#34;</span> <span style=color:#75715e># in đậm, gạch chân</span>
-</code></pre></div>
-<div class="figure center">
-<a class=fancybox href=https://chidokun.github.io/images/post/bash-script-text-format/bash-script-4.png data-fancybox-group>
-<img class=fig-img src=https://chidokun.github.io/images/post/bash-script-text-format/bash-script-4.png style=width:90%>
-</a>
+
+<pre><code class="language-sh">echo -e &quot;Hello \e[1;4meverybody\e[0m&quot; # in đậm, gạch chân
+</code></pre>
+
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/bash-script-text-format/bash-script-4.png" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/bash-script-text-format/bash-script-4.png" style="width: 90%;">
+  
+    </a>
+  
+  
 </div>
-<h2 id=14-tính-tương-thích>1.4. Tính tương thích</h2>
-<p>Hầu hết các terminal và terminal emulator hỗ trợ một số hay tất cả các định dạng và màu sắc. Có thể tham khảo tính tương thích của các terminal ở <a href=https://misc.flogisoft.com/bash/tip_colors_and_formatting#terminals_compatibility>đây</a>.</p>
-<h1 id=2-định-dạng-màu-sắc>2. Định dạng màu sắc</h1>
-<h2 id=21-màu-8-và-16>2.1. Màu 8 và 16</h2>
+
+
+<h2 id="1-4-tính-tương-thích">1.4. Tính tương thích</h2>
+
+<p>Hầu hết các terminal và terminal emulator hỗ trợ một số hay tất cả các định dạng và màu sắc. Có thể tham khảo tính tương thích của các terminal ở <a href="https://misc.flogisoft.com/bash/tip_colors_and_formatting#terminals_compatibility">đây</a>.</p>
+
+<h1 id="2-định-dạng-màu-sắc">2. Định dạng màu sắc</h1>
+
+<h2 id="2-1-màu-8-và-16">2.1. Màu 8 và 16</h2>
+
 <p>Hầu hết các terminal hỗ trợ màu 8 và 16. Lưu ý là các màu này có thể phụ thuộc vào cấu hình profile của terminal.</p>
-<div class="figure center">
-<a class=fancybox href=https://chidokun.github.io/images/post/bash-script-text-format/bash-script-5.png title="Một số terminal cho phép thiết lập màu ANSI Color nên các màu 8 và 16 có thể phụ thuộc vào các cài đặt này" data-fancybox-group>
-<img class=fig-img src=https://chidokun.github.io/images/post/bash-script-text-format/bash-script-5.png style=width:95% alt="Một số terminal cho phép thiết lập màu ANSI Color nên các màu 8 và 16 có thể phụ thuộc vào các cài đặt này">
-</a>
-<span class=caption>Một số terminal cho phép thiết lập màu ANSI Color nên các màu 8 và 16 có thể phụ thuộc vào các cài đặt này</span>
+
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/bash-script-text-format/bash-script-5.png" title="Một số terminal cho phép thiết lập màu ANSI Color nên các màu 8 và 16 có thể phụ thuộc vào các cài đặt này" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/bash-script-text-format/bash-script-5.png" style="width: 95%;" alt="Một số terminal cho phép thiết lập màu ANSI Color nên các màu 8 và 16 có thể phụ thuộc vào các cài đặt này">
+  
+    </a>
+  
+   
+    <span class="caption">Một số terminal cho phép thiết lập màu ANSI Color nên các màu 8 và 16 có thể phụ thuộc vào các cài đặt này</span>
+  
 </div>
+
+
 <p>Dưới đây là danh sách mã màu text:</p>
+
 <table>
 <thead>
 <tr>
@@ -264,78 +583,97 @@ echo -e <span style=color:#e6db74>&#34;Hello \x1B[42;33meverybody\x1B[0m&#34;</s
 <th>Mô tả</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>39</td>
 <td>Default foreground color</td>
 </tr>
+
 <tr>
 <td>30</td>
 <td>Black</td>
 </tr>
+
 <tr>
 <td>31</td>
 <td>Red</td>
 </tr>
+
 <tr>
 <td>32</td>
 <td>Green</td>
 </tr>
+
 <tr>
 <td>33</td>
 <td>Yellow</td>
 </tr>
+
 <tr>
 <td>34</td>
 <td>Blue</td>
 </tr>
+
 <tr>
 <td>35</td>
 <td>Magenta</td>
 </tr>
+
 <tr>
 <td>36</td>
 <td>Cyan</td>
 </tr>
+
 <tr>
 <td>37</td>
 <td>Light gray</td>
 </tr>
+
 <tr>
 <td>90</td>
 <td>Dark gray</td>
 </tr>
+
 <tr>
 <td>91</td>
 <td>Light red</td>
 </tr>
+
 <tr>
 <td>92</td>
 <td>Light green</td>
 </tr>
+
 <tr>
 <td>93</td>
 <td>Light yellow</td>
 </tr>
+
 <tr>
 <td>94</td>
 <td>Light blue</td>
 </tr>
+
 <tr>
 <td>95</td>
 <td>Light magenta</td>
 </tr>
+
 <tr>
 <td>96</td>
 <td>Light cyan</td>
 </tr>
+
 <tr>
 <td>97</td>
 <td>White</td>
 </tr>
 </tbody>
 </table>
+
 <p>Và danh sách mã màu nền:</p>
+
 <table>
 <thead>
 <tr>
@@ -343,261 +681,444 @@ echo -e <span style=color:#e6db74>&#34;Hello \x1B[42;33meverybody\x1B[0m&#34;</s
 <th>Mô tả</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>49</td>
 <td>Default foreground color</td>
 </tr>
+
 <tr>
 <td>40</td>
 <td>Black</td>
 </tr>
+
 <tr>
 <td>41</td>
 <td>Red</td>
 </tr>
+
 <tr>
 <td>42</td>
 <td>Green</td>
 </tr>
+
 <tr>
 <td>43</td>
 <td>Yellow</td>
 </tr>
+
 <tr>
 <td>44</td>
 <td>Blue</td>
 </tr>
+
 <tr>
 <td>45</td>
 <td>Magenta</td>
 </tr>
+
 <tr>
 <td>46</td>
 <td>Cyan</td>
 </tr>
+
 <tr>
 <td>47</td>
 <td>Light gray</td>
 </tr>
+
 <tr>
 <td>100</td>
 <td>Dark gray</td>
 </tr>
+
 <tr>
 <td>101</td>
 <td>Light red</td>
 </tr>
+
 <tr>
 <td>102</td>
 <td>Light green</td>
 </tr>
+
 <tr>
 <td>103</td>
 <td>Light yellow</td>
 </tr>
+
 <tr>
 <td>104</td>
 <td>Light blue</td>
 </tr>
+
 <tr>
 <td>105</td>
 <td>Light magenta</td>
 </tr>
+
 <tr>
 <td>106</td>
 <td>Light cyan</td>
 </tr>
+
 <tr>
 <td>107</td>
 <td>White</td>
 </tr>
 </tbody>
 </table>
-<h2 id=22-màu-88-và-256>2.2. Màu 88 và 256</h2>
+
+<h2 id="2-2-màu-88-và-256">2.2. Màu 88 và 256</h2>
+
 <p>Một số terminal có hỗ trợ màu 88 hoặc 256.</p>
-<p>Để sử dụng màu 256 làm màu text, ta sử dụng cú pháp: <code>&lt;Esc>[38;5;&lt;Format code>m</code>.</p>
-<p>Sử dụng làm màu nền, ta có cú pháp: <code>&lt;Esc>[48;5;&lt;Format code>m</code>.</p>
-<p>Danh sách các mã màu, các bạn tham khảo tại <a href=https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit>đây</a>.</p>
-<h1 id=3-kết-luận>3. Kết luận</h1>
+
+<p>Để sử dụng màu 256 làm màu text, ta sử dụng cú pháp: <code>&lt;Esc&gt;[38;5;&lt;Format code&gt;m</code>.</p>
+
+<p>Sử dụng làm màu nền, ta có cú pháp: <code>&lt;Esc&gt;[48;5;&lt;Format code&gt;m</code>.</p>
+
+<p>Danh sách các mã màu, các bạn tham khảo tại <a href="https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit">đây</a>.</p>
+
+<h1 id="3-kết-luận">3. Kết luận</h1>
+
 <p>Chúng ta vừa điểm qua kha khá những mẹo định dạng text và màu trên terminal. Escapse sequence ngoài sử dụng cho bash script ra còn có thể sử dụng cho các ngôn ngữ lập trình khác nữa. Tuy nhiên, có một nhược điểm là không hiển thị được kiểu chữ nghiêng (italic). Nhưng như thế cũng đủ làm đoạn script của chúng ta thú vị hơn rồi.</p>
-<h2 id=tham-khảo>Tham khảo</h2>
+
+<h2 id="tham-khảo">Tham khảo</h2>
+
 <ul>
-<li><a href=https://misc.flogisoft.com/bash/tip_colors_and_formatting>Bash tips: Colors and formatting (ANSI/VT100 Control sequences)</a></li>
-<li><a href=https://en.wikipedia.org/wiki/ANSI_escape_code>ANSI escape code</a></li>
+<li><a href="https://misc.flogisoft.com/bash/tip_colors_and_formatting">Bash tips: Colors and formatting (ANSI/VT100 Control sequences)</a></li>
+<li><a href="https://en.wikipedia.org/wiki/ANSI_escape_code">ANSI escape code</a></li>
 </ul>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/tips/">tips</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2020/05/crawl-tiki-products/" data-tooltip="Tập tành crawl dữ liệu product của Tiki">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2020/04/review-book-deep-work/" data-tooltip="Review sách &#34;Deep work: Làm ra làm, chơi ra chơi&#34;">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2020/04/bash-script-text-format-tips/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2020/04/bash-script-text-format-tips/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2020/04/bash-script-text-format-tips/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
 </div>
-</div>
-<div id=post-footer class="post-footer main-content-wrap">
-<div class=post-footer-tags>
-<span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br>
-<a class="tag tag--primary tag--small" href=https://chidokun.github.io/tags/tips/>tips</a>
-</div>
-<div class=post-actions-wrap>
-<nav>
-<ul class="post-actions post-action-nav">
-<li class=post-action>
-<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2020/05/crawl-tiki-products/ data-tooltip="Tập tành crawl dữ liệu product của Tiki">
-<i class="fa fa-angle-left"></i>
-<span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
-</a>
-</li>
-<li class=post-action>
-<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2020/04/review-book-deep-work/ data-tooltip='Review sách "Deep work: Làm ra làm, chơi ra chơi"'>
-<span class="hide-xs hide-sm text-small icon-mr">Trước</span>
-<i class="fa fa-angle-right"></i>
-</a>
-</li>
-</ul>
-</nav>
-<ul class="post-actions post-action-share">
-<li class="post-action hide-lg hide-md hide-sm">
-<a class="post-action-btn btn btn--default btn-open-shareoptions" href=#btn-open-shareoptions>
-<i class="fa fa-share-alt"></i>
-</a>
-</li>
-<li class="post-action hide-xs">
-<a class="post-action-btn btn btn--default" target=new href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2020/04/bash-script-text-format-tips/">
-<i class="fa fa-facebook-official"></i>
-</a>
-</li>
-<li class="post-action hide-xs">
-<a class="post-action-btn btn btn--default" target=new href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2020/04/bash-script-text-format-tips/">
-<i class="fa fa-twitter"></i>
-</a>
-</li>
-<li class="post-action hide-xs">
-<a class="post-action-btn btn btn--default" target=new href="https://plus.google.com/share?url=https://chidokun.github.io/2020/04/bash-script-text-format-tips/">
-<i class="fa fa-google-plus"></i>
-</a>
-</li>
-<li class=post-action>
-<a class="post-action-btn btn btn--default" href=#disqus_thread>
-<i class="fa fa-comment-o"></i>
-</a>
-</li>
-<li class=post-action>
-<a class="post-action-btn btn btn--default" href=#>
-<i class="fa fa-list"></i>
-</a>
-</li>
-</ul>
-</div>
-<div id=fb-root></div>
-<script>(function(b,c,d){var a,e=b.getElementsByTagName(c)[0];if(b.getElementById(d))return;a=b.createElement(c),a.id=d,a.src='https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.1&appId=445006706177461&autoLogAppEvents=1',e.parentNode.insertBefore(a,e)})(document,'script','facebook-jssdk')</script>
-<div id=fb-cmt-thread class=fb-comments data-href=https://chidokun.github.io/2020/04/bash-script-text-format-tips/ data-width=100%></div>
-</div>
-</article>
-<footer id=footer class=main-content-wrap>
-<span class=copyrights>
-&copy; 2021 <a href=https://github.com/chidokun>Nguyễn Tuấn</a>. All Rights Reserved
-</span>
+
+            
+              
+                <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.1&appId=445006706177461&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2020/04/bash-script-text-format-tips/" data-width="100%"></div>
+
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 <a href="https://github.com/chidokun">Nguyễn Tuấn</a>. All Rights Reserved
+  </span>
 </footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2020/05/crawl-tiki-products/" data-tooltip="Tập tành crawl dữ liệu product của Tiki">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2020/04/review-book-deep-work/" data-tooltip="Review sách &#34;Deep work: Làm ra làm, chơi ra chơi&#34;">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2020/04/bash-script-text-format-tips/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2020/04/bash-script-text-format-tips/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2020/04/bash-script-text-format-tips/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
 </div>
-<div id=bottom-bar class=post-bottom-bar data-behavior=5>
-<div class=post-actions-wrap>
-<nav>
-<ul class="post-actions post-action-nav">
-<li class=post-action>
-<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2020/05/crawl-tiki-products/ data-tooltip="Tập tành crawl dữ liệu product của Tiki">
-<i class="fa fa-angle-left"></i>
-<span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
-</a>
-</li>
-<li class=post-action>
-<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2020/04/review-book-deep-work/ data-tooltip='Review sách "Deep work: Làm ra làm, chơi ra chơi"'>
-<span class="hide-xs hide-sm text-small icon-mr">Trước</span>
-<i class="fa fa-angle-right"></i>
-</a>
-</li>
-</ul>
-</nav>
-<ul class="post-actions post-action-share">
-<li class="post-action hide-lg hide-md hide-sm">
-<a class="post-action-btn btn btn--default btn-open-shareoptions" href=#btn-open-shareoptions>
-<i class="fa fa-share-alt"></i>
-</a>
-</li>
-<li class="post-action hide-xs">
-<a class="post-action-btn btn btn--default" target=new href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2020/04/bash-script-text-format-tips/">
-<i class="fa fa-facebook-official"></i>
-</a>
-</li>
-<li class="post-action hide-xs">
-<a class="post-action-btn btn btn--default" target=new href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2020/04/bash-script-text-format-tips/">
-<i class="fa fa-twitter"></i>
-</a>
-</li>
-<li class="post-action hide-xs">
-<a class="post-action-btn btn btn--default" target=new href="https://plus.google.com/share?url=https://chidokun.github.io/2020/04/bash-script-text-format-tips/">
-<i class="fa fa-google-plus"></i>
-</a>
-</li>
-<li class=post-action>
-<a class="post-action-btn btn btn--default" href=#disqus_thread>
-<i class="fa fa-comment-o"></i>
-</a>
-</li>
-<li class=post-action>
-<a class="post-action-btn btn btn--default" href=#>
-<i class="fa fa-list"></i>
-</a>
-</li>
-</ul>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2020%2F04%2Fbash-script-text-format-tips%2F">
+          <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2020%2F04%2Fbash-script-text-format-tips%2F">
+          <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2020%2F04%2Fbash-script-text-format-tips%2F">
+          <i class="fa fa-google-plus"></i><span>Chia sẻ với Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
 </div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện" />
+    
+    <h4 id="about-card-name">Nguyễn Tuấn</h4>
+    
+      <div id="about-card-bio">A guy with passionate at the code</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Software Engineer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Saigon, Vietnam
+      </div>
+    
+  </div>
 </div>
-<div id=share-options-bar class=share-options-bar data-behavior=5>
-<i id=btn-close-shareoptions class="fa fa-close"></i>
-<ul class=share-options>
-<li class=share-option>
-<a class=share-option-btn target=new href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2020%2F04%2Fbash-script-text-format-tips%2F">
-<i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
-</a>
-</li>
-<li class=share-option>
-<a class=share-option-btn target=new href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2020%2F04%2Fbash-script-text-format-tips%2F">
-<i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
-</a>
-</li>
-<li class=share-option>
-<a class=share-option-btn target=new href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2020%2F04%2Fbash-script-text-format-tips%2F">
-<i class="fa fa-google-plus"></i><span>Chia sẻ với Google+</span>
-</a>
-</li>
-</ul>
-</div>
-<div id=share-options-mask class=share-options-mask></div>
-</div>
-<div id=about>
-<div id=about-card>
-<div id=about-btn-close>
-<i class="fa fa-remove"></i>
-</div>
-<img id=about-card-picture src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện">
-<h4 id=about-card-name>Nguyễn Tuấn</h4>
-<div id=about-card-bio>A guy with passionate at the code</div>
-<div id=about-card-job>
-<i class="fa fa-briefcase"></i>
-<br>
-Software Engineer
-</div>
-<div id=about-card-location>
-<i class="fa fa-map-marker"></i>
-<br>
-Saigon, Vietnam
-</div>
-</div>
-</div>
-<div id=cover style=background-image:url(https://chidokun.github.io/images/background.jpg)></div>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin=anonymous></script>
-<script src=https://chidokun.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js></script>
-<script crossorigin=anonymous integrity=sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js></script>
-<script crossorigin=anonymous integrity=sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js></script>
-<script src=https://chidokun.github.io/js/main.js></script>
-<script lang=javascript>window.onload=updateMinWidth,window.onresize=updateMinWidth,document.getElementById("sidebar").addEventListener("transitionend",updateMinWidth);function updateMinWidth(){var b=document.getElementById("sidebar"),a=document.getElementById("main"),c,d,e;a.style.minWidth="",c=getComputedStyle(a).getPropertyValue("min-width"),d=getComputedStyle(b).getPropertyValue("width"),e=getComputedStyle(b).getPropertyValue("left"),a.style.minWidth=`calc(${c} - ${d} - ${e})`}</script>
-<script>$(document).ready(function(){hljs.configure({classPrefix:'',useBR:!1}),$('pre.code-highlight > code, pre > code').each(function(b,a){$(this).hasClass('codeblock')||$(this).addClass('codeblock'),hljs.highlightBlock(a)})})</script>
-<script>var disqus_config=function(){this.page.url='https://chidokun.github.io/2020/04/bash-script-text-format-tips/',this.page.identifier='/2020/04/bash-script-text-format-tips/'};(function(){var a,b,c;if(window.location.hostname=="localhost")return;a=document,b=a.createElement('script'),c='nguyentuanit96',b.src='//'+c+'.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script>
-</body>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://chidokun.github.io/images/background.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://chidokun.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+  
+    <script crossorigin="anonymous" integrity="sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq" src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js"></script>
+  
+
+  
+    <script crossorigin="anonymous" integrity="sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc" src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js"></script>
+  
+
+  
+    <script src="https://chidokun.github.io/js/main.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/chidokun.github.io\/2020\/04\/bash-script-text-format-tips\/';
+          
+            this.page.identifier = '\/2020\/04\/bash-script-text-format-tips\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'nguyentuanit96';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
 </html>
+
