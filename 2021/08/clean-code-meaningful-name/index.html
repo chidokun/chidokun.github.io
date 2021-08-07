@@ -1,0 +1,385 @@
+<!doctype html><html lang=vi>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=generator content="Hugo 0.87.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name=author content="Nguyễn Tuấn">
+<meta name=keywords content="clean code,naming,đặt tên biến,đặt tên biến,hàm,java,development,programming,chidokun,lập trình">
+<meta name=description content="Mỗi lần đọc lại quyển sách Clean Code của tác giả Robert C. Martin, mình lại nhận ra những điều mới để có thể giúp bản thân viết code chuyên nghiệp hơn. Cách đặt tên biến, hàm cũng ảnh hưởng khá nhiều đến độ &ldquo;clean&rdquo; của code mà đôi lúc chúng ta lại quên mất hoặc không để ý và khiến cho nó trở thành một đống hỗn độn theo thời gian.">
+<meta property="og:description" content="Mỗi lần đọc lại quyển sách Clean Code của tác giả Robert C. Martin, mình lại nhận ra những điều mới để có thể giúp bản thân viết code chuyên nghiệp hơn. Cách đặt tên biến, hàm cũng ảnh hưởng khá nhiều đến độ &ldquo;clean&rdquo; của code mà đôi lúc chúng ta lại quên mất hoặc không để ý và khiến cho nó trở thành một đống hỗn độn theo thời gian.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Clean Code: Bạn đã đặt tên biến, hàm đủ &#34;clean&#34;?">
+<meta name=twitter:title content="Clean Code: Bạn đã đặt tên biến, hàm đủ &#34;clean&#34;?">
+<meta property="og:url" content="https://chidokun.github.io/2021/08/clean-code-meaningful-name/">
+<meta property="twitter:url" content="https://chidokun.github.io/2021/08/clean-code-meaningful-name/">
+<meta property="og:site_name" content="Nguyễn Tuấn's Blog">
+<meta property="og:description" content="Mỗi lần đọc lại quyển sách Clean Code của tác giả Robert C. Martin, mình lại nhận ra những điều mới để có thể giúp bản thân viết code chuyên nghiệp hơn. Cách đặt tên biến, hàm cũng ảnh hưởng khá nhiều đến độ &ldquo;clean&rdquo; của code mà đôi lúc chúng ta lại quên mất hoặc không để ý và khiến cho nó trở thành một đống hỗn độn theo thời gian.">
+<meta name=twitter:description content="Mỗi lần đọc lại quyển sách Clean Code của tác giả Robert C. Martin, mình lại nhận ra những điều mới để có thể giúp bản thân viết code chuyên nghiệp hơn. Cách đặt tên biến, hàm cũng ảnh hưởng khá nhiều đến độ &ldquo;clean&rdquo; của code mà đôi lúc chúng ta lại quên mất hoặc không để ý và khiến cho nó trở thành một đống hỗn độn theo thời gian.">
+<meta property="og:locale" content="vi">
+<meta property="article:published_time" content="2021-08-06T19:00:39">
+<meta property="article:modified_time" content="2021-08-06T19:00:39">
+<meta property="article:section" content="programming">
+<meta property="article:tag" content="clean code">
+<meta name=twitter:card content="summary">
+<meta property="fb:app_id" content="445006706177461">
+<meta property="og:image" content="https://chidokun.github.io/thumbnails/clean-code.jpg">
+<meta property="twitter:image" content="https://chidokun.github.io/thumbnails/clean-code.jpg">
+<meta property="og:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
+<meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
+<title>Clean Code: Bạn đã đặt tên biến, hàm đủ "clean"?</title>
+<meta name=google-site-verification content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI">
+<link rel=icon href=https://chidokun.github.io/favicon.png>
+<link rel=canonical href=https://chidokun.github.io/2021/08/clean-code-meaningful-name/>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin=anonymous>
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700|Roboto+Mono&display=swap&subset=vietnamese" rel=stylesheet>
+<link rel=stylesheet href=https://chidokun.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css>
+<link rel=stylesheet crossorigin=anonymous href=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css integrity=sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-64965138-2','auto'),ga('send','pageview'))</script>
+</head>
+<body>
+<div id=blog>
+<header id=header data-behavior=5>
+<i id=btn-open-sidebar class="fa fa-lg fa-bars"></i>
+<div class=header-title>
+<a class=header-title-link href=https://chidokun.github.io/>Nguyễn Tuấn's Blog</a>
+</div>
+<a class="header-right-icon st-search-show-outputs" href=https://chidokun.github.io/#search>
+<i class="fa fa-lg fa-search"></i>
+</a>
+</header>
+<nav id=sidebar data-behavior=5>
+<div class=sidebar-container>
+<div class=sidebar-profile>
+<a href=https://chidokun.github.io/#about>
+<img class=sidebar-profile-picture src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện">
+</a>
+<h4 class=sidebar-profile-name>Nguyễn Tuấn</h4>
+<h5 class=sidebar-profile-bio>A guy with passionate at the code</h5>
+</div>
+<ul class=sidebar-buttons>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/>
+<i class="sidebar-button-icon fa fa-lg fa-home"></i>
+<span class=sidebar-button-desc>Trang chủ</span>
+</a>
+</li>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/categories>
+<i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+<span class=sidebar-button-desc>Danh mục</span>
+</a>
+</li>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/tags>
+<i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+<span class=sidebar-button-desc>Thẻ thông tin</span>
+</a>
+</li>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/archives>
+<i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+<span class=sidebar-button-desc>Lưu trữ</span>
+</a>
+</li>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/#about>
+<i class="sidebar-button-icon fa fa-lg fa-question"></i>
+<span class=sidebar-button-desc>Thông tin</span>
+</a>
+</li>
+</ul>
+<ul class=sidebar-buttons>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://github.com/chidokun target=_blank rel=noopener>
+<i class="sidebar-button-icon fa fa-lg fa-github"></i>
+<span class=sidebar-button-desc>GitHub</span>
+</a>
+</li>
+</ul>
+<ul class=sidebar-buttons>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/index.xml>
+<i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+<span class=sidebar-button-desc>RSS</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<div id=main data-behavior=5 class=hasCoverMetaIn>
+<article class=post itemscope itemtype=http://schema.org/BlogPosting>
+<div class="post-header main-content-wrap text-left">
+<h1 class=post-title itemprop=headline>
+Clean Code: Bạn đã đặt tên biến, hàm đủ "clean"?
+</h1>
+<div class="postShorten-meta post-meta">
+<time itemprop=datePublished datetime=2021-08-06T19:00:39+07:00>
+6 tháng 8 2021
+</time>
+<span>mục</span>
+<a class=category-link href=https://chidokun.github.io/categories/programming>programming</a>
+</div>
+<div>
+<div class=fb-like data-href=https://chidokun.github.io/2021/08/clean-code-meaningful-name/ data-width data-layout=button_count data-action=like data-size=large data-share=false></div>
+</div>
+</div>
+<div class="post-content markdown" itemprop=articleBody>
+<div class=main-content-wrap>
+<p>Mỗi lần đọc lại quyển sách <em>Clean Code</em> của tác giả <em>Robert C. Martin</em>, mình lại nhận ra những điều mới để có thể giúp bản thân viết code chuyên nghiệp hơn. Cách đặt tên biến, hàm cũng ảnh hưởng khá nhiều đến độ <em>&ldquo;clean&rdquo;</em> của code mà đôi lúc chúng ta lại quên mất hoặc không để ý và khiến cho nó trở thành một đống hỗn độn theo thời gian.</p>
+<h1 id=cái-tên-tiết-lộ-mục-đích>Cái tên tiết lộ mục đích</h1>
+<p>Có thể nói quan trọng nhất khi chọn một cái tên đó là cái tên này <em>phải tiết lộ mục đích</em> sử dụng của nó. Đây là cái mà chúng ta hay quên nhất và cũng có thể nói là tốn nhiều &ldquo;chất xám&rdquo; nhất.</p>
+<p>Ví dụ trong sách đã khá rõ ràng và dễ hiểu. Giữa hai đoạn code bên dưới, bạn thấy đoạn code nào dễ hiểu hơn?</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> List<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]&gt;</span> <span style=color:#a6e22e>getThem</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+    List<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]&gt;</span> list1 <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;();</span> 
+    <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> x <span style=color:#f92672>:</span> theList<span style=color:#f92672>)</span>
+        <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>x<span style=color:#f92672>[</span>0<span style=color:#f92672>]</span> <span style=color:#f92672>==</span> 4<span style=color:#f92672>)</span> 
+            list1<span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span>x<span style=color:#f92672>);</span>
+    <span style=color:#66d9ef>return</span> list1<span style=color:#f92672>;</span> 
+<span style=color:#f92672>}</span>
+
+<span style=color:#66d9ef>public</span> List<span style=color:#f92672>&lt;</span>Cell<span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>getFlaggedCells</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+    List<span style=color:#f92672>&lt;</span>Cell<span style=color:#f92672>&gt;</span> flaggedCells <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;();</span> 
+    <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span>Cell cell <span style=color:#f92672>:</span> gameBoard<span style=color:#f92672>)</span>
+        <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>cell<span style=color:#f92672>.</span><span style=color:#a6e22e>isFlagged</span><span style=color:#f92672>())</span>
+            flaggedCells<span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span>cell<span style=color:#f92672>);</span>
+    <span style=color:#66d9ef>return</span> flaggedCells<span style=color:#f92672>;</span> 
+<span style=color:#f92672>}</span>
+</code></pre></div><p>Đoạn code thứ nhất sẽ khiến bạn nổ bong bóng với những câu hỏi như:</p>
+<ul>
+<li>Biến <code>list1</code> để làm gì và chứa cái gì trong đó?</li>
+<li>Phần tử <code>0</code> đầu mảng có ý nghĩa gì?</li>
+<li>Tại sao bằng <code>4</code> thì thêm vào <code>list1</code>?</li>
+<li>&mldr;</li>
+</ul>
+<p>Còn đoạn code thứ hai đã có ngữ cảnh quá rõ ràng và cách chọn tên phù hợp đã giúp đoạn code dễ hiểu hơn rất nhiều.</p>
+<p>Thỉnh thoảng, chúng ta sẽ quên mất việc phải chọn một cái tên hợp lý với những biến tạm, biến trung gian (ngay cả mình cũng vậy 😅). Đôi khi là một công thức mà viết quá gọn nên mất đi tính dễ hiểu. Các con số <em>&ldquo;magic number&rdquo;</em> (như số <code>0</code> hoặc số <code>4</code> ở đoạn code bên trên) cũng khiến cho đoạn code bị &ldquo;mờ&rdquo; đi một tí. Khi một người mới vào đọc code của bạn thì thế nào bạn cũng phải giải thích cho họ nghe con số đó nghĩa là gì.</p>
+<p>Bên cạnh đó, một kiến trúc rõ ràng cũng giúp code được &ldquo;clean&rdquo; hơn và dễ dàng hơn để chúng ta chọn một cái tên phù hợp với ngữ cảnh. Các mẫu kiến trúc như <a href=https://en.wikipedia.org/wiki/Hexagonal_architecture_(software)>Hexagonal architecture</a> có thể giúp tách bạch giữa domain logic code và giảm sự phụ thuộc lẫn nhau giữa các component. Từ đó, các ngữ cảnh đã được phân biệt rạch ròi thì việc chọn tên để đặt cho hàm hay biến cũng trở nên đơn giản hơn.</p>
+<p>Sở dĩ mình nói nó là khó nhất vì không có quy tắc cụ thể nào để tuân theo cả, phải dựa vào kinh nghiệm và cải thiện dần dần thì mới thuần thục được.</p>
+<h1 id=một-từ-cho-một-khái-niệm>Một từ cho một khái niệm</h1>
+<p><em>Bạn chỉ nên dùng một từ cho một và chỉ một khái niệm</em>. Nghe đơn giản phải không nào?</p>
+<p>Nếu bạn dùng Java Spring Data JPA thì chắc hẳn đã biết đến cơ chế sinh query rồi phải không? Bạn chỉ đơn giản định nghĩa một interface kế thừa <code>JpaRepository</code>, bên trong nó định nghĩa một public method theo quy tắc nhất định thì Spring Data JPA sẽ tự sinh câu query tương ứng và thực thi nó.</p>
+<p>Câu chuyện là, để sinh câu SQL <code>SELECT</code> bạn có thể đặt tên là <code>find…By</code>, <code>read…By</code>, <code>get…By</code>, <code>query…By</code>, <code>search…By</code>, <code>stream…By</code> và câu SQL <code>DELETE</code> có thể dùng <code>delete…By</code>, <code>remove…By</code> (xem thêm tại <a href=https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#appendix.query.method.subject>đây</a>).</p>
+<p>Mình thì dùng <code>get…By</code> cho câu <code>SELECT</code> và <code>remove…By</code> cho câu <code>DELETE</code>, còn thằng em mình dùng <code>find…By</code> và <code>delete…By</code>. Kết quả là ta có đoạn code lổm chổm dưới đây.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#a6e22e>@Repository</span>
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>interface</span> <span style=color:#a6e22e>SomethingRepository</span> <span style=color:#66d9ef>extends</span> JpaRepository<span style=color:#f92672>&lt;</span>Something<span style=color:#f92672>,</span> String<span style=color:#f92672>&gt;</span> <span style=color:#f92672>{</span>
+
+  List<span style=color:#f92672>&lt;</span>Something<span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>getAllByNameLike</span><span style=color:#f92672>(</span>String name<span style=color:#f92672>);</span>
+
+  Something <span style=color:#a6e22e>getByName</span><span style=color:#f92672>(</span>String name<span style=color:#f92672>);</span>
+
+  Something <span style=color:#a6e22e>findByNameAndOther</span><span style=color:#f92672>(</span>String name<span style=color:#f92672>,</span> String other<span style=color:#f92672>);</span>
+
+  <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>removeByNameIn</span><span style=color:#f92672>(</span>List<span style=color:#f92672>&lt;</span>String<span style=color:#f92672>&gt;</span> names<span style=color:#f92672>);</span>
+
+  <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>deleteByName</span><span style=color:#f92672>(</span>String name<span style=color:#f92672>);</span>
+<span style=color:#f92672>}</span>
+</code></pre></div>
+<p>Câu chuyện tiếp theo là về các <em>DTO - Data Transfer Object</em>. Mình thường thấy rất nhiều class với suffix lúc thì <code>ProductDTO</code>, <code>ProductData</code>, <code>ProductInfo</code>, <code>ProductModel</code>, <code>ProductEntity</code>,… để chung với nhau. Các class này đều cùng chứa info của một Product nhưng khác nhau về các thuộc tính bên trong 😅. Một số thì dùng để nhận request params từ bên ngoài, một số thì dùng xử lý logic, một số dùng lưu dữ liệu xuống database.</p>
+<p>Trường hợp này, tác giả cũng khuyên nên có một context - chẳng hạn như tạo một package khác nhau - để phân biệt mục đích của chúng. Lúc này có thể không cần phân biệt mục đích bằng cách dùng suffix nữa. Đó cũng là một convention cần thống nhất để mọi người hiểu cùng một khái niệm và giữ sự đồng nhất trong cách đặt tên.</p>
+<h1 id=kết-luận-nhẹ>Kết luận nhẹ!</h1>
+<p>Điều mà mình nhận ra sau khi đọc lại quyển <em>Clean Code</em>, đó là hầu hết các vấn đề về đặt tên có thể được giải quyết bằng một convention chung cho cả team, chỉ trừ việc đặt tên thể hiện mục đích sử dụng cho biến. Việc <em>chọn tên thể hiện mục đích sử dụng</em> thực sự rất khó và tốn nhiều thời gian suy nghĩ, nhưng hiệu ứng mang lại là code sẽ dễ đọc dễ hiểu hơn mà không cần quá nhiều comment.</p>
+<p>Dưới đây là một ví dụ khác của code khó hiểu. Phương thức <code>compare</code> sẽ so sánh hai object khác kiểu dựa trên tiêu chí <code>specName</code>. Bạn hiểu đoạn code này viết gì không 😆?</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>compare</span><span style=color:#f92672>(</span>T o1<span style=color:#f92672>,</span> U o2<span style=color:#f92672>,</span> String specName<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>if</span> <span style=color:#f92672>(!</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>specs</span><span style=color:#f92672>.</span><span style=color:#a6e22e>containsKey</span><span style=color:#f92672>(</span>specName<span style=color:#f92672>))</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>throw</span> <span style=color:#66d9ef>new</span> IllegalArgumentException<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;\&#34;&#34;</span> <span style=color:#f92672>+</span> specName <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;\&#34; is not supported&#34;</span><span style=color:#f92672>);</span>
+    <span style=color:#f92672>}</span>
+
+    <span style=color:#66d9ef>int</span> nullableO1 <span style=color:#f92672>=</span> o1 <span style=color:#f92672>==</span> <span style=color:#66d9ef>null</span> <span style=color:#f92672>?</span> 1 <span style=color:#f92672>:</span> 0<span style=color:#f92672>;</span>
+    <span style=color:#66d9ef>int</span> nullableO2 <span style=color:#f92672>=</span> o2 <span style=color:#f92672>==</span> <span style=color:#66d9ef>null</span> <span style=color:#f92672>?</span> 1 <span style=color:#f92672>:</span> 0<span style=color:#f92672>;</span>
+    <span style=color:#66d9ef>if</span> <span style=color:#f92672>((</span>nullableO1 <span style=color:#f92672>|</span> nullableO2<span style=color:#f92672>)</span> <span style=color:#f92672>!=</span> 0<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>return</span> nullableO1 <span style=color:#f92672>-</span> nullableO2<span style=color:#f92672>;</span>
+    <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>specs</span><span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>specName<span style=color:#f92672>).</span><span style=color:#a6e22e>compare</span><span style=color:#f92672>(</span>o1<span style=color:#f92672>,</span> o2<span style=color:#f92672>);</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><p>Thú thực là mình mất vài phút mới hiểu được nó viết gì.</p>
+<p>Hãy xem đoạn khó hiểu nhất này.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>int</span> nullableO1 <span style=color:#f92672>=</span> o1 <span style=color:#f92672>==</span> <span style=color:#66d9ef>null</span> <span style=color:#f92672>?</span> 1 <span style=color:#f92672>:</span> 0<span style=color:#f92672>;</span>
+<span style=color:#66d9ef>int</span> nullableO2 <span style=color:#f92672>=</span> o2 <span style=color:#f92672>==</span> <span style=color:#66d9ef>null</span> <span style=color:#f92672>?</span> 1 <span style=color:#f92672>:</span> 0<span style=color:#f92672>;</span>
+<span style=color:#66d9ef>if</span> <span style=color:#f92672>((</span>nullableO1 <span style=color:#f92672>|</span> nullableO2<span style=color:#f92672>)</span> <span style=color:#f92672>!=</span> 0<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>return</span> nullableO1 <span style=color:#f92672>-</span> nullableO2<span style=color:#f92672>;</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><p>Cả đoạn này có ý nghĩa là:</p>
+<ul>
+<li>Nếu cả hai object trên đều bằng <code>null</code> thì chúng bằng nhau.</li>
+<li>Nếu một trong hai object bằng <code>null</code> thì object nào khác <code>null</code> sẽ lớn hơn.</li>
+</ul>
+<p>Khá khó hiểu bởi vì hiệu ứng thực sự của đoạn code trên không được thể hiện rõ ràng. Bạn có thể làm nó <em>&ldquo;clean&rdquo;</em> hơn không 😉?</p>
+</div>
+</div>
+<div id=post-footer class="post-footer main-content-wrap">
+<div class=post-footer-tags>
+<span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br>
+<a class="tag tag--primary tag--small" href=https://chidokun.github.io/tags/clean-code/>clean code</a>
+</div>
+<div class=post-actions-wrap>
+<nav>
+<ul class="post-actions post-action-nav">
+<li class=post-action>
+<a class="post-action-btn btn btn--disabled">
+<i class="fa fa-angle-left"></i>
+<span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2021/07/index-priority-queue/ data-tooltip="Index Priority Queue: Cải tiến Priority Queue">
+<span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+<i class="fa fa-angle-right"></i>
+</a>
+</li>
+</ul>
+</nav>
+<ul class="post-actions post-action-share">
+<li class="post-action hide-lg hide-md hide-sm">
+<a class="post-action-btn btn btn--default btn-open-shareoptions" href=#btn-open-shareoptions>
+<i class="fa fa-share-alt"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/08/clean-code-meaningful-name/">
+<i class="fa fa-facebook-official"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/08/clean-code-meaningful-name/">
+<i class="fa fa-twitter"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://plus.google.com/share?url=https://chidokun.github.io/2021/08/clean-code-meaningful-name/">
+<i class="fa fa-google-plus"></i>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default" href=#disqus_thread>
+<i class="fa fa-comment-o"></i>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default" href=#>
+<i class="fa fa-list"></i>
+</a>
+</li>
+</ul>
+</div>
+<div id=fb-root></div>
+<script>(function(b,c,d){var a,e=b.getElementsByTagName(c)[0];if(b.getElementById(d))return;a=b.createElement(c),a.id=d,a.src='https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.1&appId=445006706177461&autoLogAppEvents=1',e.parentNode.insertBefore(a,e)})(document,'script','facebook-jssdk')</script>
+<div id=fb-cmt-thread class=fb-comments data-href=https://chidokun.github.io/2021/08/clean-code-meaningful-name/ data-width=100%></div>
+</div>
+</article>
+<footer id=footer class=main-content-wrap>
+<span class=copyrights>
+&copy; 2021 <a href=https://github.com/chidokun>Nguyễn Tuấn</a>. All Rights Reserved
+</span>
+</footer>
+</div>
+<div id=bottom-bar class=post-bottom-bar data-behavior=5>
+<div class=post-actions-wrap>
+<nav>
+<ul class="post-actions post-action-nav">
+<li class=post-action>
+<a class="post-action-btn btn btn--disabled">
+<i class="fa fa-angle-left"></i>
+<span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2021/07/index-priority-queue/ data-tooltip="Index Priority Queue: Cải tiến Priority Queue">
+<span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+<i class="fa fa-angle-right"></i>
+</a>
+</li>
+</ul>
+</nav>
+<ul class="post-actions post-action-share">
+<li class="post-action hide-lg hide-md hide-sm">
+<a class="post-action-btn btn btn--default btn-open-shareoptions" href=#btn-open-shareoptions>
+<i class="fa fa-share-alt"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/08/clean-code-meaningful-name/">
+<i class="fa fa-facebook-official"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/08/clean-code-meaningful-name/">
+<i class="fa fa-twitter"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://plus.google.com/share?url=https://chidokun.github.io/2021/08/clean-code-meaningful-name/">
+<i class="fa fa-google-plus"></i>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default" href=#disqus_thread>
+<i class="fa fa-comment-o"></i>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default" href=#>
+<i class="fa fa-list"></i>
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div id=share-options-bar class=share-options-bar data-behavior=5>
+<i id=btn-close-shareoptions class="fa fa-close"></i>
+<ul class=share-options>
+<li class=share-option>
+<a class=share-option-btn target=new href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2021%2F08%2Fclean-code-meaningful-name%2F">
+<i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
+</a>
+</li>
+<li class=share-option>
+<a class=share-option-btn target=new href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2021%2F08%2Fclean-code-meaningful-name%2F">
+<i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
+</a>
+</li>
+<li class=share-option>
+<a class=share-option-btn target=new href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2021%2F08%2Fclean-code-meaningful-name%2F">
+<i class="fa fa-google-plus"></i><span>Chia sẻ với Google+</span>
+</a>
+</li>
+</ul>
+</div>
+<div id=share-options-mask class=share-options-mask></div>
+</div>
+<div id=about>
+<div id=about-card>
+<div id=about-btn-close>
+<i class="fa fa-remove"></i>
+</div>
+<img id=about-card-picture src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện">
+<h4 id=about-card-name>Nguyễn Tuấn</h4>
+<div id=about-card-bio>A guy with passionate at the code</div>
+<div id=about-card-job>
+<i class="fa fa-briefcase"></i>
+<br>
+Software Engineer
+</div>
+<div id=about-card-location>
+<i class="fa fa-map-marker"></i>
+<br>
+Saigon, Vietnam
+</div>
+</div>
+</div>
+<div id=cover style=background-image:url(https://chidokun.github.io/images/background.jpg)></div>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin=anonymous></script>
+<script src=https://chidokun.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js></script>
+<script crossorigin=anonymous integrity=sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js></script>
+<script crossorigin=anonymous integrity=sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js></script>
+<script src=https://chidokun.github.io/js/main.js></script>
+<script lang=javascript>window.onload=updateMinWidth,window.onresize=updateMinWidth,document.getElementById("sidebar").addEventListener("transitionend",updateMinWidth);function updateMinWidth(){var b=document.getElementById("sidebar"),a=document.getElementById("main"),c,d,e;a.style.minWidth="",c=getComputedStyle(a).getPropertyValue("min-width"),d=getComputedStyle(b).getPropertyValue("width"),e=getComputedStyle(b).getPropertyValue("left"),a.style.minWidth=`calc(${c} - ${d} - ${e})`}</script>
+<script>$(document).ready(function(){hljs.configure({classPrefix:'',useBR:!1}),$('pre.code-highlight > code, pre > code').each(function(b,a){$(this).hasClass('codeblock')||$(this).addClass('codeblock'),hljs.highlightBlock(a)})})</script>
+<script>var disqus_config=function(){this.page.url='https://chidokun.github.io/2021/08/clean-code-meaningful-name/',this.page.identifier='/2021/08/clean-code-meaningful-name/'};(function(){var a,b,c;if(window.location.hostname=="localhost")return;a=document,b=a.createElement('script'),c='nguyentuanit96',b.src='//'+c+'.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script>
+</body>
+</html>

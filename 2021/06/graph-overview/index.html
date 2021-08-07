@@ -1,0 +1,660 @@
+<!doctype html><html lang=vi>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=generator content="Hugo 0.87.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name=author content="Nguyễn Tuấn">
+<meta name=keywords content="graph,java,development,programming,chidokun,lập trình">
+<meta name=description content="Cấu trúc Graph (đồ thị) có rất nhiều ứng dụng trong thực tiễn. Bài viết này sẽ note lại tổng quan những điểm chính về việc implement cấu trúc dữ liệu này.">
+<meta property="og:description" content="Cấu trúc Graph (đồ thị) có rất nhiều ứng dụng trong thực tiễn. Bài viết này sẽ note lại tổng quan những điểm chính về việc implement cấu trúc dữ liệu này.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tổng quan về Đồ thị">
+<meta name=twitter:title content="Tổng quan về Đồ thị">
+<meta property="og:url" content="https://chidokun.github.io/2021/06/graph-overview/">
+<meta property="twitter:url" content="https://chidokun.github.io/2021/06/graph-overview/">
+<meta property="og:site_name" content="Nguyễn Tuấn's Blog">
+<meta property="og:description" content="Cấu trúc Graph (đồ thị) có rất nhiều ứng dụng trong thực tiễn. Bài viết này sẽ note lại tổng quan những điểm chính về việc implement cấu trúc dữ liệu này.">
+<meta name=twitter:description content="Cấu trúc Graph (đồ thị) có rất nhiều ứng dụng trong thực tiễn. Bài viết này sẽ note lại tổng quan những điểm chính về việc implement cấu trúc dữ liệu này.">
+<meta property="og:locale" content="vi">
+<meta property="article:published_time" content="2021-06-22T21:51:01">
+<meta property="article:modified_time" content="2021-06-22T21:51:01">
+<meta property="article:section" content="programming">
+<meta property="article:tag" content="data structures">
+<meta name=twitter:card content="summary">
+<meta property="fb:app_id" content="445006706177461">
+<meta property="og:image" content="https://chidokun.github.io/thumbnails/graph.png">
+<meta property="twitter:image" content="https://chidokun.github.io/thumbnails/graph.png">
+<meta property="og:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
+<meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
+<title>Tổng quan về Đồ thị</title>
+<meta name=google-site-verification content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI">
+<link rel=icon href=https://chidokun.github.io/favicon.png>
+<link rel=canonical href=https://chidokun.github.io/2021/06/graph-overview/>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin=anonymous>
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700|Roboto+Mono&display=swap&subset=vietnamese" rel=stylesheet>
+<link rel=stylesheet href=https://chidokun.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css>
+<link rel=stylesheet crossorigin=anonymous href=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css integrity=sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-64965138-2','auto'),ga('send','pageview'))</script>
+</head>
+<body>
+<div id=blog>
+<header id=header data-behavior=5>
+<i id=btn-open-sidebar class="fa fa-lg fa-bars"></i>
+<div class=header-title>
+<a class=header-title-link href=https://chidokun.github.io/>Nguyễn Tuấn's Blog</a>
+</div>
+<a class="header-right-icon st-search-show-outputs" href=https://chidokun.github.io/#search>
+<i class="fa fa-lg fa-search"></i>
+</a>
+</header>
+<nav id=sidebar data-behavior=5>
+<div class=sidebar-container>
+<div class=sidebar-profile>
+<a href=https://chidokun.github.io/#about>
+<img class=sidebar-profile-picture src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện">
+</a>
+<h4 class=sidebar-profile-name>Nguyễn Tuấn</h4>
+<h5 class=sidebar-profile-bio>A guy with passionate at the code</h5>
+</div>
+<ul class=sidebar-buttons>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/>
+<i class="sidebar-button-icon fa fa-lg fa-home"></i>
+<span class=sidebar-button-desc>Trang chủ</span>
+</a>
+</li>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/categories>
+<i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+<span class=sidebar-button-desc>Danh mục</span>
+</a>
+</li>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/tags>
+<i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+<span class=sidebar-button-desc>Thẻ thông tin</span>
+</a>
+</li>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/archives>
+<i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+<span class=sidebar-button-desc>Lưu trữ</span>
+</a>
+</li>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/#about>
+<i class="sidebar-button-icon fa fa-lg fa-question"></i>
+<span class=sidebar-button-desc>Thông tin</span>
+</a>
+</li>
+</ul>
+<ul class=sidebar-buttons>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://github.com/chidokun target=_blank rel=noopener>
+<i class="sidebar-button-icon fa fa-lg fa-github"></i>
+<span class=sidebar-button-desc>GitHub</span>
+</a>
+</li>
+</ul>
+<ul class=sidebar-buttons>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/index.xml>
+<i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+<span class=sidebar-button-desc>RSS</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<div id=main data-behavior=5 class=hasCoverMetaIn>
+<article class=post itemscope itemtype=http://schema.org/BlogPosting>
+<div class="post-header main-content-wrap text-left">
+<h1 class=post-title itemprop=headline>
+Tổng quan về Đồ thị
+</h1>
+<div class="postShorten-meta post-meta">
+<time itemprop=datePublished datetime=2021-06-22T21:51:01+07:00>
+22 tháng 6 2021
+</time>
+<span>mục</span>
+<a class=category-link href=https://chidokun.github.io/categories/programming>programming</a>
+</div>
+<div>
+<div class=fb-like data-href=https://chidokun.github.io/2021/06/graph-overview/ data-width data-layout=button_count data-action=like data-size=large data-share=false></div>
+</div>
+</div>
+<div class="post-content markdown" itemprop=articleBody>
+<div class=main-content-wrap>
+<p>Cấu trúc <strong>Graph</strong> (đồ thị) có rất nhiều ứng dụng trong thực tiễn. Bài viết này sẽ note lại tổng quan những điểm chính về việc implement cấu trúc dữ liệu này.</p>
+<h1 id=1-đồ-thị>1. Đồ thị</h1>
+<p>Theo định nghĩa, <em>Đồ thị là một tập hữu hạn các đỉnh và các cạnh kết nối các đỉnh</em>. Chúng ta sẽ không đi quá sâu về lý thuyết đồ thị mà chỉ điểm lại những nét chính trong cách cài đặt cấu trúc dữ liệu <code>Graph</code>.</p>
+<p>Ví dụ về một <em>đồ thị vô hướng</em> như bên dưới:</p>
+<div class="figure center">
+<a class=fancybox href=https://chidokun.github.io/images/post/graph-overview/1.svg title="Đồ thị 1: Đồ thị vô hướng" data-fancybox-group>
+<img class=fig-img src=https://chidokun.github.io/images/post/graph-overview/1.svg style=width:60% alt="Đồ thị 1: Đồ thị vô hướng">
+</a>
+<span class=caption>Đồ thị 1: Đồ thị vô hướng</span>
+</div>
+<p>Trong một số trường hợp, chúng ta sẽ cần dùng tên đỉnh. Tuy nhiên, tên đỉnh không quá quan trọng nên chúng ta sẽ đặt tên đỉnh là các số nguyên từ $0$ đến $V-1$. Một <code>Graph</code> sẽ có <code>V</code> đỉnh và <code>E</code> cạnh. Việc định nghĩa thành các phương thức của đối tượng sẽ giúp việc viết các giải thuật đơn giản hơn.</p>
+<p>Định nghĩa API cho <code>Graph</code>:</p>
+<pre><code>       public class Graph
+--------------------------------------------
+                    Graph(int V)
+                int V()
+                int E()
+               void addEdge(int v, int w)
+  Iterable&lt;Integer&gt; adj(int v)
+</code></pre><p>Các phương thức cơ bản nhất:</p>
+<ul>
+<li><strong>Graph</strong>(int V): Hàm khởi tạo với tham số đầu vào là số lượng đỉnh.</li>
+<li><strong>V</strong>(): Trả về số lượng đỉnh.</li>
+<li><strong>E</strong>(): Trả về số lượng cạnh.</li>
+<li><strong>addEdge</strong>(int v, int w): Thêm một cạnh vào đồ thị, truyền 2 đỉnh <code>v</code> và <code>w</code>.</li>
+<li><strong>adj</strong>(int v): Lấy danh sách các đỉnh kề của đỉnh <code>v</code>.</li>
+</ul>
+<h1 id=2-biểu-diễn-đồ-thị>2. Biểu diễn đồ thị</h1>
+<p>Có 2 cách biểu diễn phổ biến nhất là dùng <strong>ma trận kề</strong> (<em>adjacency matrix</em>) và <strong>danh sách kề</strong> (<em>adjacency list</em>).</p>
+<h2 id=21-adjacency-matrix>2.1. Adjacency matrix</h2>
+<p>Khi biểu diễn graph bằng adjacency matrix, ta dùng một ma trận vuông $n \times n$ với $n$ là số đỉnh của graph. Mỗi dòng thể hiện một đỉnh, mỗi cột biểu diễn vị trí mà ở đó đỉnh có kết nối tới.</p>
+<p>Ví dụ với <strong>Đồ thị 1</strong> trên, ma trận kề sẽ là:</p>
+<div class="figure center">
+<a class=fancybox href=https://chidokun.github.io/images/post/graph-overview/2.svg title="Ma trận kề cho Đồ thị 1" data-fancybox-group>
+<img class=fig-img src=https://chidokun.github.io/images/post/graph-overview/2.svg style=width:40% alt="Ma trận kề cho Đồ thị 1">
+</a>
+<span class=caption>Ma trận kề cho Đồ thị 1</span>
+</div>
+<p>Cách implement tham khảo:</p>
+<figure class="codeblock codeblock--tabbed">
+<figcaption>
+<span>Graph</span>
+<ul class=tabs>
+<li class="tab active">java</li>
+</ul>
+</figcaption>
+<div class=tabs-content>
+<figure class="highlight language-java" style=display:block>
+<table>
+<tbody>
+<tr>
+<td class=gutter>
+<pre><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br></pre>
+</td>
+<td class=code>
+<pre class="code-highlight language-java"><code class=java>public class Graph {
+    private final int V;
+    private int E;
+    private int[][] adj;
+
+    public Graph(int V) {
+        this.V = V;
+        this.E = 0;
+        this.adj = new int[V][V];
+        for (int i = 0; i &lt; V; i&#43;&#43;)
+            for (int j = 0; j &lt; V; j&#43;&#43;)
+                adj[i][j] = 0;
+    }
+    public int V() { return V; }
+    public int E() { return E; }
+    public void addEdge(int v, int w) {
+        adj[v][w] = 1;
+        adj[w][v] = 1;
+        E&#43;&#43;;
+    }
+    public Iterable&lt;Integer&gt; adj(int v) {
+        List&lt;Integer&gt; ls = new ArrayList&lt;&gt;();
+        for (int i = 0; i &lt; V; i&#43;&#43;)
+            if (this.adj[v][i] == 1)
+                ls.add(i);
+        return ls;
+    }
+}
+    </code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</figure>
+</div>
+</figure>
+<p>Cách biểu diễn này có nhiều ưu điểm như:</p>
+<ul>
+<li>Tác vụ thêm cạnh nhanh do chỉ cần bật giá trị trong ma trận thành 1.</li>
+<li>Kiểm tra 2 đỉnh có kết nối nhau chỉ tốn $O(1)$.</li>
+</ul>
+<p>Tuy nhiên, nó cũng có một số hạn chế:</p>
+<ul>
+<li>Do phải lưu trữ bằng một ma trận $n \times n$, nếu đồ thị có hàng triệu điểm thì rất tốn chi phí để duyệt cũng như lưu trữ.</li>
+<li>Không thể biểu diễn cạnh song song có trọng số.</li>
+</ul>
+<h2 id=22-adjacency-list>2.2. Adjacency list</h2>
+<p>Với adjacency list, chúng ta sẽ lưu một mảng các đỉnh, mỗi đỉnh chứa một danh sách các đỉnh khác mà nó kết nối tới.</p>
+<div class="figure center">
+<a class=fancybox href=https://chidokun.github.io/images/post/graph-overview/3.svg title="Danh sách kề cho Đồ thị 1" data-fancybox-group>
+<img class=fig-img src=https://chidokun.github.io/images/post/graph-overview/3.svg style=width:40% alt="Danh sách kề cho Đồ thị 1">
+</a>
+<span class=caption>Danh sách kề cho Đồ thị 1</span>
+</div>
+<figure class="codeblock codeblock--tabbed">
+<figcaption>
+<span>Graph</span>
+<ul class=tabs>
+<li class="tab active">java</li>
+</ul>
+</figcaption>
+<div class=tabs-content>
+<figure class="highlight language-java" style=display:block>
+<table>
+<tbody>
+<tr>
+<td class=gutter>
+<pre><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br></pre>
+</td>
+<td class=code>
+<pre class="code-highlight language-java"><code class=java>public class Graph {
+    private final int V;
+    private int E;
+    private List&lt;Integer&gt;[] adj;
+
+    public Graph(int V) {
+        this.V = V;
+        this.E = 0;
+        this.adj = (List&lt;Integer&gt;[]) new List[V];
+        for (int v = 0; v &lt; V; v&#43;&#43;) {
+            this.adj[v] = new ArrayList&lt;&gt;();
+        }
+    }
+    public int V() { return V; }
+    public int E() { return E; }
+    public void addEdge(int v, int w) {
+        adj[v].add(w);
+        adj[w].add(v);
+        E&#43;&#43;;
+    }
+    public Iterable&lt;Integer&gt; adj(int v) { return adj[v]; }
+}
+    </code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</figure>
+</div>
+</figure>
+<p>Ưu điểm của danh sách kề:</p>
+<ul>
+<li>Không như ma trận kề, danh sách kề không tốn dung lượng lưu trữ cho những cạnh không tồn tại. Vì vậy, nó có thể biểu diễn và lưu trữ hàng triệu đỉnh.</li>
+<li>Biểu diễn được cạnh song song.</li>
+</ul>
+<p>Nhược điểm chủ yếu là:</p>
+<ul>
+<li>Việc remove cạnh sẽ tốn chi phí để duyệt danh sách.</li>
+<li>Chi phí kiểm tra 2 cạnh có kết nối nhau không sẽ lớn hơn ma trận kề do phải duyệt danh sách.</li>
+</ul>
+<h1 id=3-mở-rộng>3. Mở rộng</h1>
+<p>Cấu trúc ở trên khá đơn giản, để giải quyết yêu cầu phức tạp hơn cần mở rộng nó, dưới đây là một số gợi ý mở rộng cấu trúc đồ thị.</p>
+<h2 id=31-trọng-số>3.1. Trọng số</h2>
+<p>Mỗi cạnh thường có một trọng số biểu thị cho chi phí từ một đỉnh sang đỉnh khác. Ma trận kề có thể biểu diễn dễ dàng trọng số. Giá trị trong ma trận kề sẽ biểu thị trọng số. Giá trị $\infty$ biểu thị 2 đỉnh không kết nối với nhau.</p>
+<div class="figure center">
+<a class=fancybox href=https://chidokun.github.io/images/post/graph-overview/4.svg title="Đồ thị có trọng số biểu diễn bằng ma trận kề" data-fancybox-group>
+<img class=fig-img src=https://chidokun.github.io/images/post/graph-overview/4.svg style=width:90% alt="Đồ thị có trọng số biểu diễn bằng ma trận kề">
+</a>
+<span class=caption>Đồ thị có trọng số biểu diễn bằng ma trận kề</span>
+</div>
+<p>Dưới đây là cách implement tham khảo cho <code>WeightedGraph</code> sử dụng ma trận trọng số.</p>
+<figure class="codeblock codeblock--tabbed">
+<figcaption>
+<span>WeightedGraph</span>
+<ul class=tabs>
+<li class="tab active">java</li>
+</ul>
+</figcaption>
+<div class=tabs-content>
+<figure class="highlight language-java" style=display:block>
+<table>
+<tbody>
+<tr>
+<td class=gutter>
+<pre><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br></pre>
+</td>
+<td class=code>
+<pre class="code-highlight language-java"><code class=java>public class WeightedGraph {
+    private final int V;
+    private int E;
+    private double[][] adj;
+
+    public WeightedGraph(int V) {
+        this.V = V;
+        this.E = 0;
+        this.adj = new double[V][V];
+        for (int i = 0; i &lt; V; i&#43;&#43;)
+            for (int j = 0; j &lt; V; j&#43;&#43;)
+                adj[i][j] = i == j ? 0 : Double.POSITIVE_INFINITY;
+    }
+    public void addEdge(int v, int w, double weight) {
+        adj[v][w] = weight;
+        adj[w][v] = weight;
+        E&#43;&#43;;
+    }
+
+    // các method còn lại tương tự
+}
+    </code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</figure>
+</div>
+</figure>
+<p>Để biểu diễn bằng danh sách kề, trước hết chúng ta cần tạo class <code>Edge</code> biểu diễn một cạnh. Class <code>Edge</code> implement <code>Comparable&lt;Edge></code> giúp thuận tiện cho các thao tác sort, so sánh.</p>
+<p>Các method của <code>Edge</code>:</p>
+<ul>
+<li><strong>weight</strong>(): Trả về trọng số của cạnh hiện tại.</li>
+<li><strong>either</strong>(): Trả về đỉnh đầu trong cạnh.</li>
+<li><strong>other</strong>(int v): Trả về cạnh còn lại trong đồ thị vô hướng, nếu là đồ thị có hướng thì trả về đỉnh cuối và không cần tham số đầu vào nữa.</li>
+</ul>
+<figure class="codeblock codeblock--tabbed">
+<figcaption>
+<span>Edge</span>
+<ul class=tabs>
+<li class="tab active">java</li>
+</ul>
+</figcaption>
+<div class=tabs-content>
+<figure class="highlight language-java" style=display:block>
+<table>
+<tbody>
+<tr>
+<td class=gutter>
+<pre><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br></pre>
+</td>
+<td class=code>
+<pre class="code-highlight language-java"><code class=java>public class Edge implements Comparable&lt;Edge&gt; {
+    private final int v;
+    private final int w;
+    private final double weight;
+    public Edge(int v, int w, double weight) {
+        this.v = v;
+        this.w = w;
+        this.weight = weight;
+    }
+    public double weight() {  return weight;  }
+    public int either() { return v; }
+    public int other(int vertex) {
+        if      (vertex == v) return w;
+        else if (vertex == w) return v;
+        else throw new RuntimeException(&#34;Inconsistent edge&#34;);
+    }
+    public int compareTo(Edge that) {
+        double result = this.weight() - that.weight();
+        if      (result &lt; 0) return -1;
+        else if (result &gt; 0) return &#43;1;
+        else                 return  0;
+    }
+}
+    </code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</figure>
+</div>
+</figure>
+<p>Danh sách kề lúc này sẽ là một danh sách các cạnh <code>Edge</code>.</p>
+<figure class="codeblock codeblock--tabbed">
+<figcaption>
+<span>Edge</span>
+<ul class=tabs>
+<li class="tab active">java</li>
+</ul>
+</figcaption>
+<div class=tabs-content>
+<figure class="highlight language-java" style=display:block>
+<table>
+<tbody>
+<tr>
+<td class=gutter>
+<pre><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br></pre>
+</td>
+<td class=code>
+<pre class="code-highlight language-java"><code class=java>public class EdgeWeightedGraph {
+    private final int V;
+    private int E;
+    private List&lt;Edge&gt;[] adj;
+
+    public EdgeWeightedGraph(int V) {
+        this.V = V;
+        this.E = 0;
+        this.adj = (List&lt;Edge&gt;[]) new List[V];
+        for (int v = 0; v &lt; V; v&#43;&#43;) {
+            this.adj[v] = new ArrayList&lt;&gt;();
+        }
+    }
+    public int V() { return V; }
+    public int E() { return E; }
+    public void addEdge(Edge e) {
+        int v = e.either(), w = e.other(v);
+        adj[v].add(e);
+        adj[w].add(e);
+        E&#43;&#43;;
+    }
+    public Iterable&lt;Edge&gt; adj(int v) { return adj[v]; }
+}
+    </code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</figure>
+</div>
+</figure>
+<h2 id=32-đồ-thị-có-hướng>3.2. Đồ thị có hướng</h2>
+<p>Đồ thị có hướng là dạng đồ thị có tập đỉnh được nối với các cạnh có hướng. Cả ma trận kề và danh sách kề đều biểu diễn được đồ thị có hướng.</p>
+<p>Ví dụ đồ thị sau:</p>
+<div class="figure center">
+<a class=fancybox href=https://chidokun.github.io/images/post/graph-overview/5.svg title="Đồ thị có hướng biểu diễn bằng ma trận kề và danh sách kề" data-fancybox-group>
+<img class=fig-img src=https://chidokun.github.io/images/post/graph-overview/5.svg style=width:100% alt="Đồ thị có hướng biểu diễn bằng ma trận kề và danh sách kề">
+</a>
+<span class=caption>Đồ thị có hướng biểu diễn bằng ma trận kề và danh sách kề</span>
+</div>
+<h2 id=33-vòng-khuyên>3.3. Vòng khuyên</h2>
+<p>Một vòng khuyên (self-loop) là một cạnh nối 1 đỉnh với chính nó.</p>
+<p>Ví dụ về vòng khuyên:</p>
+<div class="figure center">
+<a class=fancybox href=https://chidokun.github.io/images/post/graph-overview/6.svg title="Đồ thị vô hướng có vòng khuyên biểu diễn bằng ma trận kề và danh sách kề" data-fancybox-group>
+<img class=fig-img src=https://chidokun.github.io/images/post/graph-overview/6.svg style=width:100% alt="Đồ thị vô hướng có vòng khuyên biểu diễn bằng ma trận kề và danh sách kề">
+</a>
+<span class=caption>Đồ thị vô hướng có vòng khuyên biểu diễn bằng ma trận kề và danh sách kề</span>
+</div>
+<h2 id=34-cạnh-song-song>3.4. Cạnh song song</h2>
+<p>Cạnh song song (parallel edges) xuất hiện khi có nhiều hơn 1 cạnh nối cùng một cặp đỉnh. Đồ thị biểu diễn bằng danh sách kề có thể biểu diễn cạnh song song. Ma trận kề cũng có thể biểu diễn cạnh song song khi giá trị trong ma trận biểu thị số lượng cạnh nối. Tuy nhiên, không thể dùng ma trận trọng số để vừa biểu diễn cạnh song song, vừa biểu diễn trọng số.</p>
+<p>Ví dụ:</p>
+<div class="figure center">
+<a class=fancybox href=https://chidokun.github.io/images/post/graph-overview/7.svg title="Đồ thị vô hướng có vòng khuyên và cạnh song song biểu diễn bằng ma trận kề và danh sách kề" data-fancybox-group>
+<img class=fig-img src=https://chidokun.github.io/images/post/graph-overview/7.svg style=width:100% alt="Đồ thị vô hướng có vòng khuyên và cạnh song song biểu diễn bằng ma trận kề và danh sách kề">
+</a>
+<span class=caption>Đồ thị vô hướng có vòng khuyên và cạnh song song biểu diễn bằng ma trận kề và danh sách kề</span>
+</div>
+<h1 id=references>References</h1>
+<ul>
+<li><a href=https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)>Graph (discrete mathematics)</a></li>
+<li><a href=https://algs4.cs.princeton.edu/home/>Algorithms, 4th Edition by Robert Sedgewick and Kevin Wayne</a></li>
+</ul>
+</div>
+</div>
+<div id=post-footer class="post-footer main-content-wrap">
+<div class=post-footer-tags>
+<span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br>
+<a class="tag tag--primary tag--small" href=https://chidokun.github.io/tags/data-structures/>data structures</a>
+</div>
+<div class=post-actions-wrap>
+<nav>
+<ul class="post-actions post-action-nav">
+<li class=post-action>
+<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2021/06/graph-dfs-algorithm/ data-tooltip="Thuật toán Depth First Search">
+<i class="fa fa-angle-left"></i>
+<span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2021/02/box-and-whisker-plot/ data-tooltip="Biểu diễn dữ liệu với Box and Whisker Plot">
+<span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+<i class="fa fa-angle-right"></i>
+</a>
+</li>
+</ul>
+</nav>
+<ul class="post-actions post-action-share">
+<li class="post-action hide-lg hide-md hide-sm">
+<a class="post-action-btn btn btn--default btn-open-shareoptions" href=#btn-open-shareoptions>
+<i class="fa fa-share-alt"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/06/graph-overview/">
+<i class="fa fa-facebook-official"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/06/graph-overview/">
+<i class="fa fa-twitter"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://plus.google.com/share?url=https://chidokun.github.io/2021/06/graph-overview/">
+<i class="fa fa-google-plus"></i>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default" href=#disqus_thread>
+<i class="fa fa-comment-o"></i>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default" href=#>
+<i class="fa fa-list"></i>
+</a>
+</li>
+</ul>
+</div>
+<div id=fb-root></div>
+<script>(function(b,c,d){var a,e=b.getElementsByTagName(c)[0];if(b.getElementById(d))return;a=b.createElement(c),a.id=d,a.src='https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.1&appId=445006706177461&autoLogAppEvents=1',e.parentNode.insertBefore(a,e)})(document,'script','facebook-jssdk')</script>
+<div id=fb-cmt-thread class=fb-comments data-href=https://chidokun.github.io/2021/06/graph-overview/ data-width=100%></div>
+</div>
+</article>
+<footer id=footer class=main-content-wrap>
+<span class=copyrights>
+&copy; 2021 <a href=https://github.com/chidokun>Nguyễn Tuấn</a>. All Rights Reserved
+</span>
+</footer>
+</div>
+<div id=bottom-bar class=post-bottom-bar data-behavior=5>
+<div class=post-actions-wrap>
+<nav>
+<ul class="post-actions post-action-nav">
+<li class=post-action>
+<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2021/06/graph-dfs-algorithm/ data-tooltip="Thuật toán Depth First Search">
+<i class="fa fa-angle-left"></i>
+<span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2021/02/box-and-whisker-plot/ data-tooltip="Biểu diễn dữ liệu với Box and Whisker Plot">
+<span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+<i class="fa fa-angle-right"></i>
+</a>
+</li>
+</ul>
+</nav>
+<ul class="post-actions post-action-share">
+<li class="post-action hide-lg hide-md hide-sm">
+<a class="post-action-btn btn btn--default btn-open-shareoptions" href=#btn-open-shareoptions>
+<i class="fa fa-share-alt"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/06/graph-overview/">
+<i class="fa fa-facebook-official"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/06/graph-overview/">
+<i class="fa fa-twitter"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://plus.google.com/share?url=https://chidokun.github.io/2021/06/graph-overview/">
+<i class="fa fa-google-plus"></i>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default" href=#disqus_thread>
+<i class="fa fa-comment-o"></i>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default" href=#>
+<i class="fa fa-list"></i>
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div id=share-options-bar class=share-options-bar data-behavior=5>
+<i id=btn-close-shareoptions class="fa fa-close"></i>
+<ul class=share-options>
+<li class=share-option>
+<a class=share-option-btn target=new href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2021%2F06%2Fgraph-overview%2F">
+<i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
+</a>
+</li>
+<li class=share-option>
+<a class=share-option-btn target=new href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2021%2F06%2Fgraph-overview%2F">
+<i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
+</a>
+</li>
+<li class=share-option>
+<a class=share-option-btn target=new href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2021%2F06%2Fgraph-overview%2F">
+<i class="fa fa-google-plus"></i><span>Chia sẻ với Google+</span>
+</a>
+</li>
+</ul>
+</div>
+<div id=share-options-mask class=share-options-mask></div>
+</div>
+<div id=about>
+<div id=about-card>
+<div id=about-btn-close>
+<i class="fa fa-remove"></i>
+</div>
+<img id=about-card-picture src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện">
+<h4 id=about-card-name>Nguyễn Tuấn</h4>
+<div id=about-card-bio>A guy with passionate at the code</div>
+<div id=about-card-job>
+<i class="fa fa-briefcase"></i>
+<br>
+Software Engineer
+</div>
+<div id=about-card-location>
+<i class="fa fa-map-marker"></i>
+<br>
+Saigon, Vietnam
+</div>
+</div>
+</div>
+<div id=cover style=background-image:url(https://chidokun.github.io/images/background.jpg)></div>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin=anonymous></script>
+<script src=https://chidokun.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js></script>
+<script crossorigin=anonymous integrity=sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js></script>
+<script crossorigin=anonymous integrity=sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js></script>
+<script src=https://chidokun.github.io/js/main.js></script>
+<script lang=javascript>window.onload=updateMinWidth,window.onresize=updateMinWidth,document.getElementById("sidebar").addEventListener("transitionend",updateMinWidth);function updateMinWidth(){var b=document.getElementById("sidebar"),a=document.getElementById("main"),c,d,e;a.style.minWidth="",c=getComputedStyle(a).getPropertyValue("min-width"),d=getComputedStyle(b).getPropertyValue("width"),e=getComputedStyle(b).getPropertyValue("left"),a.style.minWidth=`calc(${c} - ${d} - ${e})`}</script>
+<script>$(document).ready(function(){hljs.configure({classPrefix:'',useBR:!1}),$('pre.code-highlight > code, pre > code').each(function(b,a){$(this).hasClass('codeblock')||$(this).addClass('codeblock'),hljs.highlightBlock(a)})})</script>
+<script>var disqus_config=function(){this.page.url='https://chidokun.github.io/2021/06/graph-overview/',this.page.identifier='/2021/06/graph-overview/'};(function(){var a,b,c;if(window.location.hostname=="localhost")return;a=document,b=a.createElement('script'),c='nguyentuanit96',b.src='//'+c+'.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script>
+</body>
+</html>

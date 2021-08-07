@@ -1,0 +1,391 @@
+<!doctype html><html lang=vi>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=generator content="Hugo 0.87.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name=author content="Nguyễn Tuấn">
+<meta name=keywords content="programming,nhị phân,binary,phép toán trên bit,development,programming,chidokun,lập trình">
+<meta name=description content="Xin giới thiệu đến các bạn một số điều hữu ích về số nhị phân mà mình đã từng đọc trong cuốn Write Great Code - Volume 1. Understanding the Machine của tác giả Randall Hyde. Đây cũng là một quyển sách khá hay mà các bạn có thể đọc để trau dồi thêm kiến thức.">
+<meta property="og:description" content="Xin giới thiệu đến các bạn một số điều hữu ích về số nhị phân mà mình đã từng đọc trong cuốn Write Great Code - Volume 1. Understanding the Machine của tác giả Randall Hyde. Đây cũng là một quyển sách khá hay mà các bạn có thể đọc để trau dồi thêm kiến thức.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Những điều thú vị của số nhị phân trong máy tính">
+<meta name=twitter:title content="Những điều thú vị của số nhị phân trong máy tính">
+<meta property="og:url" content="https://chidokun.github.io/2020/01/useful-things-of-binary-numbers/">
+<meta property="twitter:url" content="https://chidokun.github.io/2020/01/useful-things-of-binary-numbers/">
+<meta property="og:site_name" content="Nguyễn Tuấn's Blog">
+<meta property="og:description" content="Xin giới thiệu đến các bạn một số điều hữu ích về số nhị phân mà mình đã từng đọc trong cuốn Write Great Code - Volume 1. Understanding the Machine của tác giả Randall Hyde. Đây cũng là một quyển sách khá hay mà các bạn có thể đọc để trau dồi thêm kiến thức.">
+<meta name=twitter:description content="Xin giới thiệu đến các bạn một số điều hữu ích về số nhị phân mà mình đã từng đọc trong cuốn Write Great Code - Volume 1. Understanding the Machine của tác giả Randall Hyde. Đây cũng là một quyển sách khá hay mà các bạn có thể đọc để trau dồi thêm kiến thức.">
+<meta property="og:locale" content="vi">
+<meta property="article:published_time" content="2020-01-04T22:27:00">
+<meta property="article:modified_time" content="2020-01-04T22:27:00">
+<meta property="article:section" content="programming">
+<meta property="article:tag" content="programming">
+<meta name=twitter:card content="summary">
+<meta property="fb:app_id" content="445006706177461">
+<meta property="og:image" content="https://chidokun.github.io/thumbnails/binary-number.png">
+<meta property="twitter:image" content="https://chidokun.github.io/thumbnails/binary-number.png">
+<meta property="og:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
+<meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
+<title>Những điều thú vị của số nhị phân trong máy tính</title>
+<meta name=google-site-verification content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI">
+<link rel=icon href=https://chidokun.github.io/favicon.png>
+<link rel=canonical href=https://chidokun.github.io/2020/01/useful-things-of-binary-numbers/>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin=anonymous>
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700|Roboto+Mono&display=swap&subset=vietnamese" rel=stylesheet>
+<link rel=stylesheet href=https://chidokun.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css>
+<link rel=stylesheet crossorigin=anonymous href=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css integrity=sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-64965138-2','auto'),ga('send','pageview'))</script>
+</head>
+<body>
+<div id=blog>
+<header id=header data-behavior=5>
+<i id=btn-open-sidebar class="fa fa-lg fa-bars"></i>
+<div class=header-title>
+<a class=header-title-link href=https://chidokun.github.io/>Nguyễn Tuấn's Blog</a>
+</div>
+<a class="header-right-icon st-search-show-outputs" href=https://chidokun.github.io/#search>
+<i class="fa fa-lg fa-search"></i>
+</a>
+</header>
+<nav id=sidebar data-behavior=5>
+<div class=sidebar-container>
+<div class=sidebar-profile>
+<a href=https://chidokun.github.io/#about>
+<img class=sidebar-profile-picture src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện">
+</a>
+<h4 class=sidebar-profile-name>Nguyễn Tuấn</h4>
+<h5 class=sidebar-profile-bio>A guy with passionate at the code</h5>
+</div>
+<ul class=sidebar-buttons>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/>
+<i class="sidebar-button-icon fa fa-lg fa-home"></i>
+<span class=sidebar-button-desc>Trang chủ</span>
+</a>
+</li>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/categories>
+<i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+<span class=sidebar-button-desc>Danh mục</span>
+</a>
+</li>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/tags>
+<i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+<span class=sidebar-button-desc>Thẻ thông tin</span>
+</a>
+</li>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/archives>
+<i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+<span class=sidebar-button-desc>Lưu trữ</span>
+</a>
+</li>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/#about>
+<i class="sidebar-button-icon fa fa-lg fa-question"></i>
+<span class=sidebar-button-desc>Thông tin</span>
+</a>
+</li>
+</ul>
+<ul class=sidebar-buttons>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://github.com/chidokun target=_blank rel=noopener>
+<i class="sidebar-button-icon fa fa-lg fa-github"></i>
+<span class=sidebar-button-desc>GitHub</span>
+</a>
+</li>
+</ul>
+<ul class=sidebar-buttons>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/index.xml>
+<i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+<span class=sidebar-button-desc>RSS</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<div id=main data-behavior=5 class=hasCoverMetaIn>
+<article class=post itemscope itemtype=http://schema.org/BlogPosting>
+<div class="post-header main-content-wrap text-left">
+<h1 class=post-title itemprop=headline>
+Những điều thú vị của số nhị phân trong máy tính
+</h1>
+<div class="postShorten-meta post-meta">
+<time itemprop=datePublished datetime=2020-01-04T22:27:00+07:00>
+4 tháng 1 2020
+</time>
+<span>mục</span>
+<a class=category-link href=https://chidokun.github.io/categories/programming>programming</a>
+</div>
+<div>
+<div class=fb-like data-href=https://chidokun.github.io/2020/01/useful-things-of-binary-numbers/ data-width data-layout=button_count data-action=like data-size=large data-share=false></div>
+</div>
+</div>
+<div class="post-content markdown" itemprop=articleBody>
+<div class=main-content-wrap>
+<p>Xin giới thiệu đến các bạn một số điều hữu ích về số nhị phân mà mình đã từng đọc trong cuốn <em>Write Great Code - Volume 1. Understanding the Machine</em> của tác giả <em>Randall Hyde</em>. Đây cũng là một quyển sách khá hay mà các bạn có thể đọc để trau dồi thêm kiến thức.</p>
+<h1 id=1-hệ-nhị-phân>1. Hệ nhị phân</h1>
+<p>Một số có thể được biểu diễn trong hệ nhị phân bằng 2 chữ số 0 và 1 (thay vì 10 chữ số từ 0 đến 9 đối với hệ thập phân). Hầu hết các máy tính hiện nay đều tính toán trên hệ nhị phân. Do đó, những giá trị và những đối tượng cũng được biểu diễn dưới dạng nhị phân. Các máy tính không thể biểu diễn một giá trị nhị phân tùy ý mà chỉ có thể biểu diễn giá trị với một kích thước nhất định.</p>
+<p>Trong máy tính, các giá trị nhị phân được biểu diễn dưới dạng các <em>bit</em>. Một <em>bit</em> biểu diễn 2 giá trị khác nhau, có thể là <em>0</em> hoặc <em>1</em>, <em>đúng</em> hoặc <em>sai</em>, <em>có</em> hoặc <em>không</em>, &mldr;</p>
+<p>Các bit kết hợp với nhau sẽ tạo thành một <em>chuỗi bit</em>. Chúng ta có các chuỗi bit sau:</p>
+<ul>
+<li><em>Nibble</em>: Chuỗi 4 bit. Hầu hết các máy tính không hỗ trợ truy cập 1 nibble trong bộ nhớ.</li>
+<li><em>Byte</em>/<em>Octet</em>: Chuỗi 8 bit. Là đơn vị nhỏ nhất mà các máy tính có thể truy cập vào bộ nhớ. Do vậy, hầu hết các ngôn ngữ lập trình hỗ trợ kiểu dữ liệu nhỏ nhất là 1 byte. Octet được sử dụng khi thuật ngữ byte có ý nghĩa mơ hồ, vì byte trong lịch sử từng được sử dụng làm đơn vị lưu trữ có nhiều kích thước khác nhau (không chỉ là 8 bit).</li>
+<li><em>Word</em>: Chuỗi 16 bit.</li>
+<li><em>Double word</em>: Chuỗi 32 bit.</li>
+<li><em>Quad word</em>: Chuỗi 64 bit.</li>
+<li><em>Long word</em>: Chuỗi 128 bit.</li>
+<li><em>Tbyte</em>: Chuỗi 80 bit. Sử dụng trong các hệ CPU Intel 80x86 để giữ các giá trị chấm động và các giá trị BCD nhất định (BCD - binary-coded decimal là một giá trị thập phân được mã hóa nhị phân).</li>
+</ul>
+<p>Khi biểu diễn một chuỗi bit, ta sẽ đánh dấu các bit từ phải qua trái và bắt đầu từ 0. Bit bên phải cùng ứng với bit vị trí thấp nhất gọi là <em>bit LO</em> (low-order), bên trái cùng là <em>bit HO</em> (high-order). Cũng dùng LO để chỉ vị trí từ bên phải qua và HO cho vị trí từ bên trái qua.</p>
+<div class="figure center">
+<a class=fancybox href=https://chidokun.github.io/images/post/useful-things-of-binary-numbers-1.png title="Minh họa một chuỗi 16 bit" data-fancybox-group>
+<img class=fig-img src=https://chidokun.github.io/images/post/useful-things-of-binary-numbers-1.png alt="Minh họa một chuỗi 16 bit">
+</a>
+<span class=caption>Minh họa một chuỗi 16 bit</span>
+</div>
+<h1 id=2-những-đặc-trưng-thú-vị-khi-biểu-diễn-số-nhị-phân-trong-máy-tính>2. Những đặc trưng thú vị khi biểu diễn số nhị phân trong máy tính</h1>
+<ol>
+<li>
+<p>Nếu bit LO của số nhị phân (số nguyên) là 1 thì số đó là số lẻ. Ngược lại, nếu là 0 thì là số chẵn. Ví dụ: Cho số nhị phân <code>00110101</code>, nhìn bit LO là <code>1</code> thì có thể đoán ra ngay đây là số lẻ.</p>
+</li>
+<li>
+<p>Nếu một lượng n-bit LO đều là 0, thì số đó có thể chia hết cho 2n. Ví dụ: Với số nhị phân <code>01010000</code>, 4-bit LO đều là 0 nên số này có thể chia hết cho 24.</p>
+</li>
+<li>
+<p>Nếu số nhị phân có bit thứ n là 1, tất cả các bit còn lại là 0 thì số đó bằng 2n. Ví dụ: số nhị phân <code>00010000</code>, chắc chắn số này bằng 24.</p>
+</li>
+<li>
+<p>Nếu n-bit LO đều là 1, các bit còn lại là 0, thì số đó bằng 2n - 1. Có thể nói là 2n - 1 sẽ chứa n bit đều là 1.</p>
+</li>
+<li>
+<p>Dịch trái 1 bit toàn bộ các bit trong số nhị phân sẽ tương đương với phép nhân với 2.</p>
+</li>
+<li>
+<p>Dịch phải 1 bit của số nhị phân không dấu tương đương với phép chia cho 2 (phần lẻ sẽ được làm tròn xuống). Không áp dụng với số nguyên có dấu.</p>
+</li>
+<li>
+<p>Nhân 2 giá trị nhị phân n-bit có thể cần 2n bit để lưu kết quả.</p>
+</li>
+<li>
+<p>Cộng hoặc trừ 2 số nhị phân <code>n</code> bit sẽ không cần quá <code>n + 1</code> bit để lưu.</p>
+</li>
+<li>
+<p>Đảo tất cả các bit của số nhị phân sẽ tương đương với đổi dấu một số nguyên ở hệ thập phân và trừ đi 1. Phép toán đảo bit sẽ đảo bit 0 thành 1 và 1 thành 0. Vì vậy, số nhị phân <code>00001001</code> ở hệ thập phân là <code>9</code> khi đảo tất cả các bit thành <code>11110110</code> thì giá trị của nó sẽ là <code>-10</code>. Lưu ý là ở đây mình đang minh họa giá trị ở dạng số nhị phân 8-bit nhé. Nếu các bạn có số nhị phân 16-bit <code>0000000000001001</code> biểu diễn số <code>9</code>, thì khi đảo bit lại là <code>1111111111110110</code> mới biểu diễn số <code>-10</code>.</p>
+</li>
+<li>
+<p>Tăng giá trị của số nguyên nhị phân không dấu lớn nhất thêm 1 sẽ luôn cho kết quả là 0. Điều này cũng dễ hiểu, giả sử bạn có số nguyên không dấu 8-bit lớn nhất là <code>11111111</code> biểu diễn số <code>255</code>, nếu thêm 1 vào sẽ là <code>100000000</code> (9 bit) biểu diễn số <code>256</code>. Vì số nguyên này chỉ biểu diễn được 8 bit, nên sẽ thành <code>00000000</code>. Các bạn sẽ thấy kiểu dữ liệu 1 byte không dấu thường chỉ biểu diễn được từ 0 đến 255 mà thôi.</p>
+</li>
+<li>
+<p>Trừ giá trị của số nguyên nhị phân không dấu đi 1 sẽ luôn cho kết quả là số nguyên nhị phân không dấu lớn nhất.</p>
+</li>
+<li>
+<p>Một giá trị n-bit sẽ cho ra 2n các kết hợp duy nhất của các bit. Ví dụ: Số nhị phân 8-bit sẽ cho ra 28 giá trị duy nhất, tức là biểu diễn được <code>256</code> giá trị.</p>
+</li>
+</ol>
+<h1 id=3-các-phép-toán-thú-vị>3. Các phép toán thú vị</h1>
+<p>Các phép toán bitwise (AND, OR, NOT, SHIFT LEFT, SHIFT RIGHT,&mldr; ) có thể hữu dụng để tính toán nhanh trong một số tình huống thường gặp:</p>
+<h2 id=31-kiểm-tra-1-bit-bên-trong-dãy-bit-dùng-phép-toán-and>3.1. Kiểm tra 1 bit bên trong dãy bit dùng phép toán AND</h2>
+<p>Tình huống hay gặp nhất là kiểm tra bit cuối cùng để xác định chẵn hay lẻ. Chúng ta cần tạo ra một <strong>mask</strong> để thực hiện việc này. Bit cuối cùng của mask sẽ là 1 và các bit còn lại là 0. Phép toán AND sẽ biến các bit khác thành 0, ngoại trừ bit cuối cùng. Nếu bit cuối cùng là 0 sẽ dẫn đến kết quả là 0, còn nếu là 1, phép AND sẽ không thay đổi giá trị của nó.</p>
+<p>Mã giả như sau:</p>
+<pre><code>// biến `a` là biến cần test
+result = (a &amp; 1) != 0;
+</code></pre><p>Vậy trong trường hợp bit mà bạn muốn kiểm tra không phải là bit cuối cùng thì sao? Chỉ đơn giản là dời bit đó về cuối cùng thông qua phép dịch phải, rồi thực hiện phép toán AND với mask. Mask của chúng ta ở đây là <code>1</code>.</p>
+<pre><code>// cần test bit thứ `n` của biến `a`, n bắt đầu từ 0 nhé
+result = ((a &gt;&gt; n) &amp; 1) != 0;
+</code></pre><p>Hoặc một cách khác là:</p>
+<pre><code>// cần test bit thứ `n` của biến `a`
+result = (a &amp; (1 &lt;&lt; n)) != 0;
+</code></pre><h2 id=32-kiểm-tra-1-chuỗi-n-bit-dùng-phép-toán-and>3.2. Kiểm tra 1 chuỗi n-bit dùng phép toán AND</h2>
+<p>Tương tự với trường hợp kiểm tra 1 bit, bạn có thể kiểm tra một chuỗi n-bit có phải toàn là <code>0</code> hay không bằng cách tạo ra 1 <code>mask</code> với toàn giá trị <code>1</code>, rồi dùng phép toán AND để kiểm tra.</p>
+<p>Ví dụ: Bạn muốn kiểm tra 4-bit cuối có phải toàn là 0 hay không?</p>
+<p>Nếu biết giá trị của mask <code>1111</code> là <code>15</code>, bạn có thể dễ dàng làm như sau:</p>
+<pre><code>// biến `a` là biến cần test
+result = (a &amp; 15) != 0;
+</code></pre><p>Nếu không biết giá trị của mask mà bạn muốn tạo một mask n-bit, có thể làm như sau:</p>
+<pre><code>mask = (1 &lt;&lt; n) - 1;
+</code></pre><p>Giả dụ n = 4, bạn có <code>1 &lt;&lt; 4</code> sẽ là <code>10000</code>, trừ đi 1 thì mask của bạn sẽ là <code>1111</code>.</p>
+<p>Vậy có thể kiểm tra chuỗi n-bit như sau:</p>
+<pre><code>// biến `a` là biến cần test chuỗi `n` bit cuối cùng
+result = (a &amp; ((1 &lt;&lt; n) - 1)) != 0;
+</code></pre><p>Thật đơn giản phải không nào!</p>
+</div>
+</div>
+<div id=post-footer class="post-footer main-content-wrap">
+<div class=post-footer-tags>
+<span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br>
+<a class="tag tag--primary tag--small" href=https://chidokun.github.io/tags/programming/>programming</a>
+</div>
+<div class=post-actions-wrap>
+<nav>
+<ul class="post-actions post-action-nav">
+<li class=post-action>
+<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2020/01/pie-chart-and-how-to-use/ data-tooltip="Biểu diễn dữ liệu sử dụng Biểu đồ Tròn (Pie Chart)">
+<i class="fa fa-angle-left"></i>
+<span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2019/12/query-with-javascript-ep2/ data-tooltip="Truy vấn với JavaScript (Phần 2)">
+<span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+<i class="fa fa-angle-right"></i>
+</a>
+</li>
+</ul>
+</nav>
+<ul class="post-actions post-action-share">
+<li class="post-action hide-lg hide-md hide-sm">
+<a class="post-action-btn btn btn--default btn-open-shareoptions" href=#btn-open-shareoptions>
+<i class="fa fa-share-alt"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2020/01/useful-things-of-binary-numbers/">
+<i class="fa fa-facebook-official"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2020/01/useful-things-of-binary-numbers/">
+<i class="fa fa-twitter"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://plus.google.com/share?url=https://chidokun.github.io/2020/01/useful-things-of-binary-numbers/">
+<i class="fa fa-google-plus"></i>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default" href=#disqus_thread>
+<i class="fa fa-comment-o"></i>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default" href=#>
+<i class="fa fa-list"></i>
+</a>
+</li>
+</ul>
+</div>
+<div id=fb-root></div>
+<script>(function(b,c,d){var a,e=b.getElementsByTagName(c)[0];if(b.getElementById(d))return;a=b.createElement(c),a.id=d,a.src='https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.1&appId=445006706177461&autoLogAppEvents=1',e.parentNode.insertBefore(a,e)})(document,'script','facebook-jssdk')</script>
+<div id=fb-cmt-thread class=fb-comments data-href=https://chidokun.github.io/2020/01/useful-things-of-binary-numbers/ data-width=100%></div>
+</div>
+</article>
+<footer id=footer class=main-content-wrap>
+<span class=copyrights>
+&copy; 2021 <a href=https://github.com/chidokun>Nguyễn Tuấn</a>. All Rights Reserved
+</span>
+</footer>
+</div>
+<div id=bottom-bar class=post-bottom-bar data-behavior=5>
+<div class=post-actions-wrap>
+<nav>
+<ul class="post-actions post-action-nav">
+<li class=post-action>
+<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2020/01/pie-chart-and-how-to-use/ data-tooltip="Biểu diễn dữ liệu sử dụng Biểu đồ Tròn (Pie Chart)">
+<i class="fa fa-angle-left"></i>
+<span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2019/12/query-with-javascript-ep2/ data-tooltip="Truy vấn với JavaScript (Phần 2)">
+<span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+<i class="fa fa-angle-right"></i>
+</a>
+</li>
+</ul>
+</nav>
+<ul class="post-actions post-action-share">
+<li class="post-action hide-lg hide-md hide-sm">
+<a class="post-action-btn btn btn--default btn-open-shareoptions" href=#btn-open-shareoptions>
+<i class="fa fa-share-alt"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2020/01/useful-things-of-binary-numbers/">
+<i class="fa fa-facebook-official"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2020/01/useful-things-of-binary-numbers/">
+<i class="fa fa-twitter"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://plus.google.com/share?url=https://chidokun.github.io/2020/01/useful-things-of-binary-numbers/">
+<i class="fa fa-google-plus"></i>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default" href=#disqus_thread>
+<i class="fa fa-comment-o"></i>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default" href=#>
+<i class="fa fa-list"></i>
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div id=share-options-bar class=share-options-bar data-behavior=5>
+<i id=btn-close-shareoptions class="fa fa-close"></i>
+<ul class=share-options>
+<li class=share-option>
+<a class=share-option-btn target=new href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2020%2F01%2Fuseful-things-of-binary-numbers%2F">
+<i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
+</a>
+</li>
+<li class=share-option>
+<a class=share-option-btn target=new href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2020%2F01%2Fuseful-things-of-binary-numbers%2F">
+<i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
+</a>
+</li>
+<li class=share-option>
+<a class=share-option-btn target=new href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2020%2F01%2Fuseful-things-of-binary-numbers%2F">
+<i class="fa fa-google-plus"></i><span>Chia sẻ với Google+</span>
+</a>
+</li>
+</ul>
+</div>
+<div id=share-options-mask class=share-options-mask></div>
+</div>
+<div id=about>
+<div id=about-card>
+<div id=about-btn-close>
+<i class="fa fa-remove"></i>
+</div>
+<img id=about-card-picture src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện">
+<h4 id=about-card-name>Nguyễn Tuấn</h4>
+<div id=about-card-bio>A guy with passionate at the code</div>
+<div id=about-card-job>
+<i class="fa fa-briefcase"></i>
+<br>
+Software Engineer
+</div>
+<div id=about-card-location>
+<i class="fa fa-map-marker"></i>
+<br>
+Saigon, Vietnam
+</div>
+</div>
+</div>
+<div id=cover style=background-image:url(https://chidokun.github.io/images/background.jpg)></div>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin=anonymous></script>
+<script src=https://chidokun.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js></script>
+<script crossorigin=anonymous integrity=sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js></script>
+<script crossorigin=anonymous integrity=sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js></script>
+<script src=https://chidokun.github.io/js/main.js></script>
+<script lang=javascript>window.onload=updateMinWidth,window.onresize=updateMinWidth,document.getElementById("sidebar").addEventListener("transitionend",updateMinWidth);function updateMinWidth(){var b=document.getElementById("sidebar"),a=document.getElementById("main"),c,d,e;a.style.minWidth="",c=getComputedStyle(a).getPropertyValue("min-width"),d=getComputedStyle(b).getPropertyValue("width"),e=getComputedStyle(b).getPropertyValue("left"),a.style.minWidth=`calc(${c} - ${d} - ${e})`}</script>
+<script>$(document).ready(function(){hljs.configure({classPrefix:'',useBR:!1}),$('pre.code-highlight > code, pre > code').each(function(b,a){$(this).hasClass('codeblock')||$(this).addClass('codeblock'),hljs.highlightBlock(a)})})</script>
+<script>var disqus_config=function(){this.page.url='https://chidokun.github.io/2020/01/useful-things-of-binary-numbers/',this.page.identifier='/2020/01/useful-things-of-binary-numbers/'};(function(){var a,b,c;if(window.location.hostname=="localhost")return;a=document,b=a.createElement('script'),c='nguyentuanit96',b.src='//'+c+'.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script>
+</body>
+</html>

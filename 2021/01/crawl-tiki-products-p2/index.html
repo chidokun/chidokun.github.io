@@ -1,0 +1,423 @@
+<!doctype html><html lang=vi>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=generator content="Hugo 0.87.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name=author content="Nguyễn Tuấn">
+<meta name=keywords content="crawl,cào dữ liệu,python,development,programming,chidokun,lập trình">
+<meta name=description content="Qua một khoảng thời gian dài, nhiều bạn feedback với mình là code trong bài viết Tập tành crawl dữ liệu product của Tiki không thể chạy được nữa. Không bất ngờ lắm với vấn đề này, mình sẽ hướng dẫn các bạn lấy lại dữ liệu về sản phẩm trên Tiki.
+
+  Nhớ đọc lại bài viết Tập tành crawl dữ liệu product của Tiki để hiểu ý tưởng nhé các bạn.
+">
+<meta property="og:description" content="Qua một khoảng thời gian dài, nhiều bạn feedback với mình là code trong bài viết Tập tành crawl dữ liệu product của Tiki không thể chạy được nữa. Không bất ngờ lắm với vấn đề này, mình sẽ hướng dẫn các bạn lấy lại dữ liệu về sản phẩm trên Tiki.
+
+  Nhớ đọc lại bài viết Tập tành crawl dữ liệu product của Tiki để hiểu ý tưởng nhé các bạn.
+">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tập tành crawl dữ liệu product của Tiki (Phần 2)">
+<meta name=twitter:title content="Tập tành crawl dữ liệu product của Tiki (Phần 2)">
+<meta property="og:url" content="https://chidokun.github.io/2021/01/crawl-tiki-products-p2/">
+<meta property="twitter:url" content="https://chidokun.github.io/2021/01/crawl-tiki-products-p2/">
+<meta property="og:site_name" content="Nguyễn Tuấn's Blog">
+<meta property="og:description" content="Qua một khoảng thời gian dài, nhiều bạn feedback với mình là code trong bài viết Tập tành crawl dữ liệu product của Tiki không thể chạy được nữa. Không bất ngờ lắm với vấn đề này, mình sẽ hướng dẫn các bạn lấy lại dữ liệu về sản phẩm trên Tiki.
+
+  Nhớ đọc lại bài viết Tập tành crawl dữ liệu product của Tiki để hiểu ý tưởng nhé các bạn.
+">
+<meta name=twitter:description content="Qua một khoảng thời gian dài, nhiều bạn feedback với mình là code trong bài viết Tập tành crawl dữ liệu product của Tiki không thể chạy được nữa. Không bất ngờ lắm với vấn đề này, mình sẽ hướng dẫn các bạn lấy lại dữ liệu về sản phẩm trên Tiki.
+
+  Nhớ đọc lại bài viết Tập tành crawl dữ liệu product của Tiki để hiểu ý tưởng nhé các bạn.
+">
+<meta property="og:locale" content="vi">
+<meta property="article:published_time" content="2021-01-30T12:28:27">
+<meta property="article:modified_time" content="2021-01-30T12:28:27">
+<meta property="article:section" content="programming">
+<meta property="article:tag" content="crawl">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="programming">
+<meta name=twitter:card content="summary">
+<meta property="fb:app_id" content="445006706177461">
+<meta property="og:image" content="https://chidokun.github.io/thumbnails/crawl-tiki.png">
+<meta property="twitter:image" content="https://chidokun.github.io/thumbnails/crawl-tiki.png">
+<meta property="og:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
+<meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
+<title>Tập tành crawl dữ liệu product của Tiki (Phần 2)</title>
+<meta name=google-site-verification content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI">
+<link rel=icon href=https://chidokun.github.io/favicon.png>
+<link rel=canonical href=https://chidokun.github.io/2021/01/crawl-tiki-products-p2/>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin=anonymous>
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700|Roboto+Mono&display=swap&subset=vietnamese" rel=stylesheet>
+<link rel=stylesheet href=https://chidokun.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css>
+<link rel=stylesheet crossorigin=anonymous href=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css integrity=sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-64965138-2','auto'),ga('send','pageview'))</script>
+</head>
+<body>
+<div id=blog>
+<header id=header data-behavior=5>
+<i id=btn-open-sidebar class="fa fa-lg fa-bars"></i>
+<div class=header-title>
+<a class=header-title-link href=https://chidokun.github.io/>Nguyễn Tuấn's Blog</a>
+</div>
+<a class="header-right-icon st-search-show-outputs" href=https://chidokun.github.io/#search>
+<i class="fa fa-lg fa-search"></i>
+</a>
+</header>
+<nav id=sidebar data-behavior=5>
+<div class=sidebar-container>
+<div class=sidebar-profile>
+<a href=https://chidokun.github.io/#about>
+<img class=sidebar-profile-picture src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện">
+</a>
+<h4 class=sidebar-profile-name>Nguyễn Tuấn</h4>
+<h5 class=sidebar-profile-bio>A guy with passionate at the code</h5>
+</div>
+<ul class=sidebar-buttons>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/>
+<i class="sidebar-button-icon fa fa-lg fa-home"></i>
+<span class=sidebar-button-desc>Trang chủ</span>
+</a>
+</li>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/categories>
+<i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+<span class=sidebar-button-desc>Danh mục</span>
+</a>
+</li>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/tags>
+<i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+<span class=sidebar-button-desc>Thẻ thông tin</span>
+</a>
+</li>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/archives>
+<i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+<span class=sidebar-button-desc>Lưu trữ</span>
+</a>
+</li>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/#about>
+<i class="sidebar-button-icon fa fa-lg fa-question"></i>
+<span class=sidebar-button-desc>Thông tin</span>
+</a>
+</li>
+</ul>
+<ul class=sidebar-buttons>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://github.com/chidokun target=_blank rel=noopener>
+<i class="sidebar-button-icon fa fa-lg fa-github"></i>
+<span class=sidebar-button-desc>GitHub</span>
+</a>
+</li>
+</ul>
+<ul class=sidebar-buttons>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/index.xml>
+<i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+<span class=sidebar-button-desc>RSS</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<div id=main data-behavior=5 class=hasCoverMetaIn>
+<article class=post itemscope itemtype=http://schema.org/BlogPosting>
+<div class="post-header main-content-wrap text-left">
+<h1 class=post-title itemprop=headline>
+Tập tành crawl dữ liệu product của Tiki (Phần 2)
+</h1>
+<div class="postShorten-meta post-meta">
+<time itemprop=datePublished datetime=2021-01-30T12:28:27+07:00>
+30 tháng 1 2021
+</time>
+<span>mục</span>
+<a class=category-link href=https://chidokun.github.io/categories/programming>programming</a>
+</div>
+<div>
+<div class=fb-like data-href=https://chidokun.github.io/2021/01/crawl-tiki-products-p2/ data-width data-layout=button_count data-action=like data-size=large data-share=false></div>
+</div>
+</div>
+<div class="post-content markdown" itemprop=articleBody>
+<div class=main-content-wrap>
+<p>Qua một khoảng thời gian dài, nhiều bạn feedback với mình là code trong bài viết <a href=https://chidokun.github.io/2020/05/crawl-tiki-products/>Tập tành crawl dữ liệu product của Tiki</a> không thể chạy được nữa. Không bất ngờ lắm với vấn đề này, mình sẽ hướng dẫn các bạn lấy lại dữ liệu về sản phẩm trên Tiki.</p>
+<div class="alert info">
+<p>Nhớ đọc lại bài viết <a href=https://chidokun.github.io/2020/05/crawl-tiki-products/>Tập tành crawl dữ liệu product của Tiki</a> để hiểu ý tưởng nhé các bạn.</p>
+</div>
+<h1 id=1-chuyện-gì-đã-xảy-ra>1. Chuyện gì đã xảy ra?</h1>
+<p>Code cũ đã không thể lấy được dữ liệu trên trang Laptop nữa, vì vậy chúng ta cần kiểm tra lại từ đầu xem Tiki đã thay đổi những gì trên website và API của họ.</p>
+<p>Sau một hồi vọc vạch thì mình tìm thấy những thay đổi sau:</p>
+<ul>
+<li>
+<p>Trang web Laptop của Tiki đã đổi thành <code>https://tiki.vn/laptop/c8095</code> và bạn không thể cào trang này nếu không có <code>user-agent</code> trong header. Cái này thì mình có thể làm dễ ẹc :D</p>
+</li>
+<li>
+<p>Thay đổi lớn hơn đó là trang web Laptop của Tiki đã dùng API để lấy danh sách sản phẩm, và tất nhiên bạn có thể dùng API đó để lấy <code>Product ID</code> thay vì phải đọc từng trang web. Lại còn dễ dàng hơn phải không :D</p>
+</li>
+</ul>
+<p>API để lấy danh sách sản phẩm của Tiki cũng tương tự API lấy thông tin một sản phẩm:</p>
+<pre><code>https://tiki.vn/api/v2/products
+</code></pre><p>Việc lấy danh sách sản phẩm bằng API này có thể không trả về đầy đủ thông tin mà các bạn cần, nên nếu muốn lấy đầy đủ thông tin thì cứ gọi lại API lấy thông tin một sản phẩm.</p>
+<div class="figure center">
+<a class=fancybox href=https://chidokun.github.io/images/post/crawl-tiki-products-p2/1.png title="Đích thị là nó :D" data-fancybox-group>
+<img class=fig-img src=https://chidokun.github.io/images/post/crawl-tiki-products-p2/1.png style=width:90% alt="Đích thị là nó :D">
+</a>
+<span class=caption>Đích thị là nó :D</span>
+</div>
+<p>Tuy nhiên, để gọi được API này thì bạn cũng cần thêm <code>user-agent</code> vào header nhé. Nếu không bạn sẽ nhận lỗi <strong>403: Permission Denied</strong>.</p>
+<div class="figure center">
+<a class=fancybox href=https://chidokun.github.io/images/post/crawl-tiki-products-p2/2.png title="Cũng cần `user-agent` cho API này" data-fancybox-group>
+<img class=fig-img src=https://chidokun.github.io/images/post/crawl-tiki-products-p2/2.png style=width:90% alt="Cũng cần `user-agent` cho API này">
+</a>
+<span class=caption>Cũng cần `user-agent` cho API này</span>
+</div>
+<p>Tóm lại, sau khi kiểm tra lại trang Tiki, chúng ta có thể thấy:</p>
+<ul>
+<li>API lấy thông tin một sản phẩm vẫn giữ nguyên.</li>
+<li>Bạn không cần phải cào từng trang web để lấy danh sách sản phẩm nữa mà chỉ cần dùng API lấy danh sách sản phẩm là xong.</li>
+<li>API lấy danh sách sản phẩm đã trả khá nhiều dữ liệu, nếu dữ liệu đã đủ phục vụ nhu cầu của bạn thì chúng ta không cần dùng API lấy thông tin một sản phẩm. Trong hướng dẫn phía sau, mình vẫn muốn lấy đầy đủ thông tin sản phẩm nên mình vẫn sẽ sử dụng API lấy thông tin một sản phẩm.</li>
+<li>Cần có <code>user-agent</code> cho các API này.</li>
+</ul>
+<h1 id=2-crawl-dữ-liệu-trên-tiki>2. Crawl dữ liệu trên Tiki</h1>
+<p>Trước tiên, sửa lại một số xử lý. Mình sẽ vẫn lấy hết <code>Product ID</code> để lưu lại rồi lấy thông tin chi tiết từng Product ID sau.</p>
+<p>Định nghĩa header:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>headers <span style=color:#f92672>=</span> {<span style=color:#e6db74>&#34;user-agent&#34;</span>: <span style=color:#e6db74>&#34;Mozilla/5.0 (Macintosh; Intel Mac OS X 11_1_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.96 Safari/537.36&#34;</span>}
+</code></pre></div><p>Sửa lại tí nè, thêm header, gọi API thay vì dùng BeautifulSoup.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>crawl_product_id</span>():
+    product_list <span style=color:#f92672>=</span> []
+    i <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>
+    <span style=color:#66d9ef>while</span> (<span style=color:#66d9ef>True</span>):
+        print(<span style=color:#e6db74>&#34;Crawl page: &#34;</span>, i)
+        print(laptop_page_url<span style=color:#f92672>.</span>format(i))
+        response <span style=color:#f92672>=</span> requests<span style=color:#f92672>.</span>get(laptop_page_url<span style=color:#f92672>.</span>format(i), headers<span style=color:#f92672>=</span>headers)
+        
+        <span style=color:#66d9ef>if</span> (response<span style=color:#f92672>.</span>status_code <span style=color:#f92672>!=</span> <span style=color:#ae81ff>200</span>):
+            <span style=color:#66d9ef>break</span>
+
+        products <span style=color:#f92672>=</span> json<span style=color:#f92672>.</span>loads(response<span style=color:#f92672>.</span>text)[<span style=color:#e6db74>&#34;data&#34;</span>]
+
+        <span style=color:#66d9ef>if</span> (len(products) <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>):
+            <span style=color:#66d9ef>break</span>
+
+        <span style=color:#66d9ef>for</span> product <span style=color:#f92672>in</span> products:
+            product_id <span style=color:#f92672>=</span> str(product[<span style=color:#e6db74>&#34;id&#34;</span>])
+            print(<span style=color:#e6db74>&#34;Product ID: &#34;</span>, product_id)
+            product_list<span style=color:#f92672>.</span>append(product_id)
+
+        i <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
+
+    <span style=color:#66d9ef>return</span> product_list, i
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>save_product_id</span>(product_list<span style=color:#f92672>=</span>[]):
+    file <span style=color:#f92672>=</span> open(product_id_file, <span style=color:#e6db74>&#34;w+&#34;</span>)
+    str <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span><span style=color:#f92672>.</span>join(product_list)
+    file<span style=color:#f92672>.</span>write(str)
+    file<span style=color:#f92672>.</span>close()
+    print(<span style=color:#e6db74>&#34;Save file: &#34;</span>, product_id_file)
+
+<span style=color:#75715e># crawl product id</span>
+product_list, page <span style=color:#f92672>=</span> crawl_product_id()
+
+print(<span style=color:#e6db74>&#34;No. Page: &#34;</span>, page)
+print(<span style=color:#e6db74>&#34;No. Product ID: &#34;</span>, len(product_list))
+
+<span style=color:#75715e># save product id for backup</span>
+save_product_id(product_list)
+</code></pre></div><p>Sửa lại một chút, thêm header ở hàm lấy thông tin một sản phẩm.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>crawl_product</span>(product_list<span style=color:#f92672>=</span>[]):
+    product_detail_list <span style=color:#f92672>=</span> []
+    <span style=color:#66d9ef>for</span> product_id <span style=color:#f92672>in</span> product_list:
+        response <span style=color:#f92672>=</span> requests<span style=color:#f92672>.</span>get(product_url<span style=color:#f92672>.</span>format(product_id), headers<span style=color:#f92672>=</span>headers)
+        <span style=color:#66d9ef>if</span> (response<span style=color:#f92672>.</span>status_code <span style=color:#f92672>==</span> <span style=color:#ae81ff>200</span>):
+            product_detail_list<span style=color:#f92672>.</span>append(response<span style=color:#f92672>.</span>text)
+            print(<span style=color:#e6db74>&#34;Crawl product: &#34;</span>, product_id, <span style=color:#e6db74>&#34;: &#34;</span>, response<span style=color:#f92672>.</span>status_code)
+    <span style=color:#66d9ef>return</span> product_detail_list
+
+</code></pre></div><p>Các bước còn lại tương tự như bài viết trước.</p>
+<p>Xem toàn bộ source code ở đây nhé:</p>
+<ul>
+<li><a href=https://github.com/chidokun/crawl-tiki-products>https://github.com/chidokun/crawl-tiki-products</a></li>
+</ul>
+<h1 id=3-kết-luận>3. Kết luận</h1>
+<p>Việc một hệ thống thay đổi kiến trúc, thay đổi API khiến mình không thể crawl dữ liệu được nữa là việc hết sức bình thường. Điều quan trọng ở đây là việc phân tích vấn đề để tìm ra giải pháp cho vấn đề đó.</p>
+<p><em>Trong tương lai Tiki có còn thay đổi nữa không?</em> Chắc chắn có.</p>
+<p><em>Có phải Tiki chặn crawl dữ liệu do bài viết trước hay không?</em> Có thể có mà cũng có thể không. Phần nhiều dựa vào đánh giá rủi ro của họ khi chúng ta crawl dữ liệu. Nếu rủi ro cao, họ sẽ thêm nhiều cơ chế bảo mật hơn thì chúng ta cũng phải vất vả hơn để vượt qua cơ chế đó.</p>
+</div>
+</div>
+<div id=post-footer class="post-footer main-content-wrap">
+<div class=post-footer-tags>
+<span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br>
+<a class="tag tag--primary tag--small" href=https://chidokun.github.io/tags/crawl/>crawl</a>
+<a class="tag tag--primary tag--small" href=https://chidokun.github.io/tags/python/>python</a>
+<a class="tag tag--primary tag--small" href=https://chidokun.github.io/tags/programming/>programming</a>
+</div>
+<div class=post-actions-wrap>
+<nav>
+<ul class="post-actions post-action-nav">
+<li class=post-action>
+<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2021/02/box-and-whisker-plot/ data-tooltip="Biểu diễn dữ liệu với Box and Whisker Plot">
+<i class="fa fa-angle-left"></i>
+<span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2020/07/logistics-problem/ data-tooltip="Logistics Problem (Shopee Code League 2020)">
+<span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+<i class="fa fa-angle-right"></i>
+</a>
+</li>
+</ul>
+</nav>
+<ul class="post-actions post-action-share">
+<li class="post-action hide-lg hide-md hide-sm">
+<a class="post-action-btn btn btn--default btn-open-shareoptions" href=#btn-open-shareoptions>
+<i class="fa fa-share-alt"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/01/crawl-tiki-products-p2/">
+<i class="fa fa-facebook-official"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/01/crawl-tiki-products-p2/">
+<i class="fa fa-twitter"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://plus.google.com/share?url=https://chidokun.github.io/2021/01/crawl-tiki-products-p2/">
+<i class="fa fa-google-plus"></i>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default" href=#disqus_thread>
+<i class="fa fa-comment-o"></i>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default" href=#>
+<i class="fa fa-list"></i>
+</a>
+</li>
+</ul>
+</div>
+<div id=fb-root></div>
+<script>(function(b,c,d){var a,e=b.getElementsByTagName(c)[0];if(b.getElementById(d))return;a=b.createElement(c),a.id=d,a.src='https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.1&appId=445006706177461&autoLogAppEvents=1',e.parentNode.insertBefore(a,e)})(document,'script','facebook-jssdk')</script>
+<div id=fb-cmt-thread class=fb-comments data-href=https://chidokun.github.io/2021/01/crawl-tiki-products-p2/ data-width=100%></div>
+</div>
+</article>
+<footer id=footer class=main-content-wrap>
+<span class=copyrights>
+&copy; 2021 <a href=https://github.com/chidokun>Nguyễn Tuấn</a>. All Rights Reserved
+</span>
+</footer>
+</div>
+<div id=bottom-bar class=post-bottom-bar data-behavior=5>
+<div class=post-actions-wrap>
+<nav>
+<ul class="post-actions post-action-nav">
+<li class=post-action>
+<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2021/02/box-and-whisker-plot/ data-tooltip="Biểu diễn dữ liệu với Box and Whisker Plot">
+<i class="fa fa-angle-left"></i>
+<span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2020/07/logistics-problem/ data-tooltip="Logistics Problem (Shopee Code League 2020)">
+<span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+<i class="fa fa-angle-right"></i>
+</a>
+</li>
+</ul>
+</nav>
+<ul class="post-actions post-action-share">
+<li class="post-action hide-lg hide-md hide-sm">
+<a class="post-action-btn btn btn--default btn-open-shareoptions" href=#btn-open-shareoptions>
+<i class="fa fa-share-alt"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/01/crawl-tiki-products-p2/">
+<i class="fa fa-facebook-official"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/01/crawl-tiki-products-p2/">
+<i class="fa fa-twitter"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://plus.google.com/share?url=https://chidokun.github.io/2021/01/crawl-tiki-products-p2/">
+<i class="fa fa-google-plus"></i>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default" href=#disqus_thread>
+<i class="fa fa-comment-o"></i>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default" href=#>
+<i class="fa fa-list"></i>
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div id=share-options-bar class=share-options-bar data-behavior=5>
+<i id=btn-close-shareoptions class="fa fa-close"></i>
+<ul class=share-options>
+<li class=share-option>
+<a class=share-option-btn target=new href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2021%2F01%2Fcrawl-tiki-products-p2%2F">
+<i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
+</a>
+</li>
+<li class=share-option>
+<a class=share-option-btn target=new href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2021%2F01%2Fcrawl-tiki-products-p2%2F">
+<i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
+</a>
+</li>
+<li class=share-option>
+<a class=share-option-btn target=new href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2021%2F01%2Fcrawl-tiki-products-p2%2F">
+<i class="fa fa-google-plus"></i><span>Chia sẻ với Google+</span>
+</a>
+</li>
+</ul>
+</div>
+<div id=share-options-mask class=share-options-mask></div>
+</div>
+<div id=about>
+<div id=about-card>
+<div id=about-btn-close>
+<i class="fa fa-remove"></i>
+</div>
+<img id=about-card-picture src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện">
+<h4 id=about-card-name>Nguyễn Tuấn</h4>
+<div id=about-card-bio>A guy with passionate at the code</div>
+<div id=about-card-job>
+<i class="fa fa-briefcase"></i>
+<br>
+Software Engineer
+</div>
+<div id=about-card-location>
+<i class="fa fa-map-marker"></i>
+<br>
+Saigon, Vietnam
+</div>
+</div>
+</div>
+<div id=cover style=background-image:url(https://chidokun.github.io/images/background.jpg)></div>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin=anonymous></script>
+<script src=https://chidokun.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js></script>
+<script crossorigin=anonymous integrity=sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js></script>
+<script crossorigin=anonymous integrity=sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js></script>
+<script src=https://chidokun.github.io/js/main.js></script>
+<script lang=javascript>window.onload=updateMinWidth,window.onresize=updateMinWidth,document.getElementById("sidebar").addEventListener("transitionend",updateMinWidth);function updateMinWidth(){var b=document.getElementById("sidebar"),a=document.getElementById("main"),c,d,e;a.style.minWidth="",c=getComputedStyle(a).getPropertyValue("min-width"),d=getComputedStyle(b).getPropertyValue("width"),e=getComputedStyle(b).getPropertyValue("left"),a.style.minWidth=`calc(${c} - ${d} - ${e})`}</script>
+<script>$(document).ready(function(){hljs.configure({classPrefix:'',useBR:!1}),$('pre.code-highlight > code, pre > code').each(function(b,a){$(this).hasClass('codeblock')||$(this).addClass('codeblock'),hljs.highlightBlock(a)})})</script>
+<script>var disqus_config=function(){this.page.url='https://chidokun.github.io/2021/01/crawl-tiki-products-p2/',this.page.identifier='/2021/01/crawl-tiki-products-p2/'};(function(){var a,b,c;if(window.location.hostname=="localhost")return;a=document,b=a.createElement('script'),c='nguyentuanit96',b.src='//'+c+'.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script>
+</body>
+</html>

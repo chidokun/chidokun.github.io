@@ -1,0 +1,383 @@
+<!doctype html><html lang=vi>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=generator content="Hugo 0.87.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name=author content="Nguyễn Tuấn">
+<meta name=keywords content="sleep sort,sort,java,development,programming,chidokun,lập trình">
+<meta name=description content="Nghe tên có thể bạn nghĩ rằng khi dùng thuật toán này thì chúng ta có thể rung đùi mà ngủ không cần làm gì hết? Bạn có từng nghe qua thuật toán sort nào mà số phép so sánh bằng 0 chưa? Nếu chưa thì Sleep Sort là một thuật toán bá đạo như vậy đấy.">
+<meta property="og:description" content="Nghe tên có thể bạn nghĩ rằng khi dùng thuật toán này thì chúng ta có thể rung đùi mà ngủ không cần làm gì hết? Bạn có từng nghe qua thuật toán sort nào mà số phép so sánh bằng 0 chưa? Nếu chưa thì Sleep Sort là một thuật toán bá đạo như vậy đấy.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sleep Sort: Thuật toán sort bá đạo">
+<meta name=twitter:title content="Sleep Sort: Thuật toán sort bá đạo">
+<meta property="og:url" content="https://chidokun.github.io/2021/07/sleep-sort/">
+<meta property="twitter:url" content="https://chidokun.github.io/2021/07/sleep-sort/">
+<meta property="og:site_name" content="Nguyễn Tuấn's Blog">
+<meta property="og:description" content="Nghe tên có thể bạn nghĩ rằng khi dùng thuật toán này thì chúng ta có thể rung đùi mà ngủ không cần làm gì hết? Bạn có từng nghe qua thuật toán sort nào mà số phép so sánh bằng 0 chưa? Nếu chưa thì Sleep Sort là một thuật toán bá đạo như vậy đấy.">
+<meta name=twitter:description content="Nghe tên có thể bạn nghĩ rằng khi dùng thuật toán này thì chúng ta có thể rung đùi mà ngủ không cần làm gì hết? Bạn có từng nghe qua thuật toán sort nào mà số phép so sánh bằng 0 chưa? Nếu chưa thì Sleep Sort là một thuật toán bá đạo như vậy đấy.">
+<meta property="og:locale" content="vi">
+<meta property="article:published_time" content="2021-07-12T22:52:28">
+<meta property="article:modified_time" content="2021-07-12T22:52:28">
+<meta property="article:section" content="programming">
+<meta property="article:tag" content="algorithms">
+<meta name=twitter:card content="summary">
+<meta property="fb:app_id" content="445006706177461">
+<meta property="og:image" content="https://chidokun.github.io/thumbnails/sleep-sort.png">
+<meta property="twitter:image" content="https://chidokun.github.io/thumbnails/sleep-sort.png">
+<meta property="og:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
+<meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
+<title>Sleep Sort: Thuật toán sort bá đạo</title>
+<meta name=google-site-verification content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI">
+<link rel=icon href=https://chidokun.github.io/favicon.png>
+<link rel=canonical href=https://chidokun.github.io/2021/07/sleep-sort/>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin=anonymous>
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700|Roboto+Mono&display=swap&subset=vietnamese" rel=stylesheet>
+<link rel=stylesheet href=https://chidokun.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css>
+<link rel=stylesheet crossorigin=anonymous href=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css integrity=sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-64965138-2','auto'),ga('send','pageview'))</script>
+</head>
+<body>
+<div id=blog>
+<header id=header data-behavior=5>
+<i id=btn-open-sidebar class="fa fa-lg fa-bars"></i>
+<div class=header-title>
+<a class=header-title-link href=https://chidokun.github.io/>Nguyễn Tuấn's Blog</a>
+</div>
+<a class="header-right-icon st-search-show-outputs" href=https://chidokun.github.io/#search>
+<i class="fa fa-lg fa-search"></i>
+</a>
+</header>
+<nav id=sidebar data-behavior=5>
+<div class=sidebar-container>
+<div class=sidebar-profile>
+<a href=https://chidokun.github.io/#about>
+<img class=sidebar-profile-picture src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện">
+</a>
+<h4 class=sidebar-profile-name>Nguyễn Tuấn</h4>
+<h5 class=sidebar-profile-bio>A guy with passionate at the code</h5>
+</div>
+<ul class=sidebar-buttons>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/>
+<i class="sidebar-button-icon fa fa-lg fa-home"></i>
+<span class=sidebar-button-desc>Trang chủ</span>
+</a>
+</li>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/categories>
+<i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+<span class=sidebar-button-desc>Danh mục</span>
+</a>
+</li>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/tags>
+<i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+<span class=sidebar-button-desc>Thẻ thông tin</span>
+</a>
+</li>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/archives>
+<i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+<span class=sidebar-button-desc>Lưu trữ</span>
+</a>
+</li>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/#about>
+<i class="sidebar-button-icon fa fa-lg fa-question"></i>
+<span class=sidebar-button-desc>Thông tin</span>
+</a>
+</li>
+</ul>
+<ul class=sidebar-buttons>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://github.com/chidokun target=_blank rel=noopener>
+<i class="sidebar-button-icon fa fa-lg fa-github"></i>
+<span class=sidebar-button-desc>GitHub</span>
+</a>
+</li>
+</ul>
+<ul class=sidebar-buttons>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/index.xml>
+<i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+<span class=sidebar-button-desc>RSS</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<div id=main data-behavior=5 class=hasCoverMetaIn>
+<article class=post itemscope itemtype=http://schema.org/BlogPosting>
+<div class="post-header main-content-wrap text-left">
+<h1 class=post-title itemprop=headline>
+Sleep Sort: Thuật toán sort bá đạo
+</h1>
+<div class="postShorten-meta post-meta">
+<time itemprop=datePublished datetime=2021-07-12T22:52:28+07:00>
+12 tháng 7 2021
+</time>
+<span>mục</span>
+<a class=category-link href=https://chidokun.github.io/categories/programming>programming</a>
+</div>
+<div>
+<div class=fb-like data-href=https://chidokun.github.io/2021/07/sleep-sort/ data-width data-layout=button_count data-action=like data-size=large data-share=false></div>
+</div>
+</div>
+<div class="post-content markdown" itemprop=articleBody>
+<div class=main-content-wrap>
+<p>Nghe tên có thể bạn nghĩ rằng khi dùng thuật toán này thì chúng ta có thể rung đùi mà ngủ không cần làm gì hết? Bạn có từng nghe qua thuật toán sort nào mà số phép so sánh bằng 0 chưa? Nếu chưa thì <em>Sleep Sort</em> là một thuật toán bá đạo như vậy đấy.</p>
+<h1 id=1-giới-thiệu>1. Giới thiệu</h1>
+<p>Mấu chốt của thuật toán này là với mỗi giá trị trong mảng sẽ tạo ra một thread và thread đó sẽ sleep một khoảng thời gian bằng đúng giá trị của phần tử trong mảng rồi mới in ra giá trị đó.</p>
+<p>Điều đó nghĩa là, phần tử có giá trị nhỏ nhất sẽ được in trước tiên. Và chúng ta phải chờ đến khi phần tử lớn nhất được in ra, thuật toán kết thúc.</p>
+<p>Do đó, thuật toán luôn in ra giá trị mảng đã được sắp xếp từ nhỏ đến lớn.</p>
+<p>Tất cả quá trình này được thực hiện bởi hệ điều hành và chúng ta không biết điều gì xảy ra bên dưới.</p>
+<h1 id=2-cài-đặt-ngay-thôi>2. Cài đặt ngay thôi</h1>
+<p>Các bước thực hiện bao gồm:</p>
+<ul>
+<li>Duyệt qua toàn bộ mảng <code>arr</code>, với mỗi phần tử <code>arr[i]</code>:
+<ul>
+<li>Tạo một thread với và sleep trong <code>arr[i]</code>.</li>
+<li>Sau khi sleep xong, in phần tử ra màn hình.</li>
+</ul>
+</li>
+<li>Thuật toán hoàn tất khi tất cả các thread chạy xong.</li>
+</ul>
+<figure class="codeblock codeblock--tabbed">
+<figcaption>
+<span>SleepSort</span>
+<ul class=tabs>
+<li class="tab active">java</li>
+</ul>
+</figcaption>
+<div class=tabs-content>
+<figure class="highlight language-java" style=display:block>
+<table>
+<tbody>
+<tr>
+<td class=gutter>
+<pre><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br></pre>
+</td>
+<td class=code>
+<pre class="code-highlight language-java"><code class=java>public class SleepSort {
+    public void sort(int[] arr) {
+        for (int i = 0; i &lt; arr.length; i&#43;&#43;)
+            sleep(arr[i]);
+    }
+
+    private void sleep(int s) {
+        new Thread(() -&gt; {
+            try {
+                Thread.sleep(s);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.print(s &#43; &#34; &#34;);
+        }).start();
+    }
+
+    public static void main(String[] args) {
+        int[] arr = new int[] { 5, 3, 2, 4, 7, 6, 8, 10 };
+        SleepSort s = new SleepSort();
+        s.sort(arr);
+    }
+}
+    </code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</figure>
+</div>
+</figure>
+<p>Kết quả là:</p>
+<pre><code>2 3 4 5 6 7 8 10 
+</code></pre><p>Thời gian chạy của thuật toán phụ thuộc vào phần tử lớn nhất của mảng. Ngoài ra thuật toán cũng bị ảnh hưởng bởi việc định thời của hệ điều hành. Hệ điều hành định thời dựa trên heap-based priority queue thì quá trình tạo thread và thêm tất cả các thread vào queue sẽ tốn $O(NlogN)$. Do đó, có thể xem độ phức tạp của thuật toán là $O(NlogN + max(array))$.</p>
+<p>Ngoài ra nó cũng có một số hạn chế như:</p>
+<ul>
+<li>Không chạy được với số âm.</li>
+<li>Không ổn định và nhạy cảm với độ lớn của các phần tử. Đôi khi chỉ sort 2 phần tử <code>1</code> và <code>9999</code> mà chúng ta phải tốn <code>10000 ms</code>.</li>
+<li>Trong trường hợp số lượng phần tử quá lớn, đôi khi một số thread chạy xong trước khi chạy qua xong tất cả các phần tử sẽ dẫn đến kết quả không chính xác.</li>
+</ul>
+<p>Nhìn chung, thuật toán này chủ yếu để vui là chính chứ không có quá nhiều ứng dụng trong thực tế.</p>
+<h1 id=references>References</h1>
+<ul>
+<li><a href=https://iq.opengenus.org/sleep-sort/>Sleep sort</a></li>
+</ul>
+</div>
+</div>
+<div id=post-footer class="post-footer main-content-wrap">
+<div class=post-footer-tags>
+<span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br>
+<a class="tag tag--primary tag--small" href=https://chidokun.github.io/tags/algorithms/>algorithms</a>
+</div>
+<div class=post-actions-wrap>
+<nav>
+<ul class="post-actions post-action-nav">
+<li class=post-action>
+<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2021/07/priority-queue/ data-tooltip="Priority Queue và những cách cài đặt">
+<i class="fa fa-angle-left"></i>
+<span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2021/07/heap-note/ data-tooltip="Heap và một số ghi chú">
+<span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+<i class="fa fa-angle-right"></i>
+</a>
+</li>
+</ul>
+</nav>
+<ul class="post-actions post-action-share">
+<li class="post-action hide-lg hide-md hide-sm">
+<a class="post-action-btn btn btn--default btn-open-shareoptions" href=#btn-open-shareoptions>
+<i class="fa fa-share-alt"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/07/sleep-sort/">
+<i class="fa fa-facebook-official"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/07/sleep-sort/">
+<i class="fa fa-twitter"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://plus.google.com/share?url=https://chidokun.github.io/2021/07/sleep-sort/">
+<i class="fa fa-google-plus"></i>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default" href=#disqus_thread>
+<i class="fa fa-comment-o"></i>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default" href=#>
+<i class="fa fa-list"></i>
+</a>
+</li>
+</ul>
+</div>
+<div id=fb-root></div>
+<script>(function(b,c,d){var a,e=b.getElementsByTagName(c)[0];if(b.getElementById(d))return;a=b.createElement(c),a.id=d,a.src='https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.1&appId=445006706177461&autoLogAppEvents=1',e.parentNode.insertBefore(a,e)})(document,'script','facebook-jssdk')</script>
+<div id=fb-cmt-thread class=fb-comments data-href=https://chidokun.github.io/2021/07/sleep-sort/ data-width=100%></div>
+</div>
+</article>
+<footer id=footer class=main-content-wrap>
+<span class=copyrights>
+&copy; 2021 <a href=https://github.com/chidokun>Nguyễn Tuấn</a>. All Rights Reserved
+</span>
+</footer>
+</div>
+<div id=bottom-bar class=post-bottom-bar data-behavior=5>
+<div class=post-actions-wrap>
+<nav>
+<ul class="post-actions post-action-nav">
+<li class=post-action>
+<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2021/07/priority-queue/ data-tooltip="Priority Queue và những cách cài đặt">
+<i class="fa fa-angle-left"></i>
+<span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2021/07/heap-note/ data-tooltip="Heap và một số ghi chú">
+<span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+<i class="fa fa-angle-right"></i>
+</a>
+</li>
+</ul>
+</nav>
+<ul class="post-actions post-action-share">
+<li class="post-action hide-lg hide-md hide-sm">
+<a class="post-action-btn btn btn--default btn-open-shareoptions" href=#btn-open-shareoptions>
+<i class="fa fa-share-alt"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/07/sleep-sort/">
+<i class="fa fa-facebook-official"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/07/sleep-sort/">
+<i class="fa fa-twitter"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://plus.google.com/share?url=https://chidokun.github.io/2021/07/sleep-sort/">
+<i class="fa fa-google-plus"></i>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default" href=#disqus_thread>
+<i class="fa fa-comment-o"></i>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default" href=#>
+<i class="fa fa-list"></i>
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div id=share-options-bar class=share-options-bar data-behavior=5>
+<i id=btn-close-shareoptions class="fa fa-close"></i>
+<ul class=share-options>
+<li class=share-option>
+<a class=share-option-btn target=new href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fsleep-sort%2F">
+<i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
+</a>
+</li>
+<li class=share-option>
+<a class=share-option-btn target=new href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fsleep-sort%2F">
+<i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
+</a>
+</li>
+<li class=share-option>
+<a class=share-option-btn target=new href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fsleep-sort%2F">
+<i class="fa fa-google-plus"></i><span>Chia sẻ với Google+</span>
+</a>
+</li>
+</ul>
+</div>
+<div id=share-options-mask class=share-options-mask></div>
+</div>
+<div id=about>
+<div id=about-card>
+<div id=about-btn-close>
+<i class="fa fa-remove"></i>
+</div>
+<img id=about-card-picture src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện">
+<h4 id=about-card-name>Nguyễn Tuấn</h4>
+<div id=about-card-bio>A guy with passionate at the code</div>
+<div id=about-card-job>
+<i class="fa fa-briefcase"></i>
+<br>
+Software Engineer
+</div>
+<div id=about-card-location>
+<i class="fa fa-map-marker"></i>
+<br>
+Saigon, Vietnam
+</div>
+</div>
+</div>
+<div id=cover style=background-image:url(https://chidokun.github.io/images/background.jpg)></div>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin=anonymous></script>
+<script src=https://chidokun.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js></script>
+<script crossorigin=anonymous integrity=sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js></script>
+<script crossorigin=anonymous integrity=sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js></script>
+<script src=https://chidokun.github.io/js/main.js></script>
+<script lang=javascript>window.onload=updateMinWidth,window.onresize=updateMinWidth,document.getElementById("sidebar").addEventListener("transitionend",updateMinWidth);function updateMinWidth(){var b=document.getElementById("sidebar"),a=document.getElementById("main"),c,d,e;a.style.minWidth="",c=getComputedStyle(a).getPropertyValue("min-width"),d=getComputedStyle(b).getPropertyValue("width"),e=getComputedStyle(b).getPropertyValue("left"),a.style.minWidth=`calc(${c} - ${d} - ${e})`}</script>
+<script>$(document).ready(function(){hljs.configure({classPrefix:'',useBR:!1}),$('pre.code-highlight > code, pre > code').each(function(b,a){$(this).hasClass('codeblock')||$(this).addClass('codeblock'),hljs.highlightBlock(a)})})</script>
+<script>var disqus_config=function(){this.page.url='https://chidokun.github.io/2021/07/sleep-sort/',this.page.identifier='/2021/07/sleep-sort/'};(function(){var a,b,c;if(window.location.hostname=="localhost")return;a=document,b=a.createElement('script'),c='nguyentuanit96',b.src='//'+c+'.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script>
+</body>
+</html>

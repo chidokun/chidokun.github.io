@@ -1,0 +1,561 @@
+<!doctype html><html lang=vi>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=generator content="Hugo 0.87.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name=author content="Nguyễn Tuấn">
+<meta name=keywords content="java,huffman coding,huffman,development,programming,chidokun,lập trình">
+<meta name=description content="Với những ý tưởng của thuật toán Huffman Coding ở bài viết Thuật toán nén Huffman Coding, trong bài viết này chúng ta cùng bàn về cách hiện thực thuật toán này với ngôn ngữ Java.">
+<meta property="og:description" content="Với những ý tưởng của thuật toán Huffman Coding ở bài viết Thuật toán nén Huffman Coding, trong bài viết này chúng ta cùng bàn về cách hiện thực thuật toán này với ngôn ngữ Java.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cài đặt thuật toán Huffman Coding">
+<meta name=twitter:title content="Cài đặt thuật toán Huffman Coding">
+<meta property="og:url" content="https://chidokun.github.io/2021/07/huffman-coding-p2/">
+<meta property="twitter:url" content="https://chidokun.github.io/2021/07/huffman-coding-p2/">
+<meta property="og:site_name" content="Nguyễn Tuấn's Blog">
+<meta property="og:description" content="Với những ý tưởng của thuật toán Huffman Coding ở bài viết Thuật toán nén Huffman Coding, trong bài viết này chúng ta cùng bàn về cách hiện thực thuật toán này với ngôn ngữ Java.">
+<meta name=twitter:description content="Với những ý tưởng của thuật toán Huffman Coding ở bài viết Thuật toán nén Huffman Coding, trong bài viết này chúng ta cùng bàn về cách hiện thực thuật toán này với ngôn ngữ Java.">
+<meta property="og:locale" content="vi">
+<meta property="article:published_time" content="2021-07-04T01:00:25">
+<meta property="article:modified_time" content="2021-07-04T01:00:25">
+<meta property="article:section" content="programming">
+<meta property="article:tag" content="algorithms">
+<meta name=twitter:card content="summary">
+<meta property="fb:app_id" content="445006706177461">
+<meta property="og:image" content="https://chidokun.github.io/thumbnails/huffman.png">
+<meta property="twitter:image" content="https://chidokun.github.io/thumbnails/huffman.png">
+<meta property="og:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
+<meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
+<title>Cài đặt thuật toán Huffman Coding</title>
+<meta name=google-site-verification content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI">
+<link rel=icon href=https://chidokun.github.io/favicon.png>
+<link rel=canonical href=https://chidokun.github.io/2021/07/huffman-coding-p2/>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin=anonymous>
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700|Roboto+Mono&display=swap&subset=vietnamese" rel=stylesheet>
+<link rel=stylesheet href=https://chidokun.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css>
+<link rel=stylesheet crossorigin=anonymous href=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css integrity=sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-64965138-2','auto'),ga('send','pageview'))</script>
+</head>
+<body>
+<div id=blog>
+<header id=header data-behavior=5>
+<i id=btn-open-sidebar class="fa fa-lg fa-bars"></i>
+<div class=header-title>
+<a class=header-title-link href=https://chidokun.github.io/>Nguyễn Tuấn's Blog</a>
+</div>
+<a class="header-right-icon st-search-show-outputs" href=https://chidokun.github.io/#search>
+<i class="fa fa-lg fa-search"></i>
+</a>
+</header>
+<nav id=sidebar data-behavior=5>
+<div class=sidebar-container>
+<div class=sidebar-profile>
+<a href=https://chidokun.github.io/#about>
+<img class=sidebar-profile-picture src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện">
+</a>
+<h4 class=sidebar-profile-name>Nguyễn Tuấn</h4>
+<h5 class=sidebar-profile-bio>A guy with passionate at the code</h5>
+</div>
+<ul class=sidebar-buttons>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/>
+<i class="sidebar-button-icon fa fa-lg fa-home"></i>
+<span class=sidebar-button-desc>Trang chủ</span>
+</a>
+</li>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/categories>
+<i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+<span class=sidebar-button-desc>Danh mục</span>
+</a>
+</li>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/tags>
+<i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+<span class=sidebar-button-desc>Thẻ thông tin</span>
+</a>
+</li>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/archives>
+<i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+<span class=sidebar-button-desc>Lưu trữ</span>
+</a>
+</li>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/#about>
+<i class="sidebar-button-icon fa fa-lg fa-question"></i>
+<span class=sidebar-button-desc>Thông tin</span>
+</a>
+</li>
+</ul>
+<ul class=sidebar-buttons>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://github.com/chidokun target=_blank rel=noopener>
+<i class="sidebar-button-icon fa fa-lg fa-github"></i>
+<span class=sidebar-button-desc>GitHub</span>
+</a>
+</li>
+</ul>
+<ul class=sidebar-buttons>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/index.xml>
+<i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+<span class=sidebar-button-desc>RSS</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<div id=main data-behavior=5 class=hasCoverMetaIn>
+<article class=post itemscope itemtype=http://schema.org/BlogPosting>
+<div class="post-header main-content-wrap text-left">
+<h1 class=post-title itemprop=headline>
+Cài đặt thuật toán Huffman Coding
+</h1>
+<div class="postShorten-meta post-meta">
+<time itemprop=datePublished datetime=2021-07-04T01:00:25+07:00>
+4 tháng 7 2021
+</time>
+<span>mục</span>
+<a class=category-link href=https://chidokun.github.io/categories/programming>programming</a>
+</div>
+<div>
+<div class=fb-like data-href=https://chidokun.github.io/2021/07/huffman-coding-p2/ data-width data-layout=button_count data-action=like data-size=large data-share=false></div>
+</div>
+</div>
+<div class="post-content markdown" itemprop=articleBody>
+<div class=main-content-wrap>
+<p>Với những ý tưởng của thuật toán Huffman Coding ở bài viết <a href=https://chidokun.github.io/2021/07/huffman-coding-p1/>Thuật toán nén Huffman Coding</a>, trong bài viết này chúng ta cùng bàn về cách hiện thực thuật toán này với ngôn ngữ Java.</p>
+<h1 id=1-định-nghĩa-api>1. Định nghĩa API</h1>
+<p>Nhắc lại 3 bước của thuật toán Huffman Coding:</p>
+<ul>
+<li><strong>Bước 1</strong>: Đếm tần suất xuất hiện của các phần tử trong chuỗi đầu vào.</li>
+<li><strong>Bước 2</strong>: Xây dựng cây Huffman (cây nhị phân mã hóa).</li>
+<li><strong>Bước 3</strong>: Mã hóa chuỗi đầu vào dựa vào cây Huffman.</li>
+</ul>
+<p>Để cài đặt thuật toán này, trước hết ta định nghĩa các API phục vụ cho việc giao tiếp của chương trình như sau:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>HuffmanCoding</span>
+<span style=color:#f92672>-----------------------------------------------------</span>
+  HuffmanCoding <span style=color:#a6e22e>process</span><span style=color:#f92672>(</span>String str<span style=color:#f92672>)</span>
+         String <span style=color:#a6e22e>encode</span><span style=color:#f92672>()</span>
+         String <span style=color:#a6e22e>decode</span><span style=color:#f92672>(</span>String encoded<span style=color:#f92672>)</span>
+</code></pre></div><p>Lớp <code>HuffmanCoding</code> định nghĩa các method cơ bản nhất cho việc tính toán và mã hóa.</p>
+<ul>
+<li><em>process(String str)</em>: thực hiện tính toán và xây dựng cây Huffman dựa trên chuỗi đầu vào <code>str</code>.</li>
+<li><em>encode()</em>: mã hóa chuỗi đầu vào thành chuỗi mã hóa.</li>
+<li><em>decode(String encoded)</em>: giải mã chuỗi mã hóa dựa vào cây Huffman, sẽ được trình bày trong các bài viết kế tiếp.</li>
+</ul>
+<p>Từ định nghĩa trên, chúng ta có thể viết được hàm <code>main</code> để test cho chương trình như sau:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[]</span> args<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+    String str <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;Hellooo!&#34;</span><span style=color:#f92672>;</span>
+    System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Source: &#34;</span> <span style=color:#f92672>+</span> str<span style=color:#f92672>);</span>
+
+    HuffmanCoding h <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> HuffmanCoding<span style=color:#f92672>().</span><span style=color:#a6e22e>process</span><span style=color:#f92672>(</span>str<span style=color:#f92672>);</span>
+    String encoded <span style=color:#f92672>=</span> h<span style=color:#f92672>.</span><span style=color:#a6e22e>encode</span><span style=color:#f92672>();</span>
+    System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Encoded: &#34;</span> <span style=color:#f92672>+</span> encoded<span style=color:#f92672>);</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><p>Chúng ta sẽ lần lượt cài đặt các các method vừa định nghĩa theo từng bước của thuật toán ở phần tiếp theo.</p>
+<p>Ngoài ra, cần có một cấu trúc dữ liệu để lưu trữ cây Huffman.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Node</span>
+<span style=color:#f92672>-----------------------------------------------------</span>
+                Node<span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> data<span style=color:#f92672>,</span> <span style=color:#66d9ef>char</span> character<span style=color:#f92672>)</span>
+                Node<span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> data<span style=color:#f92672>,</span> Node left<span style=color:#f92672>,</span> Node right<span style=color:#f92672>)</span>
+            <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>getData</span><span style=color:#f92672>()</span>
+           <span style=color:#66d9ef>char</span> <span style=color:#a6e22e>getCharacter</span><span style=color:#f92672>()</span>
+           Node <span style=color:#a6e22e>getLeft</span><span style=color:#f92672>()</span>
+           Node <span style=color:#a6e22e>getRight</span><span style=color:#f92672>()</span>
+        <span style=color:#66d9ef>boolean</span> <span style=color:#a6e22e>isLeaf</span><span style=color:#f92672>()</span>
+</code></pre></div><p>Mỗi nút trong cây Huffman gồm ký tự <code>character</code> và trọng số <code>data</code> là tần suất xuất hiện của ký tự đó. Cây Huffman là cây nhị phân nên mỗi nút sẽ có nút con trái <code>left</code> và nút con phải <code>right</code>.</p>
+<p>Cách cài đặt tham khảo cho <code>Node</code>.</p>
+<figure class="codeblock codeblock--tabbed">
+<figcaption>
+<span>Node</span>
+<ul class=tabs>
+<li class="tab active">java</li>
+</ul>
+</figcaption>
+<div class=tabs-content>
+<figure class="highlight language-java" style=display:block>
+<table>
+<tbody>
+<tr>
+<td class=gutter>
+<pre><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br></pre>
+</td>
+<td class=code>
+<pre class="code-highlight language-java"><code class=java>public class Node {
+    private int data;
+    private char character;
+    private Node left;
+    private Node right;
+
+    public Node(int data, char character) {
+        this.data = data;
+        this.character = character;
+        this.left = null;
+        this.right = null;
+    }
+
+    public Node(int data, Node left, Node right) {
+        this.data = data;
+        this.character = &#39;\0&#39;;
+        this.left = left;
+        this.right = right;
+    }
+
+    public int getData() { return data; }
+    public char getCharacter() { return character; }
+    public Node getLeft() { return left; }
+    public Node getRight() { return right; }
+
+    public boolean isLeaf() {
+        return left == null &amp;&amp; right == null &amp;&amp; character != &#39;\0&#39;;
+    }
+}
+    </code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</figure>
+</div>
+</figure>
+<h1 id=2-cài-đặt-từng-bước>2. Cài đặt từng bước</h1>
+<p>Ở <em>Bước 1</em>, ta cần đếm tần suất xuất hiện các ký tự của chuỗi đầu vào. Dùng một <code>Map&lt;Character, Integer></code> để lưu trữ kết quả và cài đặt thành method private bên trong <code>HuffmanCoding</code>.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>private</span> Map<span style=color:#f92672>&lt;</span>Character<span style=color:#f92672>,</span> Integer<span style=color:#f92672>&gt;</span> freqMap<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>countFreq</span><span style=color:#f92672>(</span>String str<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>freqMap</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> HashMap<span style=color:#f92672>&lt;&gt;();</span>
+    <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>char</span> c <span style=color:#f92672>:</span> str<span style=color:#f92672>.</span><span style=color:#a6e22e>toCharArray</span><span style=color:#f92672>())</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>int</span> rs <span style=color:#f92672>=</span> <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>freqMap</span><span style=color:#f92672>.</span><span style=color:#a6e22e>getOrDefault</span><span style=color:#f92672>(</span>c<span style=color:#f92672>,</span> 0<span style=color:#f92672>);</span>
+        <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>freqMap</span><span style=color:#f92672>.</span><span style=color:#a6e22e>put</span><span style=color:#f92672>(</span>c<span style=color:#f92672>,</span> rs <span style=color:#f92672>+</span> 1<span style=color:#f92672>);</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><p>Tiếp tục <em>Bước 2</em>, xây dựng cây Huffman, nhắc lại các bước xây dựng cây Huffman:</p>
+<ul>
+<li><em>2.1</em>. Tạo danh sách chứa các nút lá bao gồm phần tử đầu vào và trọng số nút là tần suất xuất hiện của nó.</li>
+<li><em>2.2</em>. Từ danh sách này, lấy ra 2 phần tử có tần suất xuất hiện ít nhất. Sau đó gắn 2 nút vừa lấy ra vào một nút gốc mới với trọng số là tổng của 2 trọng số ở nút vừa lấy ra để tạo thành một cây.</li>
+<li><em>2.3</em>. Đẩy cây mới vào lại danh sách.</li>
+<li><em>2.4</em>. Lặp lại bước 2 và 3 cho đến khi danh sách chỉ còn 1 nút gốc duy nhất của cây.</li>
+<li><em>2.5</em>. Nút còn lại chính là nút gốc của cây Huffman.</li>
+</ul>
+<p>Để xây dựng danh sách này chúng ta sẽ dùng <code>PriorityQueue</code> có sẵn của Java. <code>PriorityQueue</code> là một cấu trúc dữ liệu hoạt động theo cơ chế FIFO (First In First Out) theo trọng số priority. Ở đây, trọng số priority sẽ là trọng số của nút.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>private</span> Node <span style=color:#a6e22e>buildTree</span><span style=color:#f92672>(</span>Map<span style=color:#f92672>&lt;</span>Character<span style=color:#f92672>,</span> Integer<span style=color:#f92672>&gt;</span> freqMap<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+    PriorityQueue<span style=color:#f92672>&lt;</span>Node<span style=color:#f92672>&gt;</span> q <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> PriorityQueue<span style=color:#f92672>&lt;&gt;(</span>freqMap<span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>(),</span> Comparator<span style=color:#f92672>.</span><span style=color:#a6e22e>comparingInt</span><span style=color:#f92672>(</span>Node<span style=color:#f92672>::</span>getData<span style=color:#f92672>));</span>
+    <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span>Map<span style=color:#f92672>.</span><span style=color:#a6e22e>Entry</span><span style=color:#f92672>&lt;</span>Character<span style=color:#f92672>,</span> Integer<span style=color:#f92672>&gt;</span> i <span style=color:#f92672>:</span> freqMap<span style=color:#f92672>.</span><span style=color:#a6e22e>entrySet</span><span style=color:#f92672>())</span>
+        q<span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> Node<span style=color:#f92672>(</span>i<span style=color:#f92672>.</span><span style=color:#a6e22e>getValue</span><span style=color:#f92672>(),</span> i<span style=color:#f92672>.</span><span style=color:#a6e22e>getKey</span><span style=color:#f92672>()));</span>
+
+    Node root <span style=color:#f92672>=</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>;</span>
+    <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>q<span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>()</span> <span style=color:#f92672>&gt;</span> 1<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        Node x <span style=color:#f92672>=</span> q<span style=color:#f92672>.</span><span style=color:#a6e22e>poll</span><span style=color:#f92672>();</span>
+        Node y <span style=color:#f92672>=</span> q<span style=color:#f92672>.</span><span style=color:#a6e22e>poll</span><span style=color:#f92672>();</span>
+        root <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Node<span style=color:#f92672>(</span>x<span style=color:#f92672>.</span><span style=color:#a6e22e>getData</span><span style=color:#f92672>()</span> <span style=color:#f92672>+</span> y<span style=color:#f92672>.</span><span style=color:#a6e22e>getData</span><span style=color:#f92672>(),</span> x<span style=color:#f92672>,</span> y<span style=color:#f92672>);</span>
+        q<span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span>root<span style=color:#f92672>);</span>
+    <span style=color:#f92672>}</span>
+    <span style=color:#66d9ef>return</span> root<span style=color:#f92672>;</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><p>Từ cây Huffman, ta có thể tạo ra một Map&lt;Character, String> để lưu trữ giá trị mã hóa của từng ký tự. Chúng ta duyệt đệ quy đến nút lá, duyệt về bên trái sẽ thêm giá trị <code>0</code>, duyệt về phải sẽ thêm giá trị <code>1</code>.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>private</span> Map<span style=color:#f92672>&lt;</span>Character<span style=color:#f92672>,</span> String<span style=color:#f92672>&gt;</span> codeMap<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>buildCode</span><span style=color:#f92672>(</span>Node node<span style=color:#f92672>,</span> String code<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>node<span style=color:#f92672>.</span><span style=color:#a6e22e>isLeaf</span><span style=color:#f92672>())</span> <span style=color:#f92672>{</span>
+        codeMap<span style=color:#f92672>.</span><span style=color:#a6e22e>put</span><span style=color:#f92672>(</span>node<span style=color:#f92672>.</span><span style=color:#a6e22e>getCharacter</span><span style=color:#f92672>(),</span> code<span style=color:#f92672>);</span>
+        <span style=color:#66d9ef>return</span><span style=color:#f92672>;</span>
+    <span style=color:#f92672>}</span>
+    buildCode<span style=color:#f92672>(</span>node<span style=color:#f92672>.</span><span style=color:#a6e22e>getLeft</span><span style=color:#f92672>(),</span> code <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;0&#34;</span><span style=color:#f92672>);</span>
+    buildCode<span style=color:#f92672>(</span>node<span style=color:#f92672>.</span><span style=color:#a6e22e>getRight</span><span style=color:#f92672>(),</span> code <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;1&#34;</span><span style=color:#f92672>);</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><p>Sau khi đã có đủ các điều kiện liên quan, chúng ta sẽ cài đặt phương thức <code>process(String str)</code> của <code>HuffmanCoding</code>.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>private</span> Node root <span style=color:#f92672>=</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>;</span>
+<span style=color:#66d9ef>private</span> String str<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>public</span> HuffmanCoding <span style=color:#a6e22e>process</span><span style=color:#f92672>(</span>String str<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>str</span> <span style=color:#f92672>=</span> str<span style=color:#f92672>;</span>
+    countFreq<span style=color:#f92672>(</span>str<span style=color:#f92672>);</span>
+    <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>root</span> <span style=color:#f92672>=</span> buildTree<span style=color:#f92672>(</span>freqMap<span style=color:#f92672>);</span>
+    <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>codeMap</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> HashMap<span style=color:#f92672>&lt;&gt;();</span>
+    buildCode<span style=color:#f92672>(</span>root<span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;&#34;</span><span style=color:#f92672>);</span>
+    <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>this</span><span style=color:#f92672>;</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><p>Sau khi đã có bảng Map của ký tự và giá trị mã hóa, ta dễ dàng cài đặt phương thức <code>encode()</code> để mã hóa chuỗi ban đầu bằng cách thay thế mỗi ký tự ban đầu thành giá trị mã hóa.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> String <span style=color:#a6e22e>encode</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>codeMap</span> <span style=color:#f92672>==</span> <span style=color:#66d9ef>null</span> <span style=color:#f92672>||</span> <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>codeMap</span><span style=color:#f92672>.</span><span style=color:#a6e22e>isEmpty</span><span style=color:#f92672>())</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>;</span>
+    <span style=color:#f92672>}</span>
+    StringBuilder builder <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> StringBuilder<span style=color:#f92672>();</span>
+    <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>char</span> c <span style=color:#f92672>:</span> str<span style=color:#f92672>.</span><span style=color:#a6e22e>toCharArray</span><span style=color:#f92672>())</span> <span style=color:#f92672>{</span>
+        builder<span style=color:#f92672>.</span><span style=color:#a6e22e>append</span><span style=color:#f92672>(</span>codeMap<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>c<span style=color:#f92672>));</span>
+    <span style=color:#f92672>}</span>
+    <span style=color:#66d9ef>return</span> builder<span style=color:#f92672>.</span><span style=color:#a6e22e>toString</span><span style=color:#f92672>();</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><p>Sau khi đã cài đặt xong phương thức <code>encode()</code> là đã có thể test được hàm <code>main</code> phía trên rồi.</p>
+<p>Kết quả:</p>
+<pre><code>Source: Hellooo!
+Encoded: 110111110100001110
+</code></pre><p>Source code của <code>HuffmanCoding</code>.</p>
+<figure class="codeblock codeblock--tabbed">
+<figcaption>
+<span>HuffmanCoding</span>
+<ul class=tabs>
+<li class="tab active">java</li>
+</ul>
+</figcaption>
+<div class=tabs-content>
+<figure class="highlight language-java" style=display:block>
+<table>
+<tbody>
+<tr>
+<td class=gutter>
+<pre><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br><span>40</span><br><span>41</span><br><span>42</span><br><span>43</span><br><span>44</span><br><span>45</span><br><span>46</span><br><span>47</span><br><span>48</span><br><span>49</span><br><span>50</span><br><span>51</span><br><span>52</span><br><span>53</span><br><span>54</span><br><span>55</span><br><span>56</span><br><span>57</span><br><span>58</span><br><span>59</span><br><span>60</span><br></pre>
+</td>
+<td class=code>
+<pre class="code-highlight language-java"><code class=java>public class HuffmanCoding {
+
+    private Node root = null;
+    private Map&lt;Character, Integer&gt; freqMap;
+    private Map&lt;Character, String&gt; codeMap;
+    private String str;
+
+    public HuffmanCoding process(String str) {
+        this.str = str;
+        countFreq(str);
+        this.root = buildTree(freqMap);
+        this.codeMap = new HashMap&lt;&gt;();
+        buildCode(root, &#34;&#34;);
+        return this;
+    }
+
+    public String encode() {
+        if (this.codeMap == null || this.codeMap.isEmpty()) {
+            return null;
+        }
+        StringBuilder builder = new StringBuilder();
+        for (char c : str.toCharArray()) {
+            builder.append(codeMap.get(c));
+        }
+        return builder.toString();
+    }
+
+    private Node buildTree(Map&lt;Character, Integer&gt; freqMap) {
+        PriorityQueue&lt;Node&gt; q = new PriorityQueue&lt;&gt;(freqMap.size(), Comparator.comparingInt(Node::getData));
+        for (Map.Entry&lt;Character, Integer&gt; i : freqMap.entrySet())
+            q.add(new Node(i.getValue(), i.getKey()));
+
+        Node root = null;
+        while (q.size() &gt; 1) {
+            Node x = q.poll();
+            Node y = q.poll();
+            root = new Node(x.getData() &#43; y.getData(), x, y);
+            q.add(root);
+        }
+        return root;
+    }
+
+    private void buildCode(Node node, String code) {
+        if (node.isLeaf()) {
+            codeMap.put(node.getCharacter(), code);
+            return;
+        }
+        buildCode(node.getLeft(), code &#43; &#34;0&#34;);
+        buildCode(node.getRight(), code &#43; &#34;1&#34;);
+    }
+
+    private void countFreq(String str) {
+        this.freqMap = new HashMap&lt;&gt;();
+        for (char c : str.toCharArray()) {
+            int rs = this.freqMap.getOrDefault(c, 0);
+            this.freqMap.put(c, rs &#43; 1);
+        }
+    }
+}
+    </code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</figure>
+</div>
+</figure>
+<p>Vẫn còn một phần giải nén nữa và sẽ được giới thiệu ở bài viết <a href=https://chidokun.github.io/2021/07/huffman-coding-p3/>Huffman Decoding: Quá trình giải nén</a></p>
+<h2 id=references>References</h2>
+<ul>
+<li><a href=https://web.stanford.edu/class/archive/cs/cs106x/cs106x.1192/resources/minibrowser2/huffman-encoding-supplement.pdf>Huffman Encoding and Data Compression</a></li>
+</ul>
+</div>
+</div>
+<div id=post-footer class="post-footer main-content-wrap">
+<div class=post-footer-tags>
+<span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br>
+<a class="tag tag--primary tag--small" href=https://chidokun.github.io/tags/algorithms/>algorithms</a>
+</div>
+<div class=post-actions-wrap>
+<nav>
+<ul class="post-actions post-action-nav">
+<li class=post-action>
+<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2021/07/huffman-coding-p3/ data-tooltip="Huffman Decoding: Quá trình giải nén">
+<i class="fa fa-angle-left"></i>
+<span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2021/07/huffman-coding-p1/ data-tooltip="Thuật toán nén Huffman Coding">
+<span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+<i class="fa fa-angle-right"></i>
+</a>
+</li>
+</ul>
+</nav>
+<ul class="post-actions post-action-share">
+<li class="post-action hide-lg hide-md hide-sm">
+<a class="post-action-btn btn btn--default btn-open-shareoptions" href=#btn-open-shareoptions>
+<i class="fa fa-share-alt"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/07/huffman-coding-p2/">
+<i class="fa fa-facebook-official"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/07/huffman-coding-p2/">
+<i class="fa fa-twitter"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://plus.google.com/share?url=https://chidokun.github.io/2021/07/huffman-coding-p2/">
+<i class="fa fa-google-plus"></i>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default" href=#disqus_thread>
+<i class="fa fa-comment-o"></i>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default" href=#>
+<i class="fa fa-list"></i>
+</a>
+</li>
+</ul>
+</div>
+<div id=fb-root></div>
+<script>(function(b,c,d){var a,e=b.getElementsByTagName(c)[0];if(b.getElementById(d))return;a=b.createElement(c),a.id=d,a.src='https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.1&appId=445006706177461&autoLogAppEvents=1',e.parentNode.insertBefore(a,e)})(document,'script','facebook-jssdk')</script>
+<div id=fb-cmt-thread class=fb-comments data-href=https://chidokun.github.io/2021/07/huffman-coding-p2/ data-width=100%></div>
+</div>
+</article>
+<footer id=footer class=main-content-wrap>
+<span class=copyrights>
+&copy; 2021 <a href=https://github.com/chidokun>Nguyễn Tuấn</a>. All Rights Reserved
+</span>
+</footer>
+</div>
+<div id=bottom-bar class=post-bottom-bar data-behavior=5>
+<div class=post-actions-wrap>
+<nav>
+<ul class="post-actions post-action-nav">
+<li class=post-action>
+<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2021/07/huffman-coding-p3/ data-tooltip="Huffman Decoding: Quá trình giải nén">
+<i class="fa fa-angle-left"></i>
+<span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2021/07/huffman-coding-p1/ data-tooltip="Thuật toán nén Huffman Coding">
+<span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+<i class="fa fa-angle-right"></i>
+</a>
+</li>
+</ul>
+</nav>
+<ul class="post-actions post-action-share">
+<li class="post-action hide-lg hide-md hide-sm">
+<a class="post-action-btn btn btn--default btn-open-shareoptions" href=#btn-open-shareoptions>
+<i class="fa fa-share-alt"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/07/huffman-coding-p2/">
+<i class="fa fa-facebook-official"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/07/huffman-coding-p2/">
+<i class="fa fa-twitter"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://plus.google.com/share?url=https://chidokun.github.io/2021/07/huffman-coding-p2/">
+<i class="fa fa-google-plus"></i>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default" href=#disqus_thread>
+<i class="fa fa-comment-o"></i>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default" href=#>
+<i class="fa fa-list"></i>
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div id=share-options-bar class=share-options-bar data-behavior=5>
+<i id=btn-close-shareoptions class="fa fa-close"></i>
+<ul class=share-options>
+<li class=share-option>
+<a class=share-option-btn target=new href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fhuffman-coding-p2%2F">
+<i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
+</a>
+</li>
+<li class=share-option>
+<a class=share-option-btn target=new href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fhuffman-coding-p2%2F">
+<i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
+</a>
+</li>
+<li class=share-option>
+<a class=share-option-btn target=new href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fhuffman-coding-p2%2F">
+<i class="fa fa-google-plus"></i><span>Chia sẻ với Google+</span>
+</a>
+</li>
+</ul>
+</div>
+<div id=share-options-mask class=share-options-mask></div>
+</div>
+<div id=about>
+<div id=about-card>
+<div id=about-btn-close>
+<i class="fa fa-remove"></i>
+</div>
+<img id=about-card-picture src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện">
+<h4 id=about-card-name>Nguyễn Tuấn</h4>
+<div id=about-card-bio>A guy with passionate at the code</div>
+<div id=about-card-job>
+<i class="fa fa-briefcase"></i>
+<br>
+Software Engineer
+</div>
+<div id=about-card-location>
+<i class="fa fa-map-marker"></i>
+<br>
+Saigon, Vietnam
+</div>
+</div>
+</div>
+<div id=cover style=background-image:url(https://chidokun.github.io/images/background.jpg)></div>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin=anonymous></script>
+<script src=https://chidokun.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js></script>
+<script crossorigin=anonymous integrity=sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js></script>
+<script crossorigin=anonymous integrity=sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js></script>
+<script src=https://chidokun.github.io/js/main.js></script>
+<script lang=javascript>window.onload=updateMinWidth,window.onresize=updateMinWidth,document.getElementById("sidebar").addEventListener("transitionend",updateMinWidth);function updateMinWidth(){var b=document.getElementById("sidebar"),a=document.getElementById("main"),c,d,e;a.style.minWidth="",c=getComputedStyle(a).getPropertyValue("min-width"),d=getComputedStyle(b).getPropertyValue("width"),e=getComputedStyle(b).getPropertyValue("left"),a.style.minWidth=`calc(${c} - ${d} - ${e})`}</script>
+<script>$(document).ready(function(){hljs.configure({classPrefix:'',useBR:!1}),$('pre.code-highlight > code, pre > code').each(function(b,a){$(this).hasClass('codeblock')||$(this).addClass('codeblock'),hljs.highlightBlock(a)})})</script>
+<script>var disqus_config=function(){this.page.url='https://chidokun.github.io/2021/07/huffman-coding-p2/',this.page.identifier='/2021/07/huffman-coding-p2/'};(function(){var a,b,c;if(window.location.hostname=="localhost")return;a=document,b=a.createElement('script'),c='nguyentuanit96',b.src='//'+c+'.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script>
+</body>
+</html>

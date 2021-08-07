@@ -1,0 +1,418 @@
+<!doctype html><html lang=vi>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=generator content="Hugo 0.87.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name=author content="Nguyễn Tuấn">
+<meta name=keywords content="java,huffman coding,huffman,development,programming,chidokun,lập trình">
+<meta name=description content="Nén dữ liệu là phương pháp loại bỏ những thông tin dư thừa trong việc biểu diễn dữ liệu. Nó có nhiều ứng dụng, đặc biệt là trong việc truyền tin vì giúp rút gọn thông tin gửi đi. Có nhiều thuật toán nén dữ liệu và Huffman Coding là một trong số đó. Bài viết này chủ yếu bàn về ý tưởng của thuật toán này.">
+<meta property="og:description" content="Nén dữ liệu là phương pháp loại bỏ những thông tin dư thừa trong việc biểu diễn dữ liệu. Nó có nhiều ứng dụng, đặc biệt là trong việc truyền tin vì giúp rút gọn thông tin gửi đi. Có nhiều thuật toán nén dữ liệu và Huffman Coding là một trong số đó. Bài viết này chủ yếu bàn về ý tưởng của thuật toán này.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Thuật toán nén Huffman Coding">
+<meta name=twitter:title content="Thuật toán nén Huffman Coding">
+<meta property="og:url" content="https://chidokun.github.io/2021/07/huffman-coding-p1/">
+<meta property="twitter:url" content="https://chidokun.github.io/2021/07/huffman-coding-p1/">
+<meta property="og:site_name" content="Nguyễn Tuấn's Blog">
+<meta property="og:description" content="Nén dữ liệu là phương pháp loại bỏ những thông tin dư thừa trong việc biểu diễn dữ liệu. Nó có nhiều ứng dụng, đặc biệt là trong việc truyền tin vì giúp rút gọn thông tin gửi đi. Có nhiều thuật toán nén dữ liệu và Huffman Coding là một trong số đó. Bài viết này chủ yếu bàn về ý tưởng của thuật toán này.">
+<meta name=twitter:description content="Nén dữ liệu là phương pháp loại bỏ những thông tin dư thừa trong việc biểu diễn dữ liệu. Nó có nhiều ứng dụng, đặc biệt là trong việc truyền tin vì giúp rút gọn thông tin gửi đi. Có nhiều thuật toán nén dữ liệu và Huffman Coding là một trong số đó. Bài viết này chủ yếu bàn về ý tưởng của thuật toán này.">
+<meta property="og:locale" content="vi">
+<meta property="article:published_time" content="2021-07-02T22:33:25">
+<meta property="article:modified_time" content="2021-07-02T22:33:25">
+<meta property="article:section" content="programming">
+<meta property="article:tag" content="algorithms">
+<meta name=twitter:card content="summary">
+<meta property="fb:app_id" content="445006706177461">
+<meta property="og:image" content="https://chidokun.github.io/thumbnails/huffman.png">
+<meta property="twitter:image" content="https://chidokun.github.io/thumbnails/huffman.png">
+<meta property="og:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
+<meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
+<title>Thuật toán nén Huffman Coding</title>
+<meta name=google-site-verification content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI">
+<link rel=icon href=https://chidokun.github.io/favicon.png>
+<link rel=canonical href=https://chidokun.github.io/2021/07/huffman-coding-p1/>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin=anonymous>
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700|Roboto+Mono&display=swap&subset=vietnamese" rel=stylesheet>
+<link rel=stylesheet href=https://chidokun.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css>
+<link rel=stylesheet crossorigin=anonymous href=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css integrity=sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-64965138-2','auto'),ga('send','pageview'))</script>
+</head>
+<body>
+<div id=blog>
+<header id=header data-behavior=5>
+<i id=btn-open-sidebar class="fa fa-lg fa-bars"></i>
+<div class=header-title>
+<a class=header-title-link href=https://chidokun.github.io/>Nguyễn Tuấn's Blog</a>
+</div>
+<a class="header-right-icon st-search-show-outputs" href=https://chidokun.github.io/#search>
+<i class="fa fa-lg fa-search"></i>
+</a>
+</header>
+<nav id=sidebar data-behavior=5>
+<div class=sidebar-container>
+<div class=sidebar-profile>
+<a href=https://chidokun.github.io/#about>
+<img class=sidebar-profile-picture src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện">
+</a>
+<h4 class=sidebar-profile-name>Nguyễn Tuấn</h4>
+<h5 class=sidebar-profile-bio>A guy with passionate at the code</h5>
+</div>
+<ul class=sidebar-buttons>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/>
+<i class="sidebar-button-icon fa fa-lg fa-home"></i>
+<span class=sidebar-button-desc>Trang chủ</span>
+</a>
+</li>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/categories>
+<i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+<span class=sidebar-button-desc>Danh mục</span>
+</a>
+</li>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/tags>
+<i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+<span class=sidebar-button-desc>Thẻ thông tin</span>
+</a>
+</li>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/archives>
+<i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+<span class=sidebar-button-desc>Lưu trữ</span>
+</a>
+</li>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/#about>
+<i class="sidebar-button-icon fa fa-lg fa-question"></i>
+<span class=sidebar-button-desc>Thông tin</span>
+</a>
+</li>
+</ul>
+<ul class=sidebar-buttons>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://github.com/chidokun target=_blank rel=noopener>
+<i class="sidebar-button-icon fa fa-lg fa-github"></i>
+<span class=sidebar-button-desc>GitHub</span>
+</a>
+</li>
+</ul>
+<ul class=sidebar-buttons>
+<li class=sidebar-button>
+<a class=sidebar-button-link href=https://chidokun.github.io/index.xml>
+<i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+<span class=sidebar-button-desc>RSS</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<div id=main data-behavior=5 class=hasCoverMetaIn>
+<article class=post itemscope itemtype=http://schema.org/BlogPosting>
+<div class="post-header main-content-wrap text-left">
+<h1 class=post-title itemprop=headline>
+Thuật toán nén Huffman Coding
+</h1>
+<div class="postShorten-meta post-meta">
+<time itemprop=datePublished datetime=2021-07-02T22:33:25+07:00>
+2 tháng 7 2021
+</time>
+<span>mục</span>
+<a class=category-link href=https://chidokun.github.io/categories/programming>programming</a>
+</div>
+<div>
+<div class=fb-like data-href=https://chidokun.github.io/2021/07/huffman-coding-p1/ data-width data-layout=button_count data-action=like data-size=large data-share=false></div>
+</div>
+</div>
+<div class="post-content markdown" itemprop=articleBody>
+<div class=main-content-wrap>
+<p>Nén dữ liệu là phương pháp loại bỏ những thông tin dư thừa trong việc biểu diễn dữ liệu. Nó có nhiều ứng dụng, đặc biệt là trong việc truyền tin vì giúp rút gọn thông tin gửi đi. Có nhiều thuật toán nén dữ liệu và <em>Huffman Coding</em> là một trong số đó. Bài viết này chủ yếu bàn về ý tưởng của thuật toán này.</p>
+<h1 id=1-nén-dữ-liệu>1. Nén dữ liệu</h1>
+<p>Hãy xem câu &ldquo;<em>Hello</em>&rdquo; được biểu diễn dưới dạng mã ASCII như thế nào nhé:</p>
+<div class="figure center">
+<a class=fancybox href=https://chidokun.github.io/images/post/huffman-coding-p1/1.svg title='Câu "Hello" được biểu diễn dưới dạng mã ASCII' data-fancybox-group>
+<img class=fig-img src=https://chidokun.github.io/images/post/huffman-coding-p1/1.svg style=width:100% alt='Câu "Hello" được biểu diễn dưới dạng mã ASCII'>
+</a>
+<span class=caption>Câu "Hello" được biểu diễn dưới dạng mã ASCII</span>
+</div>
+<p>Mỗi ký tự sử dụng 8 bit để biểu diễn nên tổng cộng sẽ dùng 64 bit.</p>
+<p><em>Bảng mã ASCII mở rộng</em> dùng 8 bit để biểu diễn 256 ký tự khác nhau. Trong khi đó thông điệp của chúng ta chỉ gồm 5 ký tự khác nhau, như vậy thực tế chỉ cần dùng 3 bit là đủ để phân biệt được 5 ký tự này.</p>
+<p>Bây giờ ta sẽ liệt kê 5 ký tự phân biệt và gán cho nó một mã nhị phân 3 bit phân biệt. Lúc này ta vẫn có thể biểu diễn trọn vẹn thông điệp đã nén và dùng bảng giải mã này để khôi phục thông điệp ban đầu.</p>
+<div class="figure center">
+<a class=fancybox href=https://chidokun.github.io/images/post/huffman-coding-p1/2.svg title="Thông điệp đã nén bằng 3-bit coding" data-fancybox-group>
+<img class=fig-img src=https://chidokun.github.io/images/post/huffman-coding-p1/2.svg style=width:100% alt="Thông điệp đã nén bằng 3-bit coding">
+</a>
+<span class=caption>Thông điệp đã nén bằng 3-bit coding</span>
+</div>
+<p>Như vậy, chỉ cần dùng $3 \times 8 = 24$ bit để biểu diễn thông điệp trên. Mỗi ký tự đều dùng đúng một số lượng bit để biểu diễn, chúng ta gọi cách này là <strong>fixed-length encoding</strong>. Bảng các giá trị được mã hóa cũng là <strong>prefix code</strong>.</p>
+<p><strong>Prefix code</strong> có thể được định nghĩa khó hiểu như sau (theo <em>Wikipedia</em>):</p>
+<blockquote>
+<p>A prefix code is a type of code system distinguished by its possession of the &ldquo;prefix property&rdquo;, which requires that there is no whole code word in the system that is a prefix (initial segment) of any other code word in the system. It is trivially true for fixed-length code, so only a point of consideration in variable-length code.</p>
+</blockquote>
+<p>Chúng ta hiểu đơn giản như sau: <em>Prefix code là một tập các giá trị mã hóa mà không có phần tử nào được bắt đầu bằng một phần tử khác.</em></p>
+<p>Với <em>fix-length encoding</em> dùng cùng một số lượng bit để mã hóa, các giá trị mã hóa đều khác nhau. Do đó, nó là <em>prefix-code</em>. Tuy vậy, các giá trị mã hóa với số lượng bit khác nhau (<strong>variable-length encoding</strong>) cũng là <em>prefix code</em> nếu thỏa mãn tính chất trên.</p>
+<p>Ví dụ: Tập A = { 0, 10, 110, 111 } là một <em>prefix code</em> vì không có phần tử nào bắt đầu bằng phần tử khác. Nhưng B = { 0, <span class="highlight-text green">10</span>, 110, <span class="highlight-text blue">101</span> } không phải <em>prefix code</em> vì có phần tử <span class="highlight-text blue">101</span> bắt đầu bằng phần tử <span class="highlight-text green">10</span>.</p>
+<p><em>Prefix code</em> có thể được biểu diễn thành cây nhị phân mã hóa. Mỗi ký tự cần mã hóa sẽ nằm ở nút lá. Giá trị mã hóa của ký tự đó thể hiện bằng đường đi từ nút gốc đến nút lá chứa ký tự đó. Nhánh bên trái thể hiện giá trị 0, nhánh bên phải thể hiện giá trị 1.</p>
+<p>Ví dụ cho chữ &ldquo;<em>Hellooo!</em>&rdquo; được mã hóa bằng 3-bit encoding:</p>
+<div class="figure center">
+<a class=fancybox href=https://chidokun.github.io/images/post/huffman-coding-p1/3.svg title="Cây nhị phân mã hóa 3-bit encoding" data-fancybox-group>
+<img class=fig-img src=https://chidokun.github.io/images/post/huffman-coding-p1/3.svg style=width:60% alt="Cây nhị phân mã hóa 3-bit encoding">
+</a>
+<span class=caption>Cây nhị phân mã hóa 3-bit encoding</span>
+</div>
+<p>Ta lại nhận thấy rằng, có những phần tử xuất hiện rất nhiều lần, nếu gắn cho chúng một mã có độ dài thấp nhất, còn các phần tử xuất ít hơn có thể có mã dài hơn, thì vẫn có thể tiết kiệm được hơn nữa.</p>
+<p>Giả sử ta chọn một <em>prefix code</em> như ví dụ bên dưới:</p>
+<div class="figure center">
+<a class=fancybox href=https://chidokun.github.io/images/post/huffman-coding-p1/4.svg title='Câu "Hello" được biểu diễn dưới dạng mã ASCII' data-fancybox-group>
+<img class=fig-img src=https://chidokun.github.io/images/post/huffman-coding-p1/4.svg style=width:100% alt='Câu "Hello" được biểu diễn dưới dạng mã ASCII'>
+</a>
+<span class=caption>Câu "Hello" được biểu diễn dưới dạng mã ASCII</span>
+</div>
+<p>Rõ ràng chỉ cần dùng 18 bit để biểu diễn thông điệp trên. Cách gán mã dựa trên tần suất xuất hiện cũng chính là ý tưởng của thuật toán Huffman coding.</p>
+<div class="figure center">
+<a class=fancybox href=https://chidokun.github.io/images/post/huffman-coding-p1/5.svg title="Cây nhị phân mã hóa variable-length encoding" data-fancybox-group>
+<img class=fig-img src=https://chidokun.github.io/images/post/huffman-coding-p1/5.svg style=width:60% alt="Cây nhị phân mã hóa variable-length encoding">
+</a>
+<span class=caption>Cây nhị phân mã hóa variable-length encoding</span>
+</div>
+<h1 id=2-thuật-toán-huffman-coding>2. Thuật toán Huffman Coding</h1>
+<p>Với ý tưởng trên, thuật toán Huffman coding gồm 3 bước:</p>
+<ul>
+<li><strong>Bước 1</strong>: Đếm tần suất xuất hiện của các phần tử trong chuỗi đầu vào.</li>
+<li><strong>Bước 2</strong>: Xây dựng cây Huffman (cây nhị phân mã hóa).</li>
+<li><strong>Bước 3</strong>: Từ cây Huffman, ta có được các giá trị mã hóa. Lúc này, ta có thể xây dựng chuỗi mã hóa từ các giá trị này.</li>
+</ul>
+<p>Quá trình xây dựng cây Huffman gồm các bước sau:</p>
+<ul>
+<li><em>2.1</em>. Tạo danh sách chứa các nút lá bao gồm phần tử đầu vào và trọng số nút là tần suất xuất hiện của nó.</li>
+<li><em>2.2</em>. Từ danh sách này, lấy ra 2 phần tử có tần suất xuất hiện ít nhất. Sau đó gắn 2 nút vừa lấy ra vào một nút gốc mới với trọng số là tổng của 2 trọng số ở nút vừa lấy ra để tạo thành một cây.</li>
+<li><em>2.3</em>. Đẩy cây mới vào lại danh sách.</li>
+<li><em>2.4</em>. Lặp lại bước 2 và 3 cho đến khi danh sách chỉ còn 1 nút gốc duy nhất của cây.</li>
+<li><em>2.5</em>. Nút còn lại chính là nút gốc của cây Huffman.</li>
+</ul>
+<p>Để dễ tiếp cận các bước thực hiện xây dựng cây Huffman, chúng ta sẽ dùng lại ví dụ ở phần trước.</p>
+<p><strong>Bước 2.1</strong>: Sau khi đếm tần suất xuất hiện các phần tử đầu vào. Chúng ta tạo danh sách các nút lá với trọng số là tần suất xuất hiện. Danh sách sẽ có 5 phần tử như bên dưới.</p>
+<div class="figure center">
+<a class=fancybox href=https://chidokun.github.io/images/post/huffman-coding-p1/6.svg title="Danh sách ban đầu" data-fancybox-group>
+<img class=fig-img src=https://chidokun.github.io/images/post/huffman-coding-p1/6.svg style=width:60% alt="Danh sách ban đầu">
+</a>
+<span class=caption>Danh sách ban đầu</span>
+</div>
+<p><strong>Bước 2.2 và 2.3</strong>: Chọn 2 nút có trọng số thấp nhất, tạo nút gốc mới có trọng số bằng tổng 2 trọng số nút con. Sau đó gắn 2 nút con vào nút gốc và đẩy lại vào danh sách. Danh sách cần được biểu diễn đặc biệt để có thể lấy ra các nút trọng số nhỏ nhất một cách tối ưu nhất.</p>
+<div class="figure center">
+<a class=fancybox href=https://chidokun.github.io/images/post/huffman-coding-p1/7.svg title="Lần 1" data-fancybox-group>
+<img class=fig-img src=https://chidokun.github.io/images/post/huffman-coding-p1/7.svg style=width:50% alt="Lần 1">
+</a>
+<span class=caption>Lần 1</span>
+</div>
+<p><strong>Bước 2.4</strong>: Lặp lại các bước 2.2 và 2.3.</p>
+<div class="figure center">
+<a class=fancybox href=https://chidokun.github.io/images/post/huffman-coding-p1/8.svg title="Lần 2" data-fancybox-group>
+<img class=fig-img src=https://chidokun.github.io/images/post/huffman-coding-p1/8.svg style=width:40% alt="Lần 2">
+</a>
+<span class=caption>Lần 2</span>
+</div>
+<p><strong>Bước 2.4</strong>: Lặp lại các bước 2.2 và 2.3.</p>
+<div class="figure center">
+<a class=fancybox href=https://chidokun.github.io/images/post/huffman-coding-p1/9.svg title="Lần 3" data-fancybox-group>
+<img class=fig-img src=https://chidokun.github.io/images/post/huffman-coding-p1/9.svg style=width:40% alt="Lần 3">
+</a>
+<span class=caption>Lần 3</span>
+</div>
+<p><strong>Bước 2.5</strong>: Chỉ còn lại 1 nút trong danh sách, nút này chính là cây Huffman</p>
+<div class="figure center">
+<a class=fancybox href=https://chidokun.github.io/images/post/huffman-coding-p1/10.svg title="Cây còn lại trong danh sách" data-fancybox-group>
+<img class=fig-img src=https://chidokun.github.io/images/post/huffman-coding-p1/10.svg style=width:40% alt="Cây còn lại trong danh sách">
+</a>
+<span class=caption>Cây còn lại trong danh sách</span>
+</div>
+<p>Từ cây Huffman, ta có thể suy ra các giá trị mã hóa của từng phần tử bằng cách duyệt cây nhị phân mã hóa.</p>
+<div class="figure center">
+<a class=fancybox href=https://chidokun.github.io/images/post/huffman-coding-p1/5.svg title="Cây nhị phân mã hóa" data-fancybox-group>
+<img class=fig-img src=https://chidokun.github.io/images/post/huffman-coding-p1/5.svg style=width:60% alt="Cây nhị phân mã hóa">
+</a>
+<span class=caption>Cây nhị phân mã hóa</span>
+</div>
+<p>Ở những bài viết <a href=https://chidokun.github.io/2021/07/huffman-coding-p2/>tiếp theo</a>, chúng ta sẽ cùng bàn về cách hiện thực ý tưởng này bằng ngôn ngữ lập trình Java.</p>
+<h2 id=references>References</h2>
+<ul>
+<li><a href=https://web.stanford.edu/class/archive/cs/cs106x/cs106x.1192/resources/minibrowser2/huffman-encoding-supplement.pdf>Huffman Encoding and Data Compression</a></li>
+<li><a href=https://en.wikipedia.org/wiki/Prefix_code>Prefix code</a></li>
+</ul>
+</div>
+</div>
+<div id=post-footer class="post-footer main-content-wrap">
+<div class=post-footer-tags>
+<span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br>
+<a class="tag tag--primary tag--small" href=https://chidokun.github.io/tags/algorithms/>algorithms</a>
+</div>
+<div class=post-actions-wrap>
+<nav>
+<ul class="post-actions post-action-nav">
+<li class=post-action>
+<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2021/07/huffman-coding-p2/ data-tooltip="Cài đặt thuật toán Huffman Coding">
+<i class="fa fa-angle-left"></i>
+<span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2021/06/graph-bfs-algorithm/ data-tooltip="Thuật toán Breath First Search">
+<span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+<i class="fa fa-angle-right"></i>
+</a>
+</li>
+</ul>
+</nav>
+<ul class="post-actions post-action-share">
+<li class="post-action hide-lg hide-md hide-sm">
+<a class="post-action-btn btn btn--default btn-open-shareoptions" href=#btn-open-shareoptions>
+<i class="fa fa-share-alt"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/07/huffman-coding-p1/">
+<i class="fa fa-facebook-official"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/07/huffman-coding-p1/">
+<i class="fa fa-twitter"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://plus.google.com/share?url=https://chidokun.github.io/2021/07/huffman-coding-p1/">
+<i class="fa fa-google-plus"></i>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default" href=#disqus_thread>
+<i class="fa fa-comment-o"></i>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default" href=#>
+<i class="fa fa-list"></i>
+</a>
+</li>
+</ul>
+</div>
+<div id=fb-root></div>
+<script>(function(b,c,d){var a,e=b.getElementsByTagName(c)[0];if(b.getElementById(d))return;a=b.createElement(c),a.id=d,a.src='https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.1&appId=445006706177461&autoLogAppEvents=1',e.parentNode.insertBefore(a,e)})(document,'script','facebook-jssdk')</script>
+<div id=fb-cmt-thread class=fb-comments data-href=https://chidokun.github.io/2021/07/huffman-coding-p1/ data-width=100%></div>
+</div>
+</article>
+<footer id=footer class=main-content-wrap>
+<span class=copyrights>
+&copy; 2021 <a href=https://github.com/chidokun>Nguyễn Tuấn</a>. All Rights Reserved
+</span>
+</footer>
+</div>
+<div id=bottom-bar class=post-bottom-bar data-behavior=5>
+<div class=post-actions-wrap>
+<nav>
+<ul class="post-actions post-action-nav">
+<li class=post-action>
+<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2021/07/huffman-coding-p2/ data-tooltip="Cài đặt thuật toán Huffman Coding">
+<i class="fa fa-angle-left"></i>
+<span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default tooltip--top" href=https://chidokun.github.io/2021/06/graph-bfs-algorithm/ data-tooltip="Thuật toán Breath First Search">
+<span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+<i class="fa fa-angle-right"></i>
+</a>
+</li>
+</ul>
+</nav>
+<ul class="post-actions post-action-share">
+<li class="post-action hide-lg hide-md hide-sm">
+<a class="post-action-btn btn btn--default btn-open-shareoptions" href=#btn-open-shareoptions>
+<i class="fa fa-share-alt"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/07/huffman-coding-p1/">
+<i class="fa fa-facebook-official"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/07/huffman-coding-p1/">
+<i class="fa fa-twitter"></i>
+</a>
+</li>
+<li class="post-action hide-xs">
+<a class="post-action-btn btn btn--default" target=new href="https://plus.google.com/share?url=https://chidokun.github.io/2021/07/huffman-coding-p1/">
+<i class="fa fa-google-plus"></i>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default" href=#disqus_thread>
+<i class="fa fa-comment-o"></i>
+</a>
+</li>
+<li class=post-action>
+<a class="post-action-btn btn btn--default" href=#>
+<i class="fa fa-list"></i>
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div id=share-options-bar class=share-options-bar data-behavior=5>
+<i id=btn-close-shareoptions class="fa fa-close"></i>
+<ul class=share-options>
+<li class=share-option>
+<a class=share-option-btn target=new href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fhuffman-coding-p1%2F">
+<i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
+</a>
+</li>
+<li class=share-option>
+<a class=share-option-btn target=new href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fhuffman-coding-p1%2F">
+<i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
+</a>
+</li>
+<li class=share-option>
+<a class=share-option-btn target=new href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fhuffman-coding-p1%2F">
+<i class="fa fa-google-plus"></i><span>Chia sẻ với Google+</span>
+</a>
+</li>
+</ul>
+</div>
+<div id=share-options-mask class=share-options-mask></div>
+</div>
+<div id=about>
+<div id=about-card>
+<div id=about-btn-close>
+<i class="fa fa-remove"></i>
+</div>
+<img id=about-card-picture src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện">
+<h4 id=about-card-name>Nguyễn Tuấn</h4>
+<div id=about-card-bio>A guy with passionate at the code</div>
+<div id=about-card-job>
+<i class="fa fa-briefcase"></i>
+<br>
+Software Engineer
+</div>
+<div id=about-card-location>
+<i class="fa fa-map-marker"></i>
+<br>
+Saigon, Vietnam
+</div>
+</div>
+</div>
+<div id=cover style=background-image:url(https://chidokun.github.io/images/background.jpg)></div>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin=anonymous></script>
+<script src=https://chidokun.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js></script>
+<script crossorigin=anonymous integrity=sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js></script>
+<script crossorigin=anonymous integrity=sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js></script>
+<script src=https://chidokun.github.io/js/main.js></script>
+<script lang=javascript>window.onload=updateMinWidth,window.onresize=updateMinWidth,document.getElementById("sidebar").addEventListener("transitionend",updateMinWidth);function updateMinWidth(){var b=document.getElementById("sidebar"),a=document.getElementById("main"),c,d,e;a.style.minWidth="",c=getComputedStyle(a).getPropertyValue("min-width"),d=getComputedStyle(b).getPropertyValue("width"),e=getComputedStyle(b).getPropertyValue("left"),a.style.minWidth=`calc(${c} - ${d} - ${e})`}</script>
+<script>$(document).ready(function(){hljs.configure({classPrefix:'',useBR:!1}),$('pre.code-highlight > code, pre > code').each(function(b,a){$(this).hasClass('codeblock')||$(this).addClass('codeblock'),hljs.highlightBlock(a)})})</script>
+<script>var disqus_config=function(){this.page.url='https://chidokun.github.io/2021/07/huffman-coding-p1/',this.page.identifier='/2021/07/huffman-coding-p1/'};(function(){var a,b,c;if(window.location.hostname=="localhost")return;a=document,b=a.createElement('script'),c='nguyentuanit96',b.src='//'+c+'.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script>
+</body>
+</html>
