@@ -40,6 +40,7 @@
               {{ else if .Site.DisqusShortname }}
                 {{ partial "post/disqus.html" . }}
               {{ end }}
+              {{ partial "comments.html" . }}
             {{ end }}
           </div>
         </article>
