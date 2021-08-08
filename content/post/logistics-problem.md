@@ -4,7 +4,8 @@ slug: "logistics-problem"
 date: 2020-07-19T11:55:24+07:00
 draft: false
 categories:
-- analysis
+- "Dữ liệu"
+- "Thực hành"
 tags:
 - data
 - python

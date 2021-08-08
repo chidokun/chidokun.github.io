@@ -3,7 +3,8 @@ title: "Truy vấn với JavaScript (Phần 1)"
 slug: query-with-javascript-ep1
 date: 2019-12-13T22:11:33+07:00
 categories:
-- programming
+- "Lập trình"
+- "Thực hành"
 keywords:
 - js
 - javascript

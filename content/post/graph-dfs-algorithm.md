@@ -4,7 +4,8 @@ slug: "graph-dfs-algorithm"
 date: 2021-06-26T21:10:21+07:00
 draft: false
 categories:
-- programming
+- "Lập trình"
+- "Cấu trúc dữ liệu và Giải thuật"
 tags:
 - "data structures"
 - "algorithms"

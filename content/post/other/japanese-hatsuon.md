@@ -4,7 +4,8 @@ slug: "japanese-hatsuon"
 date: 2014-11-28T19:43:00+07:00
 draft: false
 categories:
-- other
+- "Cuộc sống"
+- "Tiếng Nhật"
 tags:
 - "japanese"
 keywords:

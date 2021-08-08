@@ -4,7 +4,8 @@ slug: "order-brushing"
 date: 2020-06-14T17:05:24+07:00
 draft: false
 categories:
-- analysis
+- "Dữ liệu"
+- "Thực hành"
 tags:
 - data
 - python

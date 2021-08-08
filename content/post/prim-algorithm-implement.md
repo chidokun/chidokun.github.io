@@ -4,7 +4,8 @@ slug: "prim-algorithm-implement"
 date: 2021-07-25T20:26:28+07:00
 draft: false
 categories:
-- programming
+- "Lập trình"
+- "Cấu trúc dữ liệu và Giải thuật"
 tags:
 - "algorithms"
 keywords:

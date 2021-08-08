@@ -3,7 +3,7 @@ title: "Review sách \"Deep work: Làm ra làm, chơi ra chơi\""
 slug: review-book-deep-work
 date: 2020-04-01T22:30:30+07:00
 categories:
-- book
+- "Sách"
 tags:
 - book
 keywords:

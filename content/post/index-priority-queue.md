@@ -4,7 +4,8 @@ slug: "index-priority-queue"
 date: 2021-07-29T20:17:38+07:00
 draft: false
 categories:
-- programming
+- "Lập trình"
+- "Cấu trúc dữ liệu và Giải thuật"
 tags:
 - "data structures"
 keywords:

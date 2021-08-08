@@ -4,7 +4,8 @@ slug: "graph-overview"
 date: 2021-06-22T21:51:01+07:00
 draft: false
 categories:
-- programming
+- "Lập trình"
+- "Cấu trúc dữ liệu và Giải thuật"
 tags:
 - "data structures"
 keywords:

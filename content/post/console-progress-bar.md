@@ -4,7 +4,8 @@ slug: "console-progress-bar"
 date: 2021-07-07T17:54:21+07:00
 draft: false
 categories:
-- programming
+- "Lập trình"
+- "Thực hành"
 tags:
 - "tips"
 keywords:

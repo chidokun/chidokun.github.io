@@ -3,7 +3,8 @@ title: "Những điều thú vị của số nhị phân trong máy tính"
 slug: useful-things-of-binary-numbers
 date: 2020-01-04T22:27:00+07:00
 categories:
-- programming
+- "Lập trình"
+- "Computer Science"
 keywords:
 - programming
 - nhị phân

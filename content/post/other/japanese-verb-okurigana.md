@@ -4,7 +4,8 @@ slug: "japanese-verb-okurigana"
 date: 2014-11-08T00:04:00+07:00
 draft: false
 categories:
-- other
+- "Cuộc sống"
+- "Tiếng Nhật"
 tags:
 - "japanese"
 keywords:

@@ -4,7 +4,8 @@ slug: "thi-nghiem-ieu-che-chat-chi-thi-mau"
 date: 2013-11-18T23:14:00+07:00
 draft: false
 categories:
-- other
+- "Cuộc sống"
+- "Linh tinh"
 tags:
 - "chemistry"
 - "experiment"

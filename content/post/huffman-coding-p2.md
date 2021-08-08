@@ -4,7 +4,8 @@ slug: "huffman-coding-p2"
 date: 2021-07-04T01:00:25+07:00
 draft: false
 categories:
-- programming
+- "Lập trình"
+- "Cấu trúc dữ liệu và Giải thuật"
 tags:
 - "algorithms"
 keywords:

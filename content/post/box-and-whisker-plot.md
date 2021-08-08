@@ -4,7 +4,8 @@ slug: "box-and-whisker-plot"
 date: 2021-02-03T22:00:00+07:00
 draft: false
 categories:
-- "analysis"
+- "Dữ liệu"
+- "Visualization"
 tags:
 - "data visualization"
 - "data analysis"

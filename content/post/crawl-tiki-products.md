@@ -4,7 +4,8 @@ slug: "crawl-tiki-products"
 date: 2020-05-31T21:37:27+07:00
 draft: false
 categories:
-- programming
+- "Lập trình"
+- "Thực hành"
 tags:
 - crawl
 - python
@@ -19,8 +20,6 @@ thumbnailImagePosition: left
 
 Tiki là một trong những trang thương mại điện tử lớn nhất Việt Nam. Với chính sách gắt gao để hạn chế hàng nhái, hàng giả nên những thông tin product trên Tiki có thể "tin tưởng" được. Nếu có nhu cầu lấy dữ liệu sản phẩm thì dữ liệu trên Tiki cũng là một nguồn tham khảo đáng tin cậy. Bên cạnh đó, mình cũng đang tập tành viết crawler nên trong bài này mình sẽ giới thiệu cách mình đã làm để lấy dữ liệu về sản phẩm trên Tiki.
 
-
-
 {{< alert info >}}
 Qua một khoảng thời gian dài, nhiều bạn feedback với mình là code trong bài viết này không thể chạy được nữa. Không bất ngờ lắm với vấn đề này, mình sẽ hướng dẫn các bạn lấy lại dữ liệu về sản phẩm trên Tiki với Phần 2 nhé: [Tập tành crawl dữ liệu product của Tiki (Phần 2)]({{< ref "/post/crawl-tiki-products-p2" >}})
 {{< /alert >}}
@@ -32,8 +31,6 @@ Qua một khoảng thời gian dài, nhiều bạn feedback với mình là code
 # 1. Inspect Tiki và xác định thông tin cần lấy
 
 Dữ liệu mình cần là các sản phẩm Laptop bao gồm thông tin cơ bản, cấu hình và giá cả. Các bạn có thể dùng dữ liệu này để dự đoán giá Laptop dựa vào cấu hình chẳng hạn. Theo mình khảo sát, đến thời điểm này, Tiki có số lượng sản phẩm Laptop nhiều nhất so với các trang khác như Thế giới di dộng hoặc FPT Shop.
-
-
 
 {{< image classes="fancybox center" thumbnail-width="90%" src="/images/post/crawl-tiki-products/1.png" title="Một mẫu laptop trên trang Tiki.vn" >}}
 

@@ -4,7 +4,8 @@ slug: "japanese-chouon-sokuon"
 date: 2014-11-25T00:59:00+07:00
 draft: false
 categories:
-- other
+- "Cuộc sống"
+- "Tiếng Nhật"
 tags:
 - "japanese"
 keywords:

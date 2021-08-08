@@ -4,7 +4,8 @@ slug: "crawl-tiki-products-p2"
 date: 2021-01-30T12:28:27+07:00
 draft: false
 categories:
-- programming
+- "Lập trình"
+- "Thực hành"
 tags:
 - crawl
 - python

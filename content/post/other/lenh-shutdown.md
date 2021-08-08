@@ -4,7 +4,8 @@ slug: "tim-hieu-lenh-shutdown-cua-windows-8-va"
 date: 2013-11-25T22:29:00+07:00
 draft: false
 categories:
-- other
+- "Lập trình"
+- "Thủ thuật"
 tags:
 - "tin học"
 - "thủ thuật"

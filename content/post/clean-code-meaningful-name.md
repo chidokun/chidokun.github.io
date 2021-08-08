@@ -4,7 +4,8 @@ slug: "clean-code-meaningful-name"
 date: 2021-08-06T19:00:39+07:00
 draft: false
 categories:
-- programming
+- "Lập trình"
+- "Kỹ năng"
 tags:
 - "clean code"
 keywords:

@@ -4,7 +4,8 @@ slug: "complexity-of-time"
 date: 2021-07-17T21:33:22+07:00
 draft: false
 categories:
-- programming
+- "Lập trình"
+- "Cấu trúc dữ liệu và Giải thuật"
 tags:
 - "algorithms"
 keywords:

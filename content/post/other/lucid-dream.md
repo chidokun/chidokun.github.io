@@ -4,7 +4,8 @@ slug: "tan-man-ve-lucid-dream"
 date: 2013-11-24T21:41:00+07:00
 draft: false
 categories:
-- other
+- "Cuộc sống"
+- "Linh tinh"
 tags:
 - "other"
 keywords:

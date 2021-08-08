@@ -4,7 +4,8 @@ slug: "bash-script-text-format-tips"
 date: 2020-04-15T22:30:00+07:00
 draft: false
 categories:
-- "tips"
+- "Lập trình"
+- "Thủ thuật"
 tags:
 - "tips"
 keywords:

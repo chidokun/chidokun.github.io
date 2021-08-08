@@ -4,7 +4,8 @@ slug: "graph-bfs-algorithm"
 date: 2021-06-27T20:03:25+07:00
 draft: false
 categories:
-- programming
+- "Lập trình"
+- "Cấu trúc dữ liệu và Giải thuật"
 tags:
 - "data structures"
 - "algorithms"

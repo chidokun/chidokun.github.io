@@ -4,7 +4,8 @@ slug: "pie-chart-and-how-to-use"
 date: 2020-01-31T22:00:00+07:00
 draft: false
 categories:
-- "analysis"
+- "Dữ liệu"
+- "Visualization"
 tags:
 - "data visualization"
 - "data analysis"

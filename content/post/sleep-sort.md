@@ -4,7 +4,8 @@ slug: "sleep-sort"
 date: 2021-07-12T22:52:28+07:00
 draft: false
 categories:
-- programming
+- "Lập trình"
+- "Cấu trúc dữ liệu và Giải thuật"
 tags:
 - "algorithms"
 keywords:
