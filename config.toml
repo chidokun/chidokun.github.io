@@ -250,7 +250,7 @@ enableEmoji = true
     copyright = "<a href=\"https://github.com/chidokun\">Nguyễn Tuấn</a>"
 
   [params.staticman]
-    endpoint = "https://chidokun-blog-comment.herokuapp.com/v3/entry"
+    endpoint = "https://chidokun-blog-comment.herokuapp.com/v3/entry/github"
     username = "chidokun"
     repository = "chidokun.github.io"
     branch = "master"
