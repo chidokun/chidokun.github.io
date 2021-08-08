@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Thủ thuật on Nguyễn Tuấn&#39;s Blog</title>
+    <link>https://chidokun.github.io/categories/th%E1%BB%A7-thu%E1%BA%ADt/</link>
+    <description>Recent content in Thủ thuật on Nguyễn Tuấn&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>vi</language>
+    <lastBuildDate>Wed, 15 Apr 2020 22:30:00 +0700</lastBuildDate>
+    
+	<atom:link href="https://chidokun.github.io/categories/th%E1%BB%A7-thu%E1%BA%ADt/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Định dạng màu cho text khi viết Bash script</title>
+      <link>https://chidokun.github.io/2020/04/bash-script-text-format-tips/</link>
+      <pubDate>Wed, 15 Apr 2020 22:30:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2020/04/bash-script-text-format-tips/</guid>
+      <description>&lt;p&gt;Với dân developer thì viết script để tự động hóa một số công việc cũng là một việc thường gặp. Mọi người thường nghĩ chỉ có thể hiển thị trên nền trắng đen đơn thuần. Thực ra terminal trên Linux và macOS cũng hỗ trợ hiển thị màu mè hoa lá nữa. Cùng xem cách định dạng chữ và màu để hiển thị trên terminal như thế nào nhé.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Tìm hiểu lệnh shutdown của Windows 8 và cách tạo shortcut tắt máy</title>
+      <link>https://chidokun.github.io/2013/11/tim-hieu-lenh-shutdown-cua-windows-8-va/</link>
+      <pubDate>Mon, 25 Nov 2013 22:29:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2013/11/tim-hieu-lenh-shutdown-cua-windows-8-va/</guid>
+      <description>&lt;p&gt;Windows 8 ra đời kèm theo nhiều tính năng mới rất hữu ích. Đặc biệt ta có thể thấy Windows 8 hoạt động rất mượt mà, tắt và khởi động máy nhanh hơn hẳn người tiền nhiệm. Có được điều này là do Microsoft đã trang bị cho Windows 8 tính năng &amp;ldquo;hybrid boot&amp;rdquo; có thể cải thiện thời gian khởi động nhanh hơn 30-70% so với thời gian khởi động từ chế độ lạnh truyền thống trong Windows 7.
+Cùng với đó, lệnh shutdown trong Windows 8 cũng có nhiều thay đổi. Bài viết này đề cập đến các tham số lệnh và cách sử dụng chúng đồng thời hướng dẫn bạn cách tạo shortcut đơn giản để tắt máy.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

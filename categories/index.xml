@@ -12,47 +12,110 @@
     
     
     <item>
-      <title>programming</title>
-      <link>https://chidokun.github.io/categories/programming/</link>
+      <title>Kỹ năng</title>
+      <link>https://chidokun.github.io/categories/k%E1%BB%B9-n%C4%83ng/</link>
       <pubDate>Fri, 06 Aug 2021 19:00:39 +0700</pubDate>
       
-      <guid>https://chidokun.github.io/categories/programming/</guid>
+      <guid>https://chidokun.github.io/categories/k%E1%BB%B9-n%C4%83ng/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>analysis</title>
-      <link>https://chidokun.github.io/categories/analysis/</link>
+      <title>Lập trình</title>
+      <link>https://chidokun.github.io/categories/l%E1%BA%ADp-tr%C3%ACnh/</link>
+      <pubDate>Fri, 06 Aug 2021 19:00:39 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/categories/l%E1%BA%ADp-tr%C3%ACnh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cấu trúc dữ liệu và Giải thuật</title>
+      <link>https://chidokun.github.io/categories/c%E1%BA%A5u-tr%C3%BAc-d%E1%BB%AF-li%E1%BB%87u-v%C3%A0-gi%E1%BA%A3i-thu%E1%BA%ADt/</link>
+      <pubDate>Thu, 29 Jul 2021 20:17:38 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/categories/c%E1%BA%A5u-tr%C3%BAc-d%E1%BB%AF-li%E1%BB%87u-v%C3%A0-gi%E1%BA%A3i-thu%E1%BA%ADt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Thực hành</title>
+      <link>https://chidokun.github.io/categories/th%E1%BB%B1c-h%C3%A0nh/</link>
+      <pubDate>Wed, 07 Jul 2021 17:54:21 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/categories/th%E1%BB%B1c-h%C3%A0nh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dữ liệu</title>
+      <link>https://chidokun.github.io/categories/d%E1%BB%AF-li%E1%BB%87u/</link>
       <pubDate>Wed, 03 Feb 2021 22:00:00 +0700</pubDate>
       
-      <guid>https://chidokun.github.io/categories/analysis/</guid>
+      <guid>https://chidokun.github.io/categories/d%E1%BB%AF-li%E1%BB%87u/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>tips</title>
-      <link>https://chidokun.github.io/categories/tips/</link>
+      <title>Visualization</title>
+      <link>https://chidokun.github.io/categories/visualization/</link>
+      <pubDate>Wed, 03 Feb 2021 22:00:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/categories/visualization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Thủ thuật</title>
+      <link>https://chidokun.github.io/categories/th%E1%BB%A7-thu%E1%BA%ADt/</link>
       <pubDate>Wed, 15 Apr 2020 22:30:00 +0700</pubDate>
       
-      <guid>https://chidokun.github.io/categories/tips/</guid>
+      <guid>https://chidokun.github.io/categories/th%E1%BB%A7-thu%E1%BA%ADt/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>book</title>
-      <link>https://chidokun.github.io/categories/book/</link>
+      <title>Sách</title>
+      <link>https://chidokun.github.io/categories/s%C3%A1ch/</link>
       <pubDate>Wed, 01 Apr 2020 22:30:30 +0700</pubDate>
       
-      <guid>https://chidokun.github.io/categories/book/</guid>
+      <guid>https://chidokun.github.io/categories/s%C3%A1ch/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>other</title>
-      <link>https://chidokun.github.io/categories/other/</link>
+      <title>Computer Science</title>
+      <link>https://chidokun.github.io/categories/computer-science/</link>
+      <pubDate>Sat, 04 Jan 2020 22:27:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/categories/computer-science/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cuộc sống</title>
+      <link>https://chidokun.github.io/categories/cu%E1%BB%99c-s%E1%BB%91ng/</link>
       <pubDate>Fri, 28 Nov 2014 19:43:00 +0700</pubDate>
       
-      <guid>https://chidokun.github.io/categories/other/</guid>
+      <guid>https://chidokun.github.io/categories/cu%E1%BB%99c-s%E1%BB%91ng/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tiếng Nhật</title>
+      <link>https://chidokun.github.io/categories/ti%E1%BA%BFng-nh%E1%BA%ADt/</link>
+      <pubDate>Fri, 28 Nov 2014 19:43:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/categories/ti%E1%BA%BFng-nh%E1%BA%ADt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linh tinh</title>
+      <link>https://chidokun.github.io/categories/linh-tinh/</link>
+      <pubDate>Sun, 24 Nov 2013 21:41:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/categories/linh-tinh/</guid>
       <description></description>
     </item>
     
