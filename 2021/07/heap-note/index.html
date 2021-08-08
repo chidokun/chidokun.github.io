@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Tuấn">
 <meta name="keywords" content="heap, java, development, programming, chidokun, lập trình">
 <meta name="description" content="Heap được ứng dụng khá nhiều trong các cấu trúc dữ liệu và giải thuật. Nếu bạn đã nghe qua Heap sort thì chắc chắn sẽ làm quen với khái niệm này. Ngoài ra, Heap cũng còn được ứng dụng trong Prority Queue - một cấu trúc dữ liệu hoạt động theo cơ chế vào trước ra trước. Bài viết này sẽ note một số ý chính về Heap.">
@@ -277,29 +277,23 @@ if (!doNotTrack) {
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p><em>Heap</em> được ứng dụng khá nhiều trong các cấu trúc dữ liệu và giải thuật. Nếu bạn đã nghe qua Heap sort thì chắc chắn sẽ làm quen với khái niệm này. Ngoài ra, <em>Heap</em> cũng còn được ứng dụng trong Prority Queue - một cấu trúc dữ liệu hoạt động theo cơ chế vào trước ra trước. Bài viết này sẽ note một số ý chính về <em>Heap</em>.</p>
-
 <h1 id="table-of-contents">Mục lục</h1><nav id="TableOfContents">
-<ul>
-<li><a href="#1-giới-thiệu">1. Giới thiệu</a></li>
-<li><a href="#2-hiệu-chỉnh-heap">2. Hiệu chỉnh Heap</a>
-<ul>
-<li><a href="#2-1-bottom-up">2.1. Bottom-up</a></li>
-<li><a href="#2-2-top-down">2.2. Top-down</a></li>
-<li><a href="#references">References</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#1-giới-thiệu">1. Giới thiệu</a></li>
+    <li><a href="#2-hiệu-chỉnh-heap">2. Hiệu chỉnh Heap</a>
+      <ul>
+        <li><a href="#21-bottom-up">2.1. Bottom-up</a></li>
+        <li><a href="#22-top-down">2.2. Top-down</a></li>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
-
 <h1 id="1-giới-thiệu">1. Giới thiệu</h1>
-
 <p><em>Binary Heap</em> là một <em>cây nhị phân đầy đủ</em> mà mỗi nút gốc đều <em>lớn hơn</em> (hoặc <em>nhỏ hơn</em>) hai nút con của nó. <em>Heap</em> có nút gốc lớn hơn hai nút con còn gọi là <em>Max Heap</em> (ngược lại là <em>Min Heap</em>).</p>
-
 <p>Ngoài ra cũng có thể dùng cây tam phân làm Heap thì lúc này nó sẽ được gọi là <em>Ternary Heap</em>. Bài viết này chủ yếu đề cập đến <em>Binary Heap</em> và sẽ gọi là <em>Heap</em> cho ngắn gọn.</p>
-
 <p><em>Heap</em> có thể được biểu diễn bằng một mảng một chiều và lúc này, nút gốc có chỉ số <code>i</code> sẽ có 2 nút con ở chỉ số <code>2i+1</code> và <code>2i+2</code> ($0 \leq i \leq \frac{n}{2}-1$).</p>
-
 <p>Ví dụ: Một heap được biểu diễn dưới dạng mảng một chiều.</p>
-
 
 
  
@@ -327,31 +321,22 @@ if (!doNotTrack) {
   
 </div>
 
-
 <h1 id="2-hiệu-chỉnh-heap">2. Hiệu chỉnh Heap</h1>
-
 <p><em>Hiệu chỉnh Heap</em> là quá trình điều chỉnh các phần tử để thỏa tính chất của <em>Heap</em>. Nếu một Heap được biểu diễn bằng mảng một chiều thì phần tử đầu tiên luôn là phần tử lớn nhất (Max Heap) hoặc nhỏ nhất (Min Heap).</p>
-
-<h2 id="2-1-bottom-up">2.1. Bottom-up</h2>
-
+<h2 id="21-bottom-up">2.1. Bottom-up</h2>
 <p>Chiến lược hiệu chỉnh Bottom-up được thực hiện khi nút đang xét có giá trị lớn hơn nút cha của nó. Lúc này chúng ta sẽ tráo nút hiện tại với nút cha. Lúc này nút cha của nút đang xét sẽ lớn hơn 2 nút con hiện tại. Tuy nhiên, nút cha này vẫn có thể lớn hơn nút ông nội của nó. Vì vậy chúng ta cần thực hiện xuyên suốt ngược lên trên.</p>
-
 <p>Nút <code>i</code> sẽ có nút cha là <code>(i-1)/2</code> (nếu <code>i</code> bắt đầu từ <code>0</code>).</p>
-
 <p>Các bước thực hiện:</p>
-
 <ul>
 <li><em>1.</em> Ở nút <code>i</code> hiện tại, nếu nút hiện tại lớn hơn nút cha của nó (không thỏa Heap):
-
 <ul>
 <li>Tráo giá trị nút <code>i</code> và nút cha của nó.</li>
-</ul></li>
+</ul>
+</li>
 <li><em>2.</em> Di chuyển lên nút cha và lặp lại bước 1.</li>
 <li><em>3.</em> Dừng lại khi đã đến nút gốc.</li>
 </ul>
-
 <p>Cách cài đặt tham khảo sử dụng Java:</p>
-
 
 
   
@@ -409,28 +394,21 @@ public void swap(int[] a, int i, int j) {
     
   </div>
 </figure>
-
 <p>Chiến lược này được ứng dụng trong trường hợp khi thêm một phần tử vào cuối mảng. Lúc này chúng ta xét phần tử cuối mảng và thực hiện hiệu chỉnh Heap ngược lên trên.</p>
-
-<h2 id="2-2-top-down">2.2. Top-down</h2>
-
+<h2 id="22-top-down">2.2. Top-down</h2>
 <p>Tương tự, chiến lược hiệu chỉnh Top-down được thực hiện khi nút đang xét có giá trị lớn hơn một hoặc cả hai nút con của nó. Lúc này chúng ta sẽ tráo nút hiện tại với nút lớn nhất trong 2 nút con. Tuy nhiên, nút con này vẫn có thể nhỏ hơn nút con của nó. Vì vậy chúng ta cần thực hiện xuyên suốt xuống dưới.</p>
-
 <p>Các bước thực hiện:</p>
-
 <ul>
 <li><em>1.</em> Ở nút <code>i</code> hiện tại, tìm nút có giá trị lớn nhất <code>l</code> trong 2 nút con của nút <code>i</code>.</li>
 <li><em>2.</em> Nếu nút con <code>l</code> có giá trị lớn hơn nút cha <code>i</code> hiện tại (không thỏa Heap):
-
 <ul>
 <li>Tráo giá trị nút cha <code>i</code> và nút con <code>l</code>.</li>
-</ul></li>
+</ul>
+</li>
 <li><em>3.</em> Do đã tráo nút <code>l</code> nên nhánh <code>l</code> bị ảnh hưởng, ta di chuyển xuống nút <code>l</code> và lặp lại bước 1 và 2.</li>
 <li><em>4.</em> Dừng lại khi đã hết nút con.</li>
 </ul>
-
 <p>Cách cài đặt tham khảo sử dụng Java:</p>
-
 
 
   
@@ -504,11 +482,8 @@ public void sinkRecursively(int []a, int n, int i) {
     
   </div>
 </figure>
-
 <p>Chiến lược này được ứng dụng trong trường hợp khi loại bỏ phần tử ở đầu mảng (tức phần tử lớn nhất/nhỏ nhất). Lúc này chúng ta sẽ tráo với phần tử cuối mảng rồi thực hiện hiệu chỉnh Heap.</p>
-
 <h2 id="references">References</h2>
-
 <ul>
 <li><a href="https://algs4.cs.princeton.edu/home/">Algorithms, 4th Edition by Robert Sedgewick and Kevin Wayne</a></li>
 </ul>

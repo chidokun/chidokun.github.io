@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Tuấn">
 <meta name="keywords" content="graph, java, depth first search, dfs, development, programming, chidokun, lập trình">
 <meta name="description" content="Cấu trúc Graph (đồ thị) gồm tập các đỉnh kết nối với nhau qua các cạnh. Depth First Search (DFS) là một trong những thuật toán có thể dùng để duyệt qua đồ thị.">
@@ -279,53 +279,43 @@ if (!doNotTrack) {
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>Cấu trúc <strong>Graph</strong> (đồ thị) gồm tập các đỉnh kết nối với nhau qua các cạnh. <strong>Depth First Search</strong> (DFS) là một trong những thuật toán có thể dùng để duyệt qua đồ thị.</p>
-
 <h1 id="table-of-contents">Mục lục</h1><nav id="TableOfContents">
-<ul>
-<li><a href="#1-ý-tưởng">1. Ý tưởng</a></li>
-<li><a href="#2-hiện-thực">2. Hiện thực</a>
-<ul>
-<li><a href="#2-1-đệ-quy">2.1. Đệ quy</a></li>
-<li><a href="#2-2-khử-đệ-quy">2.2. Khử đệ quy</a></li>
-</ul></li>
-<li><a href="#3-áp-dụng">3. Áp dụng</a></li>
-<li><a href="#4-đánh-giá">4. Đánh giá</a>
-<ul>
-<li><a href="#references">References</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#1-ý-tưởng">1. Ý tưởng</a></li>
+    <li><a href="#2-hiện-thực">2. Hiện thực</a>
+      <ul>
+        <li><a href="#21-đệ-quy">2.1. Đệ quy</a></li>
+        <li><a href="#22-khử-đệ-quy">2.2. Khử đệ quy</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-áp-dụng">3. Áp dụng</a></li>
+    <li><a href="#4-đánh-giá">4. Đánh giá</a>
+      <ul>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
-
 <h1 id="1-ý-tưởng">1. Ý tưởng</h1>
-
 <p>Ý tưởng như sau:</p>
-
 <ul>
 <li>Từ một đỉnh, ta đi qua sâu vào từng nhánh. Khi đã duyệt hết nhánh của đỉnh, lùi lại để duyệt đỉnh tiếp theo.</li>
 <li>Thuật toán dừng khi đi qua hết tất cả các đỉnh có thể đi qua.</li>
 </ul>
-
 <h1 id="2-hiện-thực">2. Hiện thực</h1>
-
 <p>Hai cách hiện thực dưới đây được dùng cho cấu trúc Graph ở bài viết <a href="https://chidokun.github.io/2021/06/graph-overview/">Tổng quan về Đồ thị</a>.</p>
-
-<h2 id="2-1-đệ-quy">2.1. Đệ quy</h2>
-
+<h2 id="21-đệ-quy">2.1. Đệ quy</h2>
 <p>Hiện thực theo phương pháp đệ quy khá đơn giản và dễ hiểu. Ta cần dùng một mảng <code>marked</code> để kiểm tra xem một đỉnh đã được duyệt qua chưa.</p>
-
 <p>Đầu vào cần một <code>Graph</code> và đỉnh gốc <code>v</code>. Các bước như sau:</p>
-
 <ul>
 <li>Đánh dấu điểm gốc <code>v</code> đã duyệt qua.</li>
 <li>Lấy danh sách các đỉnh kề của <code>v</code>. Với mỗi đỉnh <code>i</code>:
-
 <ul>
 <li>Nếu <code>i</code> chưa được duyệt qua thì chọn <code>i</code> làm đỉnh gốc mới và lặp lại thủ tục trên.</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <p>Code tham khảo:</p>
-
 
 
   
@@ -387,31 +377,25 @@ if (!doNotTrack) {
     
   </div>
 </figure>
-
-<h2 id="2-2-khử-đệ-quy">2.2. Khử đệ quy</h2>
-
+<h2 id="22-khử-đệ-quy">2.2. Khử đệ quy</h2>
 <p>Với phương pháp không dùng đệ quy, cách hiện thực hơi phức tạp hơn chút. Lúc này phải dùng một <code>Stack</code> để xét các đỉnh chưa duyệt.</p>
-
 <p>Đầu vào là một <code>Graph</code> và đỉnh gốc <code>v</code>. Các bước như sau:</p>
-
 <ul>
 <li>Thêm đỉnh gốc vào <code>stack</code>.</li>
 <li>Lặp lại với điều kiện <code>stack</code> không rỗng:
-
 <ul>
 <li>Lấy đỉnh ở đầu <code>stack</code> làm <em>đỉnh đang xét</em>.</li>
 <li>Nếu <em>đỉnh đang xét</em> đã được duyệt thì bỏ qua. (<span style="color:red">*</span>)</li>
 <li>Đánh dấu <em>đỉnh đang xét</em> là đỉnh đã duyệt.</li>
 <li>Lấy danh sách các đỉnh kề của <em>đỉnh đang xét</em>. Với mỗi đỉnh <code>i</code>:
-
 <ul>
 <li>Nếu <code>i</code> chưa được duyệt qua thì đẩy <code>i</code> vào <code>stack</code>.</li>
-</ul></li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
+</li>
+</ul>
 <p>Code tham khảo:</p>
-
 
 
   
@@ -472,7 +456,6 @@ if (!doNotTrack) {
     
   </div>
 </figure>
-
 <div class="alert info ">
   <p><ul>
 <li>(<span style="color:red">*</span>) Nếu không làm bước này, sẽ xảy ra trường hợp một đỉnh chưa được duyệt được thêm vào <code>stack</code> nhiều lần và kết quả là sẽ được duyệt qua nhiều lần.</li>
@@ -480,16 +463,11 @@ if (!doNotTrack) {
 </ul>
 </p>
 </div>
-
 <h1 id="3-áp-dụng">3. Áp dụng</h1>
-
 <p><strong>Bài toán</strong>: <em>Cho đồ thị <code>g</code> và đỉnh gốc <code>s</code>. Trả lời câu hỏi, có đường đi nào từ đỉnh gốc <code>s</code> tới một đỉnh <code>w</code> nào đó không. Nếu có, hãy tìm đường đi đó.</em></p>
-
 <p>Chúng ta sẽ dùng thuật toán DFS để duyệt qua các đỉnh. Trong quá trình duyệt đó, lưu lại đỉnh gần nhất tới đỉnh <code>a</code> nào đó sử dụng <code>edgeTo[]</code>.
 Nếu các đỉnh được duyệt qua trong <code>marked[]</code>, chứng tỏ có đường đi đến đỉnh đó và có thể truy hồi lại đường đi dùng <code>edgeTo[]</code>.</p>
-
 <p>Code tham khảo:</p>
-
 
 
   
@@ -563,9 +541,7 @@ Nếu các đỉnh được duyệt qua trong <code>marked[]</code>, chứng t�
     
   </div>
 </figure>
-
 <p>Cùng thử nghiệm với đồ thị sau đây:</p>
-
 
 
  
@@ -593,9 +569,7 @@ Nếu các đỉnh được duyệt qua trong <code>marked[]</code>, chứng t�
   
 </div>
 
-
 <p>Viết hàm <code>main</code> để test:</p>
-
 
 
   
@@ -656,9 +630,7 @@ Nếu các đỉnh được duyệt qua trong <code>marked[]</code>, chứng t�
     
   </div>
 </figure>
-
 <p>Kết quả là:</p>
-
 <pre><code>[0]
 [0, 1]
 [0, 1, 4, 2]
@@ -666,9 +638,7 @@ Nếu các đỉnh được duyệt qua trong <code>marked[]</code>, chứng t�
 [0, 1, 4]
 [0, 1, 4, 2, 5]
 </code></pre>
-
 <p>Và đường đi mà thuật toán cho kết quả là:</p>
-
 
 
  
@@ -696,17 +666,11 @@ Nếu các đỉnh được duyệt qua trong <code>marked[]</code>, chứng t�
   
 </div>
 
-
 <p>Có gì đó sai sai đúng không 😆</p>
-
 <p>Thật ra DFS là thuật toán tìm kiếm mù và do cách duyệt vét cạn này, nó sẽ bị ảnh hưởng bởi thứ tự thêm cạnh vào đồ thị. Thử đặt dòng <code>g.addEdge(0, 2);</code> lên trên dòng <code>g.addEdge(0, 1);</code> rồi chạy lại. Bạn sẽ thấy sự khác biệt.</p>
-
 <h1 id="4-đánh-giá">4. Đánh giá</h1>
-
 <p>Thuật toán sẽ duyệt qua tất cả các đỉnh nếu đồ thị liên thông. Tuy vậy, nó là thuật toán tìm kiếm mù, mang tính chất vét cạn và sẽ kém hiệu quả nếu tập đỉnh quá lớn.</p>
-
 <h2 id="references">References</h2>
-
 <ul>
 <li><a href="https://algs4.cs.princeton.edu/home/">Algorithms, 4th Edition by Robert Sedgewick and Kevin Wayne</a></li>
 </ul>

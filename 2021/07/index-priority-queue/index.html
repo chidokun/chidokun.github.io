@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Tuấn">
 <meta name="keywords" content="queue, java, priority queue, index priority queue, indexed priority queue, development, programming, chidokun, lập trình">
 <meta name="description" content="Ở bài viết Priority Queue và những cách cài đặt, mình đã giới thiệu qua cấu trúc Priority Queue, những đặc trưng và cách cài đặt. Tuy nhiên trong một số trường hợp, chúng ta sẽ có nhu cầu cập nhật hoặc xóa phần tử khỏi Queue thông qua một index. Trong bài viết này chúng ta sẽ cùng cải tiến Priority Queue để có thể thực hiện các chức năng trên.">
@@ -277,28 +277,24 @@ if (!doNotTrack) {
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>Ở bài viết <a href="https://chidokun.github.io/2021/07/priority-queue/">Priority Queue và những cách cài đặt</a>, mình đã giới thiệu qua cấu trúc Priority Queue, những đặc trưng và cách cài đặt. Tuy nhiên trong một số trường hợp, chúng ta sẽ có nhu cầu cập nhật hoặc xóa phần tử khỏi Queue thông qua một index. Trong bài viết này chúng ta sẽ cùng cải tiến Priority Queue để có thể thực hiện các chức năng trên.</p>
-
 <h1 id="table-of-contents">Mục lục</h1><nav id="TableOfContents">
-<ul>
-<li><a href="#1-ý-tưởng-và-api">1. Ý tưởng và API</a></li>
-<li><a href="#2-cài-đặt">2. Cài đặt</a>
-<ul>
-<li><a href="#2-1-các-thao-tác-cơ-bản">2.1. Các thao tác cơ bản</a></li>
-<li><a href="#2-2-insert-và-change">2.2. Insert và Change</a></li>
-<li><a href="#2-3-thao-tác-xóa">2.3. Thao tác xóa</a></li>
-</ul></li>
-<li><a href="#3-tổng-quát-hóa-phép-so-sánh">3. Tổng quát hóa phép so sánh</a></li>
-<li><a href="#4-độ-phức-tạp">4. Độ phức tạp</a></li>
-<li><a href="#references">References</a></li>
-</ul>
+  <ul>
+    <li><a href="#1-ý-tưởng-và-api">1. Ý tưởng và API</a></li>
+    <li><a href="#2-cài-đặt">2. Cài đặt</a>
+      <ul>
+        <li><a href="#21-các-thao-tác-cơ-bản">2.1. Các thao tác cơ bản</a></li>
+        <li><a href="#22-insert-và-change">2.2. Insert và Change</a></li>
+        <li><a href="#23-thao-tác-xóa">2.3. Thao tác xóa</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-tổng-quát-hóa-phép-so-sánh">3. Tổng quát hóa phép so sánh</a></li>
+    <li><a href="#4-độ-phức-tạp">4. Độ phức tạp</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
 </nav>
-
 <h1 id="1-ý-tưởng-và-api">1. Ý tưởng và API</h1>
-
 <p>Index Priority Queue cũng là một Priority Queue nhưng hỗ trợ thêm tính năng tham chiếu đến một phần tử trong queue thông qua index.</p>
-
 <p>Các phương thức giao tiếp với bên ngoài của <code>IndexPriorityQueue</code> có thể được định nghĩa dưới dạng interface như sau:</p>
-
 <pre><code class="language-java">public interface IndexPriorityQueue&lt;T extends Comparable&lt;T&gt;&gt; {
     void insert(int i, T item);
     void change(int i, T item);
@@ -311,9 +307,7 @@ if (!doNotTrack) {
     int size();
 }
 </code></pre>
-
 <p>Các phương thức cơ bản như sau:</p>
-
 <ul>
 <li><em>insert(int i, T item)</em>: Thêm mới phần tử thuộc kiểu <code>T</code> có index là <code>i</code>.</li>
 <li><em>change(int i, T item)</em>: Thay đổi bằng một phần tử kiểu <code>T</code> khác ở index <code>i</code> .</li>
@@ -325,23 +319,14 @@ if (!doNotTrack) {
 <li><em>isEmpty()</em>: Kiểm tra queue có rỗng hay không.</li>
 <li><em>size()</em>: Lấy kích thước queue.</li>
 </ul>
-
 <p>Công việc của chúng ta là cài đặt cấu trúc dữ liệu Index Priority Queue dựa trên cách cài đặt Priority Queue ở bài viết trước.</p>
-
 <h1 id="2-cài-đặt">2. Cài đặt</h1>
-
 <p>Tương tự Priority Queue, Index Priority Queue sẽ được cài đặt dựa trên Heap. Nếu chưa biết Heap là gì, các bạn có thể xem lại bài viết <a href="https://chidokun.github.io/2021/07/heap-note/">Heap và một số ghi chú</a>.</p>
-
 <p>Để lưu trữ các phần tử dựa trên index, mình sử dụng mảng <code>keys</code> với chỉ số mảng chính là index. Lúc này không thể dựng Heap trên <code>keys</code>, ta cần có một mảng <code>pq</code> với giá trị là index của phần tử trong <code>keys</code>. Nghĩa là, Heap của chúng ta sẽ nằm trên <code>pq</code>, khi lấy ra phần tử ưu tiên nhất trong <code>pq</code> thì giá trị của nó chính là index của phần tử ưu tiên nhất, tra cứu trong mảng <code>keys</code> sẽ được phần tử cần tìm.</p>
-
 <p>Ngoài ra, khi thực hiện một số thao tác như xóa phần tử có index <code>i</code> thì phải tìm ra vị trí của index <code>i</code> trong <code>pq</code>. Để làm điều này đơn giản hơn, ta có thể lưu một mảng <code>qp</code> với chỉ số là index và giá trị là vị trí của index <code>i</code> trong <code>pq</code>. Nói cách khác, mảng <code>qp</code> chính là tham chiếu ngược của <code>pq</code>.</p>
-
-<h2 id="2-1-các-thao-tác-cơ-bản">2.1. Các thao tác cơ bản</h2>
-
+<h2 id="21-các-thao-tác-cơ-bản">2.1. Các thao tác cơ bản</h2>
 <p>Ở phần này, chúng ta sẽ cài đặt các thao tác đơn giản trước để có thể cài đặt các thao tác khó hơn.</p>
-
 <p>Trước hết cài đặt class <code>IndexPQ</code> là một implementation của <code>IndexPriorityQueue</code>.</p>
-
 <pre><code class="language-java">public class IndexPQ&lt;T extends Comparable&lt;T&gt;&gt; implements IndexPriorityQueue&lt;T&gt; {
     private int size;
     private int maxSize;
@@ -350,9 +335,7 @@ if (!doNotTrack) {
     private int[] qp;
 }
 </code></pre>
-
 <p>Mảng <code>qp</code> tham chiếu từ index đến vị trí trong <code>pq</code> nên còn có thể dùng để kiểm tra index có tồn tại trong queue hay không. Giá trị <code>-1</code> được dùng để biểu thị không tồn tại index <code>i</code> trong queue. Do vậy, constructor sẽ khởi tạo các mảng cần dùng và giá trị -1 cho mảng <code>qp</code>.</p>
-
 <pre><code class="language-java">public IndexPQ(int maxSize) {
     if (maxSize &lt; 0)
         throw new IllegalArgumentException();
@@ -364,17 +347,13 @@ if (!doNotTrack) {
     Arrays.fill(qp, -1);
 }
 </code></pre>
-
 <p>Phương thức <code>contains()</code> sẽ kiểm tra trong mảng <code>qp</code> để biết được index đã có trong queue hay chưa.</p>
-
 <pre><code class="language-java">@Override
 public boolean contains(int i) {
     return qp[i] != -1;
 }
 </code></pre>
-
 <p>Kiểm tra mảng rỗng và lấy kích thước cũng khá đơn giản.</p>
-
 <pre><code class="language-java">@Override
 public boolean isEmpty() {
     return size == 0;
@@ -385,9 +364,7 @@ public int size() {
     return size;
 }
 </code></pre>
-
 <p>Để lấy phần tử ưu tiên nhất, trước hết phải lấy được index của phần tử này trong <code>pq</code> rồi sao đó tham chiếu vào <code>keys</code> để lấy ra phần tử này.</p>
-
 <pre><code class="language-java">public T peek() {
     if (size == 0)
         throw new NoSuchElementException(&quot;Priority queue underflow&quot;);
@@ -400,9 +377,7 @@ public int peekIndex() {
     return pq[0];
 }
 </code></pre>
-
 <p>Ngoài ra, để thao tác trên Heap chúng ta cần cài đặt các hàm utility để hiệu chỉnh Heap theo cơ chế Bottom-Up và Top-Down. Việc hiệu chỉnh Heap sẽ thực hiện trên cả <code>pq</code> và <code>qp</code>. Tham khảo bài viết <a href="https://chidokun.github.io/2021/07/heap-note/">Heap và một số ghi chú</a> để hiểu thêm về các hàm này. Định nghĩa <em>ưu tiên</em> ở đây là <em>lớn hơn thì ưu tiên hơn</em>.</p>
-
 <pre><code class="language-java">private void swim(int i) {
     while (i &gt; 0 &amp;&amp; keys[(i - 1) / 2].compareTo(keys[i]) &lt; 0) {
         swap((i - 1) / 2, i);
@@ -430,11 +405,8 @@ private void sink(int i) {
     }
 }
 </code></pre>
-
-<h2 id="2-2-insert-và-change">2.2. Insert và Change</h2>
-
+<h2 id="22-insert-và-change">2.2. Insert và Change</h2>
 <p><em>Thao tác insert</em> sẽ thêm một phần tử với index <code>i</code> vào <code>keys</code>, đồng thời thêm <code>i</code> cuối mảng <code>pq</code>. Do đó có thể vi phạm tính chất của Heap nên cần được hiệu chỉnh theo chiến lược Bottom-Up.</p>
-
 <pre><code class="language-java">@Override
 public void insert(int i, T item) {
     if (contains(i))
@@ -446,9 +418,7 @@ public void insert(int i, T item) {
     swim(size - 1);
 }
 </code></pre>
-
 <p><em>Thao tác change</em> không xóa đi hay thêm vào một phần tử mới nhưng nó thay thế một phần tử này bằng một phần tử khác có độ ưu tiên khác biệt. Do đó, nó có thể vi phạm tính chất của Heap nên cần được hiệu chỉnh lại. Phần tử được thay thế có thể nằm ở giữa của mảng Heap nên cần phải được hiệu chỉnh theo cả hai chiến lược Bottom-Up và Top-Down.</p>
-
 <pre><code class="language-java">@Override
 public void change(int i, T item) {
     if (!contains(i))
@@ -458,11 +428,8 @@ public void change(int i, T item) {
     sink(qp[i]);
 }
 </code></pre>
-
-<h2 id="2-3-thao-tác-xóa">2.3. Thao tác xóa</h2>
-
+<h2 id="23-thao-tác-xóa">2.3. Thao tác xóa</h2>
 <p>Để thực hiện thao tác xóa một phần tử có index <code>i</code>, trước hết lấy vị trí của nó trong <code>pq</code> bằng cách sử dụng <code>qp</code>. Sau khi có vị trí trong <code>pq</code>, ta tráo phần tử đó với phần tử cuối của <code>pq</code> rồi loại bỏ phần tử này. Tại vị trí tráo sẽ vi phạm tính chất của Heap. Do index <code>i</code> có thể nằm giữa Heap nên cần hiệu chỉnh theo cả hai chiến lược Bottom-Up và Top-Down.</p>
-
 <pre><code class="language-java">@Override
 public void delete(int i) {
     if (!contains(i))
@@ -475,9 +442,7 @@ public void delete(int i) {
     qp[i] = -1;
 }
 </code></pre>
-
 <p>Thao tác xóa phần tử ưu tiên nhất cũng tương tự thao tác xóa ở trên, nhưng vị trí tráo là đầu mảng nên ta chỉ cần hiệu chỉnh theo chiến lược Top-down.</p>
-
 <pre><code class="language-java">@Override
 int removePeek() {
     if (size == 0)
@@ -492,11 +457,8 @@ int removePeek() {
     return peek;
 }
 </code></pre>
-
 <h1 id="3-tổng-quát-hóa-phép-so-sánh">3. Tổng quát hóa phép so sánh</h1>
-
 <p>Tương tự như với Priority Queue trong bài viết <a href="https://chidokun.github.io/2021/07/priority-queue/">Priority Queue và những cách cài đặt</a>, chúng ta có thể tổng quát hóa phép so sánh nhằm xử lý cả hai trường hợp Max Priority Queue và Min Priority Queue.</p>
-
 <pre><code class="language-java">private Comparator&lt;T&gt; comparator;
 
 public IndexPQ(int maxSize, Comparator&lt;T&gt; comparator) {
@@ -505,13 +467,9 @@ public IndexPQ(int maxSize, Comparator&lt;T&gt; comparator) {
     this.comparator = comparator;
 }
 </code></pre>
-
 <p><em>Lưu ý</em>: Khi dùng với <code>Comparator</code> chúng ta cần sửa lại hàm <code>swim()</code> và <code>sink()</code> bằng cách thay thế phép so sánh bằng hàm so sánh của <code>comparator</code>.</p>
-
 <h1 id="4-độ-phức-tạp">4. Độ phức tạp</h1>
-
 <p>Dưới đây là độ phức tạp của các thao tác trong Index Priority Queue.</p>
-
 <table>
 <thead>
 <tr>
@@ -519,57 +477,46 @@ public IndexPQ(int maxSize, Comparator&lt;T&gt; comparator) {
 <th>Độ phức tạp</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>insert</td>
 <td>$O(\log{N})$</td>
 </tr>
-
 <tr>
 <td>change</td>
 <td>$O(\log{N})$</td>
 </tr>
-
 <tr>
 <td>contains</td>
 <td>$O(1)$</td>
 </tr>
-
 <tr>
 <td>delete</td>
 <td>$O(\log{N})$</td>
 </tr>
-
 <tr>
 <td>peek</td>
 <td>$O(1)$</td>
 </tr>
-
 <tr>
 <td>peekIndex</td>
 <td>$O(1)$</td>
 </tr>
-
 <tr>
 <td>removePeek</td>
 <td>$O(\log{N})$</td>
 </tr>
-
 <tr>
 <td>isEmpty</td>
 <td>$O(1)$</td>
 </tr>
-
 <tr>
 <td>size</td>
 <td>$O(1)$</td>
 </tr>
 </tbody>
 </table>
-
 <h1 id="references">References</h1>
-
 <ul>
 <li><a href="https://algs4.cs.princeton.edu/home/">Algorithms, 4th Edition by Robert Sedgewick and Kevin Wayne</a></li>
 </ul>

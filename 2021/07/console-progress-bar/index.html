@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Tuấn">
 <meta name="keywords" content="java, progress bar, console, development, programming, chidokun, lập trình">
 <meta name="description" content="Là một lập trình viên làm việc khá nhiều với terminal, mình thường xuyên thấy các lệnh chạy trên console cũng có thanh tiến trình để thể hiện phần trăm hoàn thành công việc cũng khá hay ho. Vì vậy, trong bài viết này, chúng ta cùng thử làm một thanh Progress Bar với Java nhé.">
@@ -277,7 +277,6 @@ if (!doNotTrack) {
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>Là một lập trình viên làm việc khá nhiều với terminal, mình thường xuyên thấy các lệnh chạy trên console cũng có thanh tiến trình để thể hiện phần trăm hoàn thành công việc cũng khá hay ho. Vì vậy, trong bài viết này, chúng ta cùng thử làm một thanh Progress Bar với Java nhé.</p>
-
  
   
   
@@ -303,23 +302,20 @@ if (!doNotTrack) {
   
 </div>
 
-
 <h1 id="table-of-contents">Mục lục</h1><nav id="TableOfContents">
-<ul>
-<li><a href="#1-design-progress-bar">1. Design Progress bar</a></li>
-<li><a href="#2-cài-đặt-progress-bar">2. Cài đặt Progress bar</a>
-<ul>
-<li><a href="#2-1-cơ-bản">2.1. Cơ bản</a></li>
-<li><a href="#2-2-animation-với-timer">2.2. Animation với Timer</a></li>
-<li><a href="#2-3-thành-công-và-thất-bại">2.3. Thành công và thất bại</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#1-design-progress-bar">1. Design Progress bar</a></li>
+    <li><a href="#2-cài-đặt-progress-bar">2. Cài đặt Progress bar</a>
+      <ul>
+        <li><a href="#21-cơ-bản">2.1. Cơ bản</a></li>
+        <li><a href="#22-animation-với-timer">2.2. Animation với Timer</a></li>
+        <li><a href="#23-thành-công-và-thất-bại">2.3. Thành công và thất bại</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
-
 <h1 id="1-design-progress-bar">1. Design Progress bar</h1>
-
 <p>Trước tiên, mình phác thảo ra giao diện mà mình sẽ làm. Giao diện khá đơn giản thôi. Đầu tiên là một cái <em>spinner</em> &ldquo;quay quay&rdquo; để chúng ta biết chương trình vẫn đang hoạt động. Tiếp theo là <em>thanh tiến trình</em> được fill theo đúng tỉ lệ phần trăm giá trị hiện tại so với giá trị lớn nhất. Cuối cùng là hiển thị <em>số liệu</em> hiện tại so với giá trị lớn nhất. Khi thànnh công thì spinner sẽ đổi thành dấu tick, nếu có lỗi thì spinner sẽ đổi thành dấu x biểu thị thất bại.</p>
-
 
 
  
@@ -347,9 +343,7 @@ if (!doNotTrack) {
   
 </div>
 
-
 <p>Dựa vào giao diện phác thảo ở trên, chúng ta có thể mường tượng được class <code>ProgressBar</code> sẽ có những phương thức như sau:</p>
-
 <pre><code class="language-java">   public class ProgressBar
 -----------------------------------------------------
            void setMaxRange(double maxRange)
@@ -358,7 +352,6 @@ if (!doNotTrack) {
            void reportError()
            void render()
 </code></pre>
-
 <ul>
 <li><em>setMaxRange(double maxRange)</em>: Set giá trị lớn nhất của ProgressBar.</li>
 <li><em>setValue(double value)</em>: Cập nhật giá trị hiện tại của ProgressBar.</li>
@@ -366,21 +359,15 @@ if (!doNotTrack) {
 <li><em>reportError()</em>: Hiển thị dấu &ldquo;x&rdquo; báo thất bại.</li>
 <li><em>render()</em>: Chịu trách nhiệm tính toán và print lên console.</li>
 </ul>
-
 <h1 id="2-cài-đặt-progress-bar">2. Cài đặt Progress bar</h1>
-
 <p>Bài viết này, mình dùng Java để cài đặt. Với các ngôn ngữ khác cũng tương tự miễn là bạn hiểu tư tưởng cốt lõi.</p>
-
-<h2 id="2-1-cơ-bản">2.1. Cơ bản</h2>
-
+<h2 id="21-cơ-bản">2.1. Cơ bản</h2>
 <p>Trước hết, ta khai báo class `ProgressBar với các thuộc tính cơ bản:</p>
-
 <ul>
 <li><em>width</em>: Thể hiện độ dài của thanh tiến trình.</li>
 <li><em>value</em>: Giá trị hiện tại.</li>
 <li><em>maxRange</em>: Giá trị lớn nhất.</li>
 </ul>
-
 
 
   
@@ -431,9 +418,7 @@ if (!doNotTrack) {
     
   </div>
 </figure>
-
 <p>Cài đặt các setter cho <code>value</code> và <code>maxRange</code>. Bạn có thể cài đặt thêm setter cho <code>width</code> cũng được.</p>
-
 <pre><code class="language-java">public void setMaxRange(double maxRange) {
     this.maxRange = maxRange;
 }
@@ -443,17 +428,13 @@ public void setValue(double value) {
     this.render();
 }
 </code></pre>
-
 <p>Tiếp theo chúng ta sẽ cài đặt hàm <code>render()</code> làm nhiệm vụ in toàn bộ thanh tiến trình lên màn hình console. Để in được thanh tiến trình, chúng ta làm các bước sau:</p>
-
 <ul>
 <li>Tính tỉ lệ giữa giá trị hiện tại và giá trị lớn nhất, quy về số lượng ô trong độ dài thanh tiến trình.</li>
 <li>In ra số ô đã hoàn thành bằng ký tự <code>#</code>.</li>
 <li>In các ô còn lại bằng ký tự <code>-</code>.</li>
 </ul>
-
 <p>Để tiện tạo chuỗi lặp, các bạn có thể viết hàm utility sau:</p>
-
 <pre><code class="language-java">public class Strings {
     public static String repeat(char c, int count) {
         char[] arr = new char[count];
@@ -462,9 +443,7 @@ public void setValue(double value) {
     }
 }
 </code></pre>
-
 <p>Khi đó hàm <code>render()</code> sẽ như sau:</p>
-
 <pre><code class="language-java">public void render() {
     int currentBlock = (int) (value / maxRange * width);
     char symbol = 'o';
@@ -474,9 +453,7 @@ public void setValue(double value) {
     System.out.print(text);
 }
 </code></pre>
-
 <p>Test thử với hàm <code>main</code>.</p>
-
 <pre><code class="language-java">public static void main(String[] args) throws InterruptedException {
     final int MAX = 100;
     Random rand = new Random();
@@ -488,25 +465,17 @@ public void setValue(double value) {
     }
 }
 </code></pre>
-
 <p>Và kết quả là:</p>
-
 <pre><code class="language-text">o [######################------------------] 55/100
 </code></pre>
-
 <p>Cũng khá giống rồi phải không 😆. Ký tự <code>o</code> mình đặt trước ở vị trí đó để thay thế bằng cái spinner &ldquo;quay quay&rdquo; ở bước tiếp theo.</p>
-
-<h2 id="2-2-animation-với-timer">2.2. Animation với Timer</h2>
-
+<h2 id="22-animation-với-timer">2.2. Animation với Timer</h2>
 <p>Để làm animation, chúng ta cần một chuỗi các ký tự thay đổi liên tục theo thời gian. Ở đây mình sẽ sử dụng chuỗi ký tự như bên dưới và khai báo vào class <code>ProgressBar</code>.</p>
-
 <pre><code class="language-java">private String animation = &quot;⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏&quot;;
 private int animationIndex = 0;
 private final Timer timer;
 </code></pre>
-
 <p>Cài đặt một <code>TimerTask</code> vào constructor của <code>ProgressBar</code> để tăng <code>animationIndex</code> sau mỗi 100 ms.</p>
-
 <pre><code class="language-java">public ProgressBar() {
     timer = new Timer();
     timer.schedule(new TimerTask() {
@@ -518,9 +487,7 @@ private final Timer timer;
     }, 100, 100);
 }
 </code></pre>
-
 <p>Sửa lại một chút ở hàm <code>render()</code>:</p>
-
 <pre><code class="language-java">public void render() {
     int currentBlock = (int) (value / maxRange * width);
     char symbol = animation.charAt(animationIndex % animation.length());
@@ -530,9 +497,7 @@ private final Timer timer;
     System.out.print(text);
 }
 </code></pre>
-
 <p>Kết quả:</p>
-
 
 
  
@@ -560,20 +525,14 @@ private final Timer timer;
   
 </div>
 
-
 <p>Tuy nhiên, sau khi hoàn tất, chương trình không dừng lại, nó vẫn tiếp tục &ldquo;quay quay&rdquo; và chúng ta phải reset lại <code>Timer</code> để tắt animation. Để báo hiệu hoàn tất, chúng ta implement thêm method <code>stop()</code> bên trong class <code>ProgressBar</code> và gọi method này khi muốn dừng animation.</p>
-
 <pre><code class="language-java">public void stop() {
     timer.cancel();
 }
 </code></pre>
-
-<h2 id="2-3-thành-công-và-thất-bại">2.3. Thành công và thất bại</h2>
-
+<h2 id="23-thành-công-và-thất-bại">2.3. Thành công và thất bại</h2>
 <p>Sau khi kết thúc tác vụ, cho dù là thành công hay thất bại, chúng ta đều phải ngưng animation lại, không hiển thị spinner nữa mà thay vào đó là icon biểu thị thành công hoặc thất bại.</p>
-
 <p>Để làm điều này, chúng ta thêm vào 1 field <code>flag</code>, đồng thời cài đặt method <code>reportSuccess()</code> và <code>reportError()</code>.</p>
-
 <pre><code class="language-java">private int flag = 0;
 
 public void reportSuccess() {
@@ -588,9 +547,7 @@ public void reportError() {
     this.stop();
 }
 </code></pre>
-
 <p>Phương thức <code>render()</code> cũng sửa lại một tí.</p>
-
 <pre><code class="language-java">private char getSymbol() {
     switch (flag) {
         case 1: return '\u2714';
@@ -607,9 +564,7 @@ public void render() {
     System.out.print(text);
 }
 </code></pre>
-
 <p>Và giờ test lại với hàm <code>main()</code> với trường hợp thành công.</p>
-
 <pre><code class="language-java">public static void main(String[] args) throws InterruptedException {
     final int MAX = 100;
     Random rand = new Random();
@@ -622,9 +577,7 @@ public void render() {
     p.reportSuccess();
 }
 </code></pre>
-
 <p>Kết quả là:</p>
-
 
 
  
@@ -652,9 +605,7 @@ public void render() {
   
 </div>
 
-
 <p>Cùng test trường hợp thất bại luôn nào.</p>
-
 <pre><code class="language-java">public static void main(String[] args) throws InterruptedException {
     final int MAX = 100;
     Random rand = new Random();
@@ -674,9 +625,7 @@ public void render() {
     }
 }
 </code></pre>
-
 <p>Và kết quả:</p>
-
 
 
  
@@ -704,9 +653,7 @@ public void render() {
   
 </div>
 
-
 <p>Vậy là chúng ta đã hoàn thiện một Progress Bar trên màn hình console với ngôn ngữ Java. Các bạn có thể tham khảo <a href="https://github.com/chidokun/console-progress-bar">source code</a> của toàn bộ bài viết.</p>
-
 <p>Khi nào rảnh mình sẽ hướng dẫn các bạn làm thêm một tí màu mè vào thanh Progress Bar nữa nhé 😆.</p>
               
             </div>

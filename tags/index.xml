@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Nguyễn Tuấn&#39;s Blog</title>
@@ -6,40 +6,13 @@
     <description>Recent content in Tags on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Sun, 25 Jul 2021 20:26:28 +0700</lastBuildDate>
+    <lastBuildDate>Fri, 06 Aug 2021 19:00:39 +0700</lastBuildDate>
     
 	<atom:link href="https://chidokun.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Algorithms</title>
-      <link>https://chidokun.github.io/tags/algorithms/</link>
-      <pubDate>Sun, 25 Jul 2021 20:26:28 +0700</pubDate>
-      
-      <guid>https://chidokun.github.io/tags/algorithms/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Book</title>
-      <link>https://chidokun.github.io/tags/book/</link>
-      <pubDate>Wed, 01 Apr 2020 22:30:30 +0700</pubDate>
-      
-      <guid>https://chidokun.github.io/tags/book/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Chemistry</title>
-      <link>https://chidokun.github.io/tags/chemistry/</link>
-      <pubDate>Mon, 18 Nov 2013 23:14:00 +0700</pubDate>
-      
-      <guid>https://chidokun.github.io/tags/chemistry/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Clean Code</title>
+      <title>clean code</title>
       <link>https://chidokun.github.io/tags/clean-code/</link>
       <pubDate>Fri, 06 Aug 2021 19:00:39 +0700</pubDate>
       
@@ -48,43 +21,16 @@
     </item>
     
     <item>
-      <title>Crawl</title>
-      <link>https://chidokun.github.io/tags/crawl/</link>
-      <pubDate>Sat, 30 Jan 2021 12:28:27 +0700</pubDate>
-      
-      <guid>https://chidokun.github.io/tags/crawl/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Data</title>
+      <title>data</title>
       <link>https://chidokun.github.io/tags/data/</link>
-      <pubDate>Sun, 19 Jul 2020 11:55:24 +0700</pubDate>
+      <pubDate>Thu, 29 Jul 2021 20:17:38 +0700</pubDate>
       
       <guid>https://chidokun.github.io/tags/data/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Data Analysis</title>
-      <link>https://chidokun.github.io/tags/data-analysis/</link>
-      <pubDate>Wed, 03 Feb 2021 22:00:00 +0700</pubDate>
-      
-      <guid>https://chidokun.github.io/tags/data-analysis/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Data Science</title>
-      <link>https://chidokun.github.io/tags/data-science/</link>
-      <pubDate>Wed, 03 Feb 2021 22:00:00 +0700</pubDate>
-      
-      <guid>https://chidokun.github.io/tags/data-science/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Data Structures</title>
+      <title>data structures</title>
       <link>https://chidokun.github.io/tags/data-structures/</link>
       <pubDate>Thu, 29 Jul 2021 20:17:38 +0700</pubDate>
       
@@ -93,7 +39,43 @@
     </item>
     
     <item>
-      <title>Data Visualization</title>
+      <title>algorithms</title>
+      <link>https://chidokun.github.io/tags/algorithms/</link>
+      <pubDate>Sun, 25 Jul 2021 20:26:28 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/tags/algorithms/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tips</title>
+      <link>https://chidokun.github.io/tags/tips/</link>
+      <pubDate>Wed, 07 Jul 2021 17:54:21 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/tags/tips/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>data analysis</title>
+      <link>https://chidokun.github.io/tags/data-analysis/</link>
+      <pubDate>Wed, 03 Feb 2021 22:00:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/tags/data-analysis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>data science</title>
+      <link>https://chidokun.github.io/tags/data-science/</link>
+      <pubDate>Wed, 03 Feb 2021 22:00:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/tags/data-science/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>data visualization</title>
       <link>https://chidokun.github.io/tags/data-visualization/</link>
       <pubDate>Wed, 03 Feb 2021 22:00:00 +0700</pubDate>
       
@@ -102,43 +84,16 @@
     </item>
     
     <item>
-      <title>Experiment</title>
-      <link>https://chidokun.github.io/tags/experiment/</link>
-      <pubDate>Mon, 18 Nov 2013 23:14:00 +0700</pubDate>
+      <title>crawl</title>
+      <link>https://chidokun.github.io/tags/crawl/</link>
+      <pubDate>Sat, 30 Jan 2021 12:28:27 +0700</pubDate>
       
-      <guid>https://chidokun.github.io/tags/experiment/</guid>
+      <guid>https://chidokun.github.io/tags/crawl/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Japanese</title>
-      <link>https://chidokun.github.io/tags/japanese/</link>
-      <pubDate>Fri, 28 Nov 2014 19:43:00 +0700</pubDate>
-      
-      <guid>https://chidokun.github.io/tags/japanese/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Javascript</title>
-      <link>https://chidokun.github.io/tags/javascript/</link>
-      <pubDate>Tue, 24 Dec 2019 18:00:00 +0700</pubDate>
-      
-      <guid>https://chidokun.github.io/tags/javascript/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Other</title>
-      <link>https://chidokun.github.io/tags/other/</link>
-      <pubDate>Sun, 24 Nov 2013 21:41:00 +0700</pubDate>
-      
-      <guid>https://chidokun.github.io/tags/other/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Programming</title>
+      <title>programming</title>
       <link>https://chidokun.github.io/tags/programming/</link>
       <pubDate>Sat, 30 Jan 2021 12:28:27 +0700</pubDate>
       
@@ -147,7 +102,7 @@
     </item>
     
     <item>
-      <title>Python</title>
+      <title>python</title>
       <link>https://chidokun.github.io/tags/python/</link>
       <pubDate>Sat, 30 Jan 2021 12:28:27 +0700</pubDate>
       
@@ -156,7 +111,34 @@
     </item>
     
     <item>
-      <title>Thủ Thuật</title>
+      <title>book</title>
+      <link>https://chidokun.github.io/tags/book/</link>
+      <pubDate>Wed, 01 Apr 2020 22:30:30 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/tags/book/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>javascript</title>
+      <link>https://chidokun.github.io/tags/javascript/</link>
+      <pubDate>Tue, 24 Dec 2019 18:00:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>japanese</title>
+      <link>https://chidokun.github.io/tags/japanese/</link>
+      <pubDate>Fri, 28 Nov 2014 19:43:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/tags/japanese/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>thủ thuật</title>
       <link>https://chidokun.github.io/tags/th%E1%BB%A7-thu%E1%BA%ADt/</link>
       <pubDate>Mon, 25 Nov 2013 22:29:00 +0700</pubDate>
       
@@ -165,7 +147,7 @@
     </item>
     
     <item>
-      <title>Tin Học</title>
+      <title>tin học</title>
       <link>https://chidokun.github.io/tags/tin-h%E1%BB%8Dc/</link>
       <pubDate>Mon, 25 Nov 2013 22:29:00 +0700</pubDate>
       
@@ -174,11 +156,29 @@
     </item>
     
     <item>
-      <title>Tips</title>
-      <link>https://chidokun.github.io/tags/tips/</link>
-      <pubDate>Wed, 07 Jul 2021 17:54:21 +0700</pubDate>
+      <title>other</title>
+      <link>https://chidokun.github.io/tags/other/</link>
+      <pubDate>Sun, 24 Nov 2013 21:41:00 +0700</pubDate>
       
-      <guid>https://chidokun.github.io/tags/tips/</guid>
+      <guid>https://chidokun.github.io/tags/other/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>chemistry</title>
+      <link>https://chidokun.github.io/tags/chemistry/</link>
+      <pubDate>Mon, 18 Nov 2013 23:14:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/tags/chemistry/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>experiment</title>
+      <link>https://chidokun.github.io/tags/experiment/</link>
+      <pubDate>Mon, 18 Nov 2013 23:14:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/tags/experiment/</guid>
       <description></description>
     </item>
     

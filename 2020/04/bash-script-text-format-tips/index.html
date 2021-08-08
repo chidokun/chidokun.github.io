@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Tuấn">
 <meta name="keywords" content="bash script, shell script, development, programming, chidokun, lập trình">
 <meta name="description" content="Với dân developer thì viết script để tự động hóa một số công việc cũng là một việc thường gặp. Mọi người thường nghĩ chỉ có thể hiển thị trên nền trắng đen đơn thuần. Thực ra terminal trên Linux và macOS cũng hỗ trợ hiển thị màu mè hoa lá nữa. Cùng xem cách định dạng chữ và màu để hiển thị trên terminal như thế nào nhé.">
@@ -277,28 +277,29 @@ if (!doNotTrack) {
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>Với dân developer thì viết script để tự động hóa một số công việc cũng là một việc thường gặp. Mọi người thường nghĩ chỉ có thể hiển thị trên nền trắng đen đơn thuần. Thực ra terminal trên Linux và macOS cũng hỗ trợ hiển thị màu mè hoa lá nữa. Cùng xem cách định dạng chữ và màu để hiển thị trên terminal như thế nào nhé.</p>
-
 <h1 id="table-of-contents">Mục lục</h1><nav id="TableOfContents">
-<ul>
-<li><a href="#1-escape-sequence">1. Escape sequence</a>
-<ul>
-<li><a href="#1-1-định-dạng">1.1. Định dạng</a></li>
-<li><a href="#1-2-rest-định-dạng">1.2. Rest định dạng</a></li>
-<li><a href="#1-3-kết-hợp-format-code">1.3. Kết hợp format code</a></li>
-<li><a href="#1-4-tính-tương-thích">1.4. Tính tương thích</a></li>
-</ul></li>
-<li><a href="#2-định-dạng-màu-sắc">2. Định dạng màu sắc</a>
-<ul>
-<li><a href="#2-1-màu-8-và-16">2.1. Màu 8 và 16</a></li>
-<li><a href="#2-2-màu-88-và-256">2.2. Màu 88 và 256</a></li>
-</ul></li>
-<li><a href="#3-kết-luận">3. Kết luận</a>
-<ul>
-<li><a href="#tham-khảo">Tham khảo</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#1-escape-sequence">1. Escape sequence</a>
+      <ul>
+        <li><a href="#11-định-dạng">1.1. Định dạng</a></li>
+        <li><a href="#12-rest-định-dạng">1.2. Rest định dạng</a></li>
+        <li><a href="#13-kết-hợp-format-code">1.3. Kết hợp format code</a></li>
+        <li><a href="#14-tính-tương-thích">1.4. Tính tương thích</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-định-dạng-màu-sắc">2. Định dạng màu sắc</a>
+      <ul>
+        <li><a href="#21-màu-8-và-16">2.1. Màu 8 và 16</a></li>
+        <li><a href="#22-màu-88-và-256">2.2. Màu 88 và 256</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-kết-luận">3. Kết luận</a>
+      <ul>
+        <li><a href="#tham-khảo">Tham khảo</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
-
 
 
  
@@ -326,25 +327,17 @@ if (!doNotTrack) {
   
 </div>
 
-
 <h1 id="1-escape-sequence">1. Escape sequence</h1>
-
 <p>Các trình terminal hỗ trợ màu sắc và định dạng thông qua <strong>Escape sequence</strong>. <strong>Escapse sequence</strong> bắt đầu bằng ký tự Esc và theo sau là mã định dạng: <code>&lt;Esc&gt;[&lt;Format code&gt;m</code>.</p>
-
 <p>Trong bash script, ký tự esc có thể viết là <code>\e</code>, <code>\033</code> hoặc <code>\x1B</code>. Vì vậy có thể dùng lệnh sau để hiển thị text có định dạng:</p>
-
 <pre><code class="language-sh">echo &quot;&lt;Esc&gt;[&lt;Format code&gt;mMy text&lt;Esc&gt;[0m&quot;
 </code></pre>
-
 <p>Sau đây là một số ví dụ:</p>
-
 <pre><code class="language-sh">echo -e &quot;Hello \033[4;91meverybody\033[0m&quot; # gạch dưới, màu đỏ
 echo -e &quot;Hello \e[1;34meverybody\e[0m&quot; # in đậm, màu xanh dương
 echo -e &quot;Hello \x1B[42;33meverybody\x1B[0m&quot; # chữ vàng, nền xanh lá
 </code></pre>
-
 <p>Kết quả là:</p>
-
 
 
  
@@ -370,15 +363,10 @@ echo -e &quot;Hello \x1B[42;33meverybody\x1B[0m&quot; # chữ vàng, nền xanh 
   
 </div>
 
-
 <p>Lệnh <code>echo -e</code> cho parse Escapse sequence. Format code <code>0</code> sẽ đặt lại tất cả các format trước đó, nên nó thường được để ở cuối để tránh ảnh hưởng đến các lệnh hiển thị phía sau. Escapse sequence cũng có thể sử dụng ở các ngôn ngữ lập trình khác ngoài Bash.</p>
-
 <p>Kế tiếp mình sẽ giới thiệu một số format code hữu ích.</p>
-
-<h2 id="1-1-định-dạng">1.1. Định dạng</h2>
-
+<h2 id="11-định-dạng">1.1. Định dạng</h2>
 <p>Bảng sau đây là một số format code để định dạng text, chưa bao gồm màu sắc:</p>
-
 <table>
 <thead>
 <tr>
@@ -386,45 +374,36 @@ echo -e &quot;Hello \x1B[42;33meverybody\x1B[0m&quot; # chữ vàng, nền xanh 
 <th>Mô tả</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>1</td>
 <td>Bold/Bright</td>
 </tr>
-
 <tr>
 <td>2</td>
 <td>Dim</td>
 </tr>
-
 <tr>
 <td>4</td>
 <td>Underlined</td>
 </tr>
-
 <tr>
 <td>5</td>
 <td>Blink (nhấp nháy)</td>
 </tr>
-
 <tr>
 <td>7</td>
 <td>Invert (đảo màu text và màu nền)</td>
 </tr>
-
 <tr>
 <td>8</td>
 <td>Hidden (thường dùng cho password)</td>
 </tr>
 </tbody>
 </table>
-
 <p>Cùng xem preview nhé:</p>
-
 <pre><code class="language-sh">for i in {1,2,4,5,7,8} ; do echo -e &quot;${i}. Hello \e[${i}meverybody\e[0m&quot; ; done ; echo
 </code></pre>
-
 
 
  
@@ -450,11 +429,8 @@ echo -e &quot;Hello \x1B[42;33meverybody\x1B[0m&quot; # chữ vàng, nền xanh 
   
 </div>
 
-
-<h2 id="1-2-rest-định-dạng">1.2. Rest định dạng</h2>
-
+<h2 id="12-rest-định-dạng">1.2. Rest định dạng</h2>
 <p>Format code để reset định dạng thường dùng để hủy bỏ một định dạng đã set trước đó:</p>
-
 <table>
 <thead>
 <tr>
@@ -462,54 +438,42 @@ echo -e &quot;Hello \x1B[42;33meverybody\x1B[0m&quot; # chữ vàng, nền xanh 
 <th>Mô tả</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>0</td>
 <td>Reset tất cả format</td>
 </tr>
-
 <tr>
 <td>21</td>
 <td>Reset Bold/Bright</td>
 </tr>
-
 <tr>
 <td>22</td>
 <td>Reset Dim</td>
 </tr>
-
 <tr>
 <td>24</td>
 <td>Reset Underlined</td>
 </tr>
-
 <tr>
 <td>25</td>
 <td>Reset Blink</td>
 </tr>
-
 <tr>
 <td>27</td>
 <td>Reset Invert</td>
 </tr>
-
 <tr>
 <td>28</td>
 <td>Reset Hidden</td>
 </tr>
 </tbody>
 </table>
-
-<h2 id="1-3-kết-hợp-format-code">1.3. Kết hợp format code</h2>
-
+<h2 id="13-kết-hợp-format-code">1.3. Kết hợp format code</h2>
 <p>Nếu bạn muốn đoạn text vừa <strong>in đậm</strong> vừa <u>gạch dưới</u> thì có thể kết hợp các format code lại theo định dạng: <code>&lt;Esc&gt;[&lt;Format code 1&gt;;&lt;Format code 2&gt;;...;&lt;Format code n&gt;m</code></p>
-
 <p>Ví dụ:</p>
-
 <pre><code class="language-sh">echo -e &quot;Hello \e[1;4meverybody\e[0m&quot; # in đậm, gạch chân
 </code></pre>
-
 
 
  
@@ -535,17 +499,11 @@ echo -e &quot;Hello \x1B[42;33meverybody\x1B[0m&quot; # chữ vàng, nền xanh 
   
 </div>
 
-
-<h2 id="1-4-tính-tương-thích">1.4. Tính tương thích</h2>
-
+<h2 id="14-tính-tương-thích">1.4. Tính tương thích</h2>
 <p>Hầu hết các terminal và terminal emulator hỗ trợ một số hay tất cả các định dạng và màu sắc. Có thể tham khảo tính tương thích của các terminal ở <a href="https://misc.flogisoft.com/bash/tip_colors_and_formatting#terminals_compatibility">đây</a>.</p>
-
 <h1 id="2-định-dạng-màu-sắc">2. Định dạng màu sắc</h1>
-
-<h2 id="2-1-màu-8-và-16">2.1. Màu 8 và 16</h2>
-
+<h2 id="21-màu-8-và-16">2.1. Màu 8 và 16</h2>
 <p>Hầu hết các terminal hỗ trợ màu 8 và 16. Lưu ý là các màu này có thể phụ thuộc vào cấu hình profile của terminal.</p>
-
 
 
  
@@ -573,9 +531,7 @@ echo -e &quot;Hello \x1B[42;33meverybody\x1B[0m&quot; # chữ vàng, nền xanh 
   
 </div>
 
-
 <p>Dưới đây là danh sách mã màu text:</p>
-
 <table>
 <thead>
 <tr>
@@ -583,97 +539,78 @@ echo -e &quot;Hello \x1B[42;33meverybody\x1B[0m&quot; # chữ vàng, nền xanh 
 <th>Mô tả</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>39</td>
 <td>Default foreground color</td>
 </tr>
-
 <tr>
 <td>30</td>
 <td>Black</td>
 </tr>
-
 <tr>
 <td>31</td>
 <td>Red</td>
 </tr>
-
 <tr>
 <td>32</td>
 <td>Green</td>
 </tr>
-
 <tr>
 <td>33</td>
 <td>Yellow</td>
 </tr>
-
 <tr>
 <td>34</td>
 <td>Blue</td>
 </tr>
-
 <tr>
 <td>35</td>
 <td>Magenta</td>
 </tr>
-
 <tr>
 <td>36</td>
 <td>Cyan</td>
 </tr>
-
 <tr>
 <td>37</td>
 <td>Light gray</td>
 </tr>
-
 <tr>
 <td>90</td>
 <td>Dark gray</td>
 </tr>
-
 <tr>
 <td>91</td>
 <td>Light red</td>
 </tr>
-
 <tr>
 <td>92</td>
 <td>Light green</td>
 </tr>
-
 <tr>
 <td>93</td>
 <td>Light yellow</td>
 </tr>
-
 <tr>
 <td>94</td>
 <td>Light blue</td>
 </tr>
-
 <tr>
 <td>95</td>
 <td>Light magenta</td>
 </tr>
-
 <tr>
 <td>96</td>
 <td>Light cyan</td>
 </tr>
-
 <tr>
 <td>97</td>
 <td>White</td>
 </tr>
 </tbody>
 </table>
-
 <p>Và danh sách mã màu nền:</p>
-
 <table>
 <thead>
 <tr>
@@ -681,111 +618,85 @@ echo -e &quot;Hello \x1B[42;33meverybody\x1B[0m&quot; # chữ vàng, nền xanh 
 <th>Mô tả</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>49</td>
 <td>Default foreground color</td>
 </tr>
-
 <tr>
 <td>40</td>
 <td>Black</td>
 </tr>
-
 <tr>
 <td>41</td>
 <td>Red</td>
 </tr>
-
 <tr>
 <td>42</td>
 <td>Green</td>
 </tr>
-
 <tr>
 <td>43</td>
 <td>Yellow</td>
 </tr>
-
 <tr>
 <td>44</td>
 <td>Blue</td>
 </tr>
-
 <tr>
 <td>45</td>
 <td>Magenta</td>
 </tr>
-
 <tr>
 <td>46</td>
 <td>Cyan</td>
 </tr>
-
 <tr>
 <td>47</td>
 <td>Light gray</td>
 </tr>
-
 <tr>
 <td>100</td>
 <td>Dark gray</td>
 </tr>
-
 <tr>
 <td>101</td>
 <td>Light red</td>
 </tr>
-
 <tr>
 <td>102</td>
 <td>Light green</td>
 </tr>
-
 <tr>
 <td>103</td>
 <td>Light yellow</td>
 </tr>
-
 <tr>
 <td>104</td>
 <td>Light blue</td>
 </tr>
-
 <tr>
 <td>105</td>
 <td>Light magenta</td>
 </tr>
-
 <tr>
 <td>106</td>
 <td>Light cyan</td>
 </tr>
-
 <tr>
 <td>107</td>
 <td>White</td>
 </tr>
 </tbody>
 </table>
-
-<h2 id="2-2-màu-88-và-256">2.2. Màu 88 và 256</h2>
-
+<h2 id="22-màu-88-và-256">2.2. Màu 88 và 256</h2>
 <p>Một số terminal có hỗ trợ màu 88 hoặc 256.</p>
-
 <p>Để sử dụng màu 256 làm màu text, ta sử dụng cú pháp: <code>&lt;Esc&gt;[38;5;&lt;Format code&gt;m</code>.</p>
-
 <p>Sử dụng làm màu nền, ta có cú pháp: <code>&lt;Esc&gt;[48;5;&lt;Format code&gt;m</code>.</p>
-
 <p>Danh sách các mã màu, các bạn tham khảo tại <a href="https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit">đây</a>.</p>
-
 <h1 id="3-kết-luận">3. Kết luận</h1>
-
 <p>Chúng ta vừa điểm qua kha khá những mẹo định dạng text và màu trên terminal. Escapse sequence ngoài sử dụng cho bash script ra còn có thể sử dụng cho các ngôn ngữ lập trình khác nữa. Tuy nhiên, có một nhược điểm là không hiển thị được kiểu chữ nghiêng (italic). Nhưng như thế cũng đủ làm đoạn script của chúng ta thú vị hơn rồi.</p>
-
 <h2 id="tham-khảo">Tham khảo</h2>
-
 <ul>
 <li><a href="https://misc.flogisoft.com/bash/tip_colors_and_formatting">Bash tips: Colors and formatting (ANSI/VT100 Control sequences)</a></li>
 <li><a href="https://en.wikipedia.org/wiki/ANSI_escape_code">ANSI escape code</a></li>

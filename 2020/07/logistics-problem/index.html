@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Tuấn">
 <meta name="keywords" content="shopee code league, logistics, development, programming, chidokun, lập trình">
 <meta name="description" content="Logistics Problem là challenge thứ x của Shopee Code League 2020 - một cuộc thi về Code và Data kéo dài 2 tháng với các challenge khác nhau. Bài toán Data Analytics lần này tiếp tục là một chủ đề về Logistics - hay nói nôm na là &ldquo;ship hàng&rdquo;. Nhiệm vụ của các đội là xác định các đơn hàng giao trễ hẹn dựa trên data và bộ rule cho sẵn. Sau một khoảng thời gian tìm hiểu và implement thì mình xin giới thiệu đến các bạn giải pháp của team (score: 1.0/1.0).">
@@ -281,20 +281,16 @@ if (!doNotTrack) {
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p><strong>Logistics Problem</strong> là challenge thứ x của Shopee Code League 2020 - một cuộc thi về Code và Data kéo dài 2 tháng với các challenge khác nhau. Bài toán Data Analytics lần này tiếp tục là một chủ đề về Logistics - hay nói nôm na là <em>&ldquo;ship hàng&rdquo;</em>. Nhiệm vụ của các đội là xác định các đơn hàng giao trễ hẹn dựa trên data và bộ rule cho sẵn. Sau một khoảng thời gian tìm hiểu và implement thì mình xin giới thiệu đến các bạn giải pháp của team (score: 1.0/1.0).</p>
-
 <h1 id="table-of-contents">Mục lục</h1><nav id="TableOfContents">
-<ul>
-<li><a href="#1-quan-sát-dữ-liệu">1. Quan sát dữ liệu</a></li>
-<li><a href="#2-phân-tích-yêu-cầu">2. Phân tích yêu cầu</a></li>
-<li><a href="#3-tìm-giải-pháp">3. Tìm giải pháp</a></li>
-<li><a href="#4-nhận-định">4. Nhận định</a></li>
-</ul>
+  <ul>
+    <li><a href="#1-quan-sát-dữ-liệu">1. Quan sát dữ liệu</a></li>
+    <li><a href="#2-phân-tích-yêu-cầu">2. Phân tích yêu cầu</a></li>
+    <li><a href="#3-tìm-giải-pháp">3. Tìm giải pháp</a></li>
+    <li><a href="#4-nhận-định">4. Nhận định</a></li>
+  </ul>
 </nav>
-
 <h1 id="1-quan-sát-dữ-liệu">1. Quan sát dữ liệu</h1>
-
 <p>Đề bài và mô tả dữ liệu trên Kaggle: <a href="https://www.kaggle.com/c/open-shopee-code-league-logistic">[Open] Shopee Code League - Logistics</a></p>
-
 
 
  
@@ -322,9 +318,7 @@ if (!doNotTrack) {
   
 </div>
 
-
 <p>Dữ liệu có 3.176.313 dòng x 6 cột:</p>
-
 <ul>
 <li><strong>orderid</strong>: Mã đơn hàng, duy nhất trên toàn bộ dữ liệu.</li>
 <li><strong>pick</strong>:  Thời gian lấy hàng dưới dạng epoch timestamp seconds.</li>
@@ -333,15 +327,10 @@ if (!doNotTrack) {
 <li><strong>buyeraddress</strong>: Địa điểm người mua (địa điểm đích).</li>
 <li><strong>selleraddress</strong>: Địa điểm người bán (địa điểm gốc).</li>
 </ul>
-
 <p>Một dòng dữ liệu thể hiện cho <strong>một đơn hàng</strong> trên nền tảng Shopee.</p>
-
 <h1 id="2-phân-tích-yêu-cầu">2. Phân tích yêu cầu</h1>
-
 <p>Yêu cầu của bài toán lần này khá đơn giản: <em>Xác định các đơn hàng giao trễ dựa trên</em> <strong>Service Level Agreements (SLA)</strong>.</p>
-
 <p><strong>SLA</strong> mô tả khoảng thời gian giao hàng cam kết của một đối tác giao hàng giữa 2 địa điểm và được định nghĩa dưới đây:</p>
-
 
 
  
@@ -369,39 +358,32 @@ if (!doNotTrack) {
   
 </div>
 
-
 <p>Thời gian giao hàng bắt đầu tính từ <strong>ngày tiếp theo</strong> sau ngày lấy hàng (pick up date) đến lần giao hàng thứ nhất. Nếu lần đầu giao hàng không thành công thì <strong>lần giao hàng thứ hai không được lớn hơn 3 ngày từ lần giao thứ nhất, bất kể lộ trình</strong>.</p>
-
 <p>Thời gian giao hàng chỉ tính từ Thứ Hai đến Thứ Bảy và loại trừ 4 ngày lễ:</p>
-
 <ul>
 <li>2020-03-08</li>
 <li>2020-03-25</li>
 <li>2020-03-30</li>
 <li>2020-03-31</li>
 </ul>
-
 <div class="alert info ">
   <p><strong>Lưu ý</strong>: cần chuyển epoch timestamp sang GMT+8 trước khi tính toán.</p>
 </div>
-
 <p>Như vậy ta có các rule sau để xác định đơn hàng trễ:</p>
-
 <ul>
-<li><p>Thời gian từ lúc lấy hàng đến lúc giao lần 1 lớn hơn thời gian cam kết SLA giữa 2 địa điểm người bán và người mua.</p></li>
-
-<li><p>Hoặc nếu có giao lần thứ hai thì thời gian giao hàng từ lần giao thứ nhất tới lần giao thứ hai lớn hơn 3 ngày.</p></li>
+<li>
+<p>Thời gian từ lúc lấy hàng đến lúc giao lần 1 lớn hơn thời gian cam kết SLA giữa 2 địa điểm người bán và người mua.</p>
+</li>
+<li>
+<p>Hoặc nếu có giao lần thứ hai thì thời gian giao hàng từ lần giao thứ nhất tới lần giao thứ hai lớn hơn 3 ngày.</p>
+</li>
 </ul>
-
 <h1 id="3-tìm-giải-pháp">3. Tìm giải pháp</h1>
-
 <p>Load dữ liệu và xem những thuộc tính của dữ liệu:</p>
-
 <pre><code class="language-python">data_path = &quot;./data/delivery_orders_march.csv&quot;
 result_path = &quot;./data/result.csv&quot;
 d = pd.read_csv(data_path)
 </code></pre>
-
 
 
  
@@ -429,15 +411,11 @@ d = pd.read_csv(data_path)
   
 </div>
 
-
 <p>Fix những giá trị bị miss.</p>
-
 <pre><code class="language-python">d['1st_deliver_attempt'] = d['1st_deliver_attempt'].astype(np.int64)
 d['2nd_deliver_attempt'] = d['2nd_deliver_attempt'].fillna(0).astype(np.int64)
 </code></pre>
-
 <p>Khởi tạo các địa điểm và mảng SLA phục vụ tính toán SLA.</p>
-
 <pre><code class="language-python">holidays = [ &quot;2020-03-08&quot;, &quot;2020-03-25&quot;, &quot;2020-03-30&quot;, &quot;2020-03-31&quot; ]
 
 places = [ &quot;metro manila&quot;, &quot;luzon&quot;, &quot;visayas&quot;, &quot;mindanao&quot; ]
@@ -451,9 +429,7 @@ sla_map = [[3, 5, 7, 7],
            [7, 7, 7, 7],
            [7, 7, 7, 7]]
 </code></pre>
-
 <p>Xác định địa điểm người bán và người mua, giải quyết trường hợp trùng tên địa điểm nhưng ở những vị trí khác nhau. Sau đó thay thế địa chỉ bằng index của địa điểm trong SLA map.</p>
-
 <pre><code class="language-python"># convert address to city index
 def get_place_index(address): 
     return np.argmax([address.lower().rfind(i) for i in places])
@@ -461,21 +437,15 @@ def get_place_index(address):
 d[&quot;buyeraddress&quot;] = d[&quot;buyeraddress&quot;].apply(lambda x: get_place_index(x))
 d[&quot;selleraddress&quot;] = d[&quot;selleraddress&quot;].apply(lambda x: get_place_index(x))
 </code></pre>
-
 <p>Tính toán SLA cho toàn bộ dữ liệu.</p>
-
 <pre><code class="language-python">d[&quot;sla&quot;] = d.apply(lambda x: sla_map[x[&quot;selleraddress&quot;]][x[&quot;buyeraddress&quot;]], axis=1)
 </code></pre>
-
 <p>Chuyển timestamp ở các cột ngày thành GMT+8 và bỏ đi phần time.</p>
-
 <pre><code class="language-python">dt_columns = ['pick', '1st_deliver_attempt', '2nd_deliver_attempt']
 for dt_col in dt_columns:
     d[dt_col] = (d[dt_col] + 3600*8) // (3600*24)
 </code></pre>
-
 <p>Tính toán ngày giao hàng dùng hàm busday_count của NumPy.</p>
-
 <pre><code class="language-python">t1 = d['pick'].values.astype('datetime64[D]')
 t2 = d['1st_deliver_attempt'].values.astype('datetime64[D]')
 t3 = d['2nd_deliver_attempt'].values.astype('datetime64[D]')
@@ -483,21 +453,15 @@ t3 = d['2nd_deliver_attempt'].values.astype('datetime64[D]')
 d['num_days1'] = np.busday_count(t1, t2, weekmask=&quot;1111110&quot;, holidays=holidays)
 d['num_days2'] = np.busday_count(t2, t3, weekmask=&quot;1111110&quot;, holidays=holidays)
 </code></pre>
-
 <p>Cuối cùng là xác định đơn hàng giao trễ dựa trên các rule đã xác định.</p>
-
 <pre><code class="language-python">d['is_late'] = (d['num_days1'] &gt; d['sla']) | (d['num_days2'] &gt; 3)
 d['is_late'] = d['is_late'].astype(int)
 </code></pre>
-
 <p>Ghi file và nộp.</p>
-
 <pre><code class="language-python">result = d[[&quot;orderid&quot;, &quot;is_late&quot;]]
 result.to_csv(result_path, index=False)
 </code></pre>
-
 <p>Bóc thử những thằng trễ ra xem nó như thế nào :D</p>
-
 
 
  
@@ -525,15 +489,10 @@ result.to_csv(result_path, index=False)
   
 </div>
 
-
 <p>Sau khi chạy xử lý xong thì phát hiện có <strong>762.422</strong> đơn hàng giao trễ :D</p>
-
 <p>Các bạn có thể xem toàn bộ notebook, dữ liệu tại GitHub: <a href="https://github.com/chidokun/logistics-shopee-code-league">logistics-shopee-code-league</a></p>
-
 <h1 id="4-nhận-định">4. Nhận định</h1>
-
 <p>So với challenge trước (Order Burshing Problem), challenge lần này có các rule đơn giản hơn. Nhưng cũng sẽ khó hơn tí vì lượng dữ liệu khá lớn. Nếu chưa có nhiều kinh nghiệm xử lý dữ liệu và tối ưu hóa thì có thể sẽ không kịp thời gian làm bài (thời gian làm cho challenge này là 3 giờ).</p>
-
 <p>Many thanks for my teammate <strong><a href="https://github.com/hoanghouit">@hoanghouit</a></strong> (Business Analyst), <strong><a href="https://github.com/XuanVuong">@XuanVuong</a></strong> (Business Analyst), <strong><a href="https://github.com/PhamVanMinh272">@PhamVanMinh272</a></strong> (Data Engineer), <strong><a href="https://github.com/nlchibao">@nlchibao</a></strong> (ML Engineer).</p>
               
             </div>

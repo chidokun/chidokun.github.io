@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Tuấn">
 <meta name="keywords" content="tin học, thủ thuật, development, programming, chidokun, lập trình">
 <meta name="description" content="Windows 8 ra đời kèm theo nhiều tính năng mới rất hữu ích. Đặc biệt ta có thể thấy Windows 8 hoạt động rất mượt mà, tắt và khởi động máy nhanh hơn hẳn người tiền nhiệm. Có được điều này là do Microsoft đã trang bị cho Windows 8 tính năng &ldquo;hybrid boot&rdquo; có thể cải thiện thời gian khởi động nhanh hơn 30-70% so với thời gian khởi động từ chế độ lạnh truyền thống trong Windows 7.
@@ -284,17 +284,11 @@ if (!doNotTrack) {
             <div class="main-content-wrap">
               <p>Windows 8 ra đời kèm theo nhiều tính năng mới rất hữu ích. Đặc biệt ta có thể thấy Windows 8 hoạt động rất mượt mà, tắt và khởi động máy nhanh hơn hẳn người tiền nhiệm. Có được điều này là do Microsoft đã trang bị cho Windows 8 tính năng &ldquo;hybrid boot&rdquo; có thể cải thiện thời gian khởi động nhanh hơn 30-70% so với thời gian khởi động từ chế độ lạnh truyền thống trong Windows 7.
 Cùng với đó, lệnh shutdown trong Windows 8 cũng có nhiều thay đổi. Bài viết này đề cập đến các tham số lệnh và cách sử dụng chúng đồng thời hướng dẫn bạn cách tạo shortcut đơn giản để tắt máy.</p>
-
 <h1 id="tính-năng-hybrid-boot">Tính năng &ldquo;hybrid boot&rdquo;</h1>
-
 <p>Tính năng “hybrid boot” của Windows 8 là chế độ lai giữa Shutdown và Hibernate. Microsoft mô tả quá trình tắt máy của Windows 7 của mình như sau: Người sử dụng sẽ tắt máy bằng cách chọn Shutdown từ Start Menu hoặc bằng cách nhấn nút nguồn hoặc một ứng dụng tắt máy bằng cách kích hoạt lệnh API như ExitWindowsEx hoặc InitiateShutdown. Lúc này, cửa sổ chương trình sẽ phát thông điệp tới các ứng dụng đang chạy, cho phép chúng lưu dữ liệu và các thiết lập. Ứng dụng cũng có thể yêu cầu thêm ít thời gian để hoàn tất những gì mà họ đã làm.</p>
-
 <p>Hybrid boot là sự chấm dứt của việc sử dụng chế độ hibernate trong khởi động cũng như dữ liệu trình điều khiển thiết bị cho lần khởi động tiếp theo. Công nghệ khởi động này làm việc dưới sự hỗ trợ của công nghệ EFI để Windows khởi động nhanh hơn. EFI là sự thay thế cho các BIOS đã được xem lão hóa trên hầu hết máy tính hiện tại, và Windows 8 hỗ trợ đầy đủ công nghệ mới.</p>
-
 <h1 id="tìm-hiểu-lệnh-shutdown">Tìm hiểu lệnh <code>shutdown</code></h1>
-
 <p>Để tìm hiểu cú pháp của lệnh này, bạn mở Command Promt dưới quyền Administrator và gõ <code>shutdown /?</code> để liệt kê tất cả các tham số lệnh và cách sử dụng.</p>
-
 
 
  
@@ -322,20 +316,15 @@ Cùng với đó, lệnh shutdown trong Windows 8 cũng có nhiều thay đổi.
   
 </div>
 
-
 <p>Cấu trúc lệnh như sau:</p>
-
 <pre><code>shutdown [/i | /l | /s | /r | /g | /a | /p | /h | /e | /o] [/hybrid] [/f] [/m \\computer] [/t xxx] [/d [p|u:]xx:yy [/c &quot;comment&quot;]]
 </code></pre>
-
 <p>Ta chỉ tìm hiểu những tham số quan trọng:</p>
-
 <ul>
 <li>No arg: Không có tham số. Sẽ hiển thị Trợ giúp</li>
 <li><code>/?</code> : Hiển thị phần trợ giúp</li>
 <li><code>/i</code> : Hiển thị giao diện đồ hoạ người dùng (GUI). Hộp thoại Remote Shutdown Dialog xuất hiện cung cấp cho bạn nhiều tuỳ chọn cao cấp một cách trực quan.</li>
 </ul>
-
 
 
  
@@ -363,7 +352,6 @@ Cùng với đó, lệnh shutdown trong Windows 8 cũng có nhiều thay đổi.
   
 </div>
 
-
 <ul>
 <li><code>/l</code> : Đăng xuất. Không được dùng với <code>/m</code> hoặc <code>/d</code></li>
 <li><code>/s</code> : Tắt máy tính</li>
@@ -375,15 +363,10 @@ Cùng với đó, lệnh shutdown trong Windows 8 cũng có nhiều thay đổi.
 <li><code>/t xxx</code> : Định thời gian tắt máy, xxx là số giây đếm ngược đến thời điểm tắt máy</li>
 <li><code>/c &quot;comment&quot;</code> : Hiển thị thông báo</li>
 </ul>
-
 <p>Nắm rõ những tham số lệnh cơ bản này bạn có thể điều khiển việc tắt mở máy theo ý muốn. Nếu bạn không muốn phải sử dụng giao diện dòng lệnh rắc rối, hộp thoại Remote Shutdown Dialog có thể giúp bạn.</p>
-
 <h1 id="sử-dụng-lệnh-shutdown">Sử dụng lệnh <code>shutdown</code></h1>
-
 <p>Ta có thể kết hợp các tham số lại để tạo lệnh theo ý muốn.</p>
-
 <p>Ví dụ:</p>
-
 <ul>
 <li>Để tắt máy sau 5 giây ta gõ: <code>shutdown /s /t 05</code></li>
 <li>Để chuyển sang chế độ ngủ đông sau 10 giây với thông báo &ldquo;abc&rdquo; ta gõ: <code>shutdown /h /t 10 /c &quot;abc&quot;</code></li>
@@ -391,11 +374,8 @@ Cùng với đó, lệnh shutdown trong Windows 8 cũng có nhiều thay đổi.
 <li>Để huỷ bỏ tất cả các lệnh trên nếu chưa quá thời gian ta gõ: <code>shutdown /a</code></li>
 <li>&hellip;</li>
 </ul>
-
 <h1 id="tắt-máy-tính-trong-windows-8">Tắt máy tính trong Windows 8</h1>
-
 <p>Việc tắt máy tính trong Windows 8 khá lằng nhằng, bạn di chuột lên góc trên bên phải để hiện Charm bar, rồi chọn vào Settings. Chọn Power để hiển thị các tuỳ chọn rồi chọn Shutdown.</p>
-
 
 
  
@@ -421,15 +401,10 @@ Cùng với đó, lệnh shutdown trong Windows 8 cũng có nhiều thay đổi.
   
 </div>
 
-
 <h1 id="tạo-shortcut-tắt-máy">Tạo shortcut tắt máy</h1>
-
 <p>Bạn có thể tạo shortcut tắt máy để việc tắt máy trở nên dễ dàng hơn.</p>
-
 <p>Đầu tiên, bấm chuột phải chọn New &gt; Shortcut.</p>
-
 <p>Trong hộp thoại Create Shortcut, bạn gõ lệnh vào theo ý muốn (ở đây là: <code>shutdown /s /hybrid /t 005 /c &quot;computer will be turned off&quot;</code>, nghĩa là tắt máy kèm chế độ khởi động nhanh sau 5 giây đồng thời hiện thông báo nhắc nhở) rồi bấm Next.</p>
-
 
 
  
@@ -455,9 +430,7 @@ Cùng với đó, lệnh shutdown trong Windows 8 cũng có nhiều thay đổi.
   
 </div>
 
-
 <p>Sau đó đặt tên cho shortcut vừa tạo rồi bấm Finish</p>
-
 
 
  
@@ -483,9 +456,7 @@ Cùng với đó, lệnh shutdown trong Windows 8 cũng có nhiều thay đổi.
   
 </div>
 
-
 <p>Đổi icon để shortcut trông đẹp hơn</p>
-
 
 
  
@@ -511,9 +482,7 @@ Cùng với đó, lệnh shutdown trong Windows 8 cũng có nhiều thay đổi.
   
 </div>
 
-
 <p>Ngoài ra, cũng có thể đính vào Start Screen bằng cách chuột phải vào shortcut chọn Pin to Start và xoá đi shortcut trên Desktop một cách an toàn.</p>
-
 
 
  

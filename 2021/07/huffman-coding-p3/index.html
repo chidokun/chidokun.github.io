@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Tuấn">
 <meta name="keywords" content="java, huffman coding, huffman, development, programming, chidokun, lập trình">
 <meta name="description" content="Ở bài viết Cài đặt thuật toán Huffman Coding, chúng ta đã tìm hiểu cách cài đặt thuật toán Huffman Coding để mã hóa (nén) chuỗi dữ liệu thành chuỗi nhị phân. Trong bài viết này, chúng ta sẽ tiếp tục tìm hiểu quá trình giải nén dữ liệu từ cây Huffman và cài đặt phương thức decode(String encoded) cho class HuffmanCoding.">
@@ -277,34 +277,27 @@ if (!doNotTrack) {
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>Ở bài viết <a href="https://chidokun.github.io/2021/07/huffman-coding-p2/">Cài đặt thuật toán Huffman Coding</a>, chúng ta đã tìm hiểu cách cài đặt thuật toán Huffman Coding để mã hóa (nén) chuỗi dữ liệu thành chuỗi nhị phân. Trong bài viết này, chúng ta sẽ tiếp tục tìm hiểu quá trình giải nén dữ liệu từ cây Huffman và cài đặt phương thức <code>decode(String encoded)</code> cho class <code>HuffmanCoding</code>.</p>
-
 <h1 id="table-of-contents">Mục lục</h1><nav id="TableOfContents">
-<ul>
-<li><a href="#1-thuật-toán-giải-mã">1. Thuật toán giải mã</a></li>
-<li><a href="#2-cài-đặt-thuật-toán">2. Cài đặt thuật toán</a>
-<ul>
-<li><a href="#references">References</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#1-thuật-toán-giải-mã">1. Thuật toán giải mã</a></li>
+    <li><a href="#2-cài-đặt-thuật-toán">2. Cài đặt thuật toán</a>
+      <ul>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
-
 <h1 id="1-thuật-toán-giải-mã">1. Thuật toán giải mã</h1>
-
 <p>Để giải mã chuỗi nhị phân đã mã hóa, chúng ta cần có cây Huffman (cây nhị phân mã hóa chứa giá trị mã hóa của từng ký tự). Sau đó, duyệt tuần tự qua chuỗi bit mã hóa theo các bước sau:</p>
-
 <ul>
 <li><em>1.1</em>. Duyệt qua từng bit của chuỗi bit mã hóa từ nút gốc đến khi gặp nút lá.</li>
 <li><em>1.2</em>. Nếu bit hiện tại là bit 0, chuyển qua nhánh trái.</li>
 <li><em>1.3</em>. Nếu bit hiện tại là bit 1, chuyển qua nhánh phải.</li>
 <li><em>1.4</em>. Khi gặp nút lá, ta thêm ký tự ở nút lá vào chuỗi kết quả. Sau đó trở lại nút gốc cho bit tiếp theo.</li>
 </ul>
-
 <h1 id="2-cài-đặt-thuật-toán">2. Cài đặt thuật toán</h1>
-
 <p>Trở lại với class <code>HuffmanCoding</code> trong bài viết <a href="https://chidokun.github.io/2021/07/huffman-coding-p2/">Cài đặt thuật toán Huffman Coding</a>, chúng ta sẽ cài đặt phương thức <code>decode(String encoded)</code> của class này.</p>
-
 <p>Thuật toán có thể được cài đặt như sau:</p>
-
 <pre><code class="language-java">public String decode(String encoded) {
     Node node = this.root;
     StringBuilder result = new StringBuilder();
@@ -318,9 +311,7 @@ if (!doNotTrack) {
     return result.toString();
 }
 </code></pre>
-
 <p>Test lại với hàm <code>main</code>:</p>
-
 <pre><code class="language-java">public static void main(String[] args) {
     String str = &quot;Hellooo!&quot;;
     System.out.println(&quot;Source: &quot; + str);
@@ -331,16 +322,12 @@ if (!doNotTrack) {
     System.out.println(&quot;Decoded: &quot; + h.decode(encoded));
 }
 </code></pre>
-
 <p>Kết quả là:</p>
-
 <pre><code>Source: Hellooo!
 Encoded: 110111110100001110
 Decoded: Hellooo!
 </code></pre>
-
 <h2 id="references">References</h2>
-
 <ul>
 <li><a href="https://web.stanford.edu/class/archive/cs/cs106x/cs106x.1192/resources/minibrowser2/huffman-encoding-supplement.pdf">Huffman Encoding and Data Compression</a></li>
 <li><a href="https://www.geeksforgeeks.org/huffman-decoding/">Huffman Decoding</a></li>

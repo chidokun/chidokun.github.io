@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Tuấn">
 <meta name="keywords" content="js, javascript, query, truy vấn, dữ liệu, development, programming, chidokun, lập trình">
 <meta name="description" content="Ở phần 1, mình đã giới thiệu một số cách dùng JavaScript để truy vấn thống kê trên 1 tập dữ liệu. Tiếp tục phần này, mình sẽ giới thiệu thêm một số cách dùng JavaScript để giải quyết một số vấn đề thường gặp liên quan đến mối quan hệ giữa nhiều tập dữ liệu nhé.">
@@ -281,17 +281,14 @@ if (!doNotTrack) {
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>Ở phần 1, mình đã giới thiệu một số cách dùng JavaScript để truy vấn thống kê trên 1 tập dữ liệu. Tiếp tục phần này, mình sẽ giới thiệu thêm một số cách dùng JavaScript để giải quyết một số vấn đề thường gặp liên quan đến mối quan hệ giữa nhiều tập dữ liệu nhé.</p>
-
 <h1 id="table-of-contents">Mục lục</h1><nav id="TableOfContents">
-<ul>
-<li><a href="#1-tìm-giao-của-2-danh-sách">1. Tìm giao của 2 danh sách</a></li>
-<li><a href="#2-tìm-phần-bù">2. Tìm phần bù</a></li>
-<li><a href="#3-kết-luận">3. Kết luận</a></li>
-</ul>
+  <ul>
+    <li><a href="#1-tìm-giao-của-2-danh-sách">1. Tìm giao của 2 danh sách</a></li>
+    <li><a href="#2-tìm-phần-bù">2. Tìm phần bù</a></li>
+    <li><a href="#3-kết-luận">3. Kết luận</a></li>
+  </ul>
 </nav>
-
 <p>Lần này, chúng ta sử dụng các tập dữ liệu mã số sinh viên sau:</p>
-
 
   
     
@@ -363,16 +360,12 @@ let data4 = [
     </tbody>
   </table>
 </figure>
-
 <p>Mục tiêu là tìm ra mối liên hệ giữa các tập dữ liệu. Trong thực tế có thể bạn sẽ gặp những tình huống mà cần phải tìm ra mối liên hệ của những tập dữ liệu hàng trăm, hàng nghìn dòng thì JavaScript vẫn đáp ứng được.</p>
-
 <p>Trước hết cùng nhận xét &ldquo;nhẹ&rdquo; về tập dữ liệu nhé:</p>
-
 <ul>
 <li>Mã số sinh viên ở dạng số có cùng format là 15 chữ số. Nhìn 2 chữ số đầu có thể bạn sẽ đoán được đây là năm khai khóa chẳng hạn.</li>
 <li>Số lượng mẫu:</li>
 </ul>
-
 <pre><code class="language-js">data1.length
 // 10
 data2.length
@@ -382,13 +375,9 @@ data3.length
 data4.length
 // 5
 </code></pre>
-
 <h1 id="1-tìm-giao-của-2-danh-sách">1. Tìm giao của 2 danh sách</h1>
-
 <p>Mục đích là tìm các phần tử thuộc về cả 2 danh sách. Ở đây, chúng ta có thể dùng <code>filter()</code> để lọc ra các phần tử của danh sách 1 mà có tồn tại trong danh sách 2. JavaScript cung cấp phương thức <code>indexOf()</code> để tìm vị trí xuất hiện của một phần tử. Phương thức <code>indexOf()</code> sẽ trả về index của phần tử trong mảng hoặc <code>-1</code> nếu không tìm thấy.</p>
-
 <p>Vì vậy, chúng ta có thể <code>filter()</code> lại danh sách 1 với điều kiện là <code>indexOf()</code> khác <code>-1</code>.</p>
-
 <pre><code class="language-js">// Tìm giao của data1 và data2
 let data12 = data1.filter((e) =&gt; data2.indexOf(e) != -1);
 // Result: [&quot;160922005010007&quot;,&quot;160925005004023&quot;,&quot;160927900006001&quot;,&quot;160823000701002&quot;]
@@ -403,40 +392,27 @@ let data24 = data2.filter((e) =&gt; data4.indexOf(e) != -1);
 
 // bạn tiếp tục với các tập còn lại nhé
 </code></pre>
-
 <p>Qua lượt kiểm tra như trên, chúng ta thấy được <code>data1</code> và <code>data2</code> có trùng nhau (được lưu bằng <code>data12</code>), tập <code>data2</code> và <code>data3</code> cũng vậy (<code>data23</code>). Tập <code>data4</code> không có liên hệ với các tập trên. Liệu <code>data12</code> và <code>data23</code> có giao nhau không?</p>
-
 <pre><code class="language-js">let data123 = data12.filter((e) =&gt; data23.indexOf(e) != -1);
 // Result: [&quot;160925005004023&quot;,&quot;160927900006001&quot;,&quot;160823000701002&quot;]
 </code></pre>
-
 <h1 id="2-tìm-phần-bù">2. Tìm phần bù</h1>
-
 <p>Mục tiêu chính là tìm ra những phần tử của tập dữ liệu 1 mà không nằm trong tập dữ liệu 2. Cách dùng cũng tương tự như trên, vẫn dùng <code>filter()</code> kết hợp với <code>indexOf()</code>. Tuy nhiên, điều kiện là <code>indexOf()</code> bằng <code>-1</code>.</p>
-
 <p>Cách dùng này ngoài để tìm phần bù ra, có thể dùng để xác định 1 tập có nằm hoàn toàn trong tập khác bằng cách kiểm tra xem phần bù có rỗng hay không.</p>
-
 <p>Ở ví dụ trên, để biết tập <code>data23</code> có là tập con của <code>data12</code> hay không? Chúng ta kiểm tra thử:</p>
-
 <pre><code class="language-js">data23.filter((e) =&gt; data12.indexOf(e) == -1);
 // Result: [] chứng tỏ tập `data23` nằm hoàn toàn trong `data12`
 </code></pre>
-
 <p>Thêm một ví dụ khác:</p>
-
 <pre><code class="language-js">// Tìm phần bù của data3 với data2
 let _data32 = data3.filter((e) =&gt; data2.indexOf(e) == -1);
 // Result: [&quot;160830020001505&quot;,&quot;170920002006001&quot;,&quot;160824700001510&quot;,&quot;170929000806002&quot;,&quot;160824003001503&quot;]
 </code></pre>
-
 <div class="alert info ">
   <p>Bạn có thể dùng <code>filter()</code> kết hợp với <code>indexOf()</code> để tìm các phần tử trùng nhau cũng như phần bù giữa 2 tập.</p>
 </div>
-
 <h1 id="3-kết-luận">3. Kết luận</h1>
-
 <p>Phía trên mình đã giới thiệu cách tìm giao và phần bù chỉ bằng cách sử dụng <code>filter()</code> và <code>indexOf()</code>. Sau khi phân tích xong, có thể kết luận mối quan hệ giữa các tập như sau:</p>
-
 
 
  
@@ -463,7 +439,6 @@ let _data32 = data3.filter((e) =&gt; data2.indexOf(e) == -1);
     <span class="caption">Mối liên hệ giữa các tập dữ liệu</span>
   
 </div>
-
 
 <p>Hi vọng bài viết sẽ giúp ích cho các bạn. Nếu biết thêm về các thủ thuật khác thì có thể chia sẻ với mình thông qua bình luận bên dưới nhé.</p>
               

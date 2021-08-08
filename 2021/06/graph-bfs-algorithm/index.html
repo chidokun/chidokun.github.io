@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Tuấn">
 <meta name="keywords" content="graph, java, breath first search, bfs, development, programming, chidokun, lập trình">
 <meta name="description" content="Breath First Search (BFS) cùng với Depth First Search là những thuật toán cơ bản dùng để duyệt qua đồ thị. Trong bài viết này, chúng ta sẽ cùng làm rõ ý tưởng cũng như cách hiện thực thuật toán này.">
@@ -279,47 +279,38 @@ if (!doNotTrack) {
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p><strong>Breath First Search</strong> (BFS) cùng với <strong>Depth First Search</strong> là những thuật toán cơ bản dùng để duyệt qua đồ thị. Trong bài viết này, chúng ta sẽ cùng làm rõ ý tưởng cũng như cách hiện thực thuật toán này.</p>
-
 <h1 id="table-of-contents">Mục lục</h1><nav id="TableOfContents">
-<ul>
-<li><a href="#1-ý-tưởng">1. Ý tưởng</a></li>
-<li><a href="#2-hiện-thực">2. Hiện thực</a></li>
-<li><a href="#3-áp-dụng">3. Áp dụng</a></li>
-<li><a href="#4-đánh-giá">4. Đánh giá</a>
-<ul>
-<li><a href="#references">References</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#1-ý-tưởng">1. Ý tưởng</a></li>
+    <li><a href="#2-hiện-thực">2. Hiện thực</a></li>
+    <li><a href="#3-áp-dụng">3. Áp dụng</a></li>
+    <li><a href="#4-đánh-giá">4. Đánh giá</a>
+      <ul>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
-
 <h1 id="1-ý-tưởng">1. Ý tưởng</h1>
-
 <p>Ý tưởng cơ bản như sau:</p>
-
 <ul>
 <li>Từ một đỉnh, ta tìm các đỉnh kề rồi duyệt qua các đỉnh này.</li>
 <li>Tiếp tục tìm các đỉnh kề của đỉnh vừa xét rồi duyệt tiếp đến khi đi qua hết tất cả các đỉnh có thể đi.</li>
 </ul>
-
 <h1 id="2-hiện-thực">2. Hiện thực</h1>
-
 <p>Cách hiện thực thuật toán BFS cũng tương tự như DFS ở bài viết <a href="https://chidokun.github.io/2021/06/graph-dfs-algorithm/">Thuật toán Depth First Search</a>. Ta cần dùng một mảng <code>marked</code> để kiểm tra xem một đỉnh đã được duyệt qua chưa. Ở đây, chúng ta dùng một <code>queue</code> để lưu các đỉnh chưa xét đỉnh kề.</p>
-
 <p>Đầu vào cần một <code>Graph</code> và đỉnh gốc <code>s</code>. Thực hiện các bước như sau:</p>
-
 <ul>
 <li>Đánh dấu điểm gốc <code>s</code> đã duyệt qua.</li>
 <li>Thêm <code>s</code> vào <code>queue</code> (<em>vì <code>s</code> chưa xét các đỉnh kề</em>)</li>
 <li>Nếu vẫn còn đỉnh để xét thì:
-
 <ul>
 <li>Lấy đỉnh từ <code>queue</code> để xét các đỉnh kề của nó.</li>
 <li>Lần lượt duyệt các đỉnh kề nếu nó chưa được duyệt qua. Trong quá trình duyệt qua, thêm đỉnh vào <code>queue</code> để chuẩn bị cho việc xét đỉnh kề của đỉnh đó.</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <p>Code tham khảo:</p>
-
 
 
   
@@ -386,19 +377,13 @@ if (!doNotTrack) {
     
   </div>
 </figure>
-
 <h1 id="3-áp-dụng">3. Áp dụng</h1>
-
 <p>Ta trở lại với bài toán trước ở bài viết <a href="https://chidokun.github.io/2021/06/graph-dfs-algorithm/">Thuật toán Depth First Search</a>.</p>
-
 <blockquote>
 <p><strong>Bài toán</strong>: <em>Cho đồ thị <code>g</code> và đỉnh gốc <code>s</code>. Trả lời câu hỏi, có đường đi nào từ đỉnh gốc <code>s</code> tới một đỉnh <code>w</code> nào đó không. Nếu có, hãy tìm đường đi đó.</em></p>
 </blockquote>
-
 <p>Về ý tưởng thì tương tự, nhưng sẽ đổi lời giải bằng thuật toán BFS để xem kết quả nhé.</p>
-
 <p>Code tham khảo:</p>
-
 
 
   
@@ -477,9 +462,7 @@ if (!doNotTrack) {
     
   </div>
 </figure>
-
 <p>Thử nghiệm với đồ thị sau đây:</p>
-
 
 
  
@@ -507,9 +490,7 @@ if (!doNotTrack) {
   
 </div>
 
-
 <p>Hàm <code>main</code> để test:</p>
-
 
 
   
@@ -570,9 +551,7 @@ if (!doNotTrack) {
     
   </div>
 </figure>
-
 <p>Kết quả là:</p>
-
 <pre><code>[0]
 [0, 1]
 [0, 2]
@@ -580,9 +559,7 @@ if (!doNotTrack) {
 [0, 1, 4]
 [0, 2, 5]
 </code></pre>
-
 <p>Và đường đi mà thuật toán cho kết quả là:</p>
-
 
 
  
@@ -610,15 +587,10 @@ if (!doNotTrack) {
   
 </div>
 
-
 <p>Có thể thấy, thuật toán BFS luôn cho đường đi ngắn nhất từ đỉnh gốc tới các đỉnh khác trong đồ thị vô hướng không có trọng số. <em>&ldquo;Ngắn&rdquo;</em> ở đây là qua ít đỉnh nhất nhé các bạn 😆.</p>
-
 <h1 id="4-đánh-giá">4. Đánh giá</h1>
-
 <p>Thuật toán sẽ duyệt qua tất cả các đỉnh nếu đồ thị liên thông. Giống như DFS, BFS cũng là thuật toán tìm kiếm mù, mang tính chất vét cạn.</p>
-
 <h2 id="references">References</h2>
-
 <ul>
 <li><a href="https://algs4.cs.princeton.edu/home/">Algorithms, 4th Edition by Robert Sedgewick and Kevin Wayne</a></li>
 </ul>

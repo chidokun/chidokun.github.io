@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Tuấn">
 <meta name="keywords" content="graph, java, development, programming, chidokun, lập trình">
 <meta name="description" content="Cấu trúc Graph (đồ thị) có rất nhiều ứng dụng trong thực tiễn. Bài viết này sẽ note lại tổng quan những điểm chính về việc implement cấu trúc dữ liệu này.">
@@ -277,32 +277,29 @@ if (!doNotTrack) {
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>Cấu trúc <strong>Graph</strong> (đồ thị) có rất nhiều ứng dụng trong thực tiễn. Bài viết này sẽ note lại tổng quan những điểm chính về việc implement cấu trúc dữ liệu này.</p>
-
 <h1 id="table-of-contents">Mục lục</h1><nav id="TableOfContents">
-<ul>
-<li><a href="#1-đồ-thị">1. Đồ thị</a></li>
-<li><a href="#2-biểu-diễn-đồ-thị">2. Biểu diễn đồ thị</a>
-<ul>
-<li><a href="#2-1-adjacency-matrix">2.1. Adjacency matrix</a></li>
-<li><a href="#2-2-adjacency-list">2.2. Adjacency list</a></li>
-</ul></li>
-<li><a href="#3-mở-rộng">3. Mở rộng</a>
-<ul>
-<li><a href="#3-1-trọng-số">3.1. Trọng số</a></li>
-<li><a href="#3-2-đồ-thị-có-hướng">3.2. Đồ thị có hướng</a></li>
-<li><a href="#3-3-vòng-khuyên">3.3. Vòng khuyên</a></li>
-<li><a href="#3-4-cạnh-song-song">3.4. Cạnh song song</a></li>
-</ul></li>
-<li><a href="#references">References</a></li>
-</ul>
+  <ul>
+    <li><a href="#1-đồ-thị">1. Đồ thị</a></li>
+    <li><a href="#2-biểu-diễn-đồ-thị">2. Biểu diễn đồ thị</a>
+      <ul>
+        <li><a href="#21-adjacency-matrix">2.1. Adjacency matrix</a></li>
+        <li><a href="#22-adjacency-list">2.2. Adjacency list</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-mở-rộng">3. Mở rộng</a>
+      <ul>
+        <li><a href="#31-trọng-số">3.1. Trọng số</a></li>
+        <li><a href="#32-đồ-thị-có-hướng">3.2. Đồ thị có hướng</a></li>
+        <li><a href="#33-vòng-khuyên">3.3. Vòng khuyên</a></li>
+        <li><a href="#34-cạnh-song-song">3.4. Cạnh song song</a></li>
+      </ul>
+    </li>
+    <li><a href="#references">References</a></li>
+  </ul>
 </nav>
-
 <h1 id="1-đồ-thị">1. Đồ thị</h1>
-
 <p>Theo định nghĩa, <em>Đồ thị là một tập hữu hạn các đỉnh và các cạnh kết nối các đỉnh</em>. Chúng ta sẽ không đi quá sâu về lý thuyết đồ thị mà chỉ điểm lại những nét chính trong cách cài đặt cấu trúc dữ liệu <code>Graph</code>.</p>
-
 <p>Ví dụ về một <em>đồ thị vô hướng</em> như bên dưới:</p>
-
 
 
  
@@ -330,11 +327,8 @@ if (!doNotTrack) {
   
 </div>
 
-
 <p>Trong một số trường hợp, chúng ta sẽ cần dùng tên đỉnh. Tuy nhiên, tên đỉnh không quá quan trọng nên chúng ta sẽ đặt tên đỉnh là các số nguyên từ $0$ đến $V-1$. Một <code>Graph</code> sẽ có <code>V</code> đỉnh và <code>E</code> cạnh. Việc định nghĩa thành các phương thức của đối tượng sẽ giúp việc viết các giải thuật đơn giản hơn.</p>
-
 <p>Định nghĩa API cho <code>Graph</code>:</p>
-
 <pre><code>       public class Graph
 --------------------------------------------
                     Graph(int V)
@@ -343,9 +337,7 @@ if (!doNotTrack) {
                void addEdge(int v, int w)
   Iterable&lt;Integer&gt; adj(int v)
 </code></pre>
-
 <p>Các phương thức cơ bản nhất:</p>
-
 <ul>
 <li><strong>Graph</strong>(int V): Hàm khởi tạo với tham số đầu vào là số lượng đỉnh.</li>
 <li><strong>V</strong>(): Trả về số lượng đỉnh.</li>
@@ -353,17 +345,11 @@ if (!doNotTrack) {
 <li><strong>addEdge</strong>(int v, int w): Thêm một cạnh vào đồ thị, truyền 2 đỉnh <code>v</code> và <code>w</code>.</li>
 <li><strong>adj</strong>(int v): Lấy danh sách các đỉnh kề của đỉnh <code>v</code>.</li>
 </ul>
-
 <h1 id="2-biểu-diễn-đồ-thị">2. Biểu diễn đồ thị</h1>
-
 <p>Có 2 cách biểu diễn phổ biến nhất là dùng <strong>ma trận kề</strong> (<em>adjacency matrix</em>) và <strong>danh sách kề</strong> (<em>adjacency list</em>).</p>
-
-<h2 id="2-1-adjacency-matrix">2.1. Adjacency matrix</h2>
-
+<h2 id="21-adjacency-matrix">2.1. Adjacency matrix</h2>
 <p>Khi biểu diễn graph bằng adjacency matrix, ta dùng một ma trận vuông $n \times n$ với $n$ là số đỉnh của graph. Mỗi dòng thể hiện một đỉnh, mỗi cột biểu diễn vị trí mà ở đó đỉnh có kết nối tới.</p>
-
 <p>Ví dụ với <strong>Đồ thị 1</strong> trên, ma trận kề sẽ là:</p>
-
 
 
  
@@ -391,9 +377,7 @@ if (!doNotTrack) {
   
 </div>
 
-
 <p>Cách implement tham khảo:</p>
-
 
 
   
@@ -467,25 +451,18 @@ if (!doNotTrack) {
     
   </div>
 </figure>
-
 <p>Cách biểu diễn này có nhiều ưu điểm như:</p>
-
 <ul>
 <li>Tác vụ thêm cạnh nhanh do chỉ cần bật giá trị trong ma trận thành 1.</li>
 <li>Kiểm tra 2 đỉnh có kết nối nhau chỉ tốn $O(1)$.</li>
 </ul>
-
 <p>Tuy nhiên, nó cũng có một số hạn chế:</p>
-
 <ul>
 <li>Do phải lưu trữ bằng một ma trận $n \times n$, nếu đồ thị có hàng triệu điểm thì rất tốn chi phí để duyệt cũng như lưu trữ.</li>
 <li>Không thể biểu diễn cạnh song song có trọng số.</li>
 </ul>
-
-<h2 id="2-2-adjacency-list">2.2. Adjacency list</h2>
-
+<h2 id="22-adjacency-list">2.2. Adjacency list</h2>
 <p>Với adjacency list, chúng ta sẽ lưu một mảng các đỉnh, mỗi đỉnh chứa một danh sách các đỉnh khác mà nó kết nối tới.</p>
-
 
 
  
@@ -512,7 +489,6 @@ if (!doNotTrack) {
     <span class="caption">Danh sách kề cho Đồ thị 1</span>
   
 </div>
-
 
 
 
@@ -581,29 +557,20 @@ if (!doNotTrack) {
     
   </div>
 </figure>
-
 <p>Ưu điểm của danh sách kề:</p>
-
 <ul>
 <li>Không như ma trận kề, danh sách kề không tốn dung lượng lưu trữ cho những cạnh không tồn tại. Vì vậy, nó có thể biểu diễn và lưu trữ hàng triệu đỉnh.</li>
 <li>Biểu diễn được cạnh song song.</li>
 </ul>
-
 <p>Nhược điểm chủ yếu là:</p>
-
 <ul>
 <li>Việc remove cạnh sẽ tốn chi phí để duyệt danh sách.</li>
 <li>Chi phí kiểm tra 2 cạnh có kết nối nhau không sẽ lớn hơn ma trận kề do phải duyệt danh sách.</li>
 </ul>
-
 <h1 id="3-mở-rộng">3. Mở rộng</h1>
-
 <p>Cấu trúc ở trên khá đơn giản, để giải quyết yêu cầu phức tạp hơn cần mở rộng nó, dưới đây là một số gợi ý mở rộng cấu trúc đồ thị.</p>
-
-<h2 id="3-1-trọng-số">3.1. Trọng số</h2>
-
+<h2 id="31-trọng-số">3.1. Trọng số</h2>
 <p>Mỗi cạnh thường có một trọng số biểu thị cho chi phí từ một đỉnh sang đỉnh khác. Ma trận kề có thể biểu diễn dễ dàng trọng số. Giá trị trong ma trận kề sẽ biểu thị trọng số. Giá trị $\infty$ biểu thị 2 đỉnh không kết nối với nhau.</p>
-
 
 
  
@@ -631,9 +598,7 @@ if (!doNotTrack) {
   
 </div>
 
-
 <p>Dưới đây là cách implement tham khảo cho <code>WeightedGraph</code> sử dụng ma trận trọng số.</p>
-
 
 
   
@@ -700,17 +665,13 @@ if (!doNotTrack) {
     
   </div>
 </figure>
-
 <p>Để biểu diễn bằng danh sách kề, trước hết chúng ta cần tạo class <code>Edge</code> biểu diễn một cạnh. Class <code>Edge</code> implement <code>Comparable&lt;Edge&gt;</code> giúp thuận tiện cho các thao tác sort, so sánh.</p>
-
 <p>Các method của <code>Edge</code>:</p>
-
 <ul>
 <li><strong>weight</strong>(): Trả về trọng số của cạnh hiện tại.</li>
 <li><strong>either</strong>(): Trả về đỉnh đầu trong cạnh.</li>
 <li><strong>other</strong>(int v): Trả về cạnh còn lại trong đồ thị vô hướng, nếu là đồ thị có hướng thì trả về đỉnh cuối và không cần tham số đầu vào nữa.</li>
 </ul>
-
 
 
   
@@ -779,9 +740,7 @@ if (!doNotTrack) {
     
   </div>
 </figure>
-
 <p>Danh sách kề lúc này sẽ là một danh sách các cạnh <code>Edge</code>.</p>
-
 
 
   
@@ -850,13 +809,9 @@ if (!doNotTrack) {
     
   </div>
 </figure>
-
-<h2 id="3-2-đồ-thị-có-hướng">3.2. Đồ thị có hướng</h2>
-
+<h2 id="32-đồ-thị-có-hướng">3.2. Đồ thị có hướng</h2>
 <p>Đồ thị có hướng là dạng đồ thị có tập đỉnh được nối với các cạnh có hướng. Cả ma trận kề và danh sách kề đều biểu diễn được đồ thị có hướng.</p>
-
 <p>Ví dụ đồ thị sau:</p>
-
 
 
  
@@ -884,13 +839,9 @@ if (!doNotTrack) {
   
 </div>
 
-
-<h2 id="3-3-vòng-khuyên">3.3. Vòng khuyên</h2>
-
+<h2 id="33-vòng-khuyên">3.3. Vòng khuyên</h2>
 <p>Một vòng khuyên (self-loop) là một cạnh nối 1 đỉnh với chính nó.</p>
-
 <p>Ví dụ về vòng khuyên:</p>
-
 
 
  
@@ -918,13 +869,9 @@ if (!doNotTrack) {
   
 </div>
 
-
-<h2 id="3-4-cạnh-song-song">3.4. Cạnh song song</h2>
-
+<h2 id="34-cạnh-song-song">3.4. Cạnh song song</h2>
 <p>Cạnh song song (parallel edges) xuất hiện khi có nhiều hơn 1 cạnh nối cùng một cặp đỉnh. Đồ thị biểu diễn bằng danh sách kề có thể biểu diễn cạnh song song. Ma trận kề cũng có thể biểu diễn cạnh song song khi giá trị trong ma trận biểu thị số lượng cạnh nối. Tuy nhiên, không thể dùng ma trận trọng số để vừa biểu diễn cạnh song song, vừa biểu diễn trọng số.</p>
-
 <p>Ví dụ:</p>
-
 
 
  
@@ -952,9 +899,7 @@ if (!doNotTrack) {
   
 </div>
 
-
 <h1 id="references">References</h1>
-
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)">Graph (discrete mathematics)</a></li>
 <li><a href="https://algs4.cs.princeton.edu/home/">Algorithms, 4th Edition by Robert Sedgewick and Kevin Wayne</a></li>

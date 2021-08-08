@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Tuấn">
 <meta name="keywords" content="graph, java, prim, spanning tree, cây khung, development, programming, chidokun, lập trình">
 <meta name="description" content="Bài viết Thuật toán Prim: Tìm cây khung nhỏ nhất đã giới thiệu đến các bạn ý tưởng của thuật toán này cũng như từng bước chạy thuật toán. Tiếp theo sẽ là phần hướng dẫn cài đặt thuật toán Prim cho đồ thị vô hướng có trọng số bằng ngôn ngữ Java.">
@@ -277,56 +277,45 @@ if (!doNotTrack) {
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>Bài viết <a href="https://chidokun.github.io/2021/07/prim-algorithm/">Thuật toán Prim: Tìm cây khung nhỏ nhất</a> đã giới thiệu đến các bạn ý tưởng của thuật toán này cũng như từng bước chạy thuật toán. Tiếp theo sẽ là phần hướng dẫn cài đặt <em>thuật toán Prim</em> cho đồ thị vô hướng có trọng số bằng ngôn ngữ Java.</p>
-
 <h1 id="table-of-contents">Mục lục</h1><nav id="TableOfContents">
-<ul>
-<li><a href="#1-nhắc-lại-thuật-toán">1. Nhắc lại thuật toán</a></li>
-<li><a href="#2-định-nghĩa-api">2. Định nghĩa API</a></li>
-<li><a href="#3-cài-đặt-thuật-toán">3. Cài đặt thuật toán.</a>
-<ul>
-<li><a href="#references">References</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#1-nhắc-lại-thuật-toán">1. Nhắc lại thuật toán</a></li>
+    <li><a href="#2-định-nghĩa-api">2. Định nghĩa API</a></li>
+    <li><a href="#3-cài-đặt-thuật-toán">3. Cài đặt thuật toán.</a>
+      <ul>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
-
 <h1 id="1-nhắc-lại-thuật-toán">1. Nhắc lại thuật toán</h1>
-
 <p>Chúng ta cùng nhắc lại ý tưởng cơ bản của thuật toán Prim:</p>
-
 <ul>
 <li><u><em>Bước 1</em></u>: Chọn một đỉnh <code>v</code> bất kỳ làm đỉnh bắt đầu và đưa đỉnh <code>v</code> vào cây khung.</li>
 <li><u><em>Bước 2</em></u>: Thêm tất cả các cạnh nối với <code>v</code> vào danh sách cạnh đang xét .</li>
 <li><u><em>Bước 3</em></u>: Xét các cạnh trong danh sách đến khi hết:
-
 <ul>
 <li><u><em>Bước 3.1</em></u>: Lấy ra cạnh có trọng số nhỏ nhất nối từ <code>v1</code> đến một đỉnh <code>v2</code> chưa nằm trong cây khung. Đưa cạnh này và đỉnh <code>v2</code> vào cây khung.</li>
 <li><u><em>Bước 3.2</em></u>: Đưa các cạnh nối từ đỉnh <code>v2</code> đến các đỉnh chưa nằm trong cây khung vào danh sách cạnh đang xét.</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <p>Ở bước lấy ra cạnh có trọng số nhỏ nhất trong số các cạnh đang xét, chúng ta sử dụng Min-PriorityQueue để lấy ra cạnh có trọng số nhỏ nhất.</p>
-
 <h1 id="2-định-nghĩa-api">2. Định nghĩa API</h1>
-
 <p>Để hiện thực thuật toán Prim, chúng ta có thể sử dụng cấu trúc <code>EdgeWeightedGraph</code> để lưu trữ đồ thị vô hướng có trọng số mà mình có giới thiệu qua ở bài viết <a href="https://chidokun.github.io/2021/06/graph-overview/">Tổng quan về đồ thị</a>. Chúng ta định nghĩa các phương thức như sau:</p>
-
 <pre><code>    public class LazyPrimMST
 ----------------------------------------------------
                  LazyPrimMST(EdgeWeightedGraph g)
   Iterable&lt;Edge&gt; edges()
           double weight()
 </code></pre>
-
 <p>Class <code>LayzyPrimMST</code> sẽ làm nhiệm vụ tìm cây khung nhỏ nhất cho đồ thị <code>g</code> với các phương thức:</p>
-
 <ul>
-<li><b><em>LazyPrimMST(EdgeWeightedGraph g)</em></b>: Constructor nhận vào đồ thị vô hướng có trọng số <code>g</code> và thực hiện tìm cây khung nhỏ nhất.</li>
-<li><b><em>edges()</em></b>: Trả về các cạnh của cây khung nhỏ nhất.</li>
-<li><b><em>weight()</em></b>: Trả về trọng số của cây khung nhỏ nhất.</li>
+<li><em><b>LazyPrimMST(EdgeWeightedGraph g)</b></em>: Constructor nhận vào đồ thị vô hướng có trọng số <code>g</code> và thực hiện tìm cây khung nhỏ nhất.</li>
+<li><em><b>edges()</b></em>: Trả về các cạnh của cây khung nhỏ nhất.</li>
+<li><em><b>weight()</b></em>: Trả về trọng số của cây khung nhỏ nhất.</li>
 </ul>
-
 <p>Lúc này chúng ta có thể viết hàm <code>main</code> để test với đồ thị $G$ trong bài viết trước.</p>
-
 
 
  
@@ -354,7 +343,6 @@ if (!doNotTrack) {
   
 </div>
 
-
 <pre><code class="language-java">public static void main(String[] args) {
     EdgeWeightedGraph g = new EdgeWeightedGraph(9);
     g.addEdge(new Edge(0, 1, 2.5));
@@ -378,39 +366,30 @@ if (!doNotTrack) {
     System.out.println(&quot;Weight: &quot; + prim.weight());
 }
 </code></pre>
-
 <h1 id="3-cài-đặt-thuật-toán">3. Cài đặt thuật toán.</h1>
-
 <p>Bên trong class <code>LazyPrimMST</code>, chúng ta định nghĩa một số field hỗ trợ cho việc tìm cây khung nhỏ nhất.</p>
-
 <pre><code class="language-java">private boolean[] marked;
 private LinkedList&lt;Edge&gt; mst;
 private PriorityQueue&lt;Edge&gt; pq;
 </code></pre>
-
 <ul>
 <li><b><em>marked</em></b>: Mảng boolean đánh dấu một đỉnh đã được đưa vào cây khung hay chưa.</li>
 <li><b><em>mst</em></b>: Danh sách các cạnh của cây khung.</li>
 <li><b><em>pq</em></b>: Danh sách các cạnh dùng để xét sau mỗi bước chạy thuật toán. Sử dụng <code>PriorityQueue</code> để tiện lấy ra cạnh nhỏ nhất.</li>
 </ul>
-
 <p>Thuật toán của chúng ta sẽ chạy trong constructor, ở đây chúng ta sẽ định nghĩa thêm hàm <code>visit(G, v)</code> làm nhiệm vụ đánh dấu đỉnh <code>v</code> đã được đưa vào cây khung và đưa các cạnh kề vào PriorityQueue.</p>
-
 <p>Các bước thực hiện:</p>
-
 <ul>
 <li><em>1.</em> &ldquo;Viếng thăm&rdquo; đỉnh $0$.</li>
 <li><em>2.</em> Xét nếu queue vẫn có phần tử:
-
 <ul>
 <li><em>2.1.</em> Lấy cạnh nhỏ nhất trong danh sách đang xét.</li>
 <li><em>2.2.</em> Nếu cả 2 đỉnh của cạnh này đều nằm trong cây khung thì bỏ qua.</li>
 <li><em>2.3.</em> Còn không thì đưa cạnh nhỏ nhất này vào cây khung.</li>
-<li><em>2.4.</em> &ldquo;Viếng thăm&rdquo; đỉnh chưa nằm trong cây khung.
-<br /></li>
-</ul></li>
+<li><em>2.4.</em> &ldquo;Viếng thăm&rdquo; đỉnh chưa nằm trong cây khung.</li>
 </ul>
-
+</li>
+</ul>
 <pre><code class="language-java">public LazyPrimMST(EdgeWeightedGraph g) {
     pq = new PriorityQueue&lt;&gt;(Edge::compareTo);
     marked = new boolean[g.V()];
@@ -432,9 +411,7 @@ private void visit(EdgeWeightedGraph G, int v) {
         if (!marked[e.other(v)]) pq.add(e);
 } 
 </code></pre>
-
 <p>Cài đặt các phương thức còn lại của class <code>LazyPrimMST</code>:</p>
-
 <pre><code class="language-java">public Iterable&lt;Edge&gt; edges() {
     return mst;
 }
@@ -443,9 +420,7 @@ public double weight() {
     return mst.stream().mapToDouble(Edge::weight).sum();
 }
 </code></pre>
-
 <p>Sau khi hoàn tất, cùng test lại hàm <code>main</code> để xem kết quả:</p>
-
 <pre><code>Edges: 
 0-2: 2.000000
 2-4: 0.600000
@@ -457,9 +432,7 @@ public double weight() {
 0-3: 2.100000
 Weight: 12.6
 </code></pre>
-
 <p>Vẫn đúng với kết quả chạy từng bước ở bài viết trước phải không nào!</p>
-
 
 
  
@@ -485,9 +458,7 @@ Weight: 12.6
   
 </div>
 
-
 <h2 id="references">References</h2>
-
 <ul>
 <li><a href="https://algs4.cs.princeton.edu/home/">Algorithms, 4th Edition by Robert Sedgewick and Kevin Wayne</a></li>
 </ul>

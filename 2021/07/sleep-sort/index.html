@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Tuấn">
 <meta name="keywords" content="sleep sort, sort, java, development, programming, chidokun, lập trình">
 <meta name="description" content="Nghe tên có thể bạn nghĩ rằng khi dùng thuật toán này thì chúng ta có thể rung đùi mà ngủ không cần làm gì hết? Bạn có từng nghe qua thuật toán sort nào mà số phép so sánh bằng 0 chưa? Nếu chưa thì Sleep Sort là một thuật toán bá đạo như vậy đấy.">
@@ -277,41 +277,30 @@ if (!doNotTrack) {
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>Nghe tên có thể bạn nghĩ rằng khi dùng thuật toán này thì chúng ta có thể rung đùi mà ngủ không cần làm gì hết? Bạn có từng nghe qua thuật toán sort nào mà số phép so sánh bằng 0 chưa? Nếu chưa thì <em>Sleep Sort</em> là một thuật toán bá đạo như vậy đấy.</p>
-
 <h1 id="table-of-contents">Mục lục</h1><nav id="TableOfContents">
-<ul>
-<li><a href="#1-giới-thiệu">1. Giới thiệu</a></li>
-<li><a href="#2-cài-đặt-ngay-thôi">2. Cài đặt ngay thôi</a></li>
-<li><a href="#references">References</a></li>
-</ul>
+  <ul>
+    <li><a href="#1-giới-thiệu">1. Giới thiệu</a></li>
+    <li><a href="#2-cài-đặt-ngay-thôi">2. Cài đặt ngay thôi</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
 </nav>
-
 <h1 id="1-giới-thiệu">1. Giới thiệu</h1>
-
 <p>Mấu chốt của thuật toán này là với mỗi giá trị trong mảng sẽ tạo ra một thread và thread đó sẽ sleep một khoảng thời gian bằng đúng giá trị của phần tử trong mảng rồi mới in ra giá trị đó.</p>
-
 <p>Điều đó nghĩa là, phần tử có giá trị nhỏ nhất sẽ được in trước tiên. Và chúng ta phải chờ đến khi phần tử lớn nhất được in ra, thuật toán kết thúc.</p>
-
 <p>Do đó, thuật toán luôn in ra giá trị mảng đã được sắp xếp từ nhỏ đến lớn.</p>
-
 <p>Tất cả quá trình này được thực hiện bởi hệ điều hành và chúng ta không biết điều gì xảy ra bên dưới.</p>
-
 <p style="text-align:center"><img style="display:inline-block" src="https://media.giphy.com/media/XHqLWPZtKNCN0Np2Gx/source.gif" width="480" /></p>
-
 <h1 id="2-cài-đặt-ngay-thôi">2. Cài đặt ngay thôi</h1>
-
 <p>Các bước thực hiện bao gồm:</p>
-
 <ul>
 <li>Duyệt qua toàn bộ mảng <code>arr</code>, với mỗi phần tử <code>arr[i]</code>:
-
 <ul>
 <li>Tạo một thread với và sleep trong <code>arr[i]</code>.</li>
 <li>Sau khi sleep xong, in phần tử ra màn hình.</li>
-</ul></li>
+</ul>
+</li>
 <li>Thuật toán hoàn tất khi tất cả các thread chạy xong.</li>
 </ul>
-
 
 
   
@@ -380,26 +369,18 @@ if (!doNotTrack) {
     
   </div>
 </figure>
-
 <p>Kết quả là:</p>
-
 <pre><code>2 3 4 5 6 7 8 10 
 </code></pre>
-
 <p>Thời gian chạy của thuật toán phụ thuộc vào phần tử lớn nhất của mảng. Ngoài ra thuật toán cũng bị ảnh hưởng bởi việc định thời của hệ điều hành. Hệ điều hành định thời dựa trên heap-based priority queue thì quá trình tạo thread và thêm tất cả các thread vào queue sẽ tốn $O(NlogN)$. Do đó, có thể xem độ phức tạp của thuật toán là $O(NlogN + max(array))$.</p>
-
 <p>Ngoài ra nó cũng có một số hạn chế như:</p>
-
 <ul>
 <li>Không chạy được với số âm.</li>
 <li>Không ổn định và nhạy cảm với độ lớn của các phần tử. Đôi khi chỉ sort 2 phần tử <code>1</code> và <code>9999</code> mà chúng ta phải tốn <code>10000 ms</code>.</li>
 <li>Trong trường hợp số lượng phần tử quá lớn, đôi khi một số thread chạy xong trước khi chạy qua xong tất cả các phần tử sẽ dẫn đến kết quả không chính xác.</li>
 </ul>
-
 <p>Nhìn chung, thuật toán này chủ yếu để vui là chính chứ không có quá nhiều ứng dụng trong thực tế.</p>
-
 <h1 id="references">References</h1>
-
 <ul>
 <li><a href="https://iq.opengenus.org/sleep-sort/">Sleep sort</a></li>
 </ul>

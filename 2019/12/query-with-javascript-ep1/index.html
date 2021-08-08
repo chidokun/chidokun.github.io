@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Tuấn">
 <meta name="keywords" content="js, javascript, query, truy vấn, dữ liệu, development, programming, chidokun, lập trình">
 <meta name="description" content="Một ngày đẹp trời nọ, sếp giao một cục dữ liệu và yêu cầu bạn truy vấn, thống kê đơn giản một vài thứ hay thậm chí là chế biến, xào nấu lại dữ liệu. Có rất nhiều công cụ có thể giúp bạn làm việc này như Excel chẳng hạn. Không may, bạn là một developer chỉ ăn ngủ với code chứ chưa đụng vào Excel bao giờ. Tuy nhiên, nếu có một chút kỹ năng JavaScript, bạn cũng có thể thực hiện việc này một cách dễ dàng và nhanh chóng.">
@@ -281,38 +281,31 @@ if (!doNotTrack) {
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>Một ngày đẹp trời nọ, sếp giao một cục dữ liệu và yêu cầu bạn truy vấn, thống kê đơn giản một vài thứ hay thậm chí là chế biến, xào nấu lại dữ liệu. Có rất nhiều công cụ có thể giúp bạn làm việc này như Excel chẳng hạn. Không may, bạn là một developer chỉ ăn ngủ với code chứ chưa đụng vào Excel bao giờ. Tuy nhiên, nếu có một chút kỹ năng JavaScript, bạn cũng có thể thực hiện việc này một cách dễ dàng và nhanh chóng.</p>
-
 <h1 id="table-of-contents">Mục lục</h1><nav id="TableOfContents">
-<ul>
-<li><a href="#1-tại-sao-lại-là-javascript">1. Tại sao lại là JavaScript?</a></li>
-<li><a href="#2-lọc-và-đếm-các-phần-tử-với-điều-kiện">2. Lọc và đếm các phần tử với điều kiện</a></li>
-<li><a href="#3-biến-đổi-phần-tử">3. Biến đổi phần tử</a></li>
-<li><a href="#4-tìm-ra-các-phần-tử-phân-biệt">4. Tìm ra các phần tử phân biệt</a></li>
-<li><a href="#5-sắp-xếp-đảo-ngược-danh-sách">5. Sắp xếp, đảo ngược danh sách</a></li>
-<li><a href="#6-kết-luận">6. Kết luận</a>
-<ul>
-<li><a href="#tham-khảo">Tham khảo</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#1-tại-sao-lại-là-javascript">1. Tại sao lại là JavaScript?</a></li>
+    <li><a href="#2-lọc-và-đếm-các-phần-tử-với-điều-kiện">2. Lọc và đếm các phần tử với điều kiện</a></li>
+    <li><a href="#3-biến-đổi-phần-tử">3. Biến đổi phần tử</a></li>
+    <li><a href="#4-tìm-ra-các-phần-tử-phân-biệt">4. Tìm ra các phần tử phân biệt</a></li>
+    <li><a href="#5-sắp-xếp-đảo-ngược-danh-sách">5. Sắp xếp, đảo ngược danh sách</a></li>
+    <li><a href="#6-kết-luận">6. Kết luận</a>
+      <ul>
+        <li><a href="#tham-khảo">Tham khảo</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
-
 <h1 id="1-tại-sao-lại-là-javascript">1. Tại sao lại là JavaScript?</h1>
-
 <p>JavaScript cung cấp các hàm xử lý mảng rất hiệu quả và hữu ích. Hơn nữa, việc có thể sử dụng các hàm này ngay trên DevTool của trình duyệt cũng khiến cho thao tác của bạn nhanh hơn và dễ hơn. Trong bài này, mình sẽ hướng dẫn bạn thực hiện một số thao tác truy vấn, thống kê dùng các hàm xử lý mảng của JavaScript.</p>
-
 <p>Giả sử mình có một tập dữ liệu sinh viên đơn giản, mỗi sinh viên có các thuộc tính:</p>
-
 <ul>
 <li><em>id</em>: Mã số sinh viên</li>
 <li><em>name</em>: Họ và tên sinh viên</li>
 <li><em>school</em>: Trường đại học</li>
 <li><em>gpa</em>: Điểm trung bình</li>
 </ul>
-
 <p>Nào bắt đầu thôi :D</p>
-
 <p>Trước hết, mở DevTool của trình duyệt và khai báo dữ liệu nhé!</p>
-
 
   
     
@@ -393,9 +386,7 @@ if (!doNotTrack) {
     </tbody>
   </table>
 </figure>
-
 <p>Sau khi khai báo xong, ta đã có biến <code>data</code> chứa dữ liệu.</p>
-
 
 
  
@@ -423,11 +414,9 @@ if (!doNotTrack) {
   
 </div>
 
-
 <div class="alert info ">
   <p>Có thể sử dụng <code>console.table()</code> để show dữ liệu dạng bảng</p>
 </div>
-
 
 
  
@@ -455,45 +444,28 @@ if (!doNotTrack) {
   
 </div>
 
-
 <h1 id="2-lọc-và-đếm-các-phần-tử-với-điều-kiện">2. Lọc và đếm các phần tử với điều kiện</h1>
-
 <p>Yêu cầu đầu tiên: <em>Tìm các học sinh đến từ trường UIT</em>.</p>
-
 <p>Với yêu cầu này, bạn có thể lọc ra các phần tử có thuộc tính <code>school == &quot;UIT&quot;</code> bằng cách sử dụng hàm <code>filter()</code>. Tham số đầu vào là một hàm trả về điều kiện nhận, cùng thử nào!</p>
-
 <pre><code class="language-js">data.filter(function (element) {
     return element.school == &quot;UIT&quot;;
 });
 </code></pre>
-
 <p>Hoặc có thể viết gọn hơn dùng cú pháp của <code>arrow function</code>.</p>
-
 <pre><code class="language-js">data.filter((e) =&gt; e.school == &quot;UIT&quot;);
 </code></pre>
-
 <p>Yêu cầu: <em>Đếm các học sinh đến từ trường UIT</em>.</p>
-
 <p>Tương tự, bạn lọc ra các phần tử có thuộc tính <code>school == &quot;UIT&quot;</code> và sau đó sử dụng thuộc tính <code>length</code> để đếm số lượng.</p>
-
 <pre><code class="language-js">data.filter((e) =&gt; e.school == &quot;UIT&quot;).length;
 </code></pre>
-
 <p>Cùng thử những điều kiện phức tạp hơn nhé.</p>
-
 <p>Yêu cầu: <em>Tìm các học sinh đến từ trường UIT mà có điểm &gt;= 5.0</em>.</p>
-
 <p>Đơn giản chỉ việc thêm điều kiện <code>gpa &gt;= 5.0</code> vào.</p>
-
 <pre><code class="language-js">data.filter((e) =&gt; e.school == &quot;UIT&quot; &amp;&amp; e.gpa &gt;= 5.0);
 </code></pre>
-
 <p>Yêu cầu: <em>Tìm các học sinh có điểm &gt;= trung bình cộng của danh sách học sinh</em>.</p>
-
 <p>Ở đây chúng ta cần tính trung bình cộng <code>gpa</code> của danh sách rồi dùng <code>filter()</code> để lọc lấy tập dữ liệu mong muốn.</p>
-
 <p>Có thể tính trung bình cộng bằng cách cộng tất cả <code>gpa</code>, sau đó chia cho <code>length</code>. Phương thức <code>reduce()</code> có thể giúp chúng ta tính tổng <code>gpa</code> nhanh. Phương thức này dùng để thực thi một hàm lên từng phần tử và một biến tích lũy để thu về một giá trị duy nhất. Tham số đầu vào của <code>reduce()</code> là <em>hàm thực thi</em> và <em>giá trị khởi tạo</em>. Trong <em>hàm thực thi</em>, tham số đầu tiên là <em>biến cộng dồn</em>, còn lại là phần tử của mảng.</p>
-
 <pre><code class="language-js">let avgGpa = data.reduce((acc, currElement) =&gt; acc + currElement.gpa, 0) / data.length;
 // Biến `acc` là biến cộng dồn.
 // Biến currElement là phần tử hiện tại của mảng.
@@ -501,14 +473,10 @@ if (!doNotTrack) {
 // Hàm thực thi ở đây sẽ cộng biến cộng dồn với `gpa` của mỗi phần tử để ra tổng `gpa`.
 // Sau đó chia cho `length` để lấy kết quả trung bình cộng `gpa`.
 </code></pre>
-
 <p>Vậy chúng ta có thể thực hiện yêu cầu trên như sau:</p>
-
 <pre><code class="language-js">data.filter((e) =&gt; e.gpa &gt;= (data.reduce((a, c) =&gt; a + c.gpa, 0) / data.length));
 </code></pre>
-
 <p>Túm lại là:</p>
-
 <div class="alert info ">
   <p><ul>
 <li>Bạn có thể dùng <code>filter()</code> để lọc lấy dữ liệu với một điều kiện cụ thể.</li>
@@ -517,23 +485,15 @@ if (!doNotTrack) {
 </ul>
 </p>
 </div>
-
 <h1 id="3-biến-đổi-phần-tử">3. Biến đổi phần tử</h1>
-
 <p>Yêu cầu: <em>Lấy mã sinh viên của những sinh viên BKU</em></p>
-
 <p>Chúng ta sẽ lọc ra sinh viên có <code>school == &quot;BKU&quot;</code> trước và sau đó lấy ra <code>id</code> bằng phương thức <code>map()</code>. Phương thức này giúp tạo ra một mảng mới với các phần tử là kết quả từ việc thực thi một hàm lên từng phần tử của mảng được gọi. Tham số đầu vào của <code>map()</code> là một hàm thực thi việc biến đổi dữ liệu cho mỗi phần tử.</p>
-
 <pre><code class="language-js">data.filter((e) =&gt; e.school == &quot;BKU&quot;).map((f) =&gt; f.id);
 </code></pre>
-
 <p>Yêu cầu: <em>Lấy mã sinh viên và tên của những sinh viên BKU</em></p>
-
 <p>Ở yêu cầu trước chỉ trả về <code>id</code>, yêu cầu này chúng ta sẽ trả về một object có 2 thuộc tính là <code>id</code> và <code>name</code>.</p>
-
 <pre><code class="language-js">data.filter((e) =&gt; e.school == &quot;BKU&quot;).map((f) =&gt; ({ id: f.id, name: f.name }));
 </code></pre>
-
 <div class="alert info ">
   <p><ul>
 <li>Dùng <code>map()</code> để biến đổi dữ liệu bạn nhé.</li>
@@ -541,15 +501,10 @@ if (!doNotTrack) {
 </ul>
 </p>
 </div>
-
 <h1 id="4-tìm-ra-các-phần-tử-phân-biệt">4. Tìm ra các phần tử phân biệt</h1>
-
 <p>Yêu cầu: <em>Đếm số lượng trường đại học xuất hiện trong tập dữ liệu trên</em></p>
-
 <p>Có thể thấy trong tập dữ liệu trên, có thể có nhiều sinh viên thuộc về một trường đại học. Nhiệm vụ của chúng ta là xác định một trường đại học có xuất hiện trong tập dữ liệu trên hay không.</p>
-
 <p>Nếu biết nhiều cấu trúc dữ liệu khác nhau, chúng ta có thể xác định dùng <code>Set</code> để chứa các trường học. Set là cấu trúc dữ liệu chứa các phần tử không trùng nhau. Như vậy, chúng ta sẽ dùng <code>map()</code> để lấy thông tin trường học. Sau đó bỏ vào <code>Set</code> để loại bỏ những trường học trùng nhau. Cuối cùng là đếm số lượng phần tử trong <code>Set</code>.</p>
-
 <pre><code class="language-js">// Lấy mảng chứ các trường
 let school = data.map((e) =&gt; e.school);
 
@@ -560,12 +515,9 @@ let schoolSet = new Set(school);
 // Vì Set là Object nên cần phải chuyển thành mảng dùng spread operator
 let result = [ ...schoolSet ].length;
 </code></pre>
-
 <p>Viết gọn lại như sau:</p>
-
 <pre><code class="language-js">[ ...new Set(data.map((e) =&gt; e.school))].length;
 </code></pre>
-
 <div class="alert info ">
   <p><ul>
 <li>Có thể dùng <code>Set</code> để loại bỏ các phần tử trùng.</li>
@@ -573,27 +525,17 @@ let result = [ ...schoolSet ].length;
 </ul>
 </p>
 </div>
-
 <h1 id="5-sắp-xếp-đảo-ngược-danh-sách">5. Sắp xếp, đảo ngược danh sách</h1>
-
 <p>Yêu cầu: <em>Sắp xếp danh sách sinh viên tăng dần theo điểm</em></p>
-
 <p>Phương thức <code>sort()</code> sẽ giúp đơn giản hóa thao tác này.</p>
-
 <p>Tham số đầu vào là một <em>hàm so sánh</em>. Lưu ý về giá trị trả về của <em>hàm so sánh</em> nhé. Tham khảo tại <a href="https://developer.mozilla.org/vi/docs/Web/JavaScript/Reference/Global_Objects/Array/S%E1%BA%AFp_x%E1%BA%BFp">đây</a></p>
-
 <pre><code class="language-js">[ ...data ].sort((a, b) =&gt; a.gpa - b.gpa);
 </code></pre>
-
 <p>Phương thức <code>sort()</code> sẽ làm biến đổi thứ tự của mảng nên để giữ lại mảng hiện tại, chúng ta cần tạo 1 mảng mới bằng <em>spread operator</em> <code>[ ...data ]</code>.</p>
-
 <p>Yêu cầu: <em>Đảo ngược danh sách sinh viên ban đầu</em></p>
-
 <p>Chúng ta sử dụng <code>reverse()</code> để đảo ngược thứ tự 1 mảng. Tương tự như <code>sort()</code>, <code>reverse()</code> cũng làm thay đổi trên chính mảng đó, để giữ lại mảng cũ, chúng ta cũng tạo mảng mới bằng spread operator nhé.</p>
-
 <pre><code class="language-js">[ ...data ].reverse();
 </code></pre>
-
 <div class="alert info ">
   <p><ul>
 <li>Dùng <code>sort()</code> để sắp xếp 1 mảng theo 1 điều kiện.</li>
@@ -601,15 +543,10 @@ let result = [ ...schoolSet ].length;
 </ul>
 </p>
 </div>
-
 <h1 id="6-kết-luận">6. Kết luận</h1>
-
 <p>Bài viết cũng khá dài rồi nên mình tạm dừng ở đây nhé. Trong phần tiếp theo mình sẽ hướng dẫn một số thủ thuật thú vị nữa để truy vấn và thống kê với JavaScript.</p>
-
 <p>Nếu các bạn biết thêm về các thủ thuật khác thì hãy chia sẻ với mình thông qua bình luận bên dưới nhé.</p>
-
 <h2 id="tham-khảo">Tham khảo</h2>
-
 <ul>
 <li><a href="https://developer.mozilla.org/vi/docs/Web/JavaScript/Reference/Global_Objects/Array/filter">Array.prototype.filter()</a></li>
 <li><a href="https://developer.mozilla.org/vi/docs/Web/JavaScript/Reference/Global_Objects/Array/%08length">Array.length</a></li>

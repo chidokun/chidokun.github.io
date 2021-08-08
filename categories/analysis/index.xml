@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Analysis on Nguyễn Tuấn&#39;s Blog</title>
+    <title>analysis on Nguyễn Tuấn&#39;s Blog</title>
     <link>https://chidokun.github.io/categories/analysis/</link>
-    <description>Recent content in Analysis on Nguyễn Tuấn&#39;s Blog</description>
+    <description>Recent content in analysis on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
     <lastBuildDate>Wed, 03 Feb 2021 22:00:00 +0700</lastBuildDate>
@@ -35,7 +35,7 @@
       <pubDate>Sun, 14 Jun 2020 17:05:24 +0700</pubDate>
       
       <guid>https://chidokun.github.io/2020/06/order-brushing/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Shopee Code League&lt;/strong&gt; là một thử thách lập trình trực tuyến kéo dài 02 tháng bao gồm một loạt các cuộc thi, câu hỏi về thuật toán trực tuyến và hội thảo đào tạo trực tuyến dành cho tất cả sinh viên và các chuyên gia trên toàn khu vực (xem thêm tại &lt;a href=&#34;https://careers.shopee.sg/codeleague/&#34;&gt;Shopee Code League 2020&lt;/a&gt;). Challenge đầu tiên vừa diễn ra là &lt;strong&gt;Order Brushing Problem&lt;/strong&gt; (Chủ đề Data Analytics). Mình cùng teammate vừa hoàn thành xong challenge này, dù chưa xây dựng được giải pháp tối ưu nhất (score: 0,&lt;sup&gt;98&lt;/sup&gt;&amp;frasl;&lt;sub&gt;1&lt;/sub&gt;,0) nhưng cũng giới thiệu đến các bạn giải pháp của nhóm trong bài toán này.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;strong&gt;Shopee Code League&lt;/strong&gt; là một thử thách lập trình trực tuyến kéo dài 02 tháng bao gồm một loạt các cuộc thi, câu hỏi về thuật toán trực tuyến và hội thảo đào tạo trực tuyến dành cho tất cả sinh viên và các chuyên gia trên toàn khu vực (xem thêm tại &lt;a href=&#34;https://careers.shopee.sg/codeleague/&#34;&gt;Shopee Code League 2020&lt;/a&gt;). Challenge đầu tiên vừa diễn ra là &lt;strong&gt;Order Brushing Problem&lt;/strong&gt; (Chủ đề Data Analytics). Mình cùng teammate vừa hoàn thành xong challenge này, dù chưa xây dựng được giải pháp tối ưu nhất (score: 0,98/1,0) nhưng cũng giới thiệu đến các bạn giải pháp của nhóm trong bài toán này.&lt;/p&gt;</description>
     </item>
     
     <item>

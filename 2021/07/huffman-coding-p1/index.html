@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Tuấn">
 <meta name="keywords" content="java, huffman coding, huffman, development, programming, chidokun, lập trình">
 <meta name="description" content="Nén dữ liệu là phương pháp loại bỏ những thông tin dư thừa trong việc biểu diễn dữ liệu. Nó có nhiều ứng dụng, đặc biệt là trong việc truyền tin vì giúp rút gọn thông tin gửi đi. Có nhiều thuật toán nén dữ liệu và Huffman Coding là một trong số đó. Bài viết này chủ yếu bàn về ý tưởng của thuật toán này.">
@@ -277,21 +277,18 @@ if (!doNotTrack) {
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>Nén dữ liệu là phương pháp loại bỏ những thông tin dư thừa trong việc biểu diễn dữ liệu. Nó có nhiều ứng dụng, đặc biệt là trong việc truyền tin vì giúp rút gọn thông tin gửi đi. Có nhiều thuật toán nén dữ liệu và <em>Huffman Coding</em> là một trong số đó. Bài viết này chủ yếu bàn về ý tưởng của thuật toán này.</p>
-
 <h1 id="table-of-contents">Mục lục</h1><nav id="TableOfContents">
-<ul>
-<li><a href="#1-nén-dữ-liệu">1. Nén dữ liệu</a></li>
-<li><a href="#2-thuật-toán-huffman-coding">2. Thuật toán Huffman Coding</a>
-<ul>
-<li><a href="#references">References</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#1-nén-dữ-liệu">1. Nén dữ liệu</a></li>
+    <li><a href="#2-thuật-toán-huffman-coding">2. Thuật toán Huffman Coding</a>
+      <ul>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
-
 <h1 id="1-nén-dữ-liệu">1. Nén dữ liệu</h1>
-
 <p>Hãy xem câu &ldquo;<em>Hello</em>&rdquo; được biểu diễn dưới dạng mã ASCII như thế nào nhé:</p>
-
 
 
  
@@ -319,13 +316,9 @@ if (!doNotTrack) {
   
 </div>
 
-
 <p>Mỗi ký tự sử dụng 8 bit để biểu diễn nên tổng cộng sẽ dùng 64 bit.</p>
-
 <p><em>Bảng mã ASCII mở rộng</em> dùng 8 bit để biểu diễn 256 ký tự khác nhau. Trong khi đó thông điệp của chúng ta chỉ gồm 5 ký tự khác nhau, như vậy thực tế chỉ cần dùng 3 bit là đủ để phân biệt được 5 ký tự này.</p>
-
 <p>Bây giờ ta sẽ liệt kê 5 ký tự phân biệt và gán cho nó một mã nhị phân 3 bit phân biệt. Lúc này ta vẫn có thể biểu diễn trọn vẹn thông điệp đã nén và dùng bảng giải mã này để khôi phục thông điệp ban đầu.</p>
-
 
 
  
@@ -353,25 +346,16 @@ if (!doNotTrack) {
   
 </div>
 
-
 <p>Như vậy, chỉ cần dùng $3 \times 8 = 24$ bit để biểu diễn thông điệp trên. Mỗi ký tự đều dùng đúng một số lượng bit để biểu diễn, chúng ta gọi cách này là <strong><i>fixed-length encoding</i></strong>. Bảng các giá trị được mã hóa cũng là <strong><i>prefix code</i></strong>.</p>
-
 <p><strong>Prefix code</strong> có thể được định nghĩa khó hiểu như sau (theo <em>Wikipedia</em>):</p>
-
 <blockquote>
 <p>A prefix code is a type of code system distinguished by its possession of the &ldquo;prefix property&rdquo;, which requires that there is no whole code word in the system that is a prefix (initial segment) of any other code word in the system. It is trivially true for fixed-length code, so only a point of consideration in variable-length code.</p>
 </blockquote>
-
 <p>Chúng ta hiểu đơn giản như sau: <em>Prefix code là một tập các giá trị mã hóa mà không có phần tử nào được bắt đầu bằng một phần tử khác.</em></p>
-
 <p>Với <em>fix-length encoding</em> dùng cùng một số lượng bit để mã hóa, các giá trị mã hóa đều khác nhau. Do đó, nó là <em>prefix-code</em>. Tuy vậy, các giá trị mã hóa với số lượng bit khác nhau (<strong><i>variable-length encoding</i></strong>) cũng là <em>prefix code</em> nếu thỏa mãn tính chất trên.</p>
-
 <p>Ví dụ: Tập A = { 0, 10, 110, 111 } là một <em>prefix code</em> vì không có phần tử nào bắt đầu bằng phần tử khác. Nhưng B = { 0, <span class="highlight-text green">10</span>, 110, <span class="highlight-text blue">101</span> } không phải <em>prefix code</em> vì có phần tử <span class="highlight-text blue">101</span> bắt đầu bằng phần tử <span class="highlight-text green">10</span>.</p>
-
 <p><em>Prefix code</em> có thể được biểu diễn thành cây nhị phân mã hóa. Mỗi ký tự cần mã hóa sẽ nằm ở nút lá. Giá trị mã hóa của ký tự đó thể hiện bằng đường đi từ nút gốc đến nút lá chứa ký tự đó. Nhánh bên trái thể hiện giá trị 0, nhánh bên phải thể hiện giá trị 1.</p>
-
 <p>Ví dụ cho chữ &ldquo;<em>Hellooo!</em>&rdquo; được mã hóa bằng 3-bit encoding:</p>
-
 
 
  
@@ -399,11 +383,8 @@ if (!doNotTrack) {
   
 </div>
 
-
 <p>Ta lại nhận thấy rằng, có những phần tử xuất hiện rất nhiều lần, nếu gắn cho chúng một mã có độ dài thấp nhất, còn các phần tử xuất ít hơn có thể có mã dài hơn, thì vẫn có thể tiết kiệm được hơn nữa.</p>
-
 <p>Giả sử ta chọn một <em>prefix code</em> như ví dụ bên dưới:</p>
-
 
 
  
@@ -431,9 +412,7 @@ if (!doNotTrack) {
   
 </div>
 
-
 <p>Rõ ràng chỉ cần dùng 18 bit để biểu diễn thông điệp trên. Cách gán mã dựa trên tần suất xuất hiện cũng chính là ý tưởng của thuật toán Huffman coding.</p>
-
 
 
  
@@ -461,19 +440,14 @@ if (!doNotTrack) {
   
 </div>
 
-
 <h1 id="2-thuật-toán-huffman-coding">2. Thuật toán Huffman Coding</h1>
-
 <p>Với ý tưởng trên, thuật toán Huffman coding gồm 3 bước:</p>
-
 <ul>
 <li><strong>Bước 1</strong>: Đếm tần suất xuất hiện của các phần tử trong chuỗi đầu vào.</li>
 <li><strong>Bước 2</strong>: Xây dựng cây Huffman (cây nhị phân mã hóa).</li>
 <li><strong>Bước 3</strong>: Từ cây Huffman, ta có được các giá trị mã hóa. Lúc này, ta có thể xây dựng chuỗi mã hóa từ các giá trị này.</li>
 </ul>
-
 <p>Quá trình xây dựng cây Huffman gồm các bước sau:</p>
-
 <ul>
 <li><em>2.1</em>. Tạo danh sách chứa các nút lá bao gồm phần tử đầu vào và trọng số nút là tần suất xuất hiện của nó.</li>
 <li><em>2.2</em>. Từ danh sách này, lấy ra 2 phần tử có tần suất xuất hiện ít nhất. Sau đó gắn 2 nút vừa lấy ra vào một nút gốc mới với trọng số là tổng của 2 trọng số ở nút vừa lấy ra để tạo thành một cây.</li>
@@ -481,11 +455,8 @@ if (!doNotTrack) {
 <li><em>2.4</em>. Lặp lại bước 2 và 3 cho đến khi danh sách chỉ còn 1 nút gốc duy nhất của cây.</li>
 <li><em>2.5</em>. Nút còn lại chính là nút gốc của cây Huffman.</li>
 </ul>
-
 <p>Để dễ tiếp cận các bước thực hiện xây dựng cây Huffman, chúng ta sẽ dùng lại ví dụ ở phần trước.</p>
-
 <p><strong>Bước 2.1</strong>: Sau khi đếm tần suất xuất hiện các phần tử đầu vào. Chúng ta tạo danh sách các nút lá với trọng số là tần suất xuất hiện. Danh sách sẽ có 5 phần tử như bên dưới.</p>
-
 
 
  
@@ -513,9 +484,7 @@ if (!doNotTrack) {
   
 </div>
 
-
 <p><strong>Bước 2.2 và 2.3</strong>: Chọn 2 nút có trọng số thấp nhất, tạo nút gốc mới có trọng số bằng tổng 2 trọng số nút con. Sau đó gắn 2 nút con vào nút gốc và đẩy lại vào danh sách. Danh sách cần được biểu diễn đặc biệt để có thể lấy ra các nút trọng số nhỏ nhất một cách tối ưu nhất.</p>
-
 
 
  
@@ -543,9 +512,7 @@ if (!doNotTrack) {
   
 </div>
 
-
 <p><strong>Bước 2.4</strong>: Lặp lại các bước 2.2 và 2.3.</p>
-
 
 
  
@@ -573,9 +540,7 @@ if (!doNotTrack) {
   
 </div>
 
-
 <p><strong>Bước 2.4</strong>: Lặp lại các bước 2.2 và 2.3.</p>
-
 
 
  
@@ -603,9 +568,7 @@ if (!doNotTrack) {
   
 </div>
 
-
 <p><strong>Bước 2.5</strong>: Chỉ còn lại 1 nút trong danh sách, nút này chính là cây Huffman</p>
-
 
 
  
@@ -633,9 +596,7 @@ if (!doNotTrack) {
   
 </div>
 
-
 <p>Từ cây Huffman, ta có thể suy ra các giá trị mã hóa của từng phần tử bằng cách duyệt cây nhị phân mã hóa.</p>
-
 
 
  
@@ -663,11 +624,8 @@ if (!doNotTrack) {
   
 </div>
 
-
 <p>Ở những bài viết <a href="https://chidokun.github.io/2021/07/huffman-coding-p2/">tiếp theo</a>, chúng ta sẽ cùng bàn về cách hiện thực ý tưởng này bằng ngôn ngữ lập trình Java.</p>
-
 <h2 id="references">References</h2>
-
 <ul>
 <li><a href="https://web.stanford.edu/class/archive/cs/cs106x/cs106x.1192/resources/minibrowser2/huffman-encoding-supplement.pdf">Huffman Encoding and Data Compression</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Prefix_code">Prefix code</a></li>

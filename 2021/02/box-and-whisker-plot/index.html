@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Tuấn">
 <meta name="keywords" content="biểu diễn dữ liệu, dữ liệu, data visualization, development, programming, chidokun, lập trình">
 <meta name="description" content="Box and Whisker Plot (còn gọi là Boxplot) là một dạng biểu đồ hay được dùng trong khoa học dữ liệu và thống kê. Trong bài này chúng ta cùng khám phá về Boxplot và một số điểm thú vị của loại biểu đồ này.">
@@ -281,30 +281,27 @@ if (!doNotTrack) {
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p><strong>Box and Whisker Plot</strong> (còn gọi là <strong>Boxplot</strong>) là một dạng biểu đồ hay được dùng trong khoa học dữ liệu và thống kê. Trong bài này chúng ta cùng khám phá về Boxplot và một số điểm thú vị của loại biểu đồ này.</p>
-
 <h1 id="table-of-contents">Mục lục</h1><nav id="TableOfContents">
-<ul>
-<li><a href="#1-boxplot-là-gì">1. Boxplot là gì?</a></li>
-<li><a href="#2-trình-bày-dữ-liệu-dùng-boxplot">2. Trình bày dữ liệu dùng Boxplot</a>
-<ul>
-<li><a href="#2-1-vẽ-boxplot">2.1. Vẽ Boxplot</a></li>
-<li><a href="#2-2-ngoại-lệ">2.2. Ngoại lệ</a></li>
-</ul></li>
-<li><a href="#3-đọc-hiểu-boxplot">3. Đọc hiểu Boxplot</a></li>
-<li><a href="#4-vẽ-boxplot-trong-python">4. Vẽ Boxplot trong Python</a></li>
-<li><a href="#5-kết-luận">5. Kết luận</a>
-<ul>
-<li><a href="#tham-khảo">Tham khảo</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#1-boxplot-là-gì">1. Boxplot là gì?</a></li>
+    <li><a href="#2-trình-bày-dữ-liệu-dùng-boxplot">2. Trình bày dữ liệu dùng Boxplot</a>
+      <ul>
+        <li><a href="#21-vẽ-boxplot">2.1. Vẽ Boxplot</a></li>
+        <li><a href="#22-ngoại-lệ">2.2. Ngoại lệ</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-đọc-hiểu-boxplot">3. Đọc hiểu Boxplot</a></li>
+    <li><a href="#4-vẽ-boxplot-trong-python">4. Vẽ Boxplot trong Python</a></li>
+    <li><a href="#5-kết-luận">5. Kết luận</a>
+      <ul>
+        <li><a href="#tham-khảo">Tham khảo</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
-
 <h1 id="1-boxplot-là-gì">1. Boxplot là gì?</h1>
-
 <p><strong>Boxplot</strong> là một dạng biểu đồ thể hiện phân phối dữ liệu của các thuộc tính số thông qua các <em>&ldquo;tứ phân vị&rdquo;</em> và được giới thiệu lần đầu bởi John Tukey vào năm 1970.</p>
-
 <p><strong>Tứ phân vị</strong> là một khái niệm trong thống kê dùng để mô tả sự phân bố và sự phân tán của tập dữ liệu, gồm 3 giá trị: $Q_1$, $Q_2$ và $Q_3$ chia tập dữ liệu thành 4 phần bằng nhau.</p>
-
 
 
  
@@ -332,9 +329,7 @@ if (!doNotTrack) {
   
 </div>
 
-
 <p>Boxplot thể hiện các phân phối dữ liệu, nghĩa là giúp chúng ta biết được độ dàn trải của các điểm dữ liệu như thế nào, dữ liệu có đối xứng không, phân bố rộng hay hẹp, giá trị nhỏ nhất, lớn nhất và các điểm ngoại lệ.</p>
-
 
 
  
@@ -362,9 +357,7 @@ if (!doNotTrack) {
   
 </div>
 
-
 <p>Biểu đồ Boxplot thể hiện 5 thông số:</p>
-
 <ul>
 <li><strong>Median</strong>: Trung vị của tập dữ liệu, tức là giá trị ở phần tử giữa.</li>
 <li><strong>First quartile (Q1)</strong>: Trung vị giữa <strong>Median</strong> và <strong>phần tử nhỏ nhất</strong> trong tập dữ liệu. Còn gọi là <strong>25th Percentile</strong>.</li>
@@ -372,45 +365,26 @@ if (!doNotTrack) {
 <li><strong>Minimum</strong>: Phần tử nhỏ nhất không phải ngoại lệ.</li>
 <li><strong>Maximum</strong>: Phần tử lớn nhất không phải là ngoại lệ.</li>
 </ul>
-
 <p>Ví dụ cụ thể trong phần sau sẽ giúp hiểu hơn về cách vẽ Boxplot từ dữ liệu.</p>
-
 <h1 id="2-trình-bày-dữ-liệu-dùng-boxplot">2. Trình bày dữ liệu dùng Boxplot</h1>
-
-<h2 id="2-1-vẽ-boxplot">2.1. Vẽ Boxplot</h2>
-
+<h2 id="21-vẽ-boxplot">2.1. Vẽ Boxplot</h2>
 <p>Ví dụ sau sẽ giúp các bạn hiểu rõ về cách xây dựng Boxplot.</p>
-
 <p>VD: Một nhà hàng ghi lại khoảng cách từ khách hàng đi từ nhà đến nhà hàng như sau:
 24, 10, 23, 11, 21, 22, 23, 15, 23, 21, 23, 23, 22, 24, 24, 10, 24, 25, 27, 27, 19</p>
-
 <p>Trước tiên để tìm được các số liệu để vẽ Boxplot cần sắp xếp lại dữ liệu:</p>
-
 <p>10, 10, 11, 15, 19, 21, 21, 22, 22, 23, <span class="highlight-text green">23</span>, 23, 23, 23, 24, 24, 24, 24, 25, 27, 27</p>
-
 <p>Dữ liệu có 21 phần tử nên trung vị của nó là phần tử thứ 11 (Trường hợp số phần tử là chẵn thì trung vị sẽ là giá trị trung bình của 2 phần tử đứng giữa).</p>
-
 <p>Nên ta có $ Median = 23 $.</p>
-
 <p><strong>First quartile</strong> sẽ là trung vị của các điểm dữ liệu bên trái <strong>Median</strong>. Vậy Q1 sẽ là median của các điểm:</p>
-
 <p>10, 10, 11, 15, <span class="highlight-text green">19</span>, <span class="highlight-text green">21</span>, 21, 22, 22, 23</p>
-
 <p>nên $Q_{1} = \frac{19+21}{2}=20$</p>
-
 <p>Tương tự, Q3 là trung vị của các điểm dữ liệu bên phải <strong>Median</strong>.</p>
-
 <p>23, 23, 23, 24, <span class="highlight-text green">24</span>, <span class="highlight-text green">24</span>, 24, 25, 27, 27</p>
-
 <p>nên $Q_{3} = \frac{24+24}{2}=24$</p>
-
 <p>Với Boxplot không thể hiện ngoại lệ, <strong>Minimum</strong> và <strong>Maximum</strong> sẽ là giá trị nhỏ nhất và lớn nhất.</p>
-
 <p>$$Minimum = 10$$
 $$Maximum = 27$$</p>
-
 <p>Từ các thông số trên, bạn sẽ vẽ được:</p>
-
 
 
  
@@ -438,28 +412,17 @@ $$Maximum = 27$$</p>
   
 </div>
 
-
-<h2 id="2-2-ngoại-lệ">2.2. Ngoại lệ</h2>
-
+<h2 id="22-ngoại-lệ">2.2. Ngoại lệ</h2>
 <p>Trong thống kê, một ngoại lệ (outlier) là một điểm dữ liệu khác biệt đáng kể so với các quan sát khác. Một ngoại lệ có thể là do sự thay đổi trong phép đo hoặc là lỗi và thông thường được loại trừ khỏi tập dữ liệu bởi nó có thể gây ra vấn đề nghiêm trọng trong phân tích thống kê.</p>
-
 <p>Để tìm ngoại lệ, ta dùng thêm khái niệm <strong>IQR</strong>.</p>
-
 <p><strong>IQR (Interquartile Range)</strong> là một khái niệm trong thống kê mô tả, dùng đo lường độ phân tán của dữ liệu và được tính toán bằng công thức:</p>
-
 <p>$$IQR = Q_{3} - Q_{1}$$</p>
-
 <p>Điểm ngoại lệ sẽ là những điểm nhỏ hơn $Q_{1} - 1.5IQR$ và lớn hơn $Q_3 + 1.5IQR$.</p>
-
 <p>Với ví dụ trước, ta có $IQR = 4$. Vậy các điểm ngoại lệ sẽ nhỏ hơn 14 và lớn hơn 30.</p>
-
 <p>Như vậy ta xác định được <strong>Minimum</strong> mới và <strong>Maximum</strong> mới như sau:</p>
-
 <p>$$Minimum = 15$$
 $$Maximum = 27$$</p>
-
 <p>Ta vẽ lại được Boxplot vs các điểm ngoại lệ như sau:</p>
-
 
 
  
@@ -487,9 +450,7 @@ $$Maximum = 27$$</p>
   
 </div>
 
-
 <p>Để có sự so sánh giữa thông tin mà Boxplot thể hiện với dữ liệu thực tế, chúng ta có thể xem phân bố điểm dữ liệu như sau:</p>
-
 
 
  
@@ -517,11 +478,8 @@ $$Maximum = 27$$</p>
   
 </div>
 
-
 <h1 id="3-đọc-hiểu-boxplot">3. Đọc hiểu Boxplot</h1>
-
 <p>Cho ví dụ sau: <em>Phân bố độ tuổi của các học sinh tham dự buổi tiệc được mô tả bằng Boxplot như bên dưới</em>:</p>
-
 
 
  
@@ -549,30 +507,22 @@ $$Maximum = 27$$</p>
   
 </div>
 
-
 <p>Từ hình ta có thể rút ra một số dữ kiện sau:</p>
-
 <ul>
 <li>Độ tuổi nhỏ nhất là 7 tuổi.</li>
 <li>Độ tuổi lớn nhất là 16 tuổi.</li>
 <li>Median là 13 tuổi.</li>
 </ul>
-
 <p>Cùng xem xét các khẳng định sau đây:</p>
-
 <ul>
 <li><em>Tất cả các sinh viên nhỏ hơn 17 tuổi</em>. Khẳng định này <em>ĐÚNG</em>, vì độ tuổi cận trên là 16 tuổi.</li>
 <li><em>Ít nhất 75% học sinh từ 10 tuổi trở lên</em>. Từ 7 đến 10 tuổi được gọi là Q1, chiếm 25% số lượng mẫu, nên độ tuổi từ 10 trở lên sẽ chiếm 75% nên khẳng định này <em>ĐÚNG</em>.</li>
 <li><em>Đúng một nửa số học sinh từ 13 tuổi trở lên</em>. Độ tuổi 13 nằm ở điểm trung vị, nhưng chưa đủ để khẳng định đúng một nửa số học sinh từ 13 tuổi trở lên vì số lượng học sinh 13 tuổi có thể nhiều hơn 1 người. Nên khẳng định này chưa biết đúng sai, khẳng định đúng là: <em>Ít nhất một nửa số học sinh từ 13 tuổi trở lên</em>.</li>
 <li>Có 1 học sinh lớn tuổi nhất là 16 tuổi. Boxplot không thể hiện số lượng mẫu có giá trị lớn nhất và nhỏ nhất. Do đó khẳng định này chưa thể xác định đúng sai.</li>
 </ul>
-
 <h1 id="4-vẽ-boxplot-trong-python">4. Vẽ Boxplot trong Python</h1>
-
 <p>Qua các phần trên, chúng ta đã nắm được cách vẽ và trình bày dữ liệu với Boxplot. Thực tế hầu hết các công cụ khi làm thống kê và khoa học dữ liệu đều đã hỗ trợ vẽ Boxplot một cách tự động.</p>
-
 <p>Bên dưới là một ví dụ về Boxplot được vẽ bằng thư viện Seaborn với ngôn ngữ Python.</p>
-
 <pre><code class="language-python">import matplotlib.pyplot as plt 
 %matplotlib inline 
 import seaborn as sns
@@ -582,9 +532,7 @@ tips = sns.load_dataset(&quot;tips&quot;)
 sns.boxplot(x=&quot;day&quot;, y=&quot;total_bill&quot;, hue=&quot;smoker&quot;,
                  data=tips, palette=&quot;Set3&quot;)
 </code></pre>
-
 <p>Kết quả:</p>
-
 
 
  
@@ -612,13 +560,9 @@ sns.boxplot(x=&quot;day&quot;, y=&quot;total_bill&quot;, hue=&quot;smoker&quot;,
   
 </div>
 
-
 <h1 id="5-kết-luận">5. Kết luận</h1>
-
 <p>Bài viết đã giới thiệu tổng quan về Boxplot và cách dùng nó để biểu diễn dữ liệu. Hi vọng sẽ giúp ích cho các bạn trong quá trình học tập, làm việc.</p>
-
 <h2 id="tham-khảo">Tham khảo</h2>
-
 <ul>
 <li><a href="https://www.khanacademy.org/math/statistics-probability/summarizing-quantitative-data#box-whisker-plots">Khan Academy: Box and Whisker plot</a></li>
 <li><a href="https://datavizcatalogue.com/methods/box_plot.html">Box and Whisker Plot</a></li>

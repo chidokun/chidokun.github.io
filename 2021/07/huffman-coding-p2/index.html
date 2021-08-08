@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Tuấn">
 <meta name="keywords" content="java, huffman coding, huffman, development, programming, chidokun, lập trình">
 <meta name="description" content="Với những ý tưởng của thuật toán Huffman Coding ở bài viết Thuật toán nén Huffman Coding, trong bài viết này chúng ta cùng bàn về cách hiện thực thuật toán này với ngôn ngữ Java.">
@@ -277,46 +277,37 @@ if (!doNotTrack) {
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>Với những ý tưởng của thuật toán Huffman Coding ở bài viết <a href="https://chidokun.github.io/2021/07/huffman-coding-p1/">Thuật toán nén Huffman Coding</a>, trong bài viết này chúng ta cùng bàn về cách hiện thực thuật toán này với ngôn ngữ Java.</p>
-
 <h1 id="table-of-contents">Mục lục</h1><nav id="TableOfContents">
-<ul>
-<li><a href="#1-định-nghĩa-api">1. Định nghĩa API</a></li>
-<li><a href="#2-cài-đặt-từng-bước">2. Cài đặt từng bước</a>
-<ul>
-<li><a href="#references">References</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#1-định-nghĩa-api">1. Định nghĩa API</a></li>
+    <li><a href="#2-cài-đặt-từng-bước">2. Cài đặt từng bước</a>
+      <ul>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
-
 <h1 id="1-định-nghĩa-api">1. Định nghĩa API</h1>
-
 <p>Nhắc lại 3 bước của thuật toán Huffman Coding:</p>
-
 <ul>
 <li><strong>Bước 1</strong>: Đếm tần suất xuất hiện của các phần tử trong chuỗi đầu vào.</li>
 <li><strong>Bước 2</strong>: Xây dựng cây Huffman (cây nhị phân mã hóa).</li>
 <li><strong>Bước 3</strong>: Mã hóa chuỗi đầu vào dựa vào cây Huffman.</li>
 </ul>
-
 <p>Để cài đặt thuật toán này, trước hết ta định nghĩa các API phục vụ cho việc giao tiếp của chương trình như sau:</p>
-
 <pre><code class="language-java">   public class HuffmanCoding
 -----------------------------------------------------
   HuffmanCoding process(String str)
          String encode()
          String decode(String encoded)
 </code></pre>
-
 <p>Lớp <code>HuffmanCoding</code> định nghĩa các method cơ bản nhất cho việc tính toán và mã hóa.</p>
-
 <ul>
 <li><em>process(String str)</em>: thực hiện tính toán và xây dựng cây Huffman dựa trên chuỗi đầu vào <code>str</code>.</li>
 <li><em>encode()</em>: mã hóa chuỗi đầu vào thành chuỗi mã hóa.</li>
 <li><em>decode(String encoded)</em>: giải mã chuỗi mã hóa dựa vào cây Huffman, sẽ được trình bày trong các bài viết kế tiếp.</li>
 </ul>
-
 <p>Từ định nghĩa trên, chúng ta có thể viết được hàm <code>main</code> để test cho chương trình như sau:</p>
-
 <pre><code class="language-java">public static void main(String[] args) {
     String str = &quot;Hellooo!&quot;;
     System.out.println(&quot;Source: &quot; + str);
@@ -326,11 +317,8 @@ if (!doNotTrack) {
     System.out.println(&quot;Encoded: &quot; + encoded);
 }
 </code></pre>
-
 <p>Chúng ta sẽ lần lượt cài đặt các các method vừa định nghĩa theo từng bước của thuật toán ở phần tiếp theo.</p>
-
 <p>Ngoài ra, cần có một cấu trúc dữ liệu để lưu trữ cây Huffman.</p>
-
 <pre><code class="language-java">   public class Node
 -----------------------------------------------------
                 Node(int data, char character)
@@ -341,11 +329,8 @@ if (!doNotTrack) {
            Node getRight()
         boolean isLeaf()
 </code></pre>
-
 <p>Mỗi nút trong cây Huffman gồm ký tự <code>character</code> và trọng số <code>data</code> là tần suất xuất hiện của ký tự đó. Cây Huffman là cây nhị phân nên mỗi nút sẽ có nút con trái <code>left</code> và nút con phải <code>right</code>.</p>
-
 <p>Cách cài đặt tham khảo cho <code>Node</code>.</p>
-
 
 
   
@@ -420,11 +405,8 @@ if (!doNotTrack) {
     
   </div>
 </figure>
-
 <h1 id="2-cài-đặt-từng-bước">2. Cài đặt từng bước</h1>
-
 <p>Ở <em>Bước 1</em>, ta cần đếm tần suất xuất hiện các ký tự của chuỗi đầu vào. Dùng một <code>Map&lt;Character, Integer&gt;</code> để lưu trữ kết quả và cài đặt thành method private bên trong <code>HuffmanCoding</code>.</p>
-
 <pre><code class="language-java">private Map&lt;Character, Integer&gt; freqMap;
 
 private void countFreq(String str) {
@@ -435,9 +417,7 @@ private void countFreq(String str) {
     }
 }
 </code></pre>
-
 <p>Tiếp tục <em>Bước 2</em>, xây dựng cây Huffman, nhắc lại các bước xây dựng cây Huffman:</p>
-
 <ul>
 <li><em>2.1</em>. Tạo danh sách chứa các nút lá bao gồm phần tử đầu vào và trọng số nút là tần suất xuất hiện của nó.</li>
 <li><em>2.2</em>. Từ danh sách này, lấy ra 2 phần tử có tần suất xuất hiện ít nhất. Sau đó gắn 2 nút vừa lấy ra vào một nút gốc mới với trọng số là tổng của 2 trọng số ở nút vừa lấy ra để tạo thành một cây.</li>
@@ -445,9 +425,7 @@ private void countFreq(String str) {
 <li><em>2.4</em>. Lặp lại bước 2 và 3 cho đến khi danh sách chỉ còn 1 nút gốc duy nhất của cây.</li>
 <li><em>2.5</em>. Nút còn lại chính là nút gốc của cây Huffman.</li>
 </ul>
-
 <p>Để xây dựng danh sách này chúng ta sẽ dùng <code>PriorityQueue</code> có sẵn của Java. <code>PriorityQueue</code> là một cấu trúc dữ liệu hoạt động theo cơ chế FIFO (First In First Out) theo trọng số priority. Ở đây, trọng số priority sẽ là trọng số của nút.</p>
-
 <pre><code class="language-java">private Node buildTree(Map&lt;Character, Integer&gt; freqMap) {
     PriorityQueue&lt;Node&gt; q = new PriorityQueue&lt;&gt;(freqMap.size(), Comparator.comparingInt(Node::getData));
     for (Map.Entry&lt;Character, Integer&gt; i : freqMap.entrySet())
@@ -463,9 +441,7 @@ private void countFreq(String str) {
     return root;
 }
 </code></pre>
-
-<p>Từ cây Huffman, ta có thể tạo ra một Map<Character, String> để lưu trữ giá trị mã hóa của từng ký tự. Chúng ta duyệt đệ quy đến nút lá, duyệt về bên trái sẽ thêm giá trị <code>0</code>, duyệt về phải sẽ thêm giá trị <code>1</code>.</p>
-
+<p>Từ cây Huffman, ta có thể tạo ra một Map&lt;Character, String&gt; để lưu trữ giá trị mã hóa của từng ký tự. Chúng ta duyệt đệ quy đến nút lá, duyệt về bên trái sẽ thêm giá trị <code>0</code>, duyệt về phải sẽ thêm giá trị <code>1</code>.</p>
 <pre><code class="language-java">private Map&lt;Character, String&gt; codeMap;
 
 private void buildCode(Node node, String code) {
@@ -477,9 +453,7 @@ private void buildCode(Node node, String code) {
     buildCode(node.getRight(), code + &quot;1&quot;);
 }
 </code></pre>
-
 <p>Sau khi đã có đủ các điều kiện liên quan, chúng ta sẽ cài đặt phương thức <code>process(String str)</code> của <code>HuffmanCoding</code>.</p>
-
 <pre><code class="language-java">private Node root = null;
 private String str;
 
@@ -492,9 +466,7 @@ public HuffmanCoding process(String str) {
     return this;
 }
 </code></pre>
-
 <p>Sau khi đã có bảng Map của ký tự và giá trị mã hóa, ta dễ dàng cài đặt phương thức <code>encode()</code> để mã hóa chuỗi ban đầu bằng cách thay thế mỗi ký tự ban đầu thành giá trị mã hóa.</p>
-
 <pre><code class="language-java">public String encode() {
     if (this.codeMap == null || this.codeMap.isEmpty()) {
         return null;
@@ -506,17 +478,12 @@ public HuffmanCoding process(String str) {
     return builder.toString();
 }
 </code></pre>
-
 <p>Sau khi đã cài đặt xong phương thức <code>encode()</code> là đã có thể test được hàm <code>main</code> phía trên rồi.</p>
-
 <p>Kết quả:</p>
-
 <pre><code>Source: Hellooo!
 Encoded: 110111110100001110
 </code></pre>
-
 <p>Source code của <code>HuffmanCoding</code>.</p>
-
 
 
   
@@ -621,11 +588,8 @@ Encoded: 110111110100001110
     
   </div>
 </figure>
-
 <p>Vẫn còn một phần giải nén nữa và sẽ được giới thiệu ở bài viết <a href="https://chidokun.github.io/2021/07/huffman-coding-p3/">Huffman Decoding: Quá trình giải nén</a></p>
-
 <h2 id="references">References</h2>
-
 <ul>
 <li><a href="https://web.stanford.edu/class/archive/cs/cs106x/cs106x.1192/resources/minibrowser2/huffman-encoding-supplement.pdf">Huffman Encoding and Data Compression</a></li>
 </ul>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Tuấn">
 <meta name="keywords" content="clean code, naming, đặt tên biến, đặt tên biến, hàm, java, development, programming, chidokun, lập trình">
 <meta name="description" content="Mỗi lần đọc lại quyển sách Clean Code của tác giả Robert C. Martin, mình lại nhận ra những điều mới để có thể giúp bản thân viết code chuyên nghiệp hơn. Cách đặt tên biến, hàm cũng ảnh hưởng khá nhiều đến độ &ldquo;clean&rdquo; của code mà đôi lúc chúng ta lại quên mất hoặc không để ý và khiến cho nó trở thành một đống hỗn độn theo thời gian.">
@@ -277,15 +277,10 @@ if (!doNotTrack) {
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>Mỗi lần đọc lại quyển sách <em>Clean Code</em> của tác giả <em>Robert C. Martin</em>, mình lại nhận ra những điều mới để có thể giúp bản thân viết code chuyên nghiệp hơn. Cách đặt tên biến, hàm cũng ảnh hưởng khá nhiều đến độ <em>&ldquo;clean&rdquo;</em> của code mà đôi lúc chúng ta lại quên mất hoặc không để ý và khiến cho nó trở thành một đống hỗn độn theo thời gian.</p>
-
 <p style="text-align:center"><img style="display:inline-block" src="https://i2.wp.com/mathewanalytics.com/wp-content/uploads/2020/07/reviewcode.152f235.921f924.jpeg" /><span class="caption">(via mathewanalytics.com)</span></p>
-
 <h1 id="cái-tên-tiết-lộ-mục-đích">Cái tên tiết lộ mục đích</h1>
-
 <p>Có thể nói quan trọng nhất khi chọn một cái tên đó là cái tên này <em>phải tiết lộ mục đích</em> sử dụng của nó. Đây là cái mà chúng ta hay quên nhất và cũng có thể nói là tốn nhiều &ldquo;chất xám&rdquo; nhất.</p>
-
 <p>Ví dụ trong sách đã khá rõ ràng và dễ hiểu. Giữa hai đoạn code bên dưới, bạn thấy đoạn code nào dễ hiểu hơn?</p>
-
 <pre><code class="language-java">public List&lt;int[]&gt; getThem() {
     List&lt;int[]&gt; list1 = new ArrayList&lt;&gt;(); 
     for (int[] x : theList)
@@ -302,34 +297,22 @@ public List&lt;Cell&gt; getFlaggedCells() {
     return flaggedCells; 
 }
 </code></pre>
-
 <p>Đoạn code thứ nhất sẽ khiến bạn nổ bong bóng với những câu hỏi như:</p>
-
 <ul>
 <li>Biến <code>list1</code> để làm gì và chứa cái gì trong đó?</li>
 <li>Phần tử <code>0</code> đầu mảng có ý nghĩa gì?</li>
 <li>Tại sao bằng <code>4</code> thì thêm vào <code>list1</code>?</li>
 <li>&hellip;</li>
 </ul>
-
 <p>Còn đoạn code thứ hai đã có ngữ cảnh quá rõ ràng và cách chọn tên phù hợp đã giúp đoạn code dễ hiểu hơn rất nhiều.</p>
-
 <p>Thỉnh thoảng, chúng ta sẽ quên mất việc phải chọn một cái tên hợp lý với những biến tạm, biến trung gian (ngay cả mình cũng vậy 😅). Đôi khi là một công thức mà viết quá gọn nên mất đi tính dễ hiểu. Các con số <em>&ldquo;magic number&rdquo;</em> (như số <code>0</code> hoặc số <code>4</code> ở đoạn code bên trên) cũng khiến cho đoạn code bị &ldquo;mờ&rdquo; đi một tí. Khi một người mới vào đọc code của bạn thì thế nào bạn cũng phải giải thích cho họ nghe con số đó nghĩa là gì.</p>
-
 <p>Bên cạnh đó, một kiến trúc rõ ràng cũng giúp code được &ldquo;clean&rdquo; hơn và dễ dàng hơn để chúng ta chọn một cái tên phù hợp với ngữ cảnh. Các mẫu kiến trúc như <a href="https://en.wikipedia.org/wiki/Hexagonal_architecture_(software)">Hexagonal architecture</a> có thể giúp tách bạch giữa domain logic code và giảm sự phụ thuộc lẫn nhau giữa các component. Từ đó, các ngữ cảnh đã được phân biệt rạch ròi thì việc chọn tên để đặt cho hàm hay biến cũng trở nên đơn giản hơn.</p>
-
 <p>Sở dĩ mình nói nó là khó nhất vì không có quy tắc cụ thể nào để tuân theo cả, phải dựa vào kinh nghiệm và cải thiện dần dần thì mới thuần thục được.</p>
-
 <h1 id="một-từ-cho-một-khái-niệm">Một từ cho một khái niệm</h1>
-
 <p><em>Bạn chỉ nên dùng một từ cho một và chỉ một khái niệm</em>. Nghe đơn giản phải không nào?</p>
-
 <p>Nếu bạn dùng Java Spring Data JPA thì chắc hẳn đã biết đến cơ chế sinh query rồi phải không? Bạn chỉ đơn giản định nghĩa một interface kế thừa <code>JpaRepository</code>, bên trong nó định nghĩa một public method theo quy tắc nhất định thì Spring Data JPA sẽ tự sinh câu query tương ứng và thực thi nó.</p>
-
 <p>Câu chuyện là, để sinh câu SQL <code>SELECT</code> bạn có thể đặt tên là <code>find…By</code>, <code>read…By</code>, <code>get…By</code>, <code>query…By</code>, <code>search…By</code>, <code>stream…By</code> và câu SQL <code>DELETE</code> có thể dùng <code>delete…By</code>, <code>remove…By</code> (xem thêm tại <a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#appendix.query.method.subject">đây</a>).</p>
-
 <p>Mình thì dùng <code>get…By</code> cho câu <code>SELECT</code> và <code>remove…By</code> cho câu <code>DELETE</code>, còn thằng em mình dùng <code>find…By</code> và <code>delete…By</code>. Kết quả là ta có đoạn code lổm chổm dưới đây.</p>
-
 <pre><code class="language-java">@Repository
 public interface SomethingRepository extends JpaRepository&lt;Something, String&gt; {
 
@@ -344,19 +327,12 @@ public interface SomethingRepository extends JpaRepository&lt;Something, String&
   void deleteByName(String name);
 }
 </code></pre>
-
 <p style="text-align:center"><img style="display:inline-block" src="https://media.giphy.com/media/uMu5Pp7HhZNL4lzN58/giphy-downsized.gif" /><span class="caption">(via giphy.com)</span></p>
-
 <p>Câu chuyện tiếp theo là về các <em>DTO - Data Transfer Object</em>. Mình thường thấy rất nhiều class với suffix lúc thì <code>ProductDTO</code>, <code>ProductData</code>, <code>ProductInfo</code>, <code>ProductModel</code>, <code>ProductEntity</code>,… để chung với nhau. Các class này đều cùng chứa info của một Product nhưng khác nhau về các thuộc tính bên trong 😅. Một số thì dùng để nhận request params từ bên ngoài, một số thì dùng xử lý logic, một số dùng lưu dữ liệu xuống database.</p>
-
 <p>Trường hợp này, tác giả cũng khuyên nên có một context - chẳng hạn như tạo một package khác nhau - để phân biệt mục đích của chúng. Lúc này có thể không cần phân biệt mục đích bằng cách dùng suffix nữa. Đó cũng là một convention cần thống nhất để mọi người hiểu cùng một khái niệm và giữ sự đồng nhất trong cách đặt tên.</p>
-
 <h1 id="kết-luận-nhẹ">Kết luận nhẹ!</h1>
-
 <p>Điều mà mình nhận ra sau khi đọc lại quyển <em>Clean Code</em>, đó là hầu hết các vấn đề về đặt tên có thể được giải quyết bằng một convention chung cho cả team, chỉ trừ việc đặt tên thể hiện mục đích sử dụng cho biến. Việc <em>chọn tên thể hiện mục đích sử dụng</em> thực sự rất khó và tốn nhiều thời gian suy nghĩ, nhưng hiệu ứng mang lại là code sẽ dễ đọc dễ hiểu hơn mà không cần quá nhiều comment.</p>
-
 <p>Dưới đây là một ví dụ khác của code khó hiểu. Phương thức <code>compare</code> sẽ so sánh hai object khác kiểu dựa trên tiêu chí <code>specName</code>. Bạn hiểu đoạn code này viết gì không 😆?</p>
-
 <pre><code class="language-java">public int compare(T o1, U o2, String specName) {
     if (!this.specs.containsKey(specName)) {
         throw new IllegalArgumentException(&quot;\&quot;&quot; + specName + &quot;\&quot; is not supported&quot;);
@@ -371,25 +347,19 @@ public interface SomethingRepository extends JpaRepository&lt;Something, String&
     }
 }
 </code></pre>
-
 <p>Thú thực là mình mất vài phút mới hiểu được nó viết gì.</p>
-
 <p>Hãy xem đoạn khó hiểu nhất này.</p>
-
 <pre><code class="language-java">int nullableO1 = o1 == null ? 1 : 0;
 int nullableO2 = o2 == null ? 1 : 0;
 if ((nullableO1 | nullableO2) != 0) {
     return nullableO1 - nullableO2;
 }
 </code></pre>
-
 <p>Cả đoạn này có ý nghĩa là:</p>
-
 <ul>
 <li>Nếu cả hai object trên đều bằng <code>null</code> thì chúng bằng nhau.</li>
 <li>Nếu một trong hai object bằng <code>null</code> thì object nào khác <code>null</code> sẽ lớn hơn.</li>
 </ul>
-
 <p>Khá khó hiểu bởi vì hiệu ứng thực sự của đoạn code trên không được thể hiện rõ ràng. Bạn có thể làm nó <em>&ldquo;clean&rdquo;</em> hơn không 😉?</p>
               
             </div>

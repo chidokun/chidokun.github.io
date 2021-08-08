@@ -1,6 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://chidokun.github.io/categories/</loc>
+    <lastmod>2021-08-06T19:00:39+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chidokun.github.io/tags/clean-code/</loc>
+    <lastmod>2021-08-06T19:00:39+07:00</lastmod>
+  </url>
   
   <url>
     <loc>https://chidokun.github.io/2021/08/clean-code-meaningful-name/</loc>
@@ -8,8 +18,43 @@
   </url>
   
   <url>
+    <loc>https://chidokun.github.io/</loc>
+    <lastmod>2021-08-06T19:00:39+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chidokun.github.io/post/</loc>
+    <lastmod>2021-08-06T19:00:39+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chidokun.github.io/categories/programming/</loc>
+    <lastmod>2021-08-06T19:00:39+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chidokun.github.io/tags/</loc>
+    <lastmod>2021-08-06T19:00:39+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chidokun.github.io/tags/data/</loc>
+    <lastmod>2021-07-29T20:17:38+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chidokun.github.io/tags/data-structures/</loc>
+    <lastmod>2021-07-29T20:17:38+07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://chidokun.github.io/2021/07/index-priority-queue/</loc>
     <lastmod>2021-07-29T20:17:38+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chidokun.github.io/tags/algorithms/</loc>
+    <lastmod>2021-07-25T20:26:28+07:00</lastmod>
   </url>
   
   <url>
@@ -40,6 +85,11 @@
   <url>
     <loc>https://chidokun.github.io/2021/07/heap-note/</loc>
     <lastmod>2021-07-11T12:46:28+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chidokun.github.io/tags/tips/</loc>
+    <lastmod>2021-07-07T17:54:21+07:00</lastmod>
   </url>
   
   <url>
@@ -78,8 +128,43 @@
   </url>
   
   <url>
+    <loc>https://chidokun.github.io/categories/analysis/</loc>
+    <lastmod>2021-02-03T22:00:00+07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://chidokun.github.io/2021/02/box-and-whisker-plot/</loc>
     <lastmod>2021-02-03T22:00:00+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chidokun.github.io/tags/data-analysis/</loc>
+    <lastmod>2021-02-03T22:00:00+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chidokun.github.io/tags/data-science/</loc>
+    <lastmod>2021-02-03T22:00:00+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chidokun.github.io/tags/data-visualization/</loc>
+    <lastmod>2021-02-03T22:00:00+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chidokun.github.io/tags/crawl/</loc>
+    <lastmod>2021-01-30T12:28:27+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chidokun.github.io/tags/programming/</loc>
+    <lastmod>2021-01-30T12:28:27+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chidokun.github.io/tags/python/</loc>
+    <lastmod>2021-01-30T12:28:27+07:00</lastmod>
   </url>
   
   <url>
@@ -103,8 +188,23 @@
   </url>
   
   <url>
+    <loc>https://chidokun.github.io/categories/tips/</loc>
+    <lastmod>2020-04-15T22:30:00+07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://chidokun.github.io/2020/04/bash-script-text-format-tips/</loc>
     <lastmod>2020-04-15T22:30:00+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chidokun.github.io/tags/book/</loc>
+    <lastmod>2020-04-01T22:30:30+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chidokun.github.io/categories/book/</loc>
+    <lastmod>2020-04-01T22:30:30+07:00</lastmod>
   </url>
   
   <url>
@@ -123,6 +223,11 @@
   </url>
   
   <url>
+    <loc>https://chidokun.github.io/tags/javascript/</loc>
+    <lastmod>2019-12-24T18:00:00+07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://chidokun.github.io/2019/12/query-with-javascript-ep2/</loc>
     <lastmod>2019-12-24T18:00:00+07:00</lastmod>
   </url>
@@ -133,7 +238,17 @@
   </url>
   
   <url>
+    <loc>https://chidokun.github.io/tags/japanese/</loc>
+    <lastmod>2014-11-28T19:43:00+07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://chidokun.github.io/2014/11/japanese-hatsuon/</loc>
+    <lastmod>2014-11-28T19:43:00+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chidokun.github.io/categories/other/</loc>
     <lastmod>2014-11-28T19:43:00+07:00</lastmod>
   </url>
   
@@ -148,8 +263,23 @@
   </url>
   
   <url>
+    <loc>https://chidokun.github.io/tags/th%E1%BB%A7-thu%E1%BA%ADt/</loc>
+    <lastmod>2013-11-25T22:29:00+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chidokun.github.io/tags/tin-h%E1%BB%8Dc/</loc>
+    <lastmod>2013-11-25T22:29:00+07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://chidokun.github.io/2013/11/tim-hieu-lenh-shutdown-cua-windows-8-va/</loc>
     <lastmod>2013-11-25T22:29:00+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chidokun.github.io/tags/other/</loc>
+    <lastmod>2013-11-24T21:41:00+07:00</lastmod>
   </url>
   
   <url>
@@ -158,181 +288,22 @@
   </url>
   
   <url>
-    <loc>https://chidokun.github.io/2013/11/thi-nghiem-ieu-che-chat-chi-thi-mau/</loc>
-    <lastmod>2013-11-18T23:14:00+07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://chidokun.github.io/tags/algorithms/</loc>
-    <lastmod>2021-07-25T20:26:28+07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://chidokun.github.io/categories/analysis/</loc>
-    <lastmod>2021-02-03T22:00:00+07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://chidokun.github.io/archives/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://chidokun.github.io/tags/book/</loc>
-    <lastmod>2020-04-01T22:30:30+07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://chidokun.github.io/categories/book/</loc>
-    <lastmod>2020-04-01T22:30:30+07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://chidokun.github.io/categories/</loc>
-    <lastmod>2021-02-03T22:00:00+07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://chidokun.github.io/tags/chemistry/</loc>
     <lastmod>2013-11-18T23:14:00+07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://chidokun.github.io/tags/clean-code/</loc>
-    <lastmod>2021-08-06T19:00:39+07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://chidokun.github.io/tags/crawl/</loc>
-    <lastmod>2021-01-30T12:28:27+07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://chidokun.github.io/tags/data/</loc>
-    <lastmod>2020-07-19T11:55:24+07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://chidokun.github.io/tags/data-analysis/</loc>
-    <lastmod>2021-02-03T22:00:00+07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://chidokun.github.io/tags/data-science/</loc>
-    <lastmod>2021-02-03T22:00:00+07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://chidokun.github.io/tags/data-structures/</loc>
-    <lastmod>2021-07-29T20:17:38+07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://chidokun.github.io/tags/data-visualization/</loc>
-    <lastmod>2021-02-03T22:00:00+07:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://chidokun.github.io/tags/experiment/</loc>
     <lastmod>2013-11-18T23:14:00+07:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://chidokun.github.io/tags/japanese/</loc>
-    <lastmod>2014-11-28T19:43:00+07:00</lastmod>
-    <priority>0</priority>
+    <loc>https://chidokun.github.io/2013/11/thi-nghiem-ieu-che-chat-chi-thi-mau/</loc>
+    <lastmod>2013-11-18T23:14:00+07:00</lastmod>
   </url>
   
   <url>
-    <loc>https://chidokun.github.io/tags/javascript/</loc>
-    <lastmod>2019-12-24T18:00:00+07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://chidokun.github.io/</loc>
-    <lastmod>2021-08-06T19:00:39+07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://chidokun.github.io/tags/other/</loc>
-    <lastmod>2013-11-24T21:41:00+07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://chidokun.github.io/categories/other/</loc>
-    <lastmod>2014-11-28T19:43:00+07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://chidokun.github.io/post/</loc>
-    <lastmod>2021-08-06T19:00:39+07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://chidokun.github.io/tags/programming/</loc>
-    <lastmod>2021-01-30T12:28:27+07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://chidokun.github.io/categories/programming/</loc>
-    <lastmod>2021-08-06T19:00:39+07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://chidokun.github.io/tags/python/</loc>
-    <lastmod>2021-01-30T12:28:27+07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://chidokun.github.io/tags/</loc>
-    <lastmod>2021-07-25T20:26:28+07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://chidokun.github.io/tags/th%E1%BB%A7-thu%E1%BA%ADt/</loc>
-    <lastmod>2013-11-25T22:29:00+07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://chidokun.github.io/tags/tin-h%E1%BB%8Dc/</loc>
-    <lastmod>2013-11-25T22:29:00+07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://chidokun.github.io/tags/tips/</loc>
-    <lastmod>2021-07-07T17:54:21+07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://chidokun.github.io/categories/tips/</loc>
-    <lastmod>2020-04-15T22:30:00+07:00</lastmod>
-    <priority>0</priority>
+    <loc>https://chidokun.github.io/archives/</loc>
   </url>
   
 </urlset>

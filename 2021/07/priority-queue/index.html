@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Tuấn">
 <meta name="keywords" content="queue, java, priority queue, development, programming, chidokun, lập trình">
 <meta name="description" content="Hôm nay chúng ta cùng điểm qua một cấu trúc dữ liệu thuộc dòng họ nhà Queue có một tính chất khá đặc biệt - đẩy vào và lấy ra theo độ ưu tiên - chính là Priority Queue. Nó có rất nhiều ứng dụng, điển hình là trong Thuật toán nén Huffman Coding mà mình từng đề cập. Trong bài này chúng ta sẽ đi qua một số cách cài đặt của Priority Queue.">
@@ -277,29 +277,24 @@ if (!doNotTrack) {
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>Hôm nay chúng ta cùng điểm qua một cấu trúc dữ liệu thuộc dòng họ nhà Queue có một tính chất khá đặc biệt - đẩy vào và lấy ra theo độ ưu tiên - chính là <em>Priority Queue</em>. Nó có rất nhiều ứng dụng, điển hình là trong <a href="https://chidokun.github.io/2021/07/huffman-coding-p2/">Thuật toán nén Huffman Coding</a> mà mình từng đề cập. Trong bài này chúng ta sẽ đi qua một số cách cài đặt của Priority Queue.</p>
-
 <h1 id="table-of-contents">Mục lục</h1><nav id="TableOfContents">
-<ul>
-<li><a href="#1-ý-tưởng-và-api">1. Ý tưởng và API</a></li>
-<li><a href="#2-cài-đặt">2. Cài đặt</a>
-<ul>
-<li><a href="#2-1-cơ-bản">2.1. Cơ bản</a></li>
-<li><a href="#2-2-sử-dụng-heap">2.2. Sử dụng Heap</a></li>
-</ul></li>
-<li><a href="#3-tổng-quát-hóa-phép-so-sánh">3. Tổng quát hóa phép so sánh</a></li>
-<li><a href="#4-độ-phức-tạp">4. Độ phức tạp</a></li>
-<li><a href="#references">References</a></li>
-</ul>
+  <ul>
+    <li><a href="#1-ý-tưởng-và-api">1. Ý tưởng và API</a></li>
+    <li><a href="#2-cài-đặt">2. Cài đặt</a>
+      <ul>
+        <li><a href="#21-cơ-bản">2.1. Cơ bản</a></li>
+        <li><a href="#22-sử-dụng-heap">2.2. Sử dụng Heap</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-tổng-quát-hóa-phép-so-sánh">3. Tổng quát hóa phép so sánh</a></li>
+    <li><a href="#4-độ-phức-tạp">4. Độ phức tạp</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
 </nav>
-
 <h1 id="1-ý-tưởng-và-api">1. Ý tưởng và API</h1>
-
 <p>Có thể liên tưởng các thao tác trên <code>PriorityQueue</code> cũng giống như một Queue bình thường. Quan trọng nhất là việc tổ chức lưu trữ các phần tử và cài đặt các hành vi thỏa yêu cầu: <em>Phần tử ưu tiên nhất sẽ được lấy ra trước tiên</em>.</p>
-
 <p>Về định nghĩa <em>ưu tiên</em>, có thể định nghĩa <em>giá trị lớn hơn là ưu tiên hơn</em> hoặc <em>giá trị nhỏ hơn là ưu tiên hơn</em>. Ví dụ như một giao dịch sẽ bao gồm người thực hiện, giá tiền và ngày thực hiện. Có thể định nghĩa <em>ngày thực hiện gần hiện tại hơn là ưu tiên hơn</em> hoặc ngược lại.</p>
-
 <p>API của <code>PriorityQueue</code> có thể được định nghĩa như sau:</p>
-
 <pre><code class="language-java">public interface PriorityQueue&lt;T extends Comparable&lt;T&gt;&gt; {
     void enqueue(T t);
     T peek();
@@ -308,9 +303,7 @@ if (!doNotTrack) {
     int size();
 }
 </code></pre>
-
 <p>Các phương thức cơ bản như sau:</p>
-
 <ul>
 <li><em>enqueue(T t)</em>: Thêm mới phần tử thuộc kiểu T.</li>
 <li><em>peek()</em>: Lấy ra phần tử ưu tiên nhất. Trường hợp này giá trị lớn hơn thì ưu tiên hơn.</li>
@@ -318,23 +311,19 @@ if (!doNotTrack) {
 <li><em>isEmpty()</em>: Kiểm tra queue có rỗng hay không.</li>
 <li><em>size()</em>: Lấy kích thước queue.</li>
 </ul>
-
 <h1 id="2-cài-đặt">2. Cài đặt</h1>
-
 <p>Phần này sẽ bàn về một số phương pháp cài đặt <code>PriorityQueue</code>.</p>
-
-<h2 id="2-1-cơ-bản">2.1. Cơ bản</h2>
-
+<h2 id="21-cơ-bản">2.1. Cơ bản</h2>
 <p>Với cách này, chúng ta sẽ dùng mảng, hoặc danh sách liên kết, và cài đặt hành vi của các phương thức để thỏa mãn yêu cầu của PriorityQueue. Để cài đặt PriorityQueue theo cách này, chúng ta có thể suy nghĩ theo 2 hướng:</p>
-
 <ul>
-<li><p><em>Không sắp xếp trước (lazy approach)</em>: Với thao tác <code>enqueue()</code>, chỉ việc đơn giản là thêm mới một phần tử vào danh sách mà không cần làm gì thêm. Do đó, độ phức tạp của thao tác này là $O(1)$. Nhưng đối với thao tác <code>dequeue()</code>, chúng ta cần phải duyệt qua danh sách để tìm phần tử có độ ưu tiên cao nhất sau đó remove phần tử này khỏi danh sách nên độ phức tạp là $O(N)$.</p></li>
-
-<li><p><em>Sắp xếp trước (eager approach)</em>: Ở hướng này, chúng ta sẽ sắp xếp danh sách mỗi khi thêm vào để cho thao tác lấy là ít tốn kém nhất. Mỗi khi thêm vào, chúng ta cần duyệt danh sách để thêm vào đúng vị trí đảm bảo danh sách luôn được sắp xếp. Do đó, độ phức tạp là $O(N)$. Khi lấy ra, chỉ đơn giản lấy ra phần tử đầu tiên của danh sách vì mặc nhiên nó có độ ưu tiên cao nhất. Chẳng hạn, nếu ta định nghĩa <em>lớn hơn là ưu tiên hơn</em>, thì danh sách sẽ được sắp xếp giảm dần. Mặc nhiên phần tử đầu tiên sẽ là phần tử lớn nhất. Do vậy nên độ phức tạp của thao tác này là $O(1)$.</p></li>
+<li>
+<p><em>Không sắp xếp trước (lazy approach)</em>: Với thao tác <code>enqueue()</code>, chỉ việc đơn giản là thêm mới một phần tử vào danh sách mà không cần làm gì thêm. Do đó, độ phức tạp của thao tác này là $O(1)$. Nhưng đối với thao tác <code>dequeue()</code>, chúng ta cần phải duyệt qua danh sách để tìm phần tử có độ ưu tiên cao nhất sau đó remove phần tử này khỏi danh sách nên độ phức tạp là $O(N)$.</p>
+</li>
+<li>
+<p><em>Sắp xếp trước (eager approach)</em>: Ở hướng này, chúng ta sẽ sắp xếp danh sách mỗi khi thêm vào để cho thao tác lấy là ít tốn kém nhất. Mỗi khi thêm vào, chúng ta cần duyệt danh sách để thêm vào đúng vị trí đảm bảo danh sách luôn được sắp xếp. Do đó, độ phức tạp là $O(N)$. Khi lấy ra, chỉ đơn giản lấy ra phần tử đầu tiên của danh sách vì mặc nhiên nó có độ ưu tiên cao nhất. Chẳng hạn, nếu ta định nghĩa <em>lớn hơn là ưu tiên hơn</em>, thì danh sách sẽ được sắp xếp giảm dần. Mặc nhiên phần tử đầu tiên sẽ là phần tử lớn nhất. Do vậy nên độ phức tạp của thao tác này là $O(1)$.</p>
+</li>
 </ul>
-
 <p>Code dưới đây là ví dụ cho trường hợp sắp xếp trước với danh sách liên kết:</p>
-
 
 
   
@@ -415,9 +404,7 @@ if (!doNotTrack) {
     
   </div>
 </figure>
-
 <p>Hàm <code>main</code> để test thử.</p>
-
 <pre><code class="language-java">public static void main(String[] args) {
     PriorityQueue&lt;Integer&gt; q = new BasicPQ&lt;&gt;();
     q.enqueue(4);
@@ -434,22 +421,15 @@ if (!doNotTrack) {
     System.out.println(q);
 }
 </code></pre>
-
 <p>Kết quả là:</p>
-
 <pre><code>[7, 5, 4, 3, 2, 1]
 [4, 3, 2, 1]
 [7, 4, 3, 2, 1]
 </code></pre>
-
 <p>Phương pháp cơ bản sẽ hiệu quả đối với số lượng nhỏ các phần tử. Cả 2 hướng trên đều có thao tác có độ phức tạp <em>linear</em>. Trong thực tế, để đảm bảo hiệu năng người ta sẽ dùng Heap có độ phức tạp <em>logarit</em> cho cả 2 thao tác trên sẽ đảm bảo hiệu năng hơn.</p>
-
-<h2 id="2-2-sử-dụng-heap">2.2. Sử dụng Heap</h2>
-
+<h2 id="22-sử-dụng-heap">2.2. Sử dụng Heap</h2>
 <p>Trong phương pháp này, chúng ta dùng một mảng đảm bảo tính chất của <em>Heap</em> để lưu trữ các phần tử. Các bạn có thể tham khảo ở bài viết: <a href="https://chidokun.github.io/2021/07/heap-note/">Heap và một số ghi chú</a>.</p>
-
 <p><b><em>Thao tác thêm mới</em></b> sẽ thêm một phần tử vào cuối mảng. Hãy tưởng tượng mảng Heap đang được biểu diễn dưới dạng cây nhị phân. Khi thêm mới vào cuối có nghĩa là sẽ thêm vào nút lá. Và nút lá này có thể vi phạm tính chất của Heap. Vậy nên chúng ta sẽ <em>hiệu chỉnh Heap</em> theo chiến lược <em>Bottom-Up</em>, nghĩa là điều chỉnh từ dưới lên.</p>
-
 
 
  
@@ -477,9 +457,7 @@ if (!doNotTrack) {
   
 </div>
 
-
 <p>Với <b><em>thao tác loại bỏ</em></b>, phần tử được loại bỏ chắc chắn sẽ là phần tử đầu tiên. Để loại bỏ phần tử này, ta sẽ tráo nó với phần tử ở cuối mảng rồi loại bỏ phần tử cuối này. Lúc này nút gốc sẽ vi phạm tính chất của Heap. Do đó, chúng ta sẽ <em>hiệu chỉnh Heap</em> theo chiến lược <em>Top-down</em>, nghĩa là điều chỉnh từ trên xuống.</p>
-
 
 
  
@@ -507,9 +485,7 @@ if (!doNotTrack) {
   
 </div>
 
-
 <p>Code minh họa cho <code>PriorityQueue</code> sử dụng Heap.</p>
-
 
 
   
@@ -618,17 +594,11 @@ if (!doNotTrack) {
     
   </div>
 </figure>
-
 <p>Riêng hàm <code>swim()</code>, <code>swap()</code>, và <code>sink()</code>, để hiểu hơn các bạn có thể xem lại bài viết <a href="https://chidokun.github.io/2021/07/heap-note/">Heap và một số ghi chú</a> nhé.</p>
-
 <h1 id="3-tổng-quát-hóa-phép-so-sánh">3. Tổng quát hóa phép so sánh</h1>
-
 <p>Priority Queue được cài đặt như trên chỉ dùng được như Max Priority Queue, nghĩa là <em>phần tử lớn hơn thì ưu tiên hơn</em>. Trong trường hợp chúng ta cần Min Priority Queue thì phải viết lại một class khác tương tự. Để có thể hỗ trợ cả hai loại trong một class, chúng ta có thể tổng quát hóa phép so sánh bên trong Priority Queue và truyền từ bên ngoài vào phép so sánh này.</p>
-
 <p>Để làm điều này, chúng ta có thể dùng <code>Comparator&lt;T&gt;</code> của Java.</p>
-
 <p>Đầu tiên, khai báo một field <code>comparator</code> và thêm một tham số vào constructor.</p>
-
 <pre><code class="language-java">private Comparator&lt;T&gt; comparator;
 
 public HeapPQ(int maxSize, Comparator&lt;T&gt; comparator) {
@@ -636,9 +606,7 @@ public HeapPQ(int maxSize, Comparator&lt;T&gt; comparator) {
     this.comparator = comparator;
 }
 </code></pre>
-
 <p>Field <code>comparator</code> này đại diện cho một phép so sánh, chúng ta sẽ dùng field này để thực hiện so sánh trong các hàm <code>swim()</code> và <code>sink()</code>.</p>
-
 <pre><code class="language-java">private void swim(int i) {
     while (i &gt; 0 &amp;&amp; comparator.compare(arr[(i-1)/2], arr[i]) &lt; 0) {
         swap((i-1)/2, i);
@@ -658,19 +626,14 @@ private void sink(int n, int i) {
     }
 }
 </code></pre>
-
 <p>Và như thế, ta có thể khai báo Priority Queue với lambda function như sau:</p>
-
 <pre><code class="language-java">// For max priority queue
 PriorityQueue&lt;Integer&gt; q = new HeapPQ&lt;&gt;(50, (a, b) -&gt; a - b);
 // For min priority queue
 PriorityQueue&lt;Integer&gt; q = new HeapPQ&lt;&gt;(50, (a, b) -&gt; b - a);
 </code></pre>
-
 <h1 id="4-độ-phức-tạp">4. Độ phức tạp</h1>
-
 <p>Bảng sau mô tả độ phức tạp của các phương pháp cài đặt Priority Queue.</p>
-
 <table>
 <thead>
 <tr>
@@ -679,32 +642,27 @@ PriorityQueue&lt;Integer&gt; q = new HeapPQ&lt;&gt;(50, (a, b) -&gt; b - a);
 <th>Heap-based</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>enqueue</td>
 <td><em>Lazy approach</em>: $O(1)$<br /><em>Eager approach</em>: $O(N)$</td>
 <td>$O(\log{N})$</td>
 </tr>
-
 <tr>
 <td>peek</td>
 <td><em>Lazy approach</em>: $O(N)$<br /><em>Eager approach</em>: $O(1)$</td>
 <td>$O(1)$</td>
 </tr>
-
 <tr>
 <td>dequeue</td>
 <td><em>Lazy approach</em>: $O(N)$<br /><em>Eager approach</em>: $O(1)$</td>
 <td>$O(\log{N})$</td>
 </tr>
-
 <tr>
 <td>isEmpty</td>
 <td>$O(1)$</td>
 <td>$O(1)$</td>
 </tr>
-
 <tr>
 <td>size</td>
 <td>$O(1)$</td>
@@ -712,9 +670,7 @@ PriorityQueue&lt;Integer&gt; q = new HeapPQ&lt;&gt;(50, (a, b) -&gt; b - a);
 </tr>
 </tbody>
 </table>
-
 <h1 id="references">References</h1>
-
 <ul>
 <li><a href="https://algs4.cs.princeton.edu/home/">Algorithms, 4th Edition by Robert Sedgewick and Kevin Wayne</a></li>
 </ul>
