@@ -18,7 +18,7 @@ thumbnailImage: /thumbnails/priority-queue.png
 thumbnailImagePosition: left
 ---
 
-Ở bài viết [Priority Queue và những cách cài đặt]({{< ref "/post/priority-queue" >}}), mình đã giới thiệu qua cấu trúc Priority Queue, những đặc trưng và cách cài đặt. Tuy nhiên trong một số trường hợp, chúng ta sẽ có nhu cầu cập nhật hoặc xóa phần tử khỏi Queue thông qua một index. Trong bài viết này chúng ta sẽ cùng cải tiến Priority Queue để có thể thực hiện các chức năng trên.
+Ở bài viết [Priority Queue và những cách cài đặt]({{< ref "/post/software/priority-queue" >}}), mình đã giới thiệu qua cấu trúc Priority Queue, những đặc trưng và cách cài đặt. Tuy nhiên trong một số trường hợp, chúng ta sẽ có nhu cầu cập nhật hoặc xóa phần tử khỏi Queue thông qua một index. Trong bài viết này chúng ta sẽ cùng cải tiến Priority Queue để có thể thực hiện các chức năng trên.
 
 <!--more-->
 
@@ -60,7 +60,7 @@ Công việc của chúng ta là cài đặt cấu trúc dữ liệu Index Prior
 
 # 2. Cài đặt
 
-Tương tự Priority Queue, Index Priority Queue sẽ được cài đặt dựa trên Heap. Nếu chưa biết Heap là gì, các bạn có thể xem lại bài viết [Heap và một số ghi chú]({{< ref "/post/heap-note" >}}).
+Tương tự Priority Queue, Index Priority Queue sẽ được cài đặt dựa trên Heap. Nếu chưa biết Heap là gì, các bạn có thể xem lại bài viết [Heap và một số ghi chú]({{< ref "/post/software/heap-note" >}}).
 
 Để lưu trữ các phần tử dựa trên index, mình sử dụng mảng `keys` với chỉ số mảng chính là index. Lúc này không thể dựng Heap trên `keys`, ta cần có một mảng `pq` với giá trị là index của phần tử trong `keys`. Nghĩa là, Heap của chúng ta sẽ nằm trên `pq`, khi lấy ra phần tử ưu tiên nhất trong `pq` thì giá trị của nó chính là index của phần tử ưu tiên nhất, tra cứu trong mảng `keys` sẽ được phần tử cần tìm. 
 
@@ -136,7 +136,7 @@ public int peekIndex() {
 }
 ```
 
-Ngoài ra, để thao tác trên Heap chúng ta cần cài đặt các hàm utility để hiệu chỉnh Heap theo cơ chế Bottom-Up và Top-Down. Việc hiệu chỉnh Heap sẽ thực hiện trên cả `pq` và `qp`. Tham khảo bài viết [Heap và một số ghi chú]({{< ref "/post/heap-note" >}}) để hiểu thêm về các hàm này. Định nghĩa *ưu tiên* ở đây là *lớn hơn thì ưu tiên hơn*.
+Ngoài ra, để thao tác trên Heap chúng ta cần cài đặt các hàm utility để hiệu chỉnh Heap theo cơ chế Bottom-Up và Top-Down. Việc hiệu chỉnh Heap sẽ thực hiện trên cả `pq` và `qp`. Tham khảo bài viết [Heap và một số ghi chú]({{< ref "/post/software/heap-note" >}}) để hiểu thêm về các hàm này. Định nghĩa *ưu tiên* ở đây là *lớn hơn thì ưu tiên hơn*.
 
 ```java
 private void swim(int i) {
@@ -235,7 +235,7 @@ int removePeek() {
 
 # 3. Tổng quát hóa phép so sánh
 
-Tương tự như với Priority Queue trong bài viết [Priority Queue và những cách cài đặt]({{< ref "/post/priority-queue" >}}), chúng ta có thể tổng quát hóa phép so sánh nhằm xử lý cả hai trường hợp Max Priority Queue và Min Priority Queue.
+Tương tự như với Priority Queue trong bài viết [Priority Queue và những cách cài đặt]({{< ref "/post/software/priority-queue" >}}), chúng ta có thể tổng quát hóa phép so sánh nhằm xử lý cả hai trường hợp Max Priority Queue và Min Priority Queue.
 
 ```java
 private Comparator<T> comparator;

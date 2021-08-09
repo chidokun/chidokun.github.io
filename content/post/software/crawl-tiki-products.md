@@ -21,7 +21,7 @@ thumbnailImagePosition: left
 Tiki là một trong những trang thương mại điện tử lớn nhất Việt Nam. Với chính sách gắt gao để hạn chế hàng nhái, hàng giả nên những thông tin product trên Tiki có thể "tin tưởng" được. Nếu có nhu cầu lấy dữ liệu sản phẩm thì dữ liệu trên Tiki cũng là một nguồn tham khảo đáng tin cậy. Bên cạnh đó, mình cũng đang tập tành viết crawler nên trong bài này mình sẽ giới thiệu cách mình đã làm để lấy dữ liệu về sản phẩm trên Tiki.
 
 {{< alert info >}}
-Qua một khoảng thời gian dài, nhiều bạn feedback với mình là code trong bài viết này không thể chạy được nữa. Không bất ngờ lắm với vấn đề này, mình sẽ hướng dẫn các bạn lấy lại dữ liệu về sản phẩm trên Tiki với Phần 2 nhé: [Tập tành crawl dữ liệu product của Tiki (Phần 2)]({{< ref "/post/crawl-tiki-products-p2" >}})
+Qua một khoảng thời gian dài, nhiều bạn feedback với mình là code trong bài viết này không thể chạy được nữa. Không bất ngờ lắm với vấn đề này, mình sẽ hướng dẫn các bạn lấy lại dữ liệu về sản phẩm trên Tiki với Phần 2 nhé: [Tập tành crawl dữ liệu product của Tiki (Phần 2)]({{< ref "/post/software/crawl-tiki-products-p2" >}})
 {{< /alert >}}
 
 <!--more-->

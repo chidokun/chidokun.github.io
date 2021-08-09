@@ -16,7 +16,7 @@ thumbnailImage: /thumbnails/priority-queue.png
 thumbnailImagePosition: left
 ---
 
-Hôm nay chúng ta cùng điểm qua một cấu trúc dữ liệu thuộc dòng họ nhà Queue có một tính chất khá đặc biệt - đẩy vào và lấy ra theo độ ưu tiên - chính là *Priority Queue*. Nó có rất nhiều ứng dụng, điển hình là trong [Thuật toán nén Huffman Coding]({{< ref "/post/huffman-coding-p2" >}}) mà mình từng đề cập. Trong bài này chúng ta sẽ đi qua một số cách cài đặt của Priority Queue.
+Hôm nay chúng ta cùng điểm qua một cấu trúc dữ liệu thuộc dòng họ nhà Queue có một tính chất khá đặc biệt - đẩy vào và lấy ra theo độ ưu tiên - chính là *Priority Queue*. Nó có rất nhiều ứng dụng, điển hình là trong [Thuật toán nén Huffman Coding]({{< ref "/post/software/huffman-coding-p2" >}}) mà mình từng đề cập. Trong bài này chúng ta sẽ đi qua một số cách cài đặt của Priority Queue.
 
 <!--more-->
 
@@ -135,7 +135,7 @@ Phương pháp cơ bản sẽ hiệu quả đối với số lượng nhỏ các
 
 ## 2.2. Sử dụng Heap
 
-Trong phương pháp này, chúng ta dùng một mảng đảm bảo tính chất của *Heap* để lưu trữ các phần tử. Các bạn có thể tham khảo ở bài viết: [Heap và một số ghi chú]({{< ref "/post/heap-note" >}}).
+Trong phương pháp này, chúng ta dùng một mảng đảm bảo tính chất của *Heap* để lưu trữ các phần tử. Các bạn có thể tham khảo ở bài viết: [Heap và một số ghi chú]({{< ref "/post/software/heap-note" >}}).
 
 <b>*Thao tác thêm mới*</b> sẽ thêm một phần tử vào cuối mảng. Hãy tưởng tượng mảng Heap đang được biểu diễn dưới dạng cây nhị phân. Khi thêm mới vào cuối có nghĩa là sẽ thêm vào nút lá. Và nút lá này có thể vi phạm tính chất của Heap. Vậy nên chúng ta sẽ *hiệu chỉnh Heap* theo chiến lược *Bottom-Up*, nghĩa là điều chỉnh từ dưới lên.
 
@@ -217,7 +217,7 @@ public class HeapPQ<T extends Comparable<T>> implements PriorityQueue<T> {
 <!-- endtab -->
 {{< /tabbed-codeblock >}}
 
-Riêng hàm `swim()`, `swap()`, và `sink()`, để hiểu hơn các bạn có thể xem lại bài viết [Heap và một số ghi chú]({{< ref "/post/heap-note" >}}) nhé.
+Riêng hàm `swim()`, `swap()`, và `sink()`, để hiểu hơn các bạn có thể xem lại bài viết [Heap và một số ghi chú]({{< ref "/post/software/heap-note" >}}) nhé.
 
 # 3. Tổng quát hóa phép so sánh
 

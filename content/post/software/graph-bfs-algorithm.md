@@ -34,7 +34,7 @@ thumbnailImagePosition: left
 
 # 2. Hiện thực
 
-Cách hiện thực thuật toán BFS cũng tương tự như DFS ở bài viết [Thuật toán Depth First Search]({{< ref "/post/graph-dfs-algorithm" >}}). Ta cần dùng một mảng `marked` để kiểm tra xem một đỉnh đã được duyệt qua chưa. Ở đây, chúng ta dùng một `queue` để lưu các đỉnh chưa xét đỉnh kề.
+Cách hiện thực thuật toán BFS cũng tương tự như DFS ở bài viết [Thuật toán Depth First Search]({{< ref "/post/software/graph-dfs-algorithm" >}}). Ta cần dùng một mảng `marked` để kiểm tra xem một đỉnh đã được duyệt qua chưa. Ở đây, chúng ta dùng một `queue` để lưu các đỉnh chưa xét đỉnh kề.
 
 Đầu vào cần một `Graph` và đỉnh gốc `s`. Thực hiện các bước như sau:
 
@@ -75,7 +75,7 @@ public class BreathFirstSearch {
 
 # 3. Áp dụng
 
-Ta trở lại với bài toán trước ở bài viết [Thuật toán Depth First Search]({{< ref "/post/graph-dfs-algorithm" >}}).
+Ta trở lại với bài toán trước ở bài viết [Thuật toán Depth First Search]({{< ref "/post/software/graph-dfs-algorithm" >}}).
 
 > **Bài toán**: *Cho đồ thị `g` và đỉnh gốc `s`. Trả lời câu hỏi, có đường đi nào từ đỉnh gốc `s` tới một đỉnh `w` nào đó không. Nếu có, hãy tìm đường đi đó.*
 

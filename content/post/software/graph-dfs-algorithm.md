@@ -33,7 +33,7 @@ Cấu trúc **Graph** (đồ thị) gồm tập các đỉnh kết nối với n
 
 # 2. Hiện thực
 
-Hai cách hiện thực dưới đây được dùng cho cấu trúc Graph ở bài viết [Tổng quan về Đồ thị]({{< ref "/post/graph-overview" >}}).
+Hai cách hiện thực dưới đây được dùng cho cấu trúc Graph ở bài viết [Tổng quan về Đồ thị]({{< ref "/post/software/graph-overview" >}}).
 
 ## 2.1. Đệ quy
 

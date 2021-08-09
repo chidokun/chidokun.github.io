@@ -21,7 +21,7 @@ Trong quá trình học tiếng Nhật, chắc chắn bạn phải học bảng 
 
 {{< image classes="fancybox center" thumbnail-width="70%" src="/images/post/other/japanese-hatsuon/1.jpg">}}
 
-Trong khuôn khổ bài viết này, mình sẽ đưa ra một số lưu ý, những lỗi thường gặp khi phát âm trong bảng chữ cái tiếng Nhật. Có 2 bảng chữ cái là Hiragana và Katakana, cơ bản chỉ khác nhau về chữ viết còn phát âm thì tương tự nhau. Để phát âm đúng tiếng Nhật, các bạn còn phải biết cách phát âm các âm ngắt, trường âm sẽ được hướng dẫn ở bài viết [Hướng dẫn tập phát âm trường âm và âm ngắt trong tiếng Nhật]({{< ref "/post/other/japanese-chouon-sokuon" >}}).
+Trong khuôn khổ bài viết này, mình sẽ đưa ra một số lưu ý, những lỗi thường gặp khi phát âm trong bảng chữ cái tiếng Nhật. Có 2 bảng chữ cái là Hiragana và Katakana, cơ bản chỉ khác nhau về chữ viết còn phát âm thì tương tự nhau. Để phát âm đúng tiếng Nhật, các bạn còn phải biết cách phát âm các âm ngắt, trường âm sẽ được hướng dẫn ở bài viết [Hướng dẫn tập phát âm trường âm và âm ngắt trong tiếng Nhật]({{< ref "/post/life/japanese-chouon-sokuon" >}}).
 
 ## Nguyên âm trong tiếng Nhật không hoàn toàn giống như tiếng Việt
 

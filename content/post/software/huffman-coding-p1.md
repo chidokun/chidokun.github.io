@@ -107,7 +107,7 @@ Từ cây Huffman, ta có thể suy ra các giá trị mã hóa của từng ph�
 
 {{< image classes="fancybox center" thumbnail-width="60%" src="/images/post/huffman-coding-p1/5.svg" title="Cây nhị phân mã hóa">}}
 
-Ở những bài viết [tiếp theo]({{< ref "/post/huffman-coding-p2" >}}), chúng ta sẽ cùng bàn về cách hiện thực ý tưởng này bằng ngôn ngữ lập trình Java.
+Ở những bài viết [tiếp theo]({{< ref "/post/software/huffman-coding-p2" >}}), chúng ta sẽ cùng bàn về cách hiện thực ý tưởng này bằng ngôn ngữ lập trình Java.
 
 ## References
 

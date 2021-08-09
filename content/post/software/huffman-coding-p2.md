@@ -16,7 +16,7 @@ thumbnailImage: /thumbnails/huffman.png
 thumbnailImagePosition: left
 ---
 
-Với những ý tưởng của thuật toán Huffman Coding ở bài viết [Thuật toán nén Huffman Coding]({{< ref "/post/huffman-coding-p1" >}}), trong bài viết này chúng ta cùng bàn về cách hiện thực thuật toán này với ngôn ngữ Java.
+Với những ý tưởng của thuật toán Huffman Coding ở bài viết [Thuật toán nén Huffman Coding]({{< ref "/post/software/huffman-coding-p1" >}}), trong bài viết này chúng ta cùng bàn về cách hiện thực thuật toán này với ngôn ngữ Java.
 
 <!--more-->
 
@@ -278,7 +278,7 @@ public class HuffmanCoding {
     <!-- endtab -->
 {{< /tabbed-codeblock >}}
 
-Vẫn còn một phần giải nén nữa và sẽ được giới thiệu ở bài viết [Huffman Decoding: Quá trình giải nén]({{< ref "/post/huffman-coding-p3" >}})
+Vẫn còn một phần giải nén nữa và sẽ được giới thiệu ở bài viết [Huffman Decoding: Quá trình giải nén]({{< ref "/post/software/huffman-coding-p3" >}})
 
 ## References
 
