@@ -17,7 +17,7 @@ languageCode = "vi"
 defaultContentLanguage = "vi"
 title = "Nguyễn Tuấn's Blog"
 theme = "tranquilpeak"
-disqusShortname = "nguyentuanit96"
+# disqusShortname = "nguyentuanit96"
 googleAnalytics = "UA-64965138-2"
 paginate = 6
 canonifyurls = true
@@ -201,6 +201,8 @@ enableEmoji = true
     href = "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css"
     integrity = "sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei"
     crossorigin = "anonymous"
+  [[params.customCSS]]
+    href = "styles/styles.css"
 
   # Custom JS. Put here your custom JS files. They are loaded after the theme JS;
   # they have to be referred from static root. Example
