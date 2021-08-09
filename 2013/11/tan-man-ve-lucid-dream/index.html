@@ -87,6 +87,10 @@
         <link rel="stylesheet"  crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" integrity="sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei">
       
     
+      
+        <link rel="stylesheet"  href="https://chidokun.github.io/styles/styles.css">
+      
+    
 
     
       
@@ -500,12 +504,6 @@ if (!doNotTrack) {
         
       
       
-        <li class="post-action">
-          <a class="post-action-btn btn btn--default" href="#disqus_thread">
-            <i class="fa fa-comment-o"></i>
-          </a>
-        </li>
-      
       <li class="post-action">
         
           <a class="post-action-btn btn btn--default" href="#">
@@ -518,6 +516,47 @@ if (!doNotTrack) {
 </div>
 
             
+              
+    <section id="comments">
+        
+        <h2 class="title"><a href="#comments">Bình luận</a></h2>
+        <form id="comment-form" class="post-new-comment" method="post" action="https://chidokun-blog-comment.herokuapp.com/v3/entry/github/chidokun/chidokun.github.io/master/comments">
+            
+            
+            <div class="comment-box">
+                <textarea name="fields[comment]" class="comment-input-control comment-input-animated" placeholder="Comment (markdown is accepted) *" required rows="3"></textarea>
+                <div class="comment-box-tail">
+                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2013/11/tan-man-ve-lucid-dream/#comment-submitted">
+                    <input type="hidden" name="options[slug]" value="lucid-dream">
+                    <input type="text" name="fields[name]" class="post-comment-field" placeholder="Name *" required/>
+                    <input type="email" name="fields[email]" class="post-comment-field" placeholder="Email address (will not be public) *" required/>
+                    <input type="hidden" id="comment-parent" name="fields[reply_to]" value="">
+                    <input type="submit" class="btn btn--primary comment-buttons btn--comment" value="BÌNH LUẬN">
+                </div>
+            </div>
+            
+            
+        </form>
+        <section class="staticman-comments post-comments">
+            
+            
+            
+    
+            
+            
+    
+        </section>
+
+    <div id="comment-submitted" class="dialog">
+        <h3>Cảm ơn bạn</h3>
+        <p>Your comment has been submitted and will be published once it has been approved. &#128522;</p>
+
+        <p><a href="#" class="btn btn--primary comment-buttons ok">OK</a></p>
+    </div>
+
+    
+</section>
+
               
                 <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -532,44 +571,6 @@ if (!doNotTrack) {
 <div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2013/11/tan-man-ve-lucid-dream/" data-width="100%"></div>
 
               
-              
-    <section id="comments">
-        
-        <h3 class="title"><a href="#comments">&#9997; Comments</a></h3>
-        <section class="staticman-comments post-comments">
-            
-            
-            
-    
-            
-            
-    
-
-        <form id="comment-form" class="post-new-comment" method="post" action="https://chidokun-blog-comment.herokuapp.com/v3/entry/github/chidokun/chidokun.github.io/master/comments">
-            
-                <p>Be the first to leave a comment! 🎉</p>
-            
-            <h3 class="prompt">Say something</h3>
-            <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2013/11/tan-man-ve-lucid-dream/#comment-submitted">
-            <input type="hidden" name="options[slug]" value="lucid-dream">
-            <input type="text" name="fields[name]" class="post-comment-field" placeholder="Name *" required/>
-            <input type="email" name="fields[email]" class="post-comment-field" placeholder="Email address (will not be public) *" required/>
-            <input type="hidden" id="comment-parent" name="fields[reply_to]" value="">
-            <textarea name="fields[comment]" class="post-comment-field" placeholder="Comment (markdown is accepted) *" required rows="10"></textarea>
-            <input type="submit" class="post-comment-field btn btn-primary comment-buttons" value="Submit">
-        </form>
-    </section>
-
-    <div id="comment-submitted" class="dialog">
-        <h3>Thank you!</h3>
-        <p>Your comment has been submitted and will be published once it has been approved. &#128522;</p>
-
-        <p><a href="#" class="btn btn-primary comment-buttons ok">OK</a></p>
-    </div>
-
-    
-</section>
-
             
           </div>
         </article>
@@ -632,12 +633,6 @@ if (!doNotTrack) {
           </li>
         
       
-      
-        <li class="post-action">
-          <a class="post-action-btn btn btn--default" href="#disqus_thread">
-            <i class="fa fa-comment-o"></i>
-          </a>
-        </li>
       
       <li class="post-action">
         
@@ -769,28 +764,6 @@ $(document).ready(function() {
 
 
   
-    
-      <script>
-        var disqus_config = function () {
-          this.page.url = 'https:\/\/chidokun.github.io\/2013\/11\/tan-man-ve-lucid-dream\/';
-          
-            this.page.identifier = '\/2013\/11\/tan-man-ve-lucid-dream\/'
-          
-        };
-        (function() {
-          
-          
-          if (window.location.hostname == "localhost") {
-            return;
-          }
-          var d = document, s = d.createElement('script');
-          var disqus_shortname = 'nguyentuanit96';
-          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-
-          s.setAttribute('data-timestamp', +new Date());
-          (d.head || d.body).appendChild(s);
-        })();
-      </script>
     
   
 
