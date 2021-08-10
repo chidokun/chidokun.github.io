@@ -208,10 +208,10 @@
     
     <item>
       <title>Cách khởi tạo số ngẫu nhiên trong C/C&#43;&#43;</title>
-      <link>https://chidokun.github.io/2015/01/prime-number/</link>
+      <link>https://chidokun.github.io/2015/01/cpp-random-number/</link>
       <pubDate>Sat, 17 Jan 2015 15:07:00 +0700</pubDate>
       
-      <guid>https://chidokun.github.io/2015/01/prime-number/</guid>
+      <guid>https://chidokun.github.io/2015/01/cpp-random-number/</guid>
       <description>&lt;p&gt;Khởi tạo số ngẫu nhiên thường được dùng để giảm bớt công đoạn nhập số cho mảng một chiều, ma trận,&amp;hellip; Để khởi tạo số ngẫu nhiên ta cần biết đến hàm &lt;code&gt;srand()&lt;/code&gt; và &lt;code&gt;rand()&lt;/code&gt; trong &lt;code&gt;stdlib.h&lt;/code&gt;. Trong C++ 2 hàm này có sẵn trong &lt;code&gt;iostream&lt;/code&gt;.&lt;/p&gt;</description>
     </item>
     

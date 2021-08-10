@@ -7,26 +7,26 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Tuấn">
-<meta name="keywords" content="số nguyên tố, eratosthenes, development, programming, chidokun, lập trình">
-<meta name="description" content="Số nguyên tố là số chỉ có 2 ước, đó là 1 và chính nó, tức là nó chỉ chia hết cho số 1 và chính nó. Số 1 và 0 không được coi là số nguyên tố. Các bài toán cơ bản về số nguyên tố gồm kiểm tra một số nguyên n có phải là số nguyên tố và tìm các số nguyên tố nhỏ hơn hoặc bằng một số nguyên cho trước.">
+<meta name="keywords" content="số ngẫu nhiên, random number, development, programming, chidokun, lập trình">
+<meta name="description" content="Khởi tạo số ngẫu nhiên thường được dùng để giảm bớt công đoạn nhập số cho mảng một chiều, ma trận,&hellip; Để khởi tạo số ngẫu nhiên ta cần biết đến hàm srand() và rand() trong stdlib.h. Trong C&#43;&#43; 2 hàm này có sẵn trong iostream.">
 
 
-<meta property="og:description" content="Số nguyên tố là số chỉ có 2 ước, đó là 1 và chính nó, tức là nó chỉ chia hết cho số 1 và chính nó. Số 1 và 0 không được coi là số nguyên tố. Các bài toán cơ bản về số nguyên tố gồm kiểm tra một số nguyên n có phải là số nguyên tố và tìm các số nguyên tố nhỏ hơn hoặc bằng một số nguyên cho trước.">
+<meta property="og:description" content="Khởi tạo số ngẫu nhiên thường được dùng để giảm bớt công đoạn nhập số cho mảng một chiều, ma trận,&hellip; Để khởi tạo số ngẫu nhiên ta cần biết đến hàm srand() và rand() trong stdlib.h. Trong C&#43;&#43; 2 hàm này có sẵn trong iostream.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Các vấn đề cơ bản về số nguyên tố trong lập trình">
-<meta name="twitter:title" content="Các vấn đề cơ bản về số nguyên tố trong lập trình">
-<meta property="og:url" content="https://chidokun.github.io/2015/01/prime-number/">
-<meta property="twitter:url" content="https://chidokun.github.io/2015/01/prime-number/">
+<meta property="og:title" content="Cách khởi tạo số ngẫu nhiên trong C/C&#43;&#43;">
+<meta name="twitter:title" content="Cách khởi tạo số ngẫu nhiên trong C/C&#43;&#43;">
+<meta property="og:url" content="https://chidokun.github.io/2015/01/cpp-random-number/">
+<meta property="twitter:url" content="https://chidokun.github.io/2015/01/cpp-random-number/">
 <meta property="og:site_name" content="Nguyễn Tuấn&#39;s Blog">
-<meta property="og:description" content="Số nguyên tố là số chỉ có 2 ước, đó là 1 và chính nó, tức là nó chỉ chia hết cho số 1 và chính nó. Số 1 và 0 không được coi là số nguyên tố. Các bài toán cơ bản về số nguyên tố gồm kiểm tra một số nguyên n có phải là số nguyên tố và tìm các số nguyên tố nhỏ hơn hoặc bằng một số nguyên cho trước.">
-<meta name="twitter:description" content="Số nguyên tố là số chỉ có 2 ước, đó là 1 và chính nó, tức là nó chỉ chia hết cho số 1 và chính nó. Số 1 và 0 không được coi là số nguyên tố. Các bài toán cơ bản về số nguyên tố gồm kiểm tra một số nguyên n có phải là số nguyên tố và tìm các số nguyên tố nhỏ hơn hoặc bằng một số nguyên cho trước.">
+<meta property="og:description" content="Khởi tạo số ngẫu nhiên thường được dùng để giảm bớt công đoạn nhập số cho mảng một chiều, ma trận,&hellip; Để khởi tạo số ngẫu nhiên ta cần biết đến hàm srand() và rand() trong stdlib.h. Trong C&#43;&#43; 2 hàm này có sẵn trong iostream.">
+<meta name="twitter:description" content="Khởi tạo số ngẫu nhiên thường được dùng để giảm bớt công đoạn nhập số cho mảng một chiều, ma trận,&hellip; Để khởi tạo số ngẫu nhiên ta cần biết đến hàm srand() và rand() trong stdlib.h. Trong C&#43;&#43; 2 hàm này có sẵn trong iostream.">
 <meta property="og:locale" content="vi">
 
   
-    <meta property="article:published_time" content="2015-01-12T23:13:00">
+    <meta property="article:published_time" content="2015-01-17T15:07:00">
   
   
-    <meta property="article:modified_time" content="2015-01-12T23:13:00">
+    <meta property="article:modified_time" content="2015-01-17T15:07:00">
   
   
   
@@ -38,7 +38,7 @@
   
   
     
-      <meta property="article:tag" content="prime">
+      <meta property="article:tag" content="random">
     
   
 
@@ -64,14 +64,14 @@
   <meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
 
 
-    <title>Các vấn đề cơ bản về số nguyên tố trong lập trình</title>
+    <title>Cách khởi tạo số ngẫu nhiên trong C/C&#43;&#43;</title>
     <meta name="google-site-verification" content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI" />
     <link rel="icon" href="https://chidokun.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://chidokun.github.io/2015/01/prime-number/">
+    <link rel="canonical" href="https://chidokun.github.io/2015/01/cpp-random-number/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -271,19 +271,19 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Các vấn đề cơ bản về số nguyên tố trong lập trình
+      Cách khởi tạo số ngẫu nhiên trong C/C&#43;&#43;
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2015-01-12T23:13:00&#43;07:00">
+      <time itemprop="datePublished" datetime="2015-01-17T15:07:00&#43;07:00">
         
   
   
   
   
-    12 tháng 1 2015
+    17 tháng 1 2015
   
 
       </time>
@@ -303,7 +303,7 @@ if (!doNotTrack) {
 
   <div>
   <div class="fb-like" 
-    data-href="https://chidokun.github.io/2015/01/prime-number/" 
+    data-href="https://chidokun.github.io/2015/01/cpp-random-number/" 
     data-width="" 
     data-layout="button_count" 
     data-action="like" 
@@ -314,80 +314,66 @@ if (!doNotTrack) {
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>Số nguyên tố là số chỉ có 2 ước, đó là 1 và chính nó, tức là nó chỉ chia hết cho số 1 và chính nó. Số 1 và 0 không được coi là số nguyên tố. Các bài toán cơ bản về số nguyên tố gồm kiểm tra một số nguyên n có phải là số nguyên tố và tìm các số nguyên tố nhỏ hơn hoặc bằng một số nguyên cho trước.</p>
-<h1 id="kiểm-tra-một-số-nguyên-có-là-số-nguyên-tố">Kiểm tra một số nguyên có là số nguyên tố</h1>
-<p><em>Ý tưởng</em>: Kiểm tra xem số n có chia hết cho từng số nhỏ hơn nó hay không. Nếu có thì không là số nguyên tố, nếu tất cả đều không có thì là số nguyên tố.</p>
-<p><em>Cài đặt bằng C</em>: Nếu số n là 1 hoặc 0 thì không là số nguyên tố. Dùng một vòng for chạy từ 2 đến n-1 để kiểm tra xem n có chia hết cho bất kỳ số nào trong đó không, nếu có thỉ không là số nguyên tố, nếu tất cả đều không thì là số nguyên tố. Trong một hàm nếu gặp lệnh <code>return</code>, hàm sẽ trả về giá trị và kết thúc hàm nên có thể viết gọn như sau:</p>
-<pre><code class="language-c++">int IsPrime(int n)
-{
-   if (n &lt; 2) return 0;
-   for(int i = 2; i &lt; n; i++)
-      if(n%i==0) return 0; 
-   return 1; 
-}
+              <p>Khởi tạo số ngẫu nhiên thường được dùng để giảm bớt công đoạn nhập số cho mảng một chiều, ma trận,&hellip; Để khởi tạo số ngẫu nhiên ta cần biết đến hàm <code>srand()</code> và <code>rand()</code> trong <code>stdlib.h</code>. Trong C++ 2 hàm này có sẵn trong <code>iostream</code>.</p>
+<h1 id="hàm-srand">Hàm srand</h1>
+<p>Cú pháp:</p>
+<pre><code class="language-c++">void srand (unsigned int seed);
 </code></pre>
-<p>Tuy nhiên có thể nhận thấy việc kiểm tra đến n-1 là không cần thiết. Vì nếu n có các ước thì các ước của nó chắc chắn không vượt qua căn bậc 2 của n. Như vậy điều kiện trong vòng for sẽ được đổi thành <code>i &lt;= sqrt(n)</code>, nhưng để gọi hàm <code>sqrt()</code> cần phải khai báo thư viện <code>math.h</code>, ép kiểu n sang kiểu thực,&hellip; khá rườm rà nên ta có thể đổi thành <code>i*i &lt;= n</code> để tiện hơn.</p>
-<p>Ta có hàm kiểm tra số nguyên tố đơn giản như sau.</p>
-<pre><code class="language-c++">int IsPrime(int n)
-{
-   if (n &lt; 2) return 0;
-   for(int i = 2; i*i &lt;= n; i++)
-      if(n%i==0) return 0; 
-   return 1;
-}
+<p>Dùng để khởi tạo một số ngẫu nhiên theo một số <code>seed</code>. Số ngẫu nhiên được tạo là pseudo-random, tức là số ngẫu nhiên giả, có thể đoán được số kế tiếp. Mỗi một số <code>seed</code> sẽ cho ra một bộ số random khác nhau.</p>
+<p>Để cho mỗi số <code>seed</code> khác nhau người ta thường dùng kèm với <code>unsigned int time(NULL)</code> trong thư viện <code>time.h</code>, hàm <code>time(NULL)</code> trả về số giây đã trôi qua kể từ ngày 1/1/1970.</p>
+<p>Hàm <code>srand()</code> thường được gọi trước khi gọi hàm <code>rand()</code>.</p>
+<h1 id="hàm-rand">Hàm rand</h1>
+<p>Cú pháp:</p>
+<pre><code class="language-c++">int rand(void);
 </code></pre>
-<p>Một chương trình kiểm tra số nguyên tố sẽ có dạng tương tự như sau:</p>
+<p>Trả về một số nguyên random giả trong khoảng từ <code>0</code> đến <code>RAND_MAX</code>. Hằng <code>RAND_MAX</code> được định nghĩa trong <code>stdlib.h</code> đảm bảo ít nhất bằng <code>32767</code>.</p>
+<p>Nếu chỉ dùng hàm <code>rand()</code> thì sẽ cho ra những số random giống nhau mỗi lần chạy, vì vậy người ta thường khai báo <code>srand(time(NULL))</code> trước để kết quả random mỗi lần mỗi khác nhau.</p>
+<p>Để lấy số ngẫu nhiên từ <code>0</code> đến <code>n</code>, ta sử dụng <code>rand()%(n+1)</code>.</p>
+<p>Để lấy số ngẫu nhiên từ <code>a</code> đến <code>b</code>, ta sử dụng <code>a + rand()%(b-a+1)</code>.</p>
+<p>Ví dụ code C:</p>
 <pre><code class="language-c++">#include&lt;stdio.h&gt;
-#include&lt;conio.h&gt;
-
-//Hàm kiểm tra số nguyên tố
-int IsPrime(int n) 
-{
-   if (n &lt; 2) return 0;
-   for(int i = 2; i*i &lt;= n; i++)
-      if(n%i==0) return 0; 
-   return 1;
-}
+#include&lt;stdlib.h&gt;
+#include&lt;time.h&gt;
 
 int main()
 {
-   int n;
-   printf(&quot;Nhập số n: &quot;);
-   scanf(&quot;%d&quot;, &amp;n);
-   if(IsPrime(n))
-      printf(&quot;%d là số nguyên tố.\n&quot;,n);
-   else
-      printf(&quot;%d không là số nguyên tố.\n&quot;,n);
+   int a, b;
+   srand(time(NULL));
+   printf(&quot;a = %d\n&quot;, rand()%100); //Ngẫu nhiên từ 0 đến 99
+   printf(&quot;b = %d\n&quot;, 50+rand()%51); // 50 đến 100
    return 0;
-   getch();
 }
 </code></pre>
-<h1 id="tìm-các-số-nguyên-tố-nhỏ-hơn-hoặc-bằng-số-n-cho-trước">Tìm các số nguyên tố nhỏ hơn hoặc bằng số n cho trước</h1>
-<p><em>Ý tưởng</em>: Ta đã có hàm kiểm tra số nguyên tố nên ta sẽ xét mọi số nhỏ hơn n, nếu là số nguyên tố thì in ra màn hình.</p>
-<p><em>Cài đặt bằng C</em>: Dùng vòng for xét từ 2 đến n, kiểm tra xem nó có phải là số nguyên tố không, nếu có thì in ra màn hình. ta có hàm như sau:</p>
-<pre><code class="language-c++">void OutPrime(int n)
+<h1 id="bonus-thêm-một-số-hàm-hay-dùng">Bonus thêm một số hàm hay dùng</h1>
+<p>Hàm Random từ 0 đến n:</p>
+<pre><code class="language-cpp">int Random(int n)
 {
-   for(int i = 2; i &lt;= n; i++)
-      if(IsPrime(i))
-         printf(&quot;%d\t&quot;, i);
+   return rand()%(n+1);
 }
 </code></pre>
-<p>Có thể thấy mỗi số đều phải gọi hàm <code>IsPrime()</code> kiểm tra nên khối lượng công việc máy phải làm ngày càng lớn ở những số lớn hơn vì vậy thời gian tính toán sẽ lâu hơn. Để cải thiện điều này, có thể dùng thuật toán <em>sàng Eratosthenes</em>.</p>
-<p><em>Ý tưởng của thuật toán sàng Eratosthenes</em>: Giả sử tất cả đều là số nguyên tố, xét từ 2, loại tất cả các bội số của 2, xét lên 3, loại tất cả các bội số của 3, cứ thế xét đến căn bậc 2 của n. Kết thúc quá trình các số chưa bị loại là số nguyên tố.</p>
-<p>Cài đặt bằng C: Tạo một mảng nguyên dùng để đánh dấu các vị trí không phải là số nguyên tố. Ban đầu đánh dấu tất cả đều là số nguyên tố. Duyệt mảng từ 2 đến căn bậc 2 của n, nếu phần tử đang được duyệt là số nguyên tố thì đánh dấu tất cả bội số của nó về giá trị không là số nguyên tố. Sau khi thực hiện xong ta được một mảng đã được đánh dấu và chỉ việc in ra những số được đánh dấu là số nguyên tố.</p>
-<p>Code C:</p>
-<pre><code class="language-c++">void OutPrime(int n)
+<p>Hàm Random từ a đến b:</p>
+<pre><code class="language-cpp">int Random(int a, int b)
 {
-   //Ta quy định: 0: là số nguyên tố, 1: không là số nguyên tố
-   int a[1000] = {0}; //Tạo mảng và gán tất cả bằng 0
-   for(int i = 2; i*i &lt;= n;i++)
-      if(!a[i]) //Nếu là số nguyên tố
-         //Duyệt các phần tử là bội số của i
-         for(int j = i*i; j &lt;= n; j+=i)
-            a[j]=1; //Đánh dấu các phần tử là bội số.
-   //In các phần tử là số nguyên tố ra màn hình
-   for (int i=2;i&lt;=n;i++)
-      if(!a[i]) printf(&quot;%d &quot;,i); 
+   return a + rand()%(b-a+1);
+}
+</code></pre>
+<p>Hàm Random số thực từ 0 đến n:</p>
+<pre><code class="language-cpp">float Random(float n)
+{
+   return n*rand()/RAND_MAX;
+}
+</code></pre>
+<p>Hàm Random số thực từ a đến b:</p>
+<pre><code class="language-cpp">float Random(float a, float b)
+{
+   return a + (b - a)*rand()/RAND_MAX;
+}
+</code></pre>
+<p>Hàm Random cho mảng một chiều:</p>
+<pre><code class="language-cpp">void Random(int *a, int n)
+{
+   for(int i = 0; i &lt; n; i++)
+      a[i] = rand();
 }
 </code></pre>
               
@@ -401,7 +387,7 @@ int main()
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/prime/">prime</a>
+  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/random/">random</a>
 
                   </div>
                 
@@ -414,7 +400,7 @@ int main()
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/cpp-random-number/" data-tooltip="Cách khởi tạo số ngẫu nhiên trong C/C&#43;&#43;">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2019/12/query-with-javascript-ep1/" data-tooltip="Truy vấn với JavaScript (Phần 1)">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -422,7 +408,7 @@ int main()
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2014/11/japanese-hatsuon/" data-tooltip="Những điều lưu ý khi phát âm bảng chữ cái tiếng Nhật">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/prime-number/" data-tooltip="Các vấn đề cơ bản về số nguyên tố trong lập trình">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -440,19 +426,19 @@ int main()
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/01/prime-number/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/01/cpp-random-number/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/01/prime-number/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/01/cpp-random-number/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/01/prime-number/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/01/cpp-random-number/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -481,8 +467,8 @@ int main()
             <div class="comment-box">
                 <textarea name="fields[comment]" class="comment-input-control comment-input-animated" placeholder="Comment (markdown is accepted) *" required rows="3"></textarea>
                 <div class="comment-box-tail">
-                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2015/01/prime-number/#comment-submitted">
-                    <input type="hidden" name="options[slug]" value="prime-number">
+                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2015/01/cpp-random-number/#comment-submitted">
+                    <input type="hidden" name="options[slug]" value="cpp-random-number">
                     <input type="text" name="fields[name]" class="post-comment-field" placeholder="Name *" required/>
                     <input type="email" name="fields[email]" class="post-comment-field" placeholder="Email address (will not be public) *" required/>
                     <input type="hidden" id="comment-parent" name="fields[reply_to]" value="">
@@ -525,7 +511,7 @@ int main()
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2015/01/prime-number/" data-width="100%"></div>
+<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2015/01/cpp-random-number/" data-width="100%"></div>
 
               
             
@@ -546,7 +532,7 @@ int main()
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/cpp-random-number/" data-tooltip="Cách khởi tạo số ngẫu nhiên trong C/C&#43;&#43;">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2019/12/query-with-javascript-ep1/" data-tooltip="Truy vấn với JavaScript (Phần 1)">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -554,7 +540,7 @@ int main()
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2014/11/japanese-hatsuon/" data-tooltip="Những điều lưu ý khi phát âm bảng chữ cái tiếng Nhật">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/prime-number/" data-tooltip="Các vấn đề cơ bản về số nguyên tố trong lập trình">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -572,19 +558,19 @@ int main()
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/01/prime-number/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/01/cpp-random-number/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/01/prime-number/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/01/cpp-random-number/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/01/prime-number/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/01/cpp-random-number/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -608,19 +594,19 @@ int main()
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2015%2F01%2Fprime-number%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2015%2F01%2Fcpp-random-number%2F">
           <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2015%2F01%2Fprime-number%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2015%2F01%2Fcpp-random-number%2F">
           <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2015%2F01%2Fprime-number%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2015%2F01%2Fcpp-random-number%2F">
           <i class="fa fa-google-plus"></i><span>Chia sẻ với Google&#43;</span>
         </a>
       </li>
