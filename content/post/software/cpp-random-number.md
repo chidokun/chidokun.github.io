@@ -1,6 +1,6 @@
 ---
 title: "Cách khởi tạo số ngẫu nhiên trong C/C++"
-slug: "prime-number"
+slug: "cpp-random-number"
 date: 2015-01-17T15:07:00+07:00
 draft: false
 categories:
