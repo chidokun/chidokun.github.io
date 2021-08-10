@@ -128,5 +128,14 @@
       <description>&lt;p&gt;Cấu trúc &lt;strong&gt;Graph&lt;/strong&gt; (đồ thị) có rất nhiều ứng dụng trong thực tiễn. Bài viết này sẽ note lại tổng quan những điểm chính về việc implement cấu trúc dữ liệu này.&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>Các vấn đề cơ bản về số nguyên tố trong lập trình</title>
+      <link>https://chidokun.github.io/2015/01/prime-number/</link>
+      <pubDate>Mon, 12 Jan 2015 23:13:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/01/prime-number/</guid>
+      <description>&lt;p&gt;Số nguyên tố là số chỉ có 2 ước, đó là 1 và chính nó, tức là nó chỉ chia hết cho số 1 và chính nó. Số 1 và 0 không được coi là số nguyên tố. Các bài toán cơ bản về số nguyên tố gồm kiểm tra một số nguyên n có phải là số nguyên tố và tìm các số nguyên tố nhỏ hơn hoặc bằng một số nguyên cho trước.&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>
