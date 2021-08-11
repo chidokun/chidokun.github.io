@@ -207,6 +207,15 @@
     </item>
     
     <item>
+      <title>Cấp phát động trong C/C&#43;&#43;</title>
+      <link>https://chidokun.github.io/2015/01/cpp-dynamic-allocation/</link>
+      <pubDate>Tue, 20 Jan 2015 01:10:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/01/cpp-dynamic-allocation/</guid>
+      <description>&lt;p&gt;Bộ nhớ động có lợi hơn bộ nhớ tĩnh rất nhiều, có thể cấp phát thêm hoặc thu hồi lại bộ nhớ. Do đó, bộ nhớ động rất linh hoạt và tiết kiệm hơn so với sử dụng bộ nhớ tĩnh. Một mảng động chứa các phần tử được cấp phát bộ nhớ động, do đó có thể thêm phần tử, xoá phần tử,&amp;hellip; nên quản lý bộ nhớ hiệu quả hơn.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Cách khởi tạo số ngẫu nhiên trong C/C&#43;&#43;</title>
       <link>https://chidokun.github.io/2015/01/cpp-random-number/</link>
       <pubDate>Sat, 17 Jan 2015 15:07:00 +0700</pubDate>

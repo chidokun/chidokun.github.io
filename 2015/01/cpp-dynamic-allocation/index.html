@@ -7,26 +7,26 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Tuấn">
-<meta name="keywords" content="số ngẫu nhiên, random number, development, programming, chidokun, lập trình">
-<meta name="description" content="Khởi tạo số ngẫu nhiên thường được dùng để giảm bớt công đoạn nhập số cho mảng một chiều, ma trận,&hellip; Để khởi tạo số ngẫu nhiên ta cần biết đến hàm srand() và rand() trong stdlib.h. Trong C&#43;&#43; 2 hàm này có sẵn trong iostream.">
+<meta name="keywords" content="cấp phát động, c/c&#43;&#43;, development, programming, chidokun, lập trình">
+<meta name="description" content="Bộ nhớ động có lợi hơn bộ nhớ tĩnh rất nhiều, có thể cấp phát thêm hoặc thu hồi lại bộ nhớ. Do đó, bộ nhớ động rất linh hoạt và tiết kiệm hơn so với sử dụng bộ nhớ tĩnh. Một mảng động chứa các phần tử được cấp phát bộ nhớ động, do đó có thể thêm phần tử, xoá phần tử,&hellip; nên quản lý bộ nhớ hiệu quả hơn.">
 
 
-<meta property="og:description" content="Khởi tạo số ngẫu nhiên thường được dùng để giảm bớt công đoạn nhập số cho mảng một chiều, ma trận,&hellip; Để khởi tạo số ngẫu nhiên ta cần biết đến hàm srand() và rand() trong stdlib.h. Trong C&#43;&#43; 2 hàm này có sẵn trong iostream.">
+<meta property="og:description" content="Bộ nhớ động có lợi hơn bộ nhớ tĩnh rất nhiều, có thể cấp phát thêm hoặc thu hồi lại bộ nhớ. Do đó, bộ nhớ động rất linh hoạt và tiết kiệm hơn so với sử dụng bộ nhớ tĩnh. Một mảng động chứa các phần tử được cấp phát bộ nhớ động, do đó có thể thêm phần tử, xoá phần tử,&hellip; nên quản lý bộ nhớ hiệu quả hơn.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Cách khởi tạo số ngẫu nhiên trong C/C&#43;&#43;">
-<meta name="twitter:title" content="Cách khởi tạo số ngẫu nhiên trong C/C&#43;&#43;">
-<meta property="og:url" content="https://chidokun.github.io/2015/01/cpp-random-number/">
-<meta property="twitter:url" content="https://chidokun.github.io/2015/01/cpp-random-number/">
+<meta property="og:title" content="Cấp phát động trong C/C&#43;&#43;">
+<meta name="twitter:title" content="Cấp phát động trong C/C&#43;&#43;">
+<meta property="og:url" content="https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">
+<meta property="twitter:url" content="https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">
 <meta property="og:site_name" content="Nguyễn Tuấn&#39;s Blog">
-<meta property="og:description" content="Khởi tạo số ngẫu nhiên thường được dùng để giảm bớt công đoạn nhập số cho mảng một chiều, ma trận,&hellip; Để khởi tạo số ngẫu nhiên ta cần biết đến hàm srand() và rand() trong stdlib.h. Trong C&#43;&#43; 2 hàm này có sẵn trong iostream.">
-<meta name="twitter:description" content="Khởi tạo số ngẫu nhiên thường được dùng để giảm bớt công đoạn nhập số cho mảng một chiều, ma trận,&hellip; Để khởi tạo số ngẫu nhiên ta cần biết đến hàm srand() và rand() trong stdlib.h. Trong C&#43;&#43; 2 hàm này có sẵn trong iostream.">
+<meta property="og:description" content="Bộ nhớ động có lợi hơn bộ nhớ tĩnh rất nhiều, có thể cấp phát thêm hoặc thu hồi lại bộ nhớ. Do đó, bộ nhớ động rất linh hoạt và tiết kiệm hơn so với sử dụng bộ nhớ tĩnh. Một mảng động chứa các phần tử được cấp phát bộ nhớ động, do đó có thể thêm phần tử, xoá phần tử,&hellip; nên quản lý bộ nhớ hiệu quả hơn.">
+<meta name="twitter:description" content="Bộ nhớ động có lợi hơn bộ nhớ tĩnh rất nhiều, có thể cấp phát thêm hoặc thu hồi lại bộ nhớ. Do đó, bộ nhớ động rất linh hoạt và tiết kiệm hơn so với sử dụng bộ nhớ tĩnh. Một mảng động chứa các phần tử được cấp phát bộ nhớ động, do đó có thể thêm phần tử, xoá phần tử,&hellip; nên quản lý bộ nhớ hiệu quả hơn.">
 <meta property="og:locale" content="vi">
 
   
-    <meta property="article:published_time" content="2015-01-17T15:07:00">
+    <meta property="article:published_time" content="2015-01-20T01:10:00">
   
   
-    <meta property="article:modified_time" content="2015-01-17T15:07:00">
+    <meta property="article:modified_time" content="2015-01-20T01:10:00">
   
   
   
@@ -38,7 +38,7 @@
   
   
     
-      <meta property="article:tag" content="random">
+      <meta property="article:tag" content="c/c&#43;&#43;">
     
   
 
@@ -64,14 +64,14 @@
   <meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
 
 
-    <title>Cách khởi tạo số ngẫu nhiên trong C/C&#43;&#43;</title>
+    <title>Cấp phát động trong C/C&#43;&#43;</title>
     <meta name="google-site-verification" content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI" />
     <link rel="icon" href="https://chidokun.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://chidokun.github.io/2015/01/cpp-random-number/">
+    <link rel="canonical" href="https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -271,19 +271,19 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Cách khởi tạo số ngẫu nhiên trong C/C&#43;&#43;
+      Cấp phát động trong C/C&#43;&#43;
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2015-01-17T15:07:00&#43;07:00">
+      <time itemprop="datePublished" datetime="2015-01-20T01:10:00&#43;07:00">
         
   
   
   
   
-    17 tháng 1 2015
+    20 tháng 1 2015
   
 
       </time>
@@ -303,7 +303,7 @@ if (!doNotTrack) {
 
   <div>
   <div class="fb-like" 
-    data-href="https://chidokun.github.io/2015/01/cpp-random-number/" 
+    data-href="https://chidokun.github.io/2015/01/cpp-dynamic-allocation/" 
     data-width="" 
     data-layout="button_count" 
     data-action="like" 
@@ -314,67 +314,66 @@ if (!doNotTrack) {
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>Khởi tạo số ngẫu nhiên thường được dùng để giảm bớt công đoạn nhập số cho mảng một chiều, ma trận,&hellip; Để khởi tạo số ngẫu nhiên ta cần biết đến hàm <code>srand()</code> và <code>rand()</code> trong <code>stdlib.h</code>. Trong C++ 2 hàm này có sẵn trong <code>iostream</code>.</p>
-<h1 id="hàm-srand">Hàm srand</h1>
-<p>Cú pháp:</p>
-<pre><code class="language-c++">void srand (unsigned int seed);
+              <p>Bộ nhớ động có lợi hơn bộ nhớ tĩnh rất nhiều, có thể cấp phát thêm hoặc thu hồi lại bộ nhớ. Do đó, bộ nhớ động rất linh hoạt và tiết kiệm hơn so với sử dụng bộ nhớ tĩnh. Một mảng động chứa các phần tử được cấp phát bộ nhớ động, do đó có thể thêm phần tử, xoá phần tử,&hellip; nên quản lý bộ nhớ hiệu quả hơn.</p>
+<p>Ngôn ngữ C cung cấp cho chúng ta 4 hàm: <code>malloc</code>, <code>calloc</code>, <code>realloc</code> để cấp phát và <code>free</code> để thu hồi. C++ cung cấp 2 toán tử: <code>new</code> để cấp phát và <code>delete</code> để thu hồi. Do C/C++ không có chế độ thu hồi tự động nên khi ta cấp phát động thì ta phải chủ động thu hồi bộ nhớ động.</p>
+<p>Trong C, bốn hàm <code>malloc</code>, <code>calloc</code>, <code>realloc</code> và <code>free</code> nằm trong thư viện <code>stdlib.h</code> hoặc <code>alloc.h</code>, trước khi sử dụng các bạn phải khai báo thư viện này.</p>
+<h1 id="hàm-malloc">Hàm malloc</h1>
+<p><em>Cú pháp</em>:</p>
+<pre><code class="language-cpp">void* malloc(size_t size);
 </code></pre>
-<p>Dùng để khởi tạo một số ngẫu nhiên theo một số <code>seed</code>. Số ngẫu nhiên được tạo là pseudo-random, tức là số ngẫu nhiên giả, có thể đoán được số kế tiếp. Mỗi một số <code>seed</code> sẽ cho ra một bộ số random khác nhau.</p>
-<p>Để cho mỗi số <code>seed</code> khác nhau người ta thường dùng kèm với <code>unsigned int time(NULL)</code> trong thư viện <code>time.h</code>, hàm <code>time(NULL)</code> trả về số giây đã trôi qua kể từ ngày 1/1/1970.</p>
-<p>Hàm <code>srand()</code> thường được gọi trước khi gọi hàm <code>rand()</code>.</p>
-<h1 id="hàm-rand">Hàm rand</h1>
-<p>Cú pháp:</p>
-<pre><code class="language-c++">int rand(void);
-</code></pre>
-<p>Trả về một số nguyên random giả trong khoảng từ <code>0</code> đến <code>RAND_MAX</code>. Hằng <code>RAND_MAX</code> được định nghĩa trong <code>stdlib.h</code> đảm bảo ít nhất bằng <code>32767</code>.</p>
-<p>Nếu chỉ dùng hàm <code>rand()</code> thì sẽ cho ra những số random giống nhau mỗi lần chạy, vì vậy người ta thường khai báo <code>srand(time(NULL))</code> trước để kết quả random mỗi lần mỗi khác nhau.</p>
-<p>Để lấy số ngẫu nhiên từ <code>0</code> đến <code>n</code>, ta sử dụng <code>rand()%(n+1)</code>.</p>
-<p>Để lấy số ngẫu nhiên từ <code>a</code> đến <code>b</code>, ta sử dụng <code>a + rand()%(b-a+1)</code>.</p>
+<p><em>Ý nghĩa</em>: Cấp phát vùng nhớ động có kích thức <code>size</code> byte.</p>
+<p>Để đảm bảo cấp phát đủ bộ nhớ cho một mảng, ta thường sử dụng <code>malloc(n*sizeof(data_type))</code> với <code>n</code> là số phần tử. Toán tử <code>sizeof(kiểu_dữ_liệu)</code> trả về kích thước của kiểu dữ liệu (do kích cỡ một kiểu dữ liệu không cố định ở những kiến trúc máy tính khác nhau).</p>
+<p>Với một mảng có kiểu dữ liệu xác định nên ta phải ép kiểu để phù hợp với kiểu dữ liệu của mảng.</p>
+<p>Hàm <code>malloc</code> chỉ cấp phát mà không khởi tạo giá trị ban đầu cho các biến.</p>
 <p>Ví dụ code C:</p>
-<pre><code class="language-c++">#include&lt;stdio.h&gt;
-#include&lt;stdlib.h&gt;
-#include&lt;time.h&gt;
+<pre><code class="language-cpp">//cấp phát mảng động kiểu int với 5 phần tử
+int *p = (int*)malloc(5*sizeof(int));
 
-int main()
-{
-   int a, b;
-   srand(time(NULL));
-   printf(&quot;a = %d\n&quot;, rand()%100); //Ngẫu nhiên từ 0 đến 99
-   printf(&quot;b = %d\n&quot;, 50+rand()%51); // 50 đến 100
-   return 0;
-}
+//cấp phát chuỗi động có 11 phần tử
+char *str = (char*)malloc(11*sizeof(char));
 </code></pre>
-<h1 id="bonus-thêm-một-số-hàm-hay-dùng">Bonus thêm một số hàm hay dùng</h1>
-<p>Hàm Random từ 0 đến n:</p>
-<pre><code class="language-cpp">int Random(int n)
-{
-   return rand()%(n+1);
-}
+<h1 id="hàm-calloc">Hàm calloc</h1>
+<p><em>Cú pháp</em>:</p>
+<pre><code class="language-cpp">void* calloc(size_t num, size_t size);
 </code></pre>
-<p>Hàm Random từ a đến b:</p>
-<pre><code class="language-cpp">int Random(int a, int b)
-{
-   return a + rand()%(b-a+1);
-}
+<p><em>Ý nghĩa</em>: Cấp phát mảng động có <code>num</code> phần tử có kích thước <code>size</code> byte.</p>
+<p>Tương tự hàm malloc, ta cũng cần ép kiểu cho phù hợp với kiểu dữ liệu mảng. Sau khi cấp phát, các phần tử sẽ được gán giá trị 0.</p>
+<p>Ví dụ code C:</p>
+<pre><code class="language-cpp">int *p = (int*)calloc(5, sizeof(int));
+char *str = (char*)calloc(11, sizeof(char));
 </code></pre>
-<p>Hàm Random số thực từ 0 đến n:</p>
-<pre><code class="language-cpp">float Random(float n)
-{
-   return n*rand()/RAND_MAX;
-}
+<h1 id="hàm-realloc">Hàm realloc</h1>
+<p><em>Cú pháp</em>:</p>
+<pre><code class="language-cpp">void* realloc(void *ptr, size_t size);
 </code></pre>
-<p>Hàm Random số thực từ a đến b:</p>
-<pre><code class="language-cpp">float Random(float a, float b)
-{
-   return a + (b - a)*rand()/RAND_MAX;
-}
+<p><em>Ý nghĩa</em>: Thay đổi kích thước vùng nhớ được trỏ bởi con trỏ <code>ptr</code> với kích thước mới là <code>size</code> byte.</p>
+<p>Ví dụ:</p>
+<pre><code class="language-cpp">int *p = (int*)malloc(5*sizeof(int));
+int *q = (int*)realloc(p, 10*sizeof(int));
 </code></pre>
-<p>Hàm Random cho mảng một chiều:</p>
-<pre><code class="language-cpp">void Random(int *a, int n)
-{
-   for(int i = 0; i &lt; n; i++)
-      a[i] = rand();
-}
+<h1 id="hàm-free">Hàm free</h1>
+<p><em>Cú pháp</em>:</p>
+<pre><code class="language-cpp">void free(void *p);
+</code></pre>
+<p><em>Ý nghĩa</em>: Giải phóng vùng nhớ trỏ bởi con trỏ p.</p>
+<p>Phải luôn nhớ giải phóng bộ nhớ động khi không dùng đến nữa.</p>
+<p>Ví dụ:</p>
+<pre><code class="language-cpp">int *a = (int*)malloc(512);
+free(a);
+</code></pre>
+<h1 id="toán-tử-new-và-detete-trong-c">Toán tử new và detete trong C++</h1>
+<p>Để cấp phát động một biến có thể dùng như sau:</p>
+<pre><code class="language-cpp">//Cấp phát một chuỗi chưa biết số lượng phần tử
+char *str = new char(); 
+</code></pre>
+<p>Cấp phát cho một mảng n phần tử có thể dùng như sau:</p>
+<pre><code class="language-cpp">int *a = new int[n];
+</code></pre>
+<p>Thu hồi một biến:</p>
+<pre><code class="language-cpp">delete a; //thu hồi vùng nhớ của con trỏ a
+</code></pre>
+<p>Thu hồi một mảng:</p>
+<pre><code class="language-cpp">delete []a; //thu hồi mảng a
 </code></pre>
               
             </div>
@@ -387,7 +386,7 @@ int main()
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/random/">random</a>
+  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/c/c&#43;&#43;/">c/c&#43;&#43;</a>
 
                   </div>
                 
@@ -400,7 +399,7 @@ int main()
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/cpp-dynamic-allocation/" data-tooltip="Cấp phát động trong C/C&#43;&#43;">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2019/12/query-with-javascript-ep1/" data-tooltip="Truy vấn với JavaScript (Phần 1)">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -408,7 +407,7 @@ int main()
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/prime-number/" data-tooltip="Các vấn đề cơ bản về số nguyên tố trong lập trình">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/cpp-random-number/" data-tooltip="Cách khởi tạo số ngẫu nhiên trong C/C&#43;&#43;">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -426,19 +425,19 @@ int main()
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/01/cpp-random-number/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/01/cpp-random-number/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/01/cpp-random-number/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -467,8 +466,8 @@ int main()
             <div class="comment-box">
                 <textarea name="fields[comment]" class="comment-input-control comment-input-animated" placeholder="Comment (markdown is accepted) *" required rows="3"></textarea>
                 <div class="comment-box-tail">
-                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2015/01/cpp-random-number/#comment-submitted">
-                    <input type="hidden" name="options[slug]" value="cpp-random-number">
+                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2015/01/cpp-dynamic-allocation/#comment-submitted">
+                    <input type="hidden" name="options[slug]" value="cpp-dynamic-allocation">
                     <input type="text" name="fields[name]" class="post-comment-field" placeholder="Name *" required/>
                     <input type="email" name="fields[email]" class="post-comment-field" placeholder="Email address (will not be public) *" required/>
                     <input type="hidden" id="comment-parent" name="fields[reply_to]" value="">
@@ -511,7 +510,7 @@ int main()
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2015/01/cpp-random-number/" data-width="100%"></div>
+<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2015/01/cpp-dynamic-allocation/" data-width="100%"></div>
 
               
             
@@ -532,7 +531,7 @@ int main()
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/cpp-dynamic-allocation/" data-tooltip="Cấp phát động trong C/C&#43;&#43;">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2019/12/query-with-javascript-ep1/" data-tooltip="Truy vấn với JavaScript (Phần 1)">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -540,7 +539,7 @@ int main()
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/prime-number/" data-tooltip="Các vấn đề cơ bản về số nguyên tố trong lập trình">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/cpp-random-number/" data-tooltip="Cách khởi tạo số ngẫu nhiên trong C/C&#43;&#43;">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -558,19 +557,19 @@ int main()
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/01/cpp-random-number/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/01/cpp-random-number/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/01/cpp-random-number/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -594,19 +593,19 @@ int main()
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2015%2F01%2Fcpp-random-number%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2015%2F01%2Fcpp-dynamic-allocation%2F">
           <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2015%2F01%2Fcpp-random-number%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2015%2F01%2Fcpp-dynamic-allocation%2F">
           <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2015%2F01%2Fcpp-random-number%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2015%2F01%2Fcpp-dynamic-allocation%2F">
           <i class="fa fa-google-plus"></i><span>Chia sẻ với Google&#43;</span>
         </a>
       </li>

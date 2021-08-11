@@ -263,6 +263,11 @@
   </url>
   
   <url>
+    <loc>https://chidokun.github.io/2015/01/cpp-dynamic-allocation/</loc>
+    <lastmod>2015-01-20T01:10:00+07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://chidokun.github.io/2015/01/cpp-random-number/</loc>
     <lastmod>2015-01-17T15:07:00+07:00</lastmod>
   </url>
@@ -364,6 +369,10 @@
   
   <url>
     <loc>https://chidokun.github.io/archives/</loc>
+  </url>
+  
+  <url>
+    <loc>https://chidokun.github.io/tags/c/c&#43;&#43;/</loc>
   </url>
   
 </urlset>

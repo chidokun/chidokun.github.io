@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>c/c&#43;&#43; on Nguyễn Tuấn&#39;s Blog</title>
+    <link>https://chidokun.github.io/tags/c/c&#43;&#43;/</link>
+    <description>Recent content in c/c&#43;&#43; on Nguyễn Tuấn&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>vi</language>
+    
+	<atom:link href="https://chidokun.github.io/tags/c/c++/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Cấp phát động trong C/C&#43;&#43;</title>
+      <link>https://chidokun.github.io/2015/01/cpp-dynamic-allocation/</link>
+      <pubDate>Tue, 20 Jan 2015 01:10:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/01/cpp-dynamic-allocation/</guid>
+      <description>&lt;p&gt;Bộ nhớ động có lợi hơn bộ nhớ tĩnh rất nhiều, có thể cấp phát thêm hoặc thu hồi lại bộ nhớ. Do đó, bộ nhớ động rất linh hoạt và tiết kiệm hơn so với sử dụng bộ nhớ tĩnh. Một mảng động chứa các phần tử được cấp phát bộ nhớ động, do đó có thể thêm phần tử, xoá phần tử,&amp;hellip; nên quản lý bộ nhớ hiệu quả hơn.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
