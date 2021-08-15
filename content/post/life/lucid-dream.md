@@ -13,7 +13,6 @@ keywords:
 - "lucid dream"
 thumbnailImage: "/images/post/other/lucid-dream/2.jpg"
 thumbnailImagePosition: left
-summary: "Tản mạn về lucid dream và kinh nghiệm điều khiển giấc mơ"
 ---
 
 Ắt hẳn từ bé đến giờ có đôi lần bạn có thể nhận ra mình đang mơ và làm chủ, điều khiển được giấc mơ theo ý muốn của mình? Khi thức dậy, bạn sẽ chắc chắn rằng chẳng ai tin nổi một chuyện hoang đường như thế khi bạn kể cho họ nghe? Nhưng đây là một hiện tượng có thật và đã được khoa học nghiên cứu từ lâu.
