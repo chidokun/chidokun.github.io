@@ -6,10 +6,19 @@
     <description>Recent content in Cấu trúc dữ liệu và Giải thuật on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Thu, 29 Jul 2021 20:17:38 +0700</lastBuildDate>
+    <lastBuildDate>Sat, 14 Aug 2021 14:26:28 +0700</lastBuildDate>
     
 	<atom:link href="https://chidokun.github.io/categories/c%E1%BA%A5u-tr%C3%BAc-d%E1%BB%AF-li%E1%BB%87u-v%C3%A0-gi%E1%BA%A3i-thu%E1%BA%ADt/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Thuật toán Prim: Cải tiến dùng Index Priority Queue</title>
+      <link>https://chidokun.github.io/2021/08/prim-algorithm-improvement/</link>
+      <pubDate>Sat, 14 Aug 2021 14:26:28 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2021/08/prim-algorithm-improvement/</guid>
+      <description>&lt;p&gt;Ở phần trước &lt;a href=&#34;https://chidokun.github.io/2021/07/prim-algorithm-implement/&#34;&gt;Thuật toán Prim: Cài đặt thuật toán&lt;/a&gt; chúng ta đã tìm hiểu qua cách cài đặt thuật toán Prim dựa vào Priority Queue. Tuy nhiên, có một nhược điểm là phải duyệt các cạnh không hợp lệ trong queue. Do vậy, trong bài này chúng ta sẽ tối ưu cách cài đặt thuật toán Prim ở bài trước bằng cách sử dụng Index Priority Queue.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Index Priority Queue: Cải tiến Priority Queue</title>

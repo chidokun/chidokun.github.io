@@ -8,25 +8,25 @@
 <meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Tuấn">
 <meta name="keywords" content="graph, java, prim, spanning tree, cây khung, development, programming, chidokun, lập trình">
-<meta name="description" content="Bài viết Thuật toán Prim: Tìm cây khung nhỏ nhất đã giới thiệu đến các bạn ý tưởng của thuật toán này cũng như từng bước chạy thuật toán. Tiếp theo sẽ là phần hướng dẫn cài đặt thuật toán Prim cho đồ thị vô hướng có trọng số bằng ngôn ngữ Java.">
+<meta name="description" content="Ở phần trước Thuật toán Prim: Cài đặt thuật toán chúng ta đã tìm hiểu qua cách cài đặt thuật toán Prim dựa vào Priority Queue. Tuy nhiên, có một nhược điểm là phải duyệt các cạnh không hợp lệ trong queue. Do vậy, trong bài này chúng ta sẽ tối ưu cách cài đặt thuật toán Prim ở bài trước bằng cách sử dụng Index Priority Queue.">
 
 
-<meta property="og:description" content="Bài viết Thuật toán Prim: Tìm cây khung nhỏ nhất đã giới thiệu đến các bạn ý tưởng của thuật toán này cũng như từng bước chạy thuật toán. Tiếp theo sẽ là phần hướng dẫn cài đặt thuật toán Prim cho đồ thị vô hướng có trọng số bằng ngôn ngữ Java.">
+<meta property="og:description" content="Ở phần trước Thuật toán Prim: Cài đặt thuật toán chúng ta đã tìm hiểu qua cách cài đặt thuật toán Prim dựa vào Priority Queue. Tuy nhiên, có một nhược điểm là phải duyệt các cạnh không hợp lệ trong queue. Do vậy, trong bài này chúng ta sẽ tối ưu cách cài đặt thuật toán Prim ở bài trước bằng cách sử dụng Index Priority Queue.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Thuật toán Prim: Cài đặt thuật toán">
-<meta name="twitter:title" content="Thuật toán Prim: Cài đặt thuật toán">
-<meta property="og:url" content="https://chidokun.github.io/2021/07/prim-algorithm-implement/">
-<meta property="twitter:url" content="https://chidokun.github.io/2021/07/prim-algorithm-implement/">
+<meta property="og:title" content="Thuật toán Prim: Cải tiến dùng Index Priority Queue">
+<meta name="twitter:title" content="Thuật toán Prim: Cải tiến dùng Index Priority Queue">
+<meta property="og:url" content="https://chidokun.github.io/2021/08/prim-algorithm-improvement/">
+<meta property="twitter:url" content="https://chidokun.github.io/2021/08/prim-algorithm-improvement/">
 <meta property="og:site_name" content="Nguyễn Tuấn&#39;s Blog">
-<meta property="og:description" content="Bài viết Thuật toán Prim: Tìm cây khung nhỏ nhất đã giới thiệu đến các bạn ý tưởng của thuật toán này cũng như từng bước chạy thuật toán. Tiếp theo sẽ là phần hướng dẫn cài đặt thuật toán Prim cho đồ thị vô hướng có trọng số bằng ngôn ngữ Java.">
-<meta name="twitter:description" content="Bài viết Thuật toán Prim: Tìm cây khung nhỏ nhất đã giới thiệu đến các bạn ý tưởng của thuật toán này cũng như từng bước chạy thuật toán. Tiếp theo sẽ là phần hướng dẫn cài đặt thuật toán Prim cho đồ thị vô hướng có trọng số bằng ngôn ngữ Java.">
+<meta property="og:description" content="Ở phần trước Thuật toán Prim: Cài đặt thuật toán chúng ta đã tìm hiểu qua cách cài đặt thuật toán Prim dựa vào Priority Queue. Tuy nhiên, có một nhược điểm là phải duyệt các cạnh không hợp lệ trong queue. Do vậy, trong bài này chúng ta sẽ tối ưu cách cài đặt thuật toán Prim ở bài trước bằng cách sử dụng Index Priority Queue.">
+<meta name="twitter:description" content="Ở phần trước Thuật toán Prim: Cài đặt thuật toán chúng ta đã tìm hiểu qua cách cài đặt thuật toán Prim dựa vào Priority Queue. Tuy nhiên, có một nhược điểm là phải duyệt các cạnh không hợp lệ trong queue. Do vậy, trong bài này chúng ta sẽ tối ưu cách cài đặt thuật toán Prim ở bài trước bằng cách sử dụng Index Priority Queue.">
 <meta property="og:locale" content="vi">
 
   
-    <meta property="article:published_time" content="2021-07-25T20:26:28">
+    <meta property="article:published_time" content="2021-08-14T14:26:28">
   
   
-    <meta property="article:modified_time" content="2021-07-25T20:26:28">
+    <meta property="article:modified_time" content="2021-08-14T14:26:28">
   
   
   
@@ -64,14 +64,14 @@
   <meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
 
 
-    <title>Thuật toán Prim: Cài đặt thuật toán</title>
+    <title>Thuật toán Prim: Cải tiến dùng Index Priority Queue</title>
     <meta name="google-site-verification" content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI" />
     <link rel="icon" href="https://chidokun.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://chidokun.github.io/2021/07/prim-algorithm-implement/">
+    <link rel="canonical" href="https://chidokun.github.io/2021/08/prim-algorithm-improvement/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -271,19 +271,19 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Thuật toán Prim: Cài đặt thuật toán
+      Thuật toán Prim: Cải tiến dùng Index Priority Queue
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2021-07-25T20:26:28&#43;07:00">
+      <time itemprop="datePublished" datetime="2021-08-14T14:26:28&#43;07:00">
         
   
   
   
   
-    25 tháng 7 2021
+    14 tháng 8 2021
   
 
       </time>
@@ -303,7 +303,7 @@ if (!doNotTrack) {
 
   <div>
   <div class="fb-like" 
-    data-href="https://chidokun.github.io/2021/07/prim-algorithm-implement/" 
+    data-href="https://chidokun.github.io/2021/08/prim-algorithm-improvement/" 
     data-width="" 
     data-layout="button_count" 
     data-action="like" 
@@ -314,11 +314,11 @@ if (!doNotTrack) {
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>Bài viết <a href="https://chidokun.github.io/2021/07/prim-algorithm/">Thuật toán Prim: Tìm cây khung nhỏ nhất</a> đã giới thiệu đến các bạn ý tưởng của thuật toán này cũng như từng bước chạy thuật toán. Tiếp theo sẽ là phần hướng dẫn cài đặt <em>thuật toán Prim</em> cho đồ thị vô hướng có trọng số bằng ngôn ngữ Java.</p>
+              <p>Ở phần trước <a href="https://chidokun.github.io/2021/07/prim-algorithm-implement/">Thuật toán Prim: Cài đặt thuật toán</a> chúng ta đã tìm hiểu qua cách cài đặt thuật toán Prim dựa vào Priority Queue. Tuy nhiên, có một nhược điểm là phải duyệt các cạnh không hợp lệ trong queue. Do vậy, trong bài này chúng ta sẽ tối ưu cách cài đặt thuật toán Prim ở bài trước bằng cách sử dụng Index Priority Queue.</p>
 <h1 id="table-of-contents">Mục lục</h1><nav id="TableOfContents">
   <ul>
-    <li><a href="#1-nhắc-lại-thuật-toán">1. Nhắc lại thuật toán</a></li>
-    <li><a href="#2-định-nghĩa-api">2. Định nghĩa API</a></li>
+    <li><a href="#1-ý-tưởng">1. Ý tưởng</a></li>
+    <li><a href="#2-từng-bước-chạy-thuật-toán">2. Từng bước chạy thuật toán</a></li>
     <li><a href="#3-cài-đặt-thuật-toán">3. Cài đặt thuật toán.</a>
       <ul>
         <li><a href="#references">References</a></li>
@@ -326,48 +326,22 @@ if (!doNotTrack) {
     </li>
   </ul>
 </nav>
-<h1 id="1-nhắc-lại-thuật-toán">1. Nhắc lại thuật toán</h1>
-<p>Chúng ta cùng nhắc lại ý tưởng cơ bản của thuật toán Prim:</p>
+<h1 id="1-ý-tưởng">1. Ý tưởng</h1>
+<p>Ở phiên bản trước, chúng ta lấy ra cạnh nhỏ nhất bằng Min Priority Queue. Tất cả các cạnh được đẩy vào Priority Queue để rồi sau đó sẽ phải xử lý những cạnh thừa. Trong bước tối ưu này, Index Priority Queue sẽ chỉ chứa cạnh tối ưu nhất ở đỉnh đích, nếu có cạnh nào tối ưu hơn cạnh đó thì cập nhật trực tiếp vào queue. Do đó sẽ không phải xử lý cạnh thừa nữa.</p>
+<p>Các bước của thuật toán như sau:</p>
 <ul>
 <li><u><em>Bước 1</em></u>: Chọn một đỉnh <code>v</code> bất kỳ làm đỉnh bắt đầu và đưa đỉnh <code>v</code> vào cây khung.</li>
 <li><u><em>Bước 2</em></u>: Thêm tất cả các cạnh nối với <code>v</code> vào danh sách cạnh đang xét .</li>
 <li><u><em>Bước 3</em></u>: Xét các cạnh trong danh sách đến khi hết:
 <ul>
 <li><u><em>Bước 3.1</em></u>: Lấy ra cạnh có trọng số nhỏ nhất nối từ <code>v1</code> đến một đỉnh <code>v2</code> chưa nằm trong cây khung. Đưa cạnh này và đỉnh <code>v2</code> vào cây khung.</li>
-<li><u><em>Bước 3.2</em></u>: Đưa các cạnh nối từ đỉnh <code>v2</code> đến các đỉnh chưa nằm trong cây khung vào danh sách cạnh đang xét.</li>
+<li><u><em>Bước 3.2</em></u>: <em>Trong các đỉnh kề của <code>v2</code>, nếu có đỉnh nào đã nằm trong danh sách đang xét mà có trọng số nhỏ hơn thì thay thế cạnh tương ứng đỉnh đó trong danh sách đang xét bằng cạnh này. Nếu chưa nằm trong cây khung thì đưa vào danh sách cạnh đang xét.</em></li>
 </ul>
 </li>
 </ul>
-<p>Ở bước lấy ra cạnh có trọng số nhỏ nhất trong số các cạnh đang xét, chúng ta sử dụng Min-PriorityQueue để lấy ra cạnh có trọng số nhỏ nhất.</p>
-<h1 id="2-định-nghĩa-api">2. Định nghĩa API</h1>
-<p>Để hiện thực thuật toán Prim, chúng ta có thể sử dụng cấu trúc <code>EdgeWeightedGraph</code> để lưu trữ đồ thị vô hướng có trọng số mà mình có giới thiệu qua ở bài viết <a href="https://chidokun.github.io/2021/06/graph-overview/">Tổng quan về đồ thị</a>. Chúng ta định nghĩa trừu tượng các phương thức của một class làm nhiệm vụ tìm cây khung như sau:</p>
-<pre><code class="language-java">public interface PrimMST {
-    Iterable&lt;Edge&gt; edges();
-    double weight();
-}
-</code></pre>
-<p>Class <code>LayzyPrimMST</code> sẽ làm nhiệm vụ tìm cây khung nhỏ nhất cho đồ thị <code>g</code> với các phương thức:</p>
-<ul>
-<li><em><b>LazyPrimMST(EdgeWeightedGraph g)</b></em>: Constructor nhận vào đồ thị vô hướng có trọng số <code>g</code> và thực hiện tìm cây khung nhỏ nhất.</li>
-<li><em><b>edges()</b></em>: Trả về các cạnh của cây khung nhỏ nhất.</li>
-<li><em><b>weight()</b></em>: Trả về trọng số của cây khung nhỏ nhất.</li>
-</ul>
-<pre><code class="language-java">public class LazyPrimMST implements PrimMST {
-    public LazyPrimMST(EdgeWeightedGraph g) {
-        // to be implemented
-    }
-
-    @Override
-    public Iterable&lt;Edge&gt; edges() {
-        // to be implemented
-    }
-
-    @Override
-    public double weight() {
-        // to be implemented
-    }
-</code></pre>
-<p>Lúc này chúng ta có thể viết hàm <code>main</code> để test với đồ thị $G$ trong bài viết trước.</p>
+<p>Ở bước lấy ra cạnh có trọng số nhỏ nhất trong số các cạnh đang xét, chúng ta sử dụng Index Min-PriorityQueue để lấy ra cạnh có trọng số nhỏ nhất và thay thế cạnh ở bước 3.2.</p>
+<h1 id="2-từng-bước-chạy-thuật-toán">2. Từng bước chạy thuật toán</h1>
+<p>Cùng chạy thuật toán với đồ thị $G$ bên dưới:</p>
 
 
  
@@ -395,98 +369,241 @@ if (!doNotTrack) {
   
 </div>
 
-<pre><code class="language-java">public static void main(String[] args) {
-    EdgeWeightedGraph g = new EdgeWeightedGraph(9);
-    g.addEdge(new Edge(0, 1, 2.5));
-    g.addEdge(new Edge(0, 2, 2.0));
-    g.addEdge(new Edge(0, 3, 2.1));
-    g.addEdge(new Edge(1, 4, 1.0));
-    g.addEdge(new Edge(2, 4, 0.6));
-    g.addEdge(new Edge(2, 5, 1.5));
-    g.addEdge(new Edge(3, 5, 2.5));
-    g.addEdge(new Edge(4, 6, 2.3));
-    g.addEdge(new Edge(5, 6, 1.9));
-    g.addEdge(new Edge(5, 7, 2.0));
-    g.addEdge(new Edge(6, 7, 1.8));
-    g.addEdge(new Edge(6, 8, 1.7));
-    g.addEdge(new Edge(7, 8, 2.0));
+<p>Chọn đỉnh $0$ làm đỉnh bắt đầu, đưa đỉnh này vào cây khung (màu xanh). Đưa các cạnh 0-1, 0-2, 0-3 vào danh sách cạnh đang xét (màu cam). Ta thấy cạnh 0-2 là cạnh có trọng số nhỏ nhất.</p>
 
-    PrimMST prim = new LazyPrimMST(g);
-    System.out.println(&quot;Edges: &quot;);
-    for (Edge e : prim.edges())
-        System.out.printf(&quot;%d-%d: %f\n&quot;, e.either(), e.other(e.either()), e.weight());
-    System.out.println(&quot;Weight: &quot; + prim.weight());
-}
-</code></pre>
-<h1 id="3-cài-đặt-thuật-toán">3. Cài đặt thuật toán.</h1>
-<p>Bên trong class <code>LazyPrimMST</code>, chúng ta định nghĩa một số field hỗ trợ cho việc tìm cây khung nhỏ nhất.</p>
-<pre><code class="language-java">private boolean[] marked;
-private LinkedList&lt;Edge&gt; mst;
-private PriorityQueue&lt;Edge&gt; pq;
-</code></pre>
-<ul>
-<li><b><em>marked</em></b>: Mảng boolean đánh dấu một đỉnh đã được đưa vào cây khung hay chưa.</li>
-<li><b><em>mst</em></b>: Danh sách các cạnh của cây khung.</li>
-<li><b><em>pq</em></b>: Danh sách các cạnh dùng để xét sau mỗi bước chạy thuật toán. Sử dụng <code>PriorityQueue</code> để tiện lấy ra cạnh nhỏ nhất.</li>
-</ul>
-<p>Thuật toán của chúng ta sẽ chạy trong constructor, ở đây chúng ta sẽ định nghĩa thêm hàm <code>visit(G, v)</code> làm nhiệm vụ đánh dấu đỉnh <code>v</code> đã được đưa vào cây khung và đưa các cạnh kề vào PriorityQueue.</p>
-<p>Các bước thực hiện:</p>
-<ul>
-<li><em>1.</em> &ldquo;Viếng thăm&rdquo; đỉnh $0$.</li>
-<li><em>2.</em> Xét nếu queue vẫn có phần tử:
-<ul>
-<li><em>2.1.</em> Lấy cạnh nhỏ nhất trong danh sách đang xét.</li>
-<li><em>2.2.</em> Nếu cả 2 đỉnh của cạnh này đều nằm trong cây khung thì bỏ qua.</li>
-<li><em>2.3.</em> Còn không thì đưa cạnh nhỏ nhất này vào cây khung.</li>
-<li><em>2.4.</em> &ldquo;Viếng thăm&rdquo; đỉnh chưa nằm trong cây khung.</li>
-</ul>
-</li>
-</ul>
-<pre><code class="language-java">public LazyPrimMST(EdgeWeightedGraph g) {
-    pq = new PriorityQueue&lt;&gt;(Edge::compareTo);
-    marked = new boolean[g.V()];
-    mst = new LinkedList&lt;&gt;();
-    visit(g, 0);
-    while (!pq.isEmpty()) {
-        Edge e = pq.poll();
-        int v = e.either(), w = e.other(v);
-        if (marked[v] &amp;&amp; marked[w]) continue;
-        mst.add(e);
-        if (!marked[v]) visit(g, v);
-        if (!marked[w]) visit(g, w);
-    }
-}
 
-private void visit(EdgeWeightedGraph G, int v) {
-    marked[v] = true;
-    for (Edge e : G.adj(v))
-        if (!marked[e.other(v)]) pq.add(e);
-} 
-</code></pre>
-<p>Cài đặt các phương thức còn lại của class <code>LazyPrimMST</code>:</p>
-<pre><code class="language-java">@Override
-public Iterable&lt;Edge&gt; edges() {
-    return mst;
-}
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
 
-@Override
-public double weight() {
-    return mst.stream().mapToDouble(Edge::weight).sum();
-}
-</code></pre>
-<p>Sau khi hoàn tất, cùng test lại hàm <code>main</code> để xem kết quả:</p>
-<pre><code>Edges: 
-0-2: 2.000000
-2-4: 0.600000
-1-4: 1.000000
-2-5: 1.500000
-5-6: 1.900000
-6-8: 1.700000
-6-7: 1.800000
-0-3: 2.100000
-Weight: 12.6
-</code></pre>
-<p>Vẫn đúng với kết quả chạy từng bước ở bài viết trước phải không nào!</p>
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/1.svg" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/1.svg" style="width: 80%;">
+  
+    </a>
+  
+  
+</div>
+
+<p>Đưa cạnh 0-2 và đỉnh $2$ vào cây khung. Đưa các cạnh 2-4 và 2-5 vào danh sách đang xét. Lúc này ta thấy cạnh 2-4 có trọng số nhỏ nhất.</p>
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/2.svg" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/2.svg" style="width: 80%;">
+  
+    </a>
+  
+  
+</div>
+
+<p>Đưa cạnh 2-4 và đỉnh $4$ vào cây khung. Đưa các cạnh 4-1 và 4-6 vào danh sách đang xét. Cạnh 4-1 có trọng số nhỏ hơn cạnh 0-1 nên sẽ thay thế cạnh này. Lúc này ta thấy cạnh 4-1 có trọng số nhỏ nhất.</p>
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/3.svg" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/3.svg" style="width: 80%;">
+  
+    </a>
+  
+  
+</div>
+
+<p>Đưa cạnh 4-1 và đỉnh $1$ vào cây khung. Các đỉnh nối từ $1$ là $0$ và $4$ đều đã nằm trong cây khung nên chúng ta sẽ không đưa các cạnh nối các đỉnh này vào danh sách đang xét. Lúc này, ta xét các cạnh còn lại và thấy cạnh 2-5 có trọng số nhỏ nhất.</p>
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/4.svg" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/4.svg" style="width: 80%;">
+  
+    </a>
+  
+  
+</div>
+
+<p>Đưa cạnh 2-5 và đỉnh $5$ vào cây khung. Tiếp tục xét ba cạnh 5-3, 5-6 và 5-7. Cạnh 5-3 có trọng số lớn hơn cạnh 0-3 trong danh sách đang xét nên sẽ không được đưa vào. Cạnh 5-6 có trọng số nhỏ hơn cạnh 4-6 trong danh sách nên sẽ thay thế cho cạnh này. Cạnh 5-7 có đỉnh $7$ chưa có trong danh sách nên sẽ được đưa vào danh sách đang xét. Trong danh sách đang xét lúc này, cạnh 5-6 có trọng số nhỏ nhất.</p>
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/5.svg" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/5.svg" style="width: 80%;">
+  
+    </a>
+  
+  
+</div>
+
+<p>Đưa cạnh 5-6 và đỉnh $6$ vào cây khung. Tiếp tục xét cạnh 6-4, 6-7 và 6-8, không đưa cạnh 6-4 vì đỉnh $4$ đã nằm trong cây khung. Cạnh 6-7 có trọng số nhỏ hơn cạnh 5-7 trong danh sách đang xét nên sẽ thay thế cho cạnh này. Cạnh 6-8 với đỉnh $8$ chưa nằm trong danh sách đang xét nên sẽ được đưa vào danh sách đang xét. Cạnh 6-8 lúc này có trọng số nhỏ nhất.</p>
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/6.svg" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/6.svg" style="width: 80%;">
+  
+    </a>
+  
+  
+</div>
+
+<p>Đưa cạnh 6-8 và đỉnh $8$ vào cây khung. Cạnh 8-7 có trọng số lớn hơn cạnh 6-7 nên sẽ không được đưa vào danh sách đang xét. Lúc này danh sách có cạnh 6-7 có trọng số nhỏ nhất.</p>
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/7.svg" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/7.svg" style="width: 80%;">
+  
+    </a>
+  
+  
+</div>
+
+<p>Đưa cạnh 6-7 và đỉnh $7$ vào cây khung. Không có cạnh nào được đưa tiếp vào danh sách đang xét vì các đỉnh kề của $7$ đều đã nằm trong cây khung. Chỉ còn cạnh 0-3 là cạnh có trọng số nhỏ nhất.</p>
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/8.svg" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/8.svg" style="width: 80%;">
+  
+    </a>
+  
+  
+</div>
+
+<p>Đưa cạnh 0-3 vào cây khung. Các đỉnh kề của đỉnh $3$ đều nằm trong cây khung.</p>
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/9.svg" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/9.svg" style="width: 80%;">
+  
+    </a>
+  
+  
+</div>
+
+<p>Danh sách lúc này rỗng. Thuật toán kết thúc.</p>
 
 
  
@@ -512,6 +629,121 @@ Weight: 12.6
   
 </div>
 
+<h1 id="3-cài-đặt-thuật-toán">3. Cài đặt thuật toán.</h1>
+<p>Để hiện thực thuật toán Prim, chúng ta sẽ sử dụng cấu trúc đồ thị vô hướng có trọng số <code>EdgeWeightedGraph</code> ở bài viết <a href="https://chidokun.github.io/2021/06/graph-overview/">Tổng quan về đồ thị</a>. Interface <code>PrimMST</code> ở bài viết <a href="https://chidokun.github.io/2021/07/prim-algorithm-implement/">Thuật toán Prim: Cài đặt thuật toán</a> và cấu trúc <code>IndexPQ</code> ở bài viết <a href="https://chidokun.github.io/2021/07/index-priority-queue/">Index Priority Queue</a>.</p>
+<p>Trước hết chúng ta tạo class <code>EagerPrimMST</code> hiện thực interface <code>PrimMST</code> và cài đặt một hàm constructor nhận <code>EdgeWeightedGraph</code> làm tham số đầu vào.</p>
+<pre><code class="language-java">public class EagerPrimMST implements PrimMST {
+    public EagerPrimMST(EdgeWeightedGraph G) {
+        // to be implemented
+    }
+
+    @Override
+    public Iterable&lt;Edge&gt; edges() {
+        // to be implemented
+    }
+
+    @Override
+    public double weight() {
+        // to be implemented
+    }
+}
+</code></pre>
+<p>Bên trong <code>EagerPrimMST</code> là các field sử dụng để tìm cây khung nhỏ nhất.</p>
+<pre><code class="language-java">private boolean[] marked;
+private Edge[] edgeTo;
+private double[] distTo;
+private IndexPQ&lt;Double&gt; pq;
+</code></pre>
+<ul>
+<li><b><em>marked</em></b>: Mảng boolean đánh dấu một đỉnh đã được đưa vào cây khung hay chưa.</li>
+<li><b><em>edgeTo</em></b>: Tham chiếu của cạnh tối ưu nhất đến một đỉnh.</li>
+<li><b><em>distTo</em></b>: Khoảng cách tối ưu nhất đến một đỉnh.</li>
+<li><b><em>pq</em></b>: Danh sách các cạnh dùng để xét sau mỗi bước chạy thuật toán. Sử dụng <code>IndexPQ</code> cho thao tác lấy ra cạnh nhỏ nhất và thay thế cạnh.</li>
+</ul>
+<p>Thuật toán được hiện thực ở contructor như sau:</p>
+<pre><code class="language-java">public EagerPrimMST(EdgeWeightedGraph G) {
+    // initialization
+    edgeTo = new Edge[G.V()];
+    distTo = new double[G.V()];
+    marked = new boolean[G.V()];
+    for (int v = 0; v &lt; G.V(); v++)
+        distTo[v] = Double.POSITIVE_INFINITY;
+    pq = new IndexPQ&lt;Double&gt;(G.V(), Comparator.naturalOrder());
+
+    // init pq with 0 to start at vertex 0
+    distTo[0] = 0.0;
+    pq.insert(0, 0.0);              
+    while (!pq.isEmpty())
+        visit(G, pq.removePeek());
+}
+
+private void visit(EdgeWeightedGraph G, int v) { 
+    marked[v] = true;
+    for (Edge e : G.adj(v)) {
+        int w = e.other(v);
+        if (marked[w]) continue;
+        if (e.weight() &lt; distTo[w]) {  // Edge e is new best connection from tree to w.
+            edgeTo[w] = e;
+            distTo[w] = e.weight();
+            if (pq.contains(w))
+                pq.change(w, distTo[w]);
+            else
+                pq.insert(w, distTo[w]);
+        }
+    }
+}
+</code></pre>
+<p>Cài đặt các phương thức còn lại.</p>
+<pre><code class="language-java">@Override
+public Iterable&lt;Edge&gt; edges() {
+    ArrayList&lt;Edge&gt; mst = new ArrayList&lt;&gt;();
+    for (int i = 1; i &lt; edgeTo.length; i++) {
+        mst.add(edgeTo[i]);
+    }
+    return mst;
+}
+
+@Override
+public double weight() {
+    return Arrays.stream(distTo).sum();
+}
+</code></pre>
+<p>Khởi tạo đồ thị $G$ và test với hàm <code>main</code>.</p>
+<pre><code class="language-java">public static void main(String[] args) {
+    EdgeWeightedGraph g = new EdgeWeightedGraph(9);
+    g.addEdge(new Edge(0, 1, 2.5));
+    g.addEdge(new Edge(0, 2, 2.0));
+    g.addEdge(new Edge(0, 3, 2.1));
+    g.addEdge(new Edge(1, 4, 1.0));
+    g.addEdge(new Edge(2, 4, 0.6));
+    g.addEdge(new Edge(2, 5, 1.5));
+    g.addEdge(new Edge(3, 5, 2.5));
+    g.addEdge(new Edge(4, 6, 2.3));
+    g.addEdge(new Edge(5, 6, 1.9));
+    g.addEdge(new Edge(5, 7, 2.0));
+    g.addEdge(new Edge(6, 7, 1.8));
+    g.addEdge(new Edge(6, 8, 1.7));
+    g.addEdge(new Edge(7, 8, 2.0));
+
+    PrimMST prim = new EagerPrimMST(g);
+    System.out.println(&quot;Edges: &quot;);
+    for (Edge e : prim.edges())
+        System.out.printf(&quot;%d-%d: %f\n&quot;, e.either(), e.other(e.either()), e.weight());
+    System.out.println(&quot;Weight: &quot; + prim.weight());
+}
+</code></pre>
+<p>Và kết quả:</p>
+<pre><code>Edges: 
+1-4: 1.000000
+0-2: 2.000000
+0-3: 2.100000
+2-4: 0.600000
+2-5: 1.500000
+5-6: 1.900000
+6-7: 1.800000
+6-8: 1.700000
+Weight: 12.6
+</code></pre>
 <h2 id="references">References</h2>
 <ul>
 <li><a href="https://algs4.cs.princeton.edu/home/">Algorithms, 4th Edition by Robert Sedgewick and Kevin Wayne</a></li>
@@ -540,7 +772,7 @@ Weight: 12.6
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/07/index-priority-queue/" data-tooltip="Index Priority Queue: Cải tiến Priority Queue">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -548,7 +780,7 @@ Weight: 12.6
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/07/prim-algorithm/" data-tooltip="Thuật toán Prim: Tìm cây khung nhỏ nhất">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/08/clean-code-meaningful-name/" data-tooltip="Clean Code: Bạn đã đặt tên biến, hàm đủ &#34;clean&#34;?">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -566,19 +798,19 @@ Weight: 12.6
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/07/prim-algorithm-implement/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/08/prim-algorithm-improvement/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/07/prim-algorithm-implement/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/08/prim-algorithm-improvement/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2021/07/prim-algorithm-implement/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2021/08/prim-algorithm-improvement/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -607,8 +839,8 @@ Weight: 12.6
             <div class="comment-box">
                 <textarea name="fields[comment]" class="comment-input-control comment-input-animated" placeholder="Comment (markdown is accepted) *" required rows="3"></textarea>
                 <div class="comment-box-tail">
-                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2021/07/prim-algorithm-implement/#comment-submitted">
-                    <input type="hidden" name="options[slug]" value="prim-algorithm-implement">
+                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2021/08/prim-algorithm-improvement/#comment-submitted">
+                    <input type="hidden" name="options[slug]" value="prim-algorithm-improvement">
                     <input type="text" name="fields[name]" class="post-comment-field" placeholder="Name *" required/>
                     <input type="email" name="fields[email]" class="post-comment-field" placeholder="Email address (will not be public) *" required/>
                     <input type="hidden" id="comment-parent" name="fields[reply_to]" value="">
@@ -651,7 +883,7 @@ Weight: 12.6
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2021/07/prim-algorithm-implement/" data-width="100%"></div>
+<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2021/08/prim-algorithm-improvement/" data-width="100%"></div>
 
               
             
@@ -672,7 +904,7 @@ Weight: 12.6
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/07/index-priority-queue/" data-tooltip="Index Priority Queue: Cải tiến Priority Queue">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -680,7 +912,7 @@ Weight: 12.6
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/07/prim-algorithm/" data-tooltip="Thuật toán Prim: Tìm cây khung nhỏ nhất">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/08/clean-code-meaningful-name/" data-tooltip="Clean Code: Bạn đã đặt tên biến, hàm đủ &#34;clean&#34;?">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -698,19 +930,19 @@ Weight: 12.6
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/07/prim-algorithm-implement/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/08/prim-algorithm-improvement/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/07/prim-algorithm-implement/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/08/prim-algorithm-improvement/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2021/07/prim-algorithm-implement/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2021/08/prim-algorithm-improvement/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -734,19 +966,19 @@ Weight: 12.6
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fprim-algorithm-implement%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2021%2F08%2Fprim-algorithm-improvement%2F">
           <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fprim-algorithm-implement%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2021%2F08%2Fprim-algorithm-improvement%2F">
           <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2021%2F07%2Fprim-algorithm-implement%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2021%2F08%2Fprim-algorithm-improvement%2F">
           <i class="fa fa-google-plus"></i><span>Chia sẻ với Google&#43;</span>
         </a>
       </li>

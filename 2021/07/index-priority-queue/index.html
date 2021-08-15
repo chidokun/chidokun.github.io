@@ -417,7 +417,7 @@ public int peekIndex() {
 </code></pre>
 <p>Ngoài ra, để thao tác trên Heap chúng ta cần cài đặt các hàm utility để hiệu chỉnh Heap theo cơ chế Bottom-Up và Top-Down. Việc hiệu chỉnh Heap sẽ thực hiện trên cả <code>pq</code> và <code>qp</code>. Tham khảo bài viết <a href="https://chidokun.github.io/2021/07/heap-note/">Heap và một số ghi chú</a> để hiểu thêm về các hàm này. Định nghĩa <em>ưu tiên</em> ở đây là <em>lớn hơn thì ưu tiên hơn</em>.</p>
 <pre><code class="language-java">private void swim(int i) {
-    while (i &gt; 0 &amp;&amp; keys[(i - 1) / 2].compareTo(keys[i]) &lt; 0) {
+    while (i &gt; 0 &amp;&amp; keys[pq[(i - 1) / 2]].compareTo(keys[pq[i]]) &lt; 0) {
         swap((i - 1) / 2, i);
         i = (i - 1) / 2;
     }
@@ -434,7 +434,7 @@ private void swap(int i, int j) {
 private void sink(int i) {
     while (2*i + 1 &lt;= size - 1) {
         int largest = 2*i + 1;
-        if (largest &lt; size - 1 &amp;&amp; keys[largest].compareTo(keys[largest + 1]) &lt; 0)
+        if (largest &lt; size - 1 &amp;&amp; keys[pq[largest]].compareTo(keys[pq[largest + 1]]) &lt; 0)
         largest++;
         if (keys[i].compareTo(keys[largest]) &gt;= 0)
         break;
@@ -486,7 +486,7 @@ int removePeek() {
     if (size == 0)
         throw new NoSuchElementException(&quot;Priority queue underflow&quot;);
     int peek = pq[0];
-    swap(0, size);
+    swap(0, size-1);
     this.size--;
     sink(0);
     qp[peek] = -1;               

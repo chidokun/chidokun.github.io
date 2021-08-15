@@ -6,10 +6,19 @@
     <description>Recent content in Tags on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Fri, 06 Aug 2021 19:00:39 +0700</lastBuildDate>
+    <lastBuildDate>Sat, 14 Aug 2021 14:26:28 +0700</lastBuildDate>
     
 	<atom:link href="https://chidokun.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>algorithms</title>
+      <link>https://chidokun.github.io/tags/algorithms/</link>
+      <pubDate>Sat, 14 Aug 2021 14:26:28 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/tags/algorithms/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>clean code</title>
@@ -35,15 +44,6 @@
       <pubDate>Thu, 29 Jul 2021 20:17:38 +0700</pubDate>
       
       <guid>https://chidokun.github.io/tags/data-structures/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>algorithms</title>
-      <link>https://chidokun.github.io/tags/algorithms/</link>
-      <pubDate>Sun, 25 Jul 2021 20:26:28 +0700</pubDate>
-      
-      <guid>https://chidokun.github.io/tags/algorithms/</guid>
       <description></description>
     </item>
     
