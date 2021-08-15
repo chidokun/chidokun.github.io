@@ -38,14 +38,13 @@ Chúng ta cùng nhắc lại ý tưởng cơ bản của thuật toán Prim:
 
 # 2. Định nghĩa API
 
-Để hiện thực thuật toán Prim, chúng ta có thể sử dụng cấu trúc `EdgeWeightedGraph` để lưu trữ đồ thị vô hướng có trọng số mà mình có giới thiệu qua ở bài viết [Tổng quan về đồ thị]({{< ref "/post/software/graph-overview" >}}). Chúng ta định nghĩa các phương thức như sau:
+Để hiện thực thuật toán Prim, chúng ta có thể sử dụng cấu trúc `EdgeWeightedGraph` để lưu trữ đồ thị vô hướng có trọng số mà mình có giới thiệu qua ở bài viết [Tổng quan về đồ thị]({{< ref "/post/software/graph-overview" >}}). Chúng ta định nghĩa trừu tượng các phương thức của một class làm nhiệm vụ tìm cây khung như sau:
 
-```
-    public class LazyPrimMST
-----------------------------------------------------
-                 LazyPrimMST(EdgeWeightedGraph g)
-  Iterable<Edge> edges()
-          double weight()
+```java
+public interface PrimMST {
+    Iterable<Edge> edges();
+    double weight();
+}
 ```
 
 Class `LayzyPrimMST` sẽ làm nhiệm vụ tìm cây khung nhỏ nhất cho đồ thị `g` với các phương thức:
@@ -53,6 +52,23 @@ Class `LayzyPrimMST` sẽ làm nhiệm vụ tìm cây khung nhỏ nhất cho đ�
 - *<b>LazyPrimMST(EdgeWeightedGraph g)</b>*: Constructor nhận vào đồ thị vô hướng có trọng số `g` và thực hiện tìm cây khung nhỏ nhất.
 - *<b>edges()</b>*: Trả về các cạnh của cây khung nhỏ nhất.
 - *<b>weight()</b>*: Trả về trọng số của cây khung nhỏ nhất.
+
+```java
+public class LazyPrimMST implements PrimMST {
+    public LazyPrimMST(EdgeWeightedGraph g) {
+        // to be implemented
+    }
+
+    @Override
+    public Iterable<Edge> edges() {
+        // to be implemented
+    }
+
+    @Override
+    public double weight() {
+        // to be implemented
+    }
+```
 
 Lúc này chúng ta có thể viết hàm `main` để test với đồ thị $G$ trong bài viết trước.
 
@@ -75,7 +91,7 @@ public static void main(String[] args) {
     g.addEdge(new Edge(6, 8, 1.7));
     g.addEdge(new Edge(7, 8, 2.0));
 
-    LazyPrimMST prim = new LazyPrimMST(g);
+    PrimMST prim = new LazyPrimMST(g);
     System.out.println("Edges: ");
     for (Edge e : prim.edges())
         System.out.printf("%d-%d: %f\n", e.either(), e.other(e.either()), e.weight());
@@ -134,10 +150,12 @@ private void visit(EdgeWeightedGraph G, int v) {
 Cài đặt các phương thức còn lại của class `LazyPrimMST`:
 
 ```java
+@Override
 public Iterable<Edge> edges() {
     return mst;
 }
 
+@Override
 public double weight() {
     return mst.stream().mapToDouble(Edge::weight).sum();
 }

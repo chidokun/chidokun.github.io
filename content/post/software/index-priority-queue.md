@@ -140,7 +140,7 @@ Ngoài ra, để thao tác trên Heap chúng ta cần cài đặt các hàm util
 
 ```java
 private void swim(int i) {
-    while (i > 0 && keys[(i - 1) / 2].compareTo(keys[i]) < 0) {
+    while (i > 0 && keys[pq[(i - 1) / 2]].compareTo(keys[pq[i]]) < 0) {
         swap((i - 1) / 2, i);
         i = (i - 1) / 2;
     }
@@ -157,7 +157,7 @@ private void swap(int i, int j) {
 private void sink(int i) {
     while (2*i + 1 <= size - 1) {
         int largest = 2*i + 1;
-        if (largest < size - 1 && keys[largest].compareTo(keys[largest + 1]) < 0)
+        if (largest < size - 1 && keys[pq[largest]].compareTo(keys[pq[largest + 1]]) < 0)
         largest++;
         if (keys[i].compareTo(keys[largest]) >= 0)
         break;
@@ -223,7 +223,7 @@ int removePeek() {
     if (size == 0)
         throw new NoSuchElementException("Priority queue underflow");
     int peek = pq[0];
-    swap(0, size);
+    swap(0, size-1);
     this.size--;
     sink(0);
     qp[peek] = -1;               
