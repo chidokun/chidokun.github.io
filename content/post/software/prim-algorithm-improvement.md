@@ -1,7 +1,7 @@
 ---
 title: "Thuật toán Prim: Cải tiến dùng Index Priority Queue"
 slug: "prim-algorithm-improvement"
-date: 2021-08-14T14:26:28+07:00
+date: 2021-08-15T18:13:28+07:00
 draft: false
 categories:
 - "Lập trình"
