@@ -7,26 +7,26 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Tuấn">
-<meta name="keywords" content="cấp phát động, c/c&#43;&#43;, development, programming, chidokun, lập trình">
-<meta name="description" content="Bộ nhớ động có lợi hơn bộ nhớ tĩnh rất nhiều, có thể cấp phát thêm hoặc thu hồi lại bộ nhớ. Do đó, bộ nhớ động rất linh hoạt và tiết kiệm hơn so với sử dụng bộ nhớ tĩnh. Một mảng động chứa các phần tử được cấp phát bộ nhớ động, do đó có thể thêm phần tử, xoá phần tử,&hellip; nên quản lý bộ nhớ hiệu quả hơn.">
+<meta name="keywords" content="mảng động, mảng hai chiều, cấp phát động, development, programming, chidokun, lập trình">
+<meta name="description" content="Mảng 2 chiều khá quen thuộc với chúng ta. Mình sẽ giới thiệu một vài cách cấp phát động mảng 2 chiều để các bạn lựa chọn cho phù hợp. Ở đây mình minh họa bằng C&#43;&#43;, đối với các ngôn ngữ khác thì ý tưởng cũng tương tự vậy thôi. Lưu ý là C&#43;&#43; sẽ không tự động thu hồi tài nguyên động đã cấp phát cho dù có thoát khỏi chương trình, vì thế bắt buộc phải có thao tác giải phóng mảng 2 chiều.">
 
 
-<meta property="og:description" content="Bộ nhớ động có lợi hơn bộ nhớ tĩnh rất nhiều, có thể cấp phát thêm hoặc thu hồi lại bộ nhớ. Do đó, bộ nhớ động rất linh hoạt và tiết kiệm hơn so với sử dụng bộ nhớ tĩnh. Một mảng động chứa các phần tử được cấp phát bộ nhớ động, do đó có thể thêm phần tử, xoá phần tử,&hellip; nên quản lý bộ nhớ hiệu quả hơn.">
+<meta property="og:description" content="Mảng 2 chiều khá quen thuộc với chúng ta. Mình sẽ giới thiệu một vài cách cấp phát động mảng 2 chiều để các bạn lựa chọn cho phù hợp. Ở đây mình minh họa bằng C&#43;&#43;, đối với các ngôn ngữ khác thì ý tưởng cũng tương tự vậy thôi. Lưu ý là C&#43;&#43; sẽ không tự động thu hồi tài nguyên động đã cấp phát cho dù có thoát khỏi chương trình, vì thế bắt buộc phải có thao tác giải phóng mảng 2 chiều.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Cấp phát động trong C/C&#43;&#43;">
-<meta name="twitter:title" content="Cấp phát động trong C/C&#43;&#43;">
-<meta property="og:url" content="https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">
-<meta property="twitter:url" content="https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">
+<meta property="og:title" content="Cấp phát động cho mảng hai chiều trong C&#43;&#43;">
+<meta name="twitter:title" content="Cấp phát động cho mảng hai chiều trong C&#43;&#43;">
+<meta property="og:url" content="https://chidokun.github.io/2015/01/cpp-matrix-allocation/">
+<meta property="twitter:url" content="https://chidokun.github.io/2015/01/cpp-matrix-allocation/">
 <meta property="og:site_name" content="Nguyễn Tuấn&#39;s Blog">
-<meta property="og:description" content="Bộ nhớ động có lợi hơn bộ nhớ tĩnh rất nhiều, có thể cấp phát thêm hoặc thu hồi lại bộ nhớ. Do đó, bộ nhớ động rất linh hoạt và tiết kiệm hơn so với sử dụng bộ nhớ tĩnh. Một mảng động chứa các phần tử được cấp phát bộ nhớ động, do đó có thể thêm phần tử, xoá phần tử,&hellip; nên quản lý bộ nhớ hiệu quả hơn.">
-<meta name="twitter:description" content="Bộ nhớ động có lợi hơn bộ nhớ tĩnh rất nhiều, có thể cấp phát thêm hoặc thu hồi lại bộ nhớ. Do đó, bộ nhớ động rất linh hoạt và tiết kiệm hơn so với sử dụng bộ nhớ tĩnh. Một mảng động chứa các phần tử được cấp phát bộ nhớ động, do đó có thể thêm phần tử, xoá phần tử,&hellip; nên quản lý bộ nhớ hiệu quả hơn.">
+<meta property="og:description" content="Mảng 2 chiều khá quen thuộc với chúng ta. Mình sẽ giới thiệu một vài cách cấp phát động mảng 2 chiều để các bạn lựa chọn cho phù hợp. Ở đây mình minh họa bằng C&#43;&#43;, đối với các ngôn ngữ khác thì ý tưởng cũng tương tự vậy thôi. Lưu ý là C&#43;&#43; sẽ không tự động thu hồi tài nguyên động đã cấp phát cho dù có thoát khỏi chương trình, vì thế bắt buộc phải có thao tác giải phóng mảng 2 chiều.">
+<meta name="twitter:description" content="Mảng 2 chiều khá quen thuộc với chúng ta. Mình sẽ giới thiệu một vài cách cấp phát động mảng 2 chiều để các bạn lựa chọn cho phù hợp. Ở đây mình minh họa bằng C&#43;&#43;, đối với các ngôn ngữ khác thì ý tưởng cũng tương tự vậy thôi. Lưu ý là C&#43;&#43; sẽ không tự động thu hồi tài nguyên động đã cấp phát cho dù có thoát khỏi chương trình, vì thế bắt buộc phải có thao tác giải phóng mảng 2 chiều.">
 <meta property="og:locale" content="vi">
 
   
-    <meta property="article:published_time" content="2015-01-20T01:10:00">
+    <meta property="article:published_time" content="2015-01-27T15:18:00">
   
   
-    <meta property="article:modified_time" content="2015-01-20T01:10:00">
+    <meta property="article:modified_time" content="2015-01-27T15:18:00">
   
   
   
@@ -64,14 +64,14 @@
   <meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
 
 
-    <title>Cấp phát động trong C/C&#43;&#43;</title>
+    <title>Cấp phát động cho mảng hai chiều trong C&#43;&#43;</title>
     <meta name="google-site-verification" content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI" />
     <link rel="icon" href="https://chidokun.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">
+    <link rel="canonical" href="https://chidokun.github.io/2015/01/cpp-matrix-allocation/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -271,19 +271,19 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Cấp phát động trong C/C&#43;&#43;
+      Cấp phát động cho mảng hai chiều trong C&#43;&#43;
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2015-01-20T01:10:00&#43;07:00">
+      <time itemprop="datePublished" datetime="2015-01-27T15:18:00&#43;07:00">
         
   
   
   
   
-    20 tháng 1 2015
+    27 tháng 1 2015
   
 
       </time>
@@ -303,7 +303,7 @@ if (!doNotTrack) {
 
   <div>
   <div class="fb-like" 
-    data-href="https://chidokun.github.io/2015/01/cpp-dynamic-allocation/" 
+    data-href="https://chidokun.github.io/2015/01/cpp-matrix-allocation/" 
     data-width="" 
     data-layout="button_count" 
     data-action="like" 
@@ -314,67 +314,38 @@ if (!doNotTrack) {
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>Bộ nhớ động có lợi hơn bộ nhớ tĩnh rất nhiều, có thể cấp phát thêm hoặc thu hồi lại bộ nhớ. Do đó, bộ nhớ động rất linh hoạt và tiết kiệm hơn so với sử dụng bộ nhớ tĩnh. Một mảng động chứa các phần tử được cấp phát bộ nhớ động, do đó có thể thêm phần tử, xoá phần tử,&hellip; nên quản lý bộ nhớ hiệu quả hơn.</p>
-<p>Ngôn ngữ C cung cấp cho chúng ta 4 hàm: <code>malloc</code>, <code>calloc</code>, <code>realloc</code> để cấp phát và <code>free</code> để thu hồi. C++ cung cấp 2 toán tử: <code>new</code> để cấp phát và <code>delete</code> để thu hồi. Do C/C++ không có chế độ thu hồi tự động nên khi ta cấp phát động thì ta phải chủ động thu hồi bộ nhớ động.</p>
-<p>Trong C, bốn hàm <code>malloc</code>, <code>calloc</code>, <code>realloc</code> và <code>free</code> nằm trong thư viện <code>stdlib.h</code> hoặc <code>alloc.h</code>, trước khi sử dụng các bạn phải khai báo thư viện này.</p>
-<h1 id="hàm-malloc">Hàm malloc</h1>
-<p><em>Cú pháp</em>:</p>
-<pre><code class="language-cpp">void* malloc(size_t size);
-</code></pre>
-<p><em>Ý nghĩa</em>: Cấp phát vùng nhớ động có kích thức <code>size</code> byte.</p>
-<p>Để đảm bảo cấp phát đủ bộ nhớ cho một mảng, ta thường sử dụng <code>malloc(n*sizeof(data_type))</code> với <code>n</code> là số phần tử. Toán tử <code>sizeof(kiểu_dữ_liệu)</code> trả về kích thước của kiểu dữ liệu (do kích cỡ một kiểu dữ liệu không cố định ở những kiến trúc máy tính khác nhau).</p>
-<p>Với một mảng có kiểu dữ liệu xác định nên ta phải ép kiểu để phù hợp với kiểu dữ liệu của mảng.</p>
-<p>Hàm <code>malloc</code> chỉ cấp phát mà không khởi tạo giá trị ban đầu cho các biến.</p>
-<p>Ví dụ code C:</p>
-<pre><code class="language-cpp">//cấp phát mảng động kiểu int với 5 phần tử
-int *p = (int*)malloc(5*sizeof(int));
-
-//cấp phát chuỗi động có 11 phần tử
-char *str = (char*)malloc(11*sizeof(char));
-</code></pre>
-<h1 id="hàm-calloc">Hàm calloc</h1>
-<p><em>Cú pháp</em>:</p>
-<pre><code class="language-cpp">void* calloc(size_t num, size_t size);
-</code></pre>
-<p><em>Ý nghĩa</em>: Cấp phát mảng động có <code>num</code> phần tử có kích thước <code>size</code> byte.</p>
-<p>Tương tự hàm malloc, ta cũng cần ép kiểu cho phù hợp với kiểu dữ liệu mảng. Sau khi cấp phát, các phần tử sẽ được gán giá trị 0.</p>
-<p>Ví dụ code C:</p>
-<pre><code class="language-cpp">int *p = (int*)calloc(5, sizeof(int));
-char *str = (char*)calloc(11, sizeof(char));
-</code></pre>
-<h1 id="hàm-realloc">Hàm realloc</h1>
-<p><em>Cú pháp</em>:</p>
-<pre><code class="language-cpp">void* realloc(void *ptr, size_t size);
-</code></pre>
-<p><em>Ý nghĩa</em>: Thay đổi kích thước vùng nhớ được trỏ bởi con trỏ <code>ptr</code> với kích thước mới là <code>size</code> byte.</p>
+              <p>Mảng 2 chiều khá quen thuộc với chúng ta. Mình sẽ giới thiệu một vài cách cấp phát động mảng 2 chiều để các bạn lựa chọn cho phù hợp. Ở đây mình minh họa bằng C++, đối với các ngôn ngữ khác thì ý tưởng cũng tương tự vậy thôi. Lưu ý là C++ sẽ không tự động thu hồi tài nguyên động đã cấp phát cho dù có thoát khỏi chương trình, vì thế bắt buộc phải có thao tác giải phóng mảng 2 chiều.</p>
+<h1 id="cách-1-dùng-con-trỏ-cấp-2">Cách 1: Dùng con trỏ cấp 2</h1>
+<p><em>Ý tưởng</em>: Để cấp phát động cho mảng 2 chiều, ta cấp phát bộ nhớ của từng chiều theo cú pháp của mảng một chiều. Tức là tạo m <a href="https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">mảng 1 chiều</a>, mỗi mảng có n phần tử.</p>
+<p>Để làm điều này ta dùng 1 con trỏ cấp 2, cấp phát cho nó m con trỏ cấp 1, mỗi con trỏ cấp 1 ta lại cấp phát n phần tử.</p>
 <p>Ví dụ:</p>
-<pre><code class="language-cpp">int *p = (int*)malloc(5*sizeof(int));
-int *q = (int*)realloc(p, 10*sizeof(int));
+<pre><code class="language-cpp">int **a = new int*[m];
+for(int i = 0; i&lt;m; i++)
+   a[i] = new int[n];
 </code></pre>
-<h1 id="hàm-free">Hàm free</h1>
-<p><em>Cú pháp</em>:</p>
-<pre><code class="language-cpp">void free(void *p);
-</code></pre>
-<p><em>Ý nghĩa</em>: Giải phóng vùng nhớ trỏ bởi con trỏ p.</p>
-<p>Phải luôn nhớ giải phóng bộ nhớ động khi không dùng đến nữa.</p>
+<p>Với ví dụ trên, ta được một mảng động hai chiều các số nguyên có kích thước m x n.</p>
+<p>Lưu ý là ta dùng một con trỏ cấp 2 cấp phát cho một mảng các phần tử có kiểu <code>int*</code> chứ không phải kiểu <code>int</code> thông thường. Kiểu <code>int*</code> chính là con trỏ cấp 1.</p>
+<p>Để giải phóng bộ nhớ động, ta cũng phải giải phóng theo từng cột và từng hàng.</p>
 <p>Ví dụ:</p>
-<pre><code class="language-cpp">int *a = (int*)malloc(512);
-free(a);
+<pre><code class="language-cpp">for(int i = 0; i&lt;m; i++)
+   delete []a[i];
+delete []a;
 </code></pre>
-<h1 id="toán-tử-new-và-detete-trong-c">Toán tử new và detete trong C++</h1>
-<p>Để cấp phát động một biến có thể dùng như sau:</p>
-<pre><code class="language-cpp">//Cấp phát một chuỗi chưa biết số lượng phần tử
-char *str = new char(); 
+<p>Cách này phức tạp nhưng bạn sẽ có 1 mảng 2 chiều đúng nghĩa và có thể lấy phần tử bằng cách gọi <code>a[i][j]</code> thông thường như mảng tĩnh.</p>
+<h1 id="cách-2-dùng-mảng-1-chiều-để-biểu-diễn-mảng-2-chiều">Cách 2: Dùng mảng 1 chiều để biểu diễn mảng 2 chiều</h1>
+<p><em>Ý tưởng</em>: Cấp phát mảng 1 chiều có kích thước m x n và truy cập nó như một mảng 2 chiều với các chỉ số thông qua công thức liên hệ.</p>
+<p>Phần tử <code>a[i][j]</code> tương ứng với phần tử <code>a[i*n + j]</code> trong mảng.</p>
+<p>Ví dụ:</p>
+<pre><code class="language-cpp">int *a = new int[m*n]; //cấp phát xong
+//khởi tạo bằng 0
+for(int i = 0; i &lt; m; i++)
+   for(int j = 0; j &lt; n; j++)
+      a[i*n+j] = 0;
 </code></pre>
-<p>Cấp phát cho một mảng n phần tử có thể dùng như sau:</p>
-<pre><code class="language-cpp">int *a = new int[n];
+<p>Việc giải phóng vô cùng đơn giản, chỉ cần 1 lệnh <code>delete</code>.</p>
+<pre><code class="language-cpp">delete []a;
 </code></pre>
-<p>Thu hồi một biến:</p>
-<pre><code class="language-cpp">delete a; //thu hồi vùng nhớ của con trỏ a
-</code></pre>
-<p>Thu hồi một mảng:</p>
-<pre><code class="language-cpp">delete []a; //thu hồi mảng a
-</code></pre>
+<p>Với cách này bạn sẽ phải truy cập mảng 2 chiều thông qua công thức liên hệ, tuy nhiên, cách này sẽ hữu ích với những trường hợp như cộng 2 ma trận cùng loại, v.v&hellip;</p>
               
             </div>
           </div>
@@ -399,7 +370,7 @@ char *str = new char();
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/japanese-computer-vocab/" data-tooltip="Từ vựng về Tin học tiếng Nhật">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2019/12/query-with-javascript-ep1/" data-tooltip="Truy vấn với JavaScript (Phần 1)">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -407,7 +378,7 @@ char *str = new char();
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/cpp-random-number/" data-tooltip="Cách khởi tạo số ngẫu nhiên trong C/C&#43;&#43;">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/japanese-windows-vocab/" data-tooltip="Từ vựng về Windows trong tiếng Nhật">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -425,19 +396,19 @@ char *str = new char();
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/01/cpp-matrix-allocation/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/01/cpp-matrix-allocation/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/01/cpp-matrix-allocation/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -466,8 +437,8 @@ char *str = new char();
             <div class="comment-box">
                 <textarea name="fields[comment]" class="comment-input-control comment-input-animated" placeholder="Comment (markdown is accepted) *" required rows="3"></textarea>
                 <div class="comment-box-tail">
-                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2015/01/cpp-dynamic-allocation/#comment-submitted">
-                    <input type="hidden" name="options[slug]" value="cpp-dynamic-allocation">
+                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2015/01/cpp-matrix-allocation/#comment-submitted">
+                    <input type="hidden" name="options[slug]" value="cpp-matrix-allocation">
                     <input type="text" name="fields[name]" class="post-comment-field" placeholder="Name *" required/>
                     <input type="email" name="fields[email]" class="post-comment-field" placeholder="Email address (will not be public) *" required/>
                     <input type="hidden" id="comment-parent" name="fields[reply_to]" value="">
@@ -510,7 +481,7 @@ char *str = new char();
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2015/01/cpp-dynamic-allocation/" data-width="100%"></div>
+<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2015/01/cpp-matrix-allocation/" data-width="100%"></div>
 
               
             
@@ -531,7 +502,7 @@ char *str = new char();
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/japanese-computer-vocab/" data-tooltip="Từ vựng về Tin học tiếng Nhật">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2019/12/query-with-javascript-ep1/" data-tooltip="Truy vấn với JavaScript (Phần 1)">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -539,7 +510,7 @@ char *str = new char();
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/cpp-random-number/" data-tooltip="Cách khởi tạo số ngẫu nhiên trong C/C&#43;&#43;">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/japanese-windows-vocab/" data-tooltip="Từ vựng về Windows trong tiếng Nhật">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -557,19 +528,19 @@ char *str = new char();
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/01/cpp-matrix-allocation/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/01/cpp-matrix-allocation/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/01/cpp-matrix-allocation/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -593,19 +564,19 @@ char *str = new char();
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2015%2F01%2Fcpp-dynamic-allocation%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2015%2F01%2Fcpp-matrix-allocation%2F">
           <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2015%2F01%2Fcpp-dynamic-allocation%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2015%2F01%2Fcpp-matrix-allocation%2F">
           <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2015%2F01%2Fcpp-dynamic-allocation%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2015%2F01%2Fcpp-matrix-allocation%2F">
           <i class="fa fa-google-plus"></i><span>Chia sẻ với Google&#43;</span>
         </a>
       </li>

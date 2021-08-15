@@ -261,6 +261,33 @@
     </item>
     
     <item>
+      <title>Cấp phát động cho mảng hai chiều trong C&#43;&#43;</title>
+      <link>https://chidokun.github.io/2015/01/cpp-matrix-allocation/</link>
+      <pubDate>Tue, 27 Jan 2015 15:18:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/01/cpp-matrix-allocation/</guid>
+      <description>&lt;p&gt;Mảng 2 chiều khá quen thuộc với chúng ta. Mình sẽ giới thiệu một vài cách cấp phát động mảng 2 chiều để các bạn lựa chọn cho phù hợp. Ở đây mình minh họa bằng C++, đối với các ngôn ngữ khác thì ý tưởng cũng tương tự vậy thôi. Lưu ý là C++ sẽ không tự động thu hồi tài nguyên động đã cấp phát cho dù có thoát khỏi chương trình, vì thế bắt buộc phải có thao tác giải phóng mảng 2 chiều.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Từ vựng về Windows trong tiếng Nhật</title>
+      <link>https://chidokun.github.io/2015/01/japanese-windows-vocab/</link>
+      <pubDate>Fri, 23 Jan 2015 01:03:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/01/japanese-windows-vocab/</guid>
+      <description>&lt;p&gt;Để đọc được các từ vựng, các bạn phải nắm vững bảng chữ Hiragana và Katakana. Hệ điều hành Windows có nhiều thuật ngữ được mượn từ nước ngoài nên được viết bằng Katakana. Các từ bằng Kanji mình sẽ phiên âm ra Hiragana.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Từ vựng về Tin học tiếng Nhật</title>
+      <link>https://chidokun.github.io/2015/01/japanese-computer-vocab/</link>
+      <pubDate>Tue, 20 Jan 2015 19:53:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/01/japanese-computer-vocab/</guid>
+      <description>&lt;p&gt;Trong bài viết này mình xin chia sẻ một số từ vựng về chủ đề Tin học dành cho các bạn đang học tiếng Nhật yêu thích Công nghệ thông tin. Để đọc được các từ vựng này các bạn phải nắm thật vững bảng chữ Hiragana và Katakana (yêu cầu tối thiểu khi học tiếng Nhật). Đa số các từ vựng về Tin học được mượn từ nước ngoài nên được viết bằng Katakana. Tuy vậy một số từ được viết bằng Kanji và mình sẽ phiên âm ra Hiragana.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Cấp phát động trong C/C&#43;&#43;</title>
       <link>https://chidokun.github.io/2015/01/cpp-dynamic-allocation/</link>
       <pubDate>Tue, 20 Jan 2015 01:10:00 +0700</pubDate>

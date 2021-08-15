@@ -11,6 +11,15 @@
     
     
     <item>
+      <title>Cấp phát động cho mảng hai chiều trong C&#43;&#43;</title>
+      <link>https://chidokun.github.io/2015/01/cpp-matrix-allocation/</link>
+      <pubDate>Tue, 27 Jan 2015 15:18:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/01/cpp-matrix-allocation/</guid>
+      <description>&lt;p&gt;Mảng 2 chiều khá quen thuộc với chúng ta. Mình sẽ giới thiệu một vài cách cấp phát động mảng 2 chiều để các bạn lựa chọn cho phù hợp. Ở đây mình minh họa bằng C++, đối với các ngôn ngữ khác thì ý tưởng cũng tương tự vậy thôi. Lưu ý là C++ sẽ không tự động thu hồi tài nguyên động đã cấp phát cho dù có thoát khỏi chương trình, vì thế bắt buộc phải có thao tác giải phóng mảng 2 chiều.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Cấp phát động trong C/C&#43;&#43;</title>
       <link>https://chidokun.github.io/2015/01/cpp-dynamic-allocation/</link>
       <pubDate>Tue, 20 Jan 2015 01:10:00 +0700</pubDate>

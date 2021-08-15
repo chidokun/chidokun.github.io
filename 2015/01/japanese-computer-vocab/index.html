@@ -7,38 +7,38 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Tuấn">
-<meta name="keywords" content="cấp phát động, c/c&#43;&#43;, development, programming, chidokun, lập trình">
-<meta name="description" content="Bộ nhớ động có lợi hơn bộ nhớ tĩnh rất nhiều, có thể cấp phát thêm hoặc thu hồi lại bộ nhớ. Do đó, bộ nhớ động rất linh hoạt và tiết kiệm hơn so với sử dụng bộ nhớ tĩnh. Một mảng động chứa các phần tử được cấp phát bộ nhớ động, do đó có thể thêm phần tử, xoá phần tử,&hellip; nên quản lý bộ nhớ hiệu quả hơn.">
+<meta name="keywords" content="phát âm, bảng chữ cái, từ vựng, tin học, development, programming, chidokun, lập trình">
+<meta name="description" content="Trong bài viết này mình xin chia sẻ một số từ vựng về chủ đề Tin học dành cho các bạn đang học tiếng Nhật yêu thích Công nghệ thông tin. Để đọc được các từ vựng này các bạn phải nắm thật vững bảng chữ Hiragana và Katakana (yêu cầu tối thiểu khi học tiếng Nhật). Đa số các từ vựng về Tin học được mượn từ nước ngoài nên được viết bằng Katakana. Tuy vậy một số từ được viết bằng Kanji và mình sẽ phiên âm ra Hiragana.">
 
 
-<meta property="og:description" content="Bộ nhớ động có lợi hơn bộ nhớ tĩnh rất nhiều, có thể cấp phát thêm hoặc thu hồi lại bộ nhớ. Do đó, bộ nhớ động rất linh hoạt và tiết kiệm hơn so với sử dụng bộ nhớ tĩnh. Một mảng động chứa các phần tử được cấp phát bộ nhớ động, do đó có thể thêm phần tử, xoá phần tử,&hellip; nên quản lý bộ nhớ hiệu quả hơn.">
+<meta property="og:description" content="Trong bài viết này mình xin chia sẻ một số từ vựng về chủ đề Tin học dành cho các bạn đang học tiếng Nhật yêu thích Công nghệ thông tin. Để đọc được các từ vựng này các bạn phải nắm thật vững bảng chữ Hiragana và Katakana (yêu cầu tối thiểu khi học tiếng Nhật). Đa số các từ vựng về Tin học được mượn từ nước ngoài nên được viết bằng Katakana. Tuy vậy một số từ được viết bằng Kanji và mình sẽ phiên âm ra Hiragana.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Cấp phát động trong C/C&#43;&#43;">
-<meta name="twitter:title" content="Cấp phát động trong C/C&#43;&#43;">
-<meta property="og:url" content="https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">
-<meta property="twitter:url" content="https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">
+<meta property="og:title" content="Từ vựng về Tin học tiếng Nhật">
+<meta name="twitter:title" content="Từ vựng về Tin học tiếng Nhật">
+<meta property="og:url" content="https://chidokun.github.io/2015/01/japanese-computer-vocab/">
+<meta property="twitter:url" content="https://chidokun.github.io/2015/01/japanese-computer-vocab/">
 <meta property="og:site_name" content="Nguyễn Tuấn&#39;s Blog">
-<meta property="og:description" content="Bộ nhớ động có lợi hơn bộ nhớ tĩnh rất nhiều, có thể cấp phát thêm hoặc thu hồi lại bộ nhớ. Do đó, bộ nhớ động rất linh hoạt và tiết kiệm hơn so với sử dụng bộ nhớ tĩnh. Một mảng động chứa các phần tử được cấp phát bộ nhớ động, do đó có thể thêm phần tử, xoá phần tử,&hellip; nên quản lý bộ nhớ hiệu quả hơn.">
-<meta name="twitter:description" content="Bộ nhớ động có lợi hơn bộ nhớ tĩnh rất nhiều, có thể cấp phát thêm hoặc thu hồi lại bộ nhớ. Do đó, bộ nhớ động rất linh hoạt và tiết kiệm hơn so với sử dụng bộ nhớ tĩnh. Một mảng động chứa các phần tử được cấp phát bộ nhớ động, do đó có thể thêm phần tử, xoá phần tử,&hellip; nên quản lý bộ nhớ hiệu quả hơn.">
+<meta property="og:description" content="Trong bài viết này mình xin chia sẻ một số từ vựng về chủ đề Tin học dành cho các bạn đang học tiếng Nhật yêu thích Công nghệ thông tin. Để đọc được các từ vựng này các bạn phải nắm thật vững bảng chữ Hiragana và Katakana (yêu cầu tối thiểu khi học tiếng Nhật). Đa số các từ vựng về Tin học được mượn từ nước ngoài nên được viết bằng Katakana. Tuy vậy một số từ được viết bằng Kanji và mình sẽ phiên âm ra Hiragana.">
+<meta name="twitter:description" content="Trong bài viết này mình xin chia sẻ một số từ vựng về chủ đề Tin học dành cho các bạn đang học tiếng Nhật yêu thích Công nghệ thông tin. Để đọc được các từ vựng này các bạn phải nắm thật vững bảng chữ Hiragana và Katakana (yêu cầu tối thiểu khi học tiếng Nhật). Đa số các từ vựng về Tin học được mượn từ nước ngoài nên được viết bằng Katakana. Tuy vậy một số từ được viết bằng Kanji và mình sẽ phiên âm ra Hiragana.">
 <meta property="og:locale" content="vi">
 
   
-    <meta property="article:published_time" content="2015-01-20T01:10:00">
+    <meta property="article:published_time" content="2015-01-20T19:53:00">
   
   
-    <meta property="article:modified_time" content="2015-01-20T01:10:00">
+    <meta property="article:modified_time" content="2015-01-20T19:53:00">
   
-  
-  
-    
-      <meta property="article:section" content="Lập trình">
-    
-      <meta property="article:section" content="Cấu trúc dữ liệu và Giải thuật">
-    
   
   
     
-      <meta property="article:tag" content="c/c&#43;&#43;">
+      <meta property="article:section" content="Cuộc sống">
+    
+      <meta property="article:section" content="Tiếng Nhật">
+    
+  
+  
+    
+      <meta property="article:tag" content="japanese">
     
   
 
@@ -53,8 +53,8 @@
 
 
 
-  <meta property="og:image" content="https://chidokun.github.io/thumbnails/heap.png">
-  <meta property="twitter:image" content="https://chidokun.github.io/thumbnails/heap.png">
+  <meta property="og:image" content="https://chidokun.github.io/images/post/other/japanese-hatsuon/1.jpg">
+  <meta property="twitter:image" content="https://chidokun.github.io/images/post/other/japanese-hatsuon/1.jpg">
 
 
 
@@ -64,14 +64,14 @@
   <meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
 
 
-    <title>Cấp phát động trong C/C&#43;&#43;</title>
+    <title>Từ vựng về Tin học tiếng Nhật</title>
     <meta name="google-site-verification" content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI" />
     <link rel="icon" href="https://chidokun.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">
+    <link rel="canonical" href="https://chidokun.github.io/2015/01/japanese-computer-vocab/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -271,13 +271,13 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Cấp phát động trong C/C&#43;&#43;
+      Từ vựng về Tin học tiếng Nhật
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2015-01-20T01:10:00&#43;07:00">
+      <time itemprop="datePublished" datetime="2015-01-20T19:53:00&#43;07:00">
         
   
   
@@ -293,9 +293,9 @@ if (!doNotTrack) {
   
     <span>mục</span>
     
-      <a class="category-link" href="https://chidokun.github.io/categories/l%e1%ba%adp-tr%c3%acnh">Lập trình</a>, 
+      <a class="category-link" href="https://chidokun.github.io/categories/cu%e1%bb%99c-s%e1%bb%91ng">Cuộc sống</a>, 
     
-      <a class="category-link" href="https://chidokun.github.io/categories/c%e1%ba%a5u-tr%c3%bac-d%e1%bb%af-li%e1%bb%87u-v%c3%a0-gi%e1%ba%a3i-thu%e1%ba%adt">Cấu trúc dữ liệu và Giải thuật</a>
+      <a class="category-link" href="https://chidokun.github.io/categories/ti%e1%ba%bfng-nh%e1%ba%adt">Tiếng Nhật</a>
     
   
 
@@ -303,7 +303,7 @@ if (!doNotTrack) {
 
   <div>
   <div class="fb-like" 
-    data-href="https://chidokun.github.io/2015/01/cpp-dynamic-allocation/" 
+    data-href="https://chidokun.github.io/2015/01/japanese-computer-vocab/" 
     data-width="" 
     data-layout="button_count" 
     data-action="like" 
@@ -314,67 +314,218 @@ if (!doNotTrack) {
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>Bộ nhớ động có lợi hơn bộ nhớ tĩnh rất nhiều, có thể cấp phát thêm hoặc thu hồi lại bộ nhớ. Do đó, bộ nhớ động rất linh hoạt và tiết kiệm hơn so với sử dụng bộ nhớ tĩnh. Một mảng động chứa các phần tử được cấp phát bộ nhớ động, do đó có thể thêm phần tử, xoá phần tử,&hellip; nên quản lý bộ nhớ hiệu quả hơn.</p>
-<p>Ngôn ngữ C cung cấp cho chúng ta 4 hàm: <code>malloc</code>, <code>calloc</code>, <code>realloc</code> để cấp phát và <code>free</code> để thu hồi. C++ cung cấp 2 toán tử: <code>new</code> để cấp phát và <code>delete</code> để thu hồi. Do C/C++ không có chế độ thu hồi tự động nên khi ta cấp phát động thì ta phải chủ động thu hồi bộ nhớ động.</p>
-<p>Trong C, bốn hàm <code>malloc</code>, <code>calloc</code>, <code>realloc</code> và <code>free</code> nằm trong thư viện <code>stdlib.h</code> hoặc <code>alloc.h</code>, trước khi sử dụng các bạn phải khai báo thư viện này.</p>
-<h1 id="hàm-malloc">Hàm malloc</h1>
-<p><em>Cú pháp</em>:</p>
-<pre><code class="language-cpp">void* malloc(size_t size);
-</code></pre>
-<p><em>Ý nghĩa</em>: Cấp phát vùng nhớ động có kích thức <code>size</code> byte.</p>
-<p>Để đảm bảo cấp phát đủ bộ nhớ cho một mảng, ta thường sử dụng <code>malloc(n*sizeof(data_type))</code> với <code>n</code> là số phần tử. Toán tử <code>sizeof(kiểu_dữ_liệu)</code> trả về kích thước của kiểu dữ liệu (do kích cỡ một kiểu dữ liệu không cố định ở những kiến trúc máy tính khác nhau).</p>
-<p>Với một mảng có kiểu dữ liệu xác định nên ta phải ép kiểu để phù hợp với kiểu dữ liệu của mảng.</p>
-<p>Hàm <code>malloc</code> chỉ cấp phát mà không khởi tạo giá trị ban đầu cho các biến.</p>
-<p>Ví dụ code C:</p>
-<pre><code class="language-cpp">//cấp phát mảng động kiểu int với 5 phần tử
-int *p = (int*)malloc(5*sizeof(int));
-
-//cấp phát chuỗi động có 11 phần tử
-char *str = (char*)malloc(11*sizeof(char));
-</code></pre>
-<h1 id="hàm-calloc">Hàm calloc</h1>
-<p><em>Cú pháp</em>:</p>
-<pre><code class="language-cpp">void* calloc(size_t num, size_t size);
-</code></pre>
-<p><em>Ý nghĩa</em>: Cấp phát mảng động có <code>num</code> phần tử có kích thước <code>size</code> byte.</p>
-<p>Tương tự hàm malloc, ta cũng cần ép kiểu cho phù hợp với kiểu dữ liệu mảng. Sau khi cấp phát, các phần tử sẽ được gán giá trị 0.</p>
-<p>Ví dụ code C:</p>
-<pre><code class="language-cpp">int *p = (int*)calloc(5, sizeof(int));
-char *str = (char*)calloc(11, sizeof(char));
-</code></pre>
-<h1 id="hàm-realloc">Hàm realloc</h1>
-<p><em>Cú pháp</em>:</p>
-<pre><code class="language-cpp">void* realloc(void *ptr, size_t size);
-</code></pre>
-<p><em>Ý nghĩa</em>: Thay đổi kích thước vùng nhớ được trỏ bởi con trỏ <code>ptr</code> với kích thước mới là <code>size</code> byte.</p>
-<p>Ví dụ:</p>
-<pre><code class="language-cpp">int *p = (int*)malloc(5*sizeof(int));
-int *q = (int*)realloc(p, 10*sizeof(int));
-</code></pre>
-<h1 id="hàm-free">Hàm free</h1>
-<p><em>Cú pháp</em>:</p>
-<pre><code class="language-cpp">void free(void *p);
-</code></pre>
-<p><em>Ý nghĩa</em>: Giải phóng vùng nhớ trỏ bởi con trỏ p.</p>
-<p>Phải luôn nhớ giải phóng bộ nhớ động khi không dùng đến nữa.</p>
-<p>Ví dụ:</p>
-<pre><code class="language-cpp">int *a = (int*)malloc(512);
-free(a);
-</code></pre>
-<h1 id="toán-tử-new-và-detete-trong-c">Toán tử new và detete trong C++</h1>
-<p>Để cấp phát động một biến có thể dùng như sau:</p>
-<pre><code class="language-cpp">//Cấp phát một chuỗi chưa biết số lượng phần tử
-char *str = new char(); 
-</code></pre>
-<p>Cấp phát cho một mảng n phần tử có thể dùng như sau:</p>
-<pre><code class="language-cpp">int *a = new int[n];
-</code></pre>
-<p>Thu hồi một biến:</p>
-<pre><code class="language-cpp">delete a; //thu hồi vùng nhớ của con trỏ a
-</code></pre>
-<p>Thu hồi một mảng:</p>
-<pre><code class="language-cpp">delete []a; //thu hồi mảng a
-</code></pre>
+              <p>Trong bài viết này mình xin chia sẻ một số từ vựng về chủ đề Tin học dành cho các bạn đang học tiếng Nhật yêu thích Công nghệ thông tin. Để đọc được các từ vựng này các bạn phải nắm thật vững bảng chữ Hiragana và Katakana (yêu cầu tối thiểu khi học tiếng Nhật). Đa số các từ vựng về Tin học được mượn từ nước ngoài nên được viết bằng Katakana. Tuy vậy một số từ được viết bằng Kanji và mình sẽ phiên âm ra Hiragana.</p>
+<table>
+<thead>
+<tr>
+<th>Tiếng Nhật</th>
+<th>Hiragana</th>
+<th>Tiếng Anh/Nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>パソコン</td>
+<td></td>
+<td>Personal Computer/Máy tính cá nhân</td>
+</tr>
+<tr>
+<td>コンピューター</td>
+<td></td>
+<td>Computer/Máy tính</td>
+</tr>
+<tr>
+<td>タブレット</td>
+<td></td>
+<td>Tablet/Máy tính bảng</td>
+</tr>
+<tr>
+<td>マウス</td>
+<td></td>
+<td>Mouse/Chuột</td>
+</tr>
+<tr>
+<td>キーボード</td>
+<td></td>
+<td>Keyboard/Bàn phím</td>
+</tr>
+<tr>
+<td>ラップトップ</td>
+<td></td>
+<td>Laptop</td>
+</tr>
+<tr>
+<td>ソフトウェア</td>
+<td></td>
+<td>Software/Phần mềm</td>
+</tr>
+<tr>
+<td>ハードウェア</td>
+<td></td>
+<td>Hardware/Phần cứng</td>
+</tr>
+<tr>
+<td>デバイス</td>
+<td></td>
+<td>Device/Thiết bị</td>
+</tr>
+<tr>
+<td>ゲーム</td>
+<td></td>
+<td>Game</td>
+</tr>
+<tr>
+<td>サウンド</td>
+<td></td>
+<td>Sound/Âm thanh</td>
+</tr>
+<tr>
+<td>システム</td>
+<td></td>
+<td>System/Hệ thống</td>
+</tr>
+<tr>
+<td>オペレーティング・システム</td>
+<td></td>
+<td>Operating system/Hệ điều hành</td>
+</tr>
+<tr>
+<td>バッテリ</td>
+<td></td>
+<td>Battery/Pin</td>
+</tr>
+<tr>
+<td>モニター画面</td>
+<td>がめん</td>
+<td>Monitor screen/Màn hình</td>
+</tr>
+<tr>
+<td>センサー</td>
+<td></td>
+<td>Sensor/Cảm biến</td>
+</tr>
+<tr>
+<td>スキャン</td>
+<td></td>
+<td>Scan/Máy quét</td>
+</tr>
+<tr>
+<td>カメラ</td>
+<td></td>
+<td>Camera</td>
+</tr>
+<tr>
+<td>プログラム</td>
+<td></td>
+<td>Program/Chương trình</td>
+</tr>
+<tr>
+<td>アプリケーション</td>
+<td></td>
+<td>Application/Ứng dụng</td>
+</tr>
+<tr>
+<td>ドキュメント/文書</td>
+<td>ぶんしょ</td>
+<td>Document/Tài liệu</td>
+</tr>
+<tr>
+<td>ピクチャ/写真</td>
+<td>しゃしん</td>
+<td>Picture/Hình ảnh</td>
+</tr>
+<tr>
+<td>ミュージック/音楽</td>
+<td>おんがく</td>
+<td>Music/Âm nhạc</td>
+</tr>
+<tr>
+<td>ビデオ</td>
+<td></td>
+<td>Video</td>
+</tr>
+<tr>
+<td>インストール</td>
+<td></td>
+<td>Install/Cài đặt</td>
+</tr>
+<tr>
+<td>アンインストール</td>
+<td></td>
+<td>Uninstall/Gỡ cài đặt</td>
+</tr>
+<tr>
+<td>フロッピー</td>
+<td></td>
+<td>Floppy/Đĩa mềm</td>
+</tr>
+<tr>
+<td>ハードディスク</td>
+<td></td>
+<td>Hard disk/Đĩa cứng</td>
+</tr>
+<tr>
+<td>ネットワーク</td>
+<td></td>
+<td>Network/Mạng máy tính</td>
+</tr>
+<tr>
+<td>インターネット</td>
+<td></td>
+<td>Internet</td>
+</tr>
+<tr>
+<td>サーチ/検索</td>
+<td>けんさく</td>
+<td>Search/Tìm kiếm</td>
+</tr>
+<tr>
+<td>アドレス</td>
+<td></td>
+<td>Address/Địa chỉ</td>
+</tr>
+<tr>
+<td>メール</td>
+<td></td>
+<td>Email</td>
+</tr>
+<tr>
+<td>ブラウザ</td>
+<td></td>
+<td>Browser/Trình duyệt</td>
+</tr>
+<tr>
+<td>ホーム</td>
+<td></td>
+<td>Home/Trang chủ</td>
+</tr>
+<tr>
+<td>ウェブサイト</td>
+<td></td>
+<td>Website</td>
+</tr>
+<tr>
+<td>アドミニストレーター/管理者</td>
+<td>かんりしゃ</td>
+<td>Administrator</td>
+</tr>
+<tr>
+<td>ダウンロード</td>
+<td></td>
+<td>Download</td>
+</tr>
+<tr>
+<td>アップロード</td>
+<td></td>
+<td>Upload</td>
+</tr>
+<tr>
+<td>データベース</td>
+<td></td>
+<td>Database/Cơ sở dữ liệu</td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div>
@@ -386,7 +537,7 @@ char *str = new char();
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/c/c&#43;&#43;/">c/c&#43;&#43;</a>
+  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/japanese/">japanese</a>
 
                   </div>
                 
@@ -399,7 +550,7 @@ char *str = new char();
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/japanese-computer-vocab/" data-tooltip="Từ vựng về Tin học tiếng Nhật">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/japanese-windows-vocab/" data-tooltip="Từ vựng về Windows trong tiếng Nhật">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -407,7 +558,7 @@ char *str = new char();
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/cpp-random-number/" data-tooltip="Cách khởi tạo số ngẫu nhiên trong C/C&#43;&#43;">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/cpp-dynamic-allocation/" data-tooltip="Cấp phát động trong C/C&#43;&#43;">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -425,19 +576,19 @@ char *str = new char();
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/01/japanese-computer-vocab/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/01/japanese-computer-vocab/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/01/japanese-computer-vocab/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -466,8 +617,8 @@ char *str = new char();
             <div class="comment-box">
                 <textarea name="fields[comment]" class="comment-input-control comment-input-animated" placeholder="Comment (markdown is accepted) *" required rows="3"></textarea>
                 <div class="comment-box-tail">
-                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2015/01/cpp-dynamic-allocation/#comment-submitted">
-                    <input type="hidden" name="options[slug]" value="cpp-dynamic-allocation">
+                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2015/01/japanese-computer-vocab/#comment-submitted">
+                    <input type="hidden" name="options[slug]" value="japanese-computer-vocab">
                     <input type="text" name="fields[name]" class="post-comment-field" placeholder="Name *" required/>
                     <input type="email" name="fields[email]" class="post-comment-field" placeholder="Email address (will not be public) *" required/>
                     <input type="hidden" id="comment-parent" name="fields[reply_to]" value="">
@@ -510,7 +661,7 @@ char *str = new char();
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2015/01/cpp-dynamic-allocation/" data-width="100%"></div>
+<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2015/01/japanese-computer-vocab/" data-width="100%"></div>
 
               
             
@@ -531,7 +682,7 @@ char *str = new char();
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/japanese-computer-vocab/" data-tooltip="Từ vựng về Tin học tiếng Nhật">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/japanese-windows-vocab/" data-tooltip="Từ vựng về Windows trong tiếng Nhật">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -539,7 +690,7 @@ char *str = new char();
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/cpp-random-number/" data-tooltip="Cách khởi tạo số ngẫu nhiên trong C/C&#43;&#43;">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/cpp-dynamic-allocation/" data-tooltip="Cấp phát động trong C/C&#43;&#43;">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -557,19 +708,19 @@ char *str = new char();
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/01/japanese-computer-vocab/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/01/japanese-computer-vocab/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/01/japanese-computer-vocab/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -593,19 +744,19 @@ char *str = new char();
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2015%2F01%2Fcpp-dynamic-allocation%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2015%2F01%2Fjapanese-computer-vocab%2F">
           <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2015%2F01%2Fcpp-dynamic-allocation%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2015%2F01%2Fjapanese-computer-vocab%2F">
           <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2015%2F01%2Fcpp-dynamic-allocation%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2015%2F01%2Fjapanese-computer-vocab%2F">
           <i class="fa fa-google-plus"></i><span>Chia sẻ với Google&#43;</span>
         </a>
       </li>
