@@ -11,6 +11,15 @@
     
     
     <item>
+      <title>Làm quen với MessageBox trong C#</title>
+      <link>https://chidokun.github.io/2015/03/csharp-message-box/</link>
+      <pubDate>Tue, 03 Mar 2015 20:27:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/03/csharp-message-box/</guid>
+      <description>&lt;p&gt;Chắc hẳn MessageBox đã quá quen thuộc với chúng ta khi sử dụng hệ điều hành Windows. Ngôn ngữ C# và nền tảng .NET Framework đã hỗ trợ rất nhiều trong việc sử dụng &lt;em&gt;MessageBox&lt;/em&gt;. Bài viết này sẽ hướng dẫn các bạn làm quen với &lt;em&gt;MessageBox&lt;/em&gt; trong Windows Form.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Cấp phát động cho mảng hai chiều trong C&#43;&#43;</title>
       <link>https://chidokun.github.io/2015/01/cpp-matrix-allocation/</link>
       <pubDate>Tue, 27 Jan 2015 15:18:00 +0700</pubDate>

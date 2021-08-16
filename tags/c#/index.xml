@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>c# on Nguyễn Tuấn&#39;s Blog</title>
+    <link>https://chidokun.github.io/tags/c#/</link>
+    <description>Recent content in c# on Nguyễn Tuấn&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>vi</language>
+    <lastBuildDate>Tue, 03 Mar 2015 17:27:00 +0700</lastBuildDate>
+    
+	<atom:link href="https://chidokun.github.io/tags/c#/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hàm xóa một hàng và một cột bất kỳ trong ma trận</title>
+      <link>https://chidokun.github.io/2015/03/delete-row-and-col/</link>
+      <pubDate>Tue, 03 Mar 2015 17:27:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/03/delete-row-and-col/</guid>
+      <description>&lt;p&gt;Có thể viết hàm xóa một hàng riêng và xóa một cột riêng và gọi chúng để xóa một hàng và một cột trong ma trận. Tuy nhiên, như vậy sẽ duyệt ma trận đến 2 lần. Để tối ưu hóa, ta có thể thực hiện xóa cùng lúc 1 hàng và một cột bằng cách sau đây.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

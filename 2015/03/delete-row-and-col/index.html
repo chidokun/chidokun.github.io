@@ -8,25 +8,25 @@
 <meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Tuấn">
 <meta name="keywords" content="mảng động, mảng hai chiều, cấp phát động, development, programming, chidokun, lập trình">
-<meta name="description" content="Mảng 2 chiều khá quen thuộc với chúng ta. Mình sẽ giới thiệu một vài cách cấp phát động mảng 2 chiều để các bạn lựa chọn cho phù hợp. Ở đây mình minh họa bằng C&#43;&#43;, đối với các ngôn ngữ khác thì ý tưởng cũng tương tự vậy thôi. Lưu ý là C&#43;&#43; sẽ không tự động thu hồi tài nguyên động đã cấp phát cho dù có thoát khỏi chương trình, vì thế bắt buộc phải có thao tác giải phóng mảng 2 chiều.">
+<meta name="description" content="Có thể viết hàm xóa một hàng riêng và xóa một cột riêng và gọi chúng để xóa một hàng và một cột trong ma trận. Tuy nhiên, như vậy sẽ duyệt ma trận đến 2 lần. Để tối ưu hóa, ta có thể thực hiện xóa cùng lúc 1 hàng và một cột bằng cách sau đây.">
 
 
-<meta property="og:description" content="Mảng 2 chiều khá quen thuộc với chúng ta. Mình sẽ giới thiệu một vài cách cấp phát động mảng 2 chiều để các bạn lựa chọn cho phù hợp. Ở đây mình minh họa bằng C&#43;&#43;, đối với các ngôn ngữ khác thì ý tưởng cũng tương tự vậy thôi. Lưu ý là C&#43;&#43; sẽ không tự động thu hồi tài nguyên động đã cấp phát cho dù có thoát khỏi chương trình, vì thế bắt buộc phải có thao tác giải phóng mảng 2 chiều.">
+<meta property="og:description" content="Có thể viết hàm xóa một hàng riêng và xóa một cột riêng và gọi chúng để xóa một hàng và một cột trong ma trận. Tuy nhiên, như vậy sẽ duyệt ma trận đến 2 lần. Để tối ưu hóa, ta có thể thực hiện xóa cùng lúc 1 hàng và một cột bằng cách sau đây.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Cấp phát động cho mảng hai chiều trong C&#43;&#43;">
-<meta name="twitter:title" content="Cấp phát động cho mảng hai chiều trong C&#43;&#43;">
-<meta property="og:url" content="https://chidokun.github.io/2015/01/cpp-matrix-allocation/">
-<meta property="twitter:url" content="https://chidokun.github.io/2015/01/cpp-matrix-allocation/">
+<meta property="og:title" content="Hàm xóa một hàng và một cột bất kỳ trong ma trận">
+<meta name="twitter:title" content="Hàm xóa một hàng và một cột bất kỳ trong ma trận">
+<meta property="og:url" content="https://chidokun.github.io/2015/03/delete-row-and-col/">
+<meta property="twitter:url" content="https://chidokun.github.io/2015/03/delete-row-and-col/">
 <meta property="og:site_name" content="Nguyễn Tuấn&#39;s Blog">
-<meta property="og:description" content="Mảng 2 chiều khá quen thuộc với chúng ta. Mình sẽ giới thiệu một vài cách cấp phát động mảng 2 chiều để các bạn lựa chọn cho phù hợp. Ở đây mình minh họa bằng C&#43;&#43;, đối với các ngôn ngữ khác thì ý tưởng cũng tương tự vậy thôi. Lưu ý là C&#43;&#43; sẽ không tự động thu hồi tài nguyên động đã cấp phát cho dù có thoát khỏi chương trình, vì thế bắt buộc phải có thao tác giải phóng mảng 2 chiều.">
-<meta name="twitter:description" content="Mảng 2 chiều khá quen thuộc với chúng ta. Mình sẽ giới thiệu một vài cách cấp phát động mảng 2 chiều để các bạn lựa chọn cho phù hợp. Ở đây mình minh họa bằng C&#43;&#43;, đối với các ngôn ngữ khác thì ý tưởng cũng tương tự vậy thôi. Lưu ý là C&#43;&#43; sẽ không tự động thu hồi tài nguyên động đã cấp phát cho dù có thoát khỏi chương trình, vì thế bắt buộc phải có thao tác giải phóng mảng 2 chiều.">
+<meta property="og:description" content="Có thể viết hàm xóa một hàng riêng và xóa một cột riêng và gọi chúng để xóa một hàng và một cột trong ma trận. Tuy nhiên, như vậy sẽ duyệt ma trận đến 2 lần. Để tối ưu hóa, ta có thể thực hiện xóa cùng lúc 1 hàng và một cột bằng cách sau đây.">
+<meta name="twitter:description" content="Có thể viết hàm xóa một hàng riêng và xóa một cột riêng và gọi chúng để xóa một hàng và một cột trong ma trận. Tuy nhiên, như vậy sẽ duyệt ma trận đến 2 lần. Để tối ưu hóa, ta có thể thực hiện xóa cùng lúc 1 hàng và một cột bằng cách sau đây.">
 <meta property="og:locale" content="vi">
 
   
-    <meta property="article:published_time" content="2015-01-27T15:18:00">
+    <meta property="article:published_time" content="2015-03-03T17:27:00">
   
   
-    <meta property="article:modified_time" content="2015-01-27T15:18:00">
+    <meta property="article:modified_time" content="2015-03-03T17:27:00">
   
   
   
@@ -38,7 +38,7 @@
   
   
     
-      <meta property="article:tag" content="c/c&#43;&#43;">
+      <meta property="article:tag" content="c#">
     
   
 
@@ -64,14 +64,14 @@
   <meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
 
 
-    <title>Cấp phát động cho mảng hai chiều trong C&#43;&#43;</title>
+    <title>Hàm xóa một hàng và một cột bất kỳ trong ma trận</title>
     <meta name="google-site-verification" content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI" />
     <link rel="icon" href="https://chidokun.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://chidokun.github.io/2015/01/cpp-matrix-allocation/">
+    <link rel="canonical" href="https://chidokun.github.io/2015/03/delete-row-and-col/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -271,19 +271,19 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Cấp phát động cho mảng hai chiều trong C&#43;&#43;
+      Hàm xóa một hàng và một cột bất kỳ trong ma trận
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2015-01-27T15:18:00&#43;07:00">
+      <time itemprop="datePublished" datetime="2015-03-03T17:27:00&#43;07:00">
         
   
   
   
   
-    27 tháng 1 2015
+    3 tháng 3 2015
   
 
       </time>
@@ -303,7 +303,7 @@ if (!doNotTrack) {
 
   <div>
   <div class="fb-like" 
-    data-href="https://chidokun.github.io/2015/01/cpp-matrix-allocation/" 
+    data-href="https://chidokun.github.io/2015/03/delete-row-and-col/" 
     data-width="" 
     data-layout="button_count" 
     data-action="like" 
@@ -314,38 +314,51 @@ if (!doNotTrack) {
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>Mảng 2 chiều khá quen thuộc với chúng ta. Mình sẽ giới thiệu một vài cách cấp phát động mảng 2 chiều để các bạn lựa chọn cho phù hợp. Ở đây mình minh họa bằng C++, đối với các ngôn ngữ khác thì ý tưởng cũng tương tự vậy thôi. Lưu ý là C++ sẽ không tự động thu hồi tài nguyên động đã cấp phát cho dù có thoát khỏi chương trình, vì thế bắt buộc phải có thao tác giải phóng mảng 2 chiều.</p>
-<h1 id="cách-1-dùng-con-trỏ-cấp-2">Cách 1: Dùng con trỏ cấp 2</h1>
-<p><em>Ý tưởng</em>: Để cấp phát động cho mảng 2 chiều, ta cấp phát bộ nhớ của từng chiều theo cú pháp của mảng một chiều. Tức là tạo m <a href="https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">mảng 1 chiều</a>, mỗi mảng có n phần tử.</p>
-<p>Để làm điều này ta dùng 1 con trỏ cấp 2, cấp phát cho nó m con trỏ cấp 1, mỗi con trỏ cấp 1 ta lại cấp phát n phần tử.</p>
-<p>Ví dụ:</p>
-<pre><code class="language-cpp">int **a = new int*[m];
-for(int i = 0; i&lt;m; i++)
-   a[i] = new int[n];
+              <p>Có thể viết hàm xóa một hàng riêng và xóa một cột riêng và gọi chúng để xóa một hàng và một cột trong ma trận. Tuy nhiên, như vậy sẽ duyệt ma trận đến 2 lần. Để tối ưu hóa, ta có thể thực hiện xóa cùng lúc 1 hàng và một cột bằng cách sau đây.</p>
+<p>Để dễ hiểu có thể xem hình minh họa:</p>
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/delete-row-and-col/1.png" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/delete-row-and-col/1.png" style="width: 70%;">
+  
+    </a>
+  
+  
+</div>
+
+<p>Giả sử gọi cột cần xóa là iColumn và hàng cần xóa là iRow thì cả 2 sẽ tạo nên 4 vùng. Chỉ có vùng phía trên bên trái giữ nguyên còn các vùng khác di chuyển theo hướng như trên hình. Vùng phía trên bên phải sẽ dịch sang trái 1 cột, vùng phía dưới bên trái sẽ dịch lên 1 hàng và vùng phía dưới bên phải sẽ dịch xéo lên phía trái.</p>
+<p>Như vậy ta sẽ minh họa cách làm bằng C/C++ như sau:</p>
+<pre><code class="language-cpp">void DeleteRowColumn(int a[][20], int &amp;m, int &amp;n, int iRow, int iColumn)
+{
+   for(int i=0;i&lt;m;i++)
+      for(int j=0;j&lt;n;j++)
+      {
+         if(i &lt; iRow &amp;&amp; j &gt;= iColumn) //Vùng phía trên bên phải
+            a[i][j]=a[i][j+1];
+         else if(i &gt;= iRow &amp;&amp; j &lt; iColumn) //Vùng phía dưới bên trái
+            a[i][j]=a[i+1][j];
+         else if(i &gt;= iRow &amp;&amp; j &gt;= iColumn) //Vùng phía dưới bên phải
+            a[i][j]=a[i+1][j+1];
+      }
+   m--;
+   n--;
+}
 </code></pre>
-<p>Với ví dụ trên, ta được một mảng động hai chiều các số nguyên có kích thước m x n.</p>
-<p>Lưu ý là ta dùng một con trỏ cấp 2 cấp phát cho một mảng các phần tử có kiểu <code>int*</code> chứ không phải kiểu <code>int</code> thông thường. Kiểu <code>int*</code> chính là con trỏ cấp 1.</p>
-<p>Để giải phóng bộ nhớ động, ta cũng phải giải phóng theo từng cột và từng hàng.</p>
-<p>Ví dụ:</p>
-<pre><code class="language-cpp">for(int i = 0; i&lt;m; i++)
-   delete []a[i];
-delete []a;
-</code></pre>
-<p>Cách này phức tạp nhưng bạn sẽ có 1 mảng 2 chiều đúng nghĩa và có thể lấy phần tử bằng cách gọi <code>a[i][j]</code> thông thường như mảng tĩnh.</p>
-<h1 id="cách-2-dùng-mảng-1-chiều-để-biểu-diễn-mảng-2-chiều">Cách 2: Dùng mảng 1 chiều để biểu diễn mảng 2 chiều</h1>
-<p><em>Ý tưởng</em>: Cấp phát mảng 1 chiều có kích thước m x n và truy cập nó như một mảng 2 chiều với các chỉ số thông qua công thức liên hệ.</p>
-<p>Phần tử <code>a[i][j]</code> tương ứng với phần tử <code>a[i*n + j]</code> trong mảng.</p>
-<p>Ví dụ:</p>
-<pre><code class="language-cpp">int *a = new int[m*n]; //cấp phát xong
-//khởi tạo bằng 0
-for(int i = 0; i &lt; m; i++)
-   for(int j = 0; j &lt; n; j++)
-      a[i*n+j] = 0;
-</code></pre>
-<p>Việc giải phóng vô cùng đơn giản, chỉ cần 1 lệnh <code>delete</code>.</p>
-<pre><code class="language-cpp">delete []a;
-</code></pre>
-<p>Với cách này bạn sẽ phải truy cập mảng 2 chiều thông qua công thức liên hệ, tuy nhiên, cách này sẽ hữu ích với những trường hợp như cộng 2 ma trận cùng loại, v.v&hellip;</p>
               
             </div>
           </div>
@@ -357,7 +370,7 @@ for(int i = 0; i &lt; m; i++)
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/c/c&#43;&#43;/">c/c&#43;&#43;</a>
+  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/c/">c#</a>
 
                   </div>
                 
@@ -370,7 +383,7 @@ for(int i = 0; i &lt; m; i++)
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/03/delete-row-and-col/" data-tooltip="Hàm xóa một hàng và một cột bất kỳ trong ma trận">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/03/csharp-message-box/" data-tooltip="Làm quen với MessageBox trong C#">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -378,7 +391,7 @@ for(int i = 0; i &lt; m; i++)
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/japanese-windows-vocab/" data-tooltip="Từ vựng về Windows trong tiếng Nhật">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/cpp-matrix-allocation/" data-tooltip="Cấp phát động cho mảng hai chiều trong C&#43;&#43;">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -396,19 +409,19 @@ for(int i = 0; i &lt; m; i++)
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/01/cpp-matrix-allocation/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/03/delete-row-and-col/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/01/cpp-matrix-allocation/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/03/delete-row-and-col/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/01/cpp-matrix-allocation/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/03/delete-row-and-col/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -437,8 +450,8 @@ for(int i = 0; i &lt; m; i++)
             <div class="comment-box">
                 <textarea name="fields[comment]" class="comment-input-control comment-input-animated" placeholder="Comment (markdown is accepted) *" required rows="3"></textarea>
                 <div class="comment-box-tail">
-                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2015/01/cpp-matrix-allocation/#comment-submitted">
-                    <input type="hidden" name="options[slug]" value="cpp-matrix-allocation">
+                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2015/03/delete-row-and-col/#comment-submitted">
+                    <input type="hidden" name="options[slug]" value="delete-row-and-col">
                     <input type="text" name="fields[name]" class="post-comment-field" placeholder="Name *" required/>
                     <input type="email" name="fields[email]" class="post-comment-field" placeholder="Email address (will not be public) *" required/>
                     <input type="hidden" id="comment-parent" name="fields[reply_to]" value="">
@@ -481,7 +494,7 @@ for(int i = 0; i &lt; m; i++)
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2015/01/cpp-matrix-allocation/" data-width="100%"></div>
+<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2015/03/delete-row-and-col/" data-width="100%"></div>
 
               
             
@@ -502,7 +515,7 @@ for(int i = 0; i &lt; m; i++)
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/03/delete-row-and-col/" data-tooltip="Hàm xóa một hàng và một cột bất kỳ trong ma trận">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/03/csharp-message-box/" data-tooltip="Làm quen với MessageBox trong C#">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -510,7 +523,7 @@ for(int i = 0; i &lt; m; i++)
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/japanese-windows-vocab/" data-tooltip="Từ vựng về Windows trong tiếng Nhật">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/cpp-matrix-allocation/" data-tooltip="Cấp phát động cho mảng hai chiều trong C&#43;&#43;">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -528,19 +541,19 @@ for(int i = 0; i &lt; m; i++)
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/01/cpp-matrix-allocation/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/03/delete-row-and-col/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/01/cpp-matrix-allocation/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/03/delete-row-and-col/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/01/cpp-matrix-allocation/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/03/delete-row-and-col/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -564,19 +577,19 @@ for(int i = 0; i &lt; m; i++)
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2015%2F01%2Fcpp-matrix-allocation%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2015%2F03%2Fdelete-row-and-col%2F">
           <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2015%2F01%2Fcpp-matrix-allocation%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2015%2F03%2Fdelete-row-and-col%2F">
           <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2015%2F01%2Fcpp-matrix-allocation%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2015%2F03%2Fdelete-row-and-col%2F">
           <i class="fa fa-google-plus"></i><span>Chia sẻ với Google&#43;</span>
         </a>
       </li>
