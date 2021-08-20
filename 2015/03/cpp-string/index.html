@@ -7,26 +7,26 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Tuấn">
-<meta name="keywords" content="mảng động, mảng hai chiều, cấp phát động, development, programming, chidokun, lập trình">
-<meta name="description" content="Chắc hẳn MessageBox đã quá quen thuộc với chúng ta khi sử dụng hệ điều hành Windows. Ngôn ngữ C# và nền tảng .NET Framework đã hỗ trợ rất nhiều trong việc sử dụng MessageBox. Bài viết này sẽ hướng dẫn các bạn làm quen với MessageBox trong Windows Form.">
+<meta name="keywords" content="chuỗi, string, development, programming, chidokun, lập trình">
+<meta name="description" content="Khi tao tác với chuỗi trong ngôn ngữ C chúng ta thao tác với char* và các hàm thao tác với chuỗi. C&#43;&#43; đã bổ sung kiểu dữ liệu string tiện lợi hơn rất nhiều. Bài viết này sẽ tóm tắt những điều cơ bản cần biết về kiểu string của C&#43;&#43;.">
 
 
-<meta property="og:description" content="Chắc hẳn MessageBox đã quá quen thuộc với chúng ta khi sử dụng hệ điều hành Windows. Ngôn ngữ C# và nền tảng .NET Framework đã hỗ trợ rất nhiều trong việc sử dụng MessageBox. Bài viết này sẽ hướng dẫn các bạn làm quen với MessageBox trong Windows Form.">
+<meta property="og:description" content="Khi tao tác với chuỗi trong ngôn ngữ C chúng ta thao tác với char* và các hàm thao tác với chuỗi. C&#43;&#43; đã bổ sung kiểu dữ liệu string tiện lợi hơn rất nhiều. Bài viết này sẽ tóm tắt những điều cơ bản cần biết về kiểu string của C&#43;&#43;.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Làm quen với MessageBox trong C#">
-<meta name="twitter:title" content="Làm quen với MessageBox trong C#">
-<meta property="og:url" content="https://chidokun.github.io/2015/03/csharp-message-box/">
-<meta property="twitter:url" content="https://chidokun.github.io/2015/03/csharp-message-box/">
+<meta property="og:title" content="Tổng quan về kiểu string trong C&#43;&#43;">
+<meta name="twitter:title" content="Tổng quan về kiểu string trong C&#43;&#43;">
+<meta property="og:url" content="https://chidokun.github.io/2015/03/cpp-string/">
+<meta property="twitter:url" content="https://chidokun.github.io/2015/03/cpp-string/">
 <meta property="og:site_name" content="Nguyễn Tuấn&#39;s Blog">
-<meta property="og:description" content="Chắc hẳn MessageBox đã quá quen thuộc với chúng ta khi sử dụng hệ điều hành Windows. Ngôn ngữ C# và nền tảng .NET Framework đã hỗ trợ rất nhiều trong việc sử dụng MessageBox. Bài viết này sẽ hướng dẫn các bạn làm quen với MessageBox trong Windows Form.">
-<meta name="twitter:description" content="Chắc hẳn MessageBox đã quá quen thuộc với chúng ta khi sử dụng hệ điều hành Windows. Ngôn ngữ C# và nền tảng .NET Framework đã hỗ trợ rất nhiều trong việc sử dụng MessageBox. Bài viết này sẽ hướng dẫn các bạn làm quen với MessageBox trong Windows Form.">
+<meta property="og:description" content="Khi tao tác với chuỗi trong ngôn ngữ C chúng ta thao tác với char* và các hàm thao tác với chuỗi. C&#43;&#43; đã bổ sung kiểu dữ liệu string tiện lợi hơn rất nhiều. Bài viết này sẽ tóm tắt những điều cơ bản cần biết về kiểu string của C&#43;&#43;.">
+<meta name="twitter:description" content="Khi tao tác với chuỗi trong ngôn ngữ C chúng ta thao tác với char* và các hàm thao tác với chuỗi. C&#43;&#43; đã bổ sung kiểu dữ liệu string tiện lợi hơn rất nhiều. Bài viết này sẽ tóm tắt những điều cơ bản cần biết về kiểu string của C&#43;&#43;.">
 <meta property="og:locale" content="vi">
 
   
-    <meta property="article:published_time" content="2015-03-03T20:27:00">
+    <meta property="article:published_time" content="2015-03-06T11:48:00">
   
   
-    <meta property="article:modified_time" content="2015-03-03T20:27:00">
+    <meta property="article:modified_time" content="2015-03-06T11:48:00">
   
   
   
@@ -64,14 +64,14 @@
   <meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
 
 
-    <title>Làm quen với MessageBox trong C#</title>
+    <title>Tổng quan về kiểu string trong C&#43;&#43;</title>
     <meta name="google-site-verification" content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI" />
     <link rel="icon" href="https://chidokun.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://chidokun.github.io/2015/03/csharp-message-box/">
+    <link rel="canonical" href="https://chidokun.github.io/2015/03/cpp-string/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -271,19 +271,19 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Làm quen với MessageBox trong C#
+      Tổng quan về kiểu string trong C&#43;&#43;
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2015-03-03T20:27:00&#43;07:00">
+      <time itemprop="datePublished" datetime="2015-03-06T11:48:00&#43;07:00">
         
   
   
   
   
-    3 tháng 3 2015
+    6 tháng 3 2015
   
 
       </time>
@@ -303,7 +303,7 @@ if (!doNotTrack) {
 
   <div>
   <div class="fb-like" 
-    data-href="https://chidokun.github.io/2015/03/csharp-message-box/" 
+    data-href="https://chidokun.github.io/2015/03/cpp-string/" 
     data-width="" 
     data-layout="button_count" 
     data-action="like" 
@@ -314,161 +314,61 @@ if (!doNotTrack) {
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>Chắc hẳn MessageBox đã quá quen thuộc với chúng ta khi sử dụng hệ điều hành Windows. Ngôn ngữ C# và nền tảng .NET Framework đã hỗ trợ rất nhiều trong việc sử dụng <em>MessageBox</em>. Bài viết này sẽ hướng dẫn các bạn làm quen với <em>MessageBox</em> trong Windows Form.</p>
-<p><code>MessageBox</code> là một lớp (class) nằm trong <code>System.Windows.Forms</code> có một phương thức <code>Show()</code> để hiển thị thông báo. Có rất nhiều kiểu thông báo, bạn có thể điều chỉnh nội dung thông báo, tiêu đề, các nút OK-Cancel, biểu tượng, v.v&hellip;</p>
-<pre><code class="language-csharp">MessageBox.Show(&quot;Xin chào! Tôi là C#&quot;);
+              <p>Khi tao tác với chuỗi trong ngôn ngữ C chúng ta thao tác với <code>char*</code> và các hàm thao tác với chuỗi. C++ đã bổ sung kiểu dữ liệu <code>string</code> tiện lợi hơn rất nhiều. Bài viết này sẽ tóm tắt những điều cơ bản cần biết về kiểu <code>string</code> của C++.</p>
+<p><strong>1</strong>. <code>string</code> là kiểu dữ liệu mới được định nghĩa sẵn trong C++, nó có nhiều ưu điểm vượt trội và giúp tránh được những phiền phức so với chuỗi kiểu <code>char*</code> của C.</p>
+<p><strong>2</strong>. Trong C++, bạn vẫn có thể dùng kiểu <code>char*</code> nếu muốn. Có thể chuyển từ kiểu <code>string</code> sang chuỗi <code>char*</code> bằng phương thức <code>c_str()</code>.</p>
+<p><strong>3</strong>. Cần khai báo <code>#include&lt;string&gt;</code> để có thể sử dụng đầy đủ tiện ích của <code>string</code>.</p>
+<p><strong>4</strong>. <code>string</code> có các phép <code>+</code>, <code>+=</code> để nối chuỗi thay vì dùng hàm trong thư viện <code>string.h</code> như kiểu <code>char*</code>.</p>
+<p><strong>5</strong>. Các hàm trong thư viện <code>string.h</code> (<code>strlen</code>, <code>strcmp</code>, <code>strlwr</code>,&hellip; ) sẽ không sử dụng được với <code>string</code>.</p>
+<p><strong>6</strong>. Có thể so sánh trực tiếp 2 chuỗi <code>string</code>: <code>==</code>, <code>!=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>&lt;</code>, <code>&lt;=</code>. Nguyên tắc so sánh giống hệt như khi dùng hàm <code>strcmp()</code>.</p>
+<p><strong>7</strong>. Dùng phương thức <code>length()</code> để lấy độ dài chuỗi, dùng phép lấy chỉ số <code>[]</code> để lấy từng phần tử của chuỗi.</p>
+<p>Ví dụ:</p>
+<pre><code class="language-cpp">string a = &quot;ABCDE&quot;;
+cout&lt;&lt; a.length();
+cout&lt;&lt; a[2];
 </code></pre>
-<p>Đây là kiểu thông báo đơn giản nhất, chỉ có nội dung và nút OK, chưa bao gồm biểu tượng, tiêu đề, v.v..</p>
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure center" >
-  
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/csharp-message-box/1.png" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/csharp-message-box/1.png" style="width: 90%;">
-  
-    </a>
-  
-  
-</div>
-
-<p>Để có tiêu đề ta thêm 1 tham số chuỗi truyền vào phương thức như sau:</p>
-<pre><code class="language-csharp">MessageBox.Show(&quot;Xin chào! Tôi là C#&quot;,&quot;Thông báo&quot;);
+<p><strong>8</strong>. Dùng phép gán (<code>=</code>) để gán trực tiếp biến <code>string</code> bằng một chuỗi hoặc một biến <code>string</code> khác mà không cần copy.</p>
+<p><strong>9</strong>. Biến kiểu <code>string</code> có thể xuất bằng <code>cout&lt;&lt;</code> và nhập đến khi gặp khoảng trắng bằng <code>cin&gt;&gt;</code>.</p>
+<p><strong>10</strong>. Dùng <code>getline(cin, &lt;tên biến chuỗi&gt;)</code> để nhập chuỗi có khoảng trắng.</p>
+<p>Ví dụ:</p>
+<pre><code class="language-cpp">string a;
+getline(cin, a);
+cout &lt;&lt; a;
 </code></pre>
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure center" >
-  
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/csharp-message-box/2.png" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/csharp-message-box/2.png" style="width: 30%;">
-  
-    </a>
-  
-  
-</div>
-
-<p>Để cài đặt nút bấm, ta cũng thêm 1 tham số kiểu enum là <code>MessageBoxButtons.&lt;loại nút&gt;</code>. Các loại nút có sẵn bao gồm <code>AbortRetryIgnore</code>, <code>OK</code>, <code>OKCancel</code>, <code>RetryCancel</code>, <code>YesNo</code>, <code>YesNoCancel</code>. Ví dụ:</p>
-<pre><code class="language-csharp">MessageBox.Show(&quot;Xin chào! Tôi là C#&quot;, &quot;Thông báo&quot;, 
-                                MessageBoxButtons.AbortRetryIgnore);
+<p><strong>11</strong>. string thực chất là một <code>vector&lt;char&gt;</code> có bổ sung thêm một số phương thức và thuộc tính. Do đó, nó có toàn bộ tính chất của một vector.</p>
+<p><strong>12</strong>. Dùng phương thức <code>substr(&lt;vị trí&gt;, &lt;số ký tự&gt;)</code> để lấy chuỗi con.</p>
+<p>Ví dụ:</p>
+<pre><code class="language-cpp">string a = &quot;ABCDEF&quot;;
+cout &lt;&lt; a.substr(1, 3);
+//Kết quả: BCD
 </code></pre>
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure center" >
-  
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/csharp-message-box/3.png" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/csharp-message-box/3.png" style="width: 50%;">
-  
-    </a>
-  
-  
-</div>
-
-<p>Để xử lý các sự kiện khi nhấn vào các nút này mình sẽ hướng dẫn bên dưới.</p>
-<p>Để thêm vào icon ta thêm tham số kiểu enum là <code>MessageBoxIcon.&lt;loại icon&gt;</code>, có nhiều loại nhưng phổ biến là <code>Warning</code> (tam giác vàng có dấu chấm than), <code>Error</code> (hình tròn đỏ có chữ X), <code>Information</code> (hình tròn xanh lam có chữ i), <code>Question</code> (hình tròn lam có dấu chấm hỏi). Ví dụ:</p>
-<pre><code class="language-csharp">MessageBox.Show(&quot;Xin chào! Tôi là C#&quot;, &quot;Thông báo&quot;, 
-               MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+<p><strong>13</strong>. Dùng phương thức <code>insert()</code> để chèn một chuỗi vào giữa chuỗi khác. Có rất nhiều cách để làm điều này:</p>
+<pre><code class="language-cpp">str.insert(int pos, char * s); //chèn chuỗi kiểu char* vào vị trí pos
+str.insert(int pos, string s); //chèn chuỗi s vào vị trí pos
+str.insert(int pos, int n, char ch); //chèn n lần ch vào vị trí pos
 </code></pre>
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure center" >
-  
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/csharp-message-box/4.png" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/csharp-message-box/4.png" style="width: 40%;">
-  
-    </a>
-  
-  
-</div>
-
-<p>Còn rất nhiều tùy chọn khác các bạn có thể tự khám phá. Còn bây giờ mình sẽ hướng dẫn các bạn xử lý sự kiện khi click vào một button trên <code>MessageBox</code>.</p>
-<p>Giả sử bạn có một <code>Form</code>, và bạn muốn khi người dùng nhấp vào nút Close trên thanh tiêu đề thì sẽ có thông báo hỏi người dùng có muốn thoát chương trình. Nếu người dùng chọn Yes, chương trình sẽ kết thúc, chọn No sẽ không tắt chương trình.</p>
-<p>Ta xử lý sự kiện <code>FormClosing</code>, tức là một Form đang đóng lại (nháy vào nút X hoặc lệnh <code>this.Close()</code>,&hellip;).</p>
-<p>Bạn sẽ dùng một biến kiểu <code>DialogResult</code> để lưu lại kết quả trả về của phương thức <code>MessageBox.Show()</code></p>
-<pre><code class="language-csharp">DialogResult dlr = MessageBox.Show(&quot;Bạn muốn thoát chương trình?&quot;,
-      &quot;Thông báo&quot;, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+<p><strong>14</strong>. Dùng phương thức <code>erase()</code> để xóa một phần chuỗi.</p>
+<pre><code class="language-cpp">str.erase(int pos, int n); //xóa n ký tự từ vị trí pos
+str.erase(int pos); //xóa từ vị trí pos đến cuối chuỗi
 </code></pre>
-<p>Đến lúc này ta chỉ cần xét giá trị của biến <code>dlr</code> để rẽ nhánh thôi. Vì <code>Form</code> đang đóng nên nếu người dùng nhấn No thì sẽ hoãn hành động đóng lại, tham số sự kiện của FormClosing là e nên ta thực hiện như sau:</p>
-<pre><code class="language-csharp">DialogResult dlr = MessageBox.Show(&quot;Bạn muốn thoát chương trình?&quot;,
-     &quot;Thông báo&quot;, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-if (dlr == DialogResult.No) e.Cancel = true;
+<p><strong>15</strong>. Có thể dùng phương thức <code>compare()</code> để so sánh 2 chuỗi nếu không muốn dùng các toán tử quan hệ.</p>
+<pre><code class="language-cpp">int compare(const string&amp; str) const;
+int compare(const char* s) const;
+int compare(size_t pos1, size_t n1, const string&amp; str) const;
+int compare(size_t pos1, size_t n1, const char* s) const;
+int compare(size_t pos1, size_t n1, const string&amp; str, size_t pos2, size_t n2) const;
+int compare(size_t pos1, size_t n1, const char* s, size_t n2) const;
 </code></pre>
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure center" >
-  
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/csharp-message-box/5.png" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/csharp-message-box/5.png" style="width: 90%;">
-  
-    </a>
-  
-  
-</div>
-
-<p>Với những giới thiệu sơ lược, các bạn đã có thể nắm được cách sử dụng cơ bản về MessageBox trong Windows Form.</p>
+<p><strong>16</strong>. Dùng phương thức <code>find()</code> để tìm một chuỗi khác xuất hiện trong chuỗi. Trả về vị trí xuất hiện đầu tiên nếu tìm thấy và <code>-1</code> nếu không tìm thấy.</p>
+<pre><code class="language-cpp">str.find(int ch, int pos = 0); //tìm ký tự ch kể từ pos đến cuối
+str.find(char *s, int pos = 0); //tìm chuỗi kiểu char* từ pos đến cuối
+str.find(string&amp; s, int pos = 0); //tìm chuỗi s kể từ pos đến cuối
+</code></pre>
+<p><strong>17</strong>. Dùng phương thức <code>replace()</code> để thay thế một đoạn con trong chuỗi ban đầu.</p>
+<pre><code class="language-cpp">str.replace(int pos, int nchar, char *s);
+str.replace(int pos, int nchar, string s);
+str.replace(int pos, int nchar, int n, int ch);
+</code></pre>
               
             </div>
           </div>
@@ -493,7 +393,7 @@ if (dlr == DialogResult.No) e.Cancel = true;
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/03/cpp-pointer/" data-tooltip="Những kiến thức căn bản về con trỏ trong C/C&#43;&#43;">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/03/interchange-sort/" data-tooltip="Thuật toán sắp xếp: Interchange Sort (đổi chỗ trực tiếp)">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -501,7 +401,7 @@ if (dlr == DialogResult.No) e.Cancel = true;
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/03/delete-row-and-col/" data-tooltip="Hàm xóa một hàng và một cột bất kỳ trong ma trận">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/03/cpp-pointer/" data-tooltip="Những kiến thức căn bản về con trỏ trong C/C&#43;&#43;">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -519,19 +419,19 @@ if (dlr == DialogResult.No) e.Cancel = true;
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/03/csharp-message-box/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/03/cpp-string/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/03/csharp-message-box/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/03/cpp-string/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/03/csharp-message-box/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/03/cpp-string/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -560,8 +460,8 @@ if (dlr == DialogResult.No) e.Cancel = true;
             <div class="comment-box">
                 <textarea name="fields[comment]" class="comment-input-control comment-input-animated" placeholder="Comment (markdown is accepted) *" required rows="3"></textarea>
                 <div class="comment-box-tail">
-                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2015/03/csharp-message-box/#comment-submitted">
-                    <input type="hidden" name="options[slug]" value="csharp-message-box">
+                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2015/03/cpp-string/#comment-submitted">
+                    <input type="hidden" name="options[slug]" value="cpp-string">
                     <input type="text" name="fields[name]" class="post-comment-field" placeholder="Name *" required/>
                     <input type="email" name="fields[email]" class="post-comment-field" placeholder="Email address (will not be public) *" required/>
                     <input type="hidden" id="comment-parent" name="fields[reply_to]" value="">
@@ -604,7 +504,7 @@ if (dlr == DialogResult.No) e.Cancel = true;
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2015/03/csharp-message-box/" data-width="100%"></div>
+<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2015/03/cpp-string/" data-width="100%"></div>
 
               
             
@@ -625,7 +525,7 @@ if (dlr == DialogResult.No) e.Cancel = true;
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/03/cpp-pointer/" data-tooltip="Những kiến thức căn bản về con trỏ trong C/C&#43;&#43;">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/03/interchange-sort/" data-tooltip="Thuật toán sắp xếp: Interchange Sort (đổi chỗ trực tiếp)">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -633,7 +533,7 @@ if (dlr == DialogResult.No) e.Cancel = true;
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/03/delete-row-and-col/" data-tooltip="Hàm xóa một hàng và một cột bất kỳ trong ma trận">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/03/cpp-pointer/" data-tooltip="Những kiến thức căn bản về con trỏ trong C/C&#43;&#43;">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -651,19 +551,19 @@ if (dlr == DialogResult.No) e.Cancel = true;
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/03/csharp-message-box/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/03/cpp-string/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/03/csharp-message-box/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/03/cpp-string/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/03/csharp-message-box/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/03/cpp-string/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -687,19 +587,19 @@ if (dlr == DialogResult.No) e.Cancel = true;
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2015%2F03%2Fcsharp-message-box%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2015%2F03%2Fcpp-string%2F">
           <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2015%2F03%2Fcsharp-message-box%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2015%2F03%2Fcpp-string%2F">
           <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2015%2F03%2Fcsharp-message-box%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2015%2F03%2Fcpp-string%2F">
           <i class="fa fa-google-plus"></i><span>Chia sẻ với Google&#43;</span>
         </a>
       </li>

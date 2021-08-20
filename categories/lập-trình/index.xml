@@ -216,6 +216,33 @@
     </item>
     
     <item>
+      <title>Thuật toán sắp xếp: Interchange Sort (đổi chỗ trực tiếp)</title>
+      <link>https://chidokun.github.io/2015/03/interchange-sort/</link>
+      <pubDate>Sun, 08 Mar 2015 23:44:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/03/interchange-sort/</guid>
+      <description>&lt;p&gt;Để sắp xếp một dãy, có nhiều cách làm khác nhau. Trong bài viết này mình sẽ nói về Interchange Sort, hay còn gọi là thuật toán sắp xếp đổi chỗ trực tiếp.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Tổng quan về kiểu string trong C&#43;&#43;</title>
+      <link>https://chidokun.github.io/2015/03/cpp-string/</link>
+      <pubDate>Fri, 06 Mar 2015 11:48:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/03/cpp-string/</guid>
+      <description>&lt;p&gt;Khi tao tác với chuỗi trong ngôn ngữ C chúng ta thao tác với &lt;code&gt;char*&lt;/code&gt; và các hàm thao tác với chuỗi. C++ đã bổ sung kiểu dữ liệu &lt;code&gt;string&lt;/code&gt; tiện lợi hơn rất nhiều. Bài viết này sẽ tóm tắt những điều cơ bản cần biết về kiểu &lt;code&gt;string&lt;/code&gt; của C++.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Những kiến thức căn bản về con trỏ trong C/C&#43;&#43;</title>
+      <link>https://chidokun.github.io/2015/03/cpp-pointer/</link>
+      <pubDate>Thu, 05 Mar 2015 22:28:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/03/cpp-pointer/</guid>
+      <description>&lt;p&gt;Con trỏ là một khái niệm hơi khó đối với các bạn mới làm quen với lập trình C/C++. Bài viết này sẽ tóm tắt những điều cơ bản cần biết về con trỏ.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Làm quen với MessageBox trong C#</title>
       <link>https://chidokun.github.io/2015/03/csharp-message-box/</link>
       <pubDate>Tue, 03 Mar 2015 20:27:00 +0700</pubDate>
