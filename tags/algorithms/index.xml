@@ -6,37 +6,10 @@
     <description>Recent content in algorithms on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Sun, 15 Aug 2021 18:13:28 +0700</lastBuildDate>
+    <lastBuildDate>Sat, 17 Jul 2021 21:33:22 +0700</lastBuildDate>
     
 	<atom:link href="https://chidokun.github.io/tags/algorithms/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Thuật toán Prim: Cải tiến dùng Index Priority Queue</title>
-      <link>https://chidokun.github.io/2021/08/prim-algorithm-improvement/</link>
-      <pubDate>Sun, 15 Aug 2021 18:13:28 +0700</pubDate>
-      
-      <guid>https://chidokun.github.io/2021/08/prim-algorithm-improvement/</guid>
-      <description>&lt;p&gt;Ở phần trước &lt;a href=&#34;https://chidokun.github.io/2021/07/prim-algorithm-implement/&#34;&gt;Thuật toán Prim: Cài đặt thuật toán&lt;/a&gt; chúng ta đã tìm hiểu qua cách cài đặt thuật toán Prim dựa vào Priority Queue. Tuy nhiên, có một nhược điểm là phải duyệt các cạnh không hợp lệ trong queue. Do vậy, trong bài này chúng ta sẽ tối ưu cách cài đặt thuật toán Prim ở bài trước bằng cách sử dụng Index Priority Queue.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Thuật toán Prim: Cài đặt thuật toán</title>
-      <link>https://chidokun.github.io/2021/07/prim-algorithm-implement/</link>
-      <pubDate>Sun, 25 Jul 2021 20:26:28 +0700</pubDate>
-      
-      <guid>https://chidokun.github.io/2021/07/prim-algorithm-implement/</guid>
-      <description>&lt;p&gt;Bài viết &lt;a href=&#34;https://chidokun.github.io/2021/07/prim-algorithm/&#34;&gt;Thuật toán Prim: Tìm cây khung nhỏ nhất&lt;/a&gt; đã giới thiệu đến các bạn ý tưởng của thuật toán này cũng như từng bước chạy thuật toán. Tiếp theo sẽ là phần hướng dẫn cài đặt &lt;em&gt;thuật toán Prim&lt;/em&gt; cho đồ thị vô hướng có trọng số bằng ngôn ngữ Java.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Thuật toán Prim: Tìm cây khung nhỏ nhất</title>
-      <link>https://chidokun.github.io/2021/07/prim-algorithm/</link>
-      <pubDate>Thu, 22 Jul 2021 22:00:25 +0700</pubDate>
-      
-      <guid>https://chidokun.github.io/2021/07/prim-algorithm/</guid>
-      <description>&lt;p&gt;Hôm nay mình xin chia sẻ một số ghi chú về &lt;em&gt;Thuật toán Prim&lt;/em&gt; dùng để giải bài toán tìm cây khung nhỏ nhất (&lt;strong&gt;Minimum Spanning Tree&lt;/strong&gt;) cho đồ thị vô hướng có trọng số. Prim cũng là một trong những thuật toán cổ điển để giải bài toán này.&lt;/p&gt;</description>
-    </item>
     
     <item>
       <title>Độ phức tạp thời gian của thuật toán</title>
@@ -45,60 +18,6 @@
       
       <guid>https://chidokun.github.io/2021/07/complexity-of-time/</guid>
       <description>&lt;p&gt;Bàn về độ phức tạp thời gian, mình vẫn thường hay nghe các bạn nói &lt;em&gt;&amp;ldquo;Một vòng &lt;code&gt;for&lt;/code&gt; là $O(N)$, hai vòng &lt;code&gt;for&lt;/code&gt; lồng nhau là $O(N^2)$&amp;rdquo;&lt;/em&gt;. Thực ra không hẳn là như thế, nó còn phụ thuộc vào số bước thực hiện mỗi lần lặp. Mình cũng sẽ không bàn về phương pháp khoa học để đánh giá thuật toán mà thay vào đó nói về cách để mường tượng xác định độ phức tạp của thuật toán.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Sleep Sort: Thuật toán sort bá đạo</title>
-      <link>https://chidokun.github.io/2021/07/sleep-sort/</link>
-      <pubDate>Mon, 12 Jul 2021 22:52:28 +0700</pubDate>
-      
-      <guid>https://chidokun.github.io/2021/07/sleep-sort/</guid>
-      <description>&lt;p&gt;Nghe tên có thể bạn nghĩ rằng khi dùng thuật toán này thì chúng ta có thể rung đùi mà ngủ không cần làm gì hết? Bạn có từng nghe qua thuật toán sort nào mà số phép so sánh bằng 0 chưa? Nếu chưa thì &lt;em&gt;Sleep Sort&lt;/em&gt; là một thuật toán bá đạo như vậy đấy.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Huffman Decoding: Quá trình giải nén</title>
-      <link>https://chidokun.github.io/2021/07/huffman-coding-p3/</link>
-      <pubDate>Sun, 04 Jul 2021 17:45:23 +0700</pubDate>
-      
-      <guid>https://chidokun.github.io/2021/07/huffman-coding-p3/</guid>
-      <description>&lt;p&gt;Ở bài viết &lt;a href=&#34;https://chidokun.github.io/2021/07/huffman-coding-p2/&#34;&gt;Cài đặt thuật toán Huffman Coding&lt;/a&gt;, chúng ta đã tìm hiểu cách cài đặt thuật toán Huffman Coding để mã hóa (nén) chuỗi dữ liệu thành chuỗi nhị phân. Trong bài viết này, chúng ta sẽ tiếp tục tìm hiểu quá trình giải nén dữ liệu từ cây Huffman và cài đặt phương thức &lt;code&gt;decode(String encoded)&lt;/code&gt; cho class &lt;code&gt;HuffmanCoding&lt;/code&gt;.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Cài đặt thuật toán Huffman Coding</title>
-      <link>https://chidokun.github.io/2021/07/huffman-coding-p2/</link>
-      <pubDate>Sun, 04 Jul 2021 01:00:25 +0700</pubDate>
-      
-      <guid>https://chidokun.github.io/2021/07/huffman-coding-p2/</guid>
-      <description>&lt;p&gt;Với những ý tưởng của thuật toán Huffman Coding ở bài viết &lt;a href=&#34;https://chidokun.github.io/2021/07/huffman-coding-p1/&#34;&gt;Thuật toán nén Huffman Coding&lt;/a&gt;, trong bài viết này chúng ta cùng bàn về cách hiện thực thuật toán này với ngôn ngữ Java.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Thuật toán nén Huffman Coding</title>
-      <link>https://chidokun.github.io/2021/07/huffman-coding-p1/</link>
-      <pubDate>Fri, 02 Jul 2021 22:33:25 +0700</pubDate>
-      
-      <guid>https://chidokun.github.io/2021/07/huffman-coding-p1/</guid>
-      <description>&lt;p&gt;Nén dữ liệu là phương pháp loại bỏ những thông tin dư thừa trong việc biểu diễn dữ liệu. Nó có nhiều ứng dụng, đặc biệt là trong việc truyền tin vì giúp rút gọn thông tin gửi đi. Có nhiều thuật toán nén dữ liệu và &lt;em&gt;Huffman Coding&lt;/em&gt; là một trong số đó. Bài viết này chủ yếu bàn về ý tưởng của thuật toán này.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Thuật toán Breath First Search</title>
-      <link>https://chidokun.github.io/2021/06/graph-bfs-algorithm/</link>
-      <pubDate>Sun, 27 Jun 2021 20:03:25 +0700</pubDate>
-      
-      <guid>https://chidokun.github.io/2021/06/graph-bfs-algorithm/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Breath First Search&lt;/strong&gt; (BFS) cùng với &lt;strong&gt;Depth First Search&lt;/strong&gt; là những thuật toán cơ bản dùng để duyệt qua đồ thị. Trong bài viết này, chúng ta sẽ cùng làm rõ ý tưởng cũng như cách hiện thực thuật toán này.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Thuật toán Depth First Search</title>
-      <link>https://chidokun.github.io/2021/06/graph-dfs-algorithm/</link>
-      <pubDate>Sat, 26 Jun 2021 21:10:21 +0700</pubDate>
-      
-      <guid>https://chidokun.github.io/2021/06/graph-dfs-algorithm/</guid>
-      <description>&lt;p&gt;Cấu trúc &lt;strong&gt;Graph&lt;/strong&gt; (đồ thị) gồm tập các đỉnh kết nối với nhau qua các cạnh. &lt;strong&gt;Depth First Search&lt;/strong&gt; (DFS) là một trong những thuật toán có thể dùng để duyệt qua đồ thị.&lt;/p&gt;</description>
     </item>
     
   </channel>
