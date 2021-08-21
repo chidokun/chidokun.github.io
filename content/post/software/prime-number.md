@@ -5,9 +5,10 @@ date: 2015-01-12T23:13:00+07:00
 draft: false
 categories:
 - "Lập trình"
-- "Cấu trúc dữ liệu và Giải thuật"
+- "Computer Science"
 tags:
 - "prime"
+- "c/c++"
 keywords:
 - "số nguyên tố"
 - "eratosthenes"

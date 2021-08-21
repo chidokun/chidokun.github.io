@@ -5,9 +5,10 @@ date: 2021-07-12T22:52:28+07:00
 draft: false
 categories:
 - "Lập trình"
-- "Cấu trúc dữ liệu và Giải thuật"
+- "Giải thuật"
 tags:
-- "algorithms"
+- "sort"
+- "java"
 keywords:
 - "sleep sort"
 - "sort"

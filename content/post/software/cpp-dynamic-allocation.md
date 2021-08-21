@@ -5,7 +5,7 @@ date: 2015-01-20T01:10:00+07:00
 draft: false
 categories:
 - "Lập trình"
-- "Cấu trúc dữ liệu và Giải thuật"
+- "Computer Science"
 tags:
 - "c/c++"
 keywords:

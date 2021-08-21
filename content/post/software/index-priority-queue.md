@@ -5,9 +5,9 @@ date: 2021-07-29T20:17:38+07:00
 draft: false
 categories:
 - "Lập trình"
-- "Cấu trúc dữ liệu và Giải thuật"
+- "Cấu trúc dữ liệu"
 tags:
-- "data structures"
+- "java"
 keywords:
 - "queue"
 - "java"

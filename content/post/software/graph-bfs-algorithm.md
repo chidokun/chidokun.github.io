@@ -5,10 +5,10 @@ date: 2021-06-27T20:03:25+07:00
 draft: false
 categories:
 - "Lập trình"
-- "Cấu trúc dữ liệu và Giải thuật"
+- "Giải thuật"
 tags:
-- "data structures"
-- "algorithms"
+- "graph"
+- "java"
 keywords:
 - "graph"
 - "java"

@@ -5,9 +5,10 @@ date: 2021-07-22T22:00:25+07:00
 draft: false
 categories:
 - "Lập trình"
-- "Cấu trúc dữ liệu và Giải thuật"
+- "Giải thuật"
 tags:
-- "algorithms"
+- "prim"
+- "graph"
 keywords:
 - "graph"
 - "java"

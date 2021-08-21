@@ -5,7 +5,7 @@ date: 2015-03-03T17:27:00+07:00
 draft: false
 categories:
 - "Lập trình"
-- "Cấu trúc dữ liệu và Giải thuật"
+- "Computer Science"
 tags:
 - "c#"
 keywords:

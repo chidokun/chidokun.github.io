@@ -5,9 +5,9 @@ date: 2021-07-02T22:33:25+07:00
 draft: false
 categories:
 - "Lập trình"
-- "Cấu trúc dữ liệu và Giải thuật"
+- "Giải thuật"
 tags:
-- "algorithms"
+- "java"
 keywords:
 - "java"
 - "huffman coding"

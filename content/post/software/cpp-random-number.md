@@ -5,9 +5,9 @@ date: 2015-01-17T15:07:00+07:00
 draft: false
 categories:
 - "Lập trình"
-- "Cấu trúc dữ liệu và Giải thuật"
+- "Computer Science"
 tags:
-- "random"
+- "c/c++"
 keywords:
 - "số ngẫu nhiên"
 - "random number"

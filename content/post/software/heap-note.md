@@ -5,9 +5,9 @@ date: 2021-07-11T12:46:28+07:00
 draft: false
 categories:
 - "Lập trình"
-- "Cấu trúc dữ liệu và Giải thuật"
+- "Cấu trúc dữ liệu"
 tags:
-- "data structures"
+- "java"
 keywords:
 - "heap"
 - "java"
