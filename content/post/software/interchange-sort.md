@@ -8,6 +8,7 @@ categories:
 - "Giải thuật"
 tags:
 - "c/c++"
+- "sorting algorithm"
 keywords:
 - "sắp xếp"
 - "đổi chỗ trực tiếp"
@@ -26,7 +27,7 @@ thumbnailImagePosition: left
 
 Để bắt cặp tất cả các phần tử trong dãy, ta dùng 2 vòng lặp. Vòng lặp ngoài sẽ chạy từ đầu dãy đến phần tử kế cuối. Vòng lặp trong sẽ chạy từ phần tử tiếp theo của vị trí đang xét ở vòng lặp ngoài. Mỗi lần xét ta sẽ so sánh 2 phần tử trong cặp. Nếu chúng nghịch thế thì sẽ hoán đổi vị trí của chúng.
 
-Ta thấy sau mỗi lần duyệt ở vòng lặp ngoài ta sẽ được phần tử đầu tiên đứng đúng thứ tự yêu cầu. Cứ thực hiện đến hết dãy ta sẽ được một dãy đã sắp xếp
+Ta thấy sau mỗi lần duyệt ở vòng lặp ngoài ta sẽ được phần tử đầu tiên đứng đúng thứ tự yêu cầu. Cứ thực hiện đến hết dãy ta sẽ được một dãy đã sắp xếp.
 
 # Cài đặt
 

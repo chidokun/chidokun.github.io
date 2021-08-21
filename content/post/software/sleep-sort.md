@@ -7,8 +7,8 @@ categories:
 - "Lập trình"
 - "Giải thuật"
 tags:
-- "sort"
 - "java"
+- "sorting algorithm"
 keywords:
 - "sleep sort"
 - "sort"
