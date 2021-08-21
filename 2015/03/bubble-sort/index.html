@@ -7,26 +7,26 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Tuấn">
-<meta name="keywords" content="sắp xếp, đổi chỗ trực tiếp, interchange sort, development, programming, chidokun, lập trình">
-<meta name="description" content="Để sắp xếp một dãy, có nhiều cách làm khác nhau. Trong bài viết này mình sẽ nói về Interchange Sort, hay còn gọi là thuật toán sắp xếp đổi chỗ trực tiếp.">
+<meta name="keywords" content="sắp xếp, sắp xếp nổi bọt, bubble sort, giải thuật, development, programming, chidokun, lập trình">
+<meta name="description" content="Bubble Sort là một thuật toán sắp xếp kiểu so sánh rất đơn giản và dễ hiểu. Ý tưởng chính của thuật toán này là bắt cặp tất cả các phần tử trong dãy cần sắp xếp và đổi chỗ hai phần tử trong cặp nếu chúng nghịch thế (không thỏa điều kiện thứ tự).">
 
 
-<meta property="og:description" content="Để sắp xếp một dãy, có nhiều cách làm khác nhau. Trong bài viết này mình sẽ nói về Interchange Sort, hay còn gọi là thuật toán sắp xếp đổi chỗ trực tiếp.">
+<meta property="og:description" content="Bubble Sort là một thuật toán sắp xếp kiểu so sánh rất đơn giản và dễ hiểu. Ý tưởng chính của thuật toán này là bắt cặp tất cả các phần tử trong dãy cần sắp xếp và đổi chỗ hai phần tử trong cặp nếu chúng nghịch thế (không thỏa điều kiện thứ tự).">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Thuật toán sắp xếp: Interchange Sort (đổi chỗ trực tiếp)">
-<meta name="twitter:title" content="Thuật toán sắp xếp: Interchange Sort (đổi chỗ trực tiếp)">
-<meta property="og:url" content="https://chidokun.github.io/2015/03/interchange-sort/">
-<meta property="twitter:url" content="https://chidokun.github.io/2015/03/interchange-sort/">
+<meta property="og:title" content="Thuật toán sắp xếp: Bubble Sort (sắp xếp nổi bọt)">
+<meta name="twitter:title" content="Thuật toán sắp xếp: Bubble Sort (sắp xếp nổi bọt)">
+<meta property="og:url" content="https://chidokun.github.io/2015/03/bubble-sort/">
+<meta property="twitter:url" content="https://chidokun.github.io/2015/03/bubble-sort/">
 <meta property="og:site_name" content="Nguyễn Tuấn&#39;s Blog">
-<meta property="og:description" content="Để sắp xếp một dãy, có nhiều cách làm khác nhau. Trong bài viết này mình sẽ nói về Interchange Sort, hay còn gọi là thuật toán sắp xếp đổi chỗ trực tiếp.">
-<meta name="twitter:description" content="Để sắp xếp một dãy, có nhiều cách làm khác nhau. Trong bài viết này mình sẽ nói về Interchange Sort, hay còn gọi là thuật toán sắp xếp đổi chỗ trực tiếp.">
+<meta property="og:description" content="Bubble Sort là một thuật toán sắp xếp kiểu so sánh rất đơn giản và dễ hiểu. Ý tưởng chính của thuật toán này là bắt cặp tất cả các phần tử trong dãy cần sắp xếp và đổi chỗ hai phần tử trong cặp nếu chúng nghịch thế (không thỏa điều kiện thứ tự).">
+<meta name="twitter:description" content="Bubble Sort là một thuật toán sắp xếp kiểu so sánh rất đơn giản và dễ hiểu. Ý tưởng chính của thuật toán này là bắt cặp tất cả các phần tử trong dãy cần sắp xếp và đổi chỗ hai phần tử trong cặp nếu chúng nghịch thế (không thỏa điều kiện thứ tự).">
 <meta property="og:locale" content="vi">
 
   
-    <meta property="article:published_time" content="2015-03-08T23:44:00">
+    <meta property="article:published_time" content="2015-03-16T22:47:00">
   
   
-    <meta property="article:modified_time" content="2015-03-08T23:44:00">
+    <meta property="article:modified_time" content="2015-03-16T22:47:00">
   
   
   
@@ -66,14 +66,14 @@
   <meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
 
 
-    <title>Thuật toán sắp xếp: Interchange Sort (đổi chỗ trực tiếp)</title>
+    <title>Thuật toán sắp xếp: Bubble Sort (sắp xếp nổi bọt)</title>
     <meta name="google-site-verification" content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI" />
     <link rel="icon" href="https://chidokun.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://chidokun.github.io/2015/03/interchange-sort/">
+    <link rel="canonical" href="https://chidokun.github.io/2015/03/bubble-sort/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -273,19 +273,19 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Thuật toán sắp xếp: Interchange Sort (đổi chỗ trực tiếp)
+      Thuật toán sắp xếp: Bubble Sort (sắp xếp nổi bọt)
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2015-03-08T23:44:00&#43;07:00">
+      <time itemprop="datePublished" datetime="2015-03-16T22:47:00&#43;07:00">
         
   
   
   
   
-    8 tháng 3 2015
+    16 tháng 3 2015
   
 
       </time>
@@ -305,7 +305,7 @@ if (!doNotTrack) {
 
   <div>
   <div class="fb-like" 
-    data-href="https://chidokun.github.io/2015/03/interchange-sort/" 
+    data-href="https://chidokun.github.io/2015/03/bubble-sort/" 
     data-width="" 
     data-layout="button_count" 
     data-action="like" 
@@ -316,30 +316,63 @@ if (!doNotTrack) {
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>Để sắp xếp một dãy, có nhiều cách làm khác nhau. Trong bài viết này mình sẽ nói về Interchange Sort, hay còn gọi là thuật toán sắp xếp đổi chỗ trực tiếp.</p>
+              <p>Bubble Sort là một thuật toán sắp xếp kiểu so sánh rất đơn giản và dễ hiểu. Ý tưởng chính của thuật toán này là bắt cặp tất cả các phần tử trong dãy cần sắp xếp và đổi chỗ hai phần tử trong cặp nếu chúng nghịch thế (không thỏa điều kiện thứ tự).</p>
 <h1 id="ý-tưởng">Ý tưởng</h1>
-<p>Ý tưởng của thuật toán này là bắt cặp tất cả các phần tử trong dãy cần sắp xếp và đổi chỗ hai phần tử trong cặp nếu chúng nghịch thế (không thỏa điều kiện thứ tự).</p>
-<p>Để bắt cặp tất cả các phần tử trong dãy, ta dùng 2 vòng lặp. Vòng lặp ngoài sẽ chạy từ đầu dãy đến phần tử kế cuối. Vòng lặp trong sẽ chạy từ phần tử tiếp theo của vị trí đang xét ở vòng lặp ngoài. Mỗi lần xét ta sẽ so sánh 2 phần tử trong cặp. Nếu chúng nghịch thế thì sẽ hoán đổi vị trí của chúng.</p>
-<p>Ta thấy sau mỗi lần duyệt ở vòng lặp ngoài ta sẽ được phần tử đầu tiên đứng đúng thứ tự yêu cầu. Cứ thực hiện đến hết dãy ta sẽ được một dãy đã sắp xếp.</p>
-<h1 id="cài-đặt">Cài đặt</h1>
-<p>Mã dưới đây được cài đặt theo ngôn ngữ C/C++ với yêu cầu sắp xếp dãy tăng dần.</p>
-<pre><code class="language-cpp">void InterchangeSort(int *a, int n)
-{
-   for (int i = 0; i &lt; n-1; i++)
-      for (int j = i+1; j &lt; n; j++)
-         if (a[i] &gt; a[j])
-         {
-            int temp = a[i];
-            a[i] = a[j];
-            a[j] = temp;
-         }
-}
+<p>Đối với Bubble Sort, ta chọn cặp bằng cách xét hai phần tử kế cận nhau.</p>
+<p>Có 2 dạng sắp xếp của Bubble Sort:</p>
+<p><em><strong>Dạng 1</strong>: Sắp từ đầu đến cuối</em></p>
+<p>Xuất phát từ đầu dãy, ta so sánh và đổi chỗ các cặp nghịch thế đến cuối dãy để đưa phần tử lớn nhất về cuối dãy. Khi đó chỉ việc xét các phần tử còn lại trong dãy và lặp lại các bước để sắp xếp.</p>
+<p><em><strong>Dạng 2</strong>: Sắp từ cuối lên đầu</em></p>
+<p>Xuất phát từ cuối dãy, đổi chỗ các cặp phần tử nghịch thế để đưa phần tử nhỏ hơn trong cặp phần tử đó về vị trí đúng đầu dãy hiện hành, sau đó sẽ không xét đến nó ở bước tiếp theo. Lặp lại xử lý trên cho đến khi không còn cặp phần tử nào để xét.</p>
+<h1 id="cài-đặt-theo-ngôn-ngữ-c">Cài đặt theo ngôn ngữ C++</h1>
+<p><em><strong>Dạng 1</strong>: Sắp từ đầu đến cuối</em></p>
+<pre><code class="language-cpp">int i, j;
+for (i = n-1 ; i &gt; 0; i--)
+   for (j = 0; j &lt; i; j++)
+      if (a[j] &gt; a[j+1]) //nghịch thế
+         swap(a[j],a[j-1]); //đổi chổ
 </code></pre>
+<p><em><strong>Dạng 2</strong>: Sắp từ cuối lên đầu</em></p>
+<pre><code class="language-cpp">int i, j;
+for (i = 0; i &lt; n-1; i++)
+   for (j = n-1; j &gt; i; j--)
+      if (a[j-1] &gt; a[j]) //nghịch thế
+         swap(a[j],a[j-1]); //đổi chỗ
+</code></pre>
+<h1 id="minh-họa">Minh họa</h1>
+<p>Dưới đây là minh hoạ cho thuật toán Bubble Sort theo dạng 1 (nguồn: Wikipedia).</p>
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="http://upload.wikimedia.org/wikipedia/commons/5/54/Sorting_bubblesort_anim.gif" title="Minh họa Bubble Sort" data-fancybox-group="">
+  
+    <img class="fig-img" src="http://upload.wikimedia.org/wikipedia/commons/5/54/Sorting_bubblesort_anim.gif" style="width: 50%;" alt="Minh họa Bubble Sort">
+  
+    </a>
+  
+   
+    <span class="caption">Minh họa Bubble Sort</span>
+  
+</div>
+
 <h1 id="đánh-giá">Đánh giá</h1>
-<p>Số phép so sánh của thuật toán này không đổi, không phụ thuộc tình trạng ban đầu của dãy. Phần tử thứ <code>i</code> được so sánh với <code>n-i</code> phần tử còn lại nên có thể ước lượng số phép so sánh bằng: $(n-1) + (n-2) + &hellip; + 1 = n(n - 1)/2$.</p>
-<p>Tuy nhiên số phép hoán vị (3 phép gán) lại phụ thuộc tình trạng ban đầu. Trong trường hợp tốt nhất, tức dãy đã được sắp xếp hoàn toàn thì không cần phải hoán vị, nên số phép hoán vị là: 0.
-Trường hợp xấu nhất, tức dãy có thứ tự ngược với yêu cầu. Mỗi lần so sánh ta lại phải hoán vị nên số phép hoán vị là: $n(n - 1)/2$.</p>
-<p>Do vậy độ phức tạp của thuật toán này là: $O(n^2)$.</p>
+<p>Số phép so sánh không phụ thuộc vào tình trạng ban đầu của dãy. Có thể ước lượng số phép so sánh bằng: $(n-1) + (n-2) + &hellip; + 1 = n(n - 1)/2$.</p>
+<p>Số phép hoán vị (3 phép gán) phụ thuộc tình trạng ban đầu. Trong trường hợp tốt nhất, tức dãy đã được sắp xếp hoàn toàn thì không cần phải hoán vị, nên số phép hoán vị là: 0.</p>
+<p>Trường hợp xấu nhất, tức dãy có thứ tự ngược với yêu cầu. Mỗi lần so sánh ta lại phải hoán vị nên số phép hoán vị là: $n(n - 1)/2$.</p>
+<p>Độ phức tạp của thuật toán này là: $O(n^2)$.</p>
               
             </div>
           </div>
@@ -366,7 +399,7 @@ Trường hợp xấu nhất, tức dãy có thứ tự ngược với yêu cầ
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/03/bubble-sort/" data-tooltip="Thuật toán sắp xếp: Bubble Sort (sắp xếp nổi bọt)">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/03/selection-sort/" data-tooltip="Thuật toán sắp xếp: Selection Sort (chọn trực tiếp)">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -374,7 +407,7 @@ Trường hợp xấu nhất, tức dãy có thứ tự ngược với yêu cầ
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/03/cpp-string/" data-tooltip="Tổng quan về kiểu string trong C&#43;&#43;">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/03/interchange-sort/" data-tooltip="Thuật toán sắp xếp: Interchange Sort (đổi chỗ trực tiếp)">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -392,19 +425,19 @@ Trường hợp xấu nhất, tức dãy có thứ tự ngược với yêu cầ
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/03/interchange-sort/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/03/bubble-sort/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/03/interchange-sort/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/03/bubble-sort/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/03/interchange-sort/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/03/bubble-sort/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -433,8 +466,8 @@ Trường hợp xấu nhất, tức dãy có thứ tự ngược với yêu cầ
             <div class="comment-box">
                 <textarea name="fields[comment]" class="comment-input-control comment-input-animated" placeholder="Comment (markdown is accepted) *" required rows="3"></textarea>
                 <div class="comment-box-tail">
-                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2015/03/interchange-sort/#comment-submitted">
-                    <input type="hidden" name="options[slug]" value="interchange-sort">
+                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2015/03/bubble-sort/#comment-submitted">
+                    <input type="hidden" name="options[slug]" value="bubble-sort">
                     <input type="text" name="fields[name]" class="post-comment-field" placeholder="Name *" required/>
                     <input type="email" name="fields[email]" class="post-comment-field" placeholder="Email address (will not be public) *" required/>
                     <input type="hidden" id="comment-parent" name="fields[reply_to]" value="">
@@ -477,7 +510,7 @@ Trường hợp xấu nhất, tức dãy có thứ tự ngược với yêu cầ
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2015/03/interchange-sort/" data-width="100%"></div>
+<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2015/03/bubble-sort/" data-width="100%"></div>
 
               
             
@@ -498,7 +531,7 @@ Trường hợp xấu nhất, tức dãy có thứ tự ngược với yêu cầ
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/03/bubble-sort/" data-tooltip="Thuật toán sắp xếp: Bubble Sort (sắp xếp nổi bọt)">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/03/selection-sort/" data-tooltip="Thuật toán sắp xếp: Selection Sort (chọn trực tiếp)">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -506,7 +539,7 @@ Trường hợp xấu nhất, tức dãy có thứ tự ngược với yêu cầ
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/03/cpp-string/" data-tooltip="Tổng quan về kiểu string trong C&#43;&#43;">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/03/interchange-sort/" data-tooltip="Thuật toán sắp xếp: Interchange Sort (đổi chỗ trực tiếp)">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -524,19 +557,19 @@ Trường hợp xấu nhất, tức dãy có thứ tự ngược với yêu cầ
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/03/interchange-sort/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/03/bubble-sort/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/03/interchange-sort/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/03/bubble-sort/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/03/interchange-sort/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/03/bubble-sort/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -560,19 +593,19 @@ Trường hợp xấu nhất, tức dãy có thứ tự ngược với yêu cầ
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2015%2F03%2Finterchange-sort%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2015%2F03%2Fbubble-sort%2F">
           <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2015%2F03%2Finterchange-sort%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2015%2F03%2Fbubble-sort%2F">
           <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2015%2F03%2Finterchange-sort%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2015%2F03%2Fbubble-sort%2F">
           <i class="fa fa-google-plus"></i><span>Chia sẻ với Google&#43;</span>
         </a>
       </li>

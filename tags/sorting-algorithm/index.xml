@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sorting algorithm on Nguyễn Tuấn&#39;s Blog</title>
+    <link>https://chidokun.github.io/tags/sorting-algorithm/</link>
+    <description>Recent content in sorting algorithm on Nguyễn Tuấn&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>vi</language>
+    <lastBuildDate>Mon, 12 Jul 2021 22:52:28 +0700</lastBuildDate>
+    
+	<atom:link href="https://chidokun.github.io/tags/sorting-algorithm/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Sleep Sort: Thuật toán sort bá đạo</title>
+      <link>https://chidokun.github.io/2021/07/sleep-sort/</link>
+      <pubDate>Mon, 12 Jul 2021 22:52:28 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2021/07/sleep-sort/</guid>
+      <description>&lt;p&gt;Nghe tên có thể bạn nghĩ rằng khi dùng thuật toán này thì chúng ta có thể rung đùi mà ngủ không cần làm gì hết? Bạn có từng nghe qua thuật toán sort nào mà số phép so sánh bằng 0 chưa? Nếu chưa thì &lt;em&gt;Sleep Sort&lt;/em&gt; là một thuật toán bá đạo như vậy đấy.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Thuật toán sắp xếp: Selection Sort (chọn trực tiếp)</title>
+      <link>https://chidokun.github.io/2015/03/selection-sort/</link>
+      <pubDate>Mon, 16 Mar 2015 23:36:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/03/selection-sort/</guid>
+      <description>&lt;p&gt;Selection Sort là một thuật toán sắp xếp tương đối dễ hiểu. Ý tưởng chính vẫn là đổi chỗ những cặp nghịch thế, tuy nhiên cái hay là ở chỗ Selection Sort tìm vị trí chứa phần tử nhỏ nhất để đổi chỗ với phần tử đang xét chứ không đổi tất cả các cặp nghịch thế như &lt;a href=&#34;https://chidokun.github.io/2015/03/bubble-sort/&#34;&gt;Bubble Sort&lt;/a&gt; hay &lt;a href=&#34;https://chidokun.github.io/2015/03/interchange-sort/&#34;&gt;Interchange Sort&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Thuật toán sắp xếp: Bubble Sort (sắp xếp nổi bọt)</title>
+      <link>https://chidokun.github.io/2015/03/bubble-sort/</link>
+      <pubDate>Mon, 16 Mar 2015 22:47:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/03/bubble-sort/</guid>
+      <description>&lt;p&gt;Bubble Sort là một thuật toán sắp xếp kiểu so sánh rất đơn giản và dễ hiểu. Ý tưởng chính của thuật toán này là bắt cặp tất cả các phần tử trong dãy cần sắp xếp và đổi chỗ hai phần tử trong cặp nếu chúng nghịch thế (không thỏa điều kiện thứ tự).&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Thuật toán sắp xếp: Interchange Sort (đổi chỗ trực tiếp)</title>
+      <link>https://chidokun.github.io/2015/03/interchange-sort/</link>
+      <pubDate>Sun, 08 Mar 2015 23:44:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/03/interchange-sort/</guid>
+      <description>&lt;p&gt;Để sắp xếp một dãy, có nhiều cách làm khác nhau. Trong bài viết này mình sẽ nói về Interchange Sort, hay còn gọi là thuật toán sắp xếp đổi chỗ trực tiếp.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
