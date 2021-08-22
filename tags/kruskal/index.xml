@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kruskal on Nguyễn Tuấn&#39;s Blog</title>
+    <link>https://chidokun.github.io/tags/kruskal/</link>
+    <description>Recent content in kruskal on Nguyễn Tuấn&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>vi</language>
+    <lastBuildDate>Sun, 22 Aug 2021 22:06:25 +0700</lastBuildDate>
+    
+	<atom:link href="https://chidokun.github.io/tags/kruskal/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Thuật toán Kruskal: Tìm cây khung nhỏ nhất</title>
+      <link>https://chidokun.github.io/2021/08/kruskal-algorithm/</link>
+      <pubDate>Sun, 22 Aug 2021 22:06:25 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2021/08/kruskal-algorithm/</guid>
+      <description>&lt;p&gt;Ngoài &lt;a href=&#34;https://chidokun.github.io/2021/07/prim-algorithm-implement/&#34;&gt;thuật toán Prim&lt;/a&gt;, &lt;em&gt;Thuật toán Kruskal&lt;/em&gt; cũng là thuật toán cổ điển để giải bài toán tìm cây khung nhỏ nhất (&lt;strong&gt;Minimum Spanning Tree&lt;/strong&gt;) cho đồ thị vô hướng có trọng số. Trong bài viết này chúng ta cùng xem ý tưởng cơ bản của &lt;em&gt;Thuật toán Kruskal&lt;/em&gt;.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

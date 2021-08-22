@@ -7,26 +7,26 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Tuấn">
-<meta name="keywords" content="graph, java, prim, spanning tree, cây khung, development, programming, chidokun, lập trình">
-<meta name="description" content="Ở phần trước Thuật toán Prim: Cài đặt thuật toán chúng ta đã tìm hiểu qua cách cài đặt thuật toán Prim dựa vào Priority Queue. Tuy nhiên, có một nhược điểm là phải duyệt các cạnh không hợp lệ trong queue. Do vậy, trong bài này chúng ta sẽ tối ưu cách cài đặt thuật toán Prim ở bài trước bằng cách sử dụng Index Priority Queue.">
+<meta name="keywords" content="graph, java, kruskal, spanning tree, cây khung, development, programming, chidokun, lập trình">
+<meta name="description" content="Ngoài thuật toán Prim, Thuật toán Kruskal cũng là thuật toán cổ điển để giải bài toán tìm cây khung nhỏ nhất (Minimum Spanning Tree) cho đồ thị vô hướng có trọng số. Trong bài viết này chúng ta cùng xem ý tưởng cơ bản của Thuật toán Kruskal.">
 
 
-<meta property="og:description" content="Ở phần trước Thuật toán Prim: Cài đặt thuật toán chúng ta đã tìm hiểu qua cách cài đặt thuật toán Prim dựa vào Priority Queue. Tuy nhiên, có một nhược điểm là phải duyệt các cạnh không hợp lệ trong queue. Do vậy, trong bài này chúng ta sẽ tối ưu cách cài đặt thuật toán Prim ở bài trước bằng cách sử dụng Index Priority Queue.">
+<meta property="og:description" content="Ngoài thuật toán Prim, Thuật toán Kruskal cũng là thuật toán cổ điển để giải bài toán tìm cây khung nhỏ nhất (Minimum Spanning Tree) cho đồ thị vô hướng có trọng số. Trong bài viết này chúng ta cùng xem ý tưởng cơ bản của Thuật toán Kruskal.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Thuật toán Prim: Cải tiến dùng Index Priority Queue">
-<meta name="twitter:title" content="Thuật toán Prim: Cải tiến dùng Index Priority Queue">
-<meta property="og:url" content="https://chidokun.github.io/2021/08/prim-algorithm-improvement/">
-<meta property="twitter:url" content="https://chidokun.github.io/2021/08/prim-algorithm-improvement/">
+<meta property="og:title" content="Thuật toán Kruskal: Tìm cây khung nhỏ nhất">
+<meta name="twitter:title" content="Thuật toán Kruskal: Tìm cây khung nhỏ nhất">
+<meta property="og:url" content="https://chidokun.github.io/2021/08/kruskal-algorithm/">
+<meta property="twitter:url" content="https://chidokun.github.io/2021/08/kruskal-algorithm/">
 <meta property="og:site_name" content="Nguyễn Tuấn&#39;s Blog">
-<meta property="og:description" content="Ở phần trước Thuật toán Prim: Cài đặt thuật toán chúng ta đã tìm hiểu qua cách cài đặt thuật toán Prim dựa vào Priority Queue. Tuy nhiên, có một nhược điểm là phải duyệt các cạnh không hợp lệ trong queue. Do vậy, trong bài này chúng ta sẽ tối ưu cách cài đặt thuật toán Prim ở bài trước bằng cách sử dụng Index Priority Queue.">
-<meta name="twitter:description" content="Ở phần trước Thuật toán Prim: Cài đặt thuật toán chúng ta đã tìm hiểu qua cách cài đặt thuật toán Prim dựa vào Priority Queue. Tuy nhiên, có một nhược điểm là phải duyệt các cạnh không hợp lệ trong queue. Do vậy, trong bài này chúng ta sẽ tối ưu cách cài đặt thuật toán Prim ở bài trước bằng cách sử dụng Index Priority Queue.">
+<meta property="og:description" content="Ngoài thuật toán Prim, Thuật toán Kruskal cũng là thuật toán cổ điển để giải bài toán tìm cây khung nhỏ nhất (Minimum Spanning Tree) cho đồ thị vô hướng có trọng số. Trong bài viết này chúng ta cùng xem ý tưởng cơ bản của Thuật toán Kruskal.">
+<meta name="twitter:description" content="Ngoài thuật toán Prim, Thuật toán Kruskal cũng là thuật toán cổ điển để giải bài toán tìm cây khung nhỏ nhất (Minimum Spanning Tree) cho đồ thị vô hướng có trọng số. Trong bài viết này chúng ta cùng xem ý tưởng cơ bản của Thuật toán Kruskal.">
 <meta property="og:locale" content="vi">
 
   
-    <meta property="article:published_time" content="2021-08-15T18:13:28">
+    <meta property="article:published_time" content="2021-08-22T22:06:25">
   
   
-    <meta property="article:modified_time" content="2021-08-15T18:13:28">
+    <meta property="article:modified_time" content="2021-08-22T22:06:25">
   
   
   
@@ -38,11 +38,9 @@
   
   
     
-      <meta property="article:tag" content="prim">
+      <meta property="article:tag" content="kruskal">
     
       <meta property="article:tag" content="graph">
-    
-      <meta property="article:tag" content="java">
     
   
 
@@ -68,14 +66,14 @@
   <meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
 
 
-    <title>Thuật toán Prim: Cải tiến dùng Index Priority Queue</title>
+    <title>Thuật toán Kruskal: Tìm cây khung nhỏ nhất</title>
     <meta name="google-site-verification" content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI" />
     <link rel="icon" href="https://chidokun.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://chidokun.github.io/2021/08/prim-algorithm-improvement/">
+    <link rel="canonical" href="https://chidokun.github.io/2021/08/kruskal-algorithm/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -275,19 +273,19 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Thuật toán Prim: Cải tiến dùng Index Priority Queue
+      Thuật toán Kruskal: Tìm cây khung nhỏ nhất
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2021-08-15T18:13:28&#43;07:00">
+      <time itemprop="datePublished" datetime="2021-08-22T22:06:25&#43;07:00">
         
   
   
   
   
-    15 tháng 8 2021
+    22 tháng 8 2021
   
 
       </time>
@@ -307,7 +305,7 @@ if (!doNotTrack) {
 
   <div>
   <div class="fb-like" 
-    data-href="https://chidokun.github.io/2021/08/prim-algorithm-improvement/" 
+    data-href="https://chidokun.github.io/2021/08/kruskal-algorithm/" 
     data-width="" 
     data-layout="button_count" 
     data-action="like" 
@@ -318,12 +316,11 @@ if (!doNotTrack) {
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>Ở phần trước <a href="https://chidokun.github.io/2021/07/prim-algorithm-implement/">Thuật toán Prim: Cài đặt thuật toán</a> chúng ta đã tìm hiểu qua cách cài đặt thuật toán Prim dựa vào Priority Queue. Tuy nhiên, có một nhược điểm là phải duyệt các cạnh không hợp lệ trong queue. Do vậy, trong bài này chúng ta sẽ tối ưu cách cài đặt thuật toán Prim ở bài trước bằng cách sử dụng Index Priority Queue.</p>
+              <p>Ngoài <a href="https://chidokun.github.io/2021/07/prim-algorithm-implement/">thuật toán Prim</a>, <em>Thuật toán Kruskal</em> cũng là thuật toán cổ điển để giải bài toán tìm cây khung nhỏ nhất (<strong>Minimum Spanning Tree</strong>) cho đồ thị vô hướng có trọng số. Trong bài viết này chúng ta cùng xem ý tưởng cơ bản của <em>Thuật toán Kruskal</em>.</p>
 <h1 id="table-of-contents">Mục lục</h1><nav id="TableOfContents">
   <ul>
     <li><a href="#1-ý-tưởng">1. Ý tưởng</a></li>
-    <li><a href="#2-từng-bước-chạy-thuật-toán">2. Từng bước chạy thuật toán</a></li>
-    <li><a href="#3-cài-đặt-thuật-toán">3. Cài đặt thuật toán.</a>
+    <li><a href="#2-ví-dụ">2. Ví dụ</a>
       <ul>
         <li><a href="#references">References</a></li>
       </ul>
@@ -331,21 +328,10 @@ if (!doNotTrack) {
   </ul>
 </nav>
 <h1 id="1-ý-tưởng">1. Ý tưởng</h1>
-<p>Ở phiên bản trước, chúng ta lấy ra cạnh nhỏ nhất bằng Min Priority Queue. Tất cả các cạnh được đẩy vào Priority Queue để rồi sau đó sẽ phải xử lý những cạnh thừa. Trong bước tối ưu này, Index Priority Queue sẽ chỉ chứa cạnh tối ưu nhất ở đỉnh đích, nếu có cạnh nào tối ưu hơn cạnh đó thì cập nhật trực tiếp vào queue. Do đó sẽ không phải xử lý cạnh thừa nữa.</p>
-<p>Các bước của thuật toán như sau:</p>
-<ul>
-<li><u><em>Bước 1</em></u>: Chọn một đỉnh <code>v</code> bất kỳ làm đỉnh bắt đầu và đưa đỉnh <code>v</code> vào cây khung.</li>
-<li><u><em>Bước 2</em></u>: Thêm tất cả các cạnh nối với <code>v</code> vào danh sách cạnh đang xét .</li>
-<li><u><em>Bước 3</em></u>: Xét các cạnh trong danh sách đến khi hết:
-<ul>
-<li><u><em>Bước 3.1</em></u>: Lấy ra cạnh có trọng số nhỏ nhất nối từ <code>v1</code> đến một đỉnh <code>v2</code> chưa nằm trong cây khung. Đưa cạnh này và đỉnh <code>v2</code> vào cây khung.</li>
-<li><u><em>Bước 3.2</em></u>: <em>Trong các đỉnh kề của <code>v2</code>, nếu có đỉnh nào đã nằm trong danh sách đang xét mà có trọng số nhỏ hơn thì thay thế cạnh tương ứng đỉnh đó trong danh sách đang xét bằng cạnh này. Nếu chưa nằm trong cây khung thì đưa vào danh sách cạnh đang xét.</em></li>
-</ul>
-</li>
-</ul>
-<p>Ở bước lấy ra cạnh có trọng số nhỏ nhất trong số các cạnh đang xét, chúng ta sử dụng Index Min-PriorityQueue để lấy ra cạnh có trọng số nhỏ nhất và thay thế cạnh ở bước 3.2.</p>
-<h1 id="2-từng-bước-chạy-thuật-toán">2. Từng bước chạy thuật toán</h1>
-<p>Cùng chạy thuật toán với đồ thị $G$ bên dưới:</p>
+<p><em>Cây khung</em> (spanning tree) của một đồ thị là một đồ thị con liên thông không có chu trình đi qua tất cả các đỉnh. Một đồ thị sẽ có nhiều cây khung và bài toán của chúng ta là phải tìm ra cây khung nhỏ nhất.</p>
+<p>Ý tưởng của <em>Thuật toán Kruskal</em> khá đơn giản: Sắp xếp các cạnh từ bé đến lớn theo trọng số. Lần lượt chọn các cạnh theo thứ tự từ bé đến lớn trong danh sách sao cho không tạo thành chu trình. Thuật toán sẽ dừng lại khi đã có đủ $V-1$ cạnh trong cây khung (với $V$ là số lượng đỉnh của đồ thị).</p>
+<h1 id="2-ví-dụ">2. Ví dụ</h1>
+<p>Để minh họa cho thuật toán, mình sẽ dùng đồ thị $G$ và đi từng bước của thuật toán:</p>
 
 
  
@@ -373,7 +359,7 @@ if (!doNotTrack) {
   
 </div>
 
-<p>Chọn đỉnh $0$ làm đỉnh bắt đầu, đưa đỉnh này vào cây khung (màu xanh). Đưa các cạnh 0-1, 0-2, 0-3 vào danh sách cạnh đang xét (màu cam). Ta thấy cạnh 0-2 là cạnh có trọng số nhỏ nhất.</p>
+<p>Trong danh sách các cạnh của $G$, ta lấy ra cạnh 2-4 nhỏ nhất.</p>
 
 
  
@@ -390,16 +376,16 @@ if (!doNotTrack) {
 
 <div class="figure center" >
   
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/1.svg" data-fancybox-group="">
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/kruskal-algorithm/1.svg" data-fancybox-group="">
   
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/1.svg" style="width: 80%;">
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/kruskal-algorithm/1.svg" style="width: 100%;">
   
     </a>
   
   
 </div>
 
-<p>Đưa cạnh 0-2 và đỉnh $2$ vào cây khung. Đưa các cạnh 2-4 và 2-5 vào danh sách đang xét. Lúc này ta thấy cạnh 2-4 có trọng số nhỏ nhất.</p>
+<p>Cạnh này không tạo chu trình nên có thể đưa vào cây khung và xét cạnh 1-4.</p>
 
 
  
@@ -416,16 +402,16 @@ if (!doNotTrack) {
 
 <div class="figure center" >
   
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/2.svg" data-fancybox-group="">
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/kruskal-algorithm/2.svg" data-fancybox-group="">
   
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/2.svg" style="width: 80%;">
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/kruskal-algorithm/2.svg" style="width: 100%;">
   
     </a>
   
   
 </div>
 
-<p>Đưa cạnh 2-4 và đỉnh $4$ vào cây khung. Đưa các cạnh 4-1 và 4-6 vào danh sách đang xét. Cạnh 4-1 có trọng số nhỏ hơn cạnh 0-1 nên sẽ thay thế cạnh này. Lúc này ta thấy cạnh 4-1 có trọng số nhỏ nhất.</p>
+<p>Đưa 1-4 vào cây khung, xét cạnh 2-5.</p>
 
 
  
@@ -442,16 +428,16 @@ if (!doNotTrack) {
 
 <div class="figure center" >
   
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/3.svg" data-fancybox-group="">
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/kruskal-algorithm/3.svg" data-fancybox-group="">
   
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/3.svg" style="width: 80%;">
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/kruskal-algorithm/3.svg" style="width: 100%;">
   
     </a>
   
   
 </div>
 
-<p>Đưa cạnh 4-1 và đỉnh $1$ vào cây khung. Các đỉnh nối từ $1$ là $0$ và $4$ đều đã nằm trong cây khung nên chúng ta sẽ không đưa các cạnh nối các đỉnh này vào danh sách đang xét. Lúc này, ta xét các cạnh còn lại và thấy cạnh 2-5 có trọng số nhỏ nhất.</p>
+<p>Đưa 2-5 vào cây khung, xét cạnh 6-8.</p>
 
 
  
@@ -468,16 +454,16 @@ if (!doNotTrack) {
 
 <div class="figure center" >
   
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/4.svg" data-fancybox-group="">
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/kruskal-algorithm/4.svg" data-fancybox-group="">
   
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/4.svg" style="width: 80%;">
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/kruskal-algorithm/4.svg" style="width: 100%;">
   
     </a>
   
   
 </div>
 
-<p>Đưa cạnh 2-5 và đỉnh $5$ vào cây khung. Tiếp tục xét ba cạnh 5-3, 5-6 và 5-7. Cạnh 5-3 có trọng số lớn hơn cạnh 0-3 trong danh sách đang xét nên sẽ không được đưa vào. Cạnh 5-6 có trọng số nhỏ hơn cạnh 4-6 trong danh sách nên sẽ thay thế cho cạnh này. Cạnh 5-7 có đỉnh $7$ chưa có trong danh sách nên sẽ được đưa vào danh sách đang xét. Trong danh sách đang xét lúc này, cạnh 5-6 có trọng số nhỏ nhất.</p>
+<p>Đưa 6-8 vào cây khung, xét cạnh 6-7.</p>
 
 
  
@@ -494,16 +480,16 @@ if (!doNotTrack) {
 
 <div class="figure center" >
   
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/5.svg" data-fancybox-group="">
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/kruskal-algorithm/5.svg" data-fancybox-group="">
   
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/5.svg" style="width: 80%;">
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/kruskal-algorithm/5.svg" style="width: 100%;">
   
     </a>
   
   
 </div>
 
-<p>Đưa cạnh 5-6 và đỉnh $6$ vào cây khung. Tiếp tục xét cạnh 6-4, 6-7 và 6-8, không đưa cạnh 6-4 vì đỉnh $4$ đã nằm trong cây khung. Cạnh 6-7 có trọng số nhỏ hơn cạnh 5-7 trong danh sách đang xét nên sẽ thay thế cho cạnh này. Cạnh 6-8 với đỉnh $8$ chưa nằm trong danh sách đang xét nên sẽ được đưa vào danh sách đang xét. Cạnh 6-8 lúc này có trọng số nhỏ nhất.</p>
+<p>Đưa 6-7 vào cây khung, xét cạnh 5-6.</p>
 
 
  
@@ -520,16 +506,16 @@ if (!doNotTrack) {
 
 <div class="figure center" >
   
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/6.svg" data-fancybox-group="">
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/kruskal-algorithm/6.svg" data-fancybox-group="">
   
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/6.svg" style="width: 80%;">
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/kruskal-algorithm/6.svg" style="width: 100%;">
   
     </a>
   
   
 </div>
 
-<p>Đưa cạnh 6-8 và đỉnh $8$ vào cây khung. Cạnh 8-7 có trọng số lớn hơn cạnh 6-7 nên sẽ không được đưa vào danh sách đang xét. Lúc này danh sách có cạnh 6-7 có trọng số nhỏ nhất.</p>
+<p>Đưa 5-6 vào cây khung, xét cạnh 0-2.</p>
 
 
  
@@ -546,16 +532,16 @@ if (!doNotTrack) {
 
 <div class="figure center" >
   
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/7.svg" data-fancybox-group="">
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/kruskal-algorithm/7.svg" data-fancybox-group="">
   
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/7.svg" style="width: 80%;">
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/kruskal-algorithm/7.svg" style="width: 100%;">
   
     </a>
   
   
 </div>
 
-<p>Đưa cạnh 6-7 và đỉnh $7$ vào cây khung. Không có cạnh nào được đưa tiếp vào danh sách đang xét vì các đỉnh kề của $7$ đều đã nằm trong cây khung. Chỉ còn cạnh 0-3 là cạnh có trọng số nhỏ nhất.</p>
+<p>Đưa 0-2 vào cây khung, xét cạnh 5-7. Cạnh 5-7 tạo thành chu trình, vì vậy không được đưa vào cây khung. Ta xét tiếp cạnh 7-8, cũng không được đưa vào cây khung do tạo thành chu trình. Xét cạnh 0-3.</p>
 
 
  
@@ -572,16 +558,16 @@ if (!doNotTrack) {
 
 <div class="figure center" >
   
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/8.svg" data-fancybox-group="">
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/kruskal-algorithm/8.svg" data-fancybox-group="">
   
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/8.svg" style="width: 80%;">
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/kruskal-algorithm/8.svg" style="width: 100%;">
   
     </a>
   
   
 </div>
 
-<p>Đưa cạnh 0-3 vào cây khung. Các đỉnh kề của đỉnh $3$ đều nằm trong cây khung.</p>
+<p>Đưa 0-3 vào cây khung. Thuật toán kết thúc vì đã đủ $V-1$ cạnh.</p>
 
 
  
@@ -598,156 +584,15 @@ if (!doNotTrack) {
 
 <div class="figure center" >
   
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/9.svg" data-fancybox-group="">
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/kruskal-algorithm/9.svg" data-fancybox-group="">
   
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/prim-algorithm-improvement/9.svg" style="width: 80%;">
-  
-    </a>
-  
-  
-</div>
-
-<p>Danh sách lúc này rỗng. Thuật toán kết thúc.</p>
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure center" >
-  
-    <a class="fancybox" href="https://chidokun.github.io/images/post/prim-algorithm/11.svg" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://chidokun.github.io/images/post/prim-algorithm/11.svg" style="width: 80%;">
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/kruskal-algorithm/9.svg" style="width: 100%;">
   
     </a>
   
   
 </div>
 
-<h1 id="3-cài-đặt-thuật-toán">3. Cài đặt thuật toán.</h1>
-<p>Để hiện thực thuật toán Prim, chúng ta sẽ sử dụng cấu trúc đồ thị vô hướng có trọng số <code>EdgeWeightedGraph</code> ở bài viết <a href="https://chidokun.github.io/2021/06/graph-overview/">Tổng quan về đồ thị</a>. Interface <code>PrimMST</code> ở bài viết <a href="https://chidokun.github.io/2021/07/prim-algorithm-implement/">Thuật toán Prim: Cài đặt thuật toán</a> và cấu trúc <code>IndexPQ</code> ở bài viết <a href="https://chidokun.github.io/2021/07/index-priority-queue/">Index Priority Queue</a>.</p>
-<p>Trước hết chúng ta tạo class <code>EagerPrimMST</code> hiện thực interface <code>PrimMST</code> và cài đặt một hàm constructor nhận <code>EdgeWeightedGraph</code> làm tham số đầu vào.</p>
-<pre><code class="language-java">public class EagerPrimMST implements PrimMST {
-    public EagerPrimMST(EdgeWeightedGraph G) {
-        // to be implemented
-    }
-
-    @Override
-    public Iterable&lt;Edge&gt; edges() {
-        // to be implemented
-    }
-
-    @Override
-    public double weight() {
-        // to be implemented
-    }
-}
-</code></pre>
-<p>Bên trong <code>EagerPrimMST</code> là các field sử dụng để tìm cây khung nhỏ nhất.</p>
-<pre><code class="language-java">private boolean[] marked;
-private Edge[] edgeTo;
-private double[] distTo;
-private IndexPQ&lt;Double&gt; pq;
-</code></pre>
-<ul>
-<li><b><em>marked</em></b>: Mảng boolean đánh dấu một đỉnh đã được đưa vào cây khung hay chưa.</li>
-<li><b><em>edgeTo</em></b>: Tham chiếu của cạnh tối ưu nhất đến một đỉnh.</li>
-<li><b><em>distTo</em></b>: Khoảng cách tối ưu nhất đến một đỉnh.</li>
-<li><b><em>pq</em></b>: Danh sách các cạnh dùng để xét sau mỗi bước chạy thuật toán. Sử dụng <code>IndexPQ</code> cho thao tác lấy ra cạnh nhỏ nhất và thay thế cạnh.</li>
-</ul>
-<p>Thuật toán được hiện thực ở contructor như sau:</p>
-<pre><code class="language-java">public EagerPrimMST(EdgeWeightedGraph G) {
-    // initialization
-    edgeTo = new Edge[G.V()];
-    distTo = new double[G.V()];
-    marked = new boolean[G.V()];
-    for (int v = 0; v &lt; G.V(); v++)
-        distTo[v] = Double.POSITIVE_INFINITY;
-    pq = new IndexPQ&lt;Double&gt;(G.V(), Comparator.naturalOrder());
-
-    // init pq with 0 to start at vertex 0
-    distTo[0] = 0.0;
-    pq.insert(0, 0.0);              
-    while (!pq.isEmpty())
-        visit(G, pq.removePeek());
-}
-
-private void visit(EdgeWeightedGraph G, int v) { 
-    marked[v] = true;
-    for (Edge e : G.adj(v)) {
-        int w = e.other(v);
-        if (marked[w]) continue;
-        if (e.weight() &lt; distTo[w]) {  // Edge e is new best connection from tree to w.
-            edgeTo[w] = e;
-            distTo[w] = e.weight();
-            if (pq.contains(w))
-                pq.change(w, distTo[w]);
-            else
-                pq.insert(w, distTo[w]);
-        }
-    }
-}
-</code></pre>
-<p>Cài đặt các phương thức còn lại.</p>
-<pre><code class="language-java">@Override
-public Iterable&lt;Edge&gt; edges() {
-    ArrayList&lt;Edge&gt; mst = new ArrayList&lt;&gt;();
-    for (int i = 1; i &lt; edgeTo.length; i++) {
-        mst.add(edgeTo[i]);
-    }
-    return mst;
-}
-
-@Override
-public double weight() {
-    return Arrays.stream(distTo).sum();
-}
-</code></pre>
-<p>Khởi tạo đồ thị $G$ và test với hàm <code>main</code>.</p>
-<pre><code class="language-java">public static void main(String[] args) {
-    EdgeWeightedGraph g = new EdgeWeightedGraph(9);
-    g.addEdge(new Edge(0, 1, 2.5));
-    g.addEdge(new Edge(0, 2, 2.0));
-    g.addEdge(new Edge(0, 3, 2.1));
-    g.addEdge(new Edge(1, 4, 1.0));
-    g.addEdge(new Edge(2, 4, 0.6));
-    g.addEdge(new Edge(2, 5, 1.5));
-    g.addEdge(new Edge(3, 5, 2.5));
-    g.addEdge(new Edge(4, 6, 2.3));
-    g.addEdge(new Edge(5, 6, 1.9));
-    g.addEdge(new Edge(5, 7, 2.0));
-    g.addEdge(new Edge(6, 7, 1.8));
-    g.addEdge(new Edge(6, 8, 1.7));
-    g.addEdge(new Edge(7, 8, 2.0));
-
-    PrimMST prim = new EagerPrimMST(g);
-    System.out.println(&quot;Edges: &quot;);
-    for (Edge e : prim.edges())
-        System.out.printf(&quot;%d-%d: %f\n&quot;, e.either(), e.other(e.either()), e.weight());
-    System.out.println(&quot;Weight: &quot; + prim.weight());
-}
-</code></pre>
-<p>Và kết quả:</p>
-<pre><code>Edges: 
-1-4: 1.000000
-0-2: 2.000000
-0-3: 2.100000
-2-4: 0.600000
-2-5: 1.500000
-5-6: 1.900000
-6-7: 1.800000
-6-8: 1.700000
-Weight: 12.6
-</code></pre>
 <h2 id="references">References</h2>
 <ul>
 <li><a href="https://algs4.cs.princeton.edu/home/">Algorithms, 4th Edition by Robert Sedgewick and Kevin Wayne</a></li>
@@ -763,11 +608,9 @@ Weight: 12.6
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/prim/">prim</a>
+  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/kruskal/">kruskal</a>
 
   <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/graph/">graph</a>
-
-  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/java/">java</a>
 
                   </div>
                 
@@ -780,7 +623,7 @@ Weight: 12.6
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/08/kruskal-algorithm/" data-tooltip="Thuật toán Kruskal: Tìm cây khung nhỏ nhất">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -788,7 +631,7 @@ Weight: 12.6
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/08/clean-code-meaningful-name/" data-tooltip="Clean Code: Bạn đã đặt tên biến, hàm đủ &#34;clean&#34;?">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/08/prim-algorithm-improvement/" data-tooltip="Thuật toán Prim: Cải tiến dùng Index Priority Queue">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -806,19 +649,19 @@ Weight: 12.6
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/08/prim-algorithm-improvement/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/08/kruskal-algorithm/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/08/prim-algorithm-improvement/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/08/kruskal-algorithm/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2021/08/prim-algorithm-improvement/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2021/08/kruskal-algorithm/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -847,8 +690,8 @@ Weight: 12.6
             <div class="comment-box">
                 <textarea name="fields[comment]" class="comment-input-control comment-input-animated" placeholder="Comment (markdown is accepted) *" required rows="3"></textarea>
                 <div class="comment-box-tail">
-                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2021/08/prim-algorithm-improvement/#comment-submitted">
-                    <input type="hidden" name="options[slug]" value="prim-algorithm-improvement">
+                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2021/08/kruskal-algorithm/#comment-submitted">
+                    <input type="hidden" name="options[slug]" value="kruskal-algorithm">
                     <input type="text" name="fields[name]" class="post-comment-field" placeholder="Name *" required/>
                     <input type="email" name="fields[email]" class="post-comment-field" placeholder="Email address (will not be public) *" required/>
                     <input type="hidden" id="comment-parent" name="fields[reply_to]" value="">
@@ -891,7 +734,7 @@ Weight: 12.6
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2021/08/prim-algorithm-improvement/" data-width="100%"></div>
+<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2021/08/kruskal-algorithm/" data-width="100%"></div>
 
               
             
@@ -912,7 +755,7 @@ Weight: 12.6
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/08/kruskal-algorithm/" data-tooltip="Thuật toán Kruskal: Tìm cây khung nhỏ nhất">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -920,7 +763,7 @@ Weight: 12.6
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/08/clean-code-meaningful-name/" data-tooltip="Clean Code: Bạn đã đặt tên biến, hàm đủ &#34;clean&#34;?">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/08/prim-algorithm-improvement/" data-tooltip="Thuật toán Prim: Cải tiến dùng Index Priority Queue">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -938,19 +781,19 @@ Weight: 12.6
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/08/prim-algorithm-improvement/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/08/kruskal-algorithm/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/08/prim-algorithm-improvement/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/08/kruskal-algorithm/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2021/08/prim-algorithm-improvement/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2021/08/kruskal-algorithm/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -974,19 +817,19 @@ Weight: 12.6
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2021%2F08%2Fprim-algorithm-improvement%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2021%2F08%2Fkruskal-algorithm%2F">
           <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2021%2F08%2Fprim-algorithm-improvement%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2021%2F08%2Fkruskal-algorithm%2F">
           <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2021%2F08%2Fprim-algorithm-improvement%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2021%2F08%2Fkruskal-algorithm%2F">
           <i class="fa fa-google-plus"></i><span>Chia sẻ với Google&#43;</span>
         </a>
       </li>
