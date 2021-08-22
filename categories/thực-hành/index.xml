@@ -80,5 +80,14 @@
       <description>&lt;p&gt;Một ngày đẹp trời nọ, sếp giao một cục dữ liệu và yêu cầu bạn truy vấn, thống kê đơn giản một vài thứ hay thậm chí là chế biến, xào nấu lại dữ liệu. Có rất nhiều công cụ có thể giúp bạn làm việc này như Excel chẳng hạn. Không may, bạn là một developer chỉ ăn ngủ với code chứ chưa đụng vào Excel bao giờ. Tuy nhiên, nếu có một chút kỹ năng JavaScript, bạn cũng có thể thực hiện việc này một cách dễ dàng và nhanh chóng.&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>Hướng dẫn làm menu đơn giản trong màn hình Console</title>
+      <link>https://chidokun.github.io/2015/03/simple-console-menu/</link>
+      <pubDate>Thu, 19 Mar 2015 11:53:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/03/simple-console-menu/</guid>
+      <description>&lt;p&gt;Đúng như tiêu đề, menu này rất đơn giản cho phép người dùng lựa chọn tính năng của chương trình trong màn hình Console và có thể áp dụng vào những game cơ bản. Bạn chỉ cần có kiến thức về vòng lặp &lt;code&gt;do...while&lt;/code&gt;, cấu trúc điều kiện &lt;code&gt;switch..case&lt;/code&gt; để làm menu này. Cách làm sẽ được minh họa bằng C++.&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>

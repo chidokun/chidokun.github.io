@@ -7,40 +7,38 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Tuấn">
-<meta name="keywords" content="sắp xếp, sắp xếp chọn, selection sort, giải thuật, development, programming, chidokun, lập trình">
-<meta name="description" content="Selection Sort là một thuật toán sắp xếp tương đối dễ hiểu. Ý tưởng chính vẫn là đổi chỗ những cặp nghịch thế, tuy nhiên cái hay là ở chỗ Selection Sort tìm vị trí chứa phần tử nhỏ nhất để đổi chỗ với phần tử đang xét chứ không đổi tất cả các cặp nghịch thế như Bubble Sort hay Interchange Sort.">
+<meta name="keywords" content="con trỏ, biến tham chiếu, pointer, development, programming, chidokun, lập trình">
+<meta name="description" content="Cả tham chiếu (reference) và con trỏ (pointer) đều thuộc kiểu địa chỉ trong C&#43;&#43; và thường được dùng để truy cập gián tiếp đến các đối tượng khác. Tuy nhiên chúng cũng có sự khác nhau cơ bản các bạn có thể tham khảo dưới đây.">
 
 
-<meta property="og:description" content="Selection Sort là một thuật toán sắp xếp tương đối dễ hiểu. Ý tưởng chính vẫn là đổi chỗ những cặp nghịch thế, tuy nhiên cái hay là ở chỗ Selection Sort tìm vị trí chứa phần tử nhỏ nhất để đổi chỗ với phần tử đang xét chứ không đổi tất cả các cặp nghịch thế như Bubble Sort hay Interchange Sort.">
+<meta property="og:description" content="Cả tham chiếu (reference) và con trỏ (pointer) đều thuộc kiểu địa chỉ trong C&#43;&#43; và thường được dùng để truy cập gián tiếp đến các đối tượng khác. Tuy nhiên chúng cũng có sự khác nhau cơ bản các bạn có thể tham khảo dưới đây.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Thuật toán sắp xếp: Selection Sort (chọn trực tiếp)">
-<meta name="twitter:title" content="Thuật toán sắp xếp: Selection Sort (chọn trực tiếp)">
-<meta property="og:url" content="https://chidokun.github.io/2015/03/selection-sort/">
-<meta property="twitter:url" content="https://chidokun.github.io/2015/03/selection-sort/">
+<meta property="og:title" content="Biến tham chiếu khác biến con trỏ như thế nào trong C/C&#43;&#43;?">
+<meta name="twitter:title" content="Biến tham chiếu khác biến con trỏ như thế nào trong C/C&#43;&#43;?">
+<meta property="og:url" content="https://chidokun.github.io/2015/03/cpp-reference-variable/">
+<meta property="twitter:url" content="https://chidokun.github.io/2015/03/cpp-reference-variable/">
 <meta property="og:site_name" content="Nguyễn Tuấn&#39;s Blog">
-<meta property="og:description" content="Selection Sort là một thuật toán sắp xếp tương đối dễ hiểu. Ý tưởng chính vẫn là đổi chỗ những cặp nghịch thế, tuy nhiên cái hay là ở chỗ Selection Sort tìm vị trí chứa phần tử nhỏ nhất để đổi chỗ với phần tử đang xét chứ không đổi tất cả các cặp nghịch thế như Bubble Sort hay Interchange Sort.">
-<meta name="twitter:description" content="Selection Sort là một thuật toán sắp xếp tương đối dễ hiểu. Ý tưởng chính vẫn là đổi chỗ những cặp nghịch thế, tuy nhiên cái hay là ở chỗ Selection Sort tìm vị trí chứa phần tử nhỏ nhất để đổi chỗ với phần tử đang xét chứ không đổi tất cả các cặp nghịch thế như Bubble Sort hay Interchange Sort.">
+<meta property="og:description" content="Cả tham chiếu (reference) và con trỏ (pointer) đều thuộc kiểu địa chỉ trong C&#43;&#43; và thường được dùng để truy cập gián tiếp đến các đối tượng khác. Tuy nhiên chúng cũng có sự khác nhau cơ bản các bạn có thể tham khảo dưới đây.">
+<meta name="twitter:description" content="Cả tham chiếu (reference) và con trỏ (pointer) đều thuộc kiểu địa chỉ trong C&#43;&#43; và thường được dùng để truy cập gián tiếp đến các đối tượng khác. Tuy nhiên chúng cũng có sự khác nhau cơ bản các bạn có thể tham khảo dưới đây.">
 <meta property="og:locale" content="vi">
 
   
-    <meta property="article:published_time" content="2015-03-16T23:36:00">
+    <meta property="article:published_time" content="2015-03-20T23:22:00">
   
   
-    <meta property="article:modified_time" content="2015-03-16T23:36:00">
+    <meta property="article:modified_time" content="2015-03-20T23:22:00">
   
   
   
     
       <meta property="article:section" content="Lập trình">
     
-      <meta property="article:section" content="Giải thuật">
+      <meta property="article:section" content="Computer Science">
     
   
   
     
       <meta property="article:tag" content="c/c&#43;&#43;">
-    
-      <meta property="article:tag" content="sorting algorithm">
     
   
 
@@ -66,14 +64,14 @@
   <meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
 
 
-    <title>Thuật toán sắp xếp: Selection Sort (chọn trực tiếp)</title>
+    <title>Biến tham chiếu khác biến con trỏ như thế nào trong C/C&#43;&#43;?</title>
     <meta name="google-site-verification" content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI" />
     <link rel="icon" href="https://chidokun.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://chidokun.github.io/2015/03/selection-sort/">
+    <link rel="canonical" href="https://chidokun.github.io/2015/03/cpp-reference-variable/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -273,19 +271,19 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Thuật toán sắp xếp: Selection Sort (chọn trực tiếp)
+      Biến tham chiếu khác biến con trỏ như thế nào trong C/C&#43;&#43;?
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2015-03-16T23:36:00&#43;07:00">
+      <time itemprop="datePublished" datetime="2015-03-20T23:22:00&#43;07:00">
         
   
   
   
   
-    16 tháng 3 2015
+    20 tháng 3 2015
   
 
       </time>
@@ -297,7 +295,7 @@ if (!doNotTrack) {
     
       <a class="category-link" href="https://chidokun.github.io/categories/l%e1%ba%adp-tr%c3%acnh">Lập trình</a>, 
     
-      <a class="category-link" href="https://chidokun.github.io/categories/gi%e1%ba%a3i-thu%e1%ba%adt">Giải thuật</a>
+      <a class="category-link" href="https://chidokun.github.io/categories/computer-science">Computer Science</a>
     
   
 
@@ -305,7 +303,7 @@ if (!doNotTrack) {
 
   <div>
   <div class="fb-like" 
-    data-href="https://chidokun.github.io/2015/03/selection-sort/" 
+    data-href="https://chidokun.github.io/2015/03/cpp-reference-variable/" 
     data-width="" 
     data-layout="button_count" 
     data-action="like" 
@@ -316,55 +314,37 @@ if (!doNotTrack) {
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>Selection Sort là một thuật toán sắp xếp tương đối dễ hiểu. Ý tưởng chính vẫn là đổi chỗ những cặp nghịch thế, tuy nhiên cái hay là ở chỗ Selection Sort tìm vị trí chứa phần tử nhỏ nhất để đổi chỗ với phần tử đang xét chứ không đổi tất cả các cặp nghịch thế như <a href="https://chidokun.github.io/2015/03/bubble-sort/">Bubble Sort</a> hay <a href="https://chidokun.github.io/2015/03/interchange-sort/">Interchange Sort</a>.</p>
-<h1 id="ý-tưởng">Ý tưởng</h1>
-<p>Xét phần tử đầu tiên của dãy. Tìm phần tử nhỏ nhất trong các phần tử còn lại. Hoán đổi phần tử đầu tiên với phần tử nhỏ nhất này, ta được phần tử đầu tiên có vị trí đúng. Bỏ qua phần tử vừa được xét, tiếp tục xét đến phần tử kế tiếp và thực hiện đến hết dãy.</p>
-<h1 id="cài-đặt-trong-c">Cài đặt trong C++</h1>
-<pre><code class="language-cpp">int min, i, j; //min là chỉ số phần tử nhỏ nhất
-for(i = 0; i &lt; n-1; i++)
-{
-   min = i;
-   for(j = i+1; j &lt; n; j++)
-      if(a[j] &lt; a[min])
-         min = j; //tìm min trong các phần tử còn lại
-   if(min != i)
-     swap(a[i], a[min]); //đổi chỗ nếu tìm thấy min
-}
+              <p>Cả tham chiếu (reference) và con trỏ (pointer) đều thuộc kiểu địa chỉ trong C++ và thường được dùng để truy cập gián tiếp đến các đối tượng khác. Tuy nhiên chúng cũng có sự khác nhau cơ bản các bạn có thể tham khảo dưới đây.</p>
+<p><strong>1</strong>. Khai báo biến con trỏ:</p>
+<pre><code class="language-cpp">&lt;kiểu dữ liệu&gt; *&lt;tên biến&gt;;
 </code></pre>
-<h1 id="minh-họa">Minh họa</h1>
-<p>Nguồn: Wikipedia.</p>
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure center" >
-  
-    <a class="fancybox" href="http://upload.wikimedia.org/wikipedia/commons/9/94/Selection-Sort-Animation.gif" title="Minh họa Selection Sort" data-fancybox-group="">
-  
-    <img class="fig-img" src="http://upload.wikimedia.org/wikipedia/commons/9/94/Selection-Sort-Animation.gif" style="width: 20%;" alt="Minh họa Selection Sort">
-  
-    </a>
-  
-   
-    <span class="caption">Minh họa Selection Sort</span>
-  
-</div>
-
-<h1 id="đánh-giá">Đánh giá</h1>
-<p>Về số phép so sánh, ở lượt xét thứ <code>i</code> luôn có <code>n-i</code> phép so sánh để tìm min và không phụ thuộc tình trạng ban đầu của dãy nên số phép so sánh ước lượng là: $(n-1) + (n-2) + &hellip; + 1 = n(n - 1)/2$.</p>
-<p>Số lần hoán vị ở trường hợp tốt nhất là $0$.
-Trường hợp xấu nhất là: $3n(n-1)/2$.</p>
-<p>Độ phức tạp là: $O(n^2)$.</p>
+<p>Khai báo biến tham chiếu:</p>
+<pre><code class="language-cpp">&lt;kiểu dữ liệu&gt; &amp;&lt;tên biến&gt; = &lt;tên đối tượng&gt;;
+</code></pre>
+<p><strong>2</strong>. Dấu <code>&amp;</code> trong khai báo tham chiếu khác với toán tử lấy địa chỉ <code>&amp;</code>. Cũng như dấu <code>*</code> khai báo con trỏ khác với toán tử lấy giá trị <code>*</code>. Chúng chỉ báo hiệu đây là biến tham chiếu hay là biến con trỏ thôi.</p>
+<p><strong>3</strong>. Con trỏ có thể khởi tạo mà không cần gán địa chỉ, ta có một con trỏ không xác định. Tham chiếu bắt buộc phải gán bằng một đối tượng khác, có thể là một biến. Vì vậy dùng con trỏ có thể dễ gây nhầm lẫn và nguy hiểm hơn tham chiếu.</p>
+<pre><code class="language-cpp">int *p; //hợp lệ
+int a = 5; //hợp lệ
+int &amp;b; //không hợp lệ
+int &amp;c = a; //OK, lúc này c và a là một.
+</code></pre>
+<p><strong>4</strong>. Con trỏ là một biến riêng biệt lưu giữ địa chỉ của đối tượng khác nên truy cập gián tiếp thông qua địa chỉ. Tham chiếu được xem như một cái tên khác của đối tượng vì nó dùng chung địa chỉ với đối tượng được tham chiếu.</p>
+<p><strong>5</strong>. Kích thước một biến con trỏ là cố định. Kích thước biến tham chiếu phụ thuộc kiểu dữ liệu của đối tượng.</p>
+<pre><code class="language-cpp">sizeof(double) // 8 bytes
+sizeof(double*) // 4 bytes
+sizeof(double&amp;) // 8 bytes
+</code></pre>
+<p><strong>6</strong>. Con trỏ có thể được chỉ định để truy cập đến các đối tượng khác nhau bằng cách thay đổi giá trị địa chỉ mà con trỏ lưu giữ. Tuy nhiên, tham chiếu chỉ truy cập được duy nhất một đối tượng đã được khởi tạo cho nó. Vì vậy con trỏ linh hoạt hơn tham chiếu.</p>
+<p><strong>7</strong>. Có thể khai báo mảng các con trỏ nhưng không được khai báo mảng các tham chiếu.</p>
+<p><strong>8</strong>. Tham chiếu thường được dùng làm các tham số truyền vào hàm khi muốn giá trị của tham số thay đổi sau khi ra khỏi hàm.</p>
+<p>Tham chiếu cũng được dùng để tiết kiệm bộ nhớ khi truyền đối tượng vào hàm. Hệ thống sẽ tạo biến tham chiếu thay vì tạo bản copy đối tượng. Tuy nhiên, đối tượng có thể bị thay đổi. Có thể dùng hằng tham chiếu để ngăn điều này.</p>
+<pre><code class="language-cpp">int sum(int a); // a sẽ không thay đổi khi ra khỏi hàm
+int swap(int &amp;a, int &amp;b); // thay đổi trong hàm vẫn lưu lại với a, b
+int addition(const int&amp; a); //a sẽ không thay đổi
+</code></pre>
+<p>Tất nhiên cũng có thể dùng con trỏ cho những trường hợp này.</p>
+<p><strong>9</strong>. Con trỏ dùng để cấp phát động nhưng không thể thực hiện việc này với tham chiếu.</p>
+<p><strong>10</strong>. Biến tham chiếu không thể tham chiếu đến con trỏ nhưng con trỏ có thể trỏ đến biến tham chiếu.</p>
               
             </div>
           </div>
@@ -378,8 +358,6 @@ Trường hợp xấu nhất là: $3n(n-1)/2$.</p>
                     
   <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/c/c&#43;&#43;/">c/c&#43;&#43;</a>
 
-  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/sorting-algorithm/">sorting algorithm</a>
-
                   </div>
                 
               
@@ -391,7 +369,7 @@ Trường hợp xấu nhất là: $3n(n-1)/2$.</p>
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/03/simple-console-menu/" data-tooltip="Hướng dẫn làm menu đơn giản trong màn hình Console">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2019/12/query-with-javascript-ep1/" data-tooltip="Truy vấn với JavaScript (Phần 1)">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -399,7 +377,7 @@ Trường hợp xấu nhất là: $3n(n-1)/2$.</p>
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/03/bubble-sort/" data-tooltip="Thuật toán sắp xếp: Bubble Sort (sắp xếp nổi bọt)">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/03/simple-console-menu/" data-tooltip="Hướng dẫn làm menu đơn giản trong màn hình Console">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -417,19 +395,19 @@ Trường hợp xấu nhất là: $3n(n-1)/2$.</p>
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/03/selection-sort/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/03/cpp-reference-variable/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/03/selection-sort/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/03/cpp-reference-variable/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/03/selection-sort/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/03/cpp-reference-variable/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -458,8 +436,8 @@ Trường hợp xấu nhất là: $3n(n-1)/2$.</p>
             <div class="comment-box">
                 <textarea name="fields[comment]" class="comment-input-control comment-input-animated" placeholder="Comment (markdown is accepted) *" required rows="3"></textarea>
                 <div class="comment-box-tail">
-                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2015/03/selection-sort/#comment-submitted">
-                    <input type="hidden" name="options[slug]" value="selection-sort">
+                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2015/03/cpp-reference-variable/#comment-submitted">
+                    <input type="hidden" name="options[slug]" value="cpp-reference-variable">
                     <input type="text" name="fields[name]" class="post-comment-field" placeholder="Name *" required/>
                     <input type="email" name="fields[email]" class="post-comment-field" placeholder="Email address (will not be public) *" required/>
                     <input type="hidden" id="comment-parent" name="fields[reply_to]" value="">
@@ -502,7 +480,7 @@ Trường hợp xấu nhất là: $3n(n-1)/2$.</p>
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2015/03/selection-sort/" data-width="100%"></div>
+<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2015/03/cpp-reference-variable/" data-width="100%"></div>
 
               
             
@@ -523,7 +501,7 @@ Trường hợp xấu nhất là: $3n(n-1)/2$.</p>
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/03/simple-console-menu/" data-tooltip="Hướng dẫn làm menu đơn giản trong màn hình Console">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2019/12/query-with-javascript-ep1/" data-tooltip="Truy vấn với JavaScript (Phần 1)">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -531,7 +509,7 @@ Trường hợp xấu nhất là: $3n(n-1)/2$.</p>
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/03/bubble-sort/" data-tooltip="Thuật toán sắp xếp: Bubble Sort (sắp xếp nổi bọt)">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/03/simple-console-menu/" data-tooltip="Hướng dẫn làm menu đơn giản trong màn hình Console">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -549,19 +527,19 @@ Trường hợp xấu nhất là: $3n(n-1)/2$.</p>
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/03/selection-sort/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/03/cpp-reference-variable/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/03/selection-sort/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/03/cpp-reference-variable/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/03/selection-sort/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/03/cpp-reference-variable/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -585,19 +563,19 @@ Trường hợp xấu nhất là: $3n(n-1)/2$.</p>
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2015%2F03%2Fselection-sort%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2015%2F03%2Fcpp-reference-variable%2F">
           <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2015%2F03%2Fselection-sort%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2015%2F03%2Fcpp-reference-variable%2F">
           <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2015%2F03%2Fselection-sort%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2015%2F03%2Fcpp-reference-variable%2F">
           <i class="fa fa-google-plus"></i><span>Chia sẻ với Google&#43;</span>
         </a>
       </li>

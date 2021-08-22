@@ -261,6 +261,24 @@
     </item>
     
     <item>
+      <title>Biến tham chiếu khác biến con trỏ như thế nào trong C/C&#43;&#43;?</title>
+      <link>https://chidokun.github.io/2015/03/cpp-reference-variable/</link>
+      <pubDate>Fri, 20 Mar 2015 23:22:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/03/cpp-reference-variable/</guid>
+      <description>&lt;p&gt;Cả tham chiếu (reference) và con trỏ (pointer) đều thuộc kiểu địa chỉ trong C++ và thường được dùng để truy cập gián tiếp đến các đối tượng khác. Tuy nhiên chúng cũng có sự khác nhau cơ bản các bạn có thể tham khảo dưới đây.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hướng dẫn làm menu đơn giản trong màn hình Console</title>
+      <link>https://chidokun.github.io/2015/03/simple-console-menu/</link>
+      <pubDate>Thu, 19 Mar 2015 11:53:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/03/simple-console-menu/</guid>
+      <description>&lt;p&gt;Đúng như tiêu đề, menu này rất đơn giản cho phép người dùng lựa chọn tính năng của chương trình trong màn hình Console và có thể áp dụng vào những game cơ bản. Bạn chỉ cần có kiến thức về vòng lặp &lt;code&gt;do...while&lt;/code&gt;, cấu trúc điều kiện &lt;code&gt;switch..case&lt;/code&gt; để làm menu này. Cách làm sẽ được minh họa bằng C++.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Thuật toán sắp xếp: Selection Sort (chọn trực tiếp)</title>
       <link>https://chidokun.github.io/2015/03/selection-sort/</link>
       <pubDate>Mon, 16 Mar 2015 23:36:00 +0700</pubDate>

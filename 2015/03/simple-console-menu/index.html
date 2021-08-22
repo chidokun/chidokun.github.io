@@ -7,40 +7,38 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Tuấn">
-<meta name="keywords" content="sắp xếp, sắp xếp chọn, selection sort, giải thuật, development, programming, chidokun, lập trình">
-<meta name="description" content="Selection Sort là một thuật toán sắp xếp tương đối dễ hiểu. Ý tưởng chính vẫn là đổi chỗ những cặp nghịch thế, tuy nhiên cái hay là ở chỗ Selection Sort tìm vị trí chứa phần tử nhỏ nhất để đổi chỗ với phần tử đang xét chứ không đổi tất cả các cặp nghịch thế như Bubble Sort hay Interchange Sort.">
+<meta name="keywords" content="console, menu, c/c&#43;&#43;, development, programming, chidokun, lập trình">
+<meta name="description" content="Đúng như tiêu đề, menu này rất đơn giản cho phép người dùng lựa chọn tính năng của chương trình trong màn hình Console và có thể áp dụng vào những game cơ bản. Bạn chỉ cần có kiến thức về vòng lặp do...while, cấu trúc điều kiện switch..case để làm menu này. Cách làm sẽ được minh họa bằng C&#43;&#43;.">
 
 
-<meta property="og:description" content="Selection Sort là một thuật toán sắp xếp tương đối dễ hiểu. Ý tưởng chính vẫn là đổi chỗ những cặp nghịch thế, tuy nhiên cái hay là ở chỗ Selection Sort tìm vị trí chứa phần tử nhỏ nhất để đổi chỗ với phần tử đang xét chứ không đổi tất cả các cặp nghịch thế như Bubble Sort hay Interchange Sort.">
+<meta property="og:description" content="Đúng như tiêu đề, menu này rất đơn giản cho phép người dùng lựa chọn tính năng của chương trình trong màn hình Console và có thể áp dụng vào những game cơ bản. Bạn chỉ cần có kiến thức về vòng lặp do...while, cấu trúc điều kiện switch..case để làm menu này. Cách làm sẽ được minh họa bằng C&#43;&#43;.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Thuật toán sắp xếp: Selection Sort (chọn trực tiếp)">
-<meta name="twitter:title" content="Thuật toán sắp xếp: Selection Sort (chọn trực tiếp)">
-<meta property="og:url" content="https://chidokun.github.io/2015/03/selection-sort/">
-<meta property="twitter:url" content="https://chidokun.github.io/2015/03/selection-sort/">
+<meta property="og:title" content="Hướng dẫn làm menu đơn giản trong màn hình Console">
+<meta name="twitter:title" content="Hướng dẫn làm menu đơn giản trong màn hình Console">
+<meta property="og:url" content="https://chidokun.github.io/2015/03/simple-console-menu/">
+<meta property="twitter:url" content="https://chidokun.github.io/2015/03/simple-console-menu/">
 <meta property="og:site_name" content="Nguyễn Tuấn&#39;s Blog">
-<meta property="og:description" content="Selection Sort là một thuật toán sắp xếp tương đối dễ hiểu. Ý tưởng chính vẫn là đổi chỗ những cặp nghịch thế, tuy nhiên cái hay là ở chỗ Selection Sort tìm vị trí chứa phần tử nhỏ nhất để đổi chỗ với phần tử đang xét chứ không đổi tất cả các cặp nghịch thế như Bubble Sort hay Interchange Sort.">
-<meta name="twitter:description" content="Selection Sort là một thuật toán sắp xếp tương đối dễ hiểu. Ý tưởng chính vẫn là đổi chỗ những cặp nghịch thế, tuy nhiên cái hay là ở chỗ Selection Sort tìm vị trí chứa phần tử nhỏ nhất để đổi chỗ với phần tử đang xét chứ không đổi tất cả các cặp nghịch thế như Bubble Sort hay Interchange Sort.">
+<meta property="og:description" content="Đúng như tiêu đề, menu này rất đơn giản cho phép người dùng lựa chọn tính năng của chương trình trong màn hình Console và có thể áp dụng vào những game cơ bản. Bạn chỉ cần có kiến thức về vòng lặp do...while, cấu trúc điều kiện switch..case để làm menu này. Cách làm sẽ được minh họa bằng C&#43;&#43;.">
+<meta name="twitter:description" content="Đúng như tiêu đề, menu này rất đơn giản cho phép người dùng lựa chọn tính năng của chương trình trong màn hình Console và có thể áp dụng vào những game cơ bản. Bạn chỉ cần có kiến thức về vòng lặp do...while, cấu trúc điều kiện switch..case để làm menu này. Cách làm sẽ được minh họa bằng C&#43;&#43;.">
 <meta property="og:locale" content="vi">
 
   
-    <meta property="article:published_time" content="2015-03-16T23:36:00">
+    <meta property="article:published_time" content="2015-03-19T11:53:00">
   
   
-    <meta property="article:modified_time" content="2015-03-16T23:36:00">
+    <meta property="article:modified_time" content="2015-03-19T11:53:00">
   
   
   
     
       <meta property="article:section" content="Lập trình">
     
-      <meta property="article:section" content="Giải thuật">
+      <meta property="article:section" content="Thực hành">
     
   
   
     
       <meta property="article:tag" content="c/c&#43;&#43;">
-    
-      <meta property="article:tag" content="sorting algorithm">
     
   
 
@@ -66,14 +64,14 @@
   <meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
 
 
-    <title>Thuật toán sắp xếp: Selection Sort (chọn trực tiếp)</title>
+    <title>Hướng dẫn làm menu đơn giản trong màn hình Console</title>
     <meta name="google-site-verification" content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI" />
     <link rel="icon" href="https://chidokun.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://chidokun.github.io/2015/03/selection-sort/">
+    <link rel="canonical" href="https://chidokun.github.io/2015/03/simple-console-menu/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -273,19 +271,19 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Thuật toán sắp xếp: Selection Sort (chọn trực tiếp)
+      Hướng dẫn làm menu đơn giản trong màn hình Console
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2015-03-16T23:36:00&#43;07:00">
+      <time itemprop="datePublished" datetime="2015-03-19T11:53:00&#43;07:00">
         
   
   
   
   
-    16 tháng 3 2015
+    19 tháng 3 2015
   
 
       </time>
@@ -297,7 +295,7 @@ if (!doNotTrack) {
     
       <a class="category-link" href="https://chidokun.github.io/categories/l%e1%ba%adp-tr%c3%acnh">Lập trình</a>, 
     
-      <a class="category-link" href="https://chidokun.github.io/categories/gi%e1%ba%a3i-thu%e1%ba%adt">Giải thuật</a>
+      <a class="category-link" href="https://chidokun.github.io/categories/th%e1%bb%b1c-h%c3%a0nh">Thực hành</a>
     
   
 
@@ -305,7 +303,7 @@ if (!doNotTrack) {
 
   <div>
   <div class="fb-like" 
-    data-href="https://chidokun.github.io/2015/03/selection-sort/" 
+    data-href="https://chidokun.github.io/2015/03/simple-console-menu/" 
     data-width="" 
     data-layout="button_count" 
     data-action="like" 
@@ -316,25 +314,7 @@ if (!doNotTrack) {
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>Selection Sort là một thuật toán sắp xếp tương đối dễ hiểu. Ý tưởng chính vẫn là đổi chỗ những cặp nghịch thế, tuy nhiên cái hay là ở chỗ Selection Sort tìm vị trí chứa phần tử nhỏ nhất để đổi chỗ với phần tử đang xét chứ không đổi tất cả các cặp nghịch thế như <a href="https://chidokun.github.io/2015/03/bubble-sort/">Bubble Sort</a> hay <a href="https://chidokun.github.io/2015/03/interchange-sort/">Interchange Sort</a>.</p>
-<h1 id="ý-tưởng">Ý tưởng</h1>
-<p>Xét phần tử đầu tiên của dãy. Tìm phần tử nhỏ nhất trong các phần tử còn lại. Hoán đổi phần tử đầu tiên với phần tử nhỏ nhất này, ta được phần tử đầu tiên có vị trí đúng. Bỏ qua phần tử vừa được xét, tiếp tục xét đến phần tử kế tiếp và thực hiện đến hết dãy.</p>
-<h1 id="cài-đặt-trong-c">Cài đặt trong C++</h1>
-<pre><code class="language-cpp">int min, i, j; //min là chỉ số phần tử nhỏ nhất
-for(i = 0; i &lt; n-1; i++)
-{
-   min = i;
-   for(j = i+1; j &lt; n; j++)
-      if(a[j] &lt; a[min])
-         min = j; //tìm min trong các phần tử còn lại
-   if(min != i)
-     swap(a[i], a[min]); //đổi chỗ nếu tìm thấy min
-}
-</code></pre>
-<h1 id="minh-họa">Minh họa</h1>
-<p>Nguồn: Wikipedia.</p>
-
-
+              <p>Đúng như tiêu đề, menu này rất đơn giản cho phép người dùng lựa chọn tính năng của chương trình trong màn hình Console và có thể áp dụng vào những game cơ bản. Bạn chỉ cần có kiến thức về vòng lặp <code>do...while</code>, cấu trúc điều kiện <code>switch..case</code> để làm menu này. Cách làm sẽ được minh họa bằng C++.</p>
  
   
   
@@ -349,22 +329,60 @@ for(i = 0; i &lt; n-1; i++)
 
 <div class="figure center" >
   
-    <a class="fancybox" href="http://upload.wikimedia.org/wikipedia/commons/9/94/Selection-Sort-Animation.gif" title="Minh họa Selection Sort" data-fancybox-group="">
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/simple-console-menu/1.png" title="Menu đơn giản trên console" data-fancybox-group="">
   
-    <img class="fig-img" src="http://upload.wikimedia.org/wikipedia/commons/9/94/Selection-Sort-Animation.gif" style="width: 20%;" alt="Minh họa Selection Sort">
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/simple-console-menu/1.png" style="width: 70%;" alt="Menu đơn giản trên console">
   
     </a>
   
    
-    <span class="caption">Minh họa Selection Sort</span>
+    <span class="caption">Menu đơn giản trên console</span>
   
 </div>
 
-<h1 id="đánh-giá">Đánh giá</h1>
-<p>Về số phép so sánh, ở lượt xét thứ <code>i</code> luôn có <code>n-i</code> phép so sánh để tìm min và không phụ thuộc tình trạng ban đầu của dãy nên số phép so sánh ước lượng là: $(n-1) + (n-2) + &hellip; + 1 = n(n - 1)/2$.</p>
-<p>Số lần hoán vị ở trường hợp tốt nhất là $0$.
-Trường hợp xấu nhất là: $3n(n-1)/2$.</p>
-<p>Độ phức tạp là: $O(n^2)$.</p>
+<p>Đầu tiên, để menu hiện ra cho bạn lựa chọn khi chạy chương trình hoặc khi chạy hết một tính năng, ta sẽ sử dụng vòng lặp <code>do...while</code>, tất nhiên cũng phải có lựa chọn thoát chương trình nên dùng một biến kiểu <code>bool</code> làm điều kiện thoát vòng lặp (trong C bạn có thể dùng biến kiểu int cũng được).</p>
+<pre><code class="language-cpp">bool isExit = false; //thiết lập ban đầu là không thoát
+do
+{
+
+} while (!isExit);
+</code></pre>
+<p>Cần phải in ra màn hình để hướng dẫn người dùng biết, đồng thời cũng phải có một biến lưu lại sự lựa chọn của người dùng.</p>
+<pre><code class="language-cpp">bool isExit = false;
+int option; //biến lưu lại lựa chọn người dùng
+do
+{
+   cout &lt;&lt;&quot;Please select:&quot; &lt;&lt;endl
+        &lt;&lt;&quot;1. Input students&quot; &lt;&lt;endl
+        &lt;&lt;&quot;2. Output students&quot; &lt;&lt;endl
+        &lt;&lt;&quot;3. Sort and output students&quot; &lt;&lt;endl
+        &lt;&lt;&quot;4. Exit&quot; &lt;&lt;endl
+        &lt;&lt;&quot;----------------------------&quot;&lt;&lt;endl
+        &lt;&lt;&quot;Your choice: &quot;;
+   cin &gt;&gt; option; //lưu lựa chọn người dùng
+
+} while (!isExit);
+</code></pre>
+<p>Tiếp theo là xử lý yêu cầu của người dùng. Để làm việc này ta dùng cấu trúc <code>switch..case</code> để rẽ nhánh thực hiện các lệnh phù hợp. Lệnh <code>switch..case</code> này vẫn nằm trong vòng lặp <code>do..while</code>. Trong ví dụ này, với lựa chọn 4, ta gán biến <code>isExit</code> thành <code>true</code> để thoát khỏi vòng lặp <code>do..while</code> cũng như thoát chương trình.</p>
+<pre><code class="language-cpp">switch (option)
+{
+case 1:
+   //lệnh
+   break;
+case 2:
+   //lệnh
+   break;
+case 3:
+   //lệnh
+   break;
+case 4:
+   isExit = true;
+   break;
+default:
+   cout &lt;&lt; &quot;Your choice is not valid!&quot; &lt;&lt; endl;
+}
+</code></pre>
+<p>Công việc cuối cùng là hoàn tất các lệnh xử lý cho mỗi trường hợp trong menu thôi. Rất đơn giản phải không nào!</p>
               
             </div>
           </div>
@@ -378,8 +396,6 @@ Trường hợp xấu nhất là: $3n(n-1)/2$.</p>
                     
   <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/c/c&#43;&#43;/">c/c&#43;&#43;</a>
 
-  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/sorting-algorithm/">sorting algorithm</a>
-
                   </div>
                 
               
@@ -391,7 +407,7 @@ Trường hợp xấu nhất là: $3n(n-1)/2$.</p>
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/03/simple-console-menu/" data-tooltip="Hướng dẫn làm menu đơn giản trong màn hình Console">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/03/cpp-reference-variable/" data-tooltip="Biến tham chiếu khác biến con trỏ như thế nào trong C/C&#43;&#43;?">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -399,7 +415,7 @@ Trường hợp xấu nhất là: $3n(n-1)/2$.</p>
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/03/bubble-sort/" data-tooltip="Thuật toán sắp xếp: Bubble Sort (sắp xếp nổi bọt)">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/03/selection-sort/" data-tooltip="Thuật toán sắp xếp: Selection Sort (chọn trực tiếp)">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -417,19 +433,19 @@ Trường hợp xấu nhất là: $3n(n-1)/2$.</p>
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/03/selection-sort/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/03/simple-console-menu/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/03/selection-sort/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/03/simple-console-menu/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/03/selection-sort/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/03/simple-console-menu/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -458,8 +474,8 @@ Trường hợp xấu nhất là: $3n(n-1)/2$.</p>
             <div class="comment-box">
                 <textarea name="fields[comment]" class="comment-input-control comment-input-animated" placeholder="Comment (markdown is accepted) *" required rows="3"></textarea>
                 <div class="comment-box-tail">
-                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2015/03/selection-sort/#comment-submitted">
-                    <input type="hidden" name="options[slug]" value="selection-sort">
+                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2015/03/simple-console-menu/#comment-submitted">
+                    <input type="hidden" name="options[slug]" value="simple-console-menu">
                     <input type="text" name="fields[name]" class="post-comment-field" placeholder="Name *" required/>
                     <input type="email" name="fields[email]" class="post-comment-field" placeholder="Email address (will not be public) *" required/>
                     <input type="hidden" id="comment-parent" name="fields[reply_to]" value="">
@@ -502,7 +518,7 @@ Trường hợp xấu nhất là: $3n(n-1)/2$.</p>
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2015/03/selection-sort/" data-width="100%"></div>
+<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2015/03/simple-console-menu/" data-width="100%"></div>
 
               
             
@@ -523,7 +539,7 @@ Trường hợp xấu nhất là: $3n(n-1)/2$.</p>
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/03/simple-console-menu/" data-tooltip="Hướng dẫn làm menu đơn giản trong màn hình Console">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/03/cpp-reference-variable/" data-tooltip="Biến tham chiếu khác biến con trỏ như thế nào trong C/C&#43;&#43;?">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -531,7 +547,7 @@ Trường hợp xấu nhất là: $3n(n-1)/2$.</p>
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/03/bubble-sort/" data-tooltip="Thuật toán sắp xếp: Bubble Sort (sắp xếp nổi bọt)">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/03/selection-sort/" data-tooltip="Thuật toán sắp xếp: Selection Sort (chọn trực tiếp)">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -549,19 +565,19 @@ Trường hợp xấu nhất là: $3n(n-1)/2$.</p>
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/03/selection-sort/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/03/simple-console-menu/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/03/selection-sort/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/03/simple-console-menu/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/03/selection-sort/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/03/simple-console-menu/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -585,19 +601,19 @@ Trường hợp xấu nhất là: $3n(n-1)/2$.</p>
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2015%2F03%2Fselection-sort%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2015%2F03%2Fsimple-console-menu%2F">
           <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2015%2F03%2Fselection-sort%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2015%2F03%2Fsimple-console-menu%2F">
           <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2015%2F03%2Fselection-sort%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2015%2F03%2Fsimple-console-menu%2F">
           <i class="fa fa-google-plus"></i><span>Chia sẻ với Google&#43;</span>
         </a>
       </li>

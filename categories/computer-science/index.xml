@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>Biến tham chiếu khác biến con trỏ như thế nào trong C/C&#43;&#43;?</title>
+      <link>https://chidokun.github.io/2015/03/cpp-reference-variable/</link>
+      <pubDate>Fri, 20 Mar 2015 23:22:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/03/cpp-reference-variable/</guid>
+      <description>&lt;p&gt;Cả tham chiếu (reference) và con trỏ (pointer) đều thuộc kiểu địa chỉ trong C++ và thường được dùng để truy cập gián tiếp đến các đối tượng khác. Tuy nhiên chúng cũng có sự khác nhau cơ bản các bạn có thể tham khảo dưới đây.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Tổng quan về kiểu string trong C&#43;&#43;</title>
       <link>https://chidokun.github.io/2015/03/cpp-string/</link>
       <pubDate>Fri, 06 Mar 2015 11:48:00 +0700</pubDate>
