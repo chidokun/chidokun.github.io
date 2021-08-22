@@ -225,6 +225,24 @@
     </item>
     
     <item>
+      <title>Khi nào cần định nghĩa constructor, copy constructor và destructor trong C&#43;&#43;?</title>
+      <link>https://chidokun.github.io/2015/04/cpp-constructor-destructor/</link>
+      <pubDate>Wed, 15 Apr 2015 13:12:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/04/cpp-constructor-destructor/</guid>
+      <description>&lt;p&gt;Hàm dựng (constructor) và hàm hủy (destructor) là 2 yếu tố quan trọng luôn có trong một lớp (class) trong lập trình hướng đối tượng. Nếu người dùng không định nghĩa thì trình biên dịch sẽ tự động thêm vào hàm dựng và hàm hủy mặc định. Tuy nhiên, đôi khi chúng ta cần phải định nghĩa lại hàm dựng và hàm hủy để đảm bảo an toàn và hợp logic hơn.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Đo trực tiếp thời gian chạy của thuật toán trong C/C&#43;&#43;</title>
+      <link>https://chidokun.github.io/2015/03/cpp-measure-execution-time/</link>
+      <pubDate>Sat, 21 Mar 2015 01:38:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/03/cpp-measure-execution-time/</guid>
+      <description>&lt;p&gt;Đo thời gian chạy là một trong những cách để đánh giá hiệu quả của một thuật toán. Công việc nghe có vẻ khó khăn nhưng thực tế, với các hàm, kiểu dữ liệu được định nghĩa trong thư viện &lt;code&gt;time.h&lt;/code&gt; của C (trong C++ có thể dùng cả &lt;code&gt;time.h&lt;/code&gt; hoặc &lt;code&gt;ctime&lt;/code&gt;), ta có thể đo thời gian chạy của một đoạn chương trình bất kỳ một cách dễ dàng.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Biến tham chiếu khác biến con trỏ như thế nào trong C/C&#43;&#43;?</title>
       <link>https://chidokun.github.io/2015/03/cpp-reference-variable/</link>
       <pubDate>Fri, 20 Mar 2015 23:22:00 +0700</pubDate>
