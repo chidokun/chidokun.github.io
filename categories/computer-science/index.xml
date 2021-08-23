@@ -21,6 +21,24 @@
     </item>
     
     <item>
+      <title>Tại sao cần xóa bộ đệm bàn phím trước khi nhập chuỗi trong C/C&#43;&#43;?</title>
+      <link>https://chidokun.github.io/2015/05/cpp-why-flush-cin/</link>
+      <pubDate>Sat, 09 May 2015 22:59:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/05/cpp-why-flush-cin/</guid>
+      <description>&lt;p&gt;Thông thường, khi nhập một chuỗi trong màn hình console, ta phải có thao tác xóa bộ nhớ đệm bàn phím. Nếu không có thể thấy rằng kết quả nhập chuỗi bị sai hoặc trôi đi mất.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Vấn đề cấp phát động trong hàm</title>
+      <link>https://chidokun.github.io/2015/05/cpp-dynamic-allocation-inside-function/</link>
+      <pubDate>Thu, 07 May 2015 23:16:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/05/cpp-dynamic-allocation-inside-function/</guid>
+      <description>&lt;p&gt;Ý tưởng của việc này là bạn có 1 con trỏ, bạn muốn cấp phát tài nguyên cho nó thông qua một hàm.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Khi nào cần định nghĩa constructor, copy constructor và destructor trong C&#43;&#43;?</title>
       <link>https://chidokun.github.io/2015/04/cpp-constructor-destructor/</link>
       <pubDate>Wed, 15 Apr 2015 13:12:00 +0700</pubDate>

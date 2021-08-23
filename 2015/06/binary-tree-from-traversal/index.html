@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="author" content="Nguyễn Tuấn">
+<meta name="keywords" content="binary tree, cây nhị phân, kết quả duyệt, development, programming, chidokun, lập trình">
+<meta name="description" content="Thường có 3 cách duyệt cơ bản là tiền thứ tự (NLR), trung thứ tự (LNR) và hậu thứ tự (LRN). Với kết quả duyệt kiểu NLR và LRN ta có thể vẽ lại cây ban đầu dễ dàng. Còn với LNR, ta không tìm được Node gốc nên không thể vẽ lại cây.">
+
+
+<meta property="og:description" content="Thường có 3 cách duyệt cơ bản là tiền thứ tự (NLR), trung thứ tự (LNR) và hậu thứ tự (LRN). Với kết quả duyệt kiểu NLR và LRN ta có thể vẽ lại cây ban đầu dễ dàng. Còn với LNR, ta không tìm được Node gốc nên không thể vẽ lại cây.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cách vẽ lại cây nhị phân tìm kiếm từ kết quả duyệt">
+<meta name="twitter:title" content="Cách vẽ lại cây nhị phân tìm kiếm từ kết quả duyệt">
+<meta property="og:url" content="https://chidokun.github.io/2015/06/binary-tree-from-traversal/">
+<meta property="twitter:url" content="https://chidokun.github.io/2015/06/binary-tree-from-traversal/">
+<meta property="og:site_name" content="Nguyễn Tuấn&#39;s Blog">
+<meta property="og:description" content="Thường có 3 cách duyệt cơ bản là tiền thứ tự (NLR), trung thứ tự (LNR) và hậu thứ tự (LRN). Với kết quả duyệt kiểu NLR và LRN ta có thể vẽ lại cây ban đầu dễ dàng. Còn với LNR, ta không tìm được Node gốc nên không thể vẽ lại cây.">
+<meta name="twitter:description" content="Thường có 3 cách duyệt cơ bản là tiền thứ tự (NLR), trung thứ tự (LNR) và hậu thứ tự (LRN). Với kết quả duyệt kiểu NLR và LRN ta có thể vẽ lại cây ban đầu dễ dàng. Còn với LNR, ta không tìm được Node gốc nên không thể vẽ lại cây.">
+<meta property="og:locale" content="vi">
+
+  
+    <meta property="article:published_time" content="2015-06-13T14:01:00">
+  
+  
+    <meta property="article:modified_time" content="2015-06-13T14:01:00">
+  
+  
+  
+    
+      <meta property="article:section" content="Lập trình">
+    
+      <meta property="article:section" content="Cấu trúc dữ liệu">
+    
+  
+  
+    
+      <meta property="article:tag" content="tree">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+  <meta property="fb:app_id" content="445006706177461">
+
+
+
+
+  <meta property="og:image" content="https://chidokun.github.io/thumbnails/heap.png">
+  <meta property="twitter:image" content="https://chidokun.github.io/thumbnails/heap.png">
+
+
+
+
+
+  <meta property="og:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
+  <meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
+
+
+    <title>Cách vẽ lại cây nhị phân tìm kiếm từ kết quả duyệt</title>
+    <meta name="google-site-verification" content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI" />
+    <link rel="icon" href="https://chidokun.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://chidokun.github.io/2015/06/binary-tree-from-traversal/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700|Roboto+Mono&display=swap&subset=vietnamese" rel="stylesheet">
+    
+    
+    <link rel="stylesheet" href="https://chidokun.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" integrity="sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei">
+      
+    
+      
+        <link rel="stylesheet"  href="https://chidokun.github.io/styles/styles.css">
+      
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-64965138-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://chidokun.github.io/">Nguyễn Tuấn&#39;s Blog</a>
+  </div>
+  
+    
+      <a class="header-right-icon st-search-show-outputs"
+         href="https://chidokun.github.io/#search">
+    
+    
+      <i class="fa fa-lg fa-search"></i>
+    
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://chidokun.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện" />
+        </a>
+        <h4 class="sidebar-profile-name">Nguyễn Tuấn</h4>
+        
+          <h5 class="sidebar-profile-bio">A guy with passionate at the code</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Trang chủ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/categories/l%E1%BA%ADp-tr%C3%ACnh/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-code"></i>
+      
+      <span class="sidebar-button-desc">Lập trình</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/categories/d%E1%BB%AF-li%E1%BB%87u/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-database"></i>
+      
+      <span class="sidebar-button-desc">Dữ liệu</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/categories/cu%E1%BB%99c-s%E1%BB%91ng/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-pagelines"></i>
+      
+      <span class="sidebar-button-desc">Cuộc sống</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Danh mục</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Thẻ thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Lưu trữ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">Thông tin</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/chidokun" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Cách vẽ lại cây nhị phân tìm kiếm từ kết quả duyệt
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2015-06-13T14:01:00&#43;07:00">
+        
+  
+  
+  
+  
+    13 tháng 6 2015
+  
+
+      </time>
+    
+    
+  
+  
+    <span>mục</span>
+    
+      <a class="category-link" href="https://chidokun.github.io/categories/l%e1%ba%adp-tr%c3%acnh">Lập trình</a>, 
+    
+      <a class="category-link" href="https://chidokun.github.io/categories/c%e1%ba%a5u-tr%c3%bac-d%e1%bb%af-li%e1%bb%87u">Cấu trúc dữ liệu</a>
+    
+  
+
+  </div>
+
+  <div>
+  <div class="fb-like" 
+    data-href="https://chidokun.github.io/2015/06/binary-tree-from-traversal/" 
+    data-width="" 
+    data-layout="button_count" 
+    data-action="like" 
+    data-size="large" 
+    data-share="false"></div>
+</div>
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>Thường có 3 cách duyệt cơ bản là tiền thứ tự (NLR), trung thứ tự (LNR) và hậu thứ tự (LRN). Với kết quả duyệt kiểu NLR và LRN ta có thể vẽ lại cây ban đầu dễ dàng. Còn với LNR, ta không tìm được Node gốc nên không thể vẽ lại cây.</p>
+<h1 id="nguyên-tắc-chung-để-vẽ-lại-cây">Nguyên tắc chung để vẽ lại cây</h1>
+<ol>
+<li>Tìm Node gốc.</li>
+<li>Tìm đoạn lớn hơn Node gốc sẽ là nhánh phải, đoạn nhỏ hơn Node gốc sẽ là nhánh trái. <em>(Vì nguyên tắc của cây nhị phân tìm kiếm, Node gốc sẽ có khóa lớn hơn tất cả Node con nhánh bên trái và nhỏ hơn tất cả các Node ở nhánh phải)</em></li>
+<li>Với mỗi đoạn vừa tìm được, tìm Node gốc của từng đoạn và tiếp tục tìm đoạn lớn hơn và nhỏ hơn Node gốc.</li>
+</ol>
+<p>Đó là nguyên tắc chung để vẽ lại cây. <strong><span class="highlight-text orange">Với cách duyệt NLR, ta luôn có Node gốc là Node đầu tiên của dãy kết quả, còn cách duyệt LRN là Node cuối cùng.</span></strong></p>
+<p><em><u>Ví dụ</u></em>: Cho kết quả duyệt <span class="highlight-text primary">L</span><span class="highlight-text green">R</span><span class="highlight-text red">N</span>: <span class="highlight-text primary">5 3 7 9 8 11 6 </span><span class="highlight-text green">20 19 37 25 21 15 </span><span class="highlight-text red">12</span></p>
+<p>Nhìn vào kết quả duyệt ta dễ dàng thấy <span class="highlight-text red">12</span> sẽ là Node gốc. Đoạn 5 đến 6 sẽ là nhánh trái và 20 đến 15 sẽ là nhánh phải.</p>
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/binary-tree-from-traversal/1.png" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/binary-tree-from-traversal/1.png" style="width: 100%;">
+  
+    </a>
+  
+  
+</div>
+
+<p>Tiếp tục xét đoạn trái, ta thấy số 6 sẽ là Node gốc tiếp theo, tìm đoạn nhỏ hơn số 6 là [5,3] sẽ là nhánh trái, đoạn [7,11] sẽ là nhánh phải.</p>
+<p>Cứ tiếp tục xét như thế đến hết ta sẽ vẽ được nhánh trái của cây.</p>
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/binary-tree-from-traversal/2.png" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/binary-tree-from-traversal/2.png" style="width: 60%;">
+  
+    </a>
+  
+  
+</div>
+
+<p>Giờ ta xét nhánh phải với nguyên tắc tương tự. 15 sẽ là Node gốc tiếp theo, vì không có số nào nhỏ hơn 15 ở đoạn phải nên những số còn lại hoàn toàn nằm ở nhánh phải của 15. Xét tiếp đoạn đó tương tự ta sẽ vẽ được nhánh phải.</p>
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/binary-tree-from-traversal/3.png" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/binary-tree-from-traversal/3.png" style="width: 100%;">
+  
+    </a>
+  
+  
+</div>
+
+<p>Các bạn hãy thử sức với các bài tập sau nhé!</p>
+<p><em>Vẽ lại cây nhị phân tìm kiếm từ kết quả duyệt</em>:</p>
+<p><strong>NLR</strong>: <span class="highlight-text primary">7 6 4 15 13 9 14 30 31</span></p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/tree/">tree</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2019/12/query-with-javascript-ep1/" data-tooltip="Truy vấn với JavaScript (Phần 1)">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/05/cpp-why-flush-cin/" data-tooltip="Tại sao cần xóa bộ đệm bàn phím trước khi nhập chuỗi trong C/C&#43;&#43;?">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/06/binary-tree-from-traversal/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/06/binary-tree-from-traversal/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/06/binary-tree-from-traversal/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+    <section id="comments">
+        
+        <h2 class="title"><a href="#comments">Bình luận</a></h2>
+        <form id="comment-form" class="post-new-comment" method="post" action="https://chidokun-blog-comment.herokuapp.com/v3/entry/github/chidokun/chidokun.github.io/master/comments">
+            
+            
+            <div class="comment-box">
+                <textarea name="fields[comment]" class="comment-input-control comment-input-animated" placeholder="Comment (markdown is accepted) *" required rows="3"></textarea>
+                <div class="comment-box-tail">
+                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2015/06/binary-tree-from-traversal/#comment-submitted">
+                    <input type="hidden" name="options[slug]" value="binary-tree-from-traversal">
+                    <input type="text" name="fields[name]" class="post-comment-field" placeholder="Name *" required/>
+                    <input type="email" name="fields[email]" class="post-comment-field" placeholder="Email address (will not be public) *" required/>
+                    <input type="hidden" id="comment-parent" name="fields[reply_to]" value="">
+                    <input type="submit" class="btn btn--primary comment-buttons btn--comment" value="BÌNH LUẬN">
+                </div>
+            </div>
+            
+            
+        </form>
+        <section class="staticman-comments post-comments">
+            
+            
+            
+    
+            
+            
+    
+            
+    
+        </section>
+
+    <div id="comment-submitted" class="dialog">
+        <h3>Cảm ơn bạn</h3>
+        <p>Your comment has been submitted and will be published once it has been approved. &#128522;</p>
+
+        <p><a href="#" class="btn btn--primary comment-buttons ok">OK</a></p>
+    </div>
+
+    
+</section>
+
+              
+                <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.1&appId=445006706177461&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2015/06/binary-tree-from-traversal/" data-width="100%"></div>
+
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 <a href="https://github.com/chidokun">Nguyễn Tuấn</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2019/12/query-with-javascript-ep1/" data-tooltip="Truy vấn với JavaScript (Phần 1)">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/05/cpp-why-flush-cin/" data-tooltip="Tại sao cần xóa bộ đệm bàn phím trước khi nhập chuỗi trong C/C&#43;&#43;?">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/06/binary-tree-from-traversal/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/06/binary-tree-from-traversal/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/06/binary-tree-from-traversal/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2015%2F06%2Fbinary-tree-from-traversal%2F">
+          <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2015%2F06%2Fbinary-tree-from-traversal%2F">
+          <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2015%2F06%2Fbinary-tree-from-traversal%2F">
+          <i class="fa fa-google-plus"></i><span>Chia sẻ với Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện" />
+    
+    <h4 id="about-card-name">Nguyễn Tuấn</h4>
+    
+      <div id="about-card-bio">A guy with passionate at the code</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Software Engineer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Saigon, Vietnam
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://chidokun.github.io/images/background.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://chidokun.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+  
+    <script crossorigin="anonymous" integrity="sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq" src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js"></script>
+  
+
+  
+    <script crossorigin="anonymous" integrity="sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc" src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js"></script>
+  
+
+  
+    <script src="https://chidokun.github.io/js/main.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+

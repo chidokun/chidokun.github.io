@@ -47,5 +47,14 @@
       <description>&lt;p&gt;Cấu trúc &lt;strong&gt;Graph&lt;/strong&gt; (đồ thị) có rất nhiều ứng dụng trong thực tiễn. Bài viết này sẽ note lại tổng quan những điểm chính về việc implement cấu trúc dữ liệu này.&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>Cách vẽ lại cây nhị phân tìm kiếm từ kết quả duyệt</title>
+      <link>https://chidokun.github.io/2015/06/binary-tree-from-traversal/</link>
+      <pubDate>Sat, 13 Jun 2015 14:01:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/06/binary-tree-from-traversal/</guid>
+      <description>&lt;p&gt;Thường có 3 cách duyệt cơ bản là tiền thứ tự (NLR), trung thứ tự (LNR) và hậu thứ tự (LRN). Với kết quả duyệt kiểu NLR và LRN ta có thể vẽ lại cây ban đầu dễ dàng. Còn với LNR, ta không tìm được Node gốc nên không thể vẽ lại cây.&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>

@@ -270,6 +270,33 @@
     </item>
     
     <item>
+      <title>Cách vẽ lại cây nhị phân tìm kiếm từ kết quả duyệt</title>
+      <link>https://chidokun.github.io/2015/06/binary-tree-from-traversal/</link>
+      <pubDate>Sat, 13 Jun 2015 14:01:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/06/binary-tree-from-traversal/</guid>
+      <description>&lt;p&gt;Thường có 3 cách duyệt cơ bản là tiền thứ tự (NLR), trung thứ tự (LNR) và hậu thứ tự (LRN). Với kết quả duyệt kiểu NLR và LRN ta có thể vẽ lại cây ban đầu dễ dàng. Còn với LNR, ta không tìm được Node gốc nên không thể vẽ lại cây.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Tại sao cần xóa bộ đệm bàn phím trước khi nhập chuỗi trong C/C&#43;&#43;?</title>
+      <link>https://chidokun.github.io/2015/05/cpp-why-flush-cin/</link>
+      <pubDate>Sat, 09 May 2015 22:59:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/05/cpp-why-flush-cin/</guid>
+      <description>&lt;p&gt;Thông thường, khi nhập một chuỗi trong màn hình console, ta phải có thao tác xóa bộ nhớ đệm bàn phím. Nếu không có thể thấy rằng kết quả nhập chuỗi bị sai hoặc trôi đi mất.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Vấn đề cấp phát động trong hàm</title>
+      <link>https://chidokun.github.io/2015/05/cpp-dynamic-allocation-inside-function/</link>
+      <pubDate>Thu, 07 May 2015 23:16:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/05/cpp-dynamic-allocation-inside-function/</guid>
+      <description>&lt;p&gt;Ý tưởng của việc này là bạn có 1 con trỏ, bạn muốn cấp phát tài nguyên cho nó thông qua một hàm.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Quy tắc chuyển sang thể て (-te) của động từ tiếng Nhật</title>
       <link>https://chidokun.github.io/2015/04/japanese-te-form/</link>
       <pubDate>Fri, 17 Apr 2015 02:23:00 +0700</pubDate>
