@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>Các phạm vi truy xuất trong một lớp đối tượng C&#43;&#43;</title>
+      <link>https://chidokun.github.io/2015/07/cpp-access-modifer/</link>
+      <pubDate>Mon, 13 Jul 2015 23:43:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/07/cpp-access-modifer/</guid>
+      <description>&lt;p&gt;Khi xây dựng một class, chắc chắn bạn sẽ phải xác định phạm vi truy cập cho các thuộc tính và phương thức trong class đó. Mục đích của việc này nhằm quy định các thành phần nào có thể được truy cập, thay đổi từ bên ngoài, thành phần nào là riêng tư.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Tại sao cần xóa bộ đệm bàn phím trước khi nhập chuỗi trong C/C&#43;&#43;?</title>
       <link>https://chidokun.github.io/2015/05/cpp-why-flush-cin/</link>
       <pubDate>Sat, 09 May 2015 22:59:00 +0700</pubDate>

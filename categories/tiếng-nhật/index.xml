@@ -6,10 +6,19 @@
     <description>Recent content in Tiếng Nhật on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Fri, 17 Apr 2015 02:23:00 +0700</lastBuildDate>
+    <lastBuildDate>Thu, 09 Jul 2015 23:22:00 +0700</lastBuildDate>
     
 	<atom:link href="https://chidokun.github.io/categories/ti%E1%BA%BFng-nh%E1%BA%ADt/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Từ vựng về lập trình tiếng Nhật</title>
+      <link>https://chidokun.github.io/2015/07/japanese-programming-vocab/</link>
+      <pubDate>Thu, 09 Jul 2015 23:22:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/07/japanese-programming-vocab/</guid>
+      <description>&lt;p&gt;Bài viết nhằm giúp các bạn yêu thích tiếng Nhật có thể tiếp cận được các tài liệu CNTT tiếng Nhật dễ dàng hơn. Dưới đây là danh sách các thuật ngữ, từ vựng về lập trình trong tiếng Nhật. Để đọc được, các bạn cần phải nắm thật vững 2 bảng chữ cái tiếng Nhật là Hiragana và Katakana. Các từ bằng Kanji sẽ được phiên âm ra Hiragana.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Quy tắc chuyển sang thể て (-te) của động từ tiếng Nhật</title>

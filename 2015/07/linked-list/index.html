@@ -7,26 +7,26 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Tuấn">
-<meta name="keywords" content="binary tree, cây nhị phân, kết quả duyệt, development, programming, chidokun, lập trình">
-<meta name="description" content="Thường có 3 cách duyệt cơ bản là tiền thứ tự (NLR), trung thứ tự (LNR) và hậu thứ tự (LRN). Với kết quả duyệt kiểu NLR và LRN ta có thể vẽ lại cây ban đầu dễ dàng. Còn với LNR, ta không tìm được Node gốc nên không thể vẽ lại cây.">
+<meta name="keywords" content="danh sách liên kết đơn, c/c&#43;&#43;, development, programming, chidokun, lập trình">
+<meta name="description" content="Danh sách liên kết là một cấu trúc dữ liệu mà mỗi phần tử cần phải lưu thông tin của nó và địa chỉ của phần tử kế tiếp hoặc trước nó. Danh sách liên kết linh động hơn mảng rất nhiều do có thể thêm, xóa phần tử. Có nhiều dạng danh sách liên kết khác nhau và ở phần này mình sẽ nói về danh sách liên kết đơn cùng các thao tác với nó (minh họa bằng C&#43;&#43;).">
 
 
-<meta property="og:description" content="Thường có 3 cách duyệt cơ bản là tiền thứ tự (NLR), trung thứ tự (LNR) và hậu thứ tự (LRN). Với kết quả duyệt kiểu NLR và LRN ta có thể vẽ lại cây ban đầu dễ dàng. Còn với LNR, ta không tìm được Node gốc nên không thể vẽ lại cây.">
+<meta property="og:description" content="Danh sách liên kết là một cấu trúc dữ liệu mà mỗi phần tử cần phải lưu thông tin của nó và địa chỉ của phần tử kế tiếp hoặc trước nó. Danh sách liên kết linh động hơn mảng rất nhiều do có thể thêm, xóa phần tử. Có nhiều dạng danh sách liên kết khác nhau và ở phần này mình sẽ nói về danh sách liên kết đơn cùng các thao tác với nó (minh họa bằng C&#43;&#43;).">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Cách vẽ lại cây nhị phân tìm kiếm từ kết quả duyệt">
-<meta name="twitter:title" content="Cách vẽ lại cây nhị phân tìm kiếm từ kết quả duyệt">
-<meta property="og:url" content="https://chidokun.github.io/2015/06/binary-tree-from-traversal/">
-<meta property="twitter:url" content="https://chidokun.github.io/2015/06/binary-tree-from-traversal/">
+<meta property="og:title" content="Danh sách liên kết đơn và các thao tác cơ bản">
+<meta name="twitter:title" content="Danh sách liên kết đơn và các thao tác cơ bản">
+<meta property="og:url" content="https://chidokun.github.io/2015/07/linked-list/">
+<meta property="twitter:url" content="https://chidokun.github.io/2015/07/linked-list/">
 <meta property="og:site_name" content="Nguyễn Tuấn&#39;s Blog">
-<meta property="og:description" content="Thường có 3 cách duyệt cơ bản là tiền thứ tự (NLR), trung thứ tự (LNR) và hậu thứ tự (LRN). Với kết quả duyệt kiểu NLR và LRN ta có thể vẽ lại cây ban đầu dễ dàng. Còn với LNR, ta không tìm được Node gốc nên không thể vẽ lại cây.">
-<meta name="twitter:description" content="Thường có 3 cách duyệt cơ bản là tiền thứ tự (NLR), trung thứ tự (LNR) và hậu thứ tự (LRN). Với kết quả duyệt kiểu NLR và LRN ta có thể vẽ lại cây ban đầu dễ dàng. Còn với LNR, ta không tìm được Node gốc nên không thể vẽ lại cây.">
+<meta property="og:description" content="Danh sách liên kết là một cấu trúc dữ liệu mà mỗi phần tử cần phải lưu thông tin của nó và địa chỉ của phần tử kế tiếp hoặc trước nó. Danh sách liên kết linh động hơn mảng rất nhiều do có thể thêm, xóa phần tử. Có nhiều dạng danh sách liên kết khác nhau và ở phần này mình sẽ nói về danh sách liên kết đơn cùng các thao tác với nó (minh họa bằng C&#43;&#43;).">
+<meta name="twitter:description" content="Danh sách liên kết là một cấu trúc dữ liệu mà mỗi phần tử cần phải lưu thông tin của nó và địa chỉ của phần tử kế tiếp hoặc trước nó. Danh sách liên kết linh động hơn mảng rất nhiều do có thể thêm, xóa phần tử. Có nhiều dạng danh sách liên kết khác nhau và ở phần này mình sẽ nói về danh sách liên kết đơn cùng các thao tác với nó (minh họa bằng C&#43;&#43;).">
 <meta property="og:locale" content="vi">
 
   
-    <meta property="article:published_time" content="2015-06-13T14:01:00">
+    <meta property="article:published_time" content="2015-07-08T22:19:00">
   
   
-    <meta property="article:modified_time" content="2015-06-13T14:01:00">
+    <meta property="article:modified_time" content="2015-07-08T22:19:00">
   
   
   
@@ -38,7 +38,7 @@
   
   
     
-      <meta property="article:tag" content="tree">
+      <meta property="article:tag" content="c/c&#43;&#43;">
     
   
 
@@ -64,14 +64,14 @@
   <meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
 
 
-    <title>Cách vẽ lại cây nhị phân tìm kiếm từ kết quả duyệt</title>
+    <title>Danh sách liên kết đơn và các thao tác cơ bản</title>
     <meta name="google-site-verification" content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI" />
     <link rel="icon" href="https://chidokun.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://chidokun.github.io/2015/06/binary-tree-from-traversal/">
+    <link rel="canonical" href="https://chidokun.github.io/2015/07/linked-list/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -271,19 +271,19 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Cách vẽ lại cây nhị phân tìm kiếm từ kết quả duyệt
+      Danh sách liên kết đơn và các thao tác cơ bản
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2015-06-13T14:01:00&#43;07:00">
+      <time itemprop="datePublished" datetime="2015-07-08T22:19:00&#43;07:00">
         
   
   
   
   
-    13 tháng 6 2015
+    8 tháng 7 2015
   
 
       </time>
@@ -303,7 +303,7 @@ if (!doNotTrack) {
 
   <div>
   <div class="fb-like" 
-    data-href="https://chidokun.github.io/2015/06/binary-tree-from-traversal/" 
+    data-href="https://chidokun.github.io/2015/07/linked-list/" 
     data-width="" 
     data-layout="button_count" 
     data-action="like" 
@@ -314,16 +314,22 @@ if (!doNotTrack) {
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>Thường có 3 cách duyệt cơ bản là tiền thứ tự (NLR), trung thứ tự (LNR) và hậu thứ tự (LRN). Với kết quả duyệt kiểu NLR và LRN ta có thể vẽ lại cây ban đầu dễ dàng. Còn với LNR, ta không tìm được Node gốc nên không thể vẽ lại cây.</p>
-<h1 id="nguyên-tắc-chung-để-vẽ-lại-cây">Nguyên tắc chung để vẽ lại cây</h1>
-<ol>
-<li>Tìm Node gốc.</li>
-<li>Tìm đoạn lớn hơn Node gốc sẽ là nhánh phải, đoạn nhỏ hơn Node gốc sẽ là nhánh trái. <em>(Vì nguyên tắc của cây nhị phân tìm kiếm, Node gốc sẽ có khóa lớn hơn tất cả Node con nhánh bên trái và nhỏ hơn tất cả các Node ở nhánh phải)</em></li>
-<li>Với mỗi đoạn vừa tìm được, tìm Node gốc của từng đoạn và tiếp tục tìm đoạn lớn hơn và nhỏ hơn Node gốc.</li>
-</ol>
-<p>Đó là nguyên tắc chung để vẽ lại cây. <strong><span class="highlight-text orange">Với cách duyệt NLR, ta luôn có Node gốc là Node đầu tiên của dãy kết quả, còn cách duyệt LRN là Node cuối cùng.</span></strong></p>
-<p><em><u>Ví dụ</u></em>: Cho kết quả duyệt <span class="highlight-text primary">L</span><span class="highlight-text green">R</span><span class="highlight-text red">N</span>: <span class="highlight-text primary">5 3 7 9 8 11 6 </span><span class="highlight-text green">20 19 37 25 21 15 </span><span class="highlight-text red">12</span></p>
-<p>Nhìn vào kết quả duyệt ta dễ dàng thấy <span class="highlight-text red">12</span> sẽ là Node gốc. Đoạn 5 đến 6 sẽ là nhánh trái và 20 đến 15 sẽ là nhánh phải.</p>
+              <p>Danh sách liên kết là một cấu trúc dữ liệu mà mỗi phần tử cần phải lưu thông tin của nó và địa chỉ của phần tử kế tiếp hoặc trước nó. Danh sách liên kết linh động hơn mảng rất nhiều do có thể thêm, xóa phần tử. Có nhiều dạng danh sách liên kết khác nhau và ở phần này mình sẽ nói về danh sách liên kết đơn cùng các thao tác với nó (minh họa bằng C++).</p>
+<h1 id="tổ-chức-dữ-liệu">Tổ chức dữ liệu</h1>
+<p>Mỗi phần tử trong DSLK đơn (gọi là <em>node</em> hay <em>nút</em>) sẽ gồm một biến lưu dữ liệu của bạn và một biến con trỏ lưu địa chỉ của phần tử kế tiếp. Các phần tử được liên kết với nhau dựa vào con trỏ này.</p>
+<pre><code class="language-cpp">struct Node
+{
+   &lt;kiểu dữ liệu&gt; info;
+   Node *next;
+};
+</code></pre>
+<p>Như vậy, khi biết được phần tử đầu danh sách thì dựa vào con trỏ <code>next</code>, ta có thể truy cập được tất cả các phần tử trong danh sách. Vậy một danh sách chỉ gồm 1 con trỏ trỏ đến phần tử đầu danh sách. Tuy nhiên, để một vài thao tác trở nên dễ dàng, ta có thể thêm một con trỏ đến cuối danh sách.</p>
+<pre><code class="language-cpp">struct List
+{
+   Node *head, *tail;
+};
+</code></pre>
+<p>Nếu chưa hiểu cấu trúc của nó, bạn có thể xem hình minh họa sau.</p>
 
 
  
@@ -340,71 +346,195 @@ if (!doNotTrack) {
 
 <div class="figure center" >
   
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/binary-tree-from-traversal/1.png" data-fancybox-group="">
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/linked-list/1.png" data-fancybox-group="">
   
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/binary-tree-from-traversal/1.png" style="width: 100%;">
-  
-    </a>
-  
-  
-</div>
-
-<p>Tiếp tục xét đoạn trái, ta thấy số 6 sẽ là Node gốc tiếp theo, tìm đoạn nhỏ hơn số 6 là [5,3] sẽ là nhánh trái, đoạn [7,11] sẽ là nhánh phải.</p>
-<p>Cứ tiếp tục xét như thế đến hết ta sẽ vẽ được nhánh trái của cây.</p>
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure center" >
-  
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/binary-tree-from-traversal/2.png" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/binary-tree-from-traversal/2.png" style="width: 60%;">
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/linked-list/1.png" style="width: 100%;">
   
     </a>
   
   
 </div>
 
-<p>Giờ ta xét nhánh phải với nguyên tắc tương tự. 15 sẽ là Node gốc tiếp theo, vì không có số nào nhỏ hơn 15 ở đoạn phải nên những số còn lại hoàn toàn nằm ở nhánh phải của 15. Xét tiếp đoạn đó tương tự ta sẽ vẽ được nhánh phải.</p>
+<h1 id="các-thao-tác-cơ-bản">Các thao tác cơ bản</h1>
+<h2 id="tạo-danh-sách-rỗng">Tạo danh sách rỗng</h2>
+<p>Tại sao đây lại là một thao tác quan trọng. Một danh sách được tạo ra chứa 2 con trỏ rỗng chưa trỏ đến đâu cả. Vì vậy sẽ rất nguy hiểm nếu thao tác với 2 con trỏ này. Cần thiết phải gán cho nó giá trị <code>NULL</code> trước khi thao tác trên nó. Nếu bạn cài đặt danh sách theo phương pháp hướng đối tượng thì có thể khai báo phần này trong constructor nên không cần gọi hàm này bên ngoài.</p>
+<pre><code class="language-cpp">void CreateList(List &amp;list)
+{
+   list.head = list.tail = NULL;
+}
+</code></pre>
+<h2 id="tạo-nút-với-dữ-liệu-của-bạn">Tạo nút với dữ liệu của bạn</h2>
+<p>Công việc này giống như biến dữ liệu của bạn thành một phần tử để đưa vào danh sách.</p>
+<pre><code class="language-cpp">Node* CreateNode(&lt;kiểu dữ liệu&gt; data)
+{
+   Node* node = new Node;
+   if (node)
+   {
+      node-&gt;info = data;
+      node-&gt;next = NULL;
+   }
+   return node;
+}
+</code></pre>
+<p>Có thể vì một số nguyên nhân khách quan (tình trạng hệ thống, bộ nhớ,&hellip;) mà biến <code>node</code> không cấp phát động được, vì vậy cần thiết kiểm tra xem node được cấp phát có khác <code>NULL</code> hay không.</p>
+<h2 id="thêm-nút-vào-danh-sách">Thêm nút vào danh sách</h2>
+<p>Có 3 cách thêm vào: đầu danh sách, cuối danh sách và sau một phần tử trong danh sách. Với mỗi trường hợp ta xét trường hợp danh sách rỗng và danh sách có phần tử.</p>
+<p><em>Nguyên tắc chung để thêm vào: điều chỉnh liên kết của node mới -&gt; điều chỉnh liên kết của node có sẵn tại vị trí thêm vào  -&gt; sửa lại con trỏ của danh sách (nếu cần).</em></p>
+<pre><code class="language-cpp">void AddHead(List &amp;list, Node* node)
+{
+   if (!list.head) //xét danh sách rỗng
+      list.head = list.tail = node;
+   else
+   {
+      node-&gt;next = list.head; //sửa lk node cần thêm
+      list.head = node; //chỉnh lại con trỏ của danh sách
+   }
+}
 
+void AddTail(List &amp;list, Node* node)
+{
+   if (!list.head)
+      list.head = list.tail = node;
+   else
+   {
+      list.tail-&gt;next = node;
+      list.tail = node;
+   }
+}
 
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
+void AddAfter(List &amp;list, Node *node, Node *before)
+{
+   if (!before)
+   {
+      node-&gt;next = before-&gt;next; //sửa liên kết của node mới
+      before-&gt;next = node; //sửa lại lk của node có sẵn
+      if (list.tail == before)
+         list.tail = node; //sửa lại con trỏ chỉ danh sách
+   }
+   else
+      AddHead(list, node);
+}
+</code></pre>
+<h2 id="duyệt-danh-sách">Duyệt danh sách</h2>
+<p>Thao tác này rất thường gặp trong việc đếm hay in ra màn hình, v.v&hellip; Danh sách liên kết được duyệt bằng cách ghé thăm tuần tự từng node trong danh sách. Bạn có thể dùng vòng while hay for đều được.</p>
+<pre><code class="language-cpp">Node *i = list.head;
+while (i)
+{
+   //thao tác
+   i = i-&gt;next;
+}
 
-<div class="figure center" >
-  
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/binary-tree-from-traversal/3.png" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/binary-tree-from-traversal/3.png" style="width: 100%;">
-  
-    </a>
-  
-  
-</div>
+for(Node *i = list.head; i ; i = i-&gt;next)
+{
+   //thao tác
+}
+</code></pre>
+<h2 id="tìm-phần-tử">Tìm phần tử</h2>
+<p>Để tìm một phần tử nào đó ta cũng dùng phương pháp duyệt. Ví dụ dưới đây là tìm một phần tử có khóa key theo phương pháp tìm kiếm tuần tự.</p>
+<pre><code class="language-cpp">Node* Search(List list, int key)
+{
+   Node *i = list.head;
+   while (i &amp;&amp; i-&gt;info != key)
+      i = i-&gt;next;
+   return i;
+}
+</code></pre>
+<h2 id="hủy-phần-tử-và-hủy-cả-danh-sách">Hủy phần tử và hủy cả danh sách</h2>
+<p>Ở đây ta xét hủy phần tử đầu, hủy phần tử cuối, hủy phần tử sau một <code>node</code>, hủy phần tử có theo khóa và hủy cả danh sách. Khi hủy phần tử ta phải xét theo 3 trường hợp: danh sách rỗng, danh sách có 1 phần tử, danh sách nhiều phần tử.</p>
+<p><em>Nguyên tắc hủy cơ bản là: cô lập phần tử cần hủy, sau đó chỉnh sửa lại liên kết cho đúng và cuối cùng là xóa phần tử khỏi bộ nhớ.</em></p>
+<pre><code class="language-cpp">void RemoveHead(List &amp;list)
+{
+   if (!list.head)
+      cout &lt;&lt; &quot;Empty list!&quot; &lt;&lt; endl;
+   else if (list.head == list.tail)
+   {
+      delete list.head;
+      list.head = list.tail = NULL;
+   }
+   else
+   {
+      Node *temp = list.head;
+      list.head = list.head-&gt;pNext;
+      delete temp;
+   }
+}
+</code></pre>
+<p>Khi xóa 1 phần tử ta cần phải biết phần tử trước nó để có thể điều chỉnh lại liên kết cho phù hợp. Mà mỗi phần tử lại chỉ biết phần tử đứng sau mà không biết được phần tử đứng trước vì vậy cần phải duyệt tìm phần tử đứng trước <code>tail</code> mới có thể hủy phần tử cuối được.</p>
+<pre><code class="language-cpp">void RemoveTail(List &amp;list)
+{
+   if (!list.head)
+      cout &lt;&lt; &quot;Empty list!&quot; &lt;&lt; endl;
+   else if (list.head == list.tail)
+   {
+      delete list.head;
+      list.head = list.tail = NULL;
+   }
+   else
+   {
+      Node *temp = list.head;
+      while (temp-&gt;next != list.tail)
+         temp = temp-&gt;next;
+      delete list.tail;
+      list.tail = temp;
+   }
+}
+</code></pre>
+<p>Tương tự với hủy phần tử sau 1 <code>node</code>, hủy phần tử theo dữ liệu và hủy cả danh sách.</p>
+<pre><code class="language-cpp">void RemoveAfter(List &amp;list, Node *node)
+{
+   if (!list.head)
+      cout &lt;&lt; &quot;Empty list!&quot; &lt;&lt; endl;
+   else
+   {
+      Node *temp = node-&gt;next;
+      if (temp)
+      {
+         node-&gt;next = temp-&gt;next;
+         delete temp;
+      }
+   }
+}
 
-<p>Các bạn hãy thử sức với các bài tập sau nhé!</p>
-<p><em>Vẽ lại cây nhị phân tìm kiếm từ kết quả duyệt</em>:</p>
-<p><strong>NLR</strong>: <span class="highlight-text primary">7 6 4 15 13 9 14 30 31</span></p>
+void RemoveKey(List &amp;list, int key)
+{
+   if (!list.head)
+      cout &lt;&lt; &quot;Empty list!&quot; &lt;&lt; endl;
+   else
+   {
+      Node *result = list.head, *before = NULL;
+      while (result &amp;&amp; result-&gt;info != key)
+      {
+         before = result;
+         result = result-&gt;next;
+      }
+      if (result)
+      {
+         if (result == list.head)
+            RemoveHead(list);
+         else
+            RemoveAfter(list, before);
+      }
+   }
+}
+
+void RemoveList(List &amp;list)
+{
+   Node *i = list.head;
+   while (list.head)
+   {
+      i = i-&gt;next;
+      delete list.head;
+      list.head = i;
+   }
+   list.head = list.tail = NULL;
+}
+</code></pre>
+<h2 id="sắp-xếp-danh-sách">Sắp xếp danh sách</h2>
+<p>Có 2 kiểu sắp xếp:</p>
+<ul>
+<li><em>Đổi dữ liệu các node</em>: Kiểu sắp xếp này tương tự như sắp xếp mảng. Ưu điểm là cài đặt đơn giản nhưng hiệu quả không hơn gì sắp xếp trên mảng. Các thuật toán phù hợp là: Interchange Sort, Bubble Sort, Selection Sort và Insertion Sort.</li>
+<li><em>Đổi các liên kết giữa các node</em>: Kiểu sắp xếp này cài đặt rất phức tạp nhưng lại tận dụng được ưu điểm của DSLK, vì vậy nó hiệu quả hơn kiểu sắp xếp trên. Các thuật toán phù hợp: Quick Sort, Merge Sort, Radix Sort, &hellip;</li>
+</ul>
               
             </div>
           </div>
@@ -416,7 +546,7 @@ if (!doNotTrack) {
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/tree/">tree</a>
+  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/c/c&#43;&#43;/">c/c&#43;&#43;</a>
 
                   </div>
                 
@@ -429,7 +559,7 @@ if (!doNotTrack) {
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/07/linked-list/" data-tooltip="Danh sách liên kết đơn và các thao tác cơ bản">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/07/japanese-programming-vocab/" data-tooltip="Từ vựng về lập trình tiếng Nhật">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -437,7 +567,7 @@ if (!doNotTrack) {
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/05/cpp-why-flush-cin/" data-tooltip="Tại sao cần xóa bộ đệm bàn phím trước khi nhập chuỗi trong C/C&#43;&#43;?">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/06/binary-tree-from-traversal/" data-tooltip="Cách vẽ lại cây nhị phân tìm kiếm từ kết quả duyệt">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -455,19 +585,19 @@ if (!doNotTrack) {
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/06/binary-tree-from-traversal/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/07/linked-list/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/06/binary-tree-from-traversal/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/07/linked-list/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/06/binary-tree-from-traversal/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/07/linked-list/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -496,8 +626,8 @@ if (!doNotTrack) {
             <div class="comment-box">
                 <textarea name="fields[comment]" class="comment-input-control comment-input-animated" placeholder="Comment (markdown is accepted) *" required rows="3"></textarea>
                 <div class="comment-box-tail">
-                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2015/06/binary-tree-from-traversal/#comment-submitted">
-                    <input type="hidden" name="options[slug]" value="binary-tree-from-traversal">
+                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2015/07/linked-list/#comment-submitted">
+                    <input type="hidden" name="options[slug]" value="linked-list">
                     <input type="text" name="fields[name]" class="post-comment-field" placeholder="Name *" required/>
                     <input type="email" name="fields[email]" class="post-comment-field" placeholder="Email address (will not be public) *" required/>
                     <input type="hidden" id="comment-parent" name="fields[reply_to]" value="">
@@ -540,7 +670,7 @@ if (!doNotTrack) {
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2015/06/binary-tree-from-traversal/" data-width="100%"></div>
+<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2015/07/linked-list/" data-width="100%"></div>
 
               
             
@@ -561,7 +691,7 @@ if (!doNotTrack) {
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/07/linked-list/" data-tooltip="Danh sách liên kết đơn và các thao tác cơ bản">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/07/japanese-programming-vocab/" data-tooltip="Từ vựng về lập trình tiếng Nhật">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -569,7 +699,7 @@ if (!doNotTrack) {
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/05/cpp-why-flush-cin/" data-tooltip="Tại sao cần xóa bộ đệm bàn phím trước khi nhập chuỗi trong C/C&#43;&#43;?">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/06/binary-tree-from-traversal/" data-tooltip="Cách vẽ lại cây nhị phân tìm kiếm từ kết quả duyệt">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -587,19 +717,19 @@ if (!doNotTrack) {
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/06/binary-tree-from-traversal/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/07/linked-list/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/06/binary-tree-from-traversal/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/07/linked-list/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/06/binary-tree-from-traversal/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/07/linked-list/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -623,19 +753,19 @@ if (!doNotTrack) {
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2015%2F06%2Fbinary-tree-from-traversal%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2015%2F07%2Flinked-list%2F">
           <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2015%2F06%2Fbinary-tree-from-traversal%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2015%2F07%2Flinked-list%2F">
           <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2015%2F06%2Fbinary-tree-from-traversal%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2015%2F07%2Flinked-list%2F">
           <i class="fa fa-google-plus"></i><span>Chia sẻ với Google&#43;</span>
         </a>
       </li>

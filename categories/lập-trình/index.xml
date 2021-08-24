@@ -225,6 +225,33 @@
     </item>
     
     <item>
+      <title>Danh sách liên kết kép và các thao tác cơ bản</title>
+      <link>https://chidokun.github.io/2015/08/doubly-linked-list/</link>
+      <pubDate>Mon, 17 Aug 2015 22:25:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/08/doubly-linked-list/</guid>
+      <description>&lt;p&gt;Nếu bạn đã đọc bài viết về &lt;a href=&#34;https://chidokun.github.io/2015/07/linked-list/&#34;&gt;Danh sách liên kết đơn&lt;/a&gt; thì có thể thấy việc tổ chức dạng danh sách tiện lợi hơn rất nhiều so với dùng mảng. Tuy nhiên, danh sách liên kết đơn vẫn có nhược điểm là chỉ có thể duyệt từ đầu đến cuối. Vì vậy, một số thao tác sẽ rất khó cài đặt trên nó. Danh sách liên kết kép có thể khắc phục nhược điểm này. Hầu hết các thao tác điều giống với danh sách liên kết đơn nhưng mình cũng khuyên các bạn nên đọc bài viết &lt;a href=&#34;https://chidokun.github.io/2015/07/linked-list/&#34;&gt;Danh sách liên kết đơn và các thao tác cơ bản&lt;/a&gt; trước khi đọc bài viết này. Các thao tác được minh họa bằng C++.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Các phạm vi truy xuất trong một lớp đối tượng C&#43;&#43;</title>
+      <link>https://chidokun.github.io/2015/07/cpp-access-modifer/</link>
+      <pubDate>Mon, 13 Jul 2015 23:43:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/07/cpp-access-modifer/</guid>
+      <description>&lt;p&gt;Khi xây dựng một class, chắc chắn bạn sẽ phải xác định phạm vi truy cập cho các thuộc tính và phương thức trong class đó. Mục đích của việc này nhằm quy định các thành phần nào có thể được truy cập, thay đổi từ bên ngoài, thành phần nào là riêng tư.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Danh sách liên kết đơn và các thao tác cơ bản</title>
+      <link>https://chidokun.github.io/2015/07/linked-list/</link>
+      <pubDate>Wed, 08 Jul 2015 22:19:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/07/linked-list/</guid>
+      <description>&lt;p&gt;Danh sách liên kết là một cấu trúc dữ liệu mà mỗi phần tử cần phải lưu thông tin của nó và địa chỉ của phần tử kế tiếp hoặc trước nó. Danh sách liên kết linh động hơn mảng rất nhiều do có thể thêm, xóa phần tử. Có nhiều dạng danh sách liên kết khác nhau và ở phần này mình sẽ nói về danh sách liên kết đơn cùng các thao tác với nó (minh họa bằng C++).&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Cách vẽ lại cây nhị phân tìm kiếm từ kết quả duyệt</title>
       <link>https://chidokun.github.io/2015/06/binary-tree-from-traversal/</link>
       <pubDate>Sat, 13 Jun 2015 14:01:00 +0700</pubDate>

@@ -7,38 +7,38 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Tuấn">
-<meta name="keywords" content="binary tree, cây nhị phân, kết quả duyệt, development, programming, chidokun, lập trình">
-<meta name="description" content="Thường có 3 cách duyệt cơ bản là tiền thứ tự (NLR), trung thứ tự (LNR) và hậu thứ tự (LRN). Với kết quả duyệt kiểu NLR và LRN ta có thể vẽ lại cây ban đầu dễ dàng. Còn với LNR, ta không tìm được Node gốc nên không thể vẽ lại cây.">
+<meta name="keywords" content="lập trình, tiếng Nhật, từ vựng, tin học, development, programming, chidokun, lập trình">
+<meta name="description" content="Bài viết nhằm giúp các bạn yêu thích tiếng Nhật có thể tiếp cận được các tài liệu CNTT tiếng Nhật dễ dàng hơn. Dưới đây là danh sách các thuật ngữ, từ vựng về lập trình trong tiếng Nhật. Để đọc được, các bạn cần phải nắm thật vững 2 bảng chữ cái tiếng Nhật là Hiragana và Katakana. Các từ bằng Kanji sẽ được phiên âm ra Hiragana.">
 
 
-<meta property="og:description" content="Thường có 3 cách duyệt cơ bản là tiền thứ tự (NLR), trung thứ tự (LNR) và hậu thứ tự (LRN). Với kết quả duyệt kiểu NLR và LRN ta có thể vẽ lại cây ban đầu dễ dàng. Còn với LNR, ta không tìm được Node gốc nên không thể vẽ lại cây.">
+<meta property="og:description" content="Bài viết nhằm giúp các bạn yêu thích tiếng Nhật có thể tiếp cận được các tài liệu CNTT tiếng Nhật dễ dàng hơn. Dưới đây là danh sách các thuật ngữ, từ vựng về lập trình trong tiếng Nhật. Để đọc được, các bạn cần phải nắm thật vững 2 bảng chữ cái tiếng Nhật là Hiragana và Katakana. Các từ bằng Kanji sẽ được phiên âm ra Hiragana.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Cách vẽ lại cây nhị phân tìm kiếm từ kết quả duyệt">
-<meta name="twitter:title" content="Cách vẽ lại cây nhị phân tìm kiếm từ kết quả duyệt">
-<meta property="og:url" content="https://chidokun.github.io/2015/06/binary-tree-from-traversal/">
-<meta property="twitter:url" content="https://chidokun.github.io/2015/06/binary-tree-from-traversal/">
+<meta property="og:title" content="Từ vựng về lập trình tiếng Nhật">
+<meta name="twitter:title" content="Từ vựng về lập trình tiếng Nhật">
+<meta property="og:url" content="https://chidokun.github.io/2015/07/japanese-programming-vocab/">
+<meta property="twitter:url" content="https://chidokun.github.io/2015/07/japanese-programming-vocab/">
 <meta property="og:site_name" content="Nguyễn Tuấn&#39;s Blog">
-<meta property="og:description" content="Thường có 3 cách duyệt cơ bản là tiền thứ tự (NLR), trung thứ tự (LNR) và hậu thứ tự (LRN). Với kết quả duyệt kiểu NLR và LRN ta có thể vẽ lại cây ban đầu dễ dàng. Còn với LNR, ta không tìm được Node gốc nên không thể vẽ lại cây.">
-<meta name="twitter:description" content="Thường có 3 cách duyệt cơ bản là tiền thứ tự (NLR), trung thứ tự (LNR) và hậu thứ tự (LRN). Với kết quả duyệt kiểu NLR và LRN ta có thể vẽ lại cây ban đầu dễ dàng. Còn với LNR, ta không tìm được Node gốc nên không thể vẽ lại cây.">
+<meta property="og:description" content="Bài viết nhằm giúp các bạn yêu thích tiếng Nhật có thể tiếp cận được các tài liệu CNTT tiếng Nhật dễ dàng hơn. Dưới đây là danh sách các thuật ngữ, từ vựng về lập trình trong tiếng Nhật. Để đọc được, các bạn cần phải nắm thật vững 2 bảng chữ cái tiếng Nhật là Hiragana và Katakana. Các từ bằng Kanji sẽ được phiên âm ra Hiragana.">
+<meta name="twitter:description" content="Bài viết nhằm giúp các bạn yêu thích tiếng Nhật có thể tiếp cận được các tài liệu CNTT tiếng Nhật dễ dàng hơn. Dưới đây là danh sách các thuật ngữ, từ vựng về lập trình trong tiếng Nhật. Để đọc được, các bạn cần phải nắm thật vững 2 bảng chữ cái tiếng Nhật là Hiragana và Katakana. Các từ bằng Kanji sẽ được phiên âm ra Hiragana.">
 <meta property="og:locale" content="vi">
 
   
-    <meta property="article:published_time" content="2015-06-13T14:01:00">
+    <meta property="article:published_time" content="2015-07-09T23:22:00">
   
   
-    <meta property="article:modified_time" content="2015-06-13T14:01:00">
+    <meta property="article:modified_time" content="2015-07-09T23:22:00">
   
-  
-  
-    
-      <meta property="article:section" content="Lập trình">
-    
-      <meta property="article:section" content="Cấu trúc dữ liệu">
-    
   
   
     
-      <meta property="article:tag" content="tree">
+      <meta property="article:section" content="Cuộc sống">
+    
+      <meta property="article:section" content="Tiếng Nhật">
+    
+  
+  
+    
+      <meta property="article:tag" content="japanese">
     
   
 
@@ -53,8 +53,8 @@
 
 
 
-  <meta property="og:image" content="https://chidokun.github.io/thumbnails/heap.png">
-  <meta property="twitter:image" content="https://chidokun.github.io/thumbnails/heap.png">
+  <meta property="og:image" content="https://chidokun.github.io/images/post/other/japanese-hatsuon/1.jpg">
+  <meta property="twitter:image" content="https://chidokun.github.io/images/post/other/japanese-hatsuon/1.jpg">
 
 
 
@@ -64,14 +64,14 @@
   <meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
 
 
-    <title>Cách vẽ lại cây nhị phân tìm kiếm từ kết quả duyệt</title>
+    <title>Từ vựng về lập trình tiếng Nhật</title>
     <meta name="google-site-verification" content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI" />
     <link rel="icon" href="https://chidokun.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://chidokun.github.io/2015/06/binary-tree-from-traversal/">
+    <link rel="canonical" href="https://chidokun.github.io/2015/07/japanese-programming-vocab/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -271,19 +271,19 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Cách vẽ lại cây nhị phân tìm kiếm từ kết quả duyệt
+      Từ vựng về lập trình tiếng Nhật
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2015-06-13T14:01:00&#43;07:00">
+      <time itemprop="datePublished" datetime="2015-07-09T23:22:00&#43;07:00">
         
   
   
   
   
-    13 tháng 6 2015
+    9 tháng 7 2015
   
 
       </time>
@@ -293,9 +293,9 @@ if (!doNotTrack) {
   
     <span>mục</span>
     
-      <a class="category-link" href="https://chidokun.github.io/categories/l%e1%ba%adp-tr%c3%acnh">Lập trình</a>, 
+      <a class="category-link" href="https://chidokun.github.io/categories/cu%e1%bb%99c-s%e1%bb%91ng">Cuộc sống</a>, 
     
-      <a class="category-link" href="https://chidokun.github.io/categories/c%e1%ba%a5u-tr%c3%bac-d%e1%bb%af-li%e1%bb%87u">Cấu trúc dữ liệu</a>
+      <a class="category-link" href="https://chidokun.github.io/categories/ti%e1%ba%bfng-nh%e1%ba%adt">Tiếng Nhật</a>
     
   
 
@@ -303,7 +303,7 @@ if (!doNotTrack) {
 
   <div>
   <div class="fb-like" 
-    data-href="https://chidokun.github.io/2015/06/binary-tree-from-traversal/" 
+    data-href="https://chidokun.github.io/2015/07/japanese-programming-vocab/" 
     data-width="" 
     data-layout="button_count" 
     data-action="like" 
@@ -314,97 +314,348 @@ if (!doNotTrack) {
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>Thường có 3 cách duyệt cơ bản là tiền thứ tự (NLR), trung thứ tự (LNR) và hậu thứ tự (LRN). Với kết quả duyệt kiểu NLR và LRN ta có thể vẽ lại cây ban đầu dễ dàng. Còn với LNR, ta không tìm được Node gốc nên không thể vẽ lại cây.</p>
-<h1 id="nguyên-tắc-chung-để-vẽ-lại-cây">Nguyên tắc chung để vẽ lại cây</h1>
-<ol>
-<li>Tìm Node gốc.</li>
-<li>Tìm đoạn lớn hơn Node gốc sẽ là nhánh phải, đoạn nhỏ hơn Node gốc sẽ là nhánh trái. <em>(Vì nguyên tắc của cây nhị phân tìm kiếm, Node gốc sẽ có khóa lớn hơn tất cả Node con nhánh bên trái và nhỏ hơn tất cả các Node ở nhánh phải)</em></li>
-<li>Với mỗi đoạn vừa tìm được, tìm Node gốc của từng đoạn và tiếp tục tìm đoạn lớn hơn và nhỏ hơn Node gốc.</li>
-</ol>
-<p>Đó là nguyên tắc chung để vẽ lại cây. <strong><span class="highlight-text orange">Với cách duyệt NLR, ta luôn có Node gốc là Node đầu tiên của dãy kết quả, còn cách duyệt LRN là Node cuối cùng.</span></strong></p>
-<p><em><u>Ví dụ</u></em>: Cho kết quả duyệt <span class="highlight-text primary">L</span><span class="highlight-text green">R</span><span class="highlight-text red">N</span>: <span class="highlight-text primary">5 3 7 9 8 11 6 </span><span class="highlight-text green">20 19 37 25 21 15 </span><span class="highlight-text red">12</span></p>
-<p>Nhìn vào kết quả duyệt ta dễ dàng thấy <span class="highlight-text red">12</span> sẽ là Node gốc. Đoạn 5 đến 6 sẽ là nhánh trái và 20 đến 15 sẽ là nhánh phải.</p>
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure center" >
-  
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/binary-tree-from-traversal/1.png" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/binary-tree-from-traversal/1.png" style="width: 100%;">
-  
-    </a>
-  
-  
-</div>
-
-<p>Tiếp tục xét đoạn trái, ta thấy số 6 sẽ là Node gốc tiếp theo, tìm đoạn nhỏ hơn số 6 là [5,3] sẽ là nhánh trái, đoạn [7,11] sẽ là nhánh phải.</p>
-<p>Cứ tiếp tục xét như thế đến hết ta sẽ vẽ được nhánh trái của cây.</p>
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure center" >
-  
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/binary-tree-from-traversal/2.png" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/binary-tree-from-traversal/2.png" style="width: 60%;">
-  
-    </a>
-  
-  
-</div>
-
-<p>Giờ ta xét nhánh phải với nguyên tắc tương tự. 15 sẽ là Node gốc tiếp theo, vì không có số nào nhỏ hơn 15 ở đoạn phải nên những số còn lại hoàn toàn nằm ở nhánh phải của 15. Xét tiếp đoạn đó tương tự ta sẽ vẽ được nhánh phải.</p>
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure center" >
-  
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/binary-tree-from-traversal/3.png" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/binary-tree-from-traversal/3.png" style="width: 100%;">
-  
-    </a>
-  
-  
-</div>
-
-<p>Các bạn hãy thử sức với các bài tập sau nhé!</p>
-<p><em>Vẽ lại cây nhị phân tìm kiếm từ kết quả duyệt</em>:</p>
-<p><strong>NLR</strong>: <span class="highlight-text primary">7 6 4 15 13 9 14 30 31</span></p>
+              <p>Bài viết nhằm giúp các bạn yêu thích tiếng Nhật có thể tiếp cận được các tài liệu CNTT tiếng Nhật dễ dàng hơn. Dưới đây là danh sách các thuật ngữ, từ vựng về lập trình trong tiếng Nhật. Để đọc được, các bạn cần phải nắm thật vững 2 bảng chữ cái tiếng Nhật là Hiragana và Katakana. Các từ bằng Kanji sẽ được phiên âm ra Hiragana.</p>
+<table>
+<thead>
+<tr>
+<th>Tiếng Nhật</th>
+<th>Hiragana</th>
+<th>Tiếng Anh/Nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>設定</td>
+<td>せってい</td>
+<td>Settings</td>
+</tr>
+<tr>
+<td>ユーザーインターフェース</td>
+<td></td>
+<td>User Interface</td>
+</tr>
+<tr>
+<td>プログラミング言語</td>
+<td>げんご</td>
+<td>ngôn ngữ lập trình</td>
+</tr>
+<tr>
+<td>バグ/不具合</td>
+<td>ふぐあい</td>
+<td>Bug</td>
+</tr>
+<tr>
+<td>プラグイン</td>
+<td></td>
+<td>Plug-in</td>
+</tr>
+<tr>
+<td>キャッシュ</td>
+<td></td>
+<td>Cache</td>
+</tr>
+<tr>
+<td>アルゴリズム</td>
+<td></td>
+<td>Thuật toán</td>
+</tr>
+<tr>
+<td>データ</td>
+<td></td>
+<td>Dữ liệu</td>
+</tr>
+<tr>
+<td>データ構造</td>
+<td>こうぞう</td>
+<td>Cấu trúc dữ liệu</td>
+</tr>
+<tr>
+<td>配列</td>
+<td>はいれつ</td>
+<td>Mảng</td>
+</tr>
+<tr>
+<td>リスト</td>
+<td></td>
+<td>Danh sách/List</td>
+</tr>
+<tr>
+<td>スタック</td>
+<td></td>
+<td>Stack/Ngăn xếp</td>
+</tr>
+<tr>
+<td>キュー/待ち行列</td>
+<td>まちぎょうれつ</td>
+<td>Queue/Hàng đợi</td>
+</tr>
+<tr>
+<td>木構造</td>
+<td>きこうぞう</td>
+<td>Cấu trúc cây</td>
+</tr>
+<tr>
+<td>プロジェクト</td>
+<td></td>
+<td>Project</td>
+</tr>
+<tr>
+<td>オープンソース</td>
+<td></td>
+<td>Open source</td>
+</tr>
+<tr>
+<td>開発者</td>
+<td>かいはつしゃ</td>
+<td>Developer</td>
+</tr>
+<tr>
+<td>プロダクト</td>
+<td></td>
+<td>Product/Sản phẩm</td>
+</tr>
+<tr>
+<td>フォーム</td>
+<td></td>
+<td>Form</td>
+</tr>
+<tr>
+<td>ボタン</td>
+<td></td>
+<td>Button</td>
+</tr>
+<tr>
+<td>ラジオボタン</td>
+<td></td>
+<td>Radio button</td>
+</tr>
+<tr>
+<td>チェックボックス</td>
+<td></td>
+<td>Checkbox</td>
+</tr>
+<tr>
+<td>ツールバー</td>
+<td></td>
+<td>Toolbar</td>
+</tr>
+<tr>
+<td>ログ</td>
+<td></td>
+<td>Log</td>
+</tr>
+<tr>
+<td>テスト</td>
+<td></td>
+<td>Test</td>
+</tr>
+<tr>
+<td>フレームワーク</td>
+<td></td>
+<td>Framework</td>
+</tr>
+<tr>
+<td>プロトタイプ</td>
+<td></td>
+<td>Prototype</td>
+</tr>
+<tr>
+<td>パッケージ</td>
+<td></td>
+<td>Package</td>
+</tr>
+<tr>
+<td>モジュール</td>
+<td></td>
+<td>Module</td>
+</tr>
+<tr>
+<td>オブジェクト指向プログラミング</td>
+<td></td>
+<td>Lập trình hướng đối tượng</td>
+</tr>
+<tr>
+<td>クラス</td>
+<td></td>
+<td>Class/Lớp đối tượng</td>
+</tr>
+<tr>
+<td>メソッド</td>
+<td></td>
+<td>Method/Phương thức</td>
+</tr>
+<tr>
+<td>オブジェクト</td>
+<td></td>
+<td>Object</td>
+</tr>
+<tr>
+<td>メッセージ</td>
+<td></td>
+<td>Message</td>
+</tr>
+<tr>
+<td>チャネル</td>
+<td></td>
+<td>Channel</td>
+</tr>
+<tr>
+<td>ライブラリ</td>
+<td></td>
+<td>Library</td>
+</tr>
+<tr>
+<td>ビルド</td>
+<td></td>
+<td>Build</td>
+</tr>
+<tr>
+<td>コンパイル</td>
+<td></td>
+<td>Compile</td>
+</tr>
+<tr>
+<td>デプロイ</td>
+<td></td>
+<td>Deploy</td>
+</tr>
+<tr>
+<td>デプロイメント</td>
+<td></td>
+<td>Deployment</td>
+</tr>
+<tr>
+<td>コンパイラ</td>
+<td></td>
+<td>Compiler</td>
+</tr>
+<tr>
+<td>インタプリタ</td>
+<td></td>
+<td>Interpreter/Trình thông dịch</td>
+</tr>
+<tr>
+<td>シンタックス</td>
+<td></td>
+<td>Syntax</td>
+</tr>
+<tr>
+<td>エラー</td>
+<td></td>
+<td>Error</td>
+</tr>
+<tr>
+<td>例外</td>
+<td>れいがい</td>
+<td>Exception</td>
+</tr>
+<tr>
+<td>実行時/ランタイム</td>
+<td>じっこうじ</td>
+<td>Runtime</td>
+</tr>
+<tr>
+<td>ソースコード</td>
+<td></td>
+<td>Source code</td>
+</tr>
+<tr>
+<td>カプセル化</td>
+<td></td>
+<td>Encapsulation/Tính đóng gói</td>
+</tr>
+<tr>
+<td>インヘリタンス/継承</td>
+<td>けいしょう</td>
+<td>Inheritance/Tính kế thừa</td>
+</tr>
+<tr>
+<td>ダイナミックバインディング/動的束縛</td>
+<td>どうてきそくばく</td>
+<td>Dynamic binding</td>
+</tr>
+<tr>
+<td>構造化プログラミング</td>
+<td>こうぞうか</td>
+<td>Lập trình hướng cấu trúc</td>
+</tr>
+<tr>
+<td>コンストラクタ</td>
+<td></td>
+<td>Constructor</td>
+</tr>
+<tr>
+<td>インスタンス</td>
+<td></td>
+<td>Instance</td>
+</tr>
+<tr>
+<td>コンソール</td>
+<td></td>
+<td>Console</td>
+</tr>
+<tr>
+<td>名前空間/ネームスペース</td>
+<td>なまえくうかん</td>
+<td>Namespace</td>
+</tr>
+<tr>
+<td>ファンクション</td>
+<td></td>
+<td>Function</td>
+</tr>
+<tr>
+<td>変数</td>
+<td>へんすう</td>
+<td>Biến</td>
+</tr>
+<tr>
+<td>データ型</td>
+<td>がた</td>
+<td>Kiểu dữ liệu</td>
+</tr>
+<tr>
+<td>複合データ型</td>
+<td>ふくごう</td>
+<td>Kiểu phức hợp</td>
+</tr>
+<tr>
+<td>型キャスト</td>
+<td></td>
+<td>Ép kiểu</td>
+</tr>
+<tr>
+<td>論理型</td>
+<td>ろんりがた</td>
+<td>Kiểu Boolean</td>
+</tr>
+<tr>
+<td>文字型</td>
+<td>もじがた</td>
+<td>Kiểu Char</td>
+</tr>
+<tr>
+<td>文字列型</td>
+<td>もじれつがた</td>
+<td>Kiểu String</td>
+</tr>
+<tr>
+<td>プロセス</td>
+<td></td>
+<td>Process</td>
+</tr>
+<tr>
+<td>プロシージャ</td>
+<td></td>
+<td>Procedure/Thủ tục</td>
+</tr>
+<tr>
+<td>ノード</td>
+<td></td>
+<td>Node</td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div>
@@ -416,7 +667,7 @@ if (!doNotTrack) {
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/tree/">tree</a>
+  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/japanese/">japanese</a>
 
                   </div>
                 
@@ -429,7 +680,7 @@ if (!doNotTrack) {
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/07/linked-list/" data-tooltip="Danh sách liên kết đơn và các thao tác cơ bản">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/07/cpp-access-modifer/" data-tooltip="Các phạm vi truy xuất trong một lớp đối tượng C&#43;&#43;">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -437,7 +688,7 @@ if (!doNotTrack) {
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/05/cpp-why-flush-cin/" data-tooltip="Tại sao cần xóa bộ đệm bàn phím trước khi nhập chuỗi trong C/C&#43;&#43;?">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/07/linked-list/" data-tooltip="Danh sách liên kết đơn và các thao tác cơ bản">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -455,19 +706,19 @@ if (!doNotTrack) {
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/06/binary-tree-from-traversal/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/07/japanese-programming-vocab/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/06/binary-tree-from-traversal/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/07/japanese-programming-vocab/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/06/binary-tree-from-traversal/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/07/japanese-programming-vocab/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -496,8 +747,8 @@ if (!doNotTrack) {
             <div class="comment-box">
                 <textarea name="fields[comment]" class="comment-input-control comment-input-animated" placeholder="Comment (markdown is accepted) *" required rows="3"></textarea>
                 <div class="comment-box-tail">
-                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2015/06/binary-tree-from-traversal/#comment-submitted">
-                    <input type="hidden" name="options[slug]" value="binary-tree-from-traversal">
+                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2015/07/japanese-programming-vocab/#comment-submitted">
+                    <input type="hidden" name="options[slug]" value="japanese-programming-vocab">
                     <input type="text" name="fields[name]" class="post-comment-field" placeholder="Name *" required/>
                     <input type="email" name="fields[email]" class="post-comment-field" placeholder="Email address (will not be public) *" required/>
                     <input type="hidden" id="comment-parent" name="fields[reply_to]" value="">
@@ -540,7 +791,7 @@ if (!doNotTrack) {
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2015/06/binary-tree-from-traversal/" data-width="100%"></div>
+<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2015/07/japanese-programming-vocab/" data-width="100%"></div>
 
               
             
@@ -561,7 +812,7 @@ if (!doNotTrack) {
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/07/linked-list/" data-tooltip="Danh sách liên kết đơn và các thao tác cơ bản">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/07/cpp-access-modifer/" data-tooltip="Các phạm vi truy xuất trong một lớp đối tượng C&#43;&#43;">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -569,7 +820,7 @@ if (!doNotTrack) {
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/05/cpp-why-flush-cin/" data-tooltip="Tại sao cần xóa bộ đệm bàn phím trước khi nhập chuỗi trong C/C&#43;&#43;?">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/07/linked-list/" data-tooltip="Danh sách liên kết đơn và các thao tác cơ bản">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -587,19 +838,19 @@ if (!doNotTrack) {
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/06/binary-tree-from-traversal/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/07/japanese-programming-vocab/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/06/binary-tree-from-traversal/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/07/japanese-programming-vocab/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/06/binary-tree-from-traversal/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/07/japanese-programming-vocab/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -623,19 +874,19 @@ if (!doNotTrack) {
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2015%2F06%2Fbinary-tree-from-traversal%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2015%2F07%2Fjapanese-programming-vocab%2F">
           <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2015%2F06%2Fbinary-tree-from-traversal%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2015%2F07%2Fjapanese-programming-vocab%2F">
           <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2015%2F06%2Fbinary-tree-from-traversal%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2015%2F07%2Fjapanese-programming-vocab%2F">
           <i class="fa fa-google-plus"></i><span>Chia sẻ với Google&#43;</span>
         </a>
       </li>
