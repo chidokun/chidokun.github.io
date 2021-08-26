@@ -59,7 +59,7 @@ Hôm nay sẽ là một số ghi chú về thuật toán Prim dùng để giải
 
 # 2. Hiện thực
 
-Để hiện thực thuật toán Prim, chúng ta có thể sử dụng cấu trúc `EdgeWeightedGraph` để lưu trữ đồ thị vô hướng có trọng số mà mình có giới thiệu qua ở bài viết [Tổng quan về đồ thị]({{< ref "/post/graph-overview" >}}). Chúng ta định nghĩa các phương thức như sau:
+Để hiện thực thuật toán Prim, chúng ta có thể sử dụng cấu trúc `EdgeWeightedGraph` để lưu trữ đồ thị vô hướng có trọng số mà mình có giới thiệu qua ở bài viết [Tổng quan về đồ thị]({{< ref "/posts/graph-overview" >}}). Chúng ta định nghĩa các phương thức như sau:
 
 
 

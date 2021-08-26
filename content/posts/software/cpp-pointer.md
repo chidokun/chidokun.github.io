@@ -107,7 +107,7 @@ Ví dụ: mảng 1 chiều thì dùng con trỏ cấp 1, mảng 2 chiều thì d
 
 Mảng động có thể thêm bớt phần tử nên đỡ tốn dữ liệu hơn mảng tĩnh.
 
-Xem thêm: [Cấp phát động trong C/C++]({{< ref "/post/software/cpp-matrix-allocation" >}})
+Xem thêm: [Cấp phát động trong C/C++]({{< ref "/posts/software/cpp-matrix-allocation" >}})
 
 **14**. Tên mảng 1 chiều là một con trỏ trỏ đến ô đầu tiên trong mảng.
 

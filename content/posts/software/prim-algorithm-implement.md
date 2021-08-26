@@ -20,7 +20,7 @@ thumbnailImage: /thumbnails/graph.png
 thumbnailImagePosition: left
 ---
 
-Bài viết [Thuật toán Prim: Tìm cây khung nhỏ nhất]({{< ref "/post/software/prim-algorithm" >}}) đã giới thiệu đến các bạn ý tưởng của thuật toán này cũng như từng bước chạy thuật toán. Tiếp theo sẽ là phần hướng dẫn cài đặt *thuật toán Prim* cho đồ thị vô hướng có trọng số bằng ngôn ngữ Java. 
+Bài viết [Thuật toán Prim: Tìm cây khung nhỏ nhất]({{< ref "/posts/software/prim-algorithm" >}}) đã giới thiệu đến các bạn ý tưởng của thuật toán này cũng như từng bước chạy thuật toán. Tiếp theo sẽ là phần hướng dẫn cài đặt *thuật toán Prim* cho đồ thị vô hướng có trọng số bằng ngôn ngữ Java. 
 
 <!--more-->
 
@@ -40,7 +40,7 @@ Chúng ta cùng nhắc lại ý tưởng cơ bản của thuật toán Prim:
 
 # 2. Định nghĩa API
 
-Để hiện thực thuật toán Prim, chúng ta có thể sử dụng cấu trúc `EdgeWeightedGraph` để lưu trữ đồ thị vô hướng có trọng số mà mình có giới thiệu qua ở bài viết [Tổng quan về đồ thị]({{< ref "/post/software/graph-overview" >}}). Chúng ta định nghĩa trừu tượng các phương thức của một class làm nhiệm vụ tìm cây khung như sau:
+Để hiện thực thuật toán Prim, chúng ta có thể sử dụng cấu trúc `EdgeWeightedGraph` để lưu trữ đồ thị vô hướng có trọng số mà mình có giới thiệu qua ở bài viết [Tổng quan về đồ thị]({{< ref "/posts/software/graph-overview" >}}). Chúng ta định nghĩa trừu tượng các phương thức của một class làm nhiệm vụ tìm cây khung như sau:
 
 ```java
 public interface PrimMST {

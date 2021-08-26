@@ -18,10 +18,10 @@ thumbnailImage: /thumbnails/crawl-tiki.png
 thumbnailImagePosition: left
 ---
 
-Qua một khoảng thời gian dài, nhiều bạn feedback với mình là code trong bài viết [Tập tành crawl dữ liệu product của Tiki]({{< ref "/post/software/crawl-tiki-products" >}}) không thể chạy được nữa. Không bất ngờ lắm với vấn đề này, mình sẽ hướng dẫn các bạn lấy lại dữ liệu về sản phẩm trên Tiki.
+Qua một khoảng thời gian dài, nhiều bạn feedback với mình là code trong bài viết [Tập tành crawl dữ liệu product của Tiki]({{< ref "/posts/software/crawl-tiki-products" >}}) không thể chạy được nữa. Không bất ngờ lắm với vấn đề này, mình sẽ hướng dẫn các bạn lấy lại dữ liệu về sản phẩm trên Tiki.
 
 {{< alert info >}}
-Nhớ đọc lại bài viết [Tập tành crawl dữ liệu product của Tiki]({{< ref "/post/software/crawl-tiki-products" >}}) để hiểu ý tưởng nhé các bạn.
+Nhớ đọc lại bài viết [Tập tành crawl dữ liệu product của Tiki]({{< ref "/posts/software/crawl-tiki-products" >}}) để hiểu ý tưởng nhé các bạn.
 {{< /alert >}}
 
 <!--more-->

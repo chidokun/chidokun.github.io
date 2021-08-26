@@ -19,7 +19,7 @@ thumbnailImage: /thumbnails/graph.png
 thumbnailImagePosition: left
 ---
 
-Ngoài [thuật toán Prim]({{< ref "/post/software/prim-algorithm-implement" >}}), *Thuật toán Kruskal* cũng là thuật toán cổ điển để giải bài toán tìm cây khung nhỏ nhất (**Minimum Spanning Tree**) cho đồ thị vô hướng có trọng số. Trong bài viết này chúng ta cùng xem ý tưởng cơ bản của *Thuật toán Kruskal*.
+Ngoài [thuật toán Prim]({{< ref "/posts/software/prim-algorithm-implement" >}}), *Thuật toán Kruskal* cũng là thuật toán cổ điển để giải bài toán tìm cây khung nhỏ nhất (**Minimum Spanning Tree**) cho đồ thị vô hướng có trọng số. Trong bài viết này chúng ta cùng xem ý tưởng cơ bản của *Thuật toán Kruskal*.
 
 
 <!--more-->

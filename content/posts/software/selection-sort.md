@@ -18,7 +18,7 @@ thumbnailImage: /thumbnails/heap.png
 thumbnailImagePosition: left
 ---
 
-Selection Sort là một thuật toán sắp xếp tương đối dễ hiểu. Ý tưởng chính vẫn là đổi chỗ những cặp nghịch thế, tuy nhiên cái hay là ở chỗ Selection Sort tìm vị trí chứa phần tử nhỏ nhất để đổi chỗ với phần tử đang xét chứ không đổi tất cả các cặp nghịch thế như [Bubble Sort]({{< ref "/post/software/bubble-sort" >}}) hay [Interchange Sort]({{< ref "/post/software/interchange-sort" >}}).
+Selection Sort là một thuật toán sắp xếp tương đối dễ hiểu. Ý tưởng chính vẫn là đổi chỗ những cặp nghịch thế, tuy nhiên cái hay là ở chỗ Selection Sort tìm vị trí chứa phần tử nhỏ nhất để đổi chỗ với phần tử đang xét chứ không đổi tất cả các cặp nghịch thế như [Bubble Sort]({{< ref "/posts/software/bubble-sort" >}}) hay [Interchange Sort]({{< ref "/posts/software/interchange-sort" >}}).
 
 <!--more-->
 

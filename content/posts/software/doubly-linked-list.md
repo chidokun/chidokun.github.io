@@ -15,7 +15,7 @@ thumbnailImage: /thumbnails/heap.png
 thumbnailImagePosition: left
 ---
 
-Nếu bạn đã đọc bài viết về [Danh sách liên kết đơn]({{< ref "/post/software/linked-list" >}}) thì có thể thấy việc tổ chức dạng danh sách tiện lợi hơn rất nhiều so với dùng mảng. Tuy nhiên, danh sách liên kết đơn vẫn có nhược điểm là chỉ có thể duyệt từ đầu đến cuối. Vì vậy, một số thao tác sẽ rất khó cài đặt trên nó. Danh sách liên kết kép có thể khắc phục nhược điểm này. Hầu hết các thao tác điều giống với danh sách liên kết đơn nhưng mình cũng khuyên các bạn nên đọc bài viết [Danh sách liên kết đơn và các thao tác cơ bản]({{< ref "/post/software/linked-list" >}}) trước khi đọc bài viết này. Các thao tác được minh họa bằng C++.
+Nếu bạn đã đọc bài viết về [Danh sách liên kết đơn]({{< ref "/posts/software/linked-list" >}}) thì có thể thấy việc tổ chức dạng danh sách tiện lợi hơn rất nhiều so với dùng mảng. Tuy nhiên, danh sách liên kết đơn vẫn có nhược điểm là chỉ có thể duyệt từ đầu đến cuối. Vì vậy, một số thao tác sẽ rất khó cài đặt trên nó. Danh sách liên kết kép có thể khắc phục nhược điểm này. Hầu hết các thao tác điều giống với danh sách liên kết đơn nhưng mình cũng khuyên các bạn nên đọc bài viết [Danh sách liên kết đơn và các thao tác cơ bản]({{< ref "/posts/software/linked-list" >}}) trước khi đọc bài viết này. Các thao tác được minh họa bằng C++.
 
 
 <!--more-->

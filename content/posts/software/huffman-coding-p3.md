@@ -16,7 +16,7 @@ thumbnailImage: /thumbnails/huffman.png
 thumbnailImagePosition: left
 ---
 
-Ở bài viết [Cài đặt thuật toán Huffman Coding]({{< ref "/post/software/huffman-coding-p2" >}}), chúng ta đã tìm hiểu cách cài đặt thuật toán Huffman Coding để mã hóa (nén) chuỗi dữ liệu thành chuỗi nhị phân. Trong bài viết này, chúng ta sẽ tiếp tục tìm hiểu quá trình giải nén dữ liệu từ cây Huffman và cài đặt phương thức `decode(String encoded)` cho class `HuffmanCoding`.
+Ở bài viết [Cài đặt thuật toán Huffman Coding]({{< ref "/posts/software/huffman-coding-p2" >}}), chúng ta đã tìm hiểu cách cài đặt thuật toán Huffman Coding để mã hóa (nén) chuỗi dữ liệu thành chuỗi nhị phân. Trong bài viết này, chúng ta sẽ tiếp tục tìm hiểu quá trình giải nén dữ liệu từ cây Huffman và cài đặt phương thức `decode(String encoded)` cho class `HuffmanCoding`.
 
 <!--more-->
 
@@ -34,7 +34,7 @@ thumbnailImagePosition: left
 
 # 2. Cài đặt thuật toán
 
-Trở lại với class `HuffmanCoding` trong bài viết [Cài đặt thuật toán Huffman Coding]({{< ref "/post/software/huffman-coding-p2" >}}), chúng ta sẽ cài đặt phương thức `decode(String encoded)` của class này.
+Trở lại với class `HuffmanCoding` trong bài viết [Cài đặt thuật toán Huffman Coding]({{< ref "/posts/software/huffman-coding-p2" >}}), chúng ta sẽ cài đặt phương thức `decode(String encoded)` của class này.
 
 Thuật toán có thể được cài đặt như sau:
 

@@ -22,7 +22,7 @@ Mảng 2 chiều khá quen thuộc với chúng ta. Mình sẽ giới thiệu m�
 
 # Cách 1: Dùng con trỏ cấp 2
 
-*Ý tưởng*: Để cấp phát động cho mảng 2 chiều, ta cấp phát bộ nhớ của từng chiều theo cú pháp của mảng một chiều. Tức là tạo m [mảng 1 chiều]({{< ref "/post/software/cpp-dynamic-allocation" >}}), mỗi mảng có n phần tử.
+*Ý tưởng*: Để cấp phát động cho mảng 2 chiều, ta cấp phát bộ nhớ của từng chiều theo cú pháp của mảng một chiều. Tức là tạo m [mảng 1 chiều]({{< ref "/posts/software/cpp-dynamic-allocation" >}}), mỗi mảng có n phần tử.
 
 Để làm điều này ta dùng 1 con trỏ cấp 2, cấp phát cho nó m con trỏ cấp 1, mỗi con trỏ cấp 1 ta lại cấp phát n phần tử.
 

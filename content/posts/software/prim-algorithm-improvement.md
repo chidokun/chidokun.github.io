@@ -20,7 +20,7 @@ thumbnailImage: /thumbnails/graph.png
 thumbnailImagePosition: left
 ---
 
-Ở phần trước [Thuật toán Prim: Cài đặt thuật toán]({{< ref "/post/software/prim-algorithm-implement" >}}) chúng ta đã tìm hiểu qua cách cài đặt thuật toán Prim dựa vào Priority Queue. Tuy nhiên, có một nhược điểm là phải duyệt các cạnh không hợp lệ trong queue. Do vậy, trong bài này chúng ta sẽ tối ưu cách cài đặt thuật toán Prim ở bài trước bằng cách sử dụng Index Priority Queue.
+Ở phần trước [Thuật toán Prim: Cài đặt thuật toán]({{< ref "/posts/software/prim-algorithm-implement" >}}) chúng ta đã tìm hiểu qua cách cài đặt thuật toán Prim dựa vào Priority Queue. Tuy nhiên, có một nhược điểm là phải duyệt các cạnh không hợp lệ trong queue. Do vậy, trong bài này chúng ta sẽ tối ưu cách cài đặt thuật toán Prim ở bài trước bằng cách sử dụng Index Priority Queue.
 
 <!--more-->
 
@@ -89,7 +89,7 @@ Danh sách lúc này rỗng. Thuật toán kết thúc.
 
 # 3. Cài đặt thuật toán.
 
-Để hiện thực thuật toán Prim, chúng ta sẽ sử dụng cấu trúc đồ thị vô hướng có trọng số `EdgeWeightedGraph` ở bài viết [Tổng quan về đồ thị]({{< ref "/post/software/graph-overview" >}}). Interface `PrimMST` ở bài viết [Thuật toán Prim: Cài đặt thuật toán]({{< ref "/post/software/prim-algorithm-implement" >}}) và cấu trúc `IndexPQ` ở bài viết [Index Priority Queue]({{< ref "/post/software/index-priority-queue" >}}).
+Để hiện thực thuật toán Prim, chúng ta sẽ sử dụng cấu trúc đồ thị vô hướng có trọng số `EdgeWeightedGraph` ở bài viết [Tổng quan về đồ thị]({{< ref "/posts/software/graph-overview" >}}). Interface `PrimMST` ở bài viết [Thuật toán Prim: Cài đặt thuật toán]({{< ref "/posts/software/prim-algorithm-implement" >}}) và cấu trúc `IndexPQ` ở bài viết [Index Priority Queue]({{< ref "/posts/software/index-priority-queue" >}}).
 
 Trước hết chúng ta tạo class `EagerPrimMST` hiện thực interface `PrimMST` và cài đặt một hàm constructor nhận `EdgeWeightedGraph` làm tham số đầu vào.
 
