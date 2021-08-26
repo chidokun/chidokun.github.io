@@ -6,11 +6,7 @@
     <description>Recent content in clean code on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Fri, 06 Aug 2021 19:00:39 +0700</lastBuildDate>
-    
-	<atom:link href="https://chidokun.github.io/tags/clean-code/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 06 Aug 2021 19:00:39 +0700</lastBuildDate><atom:link href="https://chidokun.github.io/tags/clean-code/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Clean Code: Bạn đã đặt tên biến, hàm đủ &#34;clean&#34;?</title>
       <link>https://chidokun.github.io/2021/08/clean-code-meaningful-name/</link>

@@ -2,10 +2,47 @@
 <html lang="vi">
   <head>
     
+    <script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Cấp phát động trong C/C++",
+  
+  "image": "https://chidokun.github.io/thumbnails/heap.png",
+  
+  "datePublished": "2015-01-20T01:10:00+07:00",
+  "dateModified": "2015-01-20T01:10:00+07:00",
+  "author": {
+    "@type": "Person",
+    "name": "Nguyễn Tuấn",
+    
+    "image": "https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50"
+    
+  },
+  "mainEntityOfPage": { 
+    "@type": "WebPage",
+    "@id": "https:\/\/chidokun.github.io\/2015\/01\/cpp-dynamic-allocation\/" 
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Nguyễn Tuấn's Blog",
+    
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50"
+    }
+    
+  },
+  "description": "Bộ nhớ động có lợi hơn bộ nhớ tĩnh rất nhiều, có thể cấp phát thêm hoặc thu hồi lại bộ nhớ. Do đó, bộ nhớ động rất linh hoạt và tiết kiệm hơn so với sử dụng bộ nhớ tĩnh. Một mảng động chứa các phần tử được cấp phát bộ nhớ động, do đó có thể thêm phần tử, xoá phần tử,\u0026hellip; nên quản lý bộ nhớ hiệu quả hơn.\n",
+  "keywords": ["cấp phát động, c/c++", "development, programming, chidokun, lập trình"]
+}
+
+</script>
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="generator" content="Hugo 0.87.0 with theme Tranquilpeak 0.5.0-BETA">
 <meta name="author" content="Nguyễn Tuấn">
 <meta name="keywords" content="cấp phát động, c/c&#43;&#43;, development, programming, chidokun, lập trình">
 <meta name="description" content="Bộ nhớ động có lợi hơn bộ nhớ tĩnh rất nhiều, có thể cấp phát thêm hoặc thu hồi lại bộ nhớ. Do đó, bộ nhớ động rất linh hoạt và tiết kiệm hơn so với sử dụng bộ nhớ tĩnh. Một mảng động chứa các phần tử được cấp phát bộ nhớ động, do đó có thể thêm phần tử, xoá phần tử,&hellip; nên quản lý bộ nhớ hiệu quả hơn.">
@@ -48,7 +85,12 @@
 
 
 
-  <meta property="fb:app_id" content="445006706177461">
+
+
+
+  <meta property="og:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
+  <meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
+
 
 
 
@@ -57,15 +99,8 @@
   <meta property="twitter:image" content="https://chidokun.github.io/thumbnails/heap.png">
 
 
-
-
-
-  <meta property="og:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
-  <meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
-
-
     <title>Cấp phát động trong C/C&#43;&#43;</title>
-    <meta name="google-site-verification" content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI" />
+
     <link rel="icon" href="https://chidokun.github.io/favicon.png">
     
 
@@ -74,13 +109,12 @@
     <link rel="canonical" href="https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">
 
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
-    <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700|Roboto+Mono&display=swap&subset=vietnamese" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     
-    <link rel="stylesheet" href="https://chidokun.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    <link rel="stylesheet" href="https://chidokun.github.io/css/style-x4v5aep1xln8tw4u8b4utrzzm45rcnnq6emr4myqn5eka2yri56y1t7q.min.css" />
     
     
       
@@ -106,9 +140,12 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
     
-    
+    <meta name="google-site-verification" content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,700;1,900&subset=cyrillic,cyrillic-ext,latin-ext&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
   </head>
 
   <body>
@@ -116,12 +153,12 @@ if (!doNotTrack) {
       <header id="header" data-behavior="5">
   <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
   <div class="header-title">
-    <a class="header-title-link" href="https://chidokun.github.io/">Nguyễn Tuấn&#39;s Blog</a>
+    <a class="header-title-link" href="https://chidokun.github.io/" aria-label="Tới trang chủ">Nguyễn Tuấn&#39;s Blog</a>
   </div>
   
     
       <a class="header-right-icon st-search-show-outputs"
-         href="https://chidokun.github.io/#search">
+         href="https://chidokun.github.io/#search" aria-label="Mở liên kết: /#search">
     
     
       <i class="fa fa-lg fa-search"></i>
@@ -135,7 +172,7 @@ if (!doNotTrack) {
   <div class="sidebar-container">
     
       <div class="sidebar-profile">
-        <a href="https://chidokun.github.io/#about">
+        <a href="https://chidokun.github.io/#about" aria-label="Tìm hiểu thêm về tác giả">
           <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện" />
         </a>
         <h4 class="sidebar-profile-name">Nguyễn Tuấn</h4>
@@ -148,9 +185,9 @@ if (!doNotTrack) {
       
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://chidokun.github.io/">
+      <a class="sidebar-button-link " href="https://chidokun.github.io/" title="Home">
     
-      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
       
       <span class="sidebar-button-desc">Trang chủ</span>
     </a>
@@ -158,9 +195,9 @@ if (!doNotTrack) {
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://chidokun.github.io/categories/l%E1%BA%ADp-tr%C3%ACnh/">
+      <a class="sidebar-button-link " href="https://chidokun.github.io/categories/l%E1%BA%ADp-tr%C3%ACnh/" title="Lập trình">
     
-      <i class="sidebar-button-icon fa fa-lg fa-code"></i>
+      <i class="sidebar-button-icon far fa-lg fa-code" aria-hidden="true"></i>
       
       <span class="sidebar-button-desc">Lập trình</span>
     </a>
@@ -168,9 +205,9 @@ if (!doNotTrack) {
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://chidokun.github.io/categories/d%E1%BB%AF-li%E1%BB%87u/">
+      <a class="sidebar-button-link " href="https://chidokun.github.io/categories/d%E1%BB%AF-li%E1%BB%87u/" title="Dữ liệu">
     
-      <i class="sidebar-button-icon fa fa-lg fa-database"></i>
+      <i class="sidebar-button-icon fa fa-lg fa-database" aria-hidden="true"></i>
       
       <span class="sidebar-button-desc">Dữ liệu</span>
     </a>
@@ -178,9 +215,9 @@ if (!doNotTrack) {
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://chidokun.github.io/categories/cu%E1%BB%99c-s%E1%BB%91ng/">
+      <a class="sidebar-button-link " href="https://chidokun.github.io/categories/cu%E1%BB%99c-s%E1%BB%91ng/" title="Cuộc sống">
     
-      <i class="sidebar-button-icon fa fa-lg fa-pagelines"></i>
+      <i class="sidebar-button-icon fab fa-lg fa-pagelines" aria-hidden="true"></i>
       
       <span class="sidebar-button-desc">Cuộc sống</span>
     </a>
@@ -188,9 +225,9 @@ if (!doNotTrack) {
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://chidokun.github.io/categories">
+      <a class="sidebar-button-link " href="https://chidokun.github.io/categories" title="Categories">
     
-      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark" aria-hidden="true"></i>
       
       <span class="sidebar-button-desc">Danh mục</span>
     </a>
@@ -198,9 +235,9 @@ if (!doNotTrack) {
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://chidokun.github.io/tags">
+      <a class="sidebar-button-link " href="https://chidokun.github.io/tags" title="Tags">
     
-      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      <i class="sidebar-button-icon fa fa-lg fa-tags" aria-hidden="true"></i>
       
       <span class="sidebar-button-desc">Thẻ thông tin</span>
     </a>
@@ -208,9 +245,9 @@ if (!doNotTrack) {
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://chidokun.github.io/archives">
+      <a class="sidebar-button-link " href="https://chidokun.github.io/archives" title="Archives">
     
-      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      <i class="sidebar-button-icon fa fa-lg fa-archive" aria-hidden="true"></i>
       
       <span class="sidebar-button-desc">Lưu trữ</span>
     </a>
@@ -218,9 +255,9 @@ if (!doNotTrack) {
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://chidokun.github.io/#about">
+      <a class="sidebar-button-link " href="https://chidokun.github.io/#about" title="About">
     
-      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      <i class="sidebar-button-icon fa fa-lg fa-question" aria-hidden="true"></i>
       
       <span class="sidebar-button-desc">Thông tin</span>
     </a>
@@ -232,9 +269,9 @@ if (!doNotTrack) {
       
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://github.com/chidokun" target="_blank" rel="noopener">
+      <a class="sidebar-button-link " href="https://github.com/chidokun" target="_blank" rel="noopener" title="GitHub">
     
-      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
       
       <span class="sidebar-button-desc">GitHub</span>
     </a>
@@ -246,7 +283,7 @@ if (!doNotTrack) {
       
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://chidokun.github.io/index.xml">
+      <a class="sidebar-button-link " href="https://chidokun.github.io/index.xml" title="RSS">
     
       <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
       
@@ -265,7 +302,7 @@ if (!doNotTrack) {
         class="
                hasCoverMetaIn
                ">
-        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+        <article class="post">
           
           
             <div class="post-header main-content-wrap text-left">
@@ -277,7 +314,7 @@ if (!doNotTrack) {
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2015-01-20T01:10:00&#43;07:00">
+      <time datetime="2015-01-20T01:10:00&#43;07:00">
         
   
   
@@ -312,7 +349,7 @@ if (!doNotTrack) {
 </div>
 </div>
           
-          <div class="post-content markdown" itemprop="articleBody">
+          <div class="post-content markdown">
             <div class="main-content-wrap">
               <p>Bộ nhớ động có lợi hơn bộ nhớ tĩnh rất nhiều, có thể cấp phát thêm hoặc thu hồi lại bộ nhớ. Do đó, bộ nhớ động rất linh hoạt và tiết kiệm hơn so với sử dụng bộ nhớ tĩnh. Một mảng động chứa các phần tử được cấp phát bộ nhớ động, do đó có thể thêm phần tử, xoá phần tử,&hellip; nên quản lý bộ nhớ hiệu quả hơn.</p>
 <p>Ngôn ngữ C cung cấp cho chúng ta 4 hàm: <code>malloc</code>, <code>calloc</code>, <code>realloc</code> để cấp phát và <code>free</code> để thu hồi. C++ cung cấp 2 toán tử: <code>new</code> để cấp phát và <code>delete</code> để thu hồi. Do C/C++ không có chế độ thu hồi tự động nên khi ta cấp phát động thì ta phải chủ động thu hồi bộ nhớ động.</p>
@@ -376,6 +413,7 @@ char *str = new char();
 <pre><code class="language-cpp">delete []a; //thu hồi mảng a
 </code></pre>
               
+
             </div>
           </div>
           <div id="post-footer" class="post-footer main-content-wrap">
@@ -399,7 +437,7 @@ char *str = new char();
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/japanese-computer-vocab/" data-tooltip="Từ vựng về Tin học tiếng Nhật">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/japanese-computer-vocab/" data-tooltip="Từ vựng về Tin học tiếng Nhật" aria-label="Tiếp: Từ vựng về Tin học tiếng Nhật">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -407,7 +445,7 @@ char *str = new char();
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/cpp-random-number/" data-tooltip="Cách khởi tạo số ngẫu nhiên trong C/C&#43;&#43;">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/cpp-random-number/" data-tooltip="Cách khởi tạo số ngẫu nhiên trong C/C&#43;&#43;" aria-label="Trước: Cách khởi tạo số ngẫu nhiên trong C/C&#43;&#43;">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -419,26 +457,20 @@ char *str = new char();
     <ul class="post-actions post-action-share" >
       
         <li class="post-action hide-lg hide-md hide-sm">
-          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
-            <i class="fa fa-share-alt"></i>
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Chia sẻ bài viết này">
+            <i class="fa fa-share-alt" aria-hidden="true"></i>
           </a>
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">
-              <i class="fa fa-facebook-official"></i>
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/01/cpp-dynamic-allocation/" title="Chia sẻ với %s Facebook" aria-label="Chia sẻ với %s Facebook">
+              <i class="fab fa-facebook" aria-hidden="true"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">
-              <i class="fa fa-google-plus"></i>
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/01/cpp-dynamic-allocation/" title="Chia sẻ với %s Twitter" aria-label="Chia sẻ với %s Twitter">
+              <i class="fab fa-twitter" aria-hidden="true"></i>
             </a>
           </li>
         
@@ -446,9 +478,9 @@ char *str = new char();
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#">
+          <a class="post-action-btn btn btn--default" href="#" aria-label="Trở lại đầu trang">
         
-          <i class="fa fa-list"></i>
+          <i class="fa fa-list" aria-hidden="true"></i>
         </a>
       </li>
     </ul>
@@ -456,7 +488,7 @@ char *str = new char();
 </div>
 
             
-              
+  
     <section id="comments">
         
         <h2 class="title"><a href="#comments">Bình luận</a></h2>
@@ -499,21 +531,10 @@ char *str = new char();
     
 </section>
 
-              
-                <div id="fb-root"></div>
-<script>(function(d, s, id) {
   
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.1&appId=445006706177461&autoLogAppEvents=1';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+  
 
-<div id="fb-cmt-thread" class="fb-comments" data-href="https://chidokun.github.io/2015/01/cpp-dynamic-allocation/" data-width="100%"></div>
 
-              
-            
           </div>
         </article>
         <footer id="footer" class="main-content-wrap">
@@ -531,7 +552,7 @@ char *str = new char();
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/japanese-computer-vocab/" data-tooltip="Từ vựng về Tin học tiếng Nhật">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/japanese-computer-vocab/" data-tooltip="Từ vựng về Tin học tiếng Nhật" aria-label="Tiếp: Từ vựng về Tin học tiếng Nhật">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -539,7 +560,7 @@ char *str = new char();
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/cpp-random-number/" data-tooltip="Cách khởi tạo số ngẫu nhiên trong C/C&#43;&#43;">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/01/cpp-random-number/" data-tooltip="Cách khởi tạo số ngẫu nhiên trong C/C&#43;&#43;" aria-label="Trước: Cách khởi tạo số ngẫu nhiên trong C/C&#43;&#43;">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -551,26 +572,20 @@ char *str = new char();
     <ul class="post-actions post-action-share" >
       
         <li class="post-action hide-lg hide-md hide-sm">
-          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
-            <i class="fa fa-share-alt"></i>
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Chia sẻ bài viết này">
+            <i class="fa fa-share-alt" aria-hidden="true"></i>
           </a>
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">
-              <i class="fa fa-facebook-official"></i>
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/01/cpp-dynamic-allocation/" title="Chia sẻ với %s Facebook" aria-label="Chia sẻ với %s Facebook">
+              <i class="fab fa-facebook" aria-hidden="true"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://chidokun.github.io/2015/01/cpp-dynamic-allocation/">
-              <i class="fa fa-google-plus"></i>
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/01/cpp-dynamic-allocation/" title="Chia sẻ với %s Twitter" aria-label="Chia sẻ với %s Twitter">
+              <i class="fab fa-twitter" aria-hidden="true"></i>
             </a>
           </li>
         
@@ -578,9 +593,9 @@ char *str = new char();
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#">
+          <a class="post-action-btn btn btn--default" href="#" aria-label="Trở lại đầu trang">
         
-          <i class="fa fa-list"></i>
+          <i class="fa fa-list" aria-hidden="true"></i>
         </a>
       </li>
     </ul>
@@ -588,37 +603,33 @@ char *str = new char();
 </div>
 
       </div>
-      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
-  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2015%2F01%2Fcpp-dynamic-allocation%2F">
-          <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2015%2F01%2Fcpp-dynamic-allocation%2F" aria-label="Chia sẻ với %s Facebook">
+          <i class="fab fa-facebook" aria-hidden="true"></i><span>Chia sẻ với Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2015%2F01%2Fcpp-dynamic-allocation%2F">
-          <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fchidokun.github.io%2F2015%2F01%2Fcpp-dynamic-allocation%2F">
-          <i class="fa fa-google-plus"></i><span>Chia sẻ với Google&#43;</span>
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2015%2F01%2Fcpp-dynamic-allocation%2F" aria-label="Chia sẻ với %s Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>Chia sẻ với Twitter</span>
         </a>
       </li>
     
   </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
+
     </div>
     
     <div id="about">
   <div id="about-card">
     <div id="about-btn-close">
-      <i class="fa fa-remove"></i>
+      <i class="fa fa-times"></i>
     </div>
     
       <img id="about-card-picture" src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện" />
@@ -636,7 +647,7 @@ char *str = new char();
     
     
       <div id="about-card-location">
-        <i class="fa fa-map-marker"></i>
+        <i class="fa fa-map-marker-alt"></i>
         <br/>
         Saigon, Vietnam
       </div>
@@ -655,15 +666,19 @@ char *str = new char();
 
 
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
-<script src="https://chidokun.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+<script src="https://chidokun.github.io/js/script-8lglxdix2nqhalxxm2bujhkcc8cctdrd5o5axonwhfzx2zqrer5facyn8.min.js"></script>
 
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
 
   
     <script crossorigin="anonymous" integrity="sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq" src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js"></script>
@@ -677,20 +692,6 @@ char *str = new char();
     <script src="https://chidokun.github.io/js/main.js"></script>
   
 
-<script lang="javascript">
-window.onload = updateMinWidth;
-window.onresize = updateMinWidth;
-document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
-function updateMinWidth() {
-  var sidebar = document.getElementById("sidebar");
-  var main = document.getElementById("main");
-  main.style.minWidth = "";
-  var w1 = getComputedStyle(main).getPropertyValue("min-width");
-  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
-  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
-  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
-}
-</script>
 
 <script>
 $(document).ready(function() {
@@ -703,11 +704,6 @@ $(document).ready(function() {
   });
 });
 </script>
-
-
-  
-    
-  
 
 
 

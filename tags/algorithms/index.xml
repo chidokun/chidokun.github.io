@@ -6,18 +6,14 @@
     <description>Recent content in algorithms on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Sat, 17 Jul 2021 21:33:22 +0700</lastBuildDate>
-    
-	<atom:link href="https://chidokun.github.io/tags/algorithms/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 17 Jul 2021 21:33:22 +0700</lastBuildDate><atom:link href="https://chidokun.github.io/tags/algorithms/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Độ phức tạp thời gian của thuật toán</title>
       <link>https://chidokun.github.io/2021/07/complexity-of-time/</link>
       <pubDate>Sat, 17 Jul 2021 21:33:22 +0700</pubDate>
       
       <guid>https://chidokun.github.io/2021/07/complexity-of-time/</guid>
-      <description>&lt;p&gt;Bàn về độ phức tạp thời gian, mình vẫn thường hay nghe các bạn nói &lt;em&gt;&amp;ldquo;Một vòng &lt;code&gt;for&lt;/code&gt; là $O(N)$, hai vòng &lt;code&gt;for&lt;/code&gt; lồng nhau là $O(N^2)$&amp;rdquo;&lt;/em&gt;. Thực ra không hẳn là như thế, nó còn phụ thuộc vào số bước thực hiện mỗi lần lặp. Mình cũng sẽ không bàn về phương pháp khoa học để đánh giá thuật toán mà thay vào đó nói về cách để mường tượng xác định độ phức tạp của thuật toán.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Bàn về độ phức tạp thời gian, mình vẫn thường hay nghe các bạn nói &lt;em&gt;&amp;ldquo;Một vòng &lt;code&gt;for&lt;/code&gt; là $O(N)$, hai vòng &lt;code&gt;for&lt;/code&gt; lồng nhau là $O(N^2)$&amp;quot;&lt;/em&gt;. Thực ra không hẳn là như thế, nó còn phụ thuộc vào số bước thực hiện mỗi lần lặp. Mình cũng sẽ không bàn về phương pháp khoa học để đánh giá thuật toán mà thay vào đó nói về cách để mường tượng xác định độ phức tạp của thuật toán.&lt;/p&gt;</description>
     </item>
     
   </channel>

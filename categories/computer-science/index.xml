@@ -6,11 +6,7 @@
     <description>Recent content in Computer Science on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Sat, 04 Jan 2020 22:27:00 +0700</lastBuildDate>
-    
-	<atom:link href="https://chidokun.github.io/categories/computer-science/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 04 Jan 2020 22:27:00 +0700</lastBuildDate><atom:link href="https://chidokun.github.io/categories/computer-science/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Những điều thú vị của số nhị phân trong máy tính</title>
       <link>https://chidokun.github.io/2020/01/useful-things-of-binary-numbers/</link>

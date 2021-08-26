@@ -6,11 +6,7 @@
     <description>Recent content in Thực hành on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Wed, 07 Jul 2021 17:54:21 +0700</lastBuildDate>
-    
-	<atom:link href="https://chidokun.github.io/categories/th%E1%BB%B1c-h%C3%A0nh/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 07 Jul 2021 17:54:21 +0700</lastBuildDate><atom:link href="https://chidokun.github.io/categories/th%E1%BB%B1c-h%C3%A0nh/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tạo Progress Bar trong Java Console</title>
       <link>https://chidokun.github.io/2021/07/console-progress-bar/</link>

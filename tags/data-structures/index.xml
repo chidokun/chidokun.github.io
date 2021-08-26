@@ -6,11 +6,7 @@
     <description>Recent content in data structures on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Wed, 14 Jul 2021 18:03:38 +0700</lastBuildDate>
-    
-	<atom:link href="https://chidokun.github.io/tags/data-structures/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 14 Jul 2021 18:03:38 +0700</lastBuildDate><atom:link href="https://chidokun.github.io/tags/data-structures/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Priority Queue và những cách cài đặt</title>
       <link>https://chidokun.github.io/2021/07/priority-queue/</link>

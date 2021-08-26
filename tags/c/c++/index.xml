@@ -5,11 +5,7 @@
     <link>https://chidokun.github.io/tags/c/c&#43;&#43;/</link>
     <description>Recent content in c/c&#43;&#43; on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>vi</language>
-    
-	<atom:link href="https://chidokun.github.io/tags/c/c++/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>vi</language><atom:link href="https://chidokun.github.io/tags/c/c++/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Danh sách liên kết kép và các thao tác cơ bản</title>
       <link>https://chidokun.github.io/2015/08/doubly-linked-list/</link>

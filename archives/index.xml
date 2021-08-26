@@ -5,10 +5,6 @@
     <link>https://chidokun.github.io/archives/</link>
     <description>Recent content in Archives on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>vi</language>
-    
-	<atom:link href="https://chidokun.github.io/archives/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>vi</language><atom:link href="https://chidokun.github.io/archives/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

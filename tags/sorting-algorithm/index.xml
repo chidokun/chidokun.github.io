@@ -6,11 +6,7 @@
     <description>Recent content in sorting algorithm on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Mon, 12 Jul 2021 22:52:28 +0700</lastBuildDate>
-    
-	<atom:link href="https://chidokun.github.io/tags/sorting-algorithm/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 12 Jul 2021 22:52:28 +0700</lastBuildDate><atom:link href="https://chidokun.github.io/tags/sorting-algorithm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Sleep Sort: Thuật toán sort bá đạo</title>
       <link>https://chidokun.github.io/2021/07/sleep-sort/</link>

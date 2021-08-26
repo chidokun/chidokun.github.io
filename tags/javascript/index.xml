@@ -6,11 +6,7 @@
     <description>Recent content in javascript on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Tue, 24 Dec 2019 18:00:00 +0700</lastBuildDate>
-    
-	<atom:link href="https://chidokun.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 24 Dec 2019 18:00:00 +0700</lastBuildDate><atom:link href="https://chidokun.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Truy vấn với JavaScript (Phần 2)</title>
       <link>https://chidokun.github.io/2019/12/query-with-javascript-ep2/</link>
