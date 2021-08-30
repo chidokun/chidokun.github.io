@@ -352,7 +352,22 @@ if (!doNotTrack) {
           <div class="post-content markdown">
             <div class="main-content-wrap">
               <p>Hôm nay chúng ta cùng điểm qua một cấu trúc dữ liệu thuộc dòng họ nhà Queue có một tính chất khá đặc biệt - đẩy vào và lấy ra theo độ ưu tiên - chính là <em>Priority Queue</em>. Nó có rất nhiều ứng dụng, điển hình là trong <a href="https://chidokun.github.io/2021/07/huffman-coding-p2/">Thuật toán nén Huffman Coding</a> mà mình từng đề cập. Trong bài này chúng ta sẽ đi qua một số cách cài đặt của Priority Queue.</p>
-<!--toc-->
+<h1 id="table-of-contents">Mục lục</h1>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-ý-tưởng-và-api">1. Ý tưởng và API</a></li>
+    <li><a href="#2-cài-đặt">2. Cài đặt</a>
+      <ul>
+        <li><a href="#21-cơ-bản">2.1. Cơ bản</a></li>
+        <li><a href="#22-sử-dụng-heap">2.2. Sử dụng Heap</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-tổng-quát-hóa-phép-so-sánh">3. Tổng quát hóa phép so sánh</a></li>
+    <li><a href="#4-độ-phức-tạp">4. Độ phức tạp</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+
 <h1 id="1-ý-tưởng-và-api">1. Ý tưởng và API</h1>
 <p>Có thể liên tưởng các thao tác trên <code>PriorityQueue</code> cũng giống như một Queue bình thường. Quan trọng nhất là việc tổ chức lưu trữ các phần tử và cài đặt các hành vi thỏa yêu cầu: <em>Phần tử ưu tiên nhất sẽ được lấy ra trước tiên</em>.</p>
 <p>Về định nghĩa <em>ưu tiên</em>, có thể định nghĩa <em>giá trị lớn hơn là ưu tiên hơn</em> hoặc <em>giá trị nhỏ hơn là ưu tiên hơn</em>. Ví dụ như một giao dịch sẽ bao gồm người thực hiện, giá tiền và ngày thực hiện. Có thể định nghĩa <em>ngày thực hiện gần hiện tại hơn là ưu tiên hơn</em> hoặc ngược lại.</p>
@@ -804,7 +819,7 @@ PriorityQueue&lt;Integer&gt; q = new HeapPQ&lt;&gt;(50, (a, b) -&gt; b - a);
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="Mục lục">
+          <a class="post-action-btn btn btn--default" href="#" aria-label="Trở lại đầu trang">
         
           <i class="fa fa-list" aria-hidden="true"></i>
         </a>
@@ -919,7 +934,7 @@ PriorityQueue&lt;Integer&gt; q = new HeapPQ&lt;&gt;(50, (a, b) -&gt; b - a);
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="Mục lục">
+          <a class="post-action-btn btn btn--default" href="#" aria-label="Trở lại đầu trang">
         
           <i class="fa fa-list" aria-hidden="true"></i>
         </a>

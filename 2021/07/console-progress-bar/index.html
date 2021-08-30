@@ -377,7 +377,20 @@ if (!doNotTrack) {
   
 </div>
 
-<!--toc-->
+<h1 id="table-of-contents">Mục lục</h1>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-design-progress-bar">1. Design Progress bar</a></li>
+    <li><a href="#2-cài-đặt-progress-bar">2. Cài đặt Progress bar</a>
+      <ul>
+        <li><a href="#21-cơ-bản">2.1. Cơ bản</a></li>
+        <li><a href="#22-animation-với-timer">2.2. Animation với Timer</a></li>
+        <li><a href="#23-thành-công-và-thất-bại">2.3. Thành công và thất bại</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
 <h1 id="1-design-progress-bar">1. Design Progress bar</h1>
 <p>Trước tiên, mình phác thảo ra giao diện mà mình sẽ làm. Giao diện khá đơn giản thôi. Đầu tiên là một cái <em>spinner</em> &ldquo;quay quay&rdquo; để chúng ta biết chương trình vẫn đang hoạt động. Tiếp theo là <em>thanh tiến trình</em> được fill theo đúng tỉ lệ phần trăm giá trị hiện tại so với giá trị lớn nhất. Cuối cùng là hiển thị <em>số liệu</em> hiện tại so với giá trị lớn nhất. Khi thànnh công thì spinner sẽ đổi thành dấu tick, nếu có lỗi thì spinner sẽ đổi thành dấu x biểu thị thất bại.</p>
 
@@ -786,7 +799,7 @@ public void render() {
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="Mục lục">
+          <a class="post-action-btn btn btn--default" href="#" aria-label="Trở lại đầu trang">
         
           <i class="fa fa-list" aria-hidden="true"></i>
         </a>
@@ -953,7 +966,7 @@ public void render() {
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="Mục lục">
+          <a class="post-action-btn btn btn--default" href="#" aria-label="Trở lại đầu trang">
         
           <i class="fa fa-list" aria-hidden="true"></i>
         </a>

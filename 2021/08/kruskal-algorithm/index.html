@@ -354,7 +354,18 @@ if (!doNotTrack) {
           <div class="post-content markdown">
             <div class="main-content-wrap">
               <p>Ngoài <a href="https://chidokun.github.io/2021/07/prim-algorithm-implement/">thuật toán Prim</a>, <em>Thuật toán Kruskal</em> cũng là thuật toán cổ điển để giải bài toán tìm cây khung nhỏ nhất (<strong>Minimum Spanning Tree</strong>) cho đồ thị vô hướng có trọng số. Trong bài viết này chúng ta cùng xem ý tưởng cơ bản của <em>Thuật toán Kruskal</em>.</p>
-<!--toc-->
+<h1 id="table-of-contents">Mục lục</h1>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-ý-tưởng">1. Ý tưởng</a></li>
+    <li><a href="#2-ví-dụ">2. Ví dụ</a>
+      <ul>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
 <h1 id="1-ý-tưởng">1. Ý tưởng</h1>
 <p><em>Cây khung</em> (spanning tree) của một đồ thị là một đồ thị con liên thông không có chu trình đi qua tất cả các đỉnh. Một đồ thị sẽ có nhiều cây khung và bài toán của chúng ta là phải tìm ra cây khung nhỏ nhất.</p>
 <p>Ý tưởng của <em>Thuật toán Kruskal</em> khá đơn giản: Sắp xếp các cạnh từ bé đến lớn theo trọng số. Lần lượt chọn các cạnh theo thứ tự từ bé đến lớn trong danh sách sao cho không tạo thành chu trình. Thuật toán sẽ dừng lại khi đã có đủ $V-1$ cạnh trong cây khung (với $V$ là số lượng đỉnh của đồ thị).</p>
@@ -693,7 +704,7 @@ if (!doNotTrack) {
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="Mục lục">
+          <a class="post-action-btn btn btn--default" href="#" aria-label="Trở lại đầu trang">
         
           <i class="fa fa-list" aria-hidden="true"></i>
         </a>
@@ -808,7 +819,7 @@ if (!doNotTrack) {
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="Mục lục">
+          <a class="post-action-btn btn btn--default" href="#" aria-label="Trở lại đầu trang">
         
           <i class="fa fa-list" aria-hidden="true"></i>
         </a>

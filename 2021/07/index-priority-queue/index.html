@@ -352,7 +352,23 @@ if (!doNotTrack) {
           <div class="post-content markdown">
             <div class="main-content-wrap">
               <p>Ở bài viết <a href="https://chidokun.github.io/2021/07/priority-queue/">Priority Queue và những cách cài đặt</a>, mình đã giới thiệu qua cấu trúc Priority Queue, những đặc trưng và cách cài đặt. Tuy nhiên trong một số trường hợp, chúng ta sẽ có nhu cầu cập nhật hoặc xóa phần tử khỏi Queue thông qua một index. Trong bài viết này chúng ta sẽ cùng cải tiến Priority Queue để có thể thực hiện các chức năng trên.</p>
-<!--toc-->
+<h1 id="table-of-contents">Mục lục</h1>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-ý-tưởng-và-api">1. Ý tưởng và API</a></li>
+    <li><a href="#2-cài-đặt">2. Cài đặt</a>
+      <ul>
+        <li><a href="#21-các-thao-tác-cơ-bản">2.1. Các thao tác cơ bản</a></li>
+        <li><a href="#22-insert-và-change">2.2. Insert và Change</a></li>
+        <li><a href="#23-thao-tác-xóa">2.3. Thao tác xóa</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-tổng-quát-hóa-phép-so-sánh">3. Tổng quát hóa phép so sánh</a></li>
+    <li><a href="#4-độ-phức-tạp">4. Độ phức tạp</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+
 <h1 id="1-ý-tưởng-và-api">1. Ý tưởng và API</h1>
 <p>Index Priority Queue cũng là một Priority Queue nhưng hỗ trợ thêm tính năng tham chiếu đến một phần tử trong queue thông qua index.</p>
 <p>Các phương thức giao tiếp với bên ngoài của <code>IndexPriorityQueue</code> có thể được định nghĩa dưới dạng interface như sau:</p>
@@ -647,7 +663,7 @@ public IndexPQ(int maxSize, Comparator&lt;T&gt; comparator) {
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="Mục lục">
+          <a class="post-action-btn btn btn--default" href="#" aria-label="Trở lại đầu trang">
         
           <i class="fa fa-list" aria-hidden="true"></i>
         </a>
@@ -762,7 +778,7 @@ public IndexPQ(int maxSize, Comparator&lt;T&gt; comparator) {
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="Mục lục">
+          <a class="post-action-btn btn btn--default" href="#" aria-label="Trở lại đầu trang">
         
           <i class="fa fa-list" aria-hidden="true"></i>
         </a>

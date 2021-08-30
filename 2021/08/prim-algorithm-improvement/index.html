@@ -356,7 +356,19 @@ if (!doNotTrack) {
           <div class="post-content markdown">
             <div class="main-content-wrap">
               <p>Ở phần trước <a href="https://chidokun.github.io/2021/07/prim-algorithm-implement/">Thuật toán Prim: Cài đặt thuật toán</a> chúng ta đã tìm hiểu qua cách cài đặt thuật toán Prim dựa vào Priority Queue. Tuy nhiên, có một nhược điểm là phải duyệt các cạnh không hợp lệ trong queue. Do vậy, trong bài này chúng ta sẽ tối ưu cách cài đặt thuật toán Prim ở bài trước bằng cách sử dụng Index Priority Queue.</p>
-<!--toc-->
+<h1 id="table-of-contents">Mục lục</h1>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-ý-tưởng">1. Ý tưởng</a></li>
+    <li><a href="#2-từng-bước-chạy-thuật-toán">2. Từng bước chạy thuật toán</a></li>
+    <li><a href="#3-cài-đặt-thuật-toán">3. Cài đặt thuật toán.</a>
+      <ul>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
 <h1 id="1-ý-tưởng">1. Ý tưởng</h1>
 <p>Ở phiên bản trước, chúng ta lấy ra cạnh nhỏ nhất bằng Min Priority Queue. Tất cả các cạnh được đẩy vào Priority Queue để rồi sau đó sẽ phải xử lý những cạnh thừa. Trong bước tối ưu này, Index Priority Queue sẽ chỉ chứa cạnh tối ưu nhất ở đỉnh đích, nếu có cạnh nào tối ưu hơn cạnh đó thì cập nhật trực tiếp vào queue. Do đó sẽ không phải xử lý cạnh thừa nữa.</p>
 <p>Các bước của thuật toán như sau:</p>
@@ -849,7 +861,7 @@ Weight: 12.6
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="Mục lục">
+          <a class="post-action-btn btn btn--default" href="#" aria-label="Trở lại đầu trang">
         
           <i class="fa fa-list" aria-hidden="true"></i>
         </a>
@@ -964,7 +976,7 @@ Weight: 12.6
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="Mục lục">
+          <a class="post-action-btn btn btn--default" href="#" aria-label="Trở lại đầu trang">
         
           <i class="fa fa-list" aria-hidden="true"></i>
         </a>

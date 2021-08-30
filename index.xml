@@ -266,6 +266,15 @@
     </item>
     
     <item>
+      <title>Danh sách liên kết vòng và một số thao tác</title>
+      <link>https://chidokun.github.io/2015/08/circular-linked-list/</link>
+      <pubDate>Wed, 19 Aug 2015 21:04:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/08/circular-linked-list/</guid>
+      <description>&lt;p&gt;Chúng ta cùng tìm hiểu một cấu trúc dữ liệu cũng khá hữu ích là Danh sách liên kết vòng (Circular Linked List). Nó biểu diễn một cách tự nhiên các cấu trúc dạng tròn như các góc của đa giác, v.v&amp;hellip; DSLK vòng có hai dạng thường thấy là dạng &lt;em&gt;vòng đơn&lt;/em&gt; và &lt;em&gt;vòng kép&lt;/em&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Danh sách liên kết kép và các thao tác cơ bản</title>
       <link>https://chidokun.github.io/2015/08/doubly-linked-list/</link>
       <pubDate>Mon, 17 Aug 2015 22:25:00 +0700</pubDate>

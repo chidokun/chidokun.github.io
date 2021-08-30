@@ -7,12 +7,12 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Tập tành crawl dữ liệu product của Tiki (Phần 2)",
+  "headline": "Danh sách liên kết vòng và một số thao tác",
   
-  "image": "https://chidokun.github.io/thumbnails/crawl-tiki.png",
+  "image": "https://chidokun.github.io/thumbnails/heap.png",
   
-  "datePublished": "2021-01-30T12:28:27+07:00",
-  "dateModified": "2021-01-30T12:28:27+07:00",
+  "datePublished": "2015-08-19T21:04:00+07:00",
+  "dateModified": "2015-08-19T21:04:00+07:00",
   "author": {
     "@type": "Person",
     "name": "Nguyễn Tuấn",
@@ -22,7 +22,7 @@
   },
   "mainEntityOfPage": { 
     "@type": "WebPage",
-    "@id": "https:\/\/chidokun.github.io\/2021\/01\/crawl-tiki-products-p2\/" 
+    "@id": "https:\/\/chidokun.github.io\/2015\/08\/circular-linked-list\/" 
   },
   "publisher": {
     "@type": "Organization",
@@ -34,8 +34,8 @@
     }
     
   },
-  "description": "Qua một khoảng thời gian dài, nhiều bạn feedback với mình là code trong bài viết Tập tành crawl dữ liệu product của Tiki không thể chạy được nữa. Không bất ngờ lắm với vấn đề này, mình sẽ hướng dẫn các bạn lấy lại dữ liệu về sản phẩm trên Tiki.\nNhớ đọc lại bài viết Tập tành crawl dữ liệu product của Tiki để hiểu ý tưởng nhé các bạn.\n",
-  "keywords": ["crawl, cào dữ liệu, python", "development, programming, chidokun, lập trình"]
+  "description": "Chúng ta cùng tìm hiểu một cấu trúc dữ liệu cũng khá hữu ích là Danh sách liên kết vòng (Circular Linked List). Nó biểu diễn một cách tự nhiên các cấu trúc dạng tròn như các góc của đa giác, v.v\u0026hellip; DSLK vòng có hai dạng thường thấy là dạng vòng đơn và vòng kép.\n",
+  "keywords": ["danh sách liên kết vòng, c/c++", "development, programming, chidokun, lập trình"]
 }
 
 </script>
@@ -44,54 +44,40 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Hugo 0.87.0 with theme Tranquilpeak 0.5.0-BETA">
 <meta name="author" content="Nguyễn Tuấn">
-<meta name="keywords" content="crawl, cào dữ liệu, python, development, programming, chidokun, lập trình">
-<meta name="description" content="Qua một khoảng thời gian dài, nhiều bạn feedback với mình là code trong bài viết Tập tành crawl dữ liệu product của Tiki không thể chạy được nữa. Không bất ngờ lắm với vấn đề này, mình sẽ hướng dẫn các bạn lấy lại dữ liệu về sản phẩm trên Tiki.
-
-  Nhớ đọc lại bài viết Tập tành crawl dữ liệu product của Tiki để hiểu ý tưởng nhé các bạn.
-">
+<meta name="keywords" content="danh sách liên kết vòng, c/c&#43;&#43;, development, programming, chidokun, lập trình">
+<meta name="description" content="Chúng ta cùng tìm hiểu một cấu trúc dữ liệu cũng khá hữu ích là Danh sách liên kết vòng (Circular Linked List). Nó biểu diễn một cách tự nhiên các cấu trúc dạng tròn như các góc của đa giác, v.v&hellip; DSLK vòng có hai dạng thường thấy là dạng vòng đơn và vòng kép.">
 
 
-<meta property="og:description" content="Qua một khoảng thời gian dài, nhiều bạn feedback với mình là code trong bài viết Tập tành crawl dữ liệu product của Tiki không thể chạy được nữa. Không bất ngờ lắm với vấn đề này, mình sẽ hướng dẫn các bạn lấy lại dữ liệu về sản phẩm trên Tiki.
-
-  Nhớ đọc lại bài viết Tập tành crawl dữ liệu product của Tiki để hiểu ý tưởng nhé các bạn.
-">
+<meta property="og:description" content="Chúng ta cùng tìm hiểu một cấu trúc dữ liệu cũng khá hữu ích là Danh sách liên kết vòng (Circular Linked List). Nó biểu diễn một cách tự nhiên các cấu trúc dạng tròn như các góc của đa giác, v.v&hellip; DSLK vòng có hai dạng thường thấy là dạng vòng đơn và vòng kép.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Tập tành crawl dữ liệu product của Tiki (Phần 2)">
-<meta name="twitter:title" content="Tập tành crawl dữ liệu product của Tiki (Phần 2)">
-<meta property="og:url" content="https://chidokun.github.io/2021/01/crawl-tiki-products-p2/">
-<meta property="twitter:url" content="https://chidokun.github.io/2021/01/crawl-tiki-products-p2/">
+<meta property="og:title" content="Danh sách liên kết vòng và một số thao tác">
+<meta name="twitter:title" content="Danh sách liên kết vòng và một số thao tác">
+<meta property="og:url" content="https://chidokun.github.io/2015/08/circular-linked-list/">
+<meta property="twitter:url" content="https://chidokun.github.io/2015/08/circular-linked-list/">
 <meta property="og:site_name" content="Nguyễn Tuấn&#39;s Blog">
-<meta property="og:description" content="Qua một khoảng thời gian dài, nhiều bạn feedback với mình là code trong bài viết Tập tành crawl dữ liệu product của Tiki không thể chạy được nữa. Không bất ngờ lắm với vấn đề này, mình sẽ hướng dẫn các bạn lấy lại dữ liệu về sản phẩm trên Tiki.
-
-  Nhớ đọc lại bài viết Tập tành crawl dữ liệu product của Tiki để hiểu ý tưởng nhé các bạn.
-">
-<meta name="twitter:description" content="Qua một khoảng thời gian dài, nhiều bạn feedback với mình là code trong bài viết Tập tành crawl dữ liệu product của Tiki không thể chạy được nữa. Không bất ngờ lắm với vấn đề này, mình sẽ hướng dẫn các bạn lấy lại dữ liệu về sản phẩm trên Tiki.
-
-  Nhớ đọc lại bài viết Tập tành crawl dữ liệu product của Tiki để hiểu ý tưởng nhé các bạn.
-">
+<meta property="og:description" content="Chúng ta cùng tìm hiểu một cấu trúc dữ liệu cũng khá hữu ích là Danh sách liên kết vòng (Circular Linked List). Nó biểu diễn một cách tự nhiên các cấu trúc dạng tròn như các góc của đa giác, v.v&hellip; DSLK vòng có hai dạng thường thấy là dạng vòng đơn và vòng kép.">
+<meta name="twitter:description" content="Chúng ta cùng tìm hiểu một cấu trúc dữ liệu cũng khá hữu ích là Danh sách liên kết vòng (Circular Linked List). Nó biểu diễn một cách tự nhiên các cấu trúc dạng tròn như các góc của đa giác, v.v&hellip; DSLK vòng có hai dạng thường thấy là dạng vòng đơn và vòng kép.">
 <meta property="og:locale" content="vi">
 
   
-    <meta property="article:published_time" content="2021-01-30T12:28:27">
+    <meta property="article:published_time" content="2015-08-19T21:04:00">
   
   
-    <meta property="article:modified_time" content="2021-01-30T12:28:27">
+    <meta property="article:modified_time" content="2015-08-19T21:04:00">
   
   
   
     
       <meta property="article:section" content="Lập trình">
     
-      <meta property="article:section" content="Thực hành">
+      <meta property="article:section" content="Cấu trúc dữ liệu">
     
   
   
     
-      <meta property="article:tag" content="crawl">
+      <meta property="article:tag" content="c/c&#43;&#43;">
     
-      <meta property="article:tag" content="python">
-    
-      <meta property="article:tag" content="programming">
+      <meta property="article:tag" content="linked list">
     
   
 
@@ -111,18 +97,18 @@
 
 
 
-  <meta property="og:image" content="https://chidokun.github.io/thumbnails/crawl-tiki.png">
-  <meta property="twitter:image" content="https://chidokun.github.io/thumbnails/crawl-tiki.png">
+  <meta property="og:image" content="https://chidokun.github.io/thumbnails/heap.png">
+  <meta property="twitter:image" content="https://chidokun.github.io/thumbnails/heap.png">
 
 
-    <title>Tập tành crawl dữ liệu product của Tiki (Phần 2)</title>
+    <title>Danh sách liên kết vòng và một số thao tác</title>
 
     <link rel="icon" href="https://chidokun.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://chidokun.github.io/2021/01/crawl-tiki-products-p2/">
+    <link rel="canonical" href="https://chidokun.github.io/2015/08/circular-linked-list/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -324,19 +310,19 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Tập tành crawl dữ liệu product của Tiki (Phần 2)
+      Danh sách liên kết vòng và một số thao tác
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2021-01-30T12:28:27&#43;07:00">
+      <time datetime="2015-08-19T21:04:00&#43;07:00">
         
   
   
   
   
-    30 tháng 1 2021
+    19 tháng 8 2015
   
 
       </time>
@@ -348,7 +334,7 @@ if (!doNotTrack) {
     
       <a class="category-link" href="https://chidokun.github.io/categories/l%e1%ba%adp-tr%c3%acnh">Lập trình</a>, 
     
-      <a class="category-link" href="https://chidokun.github.io/categories/th%e1%bb%b1c-h%c3%a0nh">Thực hành</a>
+      <a class="category-link" href="https://chidokun.github.io/categories/c%e1%ba%a5u-tr%c3%bac-d%e1%bb%af-li%e1%bb%87u">Cấu trúc dữ liệu</a>
     
   
 
@@ -356,7 +342,7 @@ if (!doNotTrack) {
 
   <div>
   <div class="fb-like" 
-    data-href="https://chidokun.github.io/2021/01/crawl-tiki-products-p2/" 
+    data-href="https://chidokun.github.io/2015/08/circular-linked-list/" 
     data-width="" 
     data-layout="button_count" 
     data-action="like" 
@@ -367,163 +353,139 @@ if (!doNotTrack) {
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
-              <p>Qua một khoảng thời gian dài, nhiều bạn feedback với mình là code trong bài viết <a href="https://chidokun.github.io/2020/05/crawl-tiki-products/">Tập tành crawl dữ liệu product của Tiki</a> không thể chạy được nữa. Không bất ngờ lắm với vấn đề này, mình sẽ hướng dẫn các bạn lấy lại dữ liệu về sản phẩm trên Tiki.</p>
-<div class="alert info ">
-  <p>Nhớ đọc lại bài viết <a href="https://chidokun.github.io/2020/05/crawl-tiki-products/">Tập tành crawl dữ liệu product của Tiki</a> để hiểu ý tưởng nhé các bạn.</p>
-</div>
-<h1 id="table-of-contents">Mục lục</h1>
-<nav id="TableOfContents">
-  <ul>
-    <li><a href="#1-chuyện-gì-đã-xảy-ra">1. Chuyện gì đã xảy ra?</a></li>
-    <li><a href="#2-crawl-dữ-liệu-trên-tiki">2. Crawl dữ liệu trên Tiki</a></li>
-    <li><a href="#3-kết-luận">3. Kết luận</a></li>
-  </ul>
-</nav>
-
-<h1 id="1-chuyện-gì-đã-xảy-ra">1. Chuyện gì đã xảy ra?</h1>
-<p>Code cũ đã không thể lấy được dữ liệu trên trang Laptop nữa, vì vậy chúng ta cần kiểm tra lại từ đầu xem Tiki đã thay đổi những gì trên website và API của họ.</p>
-<p>Sau một hồi vọc vạch thì mình tìm thấy những thay đổi sau:</p>
-<ul>
-<li>
-<p>Trang web Laptop của Tiki đã đổi thành <code>https://tiki.vn/laptop/c8095</code> và bạn không thể cào trang này nếu không có <code>user-agent</code> trong header. Cái này thì mình có thể làm dễ ẹc :D</p>
-</li>
-<li>
-<p>Thay đổi lớn hơn đó là trang web Laptop của Tiki đã dùng API để lấy danh sách sản phẩm, và tất nhiên bạn có thể dùng API đó để lấy <code>Product ID</code> thay vì phải đọc từng trang web. Lại còn dễ dàng hơn phải không :D</p>
-</li>
-</ul>
-<p>API để lấy danh sách sản phẩm của Tiki cũng tương tự API lấy thông tin một sản phẩm:</p>
-<pre><code>https://tiki.vn/api/v2/products
+              <p>Chúng ta cùng tìm hiểu một cấu trúc dữ liệu cũng khá hữu ích là Danh sách liên kết vòng (Circular Linked List). Nó biểu diễn một cách tự nhiên các cấu trúc dạng tròn như các góc của đa giác, v.v&hellip; DSLK vòng có hai dạng thường thấy là dạng <em>vòng đơn</em> và <em>vòng kép</em>.</p>
+<p>Dạng vòng đơn thực chất là một <a href="https://chidokun.github.io/2015/07/linked-list/">danh sách liên kết đơn</a> có phần tử cuối trỏ về phần tử đầu tiên. Nó cũng có nhược điểm là chỉ duyệt từ một chiều. Dạng vòng kép cũng là một <a href="https://chidokun.github.io/2015/08/doubly-linked-list/">danh sách liên kết kép</a> có phần tử cuối trỏ về đầu và đầu trỏ ngược về cuối.</p>
+<p>Với DSLK vòng ta cần biết một vài thao tác cơ bản đủ dùng và các thao tác này sẽ được minh họa bằng C++. Bài này chỉ nói về danh sách liên kết vòng kép và bạn cũng nên sử dụng vòng kép để việc code lại đơn giản hơn.</p>
+<h1 id="tổ-chức-dữ-liệu">Tổ chức dữ liệu</h1>
+<p>Một danh sách gồm có các phần tử gọi là node, mỗi node gồm 1 biến chứa dữ liệu và một hoặc nhiều biến con trỏ để liên kết với các node khác. Dưới đây là khai báo cấu trúc node:</p>
+<pre><code class="language-cpp">struct DoublyNode
+{
+   &lt;datatype&gt; info;
+   DoublyNode* prev, *next;
+};
 </code></pre>
-<p>Việc lấy danh sách sản phẩm bằng API này có thể không trả về đầy đủ thông tin mà các bạn cần, nên nếu muốn lấy đầy đủ thông tin thì cứ gọi lại API lấy thông tin một sản phẩm.</p>
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure center" >
-  
-    <a class="fancybox" href="https://chidokun.github.io/images/post/crawl-tiki-products-p2/1.png" title="Đích thị là nó :D" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://chidokun.github.io/images/post/crawl-tiki-products-p2/1.png" style="width: 90%;" alt="Đích thị là nó :D">
-  
-    </a>
-  
-   
-    <span class="caption">Đích thị là nó :D</span>
-  
-</div>
-
-<p>Tuy nhiên, để gọi được API này thì bạn cũng cần thêm <code>user-agent</code> vào header nhé. Nếu không bạn sẽ nhận lỗi <strong>403: Permission Denied</strong>.</p>
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure center" >
-  
-    <a class="fancybox" href="https://chidokun.github.io/images/post/crawl-tiki-products-p2/2.png" title="Cũng cần `user-agent` cho API này" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://chidokun.github.io/images/post/crawl-tiki-products-p2/2.png" style="width: 90%;" alt="Cũng cần `user-agent` cho API này">
-  
-    </a>
-  
-   
-    <span class="caption">Cũng cần `user-agent` cho API này</span>
-  
-</div>
-
-<p>Tóm lại, sau khi kiểm tra lại trang Tiki, chúng ta có thể thấy:</p>
-<ul>
-<li>API lấy thông tin một sản phẩm vẫn giữ nguyên.</li>
-<li>Bạn không cần phải cào từng trang web để lấy danh sách sản phẩm nữa mà chỉ cần dùng API lấy danh sách sản phẩm là xong.</li>
-<li>API lấy danh sách sản phẩm đã trả khá nhiều dữ liệu, nếu dữ liệu đã đủ phục vụ nhu cầu của bạn thì chúng ta không cần dùng API lấy thông tin một sản phẩm. Trong hướng dẫn phía sau, mình vẫn muốn lấy đầy đủ thông tin sản phẩm nên mình vẫn sẽ sử dụng API lấy thông tin một sản phẩm.</li>
-<li>Cần có <code>user-agent</code> cho các API này.</li>
-</ul>
-<h1 id="2-crawl-dữ-liệu-trên-tiki">2. Crawl dữ liệu trên Tiki</h1>
-<p>Trước tiên, sửa lại một số xử lý. Mình sẽ vẫn lấy hết <code>Product ID</code> để lưu lại rồi lấy thông tin chi tiết từng Product ID sau.</p>
-<p>Định nghĩa header:</p>
-<pre><code class="language-python">headers = {&quot;user-agent&quot;: &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 11_1_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.96 Safari/537.36&quot;}
+<p>Do cấu trúc này ở dạng vòng nên một danh sách ta chỉ cần chọn một phần tử đầu thôi.</p>
+<pre><code class="language-cpp">struct DoublyList
+{
+   DoublyNode* head;
+};
 </code></pre>
-<p>Sửa lại tí nè, thêm header, gọi API thay vì dùng BeautifulSoup.</p>
-<pre><code class="language-python">def crawl_product_id():
-    product_list = []
-    i = 1
-    while (True):
-        print(&quot;Crawl page: &quot;, i)
-        print(laptop_page_url.format(i))
-        response = requests.get(laptop_page_url.format(i), headers=headers)
-        
-        if (response.status_code != 200):
-            break
-
-        products = json.loads(response.text)[&quot;data&quot;]
-
-        if (len(products) == 0):
-            break
-
-        for product in products:
-            product_id = str(product[&quot;id&quot;])
-            print(&quot;Product ID: &quot;, product_id)
-            product_list.append(product_id)
-
-        i += 1
-
-    return product_list, i
-
-def save_product_id(product_list=[]):
-    file = open(product_id_file, &quot;w+&quot;)
-    str = &quot;\n&quot;.join(product_list)
-    file.write(str)
-    file.close()
-    print(&quot;Save file: &quot;, product_id_file)
-
-# crawl product id
-product_list, page = crawl_product_id()
-
-print(&quot;No. Page: &quot;, page)
-print(&quot;No. Product ID: &quot;, len(product_list))
-
-# save product id for backup
-save_product_id(product_list)
+<h1 id="các-thao-tác-cơ-bản">Các thao tác cơ bản</h1>
+<h2 id="tạo-danh-sách-rỗng">Tạo danh sách rỗng</h2>
+<p>Do đặc điểm của cách cài đặt hướng cấu trúc và dùng con trỏ trong C++ nên cần thiết phải tạo danh sách rỗng bằng cách gán <code>NULL</code> cho phần tử đầu.</p>
+<pre><code class="language-cpp">void CreateList(DoublyList &amp;list)
+{
+   list.head = NULL;
+}
 </code></pre>
-<p>Sửa lại một chút, thêm header ở hàm lấy thông tin một sản phẩm.</p>
-<pre><code class="language-python">def crawl_product(product_list=[]):
-    product_detail_list = []
-    for product_id in product_list:
-        response = requests.get(product_url.format(product_id), headers=headers)
-        if (response.status_code == 200):
-            product_detail_list.append(response.text)
-            print(&quot;Crawl product: &quot;, product_id, &quot;: &quot;, response.status_code)
-    return product_detail_list
-
+<h2 id="đưa-dữ-liệu-vào-node">Đưa dữ liệu vào node</h2>
+<p>Đơn giản là đưa dữ liệu của bạn vào một node để có thể thêm vào danh sách.</p>
+<pre><code class="language-cpp">DoublyNode* CreateNode(&lt;datatype&gt; data)
+{
+   DoublyNode* node = new DoublyNode;
+   if (node)
+   {
+      node-&gt;info = data;
+      node-&gt;next = node-&gt;prev = NULL;
+   }
+   return node;
+}
 </code></pre>
-<p>Các bước còn lại tương tự như bài viết trước.</p>
-<p>Xem toàn bộ source code ở đây nhé:</p>
-<ul>
-<li><a href="https://github.com/chidokun/crawl-tiki-products">https://github.com/chidokun/crawl-tiki-products</a></li>
-</ul>
-<h1 id="3-kết-luận">3. Kết luận</h1>
-<p>Việc một hệ thống thay đổi kiến trúc, thay đổi API khiến mình không thể crawl dữ liệu được nữa là việc hết sức bình thường. Điều quan trọng ở đây là việc phân tích vấn đề để tìm ra giải pháp cho vấn đề đó.</p>
-<p><em>Trong tương lai Tiki có còn thay đổi nữa không?</em> Chắc chắn có.</p>
-<p><em>Có phải Tiki chặn crawl dữ liệu do bài viết trước hay không?</em> Có thể có mà cũng có thể không. Phần nhiều dựa vào đánh giá rủi ro của họ khi chúng ta crawl dữ liệu. Nếu rủi ro cao, họ sẽ thêm nhiều cơ chế bảo mật hơn thì chúng ta cũng phải vất vả hơn để vượt qua cơ chế đó.</p>
+<h2 id="thêm-node-vào-danh-sách">Thêm node vào danh sách</h2>
+<p>Ở đây ta chỉ cần 2 trường hợp: thêm trước 1 node và thêm sau 1 node (mà thực ra cũng chỉ cần thêm trước 1 node là đủ dùng), nhưng mình cũng code thêm hàm thêm vào cuối (có thể hiểu như thêm trước phần tử đầu).</p>
+<pre><code class="language-cpp">void AddTail(DoublyList &amp;list, DoublyNode* node)
+{
+   if (!list.head)
+   {
+      list.head = node;
+      node-&gt;next = node-&gt;prev = list.head;
+   }
+   else
+   {
+      node-&gt;prev = list.head-&gt;prev;
+      node-&gt;next = list.head;
+      list.head-&gt;prev-&gt;next = node;
+      list.head-&gt;prev = node;
+   }
+}
+
+void AddBefore(DoublyList &amp;list, DoublyNode* node, DoublyNode* before)
+{
+   if (!before)
+   {
+      list.head = node;
+      node-&gt;next = node-&gt;prev = list.head;
+   }
+   else
+   {
+      node-&gt;prev = before-&gt;prev;
+      node-&gt;next = before;
+      before-&gt;prev-&gt;next = node;
+      before-&gt;prev = node;
+   }
+}
+
+void AddAfter(DoublyList &amp;list, DoublyNode* node, DoublyNode* after)
+{
+   if (!after)
+   {
+      list.head = node;
+      node-&gt;next = node-&gt;prev = list.head;
+   }
+   else
+   {
+      node-&gt;prev = after;
+      node-&gt;next = after-&gt;next;
+      after-&gt;next-&gt;prev = node;
+      after-&gt;next = node;
+   }
+}
+</code></pre>
+<h2 id="duyệt-danh-sách">Duyệt danh sách</h2>
+<p>Duyệt là đến từng phần tử để thực hiện thao tác nào đó. Trong DSLK vòng phải có một điều kiện dừng nào đó để dừng duyệt (nếu không nó cứ đi lòng vòng). Cái này mình không nói cụ thể ở đây mà tùy trường hợp cụ thể điều kiện dừng sẽ khác nhau.</p>
+<pre><code class="language-cpp">void Browse(DoublyList list)
+{
+   for (DoublyNode* i = list.head; &lt;condition&gt;; i=i-&gt;next)
+   {
+      ///
+   }
+}
+</code></pre>
+<h2 id="xóa-phần-tử-và-danh-sách">Xóa phần tử và danh sách</h2>
+<p>Ở đây ta chỉ quan tâm việc xóa một phần tử cụ thể và xóa danh sách.</p>
+<pre><code class="language-cpp">void RemoveKey(DoublyList &amp;list, int key)
+{
+   DoublyNode *i = list.head;
+   do
+   {
+      if (i-&gt;info == key)
+      {
+         i-&gt;prev = i-&gt;next;
+         i-&gt;next = i-&gt;prev;
+         if (i == list.head)
+            list.head = NULL;
+         delete i;
+         break;
+      }
+      i = i-&gt;next;
+   } while (i != list.head);
+}
+
+void RemoveList(DoublyList &amp;list)
+{
+   DoublyNode *i = NULL;
+   do 
+   {
+      i = list.head;
+      list.head-&gt;prev-&gt;next = list.head-&gt;next;
+      list.head-&gt;next-&gt;prev = list.head-&gt;next;
+      list.head = list.head-&gt;next;
+      delete i;
+      if (!i) list.head = NULL;
+   } while (!list.head)
+}
+</code></pre>
+<p>Các thao tác cơ bản này đã đủ dùng với danh sách liên kết vòng. Tuy nhiên các cài đặt trên chỉ là cài đặt mẫu, bạn cần phải cài đặt linh động hơn trong một số thao tác để giải quyết bài toán nhanh hơn.</p>
               
 
             </div>
@@ -536,11 +498,9 @@ save_product_id(product_list)
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/crawl/">crawl</a>
+  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/c/c&#43;&#43;/">c/c&#43;&#43;</a>
 
-  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/python/">python</a>
-
-  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/programming/">programming</a>
+  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/linked-list/">linked list</a>
 
                   </div>
                 
@@ -553,7 +513,7 @@ save_product_id(product_list)
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/02/box-and-whisker-plot/" data-tooltip="Biểu diễn dữ liệu với Box and Whisker Plot" aria-label="Tiếp: Biểu diễn dữ liệu với Box and Whisker Plot">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2019/12/query-with-javascript-ep1/" data-tooltip="Truy vấn với JavaScript (Phần 1)" aria-label="Tiếp: Truy vấn với JavaScript (Phần 1)">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -561,7 +521,7 @@ save_product_id(product_list)
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2020/07/logistics-problem/" data-tooltip="Logistics Problem (Shopee Code League 2020)" aria-label="Trước: Logistics Problem (Shopee Code League 2020)">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/08/doubly-linked-list/" data-tooltip="Danh sách liên kết kép và các thao tác cơ bản" aria-label="Trước: Danh sách liên kết kép và các thao tác cơ bản">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -579,13 +539,13 @@ save_product_id(product_list)
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/01/crawl-tiki-products-p2/" title="Chia sẻ với %s Facebook" aria-label="Chia sẻ với %s Facebook">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/08/circular-linked-list/" title="Chia sẻ với %s Facebook" aria-label="Chia sẻ với %s Facebook">
               <i class="fab fa-facebook" aria-hidden="true"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/01/crawl-tiki-products-p2/" title="Chia sẻ với %s Twitter" aria-label="Chia sẻ với %s Twitter">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/08/circular-linked-list/" title="Chia sẻ với %s Twitter" aria-label="Chia sẻ với %s Twitter">
               <i class="fab fa-twitter" aria-hidden="true"></i>
             </a>
           </li>
@@ -614,8 +574,8 @@ save_product_id(product_list)
             <div class="comment-box">
                 <textarea name="fields[comment]" class="comment-input-control comment-input-animated" placeholder="Comment (markdown is accepted) *" required rows="3"></textarea>
                 <div class="comment-box-tail">
-                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2021/01/crawl-tiki-products-p2/#comment-submitted">
-                    <input type="hidden" name="options[slug]" value="crawl-tiki-products-p2">
+                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2015/08/circular-linked-list/#comment-submitted">
+                    <input type="hidden" name="options[slug]" value="circular-linked-list">
                     <input type="text" name="fields[name]" class="post-comment-field" placeholder="Name *" required/>
                     <input type="email" name="fields[email]" class="post-comment-field" placeholder="Email address (will not be public) *" required/>
                     <input type="hidden" id="comment-parent" name="fields[reply_to]" value="">
@@ -668,7 +628,7 @@ save_product_id(product_list)
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/02/box-and-whisker-plot/" data-tooltip="Biểu diễn dữ liệu với Box and Whisker Plot" aria-label="Tiếp: Biểu diễn dữ liệu với Box and Whisker Plot">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2019/12/query-with-javascript-ep1/" data-tooltip="Truy vấn với JavaScript (Phần 1)" aria-label="Tiếp: Truy vấn với JavaScript (Phần 1)">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -676,7 +636,7 @@ save_product_id(product_list)
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2020/07/logistics-problem/" data-tooltip="Logistics Problem (Shopee Code League 2020)" aria-label="Trước: Logistics Problem (Shopee Code League 2020)">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2015/08/doubly-linked-list/" data-tooltip="Danh sách liên kết kép và các thao tác cơ bản" aria-label="Trước: Danh sách liên kết kép và các thao tác cơ bản">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -694,13 +654,13 @@ save_product_id(product_list)
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/01/crawl-tiki-products-p2/" title="Chia sẻ với %s Facebook" aria-label="Chia sẻ với %s Facebook">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2015/08/circular-linked-list/" title="Chia sẻ với %s Facebook" aria-label="Chia sẻ với %s Facebook">
               <i class="fab fa-facebook" aria-hidden="true"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/01/crawl-tiki-products-p2/" title="Chia sẻ với %s Twitter" aria-label="Chia sẻ với %s Twitter">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2015/08/circular-linked-list/" title="Chia sẻ với %s Twitter" aria-label="Chia sẻ với %s Twitter">
               <i class="fab fa-twitter" aria-hidden="true"></i>
             </a>
           </li>
@@ -725,13 +685,13 @@ save_product_id(product_list)
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2021%2F01%2Fcrawl-tiki-products-p2%2F" aria-label="Chia sẻ với %s Facebook">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2015%2F08%2Fcircular-linked-list%2F" aria-label="Chia sẻ với %s Facebook">
           <i class="fab fa-facebook" aria-hidden="true"></i><span>Chia sẻ với Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2021%2F01%2Fcrawl-tiki-products-p2%2F" aria-label="Chia sẻ với %s Twitter">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2015%2F08%2Fcircular-linked-list%2F" aria-label="Chia sẻ với %s Twitter">
           <i class="fab fa-twitter" aria-hidden="true"></i><span>Chia sẻ với Twitter</span>
         </a>
       </li>

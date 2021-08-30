@@ -352,7 +352,20 @@ if (!doNotTrack) {
           <div class="post-content markdown">
             <div class="main-content-wrap">
               <p><em>Heap</em> được ứng dụng khá nhiều trong các cấu trúc dữ liệu và giải thuật. Nếu bạn đã nghe qua Heap sort thì chắc chắn sẽ làm quen với khái niệm này. Ngoài ra, <em>Heap</em> cũng còn được ứng dụng trong Prority Queue - một cấu trúc dữ liệu hoạt động theo cơ chế vào trước ra trước. Bài viết này sẽ note một số ý chính về <em>Heap</em>.</p>
-<!--toc-->
+<h1 id="table-of-contents">Mục lục</h1>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-giới-thiệu">1. Giới thiệu</a></li>
+    <li><a href="#2-hiệu-chỉnh-heap">2. Hiệu chỉnh Heap</a>
+      <ul>
+        <li><a href="#21-bottom-up">2.1. Bottom-up</a></li>
+        <li><a href="#22-top-down">2.2. Top-down</a></li>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
 <h1 id="1-giới-thiệu">1. Giới thiệu</h1>
 <p><em>Binary Heap</em> là một <em>cây nhị phân đầy đủ</em> mà mỗi nút gốc đều <em>lớn hơn</em> (hoặc <em>nhỏ hơn</em>) hai nút con của nó. <em>Heap</em> có nút gốc lớn hơn hai nút con còn gọi là <em>Max Heap</em> (ngược lại là <em>Min Heap</em>).</p>
 <p>Ngoài ra cũng có thể dùng cây tam phân làm Heap thì lúc này nó sẽ được gọi là <em>Ternary Heap</em>. Bài viết này chủ yếu đề cập đến <em>Binary Heap</em> và sẽ gọi là <em>Heap</em> cho ngắn gọn.</p>
@@ -619,7 +632,7 @@ public void sinkRecursively(int []a, int n, int i) {
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="Mục lục">
+          <a class="post-action-btn btn btn--default" href="#" aria-label="Trở lại đầu trang">
         
           <i class="fa fa-list" aria-hidden="true"></i>
         </a>
@@ -734,7 +747,7 @@ public void sinkRecursively(int []a, int n, int i) {
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="Mục lục">
+          <a class="post-action-btn btn btn--default" href="#" aria-label="Trở lại đầu trang">
         
           <i class="fa fa-list" aria-hidden="true"></i>
         </a>
