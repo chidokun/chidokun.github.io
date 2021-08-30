@@ -26,7 +26,7 @@ Nhớ đọc lại bài viết [Tập tành crawl dữ liệu product của Tiki
 
 <!--more-->
 
-<!--toc-->
+{{< toc >}}
 
 # 1. Chuyện gì đã xảy ra?
 

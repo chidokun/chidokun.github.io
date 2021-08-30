@@ -18,7 +18,7 @@ thumbnailImagePosition: left
 
 <!--more-->
 
-<!--toc-->
+{{< toc >}}
 
 # 1. Heading 1
 

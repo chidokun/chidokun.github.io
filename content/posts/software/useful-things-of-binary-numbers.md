@@ -21,7 +21,7 @@ Xin giới thiệu đến các bạn một số điều hữu ích về số nh�
 
 <!--more-->
 
-<!--toc-->
+{{< toc >}}
 
 # 1. Hệ nhị phân
 

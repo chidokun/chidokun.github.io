@@ -19,7 +19,7 @@ thumbnailImagePosition: left
 Bài toán so sánh 2 đối tượng khác nhau có lẽ hiếm gặp hơn bài toán so sánh 2 đối tượng cùng lớp. Đối với các hệ thống Java, việc giải quyết bài toán so sánh 2 đối tượng khác nhau có phần khó hơn. Trong bài này, chúng ta cùng bàn về một số giải pháp để giải quyết bài toán so sánh 2 object khác nhau.
 
 <!--more-->
-<!--toc-->
+{{< toc >}}
 
 # 1. Vấn đề đặt ra
 

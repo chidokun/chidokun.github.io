@@ -20,7 +20,7 @@ Với những ý tưởng của thuật toán Huffman Coding ở bài viết [Th
 
 <!--more-->
 
-<!--toc-->
+{{< toc >}}
 
 # 1. Định nghĩa API
 

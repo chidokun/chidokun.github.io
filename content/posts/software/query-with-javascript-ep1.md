@@ -24,7 +24,7 @@ Một ngày đẹp trời nọ, sếp giao một cục dữ liệu và yêu cầ
 
 <!--more-->
 
-<!--toc-->
+{{< toc >}}
 
 # 1. Tại sao lại là JavaScript?
 

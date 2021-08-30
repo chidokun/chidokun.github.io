@@ -19,7 +19,7 @@ thumbnailImagePosition: left
 
 <!--more-->
 
-<!--toc-->
+{{< toc >}}
 
 # 1. Giới thiệu
 

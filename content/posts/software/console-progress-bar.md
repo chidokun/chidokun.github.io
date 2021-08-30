@@ -22,7 +22,7 @@ Là một lập trình viên làm việc khá nhiều với terminal, mình thư
 
 {{< image classes="fancybox center" thumbnail-width="100%" src="/images/post/console-progress-bar/1.gif" title="Một Progress Bar khá hay ho của Yarn">}}
 
-<!--toc-->
+{{< toc >}}
 
 # 1. Design Progress bar
 

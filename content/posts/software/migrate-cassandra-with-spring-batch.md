@@ -22,7 +22,7 @@ blabla
 
 <!--more-->
 
-<!--toc-->
+{{< toc >}}
 
 # migrate dữ liệu
 

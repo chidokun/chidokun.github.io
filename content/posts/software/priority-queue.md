@@ -20,7 +20,7 @@ Hôm nay chúng ta cùng điểm qua một cấu trúc dữ liệu thuộc dòng
 
 <!--more-->
 
-<!--toc-->
+{{< toc >}}
 
 # 1. Ý tưởng và API
 

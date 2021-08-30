@@ -25,7 +25,7 @@ Biểu đồ tròn (Pie Chart) rất hay được dùng để biểu diễn/tr�
 
 <!--more-->
 
-<!--toc-->
+{{< toc >}}
 
 # 1. Pie Chart
 

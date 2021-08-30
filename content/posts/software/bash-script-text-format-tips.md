@@ -19,7 +19,7 @@ Với dân developer thì viết script để tự động hóa một số công
 
 <!--more-->
 
-<!--toc-->
+{{< toc >}}
 
 {{< image classes="fancybox center" thumbnail-width="90%" src="/images/post/bash-script-text-format/bash-script-1.png" title="Terminal cũng có thể hiển thị màu mè thế này đây" >}}
 

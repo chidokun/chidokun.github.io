@@ -19,7 +19,7 @@ Cấu trúc **Graph** (đồ thị) có rất nhiều ứng dụng trong thực 
 
 <!--more-->
 
-<!--toc-->
+{{< toc >}}
 
 # 1. Đồ thị
 

@@ -8,6 +8,7 @@ categories:
 - "Cấu trúc dữ liệu"
 tags:
 - "c/c++"
+- "linked list"
 keywords:
 - "danh sách liên kết đơn"
 - "c/c++"

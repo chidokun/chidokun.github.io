@@ -22,7 +22,7 @@ Hôm nay sẽ là một số ghi chú về thuật toán Prim dùng để giải
 
 <!--more-->
 
-<!--toc-->
+{{< toc >}}
 
 # 1. Ý tưởng
 

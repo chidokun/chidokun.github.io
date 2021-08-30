@@ -25,7 +25,7 @@ thumbnailImagePosition: left
 
 <!--more-->
 
-<!--toc-->
+{{< toc >}}
 
 Lần này, chúng ta sử dụng các tập dữ liệu mã số sinh viên sau:
 

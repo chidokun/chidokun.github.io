@@ -22,7 +22,7 @@ thumbnailImagePosition: left
 
 <!--more-->
 
-<!--toc-->
+{{< toc >}}
 
 # 1. Ý tưởng và API
 

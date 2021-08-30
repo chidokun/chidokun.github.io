@@ -22,7 +22,7 @@ Cấu trúc **Graph** (đồ thị) gồm tập các đỉnh kết nối với n
 
 <!--more-->
 
-<!--toc-->
+{{< toc >}}
 
 # 1. Ý tưởng
 

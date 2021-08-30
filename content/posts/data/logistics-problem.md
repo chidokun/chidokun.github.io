@@ -21,7 +21,7 @@ thumbnailImagePosition: left
 
 <!--more-->
 
-<!--toc-->
+{{< toc >}}
 
 # 1. Quan sát dữ liệu
 

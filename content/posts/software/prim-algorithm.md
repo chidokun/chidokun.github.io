@@ -24,7 +24,7 @@ Hôm nay mình xin chia sẻ một số ghi chú về *Thuật toán Prim* dùng
 
 <!--more-->
 
-<!--toc-->
+{{< toc >}}
 
 # 1. Ý tưởng
 

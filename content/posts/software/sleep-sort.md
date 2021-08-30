@@ -21,7 +21,7 @@ Nghe tên có thể bạn nghĩ rằng khi dùng thuật toán này thì chúng 
 
 <!--more-->
 
-<!--toc-->
+{{< toc >}}
 
 # 1. Giới thiệu
 

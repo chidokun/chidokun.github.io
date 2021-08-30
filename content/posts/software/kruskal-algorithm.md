@@ -24,7 +24,7 @@ Ngoài [thuật toán Prim]({{< ref "/posts/software/prim-algorithm-implement" >
 
 <!--more-->
 
-<!--toc-->
+{{< toc >}}
 
 # 1. Ý tưởng
 

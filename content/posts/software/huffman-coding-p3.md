@@ -20,7 +20,7 @@ thumbnailImagePosition: left
 
 <!--more-->
 
-<!--toc-->
+{{< toc >}}
 
 # 1. Thuật toán giải mã
 

@@ -20,7 +20,7 @@ Nén dữ liệu là phương pháp loại bỏ những thông tin dư thừa tr
 
 <!--more-->
 
-<!--toc-->
+{{< toc >}}
 
 # 1. Nén dữ liệu
 

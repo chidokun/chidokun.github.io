@@ -26,7 +26,7 @@ Qua một khoảng thời gian dài, nhiều bạn feedback với mình là code
 
 <!--more-->
 
-<!--toc-->
+{{< toc >}}
 
 # 1. Inspect Tiki và xác định thông tin cần lấy
 

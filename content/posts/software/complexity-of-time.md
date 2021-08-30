@@ -23,7 +23,7 @@ Bàn về độ phức tạp thời gian, mình vẫn thường hay nghe các b�
 
 <p style="text-align:center"><img style="display:inline-block" src="https://media.giphy.com/media/3oEjI5VtIhHvK37WYo/giphy.gif" width="400" /></p>
 
-<!--toc-->
+{{< toc >}}
 
 # 1. Chút lý thuyết
 

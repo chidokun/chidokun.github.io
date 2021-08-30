@@ -22,7 +22,7 @@ Tình cờ thấy một quyển sách trong một group về công nghệ trên 
 
 <!--more-->
 
-<!--toc-->
+{{< toc >}}
 
 {{< image classes="fancybox center" thumbnail-width="50%" src="https://static.epub.vn/epubvn-image/original-cover1566622735524-blob.jpg" title="Deep Work: Làm ra làm, chơi ra chơi" >}}
 

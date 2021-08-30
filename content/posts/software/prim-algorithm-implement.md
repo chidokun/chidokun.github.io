@@ -24,7 +24,7 @@ Bài viết [Thuật toán Prim: Tìm cây khung nhỏ nhất]({{< ref "/posts/s
 
 <!--more-->
 
-<!--toc-->
+{{< toc >}}
 
 # 1. Nhắc lại thuật toán
 
