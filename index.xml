@@ -266,6 +266,24 @@
     </item>
     
     <item>
+      <title>Hướng dẫn sử dụng tính năng Debug trong Visual Studio</title>
+      <link>https://chidokun.github.io/2015/11/visual-studio-debug/</link>
+      <pubDate>Mon, 09 Nov 2015 15:22:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/11/visual-studio-debug/</guid>
+      <description>&lt;p&gt;Debug là một công việc mà hầu hết người lập trình đều phải thực hiện để tìm lỗi trong phần mềm của mình. Visual Studio đã hỗ trợ khá mạnh tính năng này để giúp đơn giản hơn trong việc tìm lỗi sản phẩm. Trong bài viết này mình sẽ hướng dẫn các bạn sử dụng tính năng Debug trên phiên bản mới nhất của Visual Studio, hiện tại là bản 2015. Các thao tác sẽ được thực hiện trên Visual Studio Enterprise 2015.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Cài đặt và sử dụng bộ gõ tiếng Nhật trên Windows 10</title>
+      <link>https://chidokun.github.io/2015/08/japanese-keyboard-install/</link>
+      <pubDate>Fri, 21 Aug 2015 23:02:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2015/08/japanese-keyboard-install/</guid>
+      <description>&lt;p&gt;Cũng giống như trên Windows 8.1 hay Windows 7, bộ gõ tiếng Nhật Microsoft IME được tích hợp sẵn trong hệ điều hành và bạn có thể bật lên để dùng một cách dễ dàng. Trong bài viết này mình sẽ hướng dẫn các bạn cài đặt bộ gõ này và một vài cách thức sử dụng nó.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Danh sách liên kết vòng và một số thao tác</title>
       <link>https://chidokun.github.io/2015/08/circular-linked-list/</link>
       <pubDate>Wed, 19 Aug 2015 21:04:00 +0700</pubDate>
