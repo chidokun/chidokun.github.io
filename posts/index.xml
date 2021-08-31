@@ -266,6 +266,24 @@
     </item>
     
     <item>
+      <title>Những mẹo sử dụng Visual Studio một cách hiệu quả</title>
+      <link>https://chidokun.github.io/2016/09/visual-studio-tips/</link>
+      <pubDate>Wed, 21 Sep 2016 01:50:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2016/09/visual-studio-tips/</guid>
+      <description>&lt;p&gt;Visual Studio là một IDE rất mạnh mẽ của Microsoft, nó hỗ trợ rất nhiều tính năng từ cơ bản đến nâng cao. Nếu là lần đầu dùng Visual Studio chắc chắn bạn sẽ phải choáng ngợp trước những chức năng của nó. Những mẹo sau đây sẽ giúp bạn làm việc với Visual Studio 2015 hiệu quả hơn.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Cài đặt và thiết lập Java trên Windows</title>
+      <link>https://chidokun.github.io/2016/09/install-java-windows/</link>
+      <pubDate>Mon, 19 Sep 2016 23:20:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2016/09/install-java-windows/</guid>
+      <description>&lt;p&gt;Để cài đặt Java dành cho phát triển ứng dụng, bạn cần cài đặt JDK (Java Development Kit). Bộ JDK gồm các công cụ hữu ích để phát triển các ứng dụng được viết trên nền tảng Java.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Hướng dẫn sử dụng tính năng Debug trong Visual Studio</title>
       <link>https://chidokun.github.io/2015/11/visual-studio-debug/</link>
       <pubDate>Mon, 09 Nov 2015 15:22:00 +0700</pubDate>

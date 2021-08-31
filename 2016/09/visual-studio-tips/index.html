@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    
+    <script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Những mẹo sử dụng Visual Studio một cách hiệu quả",
+  
+  "image": "https://chidokun.github.io/images/post/software/visual-studio-tips/1.jpg",
+  
+  "datePublished": "2016-09-21T01:50:00+07:00",
+  "dateModified": "2016-09-21T01:50:00+07:00",
+  "author": {
+    "@type": "Person",
+    "name": "Nguyễn Tuấn",
+    
+    "image": "https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50"
+    
+  },
+  "mainEntityOfPage": { 
+    "@type": "WebPage",
+    "@id": "https:\/\/chidokun.github.io\/2016\/09\/visual-studio-tips\/" 
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Nguyễn Tuấn's Blog",
+    
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50"
+    }
+    
+  },
+  "description": "Visual Studio là một IDE rất mạnh mẽ của Microsoft, nó hỗ trợ rất nhiều tính năng từ cơ bản đến nâng cao. Nếu là lần đầu dùng Visual Studio chắc chắn bạn sẽ phải choáng ngợp trước những chức năng của nó. Những mẹo sau đây sẽ giúp bạn làm việc với Visual Studio 2015 hiệu quả hơn.\n",
+  "keywords": ["debug, visual studio", "development, programming, chidokun, lập trình"]
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.87.0 with theme Tranquilpeak 0.5.0-BETA">
+<meta name="author" content="Nguyễn Tuấn">
+<meta name="keywords" content="debug, visual studio, development, programming, chidokun, lập trình">
+<meta name="description" content="Visual Studio là một IDE rất mạnh mẽ của Microsoft, nó hỗ trợ rất nhiều tính năng từ cơ bản đến nâng cao. Nếu là lần đầu dùng Visual Studio chắc chắn bạn sẽ phải choáng ngợp trước những chức năng của nó. Những mẹo sau đây sẽ giúp bạn làm việc với Visual Studio 2015 hiệu quả hơn.">
+
+
+<meta property="og:description" content="Visual Studio là một IDE rất mạnh mẽ của Microsoft, nó hỗ trợ rất nhiều tính năng từ cơ bản đến nâng cao. Nếu là lần đầu dùng Visual Studio chắc chắn bạn sẽ phải choáng ngợp trước những chức năng của nó. Những mẹo sau đây sẽ giúp bạn làm việc với Visual Studio 2015 hiệu quả hơn.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Những mẹo sử dụng Visual Studio một cách hiệu quả">
+<meta name="twitter:title" content="Những mẹo sử dụng Visual Studio một cách hiệu quả">
+<meta property="og:url" content="https://chidokun.github.io/2016/09/visual-studio-tips/">
+<meta property="twitter:url" content="https://chidokun.github.io/2016/09/visual-studio-tips/">
+<meta property="og:site_name" content="Nguyễn Tuấn&#39;s Blog">
+<meta property="og:description" content="Visual Studio là một IDE rất mạnh mẽ của Microsoft, nó hỗ trợ rất nhiều tính năng từ cơ bản đến nâng cao. Nếu là lần đầu dùng Visual Studio chắc chắn bạn sẽ phải choáng ngợp trước những chức năng của nó. Những mẹo sau đây sẽ giúp bạn làm việc với Visual Studio 2015 hiệu quả hơn.">
+<meta name="twitter:description" content="Visual Studio là một IDE rất mạnh mẽ của Microsoft, nó hỗ trợ rất nhiều tính năng từ cơ bản đến nâng cao. Nếu là lần đầu dùng Visual Studio chắc chắn bạn sẽ phải choáng ngợp trước những chức năng của nó. Những mẹo sau đây sẽ giúp bạn làm việc với Visual Studio 2015 hiệu quả hơn.">
+<meta property="og:locale" content="vi">
+
+  
+    <meta property="article:published_time" content="2016-09-21T01:50:00">
+  
+  
+    <meta property="article:modified_time" content="2016-09-21T01:50:00">
+  
+  
+  
+    
+      <meta property="article:section" content="Lập trình">
+    
+      <meta property="article:section" content="Thủ thuật">
+    
+  
+  
+    
+      <meta property="article:tag" content="visual studio">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
+  <meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
+
+
+
+
+
+  <meta property="og:image" content="https://chidokun.github.io/images/post/software/visual-studio-tips/1.jpg">
+  <meta property="twitter:image" content="https://chidokun.github.io/images/post/software/visual-studio-tips/1.jpg">
+
+
+    <title>Những mẹo sử dụng Visual Studio một cách hiệu quả</title>
+
+    <link rel="icon" href="https://chidokun.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://chidokun.github.io/2016/09/visual-studio-tips/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://chidokun.github.io/css/style-x4v5aep1xln8tw4u8b4utrzzm45rcnnq6emr4myqn5eka2yri56y1t7q.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" integrity="sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei">
+      
+    
+      
+        <link rel="stylesheet"  href="https://chidokun.github.io/styles/styles.css">
+      
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-64965138-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+    
+    <meta name="google-site-verification" content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,700;1,900&subset=cyrillic,cyrillic-ext,latin-ext&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://chidokun.github.io/" aria-label="Tới trang chủ">Nguyễn Tuấn&#39;s Blog</a>
+  </div>
+  
+    
+      <a class="header-right-icon st-search-show-outputs"
+         href="https://chidokun.github.io/#search" aria-label="Mở liên kết: /#search">
+    
+    
+      <i class="fa fa-lg fa-search"></i>
+    
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://chidokun.github.io/#about" aria-label="Tìm hiểu thêm về tác giả">
+          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện" />
+        </a>
+        <h4 class="sidebar-profile-name">Nguyễn Tuấn</h4>
+        
+          <h5 class="sidebar-profile-bio">A guy with passionate at the code</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Trang chủ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/categories/l%E1%BA%ADp-tr%C3%ACnh/" title="Lập trình">
+    
+      <i class="sidebar-button-icon far fa-lg fa-code" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Lập trình</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/categories/d%E1%BB%AF-li%E1%BB%87u/" title="Dữ liệu">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-database" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Dữ liệu</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/categories/cu%E1%BB%99c-s%E1%BB%91ng/" title="Cuộc sống">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-pagelines" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Cuộc sống</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Danh mục</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Thẻ thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/archives" title="Archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Lưu trữ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/#about" title="About">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Thông tin</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/chidokun" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/index.xml" title="RSS">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Những mẹo sử dụng Visual Studio một cách hiệu quả
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2016-09-21T01:50:00&#43;07:00">
+        
+  
+  
+  
+  
+    21 tháng 9 2016
+  
+
+      </time>
+    
+    
+  
+  
+    <span>mục</span>
+    
+      <a class="category-link" href="https://chidokun.github.io/categories/l%e1%ba%adp-tr%c3%acnh">Lập trình</a>, 
+    
+      <a class="category-link" href="https://chidokun.github.io/categories/th%e1%bb%a7-thu%e1%ba%adt">Thủ thuật</a>
+    
+  
+
+  </div>
+
+  <div>
+  <div class="fb-like" 
+    data-href="https://chidokun.github.io/2016/09/visual-studio-tips/" 
+    data-width="" 
+    data-layout="button_count" 
+    data-action="like" 
+    data-size="large" 
+    data-share="false"></div>
+</div>
+</div>
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <p>Visual Studio là một IDE rất mạnh mẽ của Microsoft, nó hỗ trợ rất nhiều tính năng từ cơ bản đến nâng cao. Nếu là lần đầu dùng Visual Studio chắc chắn bạn sẽ phải choáng ngợp trước những chức năng của nó. Những mẹo sau đây sẽ giúp bạn làm việc với Visual Studio 2015 hiệu quả hơn.</p>
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/visual-studio-tips/1.jpg" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/visual-studio-tips/1.jpg" style="width: 80%;">
+  
+    </a>
+  
+  
+</div>
+
+<h1 id="chia-trình-soạn-thành-nhiều-phần">Chia trình soạn thành nhiều phần</h1>
+<p>Tính năng này đặc biệt hữu ích khi các bạn code trên C++. Chia màn hình thành 2 phần, một bên là khai báo class một bên cài đặt class sẽ giúp bạn đỡ tốn công chuyển qua lại rất nhiều.</p>
+<p>Để chia màn hình ta drag chuột vào tab cần chia, lúc này những ô mẫu hiện ra để ta có thể dock vào vị trí mong muốn.</p>
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/visual-studio-tips/2.png" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/visual-studio-tips/2.png" style="width: 100%;">
+  
+    </a>
+  
+  
+</div>
+
+<h1 id="hiển-thị-đánh-số-dòng-code">Hiển thị đánh số dòng code</h1>
+<p>Do chức năng báo lỗi của Visual Studio rất mạnh, nó sẽ tự giúp bạn di chuyển đến đoạn code bị lỗi nên việc hiển thị số dòng code trở nên không còn quan trọng nữa và mặc định được tắt. Tuy nhiên bạn vẫn có thể bật lên bằng cách chọn <em>Tools</em> &gt; <em>Options&hellip;</em> Trong cửa sổ Options, bên trái chọn <em>Text Editor</em> &gt; <em>All Language</em>. bên phải check vào ô <em>Line numbers</em> rồi nhấn OK để xác nhận.</p>
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/visual-studio-tips/3.png" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/visual-studio-tips/3.png" style="width: 90%;">
+  
+    </a>
+  
+  
+</div>
+
+<p>Đây là kết quả</p>
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/visual-studio-tips/4.png" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/visual-studio-tips/4.png" style="width: 70%;">
+  
+    </a>
+  
+  
+</div>
+
+<h1 id="giao-diện-tối">Giao diện tối</h1>
+<p>Visual Studio cũng hỗ trợ giao diện tối để giúp bạn làm việc vào ban đêm đỡ mỏi mắt và nhìn cũng professional hơn (==) . Tuy nhiên, mình khuyên các bạn không nên dùng giao diện tối vào ban ngày mà thay vào đó là giao diện sáng để tăng độ tương phản với môi trường.</p>
+<p>Để đổi giao diện tối, các bạn vào <em>Tools</em> &gt; <em>Options</em>&hellip; Trong cửa sổ Options, ở phần <em>Environment</em> &gt; <em>General</em>, mục <em>Color theme</em> chúng ta chọn <strong>Dark</strong>.</p>
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/visual-studio-tips/5.png" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/visual-studio-tips/5.png" style="width: 100%;">
+  
+    </a>
+  
+  
+</div>
+
+<h1 id="hiển-thị-code-map">Hiển thị Code Map</h1>
+<p>Nếu bạn đã từng sử dụng một editor khác như Sublime Text thì bạn sẽ thấy luôn có một map nhỏ phía bên phải hiển thị bao quát các dòng code trong file. Chức năng này cực kỳ hữu ích khi bạn muốn xem nhanh cấu trúc những file quá dài (như HTML chẳng hạn). Visual Studio cũng hỗ trợ chức năng này, nó sẽ biến vertical scrollbar trở thành một map mini, có thể đánh dấu vị trí lỗi cũng như preview code.</p>
+<p>Để thực hiện ta chọn <em>Tools</em> &gt; <em>Options</em>&hellip; Bên trái chọn <em>Text Editor</em> &gt; <em>All Languages</em> &gt; <em>Scroll Bars</em>. Bên phải chọn mục <strong>Use map mode for vertical scroll bar</strong> rồi nhấn <strong>OK</strong> để xác nhận.</p>
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/visual-studio-tips/6.png" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/visual-studio-tips/6.png" style="width: 90%;">
+  
+    </a>
+  
+  
+</div>
+
+<p>Kết quả hiển thị</p>
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/visual-studio-tips/7.png" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/visual-studio-tips/7.png" style="width: 90%;">
+  
+    </a>
+  
+  
+</div>
+
+<h1 id="hiển-thị-đường-căn-lề-tab">Hiển thị đường căn lề tab</h1>
+<p>Một số editor hỗ trợ hiển thị một đường dóng xuống trong các dòng code thụt vào cùng cấp bậc. Visual Studio không hỗ trợ tính năng này. Tuy nhiên bạn vẫn có thể thêm vào bằng cách sử dụng các extension trong kho Extension đồ sộ của Visual Studio.</p>
+<p>Chọn <em>Tools</em> &gt; <em>Extensions and Updates</em>, mục bên trái chọn <em>Online</em>, trong ô tìm kiếm ta gõ &ldquo;indent guides&rdquo;.  Chọn vào <strong>Indent Guides</strong> trong kết quả hiển thị rồi bấm <strong>Download</strong>.</p>
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/visual-studio-tips/8.png" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/visual-studio-tips/8.png" style="width: 90%;">
+  
+    </a>
+  
+  
+</div>
+
+<p>Sau khi download, cửa sổ cài đặt hiện lên, bấm <strong>Install</strong> là xong. Để thay đổi có hiệu lực ta chọn vào <strong>Restart Now</strong> để xem kết quả.</p>
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/visual-studio-tips/9.png" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/visual-studio-tips/9.png" style="width: 7s0%;">
+  
+    </a>
+  
+  
+</div>
+              
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/visual-studio/">visual studio</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2019/12/query-with-javascript-ep1/" data-tooltip="Truy vấn với JavaScript (Phần 1)" aria-label="Tiếp: Truy vấn với JavaScript (Phần 1)">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2016/09/install-java-windows/" data-tooltip="Cài đặt và thiết lập Java trên Windows" aria-label="Trước: Cài đặt và thiết lập Java trên Windows">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Chia sẻ bài viết này">
+            <i class="fa fa-share-alt" aria-hidden="true"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2016/09/visual-studio-tips/" title="Chia sẻ với %s Facebook" aria-label="Chia sẻ với %s Facebook">
+              <i class="fab fa-facebook" aria-hidden="true"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2016/09/visual-studio-tips/" title="Chia sẻ với %s Twitter" aria-label="Chia sẻ với %s Twitter">
+              <i class="fab fa-twitter" aria-hidden="true"></i>
+            </a>
+          </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#" aria-label="Trở lại đầu trang">
+        
+          <i class="fa fa-list" aria-hidden="true"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+  
+    <section id="comments">
+        
+        <h2 class="title"><a href="#comments">Bình luận</a></h2>
+        <form id="comment-form" class="post-new-comment" method="post" action="https://chidokun-blog-comment.herokuapp.com/v3/entry/github/chidokun/chidokun.github.io/master/comments">
+            
+            
+            <div class="comment-box">
+                <textarea name="fields[comment]" class="comment-input-control comment-input-animated" placeholder="Comment (markdown is accepted) *" required rows="3"></textarea>
+                <div class="comment-box-tail">
+                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2016/09/visual-studio-tips/#comment-submitted">
+                    <input type="hidden" name="options[slug]" value="visual-studio-tips">
+                    <input type="text" name="fields[name]" class="post-comment-field" placeholder="Name *" required/>
+                    <input type="email" name="fields[email]" class="post-comment-field" placeholder="Email address (will not be public) *" required/>
+                    <input type="hidden" id="comment-parent" name="fields[reply_to]" value="">
+                    <input type="submit" class="btn btn--primary comment-buttons btn--comment" value="BÌNH LUẬN">
+                </div>
+            </div>
+            
+            
+        </form>
+        <section class="staticman-comments post-comments">
+            
+            
+            
+    
+            
+            
+    
+            
+    
+        </section>
+
+    <div id="comment-submitted" class="dialog">
+        <h3>Cảm ơn bạn</h3>
+        <p>Your comment has been submitted and will be published once it has been approved. &#128522;</p>
+
+        <p><a href="#" class="btn btn--primary comment-buttons ok">OK</a></p>
+    </div>
+
+    
+</section>
+
+  
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 <a href="https://github.com/chidokun">Nguyễn Tuấn</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2019/12/query-with-javascript-ep1/" data-tooltip="Truy vấn với JavaScript (Phần 1)" aria-label="Tiếp: Truy vấn với JavaScript (Phần 1)">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2016/09/install-java-windows/" data-tooltip="Cài đặt và thiết lập Java trên Windows" aria-label="Trước: Cài đặt và thiết lập Java trên Windows">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Chia sẻ bài viết này">
+            <i class="fa fa-share-alt" aria-hidden="true"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2016/09/visual-studio-tips/" title="Chia sẻ với %s Facebook" aria-label="Chia sẻ với %s Facebook">
+              <i class="fab fa-facebook" aria-hidden="true"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2016/09/visual-studio-tips/" title="Chia sẻ với %s Twitter" aria-label="Chia sẻ với %s Twitter">
+              <i class="fab fa-twitter" aria-hidden="true"></i>
+            </a>
+          </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#" aria-label="Trở lại đầu trang">
+        
+          <i class="fa fa-list" aria-hidden="true"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2016%2F09%2Fvisual-studio-tips%2F" aria-label="Chia sẻ với %s Facebook">
+          <i class="fab fa-facebook" aria-hidden="true"></i><span>Chia sẻ với Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2016%2F09%2Fvisual-studio-tips%2F" aria-label="Chia sẻ với %s Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>Chia sẻ với Twitter</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện" />
+    
+    <h4 id="about-card-name">Nguyễn Tuấn</h4>
+    
+      <div id="about-card-bio">A guy with passionate at the code</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Software Engineer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        Saigon, Vietnam
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://chidokun.github.io/images/background.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://chidokun.github.io/js/script-8lglxdix2nqhalxxm2bujhkcc8cctdrd5o5axonwhfzx2zqrer5facyn8.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+  
+    <script crossorigin="anonymous" integrity="sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq" src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js"></script>
+  
+
+  
+    <script crossorigin="anonymous" integrity="sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc" src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js"></script>
+  
+
+  
+    <script src="https://chidokun.github.io/js/main.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+

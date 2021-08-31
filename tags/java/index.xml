@@ -97,5 +97,14 @@
       <description>&lt;p&gt;Cấu trúc &lt;strong&gt;Graph&lt;/strong&gt; (đồ thị) gồm tập các đỉnh kết nối với nhau qua các cạnh. &lt;strong&gt;Depth First Search&lt;/strong&gt; (DFS) là một trong những thuật toán có thể dùng để duyệt qua đồ thị.&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>Cài đặt và thiết lập Java trên Windows</title>
+      <link>https://chidokun.github.io/2016/09/install-java-windows/</link>
+      <pubDate>Mon, 19 Sep 2016 23:20:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2016/09/install-java-windows/</guid>
+      <description>&lt;p&gt;Để cài đặt Java dành cho phát triển ứng dụng, bạn cần cài đặt JDK (Java Development Kit). Bộ JDK gồm các công cụ hữu ích để phát triển các ứng dụng được viết trên nền tảng Java.&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>

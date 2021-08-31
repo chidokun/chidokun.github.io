@@ -6,7 +6,16 @@
     <description>Recent content in visual studio on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Mon, 09 Nov 2015 15:22:00 +0700</lastBuildDate><atom:link href="https://chidokun.github.io/tags/visual-studio/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 21 Sep 2016 01:50:00 +0700</lastBuildDate><atom:link href="https://chidokun.github.io/tags/visual-studio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Những mẹo sử dụng Visual Studio một cách hiệu quả</title>
+      <link>https://chidokun.github.io/2016/09/visual-studio-tips/</link>
+      <pubDate>Wed, 21 Sep 2016 01:50:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2016/09/visual-studio-tips/</guid>
+      <description>&lt;p&gt;Visual Studio là một IDE rất mạnh mẽ của Microsoft, nó hỗ trợ rất nhiều tính năng từ cơ bản đến nâng cao. Nếu là lần đầu dùng Visual Studio chắc chắn bạn sẽ phải choáng ngợp trước những chức năng của nó. Những mẹo sau đây sẽ giúp bạn làm việc với Visual Studio 2015 hiệu quả hơn.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Hướng dẫn sử dụng tính năng Debug trong Visual Studio</title>
       <link>https://chidokun.github.io/2015/11/visual-studio-debug/</link>
