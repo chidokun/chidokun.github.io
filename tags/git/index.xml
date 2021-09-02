@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on Nguyễn Tuấn&#39;s Blog</title>
+    <link>https://chidokun.github.io/tags/git/</link>
+    <description>Recent content in git on Nguyễn Tuấn&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>vi</language>
+    <lastBuildDate>Fri, 21 Oct 2016 00:28:00 +0700</lastBuildDate><atom:link href="https://chidokun.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cơ bản về Regex - Biểu thức chính quy</title>
+      <link>https://chidokun.github.io/2016/10/regex-basic/</link>
+      <pubDate>Fri, 21 Oct 2016 00:28:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2016/10/regex-basic/</guid>
+      <description>&lt;p&gt;Regular Expressions (biểu thức chính quy, viết tắt là regexp, regex hay regxp) là một chuỗi mẫu để mô tả một bộ các chuỗi khác, theo những quy tắc cú pháp nhất định. Trong lập trình Regex thường được dùng để kiểm tra sự trùng khớp cũng như tính hợp lệ của một chuỗi, chẳng hạn như kiểm tra tính hợp lệ của email, hay số điện thoại. Nhiều ngôn ngữ lập trình hiện nay như C#, Java, PHP,&amp;hellip; đã hỗ trợ biểu thức chính quy trong việc xử lý chuỗi. Vì vậy kiến thức về Regex là không thể thiếu bởi nó sẽ giúp đơn giản hóa công việc lập trình.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Các khái niệm cơ bản trong Git</title>
+      <link>https://chidokun.github.io/2016/10/git-basic/</link>
+      <pubDate>Mon, 10 Oct 2016 00:10:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2016/10/git-basic/</guid>
+      <description>&lt;p&gt;Nếu bạn là người mới sử dụng Git để quản lý source code thì chắc chắn có rất nhiều thứ để tìm hiểu, đặc biệt là các thuật ngữ trong Git. Vì vậy trong bài viết này mình sẽ cố gắng giải thích các thuật ngữ cơ bản trong Git một các dễ hiểu nhất để có thể nhanh chóng nắm bắt được hệ thống quản lý source code này.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

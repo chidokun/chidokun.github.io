@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    
+    <script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Cơ bản về Regex - Biểu thức chính quy",
+  
+  "image": "https://chidokun.github.io/images/post/software/regex-basic/1.png",
+  
+  "datePublished": "2016-10-21T00:28:00+07:00",
+  "dateModified": "2016-10-21T00:28:00+07:00",
+  "author": {
+    "@type": "Person",
+    "name": "Nguyễn Tuấn",
+    
+    "image": "https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50"
+    
+  },
+  "mainEntityOfPage": { 
+    "@type": "WebPage",
+    "@id": "https:\/\/chidokun.github.io\/2016\/10\/regex-basic\/" 
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Nguyễn Tuấn's Blog",
+    
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50"
+    }
+    
+  },
+  "description": "Regular Expressions (biểu thức chính quy, viết tắt là regexp, regex hay regxp) là một chuỗi mẫu để mô tả một bộ các chuỗi khác, theo những quy tắc cú pháp nhất định. Trong lập trình Regex thường được dùng để kiểm tra sự trùng khớp cũng như tính hợp lệ của một chuỗi, chẳng hạn như kiểm tra tính hợp lệ của email, hay số điện thoại. Nhiều ngôn ngữ lập trình hiện nay như C#, Java, PHP,\u0026hellip; đã hỗ trợ biểu thức chính quy trong việc xử lý chuỗi. Vì vậy kiến thức về Regex là không thể thiếu bởi nó sẽ giúp đơn giản hóa công việc lập trình.\n",
+  "keywords": ["git", "development, programming, chidokun, lập trình"]
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.87.0 with theme Tranquilpeak 0.5.0-BETA">
+<meta name="author" content="Nguyễn Tuấn">
+<meta name="keywords" content="git, development, programming, chidokun, lập trình">
+<meta name="description" content="Regular Expressions (biểu thức chính quy, viết tắt là regexp, regex hay regxp) là một chuỗi mẫu để mô tả một bộ các chuỗi khác, theo những quy tắc cú pháp nhất định. Trong lập trình Regex thường được dùng để kiểm tra sự trùng khớp cũng như tính hợp lệ của một chuỗi, chẳng hạn như kiểm tra tính hợp lệ của email, hay số điện thoại. Nhiều ngôn ngữ lập trình hiện nay như C#, Java, PHP,&hellip; đã hỗ trợ biểu thức chính quy trong việc xử lý chuỗi. Vì vậy kiến thức về Regex là không thể thiếu bởi nó sẽ giúp đơn giản hóa công việc lập trình.">
+
+
+<meta property="og:description" content="Regular Expressions (biểu thức chính quy, viết tắt là regexp, regex hay regxp) là một chuỗi mẫu để mô tả một bộ các chuỗi khác, theo những quy tắc cú pháp nhất định. Trong lập trình Regex thường được dùng để kiểm tra sự trùng khớp cũng như tính hợp lệ của một chuỗi, chẳng hạn như kiểm tra tính hợp lệ của email, hay số điện thoại. Nhiều ngôn ngữ lập trình hiện nay như C#, Java, PHP,&hellip; đã hỗ trợ biểu thức chính quy trong việc xử lý chuỗi. Vì vậy kiến thức về Regex là không thể thiếu bởi nó sẽ giúp đơn giản hóa công việc lập trình.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cơ bản về Regex - Biểu thức chính quy">
+<meta name="twitter:title" content="Cơ bản về Regex - Biểu thức chính quy">
+<meta property="og:url" content="https://chidokun.github.io/2016/10/regex-basic/">
+<meta property="twitter:url" content="https://chidokun.github.io/2016/10/regex-basic/">
+<meta property="og:site_name" content="Nguyễn Tuấn&#39;s Blog">
+<meta property="og:description" content="Regular Expressions (biểu thức chính quy, viết tắt là regexp, regex hay regxp) là một chuỗi mẫu để mô tả một bộ các chuỗi khác, theo những quy tắc cú pháp nhất định. Trong lập trình Regex thường được dùng để kiểm tra sự trùng khớp cũng như tính hợp lệ của một chuỗi, chẳng hạn như kiểm tra tính hợp lệ của email, hay số điện thoại. Nhiều ngôn ngữ lập trình hiện nay như C#, Java, PHP,&hellip; đã hỗ trợ biểu thức chính quy trong việc xử lý chuỗi. Vì vậy kiến thức về Regex là không thể thiếu bởi nó sẽ giúp đơn giản hóa công việc lập trình.">
+<meta name="twitter:description" content="Regular Expressions (biểu thức chính quy, viết tắt là regexp, regex hay regxp) là một chuỗi mẫu để mô tả một bộ các chuỗi khác, theo những quy tắc cú pháp nhất định. Trong lập trình Regex thường được dùng để kiểm tra sự trùng khớp cũng như tính hợp lệ của một chuỗi, chẳng hạn như kiểm tra tính hợp lệ của email, hay số điện thoại. Nhiều ngôn ngữ lập trình hiện nay như C#, Java, PHP,&hellip; đã hỗ trợ biểu thức chính quy trong việc xử lý chuỗi. Vì vậy kiến thức về Regex là không thể thiếu bởi nó sẽ giúp đơn giản hóa công việc lập trình.">
+<meta property="og:locale" content="vi">
+
+  
+    <meta property="article:published_time" content="2016-10-21T00:28:00">
+  
+  
+    <meta property="article:modified_time" content="2016-10-21T00:28:00">
+  
+  
+  
+    
+      <meta property="article:section" content="Lập trình">
+    
+      <meta property="article:section" content="Công cụ">
+    
+  
+  
+    
+      <meta property="article:tag" content="git">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
+  <meta property="twitter:image" content="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=640">
+
+
+
+
+
+  <meta property="og:image" content="https://chidokun.github.io/images/post/software/regex-basic/1.png">
+  <meta property="twitter:image" content="https://chidokun.github.io/images/post/software/regex-basic/1.png">
+
+
+    <title>Cơ bản về Regex - Biểu thức chính quy</title>
+
+    <link rel="icon" href="https://chidokun.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://chidokun.github.io/2016/10/regex-basic/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://chidokun.github.io/css/style-x4v5aep1xln8tw4u8b4utrzzm45rcnnq6emr4myqn5eka2yri56y1t7q.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" integrity="sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei">
+      
+    
+      
+        <link rel="stylesheet"  href="https://chidokun.github.io/styles/styles.css">
+      
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-64965138-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+    
+    <meta name="google-site-verification" content="MgXdDXZwDhcwwTzczA6YhQBynidGFAQUBd7PKu2ubfI" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,700;1,900&subset=cyrillic,cyrillic-ext,latin-ext&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://chidokun.github.io/" aria-label="Tới trang chủ">Nguyễn Tuấn&#39;s Blog</a>
+  </div>
+  
+    
+      <a class="header-right-icon st-search-show-outputs"
+         href="https://chidokun.github.io/#search" aria-label="Mở liên kết: /#search">
+    
+    
+      <i class="fa fa-lg fa-search"></i>
+    
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://chidokun.github.io/#about" aria-label="Tìm hiểu thêm về tác giả">
+          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện" />
+        </a>
+        <h4 class="sidebar-profile-name">Nguyễn Tuấn</h4>
+        
+          <h5 class="sidebar-profile-bio">A guy with passionate at the code</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Trang chủ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/categories/l%E1%BA%ADp-tr%C3%ACnh/" title="Lập trình">
+    
+      <i class="sidebar-button-icon far fa-lg fa-code" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Lập trình</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/categories/d%E1%BB%AF-li%E1%BB%87u/" title="Dữ liệu">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-database" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Dữ liệu</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/categories/cu%E1%BB%99c-s%E1%BB%91ng/" title="Cuộc sống">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-pagelines" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Cuộc sống</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Danh mục</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Thẻ thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/archives" title="Archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Lưu trữ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/#about" title="About">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Thông tin</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/chidokun" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://chidokun.github.io/index.xml" title="RSS">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Cơ bản về Regex - Biểu thức chính quy
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2016-10-21T00:28:00&#43;07:00">
+        
+  
+  
+  
+  
+    21 tháng 10 2016
+  
+
+      </time>
+    
+    
+  
+  
+    <span>mục</span>
+    
+      <a class="category-link" href="https://chidokun.github.io/categories/l%e1%ba%adp-tr%c3%acnh">Lập trình</a>, 
+    
+      <a class="category-link" href="https://chidokun.github.io/categories/c%c3%b4ng-c%e1%bb%a5">Công cụ</a>
+    
+  
+
+  </div>
+
+  <div>
+  <div class="fb-like" 
+    data-href="https://chidokun.github.io/2016/10/regex-basic/" 
+    data-width="" 
+    data-layout="button_count" 
+    data-action="like" 
+    data-size="large" 
+    data-share="false"></div>
+</div>
+</div>
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <p>Regular Expressions (biểu thức chính quy, viết tắt là regexp, regex hay regxp) là một chuỗi mẫu để mô tả một bộ các chuỗi khác, theo những quy tắc cú pháp nhất định. Trong lập trình Regex thường được dùng để kiểm tra sự trùng khớp cũng như tính hợp lệ của một chuỗi, chẳng hạn như kiểm tra tính hợp lệ của email, hay số điện thoại. Nhiều ngôn ngữ lập trình hiện nay như C#, Java, PHP,&hellip; đã hỗ trợ biểu thức chính quy trong việc xử lý chuỗi. Vì vậy kiến thức về Regex là không thể thiếu bởi nó sẽ giúp đơn giản hóa công việc lập trình.</p>
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/regex-basic/1.png" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/regex-basic/1.png" style="width: 70%;">
+  
+    </a>
+  
+  
+</div>
+
+<p>Bài viết này mình sẽ giới thiệu sơ lược về Regex và cú pháp của nó để các bạn có thể sử dụng và nghiên cứu thêm.</p>
+<h1 id="làm-quen-với-regex">Làm quen với Regex</h1>
+<p>Dưới đây là một đoạn regex:</p>
+<pre><code class="language-r">/hello/g
+</code></pre>
+<p>Khi so khớp với một chuỗi khác thì có nghĩa là tìm chuỗi hello bất kỳ trong chuỗi được so khớp. Vì vậy chuỗi &ldquo;hello&rdquo; sẽ khớp và chuỗi &ldquo;helloo&rdquo; cũng khớp luôn.</p>
+<p>Vậy nếu muốn chỉ khớp duy nhất với chuỗi &ldquo;hello&rdquo; thì ta có đoạn regex:</p>
+<pre><code class="language-r">/^hello$/g
+</code></pre>
+<p>Lúc này đoạn regex chỉ khớp duy nhất với chuỗi &ldquo;hello&rdquo;, các chuỗi khác như &ldquo;hello hello&rdquo; cũng sẽ không khớp.</p>
+<p>Tiếp tục một đoạn khác:</p>
+<pre><code class="language-r">/[0-9]/g
+</code></pre>
+<p>Chuỗi này có nghĩa là khớp với bất kỳ ký tự nào trong khoảng từ ký tự 0 đến ký tự 9. Có nghĩa là &ldquo;123&rdquo; sẽ khớp và &ldquo;123e&rdquo; cũng sẽ khớp. Nhưng &ldquo;eeefg&rdquo; thì không khớp do không nằm troong khoảng đó.</p>
+<p>Đến đây bạn đã mường tượng được cách viết regex. Phần tiếp theo chúng ta tiếp tục tìm hiểu cú pháp Regex.</p>
+<h1 id="cú-pháp-regex">Cú pháp Regex</h1>
+<p>Một chuỗi regex thường được gọi là pattern, nghĩa là mẫu, nó sẽ được viết theo cú pháp regex dùng để so khớp với các chuỗi khác. Pattern thường gồm các ký tự được gom chung vào 2 nhóm: <em>literal character</em> (ký tự thường, dùng để so khớp) và <em>meta character</em> (ký tự đặc biệt, chỉ thị mệnh lệnh).</p>
+<p>Trước khi bắt đầu thực hành bạn có thể sử dụng các trang web như <a href="regexr.com">regexr.com</a> hay <a href="regexpal.com">regexpal.com</a> để test regex.</p>
+<p>Ta cùng tìm hiểu một số ký tự điều khiển đặc biệt trong bảng sau:</p>
+<table>
+<thead>
+<tr>
+<th>Ký tự</th>
+<th>Mô tả/Giải nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/</code></td>
+<td>Bắt đầu hoặc kết thúc chuỗi regex</td>
+</tr>
+<tr>
+<td><code>\</code></td>
+<td>Bắt đầu ký tự có chức năng đặc biệt hoặc biến meta character thành literal character.<br />Ví dụ: <code>\n</code> là xuống hàng, <code>\\</code> khớp với &ldquo;&quot;</td>
+</tr>
+<tr>
+<td><code>|</code></td>
+<td>Chỉ định lựa chọn khớp với 1 hoặc nhiều từ. Tương đương phép OR</td>
+</tr>
+<tr>
+<td><code>()</code></td>
+<td>Xác định chuỗi bên trong như 1 đơn thể. Ví dụ: `a(b</td>
+</tr>
+<tr>
+<td><code>{}</code></td>
+<td>Xác định số lượng. Ví dụ: <code>a{3}</code> khớp với &ldquo;aaa&rdquo;</td>
+</tr>
+<tr>
+<td><code>[]</code></td>
+<td>Xác định các ký tự đơn sẽ khớp hoặc không.</td>
+</tr>
+<tr>
+<td><code>.</code></td>
+<td>Khớp bất kỳ ký tự đơn nào trừ ký tự xuống dòng.</td>
+</tr>
+<tr>
+<td><code>^</code></td>
+<td>Chỉ các ký tự bắt đầu chuỗi.</td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>Chỉ các ký tự kết thúc chuỗi.</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>Tương đương với số lượng ký tự theo sau bất kỳ ({0,}).<br />Ví dụ: <code>zo*</code> khớp với &ldquo;z&rdquo;, &ldquo;zo&rdquo;, &ldquo;zoooooo&rdquo;</td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td>Khớp ít nhất 1 chuỗi đằng trước và số lượng ký tự theo sau bất kỳ ({1,}).<br />Ví dụ: <code>zo+</code> khớp với &ldquo;zo&rdquo;, &ldquo;zoooooo&rdquo; nhưng không khớp với &ldquo;z&rdquo;</td>
+</tr>
+<tr>
+<td><code>?</code></td>
+<td>Khớp một phần hoặc toàn bộ chuỗi đằng trước ({0,1}).<br />Ví dụ: <code>zo?</code> khớp với &ldquo;z&rdquo;, &ldquo;zo&rdquo; nhưng không khớp với &ldquo;zoooooo&rdquo;.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="bắt-đầu-và-kết-thúc-chuỗi">Bắt đầu và kết thúc chuỗi</h2>
+<p>Một pattern sẽ bắt đầu bằng dấu <code>/</code> và kết thúc cũng bằng dấu <code>/</code>. Đằng sau cặp dấu này là 3 ký tự flag: <code>i</code> (không phân biệt hoa thường), <code>g</code> (so khớp lặp lại với các ký tự khác trong toàn bộ văn bản), <code>m</code> (cho phép khớp theo từng dòng đối với văn bản đa dòng và có sử dụng cặp <code>^$</code>).</p>
+<p>Dấu bắt đầu <code>^</code> chỉ các ký tự văn bản bắt đầu và dấu <code>$</code> chỉ các ký tự kết thúc.</p>
+<p>Ví dụ:</p>
+<ul>
+<li><code>^abc</code> sẽ khớp với chuỗi &ldquo;abc&rdquo;, &ldquo;abcdef&rdquo; (nghĩa là bắt đầu bằng &ldquo;abc&rdquo;).</li>
+<li><code>abc$</code> sẽ khớp với chuỗi &ldquo;abc&rdquo;, &ldquo;defabc&rdquo; (nghĩa là kết thúc bằng &ldquo;abc&rdquo;).</li>
+<li><code>^abc$</code> chỉ khớp với duy nhất chuỗi &ldquo;abc&rdquo;.</li>
+</ul>
+<p>Trở lại với các ký tự flag, sự khác nhau của chúng được mô tả trong các ví dụ sau:</p>
+<ul>
+<li><code>/abc/i</code> Khớp chuỗi &ldquo;ABC&rdquo;, &ldquo;abc&rdquo;, Khớp với &ldquo;ABC&rdquo; trong chuỗi &ldquo;ABCabc&rdquo;</li>
+<li><code>/abc/g</code> Khớp chuỗi &ldquo;abc&rdquo;, khớp với bất kỳ chuỗi &ldquo;abc&rdquo; nào trong văn bản, khi không có g thì chỉ khớp chuỗi đầu tiên</li>
+<li><code>/^abc$/m</code> Khớp chuỗi &ldquo;abc&rdquo;, &ldquo;abc\nabc\nabc&rdquo;</li>
+</ul>
+<h2 id="biểu-thức-nhóm-">Biểu thức nhóm <code>[]</code></h2>
+<p>Cặp dấu <code>[abc]</code> so khớp với bất kỳ ký tự đơn nào trong cặp dấu này. Ví dụ: <code>/[abc]/</code> sẽ khớp với &ldquo;a&rdquo; và &ldquo;b&rdquo; trong &ldquo;absent&rdquo;.</p>
+<p>Cặp <code>[^abc]</code> sẽ khớp với các ký tự đơn không nằm trong cặp dấu này. Ví dụ: <code>/[^abc]/</code> sẽ khớp với &ldquo;s&rdquo;, &ldquo;e&rdquo;, &ldquo;n&rdquo;, &ldquo;t&rdquo; trong &ldquo;absent&rdquo;.</p>
+<p>Cặp <code>[a-z]</code> sẽ khớp với các ký tự đơn trong khoảng chỉ định, ở đây là &ldquo;a&rdquo; đến &ldquo;z&rdquo;. Ví dụ: /[a-zA-Z][0-9]/ sẽ khớp với &ldquo;a1&rdquo;, &ldquo;E4&rdquo;, &ldquo;o9&rdquo;.</p>
+<h2 id="chỉ-định-số-lượng">Chỉ định số lượng</h2>
+<p>Cặp dấu <code>{}</code> đặt sau một đơn thể dùng để chỉ định số lượng đơn thể theo sau nó.</p>
+<p>Cụ thể hơn:</p>
+<ul>
+<li>Cặp dấu <code>{n}</code> sẽ khớp với đơn thể lặp lại chính xác <code>n</code> lần với <code>n</code> là số không âm. Ví dụ: <code>a{3}</code> sẽ khớp với &ldquo;aaa&rdquo;. <code>[0-9]{11}</code> sẽ khớp với &ldquo;01254321456&rdquo;.</li>
+<li>Cặp dấu <code>{n,}</code> sẽ khớp với đơn thể lặp lại từ n lần trở lên. Ví dụ: <code>a{2,}</code> sẽ khớp với &ldquo;aa&rdquo; và &ldquo;aaaaa&rdquo; nhưng không khớp với &ldquo;a&rdquo;.</li>
+<li>Cặp dấu <code>{a,b}</code> sẽ khớp với đơn thể lặp lại từ a đến b lần. Ví dụ: <code>a{2,3}</code> khớp với &ldquo;aa&rdquo; và &ldquo;aaa&rdquo; nhưng không khớp với &ldquo;a&rdquo; và &ldquo;aaaa&rdquo;.</li>
+</ul>
+<h2 id="các-ký-tự-đặc-biệt">Các ký tự đặc biệt</h2>
+<p>Các ký tự đặc biệt thông dụng khác được mô tả trong bảng sau:</p>
+<table>
+<thead>
+<tr>
+<th>Ký tự</th>
+<th>Mô tả</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\b</code></td>
+<td>Khớp với chuỗi nằm ở biên.<br />Ví dụ: <code>er\b</code> khớp với &ldquo;never&rdquo; và &ldquo;error&rdquo; nhưng không khớp với &ldquo;verb&rdquo;</td>
+</tr>
+<tr>
+<td><code>\B</code></td>
+<td>Khớp với chuỗi không nằm ở biên.<br />Ví dụ: <code>er\B</code> khớp với &ldquo;verb&rdquo; và không khớp với &ldquo;error&rdquo; và &ldquo;never&rdquo;</td>
+</tr>
+<tr>
+<td><code>\d</code></td>
+<td>Khớp với chữ số. Tương đương [0-9]</td>
+</tr>
+<tr>
+<td><code>\D</code></td>
+<td>Khớp với ký tự không phải số. Tương đương [^0-9]</td>
+</tr>
+<tr>
+<td><code>\w</code></td>
+<td>Khớp với chữ, số và dấu gạch dưới &ldquo;<em>&rdquo;. Tương đương [a-zA-Z0-9</em>]</td>
+</tr>
+<tr>
+<td><code>\W</code></td>
+<td>Khớp với ký tự không phải chữ, số và dấu gạch dưới &ldquo;<em>&rdquo;. Tương đương [^a-zA-Z0-9</em>]</td>
+</tr>
+<tr>
+<td><code>\cX</code></td>
+<td>Khớp với CTRL+X với X thuộc [a-zA-Z]</td>
+</tr>
+<tr>
+<td><code>\xNN</code></td>
+<td>Khớp với ký tự được biểu diễn bởi đúng 2 chữ số hexa.<br />Ví dụ: <code>\x41</code> khớp với &ldquo;A&rdquo;</td>
+</tr>
+<tr>
+<td><code>\uXXXX</code></td>
+<td>Khớp với ký tự Unicode được biểu diễn bởi 4 chữ số hexa.<br />Ví dụ: <code>\u00A9</code> khớp với &ldquo;©&rdquo;</td>
+</tr>
+</tbody>
+</table>
+<p>Đến đây bạn có thể tự viết được các biểu thức regex đơn giản rồi. =))</p>
+<h1 id="tham-khảo">Tham khảo</h1>
+<ul>
+<li>Regular expression - <a href="https://en.wikipedia.org/wiki/Regular_expression">https://en.wikipedia.org/wiki/Regular_expression</a></li>
+<li>Regular Expression Language - Quick Reference - <a href="https://msdn.microsoft.com/en-us/library/az24scfc(v=vs.110).aspx">https://msdn.microsoft.com/en-us/library/az24scfc(v=vs.110).aspx</a></li>
+<li>Creating a Regular Expression - <a href="https://msdn.microsoft.com/en-us/library/dd997379(v=vs.100).aspx">https://msdn.microsoft.com/en-us/library/dd997379(v=vs.100).aspx</a></li>
+<li>Regular Expression Syntax - <a href="https://msdn.microsoft.com/en-us/library/ae5bf541(v=vs.100).aspx">https://msdn.microsoft.com/en-us/library/ae5bf541(v=vs.100).aspx</a></li>
+</ul>
+              
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/git/">git</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2019/12/query-with-javascript-ep1/" data-tooltip="Truy vấn với JavaScript (Phần 1)" aria-label="Tiếp: Truy vấn với JavaScript (Phần 1)">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2016/10/git-basic/" data-tooltip="Các khái niệm cơ bản trong Git" aria-label="Trước: Các khái niệm cơ bản trong Git">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Chia sẻ bài viết này">
+            <i class="fa fa-share-alt" aria-hidden="true"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2016/10/regex-basic/" title="Chia sẻ với %s Facebook" aria-label="Chia sẻ với %s Facebook">
+              <i class="fab fa-facebook" aria-hidden="true"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2016/10/regex-basic/" title="Chia sẻ với %s Twitter" aria-label="Chia sẻ với %s Twitter">
+              <i class="fab fa-twitter" aria-hidden="true"></i>
+            </a>
+          </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#" aria-label="Trở lại đầu trang">
+        
+          <i class="fa fa-list" aria-hidden="true"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+  
+    <section id="comments">
+        
+        <h2 class="title"><a href="#comments">Bình luận</a></h2>
+        <form id="comment-form" class="post-new-comment" method="post" action="https://chidokun-blog-comment.herokuapp.com/v3/entry/github/chidokun/chidokun.github.io/master/comments">
+            
+            
+            <div class="comment-box">
+                <textarea name="fields[comment]" class="comment-input-control comment-input-animated" placeholder="Comment (markdown is accepted) *" required rows="3"></textarea>
+                <div class="comment-box-tail">
+                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2016/10/regex-basic/#comment-submitted">
+                    <input type="hidden" name="options[slug]" value="regex-basic">
+                    <input type="text" name="fields[name]" class="post-comment-field" placeholder="Name *" required/>
+                    <input type="email" name="fields[email]" class="post-comment-field" placeholder="Email address (will not be public) *" required/>
+                    <input type="hidden" id="comment-parent" name="fields[reply_to]" value="">
+                    <input type="submit" class="btn btn--primary comment-buttons btn--comment" value="BÌNH LUẬN">
+                </div>
+            </div>
+            
+            
+        </form>
+        <section class="staticman-comments post-comments">
+            
+            
+            
+    
+            
+            
+    
+            
+    
+        </section>
+
+    <div id="comment-submitted" class="dialog">
+        <h3>Cảm ơn bạn</h3>
+        <p>Your comment has been submitted and will be published once it has been approved. &#128522;</p>
+
+        <p><a href="#" class="btn btn--primary comment-buttons ok">OK</a></p>
+    </div>
+
+    
+</section>
+
+  
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 <a href="https://github.com/chidokun">Nguyễn Tuấn</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2019/12/query-with-javascript-ep1/" data-tooltip="Truy vấn với JavaScript (Phần 1)" aria-label="Tiếp: Truy vấn với JavaScript (Phần 1)">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2016/10/git-basic/" data-tooltip="Các khái niệm cơ bản trong Git" aria-label="Trước: Các khái niệm cơ bản trong Git">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Chia sẻ bài viết này">
+            <i class="fa fa-share-alt" aria-hidden="true"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2016/10/regex-basic/" title="Chia sẻ với %s Facebook" aria-label="Chia sẻ với %s Facebook">
+              <i class="fab fa-facebook" aria-hidden="true"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2016/10/regex-basic/" title="Chia sẻ với %s Twitter" aria-label="Chia sẻ với %s Twitter">
+              <i class="fab fa-twitter" aria-hidden="true"></i>
+            </a>
+          </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#" aria-label="Trở lại đầu trang">
+        
+          <i class="fa fa-list" aria-hidden="true"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2016%2F10%2Fregex-basic%2F" aria-label="Chia sẻ với %s Facebook">
+          <i class="fab fa-facebook" aria-hidden="true"></i><span>Chia sẻ với Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2016%2F10%2Fregex-basic%2F" aria-label="Chia sẻ với %s Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>Chia sẻ với Twitter</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://www.gravatar.com/avatar/e09926cb6ae66048297c59c891a02e50?s=110" alt="Ảnh đại diện" />
+    
+    <h4 id="about-card-name">Nguyễn Tuấn</h4>
+    
+      <div id="about-card-bio">A guy with passionate at the code</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Software Engineer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        Saigon, Vietnam
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://chidokun.github.io/images/background.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://chidokun.github.io/js/script-8lglxdix2nqhalxxm2bujhkcc8cctdrd5o5axonwhfzx2zqrer5facyn8.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+  
+    <script crossorigin="anonymous" integrity="sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq" src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js"></script>
+  
+
+  
+    <script crossorigin="anonymous" integrity="sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc" src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js"></script>
+  
+
+  
+    <script src="https://chidokun.github.io/js/main.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+

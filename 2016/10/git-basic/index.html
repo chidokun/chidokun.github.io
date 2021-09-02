@@ -7,12 +7,12 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Những mẹo sử dụng Visual Studio một cách hiệu quả",
+  "headline": "Các khái niệm cơ bản trong Git",
   
-  "image": "https://chidokun.github.io/images/post/software/visual-studio-tips/1.jpg",
+  "image": "https://chidokun.github.io/images/post/software/git-basic/1.png",
   
-  "datePublished": "2016-09-21T01:50:00+07:00",
-  "dateModified": "2016-09-21T01:50:00+07:00",
+  "datePublished": "2016-10-10T00:10:00+07:00",
+  "dateModified": "2016-10-10T00:10:00+07:00",
   "author": {
     "@type": "Person",
     "name": "Nguyễn Tuấn",
@@ -22,7 +22,7 @@
   },
   "mainEntityOfPage": { 
     "@type": "WebPage",
-    "@id": "https:\/\/chidokun.github.io\/2016\/09\/visual-studio-tips\/" 
+    "@id": "https:\/\/chidokun.github.io\/2016\/10\/git-basic\/" 
   },
   "publisher": {
     "@type": "Organization",
@@ -34,8 +34,8 @@
     }
     
   },
-  "description": "Visual Studio là một IDE rất mạnh mẽ của Microsoft, nó hỗ trợ rất nhiều tính năng từ cơ bản đến nâng cao. Nếu là lần đầu dùng Visual Studio chắc chắn bạn sẽ phải choáng ngợp trước những chức năng của nó. Những mẹo sau đây sẽ giúp bạn làm việc với Visual Studio 2015 hiệu quả hơn.\n",
-  "keywords": ["debug, visual studio", "development, programming, chidokun, lập trình"]
+  "description": "Nếu bạn là người mới sử dụng Git để quản lý source code thì chắc chắn có rất nhiều thứ để tìm hiểu, đặc biệt là các thuật ngữ trong Git. Vì vậy trong bài viết này mình sẽ cố gắng giải thích các thuật ngữ cơ bản trong Git một các dễ hiểu nhất để có thể nhanh chóng nắm bắt được hệ thống quản lý source code này.\n",
+  "keywords": ["git", "development, programming, chidokun, lập trình"]
 }
 
 </script>
@@ -44,38 +44,38 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Hugo 0.87.0 with theme Tranquilpeak 0.5.0-BETA">
 <meta name="author" content="Nguyễn Tuấn">
-<meta name="keywords" content="debug, visual studio, development, programming, chidokun, lập trình">
-<meta name="description" content="Visual Studio là một IDE rất mạnh mẽ của Microsoft, nó hỗ trợ rất nhiều tính năng từ cơ bản đến nâng cao. Nếu là lần đầu dùng Visual Studio chắc chắn bạn sẽ phải choáng ngợp trước những chức năng của nó. Những mẹo sau đây sẽ giúp bạn làm việc với Visual Studio 2015 hiệu quả hơn.">
+<meta name="keywords" content="git, development, programming, chidokun, lập trình">
+<meta name="description" content="Nếu bạn là người mới sử dụng Git để quản lý source code thì chắc chắn có rất nhiều thứ để tìm hiểu, đặc biệt là các thuật ngữ trong Git. Vì vậy trong bài viết này mình sẽ cố gắng giải thích các thuật ngữ cơ bản trong Git một các dễ hiểu nhất để có thể nhanh chóng nắm bắt được hệ thống quản lý source code này.">
 
 
-<meta property="og:description" content="Visual Studio là một IDE rất mạnh mẽ của Microsoft, nó hỗ trợ rất nhiều tính năng từ cơ bản đến nâng cao. Nếu là lần đầu dùng Visual Studio chắc chắn bạn sẽ phải choáng ngợp trước những chức năng của nó. Những mẹo sau đây sẽ giúp bạn làm việc với Visual Studio 2015 hiệu quả hơn.">
+<meta property="og:description" content="Nếu bạn là người mới sử dụng Git để quản lý source code thì chắc chắn có rất nhiều thứ để tìm hiểu, đặc biệt là các thuật ngữ trong Git. Vì vậy trong bài viết này mình sẽ cố gắng giải thích các thuật ngữ cơ bản trong Git một các dễ hiểu nhất để có thể nhanh chóng nắm bắt được hệ thống quản lý source code này.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Những mẹo sử dụng Visual Studio một cách hiệu quả">
-<meta name="twitter:title" content="Những mẹo sử dụng Visual Studio một cách hiệu quả">
-<meta property="og:url" content="https://chidokun.github.io/2016/09/visual-studio-tips/">
-<meta property="twitter:url" content="https://chidokun.github.io/2016/09/visual-studio-tips/">
+<meta property="og:title" content="Các khái niệm cơ bản trong Git">
+<meta name="twitter:title" content="Các khái niệm cơ bản trong Git">
+<meta property="og:url" content="https://chidokun.github.io/2016/10/git-basic/">
+<meta property="twitter:url" content="https://chidokun.github.io/2016/10/git-basic/">
 <meta property="og:site_name" content="Nguyễn Tuấn&#39;s Blog">
-<meta property="og:description" content="Visual Studio là một IDE rất mạnh mẽ của Microsoft, nó hỗ trợ rất nhiều tính năng từ cơ bản đến nâng cao. Nếu là lần đầu dùng Visual Studio chắc chắn bạn sẽ phải choáng ngợp trước những chức năng của nó. Những mẹo sau đây sẽ giúp bạn làm việc với Visual Studio 2015 hiệu quả hơn.">
-<meta name="twitter:description" content="Visual Studio là một IDE rất mạnh mẽ của Microsoft, nó hỗ trợ rất nhiều tính năng từ cơ bản đến nâng cao. Nếu là lần đầu dùng Visual Studio chắc chắn bạn sẽ phải choáng ngợp trước những chức năng của nó. Những mẹo sau đây sẽ giúp bạn làm việc với Visual Studio 2015 hiệu quả hơn.">
+<meta property="og:description" content="Nếu bạn là người mới sử dụng Git để quản lý source code thì chắc chắn có rất nhiều thứ để tìm hiểu, đặc biệt là các thuật ngữ trong Git. Vì vậy trong bài viết này mình sẽ cố gắng giải thích các thuật ngữ cơ bản trong Git một các dễ hiểu nhất để có thể nhanh chóng nắm bắt được hệ thống quản lý source code này.">
+<meta name="twitter:description" content="Nếu bạn là người mới sử dụng Git để quản lý source code thì chắc chắn có rất nhiều thứ để tìm hiểu, đặc biệt là các thuật ngữ trong Git. Vì vậy trong bài viết này mình sẽ cố gắng giải thích các thuật ngữ cơ bản trong Git một các dễ hiểu nhất để có thể nhanh chóng nắm bắt được hệ thống quản lý source code này.">
 <meta property="og:locale" content="vi">
 
   
-    <meta property="article:published_time" content="2016-09-21T01:50:00">
+    <meta property="article:published_time" content="2016-10-10T00:10:00">
   
   
-    <meta property="article:modified_time" content="2016-09-21T01:50:00">
+    <meta property="article:modified_time" content="2016-10-10T00:10:00">
   
   
   
     
       <meta property="article:section" content="Lập trình">
     
-      <meta property="article:section" content="Thủ thuật">
+      <meta property="article:section" content="Công cụ">
     
   
   
     
-      <meta property="article:tag" content="visual studio">
+      <meta property="article:tag" content="git">
     
   
 
@@ -95,18 +95,18 @@
 
 
 
-  <meta property="og:image" content="https://chidokun.github.io/images/post/software/visual-studio-tips/1.jpg">
-  <meta property="twitter:image" content="https://chidokun.github.io/images/post/software/visual-studio-tips/1.jpg">
+  <meta property="og:image" content="https://chidokun.github.io/images/post/software/git-basic/1.png">
+  <meta property="twitter:image" content="https://chidokun.github.io/images/post/software/git-basic/1.png">
 
 
-    <title>Những mẹo sử dụng Visual Studio một cách hiệu quả</title>
+    <title>Các khái niệm cơ bản trong Git</title>
 
     <link rel="icon" href="https://chidokun.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://chidokun.github.io/2016/09/visual-studio-tips/">
+    <link rel="canonical" href="https://chidokun.github.io/2016/10/git-basic/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -308,19 +308,19 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Những mẹo sử dụng Visual Studio một cách hiệu quả
+      Các khái niệm cơ bản trong Git
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2016-09-21T01:50:00&#43;07:00">
+      <time datetime="2016-10-10T00:10:00&#43;07:00">
         
   
   
   
   
-    21 tháng 9 2016
+    10 tháng 10 2016
   
 
       </time>
@@ -332,7 +332,7 @@ if (!doNotTrack) {
     
       <a class="category-link" href="https://chidokun.github.io/categories/l%e1%ba%adp-tr%c3%acnh">Lập trình</a>, 
     
-      <a class="category-link" href="https://chidokun.github.io/categories/th%e1%bb%a7-thu%e1%ba%adt">Thủ thuật</a>
+      <a class="category-link" href="https://chidokun.github.io/categories/c%c3%b4ng-c%e1%bb%a5">Công cụ</a>
     
   
 
@@ -340,7 +340,7 @@ if (!doNotTrack) {
 
   <div>
   <div class="fb-like" 
-    data-href="https://chidokun.github.io/2016/09/visual-studio-tips/" 
+    data-href="https://chidokun.github.io/2016/10/git-basic/" 
     data-width="" 
     data-layout="button_count" 
     data-action="like" 
@@ -351,7 +351,7 @@ if (!doNotTrack) {
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
-              <p>Visual Studio là một IDE rất mạnh mẽ của Microsoft, nó hỗ trợ rất nhiều tính năng từ cơ bản đến nâng cao. Nếu là lần đầu dùng Visual Studio chắc chắn bạn sẽ phải choáng ngợp trước những chức năng của nó. Những mẹo sau đây sẽ giúp bạn làm việc với Visual Studio 2015 hiệu quả hơn.</p>
+              <p>Nếu bạn là người mới sử dụng Git để quản lý source code thì chắc chắn có rất nhiều thứ để tìm hiểu, đặc biệt là các thuật ngữ trong Git. Vì vậy trong bài viết này mình sẽ cố gắng giải thích các thuật ngữ cơ bản trong Git một các dễ hiểu nhất để có thể nhanh chóng nắm bắt được hệ thống quản lý source code này.</p>
  
   
   
@@ -366,231 +366,37 @@ if (!doNotTrack) {
 
 <div class="figure center" >
   
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/visual-studio-tips/1.jpg" data-fancybox-group="">
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/git-basic/1.png" data-fancybox-group="">
   
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/visual-studio-tips/1.jpg" style="width: 80%;">
-  
-    </a>
-  
-  
-</div>
-
-<h1 id="chia-trình-soạn-thành-nhiều-phần">Chia trình soạn thành nhiều phần</h1>
-<p>Tính năng này đặc biệt hữu ích khi các bạn code trên C++. Chia màn hình thành 2 phần, một bên là khai báo class một bên cài đặt class sẽ giúp bạn đỡ tốn công chuyển qua lại rất nhiều.</p>
-<p>Để chia màn hình ta drag chuột vào tab cần chia, lúc này những ô mẫu hiện ra để ta có thể dock vào vị trí mong muốn.</p>
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure center" >
-  
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/visual-studio-tips/2.png" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/visual-studio-tips/2.png" style="width: 100%;">
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/git-basic/1.png" style="width: 70%;">
   
     </a>
   
   
 </div>
 
-<h1 id="hiển-thị-đánh-số-dòng-code">Hiển thị đánh số dòng code</h1>
-<p>Do chức năng báo lỗi của Visual Studio rất mạnh, nó sẽ tự giúp bạn di chuyển đến đoạn code bị lỗi nên việc hiển thị số dòng code trở nên không còn quan trọng nữa và mặc định được tắt. Tuy nhiên bạn vẫn có thể bật lên bằng cách chọn <em>Tools</em> &gt; <em>Options&hellip;</em> Trong cửa sổ Options, bên trái chọn <em>Text Editor</em> &gt; <em>All Language</em>. bên phải check vào ô <em>Line numbers</em> rồi nhấn OK để xác nhận.</p>
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure center" >
-  
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/visual-studio-tips/3.png" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/visual-studio-tips/3.png" style="width: 90%;">
-  
-    </a>
-  
-  
-</div>
-
-<p>Đây là kết quả</p>
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure center" >
-  
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/visual-studio-tips/4.png" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/visual-studio-tips/4.png" style="width: 70%;">
-  
-    </a>
-  
-  
-</div>
-
-<h1 id="giao-diện-tối">Giao diện tối</h1>
-<p>Visual Studio cũng hỗ trợ giao diện tối để giúp bạn làm việc vào ban đêm đỡ mỏi mắt và nhìn cũng professional hơn (==) . Tuy nhiên, mình khuyên các bạn không nên dùng giao diện tối vào ban ngày mà thay vào đó là giao diện sáng để tăng độ tương phản với môi trường.</p>
-<p>Để đổi giao diện tối, các bạn vào <em>Tools</em> &gt; <em>Options</em>&hellip; Trong cửa sổ Options, ở phần <em>Environment</em> &gt; <em>General</em>, mục <em>Color theme</em> chúng ta chọn <strong>Dark</strong>.</p>
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure center" >
-  
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/visual-studio-tips/5.png" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/visual-studio-tips/5.png" style="width: 100%;">
-  
-    </a>
-  
-  
-</div>
-
-<h1 id="hiển-thị-code-map">Hiển thị Code Map</h1>
-<p>Nếu bạn đã từng sử dụng một editor khác như Sublime Text thì bạn sẽ thấy luôn có một map nhỏ phía bên phải hiển thị bao quát các dòng code trong file. Chức năng này cực kỳ hữu ích khi bạn muốn xem nhanh cấu trúc những file quá dài (như HTML chẳng hạn). Visual Studio cũng hỗ trợ chức năng này, nó sẽ biến vertical scrollbar trở thành một map mini, có thể đánh dấu vị trí lỗi cũng như preview code.</p>
-<p>Để thực hiện ta chọn <em>Tools</em> &gt; <em>Options</em>&hellip; Bên trái chọn <em>Text Editor</em> &gt; <em>All Languages</em> &gt; <em>Scroll Bars</em>. Bên phải chọn mục <strong>Use map mode for vertical scroll bar</strong> rồi nhấn <strong>OK</strong> để xác nhận.</p>
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure center" >
-  
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/visual-studio-tips/6.png" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/visual-studio-tips/6.png" style="width: 90%;">
-  
-    </a>
-  
-  
-</div>
-
-<p>Kết quả hiển thị</p>
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure center" >
-  
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/visual-studio-tips/7.png" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/visual-studio-tips/7.png" style="width: 90%;">
-  
-    </a>
-  
-  
-</div>
-
-<h1 id="hiển-thị-đường-căn-lề-tab">Hiển thị đường căn lề tab</h1>
-<p>Một số editor hỗ trợ hiển thị một đường dóng xuống trong các dòng code thụt vào cùng cấp bậc. Visual Studio không hỗ trợ tính năng này. Tuy nhiên bạn vẫn có thể thêm vào bằng cách sử dụng các extension trong kho Extension đồ sộ của Visual Studio.</p>
-<p>Chọn <em>Tools</em> &gt; <em>Extensions and Updates</em>, mục bên trái chọn <em>Online</em>, trong ô tìm kiếm ta gõ &ldquo;indent guides&rdquo;.  Chọn vào <strong>Indent Guides</strong> trong kết quả hiển thị rồi bấm <strong>Download</strong>.</p>
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure center" >
-  
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/visual-studio-tips/8.png" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/visual-studio-tips/8.png" style="width: 90%;">
-  
-    </a>
-  
-  
-</div>
-
-<p>Sau khi download, cửa sổ cài đặt hiện lên, bấm <strong>Install</strong> là xong. Để thay đổi có hiệu lực ta chọn vào <strong>Restart Now</strong> để xem kết quả.</p>
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure center" >
-  
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/visual-studio-tips/9.png" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/visual-studio-tips/9.png" style="width: 7s0%;">
-  
-    </a>
-  
-  
-</div>
+<h1 id="khái-niệm-cơ-bản">Khái niệm cơ bản</h1>
+<p><strong><span class="highlight-text green">Git</span></strong>: là một trong những Hệ thống Quản lý phiên bản phân tán, vốn được phát triển nhằm quản lý mã nguồn (source code) của Linux. Trên Git, ta có thể lưu trạng thái của file dưới dạng lịch sử cập nhật. Những bạn mới bắt đầu với Git hay bị nhầm lẫn khái niệm Git với GitHub (một server lưu trữ các dự án).</p>
+<p><strong><span class="highlight-text green">Version Control system</span></strong>: là một hệ thống lưu giữ các phiên bản của mã nguồn của sản phẩm phần mềm, giúp các lập trình viên có thể dễ dàng lấy lại phiên bản mong muốn. Có nhiều version control system khác như CSV, SVN, TeamVS,&hellip; Git chính là một trong những hệ thống quản lý phiên bản đó.</p>
+<p><strong><span class="highlight-text green">GitHub</span></strong>: là một máy chủ để mình có thể lưu source code lên đó. Là cộng đồng nổi tiếng nhất trong thế giới Git. Ở đây có thể tìm được source code đủ thể loại phần mềm. Một số công ty lớn như Microsoft cũng thường mở mã nguồn phần mềm của họ trên đây. Ở đây cũng có thể tìm được cả source code của hệ điều hành Linux và các dự án lớn khác. Nhược điểm của GitHub là chỉ cho phép tạo dự án công khai (người khác có thể vào xem), muốn tạo dự án private phải trả phí cho nó (note: hiện tại GitHub đã cho phép tạo repo private). Ngoài GitHub ra còn có rất nhiều server khác như bitbucket.org, gitlab.com,&hellip;</p>
+<p><strong><span class="highlight-text green">GitLab</span></strong>: cũng là một máy chủ khác để lưu source code. Ra đời sau GitHub và được phát triển dạng mã nguồn mở. Điểm khác biệt của GitLab cho phép tạo các dự án private. Về cơ bản cách sử dụng GitLab và GitHub là hoàn toàn giống nhau, nếu nắm vững Git và đã biết dùng GitHub thì khi chuyển qua GitLab sẽ làm quen một cách nhanh chóng.</p>
+<p><strong><span class="highlight-text green">Repository (repo)</span></strong>: Nghĩa gốc là kho lưu trữ. Hiểu đơn giản, repo là các dự án bạn tạo ra, chứa mã nguồn phần mềm của bạn. Có 2 dạng: Remote repo (là repo chung được lưu trên server), và Local repo (là repo lưu trên máy của người dùng). Ta có thể làm việc và commit trên local reposity ngay cả trong điều kiện offline, khi có mạng chỉ việc đồng bộ lên remote repo để chia sẻ cho người dùng khác.</p>
+<p><strong><span class="highlight-text green">Commit</span></strong>: là hành động xác nhận sự thay đổi của repo, lưu lại một trạng thái của repo. Khi thực hiện commit, trong repo sẽ tạo ra commit (hoặc revision) ghi lại sự khác biệt của tất cả các file trong repo từ trạng thái đã commit lần trước đó đến trạng thái hiện tại. Bằng việc xem các commit bạn có thể biết được file đã được sửa đổi như thế nào. Khi code một tính năng phải được hoàn thiện cơ bản và chạy được thì mới nên commit.</p>
+<p><strong><span class="highlight-text green">Branch</span></strong>: là các nhánh phát triển của repo. Ví dụ: bạn muốn thêm một tính năng mới cho phần mềm, bạn có thể tạo một branch khác để phát triển tiếp. Nếu sau này có muốn hủy bỏ tính năng đó thì cũng sẽ được thực hiện một cách dễ dàng mà không ảnh hưởng đến branch chính. Mỗi repo sẽ có một branch chính là master, các thành viên trong nhóm sẽ tạo các branch khác nhau để làm việc. Có nhiều cách chia branch khác nhau tùy mục đích và bạn cần phải học cách chia branch. Mỗi branch giống như một ngữ cảnh khác nhau, branch có thể được chia tách cũng như sát nhập dễ dàng.</p>
+<p><strong><span class="highlight-text green">Check out</span></strong>: là hành động chuyển sang làm việc trên một branch khác. Trước khi chuyển branch thì bạn phải lưu lại trạng thái của branch hiện tại bằng cách commit.</p>
+<p><strong><span class="highlight-text green">Push</span></strong>: là hành động upload một commit hoặc branch lên remote repo. Sau khi upload lên thì các thành viên của team có thể thấy và đồng bộ code xuống máy.</p>
+<p><strong><span class="highlight-text green">Pull</span></strong>: là hành động download các thay đổi xuống local repo. Ví dụ: trong khi bạn đang code trên một file thì một người bạn trong nhóm của bạn cũng code trên một file khác cùng branch, người bạn đó hoàn thành công việc, commit và push lên remote repo. Lúc này bạn muốn lấy những thay đổi mà người bạn của bạn đã thực hiện thì bạn sẽ thực hiện hành động Pull xuống.</p>
+<p><strong><span class="highlight-text green">Clone</span></strong>: là hành động tạo bản sao của remote repo từ máy chủ về máy mình để có thể lập trình và phát triển. Local repo được clone về cũng có lịch sử thay đổi giống hệt như remote repo. Vì vậy bạn có thể commit lên local repo này.</p>
+<p><strong><span class="highlight-text green">Merge</span></strong>: là hành động hợp nhất một nhánh phát triển vào nhánh khác hoặc hợp nhất lịch sử thay đổi khi pull hoặc push. Ví dụ trường hợp merge branch: bạn phát triển xong 1 tính năng, đã test/ kiểm thử các kiểu và thấy nó hoàn chỉnh, có thể tích hợp vào phần mềm thì bạn sẽ tiến hành merge code. Sau khi merge có thể giữ lại 1 trong 2 branch hoặc cả 2. Yêu cầu trước khi merge: phải push hết các commit lên branch.</p>
+<p><strong><span class="highlight-text green">Conflict</span></strong>: là trường hợp có nhiều sự thay đổi trong cùng 1 dòng code khi merge và máy không thể tự quyết định cái nào là đúng. Lúc này bạn phải tự quyết định giữ lại dòng code nào. Công việc xử lý conflict nên được thực hiện bằng GUI thay vì command-line.</p>
+<p><strong><span class="highlight-text green">Fork</span></strong>: (khái niệm này trên GitHub) là hành động một người dùng khác copy một bản sao của repo về kho của họ. Trước khi tham gia vào một dự án của người khác thì bạn sẽ fork repo của họ và kho của mình nếu như người khác chưa cho phép bạn trở thành thành viên.</p>
+<p><strong><span class="highlight-text green">Pull request</span></strong> hay <strong><span class="highlight-text green">Merge request</span></strong>: Khi người dùng khác tham gia phát triển phần mềm và đã phát triển xong một tính năng, họ muốn merge tính năng của họ vào phần mềm của bạn thì lúc này họ sẽ gửi một Pull request/Merge request để bạn chọn chấp nhận hay không.</p>
+<p>Trên đây là một số thuật ngữ cơ bản trong Git, để có thể tìm hiểu thêm về các thuật ngữ nâng cao cũng như học cách sử dụng thành thạo Git, bạn có thể xem thêm những tài liệu tham khảo bên dưới.</p>
+<h1 id="tham-khảo">Tham khảo</h1>
+<ul>
+<li>Hướng dẫn về Git cho người mới bắt đầu - <a href="https://backlogtool.com/git-guide/vn/">https://backlogtool.com/git-guide/vn/</a></li>
+<li>Git book - <a href="https://git-scm.com/book/vi/v1">https://git-scm.com/book/vi/v1</a></li>
+</ul>
               
 
             </div>
@@ -603,7 +409,7 @@ if (!doNotTrack) {
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/visual-studio/">visual studio</a>
+  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/git/">git</a>
 
                   </div>
                 
@@ -616,7 +422,7 @@ if (!doNotTrack) {
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2016/10/git-basic/" data-tooltip="Các khái niệm cơ bản trong Git" aria-label="Tiếp: Các khái niệm cơ bản trong Git">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2016/10/regex-basic/" data-tooltip="Cơ bản về Regex - Biểu thức chính quy" aria-label="Tiếp: Cơ bản về Regex - Biểu thức chính quy">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -624,7 +430,7 @@ if (!doNotTrack) {
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2016/09/install-java-windows/" data-tooltip="Cài đặt và thiết lập Java trên Windows" aria-label="Trước: Cài đặt và thiết lập Java trên Windows">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2016/09/visual-studio-tips/" data-tooltip="Những mẹo sử dụng Visual Studio một cách hiệu quả" aria-label="Trước: Những mẹo sử dụng Visual Studio một cách hiệu quả">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -642,13 +448,13 @@ if (!doNotTrack) {
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2016/09/visual-studio-tips/" title="Chia sẻ với %s Facebook" aria-label="Chia sẻ với %s Facebook">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2016/10/git-basic/" title="Chia sẻ với %s Facebook" aria-label="Chia sẻ với %s Facebook">
               <i class="fab fa-facebook" aria-hidden="true"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2016/09/visual-studio-tips/" title="Chia sẻ với %s Twitter" aria-label="Chia sẻ với %s Twitter">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2016/10/git-basic/" title="Chia sẻ với %s Twitter" aria-label="Chia sẻ với %s Twitter">
               <i class="fab fa-twitter" aria-hidden="true"></i>
             </a>
           </li>
@@ -677,8 +483,8 @@ if (!doNotTrack) {
             <div class="comment-box">
                 <textarea name="fields[comment]" class="comment-input-control comment-input-animated" placeholder="Comment (markdown is accepted) *" required rows="3"></textarea>
                 <div class="comment-box-tail">
-                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2016/09/visual-studio-tips/#comment-submitted">
-                    <input type="hidden" name="options[slug]" value="visual-studio-tips">
+                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2016/10/git-basic/#comment-submitted">
+                    <input type="hidden" name="options[slug]" value="git-basic">
                     <input type="text" name="fields[name]" class="post-comment-field" placeholder="Name *" required/>
                     <input type="email" name="fields[email]" class="post-comment-field" placeholder="Email address (will not be public) *" required/>
                     <input type="hidden" id="comment-parent" name="fields[reply_to]" value="">
@@ -731,7 +537,7 @@ if (!doNotTrack) {
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2016/10/git-basic/" data-tooltip="Các khái niệm cơ bản trong Git" aria-label="Tiếp: Các khái niệm cơ bản trong Git">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2016/10/regex-basic/" data-tooltip="Cơ bản về Regex - Biểu thức chính quy" aria-label="Tiếp: Cơ bản về Regex - Biểu thức chính quy">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -739,7 +545,7 @@ if (!doNotTrack) {
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2016/09/install-java-windows/" data-tooltip="Cài đặt và thiết lập Java trên Windows" aria-label="Trước: Cài đặt và thiết lập Java trên Windows">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2016/09/visual-studio-tips/" data-tooltip="Những mẹo sử dụng Visual Studio một cách hiệu quả" aria-label="Trước: Những mẹo sử dụng Visual Studio một cách hiệu quả">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -757,13 +563,13 @@ if (!doNotTrack) {
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2016/09/visual-studio-tips/" title="Chia sẻ với %s Facebook" aria-label="Chia sẻ với %s Facebook">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2016/10/git-basic/" title="Chia sẻ với %s Facebook" aria-label="Chia sẻ với %s Facebook">
               <i class="fab fa-facebook" aria-hidden="true"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2016/09/visual-studio-tips/" title="Chia sẻ với %s Twitter" aria-label="Chia sẻ với %s Twitter">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2016/10/git-basic/" title="Chia sẻ với %s Twitter" aria-label="Chia sẻ với %s Twitter">
               <i class="fab fa-twitter" aria-hidden="true"></i>
             </a>
           </li>
@@ -788,13 +594,13 @@ if (!doNotTrack) {
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2016%2F09%2Fvisual-studio-tips%2F" aria-label="Chia sẻ với %s Facebook">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2016%2F10%2Fgit-basic%2F" aria-label="Chia sẻ với %s Facebook">
           <i class="fab fa-facebook" aria-hidden="true"></i><span>Chia sẻ với Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2016%2F09%2Fvisual-studio-tips%2F" aria-label="Chia sẻ với %s Twitter">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2016%2F10%2Fgit-basic%2F" aria-label="Chia sẻ với %s Twitter">
           <i class="fab fa-twitter" aria-hidden="true"></i><span>Chia sẻ với Twitter</span>
         </a>
       </li>
