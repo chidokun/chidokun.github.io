@@ -7,12 +7,12 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Thuật toán Kruskal: Tìm cây khung nhỏ nhất",
+  "headline": "Thuật toán Dijkstra: Tìm đường đi ngắn nhất",
   
   "image": "https://chidokun.github.io/thumbnails/graph.png",
   
-  "datePublished": "2021-08-22T22:06:25+07:00",
-  "dateModified": "2021-08-22T22:06:25+07:00",
+  "datePublished": "2021-09-11T16:44:25+07:00",
+  "dateModified": "2021-09-11T16:44:25+07:00",
   "author": {
     "@type": "Person",
     "name": "Nguyễn Tuấn",
@@ -22,7 +22,7 @@
   },
   "mainEntityOfPage": { 
     "@type": "WebPage",
-    "@id": "https:\/\/chidokun.github.io\/2021\/08\/kruskal-algorithm\/" 
+    "@id": "https:\/\/chidokun.github.io\/2021\/09\/dijkstra-algorithm\/" 
   },
   "publisher": {
     "@type": "Organization",
@@ -34,8 +34,8 @@
     }
     
   },
-  "description": "Ngoài thuật toán Prim, Thuật toán Kruskal cũng là thuật toán cổ điển để giải bài toán tìm cây khung nhỏ nhất (Minimum Spanning Tree) cho đồ thị vô hướng có trọng số. Trong bài viết này chúng ta cùng xem ý tưởng cơ bản của Thuật toán Kruskal.\n",
-  "keywords": ["graph, java, kruskal, spanning tree, cây khung", "development, programming, chidokun, lập trình"]
+  "description": "Thuật toán Dijkstra là một trong những thuật toán cổ điển để giải quyết bài toán tìm đường đi ngắn nhất từ một điểm cho trước tới tất cả các điểm còn lại trong đồ thị có trọng số. Trong bài viết này chúng ta cùng tìm hiểu ý tưởng cơ bản của thuật toán Dijkstra.\n",
+  "keywords": ["graph, java, dijkstra, shortest path, tìm đường đi ngắn nhất", "development, programming, chidokun, lập trình"]
 }
 
 </script>
@@ -44,26 +44,26 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Hugo 0.87.0 with theme Tranquilpeak 0.5.0-BETA">
 <meta name="author" content="Nguyễn Tuấn">
-<meta name="keywords" content="graph, java, kruskal, spanning tree, cây khung, development, programming, chidokun, lập trình">
-<meta name="description" content="Ngoài thuật toán Prim, Thuật toán Kruskal cũng là thuật toán cổ điển để giải bài toán tìm cây khung nhỏ nhất (Minimum Spanning Tree) cho đồ thị vô hướng có trọng số. Trong bài viết này chúng ta cùng xem ý tưởng cơ bản của Thuật toán Kruskal.">
+<meta name="keywords" content="graph, java, dijkstra, shortest path, tìm đường đi ngắn nhất, development, programming, chidokun, lập trình">
+<meta name="description" content="Thuật toán Dijkstra là một trong những thuật toán cổ điển để giải quyết bài toán tìm đường đi ngắn nhất từ một điểm cho trước tới tất cả các điểm còn lại trong đồ thị có trọng số. Trong bài viết này chúng ta cùng tìm hiểu ý tưởng cơ bản của thuật toán Dijkstra.">
 
 
-<meta property="og:description" content="Ngoài thuật toán Prim, Thuật toán Kruskal cũng là thuật toán cổ điển để giải bài toán tìm cây khung nhỏ nhất (Minimum Spanning Tree) cho đồ thị vô hướng có trọng số. Trong bài viết này chúng ta cùng xem ý tưởng cơ bản của Thuật toán Kruskal.">
+<meta property="og:description" content="Thuật toán Dijkstra là một trong những thuật toán cổ điển để giải quyết bài toán tìm đường đi ngắn nhất từ một điểm cho trước tới tất cả các điểm còn lại trong đồ thị có trọng số. Trong bài viết này chúng ta cùng tìm hiểu ý tưởng cơ bản của thuật toán Dijkstra.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Thuật toán Kruskal: Tìm cây khung nhỏ nhất">
-<meta name="twitter:title" content="Thuật toán Kruskal: Tìm cây khung nhỏ nhất">
-<meta property="og:url" content="https://chidokun.github.io/2021/08/kruskal-algorithm/">
-<meta property="twitter:url" content="https://chidokun.github.io/2021/08/kruskal-algorithm/">
+<meta property="og:title" content="Thuật toán Dijkstra: Tìm đường đi ngắn nhất">
+<meta name="twitter:title" content="Thuật toán Dijkstra: Tìm đường đi ngắn nhất">
+<meta property="og:url" content="https://chidokun.github.io/2021/09/dijkstra-algorithm/">
+<meta property="twitter:url" content="https://chidokun.github.io/2021/09/dijkstra-algorithm/">
 <meta property="og:site_name" content="Nguyễn Tuấn&#39;s Blog">
-<meta property="og:description" content="Ngoài thuật toán Prim, Thuật toán Kruskal cũng là thuật toán cổ điển để giải bài toán tìm cây khung nhỏ nhất (Minimum Spanning Tree) cho đồ thị vô hướng có trọng số. Trong bài viết này chúng ta cùng xem ý tưởng cơ bản của Thuật toán Kruskal.">
-<meta name="twitter:description" content="Ngoài thuật toán Prim, Thuật toán Kruskal cũng là thuật toán cổ điển để giải bài toán tìm cây khung nhỏ nhất (Minimum Spanning Tree) cho đồ thị vô hướng có trọng số. Trong bài viết này chúng ta cùng xem ý tưởng cơ bản của Thuật toán Kruskal.">
+<meta property="og:description" content="Thuật toán Dijkstra là một trong những thuật toán cổ điển để giải quyết bài toán tìm đường đi ngắn nhất từ một điểm cho trước tới tất cả các điểm còn lại trong đồ thị có trọng số. Trong bài viết này chúng ta cùng tìm hiểu ý tưởng cơ bản của thuật toán Dijkstra.">
+<meta name="twitter:description" content="Thuật toán Dijkstra là một trong những thuật toán cổ điển để giải quyết bài toán tìm đường đi ngắn nhất từ một điểm cho trước tới tất cả các điểm còn lại trong đồ thị có trọng số. Trong bài viết này chúng ta cùng tìm hiểu ý tưởng cơ bản của thuật toán Dijkstra.">
 <meta property="og:locale" content="vi">
 
   
-    <meta property="article:published_time" content="2021-08-22T22:06:25">
+    <meta property="article:published_time" content="2021-09-11T16:44:25">
   
   
-    <meta property="article:modified_time" content="2021-08-22T22:06:25">
+    <meta property="article:modified_time" content="2021-09-11T16:44:25">
   
   
   
@@ -74,8 +74,6 @@
     
   
   
-    
-      <meta property="article:tag" content="kruskal">
     
       <meta property="article:tag" content="graph">
     
@@ -101,14 +99,14 @@
   <meta property="twitter:image" content="https://chidokun.github.io/thumbnails/graph.png">
 
 
-    <title>Thuật toán Kruskal: Tìm cây khung nhỏ nhất</title>
+    <title>Thuật toán Dijkstra: Tìm đường đi ngắn nhất</title>
 
     <link rel="icon" href="https://chidokun.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://chidokun.github.io/2021/08/kruskal-algorithm/">
+    <link rel="canonical" href="https://chidokun.github.io/2021/09/dijkstra-algorithm/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -310,19 +308,19 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Thuật toán Kruskal: Tìm cây khung nhỏ nhất
+      Thuật toán Dijkstra: Tìm đường đi ngắn nhất
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2021-08-22T22:06:25&#43;07:00">
+      <time datetime="2021-09-11T16:44:25&#43;07:00">
         
   
   
   
   
-    22 tháng 8 2021
+    11 tháng 9 2021
   
 
       </time>
@@ -342,7 +340,7 @@ if (!doNotTrack) {
 
   <div>
   <div class="fb-like" 
-    data-href="https://chidokun.github.io/2021/08/kruskal-algorithm/" 
+    data-href="https://chidokun.github.io/2021/09/dijkstra-algorithm/" 
     data-width="" 
     data-layout="button_count" 
     data-action="like" 
@@ -353,7 +351,7 @@ if (!doNotTrack) {
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
-              <p>Ngoài <a href="https://chidokun.github.io/2021/07/prim-algorithm-implement/">thuật toán Prim</a>, <em>Thuật toán Kruskal</em> cũng là thuật toán cổ điển để giải bài toán tìm cây khung nhỏ nhất (<strong>Minimum Spanning Tree</strong>) cho đồ thị vô hướng có trọng số. Trong bài viết này chúng ta cùng xem ý tưởng cơ bản của <em>Thuật toán Kruskal</em>.</p>
+              <p><em>Thuật toán Dijkstra</em> là một trong những thuật toán cổ điển để giải quyết bài toán tìm đường đi ngắn nhất từ một điểm cho trước tới tất cả các điểm còn lại trong đồ thị có trọng số. Trong bài viết này chúng ta cùng tìm hiểu ý tưởng cơ bản của <em>thuật toán Dijkstra</em>.</p>
 <h1 id="table-of-contents">Mục lục</h1>
 <nav id="TableOfContents">
   <ul>
@@ -367,10 +365,16 @@ if (!doNotTrack) {
 </nav>
 
 <h1 id="1-ý-tưởng">1. Ý tưởng</h1>
-<p><em>Cây khung</em> (spanning tree) của một đồ thị là một đồ thị con liên thông không có chu trình đi qua tất cả các đỉnh. Một đồ thị sẽ có nhiều cây khung và bài toán của chúng ta là phải tìm ra cây khung nhỏ nhất.</p>
-<p>Ý tưởng của <em>Thuật toán Kruskal</em> khá đơn giản: Sắp xếp các cạnh từ bé đến lớn theo trọng số. Lần lượt chọn các cạnh theo thứ tự từ bé đến lớn trong danh sách sao cho không tạo thành chu trình. Thuật toán sẽ dừng lại khi đã có đủ $V-1$ cạnh trong cây khung (với $V$ là số lượng đỉnh của đồ thị).</p>
+<p>Thuật toán Dijkstra có thể giải quyết bài toán tìm đường đi ngắn nhất trên đồ thị vô hướng lẫn có hướng miễn là trọng số <strong>không âm</strong>.</p>
+<p>Ý tưởng cơ bản của thuật toán như sau:</p>
+<ul>
+<li><em><u>Bước 1</u></em>: Từ đỉnh gốc, khởi tạo khoảng cách tới chính nó là $0$, khởi tạo khoảng cách nhỏ nhất ban đầu tới các đỉnh khác là $+\infty$. Ta được danh sách các khoảng cách tới các đỉnh.</li>
+<li><em><u>Bước 2</u></em>: Chọn đỉnh <code>a</code> có khoảng cách nhỏ nhất trong danh sách này và ghi nhận. Các lần sau sẽ không xét tới đỉnh này nữa.</li>
+<li><em><u>Bước 3</u></em>: Lần lượt xét các đỉnh kề <code>b</code> của đỉnh <code>a</code>. Nếu <em>khoảng cách từ đỉnh gốc</em> tới đỉnh <code>b</code> nhỏ hơn khoảng cách hiện tại đang được ghi nhận thì cập nhật giá trị và đỉnh kề <code>a</code> vào khoảng cách hiện tại của <code>b</code>.</li>
+<li><em><u>Bước 4</u></em>: Sau khi xét tất cả đỉnh kề <code>b</code> của đỉnh <code>a</code>. Lúc này ta được danh sách khoảng cách tới các điểm đã được cập nhật. Quay lại <em><u>Bước 2</u></em> với danh sách này. Thuật toán kết thúc khi chọn được khoảng cách nhỏ nhất từ tất cả các điểm.</li>
+</ul>
 <h1 id="2-ví-dụ">2. Ví dụ</h1>
-<p>Để minh họa cho thuật toán, mình sẽ dùng đồ thị $G$ và đi từng bước của thuật toán:</p>
+<p>Để dễ dàng hiểu ý tưởng của thuật toán. Chúng ta cùng xem ví dụ với đồ thị vô hướng $G$. Thuật toán Dijkstra sẽ tìm khoảng cách từ đỉnh gốc $0$ tới tất cả các đỉnh còn lại trong đồ thị $G$.</p>
 
 
  
@@ -398,7 +402,7 @@ if (!doNotTrack) {
   
 </div>
 
-<p>Trong danh sách các cạnh của $G$, ta lấy ra cạnh 2-4 nhỏ nhất.</p>
+<p>Đầu tiên, khởi tạo khoảng cách nhỏ nhất ban đầu tới các đỉnh khác là $+\infty$ và khoảng cách tới đỉnh gốc là 0. Ta được danh sách các khoảng cách tới các đỉnh.</p>
 
 
  
@@ -415,16 +419,16 @@ if (!doNotTrack) {
 
 <div class="figure center" >
   
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/kruskal-algorithm/1.svg" data-fancybox-group="">
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/dijkstra-algorithm/1.svg" data-fancybox-group="">
   
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/kruskal-algorithm/1.svg" style="width: 100%;">
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/dijkstra-algorithm/1.svg" style="width: 90%;">
   
     </a>
   
   
 </div>
 
-<p>Cạnh này không tạo chu trình nên có thể đưa vào cây khung và xét cạnh 1-4.</p>
+<p>Chọn đỉnh 0 có giá trị nhỏ nhất, xét các đỉnh kề của đỉnh 0: Xét đỉnh 1, khoảng cách từ gốc đến đỉnh 1 là 2.5 &lt; $\infty$ nên ghi nhận giá trị mới là $(2.5, 0)$ (nghĩa là khoảng cách đến đỉnh gốc hiện tại ghi nhận là 2.5, đỉnh kề liền trước là đỉnh 0). Xét tương tự cho đỉnh 2 và 3, ta được dòng thứ 2 trong bảng.</p>
 
 
  
@@ -441,16 +445,16 @@ if (!doNotTrack) {
 
 <div class="figure center" >
   
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/kruskal-algorithm/2.svg" data-fancybox-group="">
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/dijkstra-algorithm/2.svg" data-fancybox-group="">
   
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/kruskal-algorithm/2.svg" style="width: 100%;">
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/dijkstra-algorithm/2.svg" style="width: 90%;">
   
     </a>
   
   
 </div>
 
-<p>Đưa 1-4 vào cây khung, xét cạnh 2-5.</p>
+<p>Sau khi xét tất cả các đỉnh ta chọn đỉnh 2 có khoảng cách nhỏ nhất và ghi nhận để xét tiếp. Tiếp tục xét đỉnh kề của 2 là đỉnh 4 và 5 với nguyên tắc nêu ở trên. Xét đỉnh 4, khoảng cách từ đỉnh gốc đến đỉnh 4 sẽ bằng khoảng cách từ đỉnh gốc tới đỉnh 2 cộng khoảng cách từ 2 đến 4. Nghĩa là $2.0+0.6=2.6$ nên ta ghi nhận khoảng cách tại đỉnh 4 là $(2.6, 2)$. Xét tương tự cho đỉnh 5.</p>
 
 
  
@@ -467,16 +471,16 @@ if (!doNotTrack) {
 
 <div class="figure center" >
   
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/kruskal-algorithm/3.svg" data-fancybox-group="">
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/dijkstra-algorithm/3.svg" data-fancybox-group="">
   
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/kruskal-algorithm/3.svg" style="width: 100%;">
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/dijkstra-algorithm/3.svg" style="width: 90%;">
   
     </a>
   
   
 </div>
 
-<p>Đưa 2-5 vào cây khung, xét cạnh 6-8.</p>
+<p>Lúc này ta chọn được đỉnh 3 có khoảng cách nhỏ nhất, xét đỉnh kề của đỉnh 3 là đỉnh 5. Khoảng cách từ gốc tới đỉnh 5 $=2.1+2.5=4.6$ lớn hơn khoảng cách hiện tại được ghi nhận, vì vậy giá trị tại đỉnh 5 không đổi.</p>
 
 
  
@@ -493,16 +497,16 @@ if (!doNotTrack) {
 
 <div class="figure center" >
   
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/kruskal-algorithm/4.svg" data-fancybox-group="">
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/dijkstra-algorithm/4.svg" data-fancybox-group="">
   
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/kruskal-algorithm/4.svg" style="width: 100%;">
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/dijkstra-algorithm/4.svg" style="width: 90%;">
   
     </a>
   
   
 </div>
 
-<p>Đưa 6-8 vào cây khung, xét cạnh 6-7.</p>
+<p>Đỉnh 1 là đỉnh được chọn tiếp theo, xét đỉnh kề của 1 là đỉnh 4. Khoảng cách từ đỉnh gốc không nhỏ hơn khoảng cách hiện tại nên ta không cập nhật gì ở đỉnh này.</p>
 
 
  
@@ -519,16 +523,16 @@ if (!doNotTrack) {
 
 <div class="figure center" >
   
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/kruskal-algorithm/5.svg" data-fancybox-group="">
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/dijkstra-algorithm/5.svg" data-fancybox-group="">
   
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/kruskal-algorithm/5.svg" style="width: 100%;">
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/dijkstra-algorithm/5.svg" style="width: 90%;">
   
     </a>
   
   
 </div>
 
-<p>Đưa 6-7 vào cây khung, xét cạnh 5-6.</p>
+<p>Sau khi xét xong ta chọn được đỉnh 4 là đỉnh tiếp theo. Ta cập nhật giá trị mới cho đỉnh 6.</p>
 
 
  
@@ -545,16 +549,16 @@ if (!doNotTrack) {
 
 <div class="figure center" >
   
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/kruskal-algorithm/6.svg" data-fancybox-group="">
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/dijkstra-algorithm/6.svg" data-fancybox-group="">
   
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/kruskal-algorithm/6.svg" style="width: 100%;">
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/dijkstra-algorithm/6.svg" style="width: 90%;">
   
     </a>
   
   
 </div>
 
-<p>Đưa 5-6 vào cây khung, xét cạnh 0-2.</p>
+<p>Chọn được đỉnh 5 là đỉnh nhỏ nhất, tiếp tục xét các đỉnh kề.</p>
 
 
  
@@ -571,16 +575,16 @@ if (!doNotTrack) {
 
 <div class="figure center" >
   
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/kruskal-algorithm/7.svg" data-fancybox-group="">
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/dijkstra-algorithm/7.svg" data-fancybox-group="">
   
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/kruskal-algorithm/7.svg" style="width: 100%;">
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/dijkstra-algorithm/7.svg" style="width: 90%;">
   
     </a>
   
   
 </div>
 
-<p>Đưa 0-2 vào cây khung, xét cạnh 5-7. Cạnh 5-7 tạo thành chu trình, vì vậy không được đưa vào cây khung. Ta xét tiếp cạnh 7-8, cũng không được đưa vào cây khung do tạo thành chu trình. Xét cạnh 0-3.</p>
+<p>Đỉnh 6 là đỉnh tiếp theo được chọn.</p>
 
 
  
@@ -597,16 +601,16 @@ if (!doNotTrack) {
 
 <div class="figure center" >
   
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/kruskal-algorithm/8.svg" data-fancybox-group="">
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/dijkstra-algorithm/8.svg" data-fancybox-group="">
   
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/kruskal-algorithm/8.svg" style="width: 100%;">
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/dijkstra-algorithm/8.svg" style="width: 90%;">
   
     </a>
   
   
 </div>
 
-<p>Đưa 0-3 vào cây khung. Thuật toán kết thúc vì đã đủ $V-1$ cạnh.</p>
+<p>Chọn đỉnh có khoảng cách nhỏ nhất là đỉnh 7.</p>
 
 
  
@@ -623,18 +627,19 @@ if (!doNotTrack) {
 
 <div class="figure center" >
   
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/kruskal-algorithm/9.svg" data-fancybox-group="">
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/dijkstra-algorithm/9.svg" data-fancybox-group="">
   
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/kruskal-algorithm/9.svg" style="width: 100%;">
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/dijkstra-algorithm/9.svg" style="width: 90%;">
   
     </a>
   
   
 </div>
 
+<p>Thuật toán kết thúc khi chọn được khoảng cách nhỏ nhất cho tất cả các đỉnh.</p>
 <h2 id="references">References</h2>
 <ul>
-<li><a href="https://algs4.cs.princeton.edu/home/">Algorithms, 4th Edition by Robert Sedgewick and Kevin Wayne</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">Dijkstra&rsquo;s algorithm</a></li>
 </ul>
               
 
@@ -648,8 +653,6 @@ if (!doNotTrack) {
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/kruskal/">kruskal</a>
-
   <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/graph/">graph</a>
 
                   </div>
@@ -663,7 +666,7 @@ if (!doNotTrack) {
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/09/dijkstra-algorithm/" data-tooltip="Thuật toán Dijkstra: Tìm đường đi ngắn nhất" aria-label="Tiếp: Thuật toán Dijkstra: Tìm đường đi ngắn nhất">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -671,7 +674,7 @@ if (!doNotTrack) {
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/08/prim-algorithm-improvement/" data-tooltip="Thuật toán Prim: Cải tiến dùng Index Priority Queue" aria-label="Trước: Thuật toán Prim: Cải tiến dùng Index Priority Queue">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/08/kruskal-algorithm/" data-tooltip="Thuật toán Kruskal: Tìm cây khung nhỏ nhất" aria-label="Trước: Thuật toán Kruskal: Tìm cây khung nhỏ nhất">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -689,13 +692,13 @@ if (!doNotTrack) {
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/08/kruskal-algorithm/" title="Chia sẻ với %s Facebook" aria-label="Chia sẻ với %s Facebook">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/09/dijkstra-algorithm/" title="Chia sẻ với %s Facebook" aria-label="Chia sẻ với %s Facebook">
               <i class="fab fa-facebook" aria-hidden="true"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/08/kruskal-algorithm/" title="Chia sẻ với %s Twitter" aria-label="Chia sẻ với %s Twitter">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/09/dijkstra-algorithm/" title="Chia sẻ với %s Twitter" aria-label="Chia sẻ với %s Twitter">
               <i class="fab fa-twitter" aria-hidden="true"></i>
             </a>
           </li>
@@ -724,8 +727,8 @@ if (!doNotTrack) {
             <div class="comment-box">
                 <textarea name="fields[comment]" class="comment-input-control comment-input-animated" placeholder="Comment (markdown is accepted) *" required rows="3"></textarea>
                 <div class="comment-box-tail">
-                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2021/08/kruskal-algorithm/#comment-submitted">
-                    <input type="hidden" name="options[slug]" value="kruskal-algorithm">
+                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2021/09/dijkstra-algorithm/#comment-submitted">
+                    <input type="hidden" name="options[slug]" value="dijkstra-algorithm">
                     <input type="text" name="fields[name]" class="post-comment-field" placeholder="Name *" required/>
                     <input type="email" name="fields[email]" class="post-comment-field" placeholder="Email address (will not be public) *" required/>
                     <input type="hidden" id="comment-parent" name="fields[reply_to]" value="">
@@ -778,7 +781,7 @@ if (!doNotTrack) {
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/09/dijkstra-algorithm/" data-tooltip="Thuật toán Dijkstra: Tìm đường đi ngắn nhất" aria-label="Tiếp: Thuật toán Dijkstra: Tìm đường đi ngắn nhất">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -786,7 +789,7 @@ if (!doNotTrack) {
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/08/prim-algorithm-improvement/" data-tooltip="Thuật toán Prim: Cải tiến dùng Index Priority Queue" aria-label="Trước: Thuật toán Prim: Cải tiến dùng Index Priority Queue">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/08/kruskal-algorithm/" data-tooltip="Thuật toán Kruskal: Tìm cây khung nhỏ nhất" aria-label="Trước: Thuật toán Kruskal: Tìm cây khung nhỏ nhất">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -804,13 +807,13 @@ if (!doNotTrack) {
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/08/kruskal-algorithm/" title="Chia sẻ với %s Facebook" aria-label="Chia sẻ với %s Facebook">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/09/dijkstra-algorithm/" title="Chia sẻ với %s Facebook" aria-label="Chia sẻ với %s Facebook">
               <i class="fab fa-facebook" aria-hidden="true"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/08/kruskal-algorithm/" title="Chia sẻ với %s Twitter" aria-label="Chia sẻ với %s Twitter">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/09/dijkstra-algorithm/" title="Chia sẻ với %s Twitter" aria-label="Chia sẻ với %s Twitter">
               <i class="fab fa-twitter" aria-hidden="true"></i>
             </a>
           </li>
@@ -835,13 +838,13 @@ if (!doNotTrack) {
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2021%2F08%2Fkruskal-algorithm%2F" aria-label="Chia sẻ với %s Facebook">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2021%2F09%2Fdijkstra-algorithm%2F" aria-label="Chia sẻ với %s Facebook">
           <i class="fab fa-facebook" aria-hidden="true"></i><span>Chia sẻ với Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2021%2F08%2Fkruskal-algorithm%2F" aria-label="Chia sẻ với %s Twitter">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2021%2F09%2Fdijkstra-algorithm%2F" aria-label="Chia sẻ với %s Twitter">
           <i class="fab fa-twitter" aria-hidden="true"></i><span>Chia sẻ với Twitter</span>
         </a>
       </li>
