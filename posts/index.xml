@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Sat, 11 Sep 2021 16:44:25 +0700</lastBuildDate><atom:link href="https://chidokun.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 29 Sep 2021 22:30:00 +0700</lastBuildDate><atom:link href="https://chidokun.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bàn về MIME Type và Bài toán Nhận dạng File type khi upload</title>
+      <link>https://chidokun.github.io/2021/09/mime-type-and-upload-file-problem/</link>
+      <pubDate>Wed, 29 Sep 2021 22:30:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2021/09/mime-type-and-upload-file-problem/</guid>
+      <description>Câu chuyện bắt đầu trong một dự án nọ, có một yêu cầu được đưa ra phải phát triển tính năng cho phép người quản trị upload một file text chứa các từ bị cấm để hệ thống cập nhật config phục vụ việc kiểm tra real-time nội dung người dùng gửi lên. Yêu cầu chỉ được phép upload lên file text theo một định dạng nhất định.</description>
+    </item>
+    
     <item>
       <title>Thuật toán Dijkstra: Tìm đường đi ngắn nhất</title>
       <link>https://chidokun.github.io/2021/09/dijkstra-algorithm/</link>

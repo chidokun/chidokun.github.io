@@ -6,7 +6,16 @@
     <description>Recent content in Tags on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Sat, 11 Sep 2021 16:44:25 +0700</lastBuildDate><atom:link href="https://chidokun.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 29 Sep 2021 22:30:00 +0700</lastBuildDate><atom:link href="https://chidokun.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>backend</title>
+      <link>https://chidokun.github.io/tags/backend/</link>
+      <pubDate>Wed, 29 Sep 2021 22:30:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/tags/backend/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>graph</title>
       <link>https://chidokun.github.io/tags/graph/</link>
