@@ -7,12 +7,12 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Bàn về MIME Type và Bài toán Nhận dạng File type khi upload",
+  "headline": "MIME Type and Upload File Problem",
   
   "image": "https://chidokun.github.io/thumbnails/mime.png",
   
-  "datePublished": "2021-09-29T22:30:00+07:00",
-  "dateModified": "2021-09-29T22:30:00+07:00",
+  "datePublished": "2021-10-13T22:54:00+07:00",
+  "dateModified": "2021-10-13T22:54:00+07:00",
   "author": {
     "@type": "Person",
     "name": "Nguyễn Tuấn",
@@ -22,7 +22,7 @@
   },
   "mainEntityOfPage": { 
     "@type": "WebPage",
-    "@id": "https:\/\/chidokun.github.io\/2021\/09\/mime-type-and-upload-file-problem\/" 
+    "@id": "https:\/\/chidokun.github.io\/2021\/10\/mime-type-and-upload-file-problem\/en\/" 
   },
   "publisher": {
     "@type": "Organization",
@@ -34,7 +34,7 @@
     }
     
   },
-  "description": "Câu chuyện bắt đầu trong một dự án nọ, có một yêu cầu được đưa ra phải phát triển tính năng cho phép người quản trị upload một file text chứa các từ bị cấm để hệ thống cập nhật config phục vụ việc kiểm tra real-time nội dung người dùng gửi lên. Yêu cầu chỉ được phép upload lên file text theo một định dạng nhất định.",
+  "description": "The story begins in my previous projects. There was a requirement to develop a feature that an administrator can upload a text file containing bad words. The system used these words to real-time check the contents that the user submitted. The uploaded file needs to follow a specific format.",
   "keywords": ["mime type, file type, mime type detection, upload", "development, programming, chidokun, lập trình"]
 }
 
@@ -45,25 +45,25 @@
 <meta name="generator" content="Hugo 0.87.0 with theme Tranquilpeak 0.5.0-BETA">
 <meta name="author" content="Nguyễn Tuấn">
 <meta name="keywords" content="mime type, file type, mime type detection, upload, development, programming, chidokun, lập trình">
-<meta name="description" content="Câu chuyện bắt đầu trong một dự án nọ, có một yêu cầu được đưa ra phải phát triển tính năng cho phép người quản trị upload một file text chứa các từ bị cấm để hệ thống cập nhật config phục vụ việc kiểm tra real-time nội dung người dùng gửi lên. Yêu cầu chỉ được phép upload lên file text theo một định dạng nhất định.">
+<meta name="description" content="The story begins in my previous projects. There was a requirement to develop a feature that an administrator can upload a text file containing bad words. The system used these words to real-time check the contents that the user submitted. The uploaded file needs to follow a specific format.">
 
 
-<meta property="og:description" content="Câu chuyện bắt đầu trong một dự án nọ, có một yêu cầu được đưa ra phải phát triển tính năng cho phép người quản trị upload một file text chứa các từ bị cấm để hệ thống cập nhật config phục vụ việc kiểm tra real-time nội dung người dùng gửi lên. Yêu cầu chỉ được phép upload lên file text theo một định dạng nhất định.">
+<meta property="og:description" content="The story begins in my previous projects. There was a requirement to develop a feature that an administrator can upload a text file containing bad words. The system used these words to real-time check the contents that the user submitted. The uploaded file needs to follow a specific format.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Bàn về MIME Type và Bài toán Nhận dạng File type khi upload">
-<meta name="twitter:title" content="Bàn về MIME Type và Bài toán Nhận dạng File type khi upload">
-<meta property="og:url" content="https://chidokun.github.io/2021/09/mime-type-and-upload-file-problem/">
-<meta property="twitter:url" content="https://chidokun.github.io/2021/09/mime-type-and-upload-file-problem/">
+<meta property="og:title" content="MIME Type and Upload File Problem">
+<meta name="twitter:title" content="MIME Type and Upload File Problem">
+<meta property="og:url" content="https://chidokun.github.io/2021/10/mime-type-and-upload-file-problem/en/">
+<meta property="twitter:url" content="https://chidokun.github.io/2021/10/mime-type-and-upload-file-problem/en/">
 <meta property="og:site_name" content="Nguyễn Tuấn&#39;s Blog">
-<meta property="og:description" content="Câu chuyện bắt đầu trong một dự án nọ, có một yêu cầu được đưa ra phải phát triển tính năng cho phép người quản trị upload một file text chứa các từ bị cấm để hệ thống cập nhật config phục vụ việc kiểm tra real-time nội dung người dùng gửi lên. Yêu cầu chỉ được phép upload lên file text theo một định dạng nhất định.">
-<meta name="twitter:description" content="Câu chuyện bắt đầu trong một dự án nọ, có một yêu cầu được đưa ra phải phát triển tính năng cho phép người quản trị upload một file text chứa các từ bị cấm để hệ thống cập nhật config phục vụ việc kiểm tra real-time nội dung người dùng gửi lên. Yêu cầu chỉ được phép upload lên file text theo một định dạng nhất định.">
+<meta property="og:description" content="The story begins in my previous projects. There was a requirement to develop a feature that an administrator can upload a text file containing bad words. The system used these words to real-time check the contents that the user submitted. The uploaded file needs to follow a specific format.">
+<meta name="twitter:description" content="The story begins in my previous projects. There was a requirement to develop a feature that an administrator can upload a text file containing bad words. The system used these words to real-time check the contents that the user submitted. The uploaded file needs to follow a specific format.">
 <meta property="og:locale" content="vi">
 
   
-    <meta property="article:published_time" content="2021-09-29T22:30:00">
+    <meta property="article:published_time" content="2021-10-13T22:54:00">
   
   
-    <meta property="article:modified_time" content="2021-09-29T22:30:00">
+    <meta property="article:modified_time" content="2021-10-13T22:54:00">
   
   
   
@@ -99,14 +99,14 @@
   <meta property="twitter:image" content="https://chidokun.github.io/thumbnails/mime.png">
 
 
-    <title>Bàn về MIME Type và Bài toán Nhận dạng File type khi upload</title>
+    <title>MIME Type and Upload File Problem</title>
 
     <link rel="icon" href="https://chidokun.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://chidokun.github.io/2021/09/mime-type-and-upload-file-problem/">
+    <link rel="canonical" href="https://chidokun.github.io/2021/10/mime-type-and-upload-file-problem/en/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -308,19 +308,19 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Bàn về MIME Type và Bài toán Nhận dạng File type khi upload
+      MIME Type and Upload File Problem
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2021-09-29T22:30:00&#43;07:00">
+      <time datetime="2021-10-13T22:54:00&#43;07:00">
         
   
   
   
   
-    29 tháng 9 2021
+    13 tháng 10 2021
   
 
       </time>
@@ -340,7 +340,7 @@ if (!doNotTrack) {
 
   <div>
   <div class="fb-like" 
-    data-href="https://chidokun.github.io/2021/09/mime-type-and-upload-file-problem/" 
+    data-href="https://chidokun.github.io/2021/10/mime-type-and-upload-file-problem/en/" 
     data-width="" 
     data-layout="button_count" 
     data-action="like" 
@@ -354,28 +354,28 @@ if (!doNotTrack) {
               <h1 id="table-of-contents">Mục lục</h1>
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#mở-đầu">Mở đầu</a></li>
-    <li><a href="#bắt-tay-nào">Bắt tay nào!</a></li>
-    <li><a href="#xác-thực-kiểu-file-ở-phía-backend">Xác thực kiểu File ở phía Backend</a>
+    <li><a href="#beginning">Beginning</a></li>
+    <li><a href="#lets-go">Let&rsquo;s go!</a></li>
+    <li><a href="#file-type-determination-on-the-backend">File type determination on the backend</a>
       <ul>
-        <li><a href="#dựa-vào-mime-type-được-xác-định-bởi-user-agent">Dựa vào MIME Type được xác định bởi User-agent</a></li>
-        <li><a href="#mime-type-và-một-số-cách-xác-định-file-type">MIME Type và một số cách xác định file type</a></li>
-        <li><a href="#dùng-apache-tika-để-xác-định-mime-type">Dùng Apache Tika để xác định MIME Type</a></li>
+        <li><a href="#using-the-mime-type-defined-by-the-user-agent">Using the MIME Type defined by the User-agent</a></li>
+        <li><a href="#mime-type-and-some-ways-to-determine-file-type">MIME Type and some ways to determine file type</a></li>
+        <li><a href="#using-apache-tika-to-determine-mime-type">Using Apache Tika to determine MIME Type</a></li>
       </ul>
     </li>
     <li><a href="#tldr">TL;DR</a></li>
   </ul>
 </nav>
 
-<h1 id="mở-đầu">Mở đầu</h1>
-<p>Câu chuyện bắt đầu trong một dự án nọ, có một yêu cầu được đưa ra phải phát triển tính năng cho phép người quản trị upload một file text chứa các từ bị cấm. Hệ thống sau đó sẽ cập nhật config phục vụ việc kiểm tra real-time nội dung người dùng gửi lên. Yêu cầu chỉ được phép upload lên file text theo một định dạng nhất định.</p>
-<p>Để chặn không cho người dùng upload những file khác ngoài file text, ta có thể được thực hiện trên frontend.</p>
+<h1 id="beginning">Beginning</h1>
+<p>The story begins in my previous projects. There was a requirement to develop a feature that an administrator can upload a text file containing bad words. The system used these words to real-time check the contents that the user submitted. The uploaded file needs to follow a specific format.</p>
+<p>To prevent users from uploading files other than text files, we can do it on the frontend.</p>
 <pre><code class="language-html">&lt;input type=&quot;file&quot; accept=&quot;text/plain&quot; /&gt;
 </code></pre>
-<p>Lúc này người dùng chỉ có thể chọn file text trong cửa sổ duyệt file.</p>
-<p>Tuy nhiên, để đảm bảo an toàn cho hệ thống, chỉ chặn người dùng trên giao diện là chưa đủ, cần phải xác thực lại file được upload lên ở phía backend xem có phải người dùng đã tải lên một file text hay không. <em><span class="highlight-text green">Bài toán chúng ta cần giải quyết là xác định kiểu của file được người dùng upload lên</span></em>.</p>
-<h1 id="bắt-tay-nào">Bắt tay nào!</h1>
-<p>Để minh họa cho bài toán trên, chúng ta sẽ xây dựng hệ thống minh họa với phần giao diện sử dụng React.js và backend sử dụng Java/Spring Boot.</p>
+<p>So that user merely selects a text file in the file selection window.</p>
+<p>However, to ensure system security, just blocking the user on the interface is not enough. It is necessary to re-verify the uploaded file on the backend to see if the user has uploaded a text file or not.. <em><span class="highlight-text green">The problem we need to solve is to determine the actual type of file uploaded by the user.</span></em>.</p>
+<h1 id="lets-go">Let&rsquo;s go!</h1>
+<p>To illustrate the above problem, we will build a demo system with a frontend using React.js and a backend using Java/Spring Boot.</p>
 
 
  
@@ -401,8 +401,8 @@ if (!doNotTrack) {
   
 </div>
 
-<p>Giao diện của chúng ta khá đơn giản, gồm một <code>input[type=file]</code> và một <code>button</code> để upload file được chọn. Khi chọn một file, giao diện sẽ hiển thị MIME Type mà trình duyệt xác định. Sau khi upload file, hệ thống sẽ trả về MIME type mà phía backend xác định. Toàn bộ source code có thể xem ở <a href="https://github.com/chidokun/mime-type-upload-example">đây</a>.</p>
-<p>Đồng thời chuẩn bị một số file để test xem hệ thống có xác định đúng hay không.</p>
+<p>Our interface is quite simple, consisting of an <code>input[type=file]</code> and a <code>button</code> to upload the selected file. When selecting a file, the UI will display the MIME Type that the browser determines. After uploading the file, the system will return the MIME type identified by the backend. All sourcecode is <a href="https://github.com/chidokun/mime-type-upload-example">here</a>.</p>
+<p>Also, prepare some files to test whether the system determines correctly or not.</p>
 
 
  
@@ -428,14 +428,14 @@ if (!doNotTrack) {
   
 </div>
 
-<p>Chuẩn bị 3 file có định dạng đúng với extension, sau đó copy 3 file này và đổi tên lại:</p>
+<p>Prepare 3 files with the correct extension, then copy these files and rename them:</p>
 <ul>
 <li>real.png -&gt; fake.txt</li>
 <li>real.jpg -&gt; fake.zip</li>
 <li>real.svg -&gt; fake.docx</li>
 </ul>
-<h1 id="xác-thực-kiểu-file-ở-phía-backend">Xác thực kiểu File ở phía Backend</h1>
-<p>Hệ thống backend trong dự án được viết bằng Java sử dụng Spring Boot. Một controller được cài đặt để nhận request upload từ phía người dùng.</p>
+<h1 id="file-type-determination-on-the-backend">File type determination on the backend</h1>
+<p>The backend system in the project is written in Java using Spring Boot. A controller is implemented to receive the upload request from the user as well.</p>
 
   
     
@@ -475,7 +475,7 @@ public class UploadController {
   </table>
 </figure>
 
-<p>Và một <code>Response</code> để trả kết quả về cho người dùng.</p>
+<p>And a <code>Response</code> to return the result to the user.</p>
 
   
     
@@ -520,16 +520,16 @@ public class Response {
   </table>
 </figure>
 
-<h2 id="dựa-vào-mime-type-được-xác-định-bởi-user-agent">Dựa vào MIME Type được xác định bởi User-agent</h2>
-<p>Khi chọn một file từ <code>input[type=file]</code>, kiểu file đã được trình duyệt (user-agent) xác định theo MIME type và truyền xuống backend thông qua request header <code>Content-Type</code>. Vì vậy, class <code>MultipartFile</code> trong tham số đầu vào của controller đã có thông tin về kiểu của file.</p>
-<p>Đến đây có thể sử dụng <code>getContentType()</code> để xác định kiểu file dựa trên MIME Type.</p>
+<h2 id="using-the-mime-type-defined-by-the-user-agent">Using the MIME Type defined by the User-agent</h2>
+<p>When selecting a file from <code>input[type=file]</code>, the file type is already determined by the browser (user-agent) follow MIME type format and then transmitted to the backend via the <code>Content-Type</code> request header. So the <code>MultipartFile</code> class in the controller&rsquo;s parameter already has information about the file&rsquo;s type.</p>
+<p>Now you can use <code>getContentType()</code> to determine the file type based on the MIME Type.</p>
 <pre><code class="language-java">@PostMapping(path = &quot;/check-file-type&quot;, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 public ResponseEntity&lt;Response&gt; checkFileType(@RequestPart MultipartFile file) {
     String mimeType = file.getContentType();
     return ResponseEntity.ok(new Response(mimeType));
 }
 </code></pre>
-<p>Cùng test lại mới các file test đã chuẩn bị trước.</p>
+<p>Let&rsquo;s test the files we prepared above.</p>
 
 
  
@@ -546,33 +546,33 @@ public ResponseEntity&lt;Response&gt; checkFileType(@RequestPart MultipartFile f
 
 <div class="figure center" >
   
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/mime-type-and-upload-file-problem/3.png" title="Kết quả test với real.png và fake.zip" data-fancybox-group="">
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/mime-type-and-upload-file-problem/3.png" title="Test results with real.png and fake.zip" data-fancybox-group="">
   
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/mime-type-and-upload-file-problem/3.png" style="width: 100%;" alt="Kết quả test với real.png và fake.zip">
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/mime-type-and-upload-file-problem/3.png" style="width: 100%;" alt="Test results with real.png and fake.zip">
   
     </a>
   
    
-    <span class="caption">Kết quả test với real.png và fake.zip</span>
+    <span class="caption">Test results with real.png and fake.zip</span>
   
 </div>
 
-<p>Trường hợp file <code>real.png</code>, user-agent đã xác định đúng MIME type thông qua extension <code>.png</code>. Nhưng với file <code>fake.zip</code>, user-agent không thể xác định đúng loại file của nó là JPG mà xác định thông qua extension <code>.zip</code>. Do đó, việc dựa trên MIME type do client xác định tiềm ẩn nhiều rủi ro khi người dùng có thể cố tình đổi tên và extension của file.</p>
-<p>Mỗi loại file có đặc tả khác nhau và được lưu trữ cấu trúc khác nhau, vì vậy muốn xác định chính xác kiểu của file thì cần dựa vào nội dung bên trong của file đó.</p>
-<h2 id="mime-type-và-một-số-cách-xác-định-file-type">MIME Type và một số cách xác định file type</h2>
-<p><strong>MIME type</strong> (<em>Multipurpose Internet Mail Extensions</em>) là một tiêu chuẩn xác định bản chất và định dạng của tài liệu, file hoặc một tập hợp các byte. Nó được định nghĩa và chuẩn hóa trong <a href="https://datatracker.ietf.org/doc/html/rfc6838">RFC 6838</a> của IETF.</p>
-<p>Cấu trúc của MIME type gồm có <em>type</em> và <em>subtype</em>:</p>
+<p>In the case of the file <code>real.png</code>, the user-agent identified the correct MIME type via the <code>.png</code> extension. But with the file <code>fake.zip</code>, the user-agent cannot correctly identify its file type as JPG but determines it through the <code>.zip</code> extension. Therefore, relying on a client-defined MIME type may have some risks when users intentionally change the file&rsquo;s name and extension.</p>
+<p>Each file type has different specifications and is stored differently, so if you want to determine the exact type of the file, you need to read the contents of that file.</p>
+<h2 id="mime-type-and-some-ways-to-determine-file-type">MIME Type and some ways to determine file type</h2>
+<p><strong>MIME type</strong> (<em>Multipurpose Internet Mail Extensions</em>) is a standard that defines the nature and format of a document, file, or set of bytes. It is defined and standardized in IETF&rsquo;s <a href="https://datatracker.ietf.org/doc/html/rfc6838">RFC 6838</a>.</p>
+<p>The structure of the MIME type includes <em>type</em> and <em>subtype</em>:</p>
 <pre><code>type/subtype
 </code></pre>
-<p><em>Ví dụ</em>: <code>text/plain</code>, <code>application/zip</code>, &hellip;</p>
+<p><em>Example</em>: <code>text/plain</code>, <code>application/zip</code>, &hellip;</p>
 <p>Trong đó:</p>
 <ul>
-<li><strong>Type</strong> là danh mục chung mà loại dữ liệu thuộc về, chẳng hạn như <code>video</code> hoặc <code>text</code>.</li>
-<li><strong>Subtype</strong> xác định loại dữ liệu chính xác của kiểu dữ liệu đó được phân loại. Ví dụ: Với type <code>text</code>, ta có thể có các subtype như <code>plain</code> (text thuần), <code>html</code> (HTML source code), hoặc <code>calendar</code> (định dạng <code>.ics</code> của iCalendar).</li>
+<li><strong>Type</strong> is the general category to which the data type belongs, such as <code>video</code> or <code>text</code>.</li>
+<li><strong>Subtype</strong> determines the exact data type classified. For example: With type <code>text</code>, we can have subtypes like <code>plain</code> (plain text), <code>html</code> (HTML source code), or <code>calendar</code> (iCalendar <code>.ics</code> format).</li>
 </ul>
-<p>Nói chung, <em><span class="highlight-text green">MIME Type là một cái tên gán cho một loại file và được dùng để xác định nội dung thuộc kiểu nào để truyền dữ liệu và các ứng dụng dựa vào đó hành xử phù hợp</span></em>. Từ MIME type ta có thể xác định được loại file, vậy <em><span class="highlight-text red">từ một file làm sao xác định MIME type của nó?</span></em></p>
-<p>Để xác định MIME type, chúng ta cần đọc nội dung của nó. Mỗi loại sẽ file có cách lưu trữ khác nhau, chẳng hạn như file ZIP có đặc tả như ở <a href="https://www.iana.org/assignments/media-types/application/zip">đây</a>. Nhưng vẫn có chung một số đặc điểm mà có thể dùng để nhận dạng.</p>
-<p><strong>File Signature</strong> là những byte pattern được lưu ở vị trí bắt đầu file (hay còn gọi là <em>magic number</em> hay <em>magic bytes</em>), được dùng để xác định nội dung và định dạng của file. Bảng dưới đây liệt kê một vài File signature của một số định dạng phổ biến (<a href="https://en.wikipedia.org/wiki/List_of_file_signatures">tham khảo</a>).</p>
+<p>In general, <em><span class="highlight-text green">MIME Type is a name assigned to a file type and is used to determine what type of content to transmit data and the applications based on it to behave accordingly</span></em>. From the MIME type, we can determine the file type, so <em><span class="highlight-text red">from a file how to identify its MIME type?</span></em></p>
+<p>To determine the MIME type, we need to read its contents. Each file type will have a different storage method, such as a ZIP file with a file specification like <a href="https://www.iana.org/assignments/media-types/application/zip">here</a>. But there are still some common features that can be used for identification.</p>
+<p><strong>File Signature</strong> are pattern bytes stored at the beginning of the file (also known as <em>magic number</em> or <em>magic bytes</em>), used to identify the content and format of the file. The table below lists some File signatures of some popular formats (see some file signatures <a href="https://en.wikipedia.org/wiki/List_of_file_signatures">here</a>).</p>
 <table>
 <thead>
 <tr>
@@ -621,24 +621,24 @@ public ResponseEntity&lt;Response&gt; checkFileType(@RequestPart MultipartFile f
 </tr>
 </tbody>
 </table>
-<p>Ngoài việc xác định <em>File signature</em>, đôi khi còn phải xác định cả nội dung của file thì mới tìm được chính xác loại file. Ví dụ: Định dạng SVG thực chất là XML. Do đó để xác định được nó, ngoài việc phải đọc <em>magic number</em> để xác định được định dạng XML, còn cần phải đọc thêm nội dung bên trong mới xác định chính xác định dạng SVG.</p>
-<p>Một số định dạng khác như <em>Apple iWork</em>, thực chất là một tập các file XML nằm bên trong một file Zip. Lúc này file Zip có nhiệm vụ làm container chứa các file XML và việc xác định trở nên khó hơn do phải giải nén nội dung bên trong.</p>
-<h2 id="dùng-apache-tika-để-xác-định-mime-type">Dùng Apache Tika để xác định MIME Type</h2>
-<p>Với các hệ thống Java, có thể dùng <a href="https://tika.apache.org/">Apache Tika</a> để trích xuất thông tin và xác định chính xác định dạng dữ liệu của file. Apache Tika xác định định dạng dữ liệu của file dựa vào nhiều tiêu chí:</p>
+<p>Besides using the <em>File signature</em>, sometimes it&rsquo;s necessary to read file content to find the exact file type. For example, SVG format is essentially XML. Therefore, to determine it, in addition to having to read <em>magic number</em> to determine the XML format, it is also necessary to read more content inside to determine the SVG format correctly.</p>
+<p>Some other formats, such as <em>Apple iWork</em>, are actually a collection of XML files inside a Zip file. At this time, the Zip file is responsible for making the container containing the XML files. File type identification becomes more difficult due to the need to decompress the content inside.</p>
+<h2 id="using-apache-tika-to-determine-mime-type">Using Apache Tika to determine MIME Type</h2>
+<p>With Java systems, <a href="https://tika.apache.org/">Apache Tika</a> can be used to extract information and determine the exact format of the file&rsquo;s data. Apache Tika finds out the data format of a file based on several criteria:</p>
 <ul>
-<li><em>Magic number</em>: Tập các byte đầu của file.</li>
-<li><em>File name extension</em>: Một phần dựa vào file extension.</li>
-<li><em>Metadata</em> của file được download về từ Internet.</li>
-<li>Xác định <em>container</em> và nội dung bên trong.</li>
+<li><em>Magic number</em>: Set of first bytes of the file.</li>
+<li><em>File name extension</em>: Partially based on file extension.</li>
+<li><em>Metadata</em> of files downloaded from the Internet.</li>
+<li>Define <em>container</em> and its contents.</li>
 </ul>
-<p>Để dùng Tika trong <em>Maven project</em>, có thể thêm dependency vào <code>pom.xml</code>:</p>
+<p>To use Tika in a <em>Maven project</em>, you can add a dependency to <code>pom.xml</code>:</p>
 <pre><code class="language-xml">&lt;dependency&gt;
     &lt;groupId&gt;org.apache.tika&lt;/groupId&gt;
     &lt;artifactId&gt;tika-core&lt;/artifactId&gt;
     &lt;version&gt;2.1.0&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
-<p>Từ đây, chúng ta có thể viết thêm chức năng xác định đúng MIME type của một file khi upload lên hệ thống.</p>
+<p>So we can write more functions that determine the correct MIME type of a file when uploading to the system.</p>
 
   
     
@@ -683,14 +683,14 @@ public ResponseEntity&lt;Response&gt; checkFileType(@RequestPart MultipartFile f
   </table>
 </figure>
 
-<p>Tạo thêm một API nữa dưới backend và sử dụng Tika để nhận dạng MIME Type.</p>
+<p>Create one more API under the backend and use Tika to recognize the MIME Type.</p>
 <pre><code class="language-java">@PostMapping(path = &quot;/check-real-type&quot;, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 public ResponseEntity&lt;Response&gt; checkRealType(@RequestPart MultipartFile file) {
     String mimeType = FileUtils.getRealMimeType(file);
     return ResponseEntity.ok(new Response(mimeType));
 }
 </code></pre>
-<p>Sau đó, chỉnh sửa giao diện để upload file xuống backend sử dụng API vừa tạo rồi test lại với một số file.</p>
+<p>After that, edit the UI to upload files to the backend using the newly created API and test again with some files.</p>
 
 
  
@@ -707,22 +707,22 @@ public ResponseEntity&lt;Response&gt; checkRealType(@RequestPart MultipartFile f
 
 <div class="figure center" >
   
-    <a class="fancybox" href="https://chidokun.github.io/images/post/software/mime-type-and-upload-file-problem/4.png" title="Kết quả test lại với real.png và fake.zip. Tika đã xác định đúng." data-fancybox-group="">
+    <a class="fancybox" href="https://chidokun.github.io/images/post/software/mime-type-and-upload-file-problem/4.png" title="Test results with real.png and fake.zip. Tika got it right." data-fancybox-group="">
   
-    <img class="fig-img" src="https://chidokun.github.io/images/post/software/mime-type-and-upload-file-problem/4.png" style="width: 100%;" alt="Kết quả test lại với real.png và fake.zip. Tika đã xác định đúng.">
+    <img class="fig-img" src="https://chidokun.github.io/images/post/software/mime-type-and-upload-file-problem/4.png" style="width: 100%;" alt="Test results with real.png and fake.zip. Tika got it right.">
   
     </a>
   
    
-    <span class="caption">Kết quả test lại với real.png và fake.zip. Tika đã xác định đúng.</span>
+    <span class="caption">Test results with real.png and fake.zip. Tika got it right.</span>
   
 </div>
 
-<p>File <code>real.png</code> Tika đã xác định đúng MIME type. Với file <code>fake.zip</code>, Tika đã xác định đúng MIME type gốc của file là <code>image/jpeg</code> mặc dù đã được đổi tên thành <code>fake.zip</code>.</p>
-<p>Có thể tham khảo danh sách các định dạng mà Tika đang hỗ trợ nhận dạng tại <a href="https://tika.apache.org/2.1.0/formats.html">đây</a>.</p>
+<p>In the file <code>real.png</code> Tika identified the correct MIME type. With the file <code>fake.zip</code>, Tika correctly identified the original MIME type of the file as <code>image/jpeg</code> despite being renamed <code>fake.zip</code>.</p>
+<p>The list of formats that Tika is supporting can be found<a href="https://tika.apache.org/2.1.0/formats.html">here</a>.</p>
 <h1 id="tldr">TL;DR</h1>
-<p>Các hệ thống backend khi nhận file upload nên xác thực lại kiểu của file được upload lên. Kiểm tra kiểu của file dựa vào MIME type do client xác định là chưa đủ vì sẽ có trường hợp file bị đổi extension để đánh lừa hệ thống. Mỗi loại file đều có cấu trúc khác nhau, với các hệ thống Java, có thể xác định chính xác kiểu của file dựa vào cấu trúc của nó dưới sự giúp đỡ của Apache Tika.</p>
-<p>Xem source code ở đây: <a href="https://github.com/chidokun/mime-type-upload-example">https://github.com/chidokun/mime-type-upload-example</a></p>
+<p>Backend systems should verify the type of the uploaded file when receiving an uploaded file. Checking the file type based on the MIME type detected by the browser may not be sufficient because there will be some cases where the file is changed to an extension to phishing the system. Each file type has a different structure. It&rsquo;s possible to determine the exact type of a file based on its format with the help of Apache Tika on Java systems.</p>
+<p>See the source code here: <a href="https://github.com/chidokun/mime-type-upload-example">https://github.com/chidokun/mime-type-upload-example</a></p>
 <p><strong>References</strong></p>
 <ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types">MIME types (IANA media types)</a></li>
@@ -756,7 +756,7 @@ public ResponseEntity&lt;Response&gt; checkRealType(@RequestPart MultipartFile f
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/10/mime-type-and-upload-file-problem/en/" data-tooltip="MIME Type and Upload File Problem" aria-label="Tiếp: MIME Type and Upload File Problem">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -764,7 +764,7 @@ public ResponseEntity&lt;Response&gt; checkRealType(@RequestPart MultipartFile f
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/09/dijkstra-algorithm/" data-tooltip="Thuật toán Dijkstra: Tìm đường đi ngắn nhất" aria-label="Trước: Thuật toán Dijkstra: Tìm đường đi ngắn nhất">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/09/mime-type-and-upload-file-problem/" data-tooltip="Bàn về MIME Type và Bài toán Nhận dạng File type khi upload" aria-label="Trước: Bàn về MIME Type và Bài toán Nhận dạng File type khi upload">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -782,13 +782,13 @@ public ResponseEntity&lt;Response&gt; checkRealType(@RequestPart MultipartFile f
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/09/mime-type-and-upload-file-problem/" title="Chia sẻ với %s Facebook" aria-label="Chia sẻ với %s Facebook">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/10/mime-type-and-upload-file-problem/en/" title="Chia sẻ với %s Facebook" aria-label="Chia sẻ với %s Facebook">
               <i class="fab fa-facebook" aria-hidden="true"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/09/mime-type-and-upload-file-problem/" title="Chia sẻ với %s Twitter" aria-label="Chia sẻ với %s Twitter">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/10/mime-type-and-upload-file-problem/en/" title="Chia sẻ với %s Twitter" aria-label="Chia sẻ với %s Twitter">
               <i class="fab fa-twitter" aria-hidden="true"></i>
             </a>
           </li>
@@ -817,8 +817,8 @@ public ResponseEntity&lt;Response&gt; checkRealType(@RequestPart MultipartFile f
             <div class="comment-box">
                 <textarea name="fields[comment]" class="comment-input-control comment-input-animated" placeholder="Comment (markdown is accepted) *" required rows="3"></textarea>
                 <div class="comment-box-tail">
-                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2021/09/mime-type-and-upload-file-problem/#comment-submitted">
-                    <input type="hidden" name="options[slug]" value="mime-type-and-upload-file-problem">
+                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2021/10/mime-type-and-upload-file-problem/en/#comment-submitted">
+                    <input type="hidden" name="options[slug]" value="mime-type-and-upload-file-problem.en-us">
                     <input type="text" name="fields[name]" class="post-comment-field" placeholder="Name *" required/>
                     <input type="email" name="fields[email]" class="post-comment-field" placeholder="Email address (will not be public) *" required/>
                     <input type="hidden" id="comment-parent" name="fields[reply_to]" value="">
@@ -873,7 +873,7 @@ public ResponseEntity&lt;Response&gt; checkRealType(@RequestPart MultipartFile f
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/10/mime-type-and-upload-file-problem/en/" data-tooltip="MIME Type and Upload File Problem" aria-label="Tiếp: MIME Type and Upload File Problem">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -881,7 +881,7 @@ public ResponseEntity&lt;Response&gt; checkRealType(@RequestPart MultipartFile f
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/09/dijkstra-algorithm/" data-tooltip="Thuật toán Dijkstra: Tìm đường đi ngắn nhất" aria-label="Trước: Thuật toán Dijkstra: Tìm đường đi ngắn nhất">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/09/mime-type-and-upload-file-problem/" data-tooltip="Bàn về MIME Type và Bài toán Nhận dạng File type khi upload" aria-label="Trước: Bàn về MIME Type và Bài toán Nhận dạng File type khi upload">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -899,13 +899,13 @@ public ResponseEntity&lt;Response&gt; checkRealType(@RequestPart MultipartFile f
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/09/mime-type-and-upload-file-problem/" title="Chia sẻ với %s Facebook" aria-label="Chia sẻ với %s Facebook">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/10/mime-type-and-upload-file-problem/en/" title="Chia sẻ với %s Facebook" aria-label="Chia sẻ với %s Facebook">
               <i class="fab fa-facebook" aria-hidden="true"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/09/mime-type-and-upload-file-problem/" title="Chia sẻ với %s Twitter" aria-label="Chia sẻ với %s Twitter">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/10/mime-type-and-upload-file-problem/en/" title="Chia sẻ với %s Twitter" aria-label="Chia sẻ với %s Twitter">
               <i class="fab fa-twitter" aria-hidden="true"></i>
             </a>
           </li>
@@ -930,13 +930,13 @@ public ResponseEntity&lt;Response&gt; checkRealType(@RequestPart MultipartFile f
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2021%2F09%2Fmime-type-and-upload-file-problem%2F" aria-label="Chia sẻ với %s Facebook">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2021%2F10%2Fmime-type-and-upload-file-problem%2Fen%2F" aria-label="Chia sẻ với %s Facebook">
           <i class="fab fa-facebook" aria-hidden="true"></i><span>Chia sẻ với Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2021%2F09%2Fmime-type-and-upload-file-problem%2F" aria-label="Chia sẻ với %s Twitter">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2021%2F10%2Fmime-type-and-upload-file-problem%2Fen%2F" aria-label="Chia sẻ với %s Twitter">
           <i class="fab fa-twitter" aria-hidden="true"></i><span>Chia sẻ với Twitter</span>
         </a>
       </li>

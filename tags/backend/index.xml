@@ -6,7 +6,16 @@
     <description>Recent content in backend on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Wed, 29 Sep 2021 22:30:00 +0700</lastBuildDate><atom:link href="https://chidokun.github.io/tags/backend/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 13 Oct 2021 22:54:00 +0700</lastBuildDate><atom:link href="https://chidokun.github.io/tags/backend/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MIME Type and Upload File Problem</title>
+      <link>https://chidokun.github.io/2021/10/mime-type-and-upload-file-problem/en/</link>
+      <pubDate>Wed, 13 Oct 2021 22:54:00 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2021/10/mime-type-and-upload-file-problem/en/</guid>
+      <description>The story begins in my previous projects. There was a requirement to develop a feature that an administrator can upload a text file containing bad words. The system used these words to real-time check the contents that the user submitted. The uploaded file needs to follow a specific format.</description>
+    </item>
+    
     <item>
       <title>Bàn về MIME Type và Bài toán Nhận dạng File type khi upload</title>
       <link>https://chidokun.github.io/2021/09/mime-type-and-upload-file-problem/</link>
