@@ -1,176 +1,215 @@
 ---
 title: "MIME Type and Upload File Problem"
 slug: "mime-type-and-upload-file-problem/en"
-date: 2021-09-25T22:30:00+07:00
-draft: true
+date: 2021-10-13T22:54:00+07:00
+draft: false
 categories:
 - "Lập trình"
-- "Thủ thuật"
+- "Backend"
 tags:
-- "tips"
+- "backend"
 keywords:
-- "bash script"
-- "shell script"
-thumbnailImage: /thumbnails/terminal.png
+- "mime type"
+- "file type"
+- "mime type detection"
+- "upload"
+thumbnailImage: /thumbnails/mime.png
 thumbnailImagePosition: left
+summary: The story begins in my previous projects. There was a requirement to develop a feature that an administrator can upload a text file containing bad words. The system used these words to real-time check the contents that the user submitted. The uploaded file needs to follow a specific format.
 ---
-
-Với dân developer thì viết script để tự động hóa một số công việc cũng là một việc thường gặp. Mọi người thường nghĩ chỉ có thể hiển thị trên nền trắng đen đơn thuần. Thực ra terminal trên Linux và macOS cũng hỗ trợ hiển thị màu mè hoa lá nữa. Cùng xem cách định dạng chữ và màu để hiển thị trên terminal như thế nào nhé.
-
-<!--more-->
 
 {{< toc >}}
 
-{{< image classes="fancybox center" thumbnail-width="90%" src="/images/post/bash-script-text-format/bash-script-1.png" title="Terminal cũng có thể hiển thị màu mè thế này đây" >}}
+# Beginning
 
-# 1. Escape sequence
+The story begins in my previous projects. There was a requirement to develop a feature that an administrator can upload a text file containing bad words. The system used these words to real-time check the contents that the user submitted. The uploaded file needs to follow a specific format.
 
-Các trình terminal hỗ trợ màu sắc và định dạng thông qua **Escape sequence**. **Escapse sequence** bắt đầu bằng ký tự Esc và theo sau là mã định dạng: `<Esc>[<Format code>m`.
+To prevent users from uploading files other than text files, we can do it on the frontend.
 
-Trong bash script, ký tự esc có thể viết là `\e`, `\033` hoặc `\x1B`. Vì vậy có thể dùng lệnh sau để hiển thị text có định dạng:
-
-```sh
-echo "<Esc>[<Format code>mMy text<Esc>[0m"
+```html
+<input type="file" accept="text/plain" />
 ```
 
-Sau đây là một số ví dụ:
+So that user merely selects a text file in the file selection window.
 
-```sh
-echo -e "Hello \033[4;91meverybody\033[0m" # gạch dưới, màu đỏ
-echo -e "Hello \e[1;34meverybody\e[0m" # in đậm, màu xanh dương
-echo -e "Hello \x1B[42;33meverybody\x1B[0m" # chữ vàng, nền xanh lá
+However, to ensure system security, just blocking the user on the interface is not enough. It is necessary to re-verify the uploaded file on the backend to see if the user has uploaded a text file or not.. *{{< hl-text green >}}The problem we need to solve is to determine the actual type of file uploaded by the user.{{</ hl-text >}}*.
+
+# Let's go!
+
+To illustrate the above problem, we will build a demo system with a frontend using React.js and a backend using Java/Spring Boot.
+
+{{< image classes="fancybox center" thumbnail-width="80%" src="/images/post/software/mime-type-and-upload-file-problem/1.png">}}
+
+Our interface is quite simple, consisting of an `input[type=file]` and a `button` to upload the selected file. When selecting a file, the UI will display the MIME Type that the browser determines. After uploading the file, the system will return the MIME type identified by the backend. All sourcecode is [here](https://github.com/chidokun/mime-type-upload-example).
+
+Also, prepare some files to test whether the system determines correctly or not.
+
+{{< image classes="fancybox center" thumbnail-width="100%" src="/images/post/software/mime-type-and-upload-file-problem/2.png">}}
+
+Prepare 3 files with the correct extension, then copy these files and rename them:
+
+- real.png -> fake.txt
+- real.jpg -> fake.zip
+- real.svg -> fake.docx
+
+# File type determination on the backend
+
+The backend system in the project is written in Java using Spring Boot. A controller is implemented to receive the upload request from the user as well.
+
+{{< codeblock "UploadController.java" "java">}}
+@Slf4j
+@RestController
+public class UploadController {
+
+    @PostMapping(path = "/check-file-type", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<Response> checkFileType(@RequestPart MultipartFile file) {
+        // to be implemented
+    }
+}
+{{</ codeblock >}}
+
+And a `Response` to return the result to the user.
+
+{{< codeblock "Response.java" "java">}}
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Response {
+    private int status;
+    private String message;
+    private String mimeType;
+
+    public Response(String mimeType) {
+        this.status = HttpStatus.OK.value();
+        this.message = "Successful";
+        this.mimeType = mimeType;
+    }
+}
+{{</ codeblock >}}
+
+
+## Using the MIME Type defined by the User-agent
+
+When selecting a file from `input[type=file]`, the file type is already determined by the browser (user-agent) follow MIME type format and then transmitted to the backend via the `Content-Type` request header. So the `MultipartFile` class in the controller's parameter already has information about the file's type.
+
+Now you can use `getContentType()` to determine the file type based on the MIME Type.
+
+```java
+@PostMapping(path = "/check-file-type", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+public ResponseEntity<Response> checkFileType(@RequestPart MultipartFile file) {
+    String mimeType = file.getContentType();
+    return ResponseEntity.ok(new Response(mimeType));
+}
 ```
 
-Kết quả là:
+Let's test the files we prepared above.
 
-{{< image classes="fancybox center" thumbnail-width="90%" src="/images/post/bash-script-text-format/bash-script-2.png" >}}
+{{< image classes="fancybox center" thumbnail-width="100%" src="/images/post/software/mime-type-and-upload-file-problem/3.png" title="Test results with real.png and fake.zip" >}}
 
+In the case of the file `real.png`, the user-agent identified the correct MIME type via the `.png` extension. But with the file `fake.zip`, the user-agent cannot correctly identify its file type as JPG but determines it through the `.zip` extension. Therefore, relying on a client-defined MIME type may have some risks when users intentionally change the file's name and extension.
 
-Lệnh `echo -e` cho parse Escapse sequence. Format code `0` sẽ đặt lại tất cả các format trước đó, nên nó thường được để ở cuối để tránh ảnh hưởng đến các lệnh hiển thị phía sau. Escapse sequence cũng có thể sử dụng ở các ngôn ngữ lập trình khác ngoài Bash.
+Each file type has different specifications and is stored differently, so if you want to determine the exact type of the file, you need to read the contents of that file.
 
-Kế tiếp mình sẽ giới thiệu một số format code hữu ích.
+## MIME Type and some ways to determine file type
 
-## 1.1. Định dạng
+**MIME type** (*Multipurpose Internet Mail Extensions*) is a standard that defines the nature and format of a document, file, or set of bytes. It is defined and standardized in IETF's [RFC 6838](https://datatracker.ietf.org/doc/html/rfc6838).
 
-Bảng sau đây là một số format code để định dạng text, chưa bao gồm màu sắc:
+The structure of the MIME type includes *type* and *subtype*:
 
-|Format code|Mô tả|
-|---|---|
-|1|Bold/Bright|
-|2|Dim|
-|4|Underlined|
-|5|Blink (nhấp nháy)|
-|7|Invert (đảo màu text và màu nền)|
-|8|Hidden (thường dùng cho password)|
-
-Cùng xem preview nhé:
-
-```sh
-for i in {1,2,4,5,7,8} ; do echo -e "${i}. Hello \e[${i}meverybody\e[0m" ; done ; echo
+```
+type/subtype
 ```
 
-{{< image classes="fancybox center" thumbnail-width="90%" src="/images/post/bash-script-text-format/bash-script-3.gif" >}}
+*Example*: `text/plain`, `application/zip`, ...
 
+Trong đó:
 
-## 1.2. Rest định dạng
+- **Type** is the general category to which the data type belongs, such as `video` or `text`.
+- **Subtype** determines the exact data type classified. For example: With type `text`, we can have subtypes like `plain` (plain text), `html` (HTML source code), or `calendar` (iCalendar `.ics` format).
 
-Format code để reset định dạng thường dùng để hủy bỏ một định dạng đã set trước đó:
+In general, *{{< hl-text green >}}MIME Type is a name assigned to a file type and is used to determine what type of content to transmit data and the applications based on it to behave accordingly{{</ hl-text >}}*. From the MIME type, we can determine the file type, so *{{< hl-text red >}}from a file how to identify its MIME type?{{</ hl-text >}}*
 
-|Format code|Mô tả|
-|---|---|
-|0|Reset tất cả format|
-|21|Reset Bold/Bright|
-|22|Reset Dim|
-|24|Reset Underlined|
-|25|Reset Blink|
-|27|Reset Invert|
-|28|Reset Hidden|
+To determine the MIME type, we need to read its contents. Each file type will have a different storage method, such as a ZIP file with a file specification like [here](https://www.iana.org/assignments/media-types/application/zip). But there are still some common features that can be used for identification.
 
+**File Signature** are pattern bytes stored at the beginning of the file (also known as *magic number* or *magic bytes*), used to identify the content and format of the file. The table below lists some File signatures of some popular formats (see some file signatures [here](https://en.wikipedia.org/wiki/List_of_file_signatures)).
 
-## 1.3. Kết hợp format code
+|Hex signature|ISO 8859-1|Offset|Extension|Description|
+|---|---|---|---|---|
+|`89 50 4E 47 0D 0A 1A 0A`|`‰PNG␍␊␚␊`|0|png|Image encoded in the Portable Network Graphics format|
+|`EF BB BF`|`ï»¿`|0|txt|UTF-8 byte order mark, commonly seen in text files.|
+|`25 50 44 46 2D`|`%PDF-`|0|pdf|PDF document|
+|`66 74 79 70 69 73 6F 6D`|`ftypisom`|4|mp4|ISO Base Media file (MPEG-4)|
+|`37 7A BC AF 27 1C`|`7z¼¯'␜|0|7z|7-Zip File Format|
 
-Nếu bạn muốn đoạn text vừa **in đậm** vừa <u>gạch dưới</u> thì có thể kết hợp các format code lại theo định dạng: `<Esc>[<Format code 1>;<Format code 2>;...;<Format code n>m`
+Besides using the *File signature*, sometimes it's necessary to read file content to find the exact file type. For example, SVG format is essentially XML. Therefore, to determine it, in addition to having to read *magic number* to determine the XML format, it is also necessary to read more content inside to determine the SVG format correctly.
 
-Ví dụ:
+Some other formats, such as *Apple iWork*, are actually a collection of XML files inside a Zip file. At this time, the Zip file is responsible for making the container containing the XML files. File type identification becomes more difficult due to the need to decompress the content inside.
 
-```sh
-echo -e "Hello \e[1;4meverybody\e[0m" # in đậm, gạch chân
+## Using Apache Tika to determine MIME Type
+
+With Java systems, [Apache Tika](https://tika.apache.org/) can be used to extract information and determine the exact format of the file's data. Apache Tika finds out the data format of a file based on several criteria:
+
+- *Magic number*: Set of first bytes of the file.
+- *File name extension*: Partially based on file extension.
+- *Metadata* of files downloaded from the Internet.
+- Define *container* and its contents.
+
+To use Tika in a *Maven project*, you can add a dependency to `pom.xml`:
+
+```xml
+<dependency>
+    <groupId>org.apache.tika</groupId>
+    <artifactId>tika-core</artifactId>
+    <version>2.1.0</version>
+</dependency>
 ```
 
-{{< image classes="fancybox center" thumbnail-width="90%" src="/images/post/bash-script-text-format/bash-script-4.png" >}}
+So we can write more functions that determine the correct MIME type of a file when uploading to the system.
 
-## 1.4. Tính tương thích
+{{< codeblock "FileUtils.java" "java">}}
+public class FileUtils {
+    public static String getRealMimeType(MultipartFile file) {
+        AutoDetectParser parser = new AutoDetectParser();
+        Detector detector = parser.getDetector();
+        try {
+            Metadata metadata = new Metadata();
+            TikaInputStream stream = TikaInputStream.get(file.getInputStream());
+            MediaType mediaType = detector.detect(stream, metadata);
+            return mediaType.toString();
+        } catch (IOException e) {
+            return MimeTypes.OCTET_STREAM;
+        }
+    }
+}
+{{</ codeblock >}}
 
-Hầu hết các terminal và terminal emulator hỗ trợ một số hay tất cả các định dạng và màu sắc. Có thể tham khảo tính tương thích của các terminal ở [đây](https://misc.flogisoft.com/bash/tip_colors_and_formatting#terminals_compatibility). 
+Create one more API under the backend and use Tika to recognize the MIME Type.
 
-# 2. Định dạng màu sắc
+```java
+@PostMapping(path = "/check-real-type", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+public ResponseEntity<Response> checkRealType(@RequestPart MultipartFile file) {
+    String mimeType = FileUtils.getRealMimeType(file);
+    return ResponseEntity.ok(new Response(mimeType));
+}
+```
 
-## 2.1. Màu 8 và 16
+After that, edit the UI to upload files to the backend using the newly created API and test again with some files.
 
-Hầu hết các terminal hỗ trợ màu 8 và 16. Lưu ý là các màu này có thể phụ thuộc vào cấu hình profile của terminal.
+{{< image classes="fancybox center" thumbnail-width="100%" src="/images/post/software/mime-type-and-upload-file-problem/4.png" title="Test results with real.png and fake.zip. Tika got it right.">}}
 
-{{< image classes="fancybox center" thumbnail-width="95%" src="/images/post/bash-script-text-format/bash-script-5.png" title="Một số terminal cho phép thiết lập màu ANSI Color nên các màu 8 và 16 có thể phụ thuộc vào các cài đặt này">}}
+In the file `real.png` Tika identified the correct MIME type. With the file `fake.zip`, Tika correctly identified the original MIME type of the file as `image/jpeg` despite being renamed `fake.zip`.
 
-Dưới đây là danh sách mã màu text:
+The list of formats that Tika is supporting can be found[here](https://tika.apache.org/2.1.0/formats.html).
 
-|Format code|Mô tả|
-|---|---|
-|39|Default foreground color|
-|30|Black|
-|31|Red|
-|32|Green|
-|33|Yellow|
-|34|Blue|
-|35|Magenta|
-|36|Cyan|
-|37|Light gray|
-|90|Dark gray|
-|91|Light red|
-|92|Light green|
-|93|Light yellow|
-|94|Light blue|
-|95|Light magenta|
-|96|Light cyan|
-|97|White|
+# TL;DR
 
-Và danh sách mã màu nền:
+Backend systems should verify the type of the uploaded file when receiving an uploaded file. Checking the file type based on the MIME type detected by the browser may not be sufficient because there will be some cases where the file is changed to an extension to phishing the system. Each file type has a different structure. It's possible to determine the exact type of a file based on its format with the help of Apache Tika on Java systems.
 
-|Format code|Mô tả|
-|---|---|
-|49|Default foreground color|
-|40|Black|
-|41|Red|
-|42|Green|
-|43|Yellow|
-|44|Blue|
-|45|Magenta|
-|46|Cyan|
-|47|Light gray|
-|100|Dark gray|
-|101|Light red|
-|102|Light green|
-|103|Light yellow|
-|104|Light blue|
-|105|Light magenta|
-|106|Light cyan|
-|107|White|
+See the source code here: https://github.com/chidokun/mime-type-upload-example
 
+**References**
 
-## 2.2. Màu 88 và 256
-
-Một số terminal có hỗ trợ màu 88 hoặc 256. 
-
-Để sử dụng màu 256 làm màu text, ta sử dụng cú pháp: `<Esc>[38;5;<Format code>m`.
-
-Sử dụng làm màu nền, ta có cú pháp: `<Esc>[48;5;<Format code>m`.
-
-Danh sách các mã màu, các bạn tham khảo tại [đây](https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit).
-
-# 3. Kết luận
-
-Chúng ta vừa điểm qua kha khá những mẹo định dạng text và màu trên terminal. Escapse sequence ngoài sử dụng cho bash script ra còn có thể sử dụng cho các ngôn ngữ lập trình khác nữa. Tuy nhiên, có một nhược điểm là không hiển thị được kiểu chữ nghiêng (italic). Nhưng như thế cũng đủ làm đoạn script của chúng ta thú vị hơn rồi.
-
-## Tham khảo
-
-- [Bash tips: Colors and formatting (ANSI/VT100 Control sequences)](https://misc.flogisoft.com/bash/tip_colors_and_formatting)
-- [ANSI escape code](https://en.wikipedia.org/wiki/ANSI_escape_code)
+- [MIME types (IANA media types)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types)
+- [Form Content-Type](https://www.w3.org/TR/html401/interact/forms.html#h-17.13.4)
+- [List of file signatures](https://en.wikipedia.org/wiki/List_of_file_signatures)
+- [Apache Tika - Content Detection](https://tika.apache.org/2.0.0/detection.html)
