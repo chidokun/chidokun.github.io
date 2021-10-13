@@ -122,7 +122,7 @@ type/subtype
 
 *Example*: `text/plain`, `application/zip`, ...
 
-Trong đó:
+In detail:
 
 - **Type** is the general category to which the data type belongs, such as `video` or `text`.
 - **Subtype** determines the exact data type classified. For example: With type `text`, we can have subtypes like `plain` (plain text), `html` (HTML source code), or `calendar` (iCalendar `.ics` format).
@@ -131,7 +131,7 @@ In general, *{{< hl-text green >}}MIME Type is a name assigned to a file type an
 
 To determine the MIME type, we need to read its contents. Each file type will have a different storage method, such as a ZIP file with a file specification like [here](https://www.iana.org/assignments/media-types/application/zip). But there are still some common features that can be used for identification.
 
-**File Signature** are pattern bytes stored at the beginning of the file (also known as *magic number* or *magic bytes*), used to identify the content and format of the file. The table below lists some File signatures of some popular formats (see some file signatures [here](https://en.wikipedia.org/wiki/List_of_file_signatures)).
+**File signature** are pattern bytes stored at the beginning of the file (also known as *magic number* or *magic bytes*), used to identify the content and format of the file. The table below lists some file signatures of some popular formats (see some file signatures [here](https://en.wikipedia.org/wiki/List_of_file_signatures)).
 
 |Hex signature|ISO 8859-1|Offset|Extension|Description|
 |---|---|---|---|---|
@@ -141,7 +141,7 @@ To determine the MIME type, we need to read its contents. Each file type will ha
 |`66 74 79 70 69 73 6F 6D`|`ftypisom`|4|mp4|ISO Base Media file (MPEG-4)|
 |`37 7A BC AF 27 1C`|`7z¼¯'␜|0|7z|7-Zip File Format|
 
-Besides using the *File signature*, sometimes it's necessary to read file content to find the exact file type. For example, SVG format is essentially XML. Therefore, to determine it, in addition to having to read *magic number* to determine the XML format, it is also necessary to read more content inside to determine the SVG format correctly.
+Besides using the *file signature*, sometimes it's necessary to read file content to find the exact file type. For example, SVG format is essentially XML. Therefore, to determine it, in addition to having to read *magic number* to determine the XML format, it is also necessary to read more content inside to determine the SVG format correctly.
 
 Some other formats, such as *Apple iWork*, are actually a collection of XML files inside a Zip file. At this time, the Zip file is responsible for making the container containing the XML files. File type identification becomes more difficult due to the need to decompress the content inside.
 
