@@ -18,7 +18,7 @@ thumbnailImagePosition: left
 summary: The story begins in my previous projects. There was a requirement to develop a feature that an administrator can upload a text file containing bad words. The system used these words to real-time check the contents that the user submitted. The uploaded file needs to follow a specific format.
 ---
 
-{{< toc >}}
+{{< title-toc "Contents" >}}
 
 # Beginning
 
