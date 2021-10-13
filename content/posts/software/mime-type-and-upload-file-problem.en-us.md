@@ -1,5 +1,5 @@
 ---
-title: "MIME Type and Upload File Problem"
+title: "MIME Type and Uploaded File Type Detection Problem"
 slug: "mime-type-and-upload-file-problem/en"
 date: 2021-10-13T22:54:00+07:00
 draft: false
