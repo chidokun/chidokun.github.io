@@ -22,7 +22,7 @@ summary: The story begins in my previous projects. There was a requirement to de
 
 # Beginning
 
-The story begins in my previous projects. There was a requirement to develop a feature that an administrator can upload a text file containing bad words. The system used these words to real-time check the contents that the user submitted. The uploaded file needs to follow a specific format.
+The story began in my previous projects. There was a requirement to develop a feature that an administrator can upload a text file containing bad words. The system used these words to real-time check the contents that the user submitted. The uploaded file needs to follow a specific format.
 
 To prevent users from uploading files other than text files, we can do it on the frontend.
 
@@ -32,7 +32,7 @@ To prevent users from uploading files other than text files, we can do it on the
 
 So that user merely selects a text file in the file selection window.
 
-However, to ensure system security, just blocking the user on the interface is not enough. It is necessary to re-verify the uploaded file on the backend to see if the user has uploaded a text file or not.. *{{< hl-text green >}}The problem we need to solve is to determine the actual type of file uploaded by the user.{{</ hl-text >}}*.
+However, to ensure system security, just blocking the user on the interface is not enough. It is necessary to re-verify the uploaded file on the backend to see if the user has uploaded a text file or not. *{{< hl-text green >}}The problem we need to solve is to determine the actual type of file uploaded by the user{{</ hl-text >}}*.
 
 # Let's go!
 
@@ -40,7 +40,7 @@ To illustrate the above problem, we will build a demo system with a frontend usi
 
 {{< image classes="fancybox center" thumbnail-width="80%" src="/images/post/software/mime-type-and-upload-file-problem/1.png">}}
 
-Our interface is quite simple, consisting of an `input[type=file]` and a `button` to upload the selected file. When selecting a file, the UI will display the MIME Type that the browser determines. After uploading the file, the system will return the MIME type identified by the backend. All sourcecode is [here](https://github.com/chidokun/mime-type-upload-example).
+Our interface is quite simple, consisting of an `input[type=file]` and a `button` to upload the selected file. When selecting a file, the UI will display the MIME Type that the browser determines. After uploading the file, the system will return the MIME type identified by the backend. All source code is [here](https://github.com/chidokun/mime-type-upload-example).
 
 Also, prepare some files to test whether the system determines correctly or not.
 
@@ -199,7 +199,7 @@ After that, edit the UI to upload files to the backend using the newly created A
 
 In the file `real.png` Tika identified the correct MIME type. With the file `fake.zip`, Tika correctly identified the original MIME type of the file as `image/jpeg` despite being renamed `fake.zip`.
 
-The list of formats that Tika is supporting can be found[here](https://tika.apache.org/2.1.0/formats.html).
+The list of formats that Tika is supporting can be found [here](https://tika.apache.org/2.1.0/formats.html).
 
 # TL;DR
 
