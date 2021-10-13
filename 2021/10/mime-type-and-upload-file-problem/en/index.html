@@ -565,14 +565,14 @@ public ResponseEntity&lt;Response&gt; checkFileType(@RequestPart MultipartFile f
 <pre><code>type/subtype
 </code></pre>
 <p><em>Example</em>: <code>text/plain</code>, <code>application/zip</code>, &hellip;</p>
-<p>Trong đó:</p>
+<p>In detail:</p>
 <ul>
 <li><strong>Type</strong> is the general category to which the data type belongs, such as <code>video</code> or <code>text</code>.</li>
 <li><strong>Subtype</strong> determines the exact data type classified. For example: With type <code>text</code>, we can have subtypes like <code>plain</code> (plain text), <code>html</code> (HTML source code), or <code>calendar</code> (iCalendar <code>.ics</code> format).</li>
 </ul>
 <p>In general, <em><span class="highlight-text green">MIME Type is a name assigned to a file type and is used to determine what type of content to transmit data and the applications based on it to behave accordingly</span></em>. From the MIME type, we can determine the file type, so <em><span class="highlight-text red">from a file how to identify its MIME type?</span></em></p>
 <p>To determine the MIME type, we need to read its contents. Each file type will have a different storage method, such as a ZIP file with a file specification like <a href="https://www.iana.org/assignments/media-types/application/zip">here</a>. But there are still some common features that can be used for identification.</p>
-<p><strong>File Signature</strong> are pattern bytes stored at the beginning of the file (also known as <em>magic number</em> or <em>magic bytes</em>), used to identify the content and format of the file. The table below lists some File signatures of some popular formats (see some file signatures <a href="https://en.wikipedia.org/wiki/List_of_file_signatures">here</a>).</p>
+<p><strong>File signature</strong> are pattern bytes stored at the beginning of the file (also known as <em>magic number</em> or <em>magic bytes</em>), used to identify the content and format of the file. The table below lists some file signatures of some popular formats (see some file signatures <a href="https://en.wikipedia.org/wiki/List_of_file_signatures">here</a>).</p>
 <table>
 <thead>
 <tr>
@@ -621,7 +621,7 @@ public ResponseEntity&lt;Response&gt; checkFileType(@RequestPart MultipartFile f
 </tr>
 </tbody>
 </table>
-<p>Besides using the <em>File signature</em>, sometimes it&rsquo;s necessary to read file content to find the exact file type. For example, SVG format is essentially XML. Therefore, to determine it, in addition to having to read <em>magic number</em> to determine the XML format, it is also necessary to read more content inside to determine the SVG format correctly.</p>
+<p>Besides using the <em>file signature</em>, sometimes it&rsquo;s necessary to read file content to find the exact file type. For example, SVG format is essentially XML. Therefore, to determine it, in addition to having to read <em>magic number</em> to determine the XML format, it is also necessary to read more content inside to determine the SVG format correctly.</p>
 <p>Some other formats, such as <em>Apple iWork</em>, are actually a collection of XML files inside a Zip file. At this time, the Zip file is responsible for making the container containing the XML files. File type identification becomes more difficult due to the need to decompress the content inside.</p>
 <h2 id="using-apache-tika-to-determine-mime-type">Using Apache Tika to determine MIME Type</h2>
 <p>With Java systems, <a href="https://tika.apache.org/">Apache Tika</a> can be used to extract information and determine the exact format of the file&rsquo;s data. Apache Tika finds out the data format of a file based on several criteria:</p>
