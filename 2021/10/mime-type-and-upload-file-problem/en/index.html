@@ -368,12 +368,12 @@ if (!doNotTrack) {
 </nav>
 
 <h1 id="beginning">Beginning</h1>
-<p>The story begins in my previous projects. There was a requirement to develop a feature that an administrator can upload a text file containing bad words. The system used these words to real-time check the contents that the user submitted. The uploaded file needs to follow a specific format.</p>
+<p>The story began in my previous projects. There was a requirement to develop a feature that an administrator can upload a text file containing bad words. The system used these words to real-time check the contents that the user submitted. The uploaded file needs to follow a specific format.</p>
 <p>To prevent users from uploading files other than text files, we can do it on the frontend.</p>
 <pre><code class="language-html">&lt;input type=&quot;file&quot; accept=&quot;text/plain&quot; /&gt;
 </code></pre>
 <p>So that user merely selects a text file in the file selection window.</p>
-<p>However, to ensure system security, just blocking the user on the interface is not enough. It is necessary to re-verify the uploaded file on the backend to see if the user has uploaded a text file or not.. <em><span class="highlight-text green">The problem we need to solve is to determine the actual type of file uploaded by the user.</span></em>.</p>
+<p>However, to ensure system security, just blocking the user on the interface is not enough. It is necessary to re-verify the uploaded file on the backend to see if the user has uploaded a text file or not. <em><span class="highlight-text green">The problem we need to solve is to determine the actual type of file uploaded by the user</span></em>.</p>
 <h1 id="lets-go">Let&rsquo;s go!</h1>
 <p>To illustrate the above problem, we will build a demo system with a frontend using React.js and a backend using Java/Spring Boot.</p>
 
@@ -401,7 +401,7 @@ if (!doNotTrack) {
   
 </div>
 
-<p>Our interface is quite simple, consisting of an <code>input[type=file]</code> and a <code>button</code> to upload the selected file. When selecting a file, the UI will display the MIME Type that the browser determines. After uploading the file, the system will return the MIME type identified by the backend. All sourcecode is <a href="https://github.com/chidokun/mime-type-upload-example">here</a>.</p>
+<p>Our interface is quite simple, consisting of an <code>input[type=file]</code> and a <code>button</code> to upload the selected file. When selecting a file, the UI will display the MIME Type that the browser determines. After uploading the file, the system will return the MIME type identified by the backend. All source code is <a href="https://github.com/chidokun/mime-type-upload-example">here</a>.</p>
 <p>Also, prepare some files to test whether the system determines correctly or not.</p>
 
 
@@ -719,7 +719,7 @@ public ResponseEntity&lt;Response&gt; checkRealType(@RequestPart MultipartFile f
 </div>
 
 <p>In the file <code>real.png</code> Tika identified the correct MIME type. With the file <code>fake.zip</code>, Tika correctly identified the original MIME type of the file as <code>image/jpeg</code> despite being renamed <code>fake.zip</code>.</p>
-<p>The list of formats that Tika is supporting can be found<a href="https://tika.apache.org/2.1.0/formats.html">here</a>.</p>
+<p>The list of formats that Tika is supporting can be found <a href="https://tika.apache.org/2.1.0/formats.html">here</a>.</p>
 <h1 id="tldr">TL;DR</h1>
 <p>Backend systems should verify the type of the uploaded file when receiving an uploaded file. Checking the file type based on the MIME type detected by the browser may not be sufficient because there will be some cases where the file is changed to an extension to phishing the system. Each file type has a different structure. It&rsquo;s possible to determine the exact type of a file based on its format with the help of Apache Tika on Java systems.</p>
 <p>See the source code here: <a href="https://github.com/chidokun/mime-type-upload-example">https://github.com/chidokun/mime-type-upload-example</a></p>
