@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Wed, 13 Oct 2021 22:54:00 +0700</lastBuildDate><atom:link href="https://chidokun.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 12 Dec 2021 15:20:21 +0700</lastBuildDate><atom:link href="https://chidokun.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Những công cụ giúp làm việc hiệu quả hơn trên Terminal</title>
+      <link>https://chidokun.github.io/2021/12/console-progress-bar/</link>
+      <pubDate>Sun, 12 Dec 2021 15:20:21 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/2021/12/console-progress-bar/</guid>
+      <description>&lt;p&gt;Với những công việc cần thao tác nhiều với dòng lệnh, một Terminal nhiều màu sắc và hỗ trợ nhiều thao tác sẽ có ích hơn là một Terminal nhàm chán với nền đen và chữ trắng. Vì vậy, thông thường mình sẽ cài nhiều plugins đễ hộ trợ cho công việc. Dưới đây là một số plugins của ZSH mà mình dùng để giúp việc làm việc với Terminal dễ dàng hơn.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>MIME Type and Uploaded File Type Detection Problem</title>
       <link>https://chidokun.github.io/2021/10/mime-type-and-upload-file-problem/en/</link>

@@ -7,12 +7,12 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Tìm hiểu lệnh shutdown của Windows 8 và cách tạo shortcut tắt máy",
+  "headline": "Những công cụ giúp làm việc hiệu quả hơn trên Terminal",
   
-  "image": "https://chidokun.github.io/images/post/other/lenh-shutdown/3.png",
+  "image": "https://chidokun.github.io/thumbnails/terminal.png",
   
-  "datePublished": "2013-11-25T22:29:00+07:00",
-  "dateModified": "2013-11-25T22:29:00+07:00",
+  "datePublished": "2021-12-12T15:20:21+07:00",
+  "dateModified": "2021-12-12T15:20:21+07:00",
   "author": {
     "@type": "Person",
     "name": "Nguyễn Tuấn",
@@ -22,7 +22,7 @@
   },
   "mainEntityOfPage": { 
     "@type": "WebPage",
-    "@id": "https:\/\/chidokun.github.io\/2013\/11\/tim-hieu-lenh-shutdown-cua-windows-8-va\/" 
+    "@id": "https:\/\/chidokun.github.io\/2021\/12\/console-progress-bar\/" 
   },
   "publisher": {
     "@type": "Organization",
@@ -34,8 +34,8 @@
     }
     
   },
-  "description": "Windows 8 ra đời kèm theo nhiều tính năng mới rất hữu ích. Đặc biệt ta có thể thấy Windows 8 hoạt động rất mượt mà, tắt và khởi động máy nhanh hơn hẳn người tiền nhiệm. Có được điều này là do Microsoft đã trang bị cho Windows 8 tính năng \u0026ldquo;hybrid boot\u0026rdquo; có thể cải thiện thời gian khởi động nhanh hơn 30-70% so với thời gian khởi động từ chế độ lạnh truyền thống trong Windows 7. Cùng với đó, lệnh shutdown trong Windows 8 cũng có nhiều thay đổi. Bài viết này đề cập đến các tham số lệnh và cách sử dụng chúng đồng thời hướng dẫn bạn cách tạo shortcut đơn giản để tắt máy.\n",
-  "keywords": ["tin học, thủ thuật", "development, programming, chidokun, lập trình"]
+  "description": "Với những công việc cần thao tác nhiều với dòng lệnh, một Terminal nhiều màu sắc và hỗ trợ nhiều thao tác sẽ có ích hơn là một Terminal nhàm chán với nền đen và chữ trắng. Vì vậy, thông thường mình sẽ cài nhiều plugins đễ hộ trợ cho công việc. Dưới đây là một số plugins của ZSH mà mình dùng để giúp việc làm việc với Terminal dễ dàng hơn.\n",
+  "keywords": ["terminal, console, zsh", "development, programming, chidokun, lập trình"]
 }
 
 </script>
@@ -44,30 +44,26 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Hugo 0.90.0 with theme Tranquilpeak 0.5.0-BETA">
 <meta name="author" content="Nguyễn Tuấn">
-<meta name="keywords" content="tin học, thủ thuật, development, programming, chidokun, lập trình">
-<meta name="description" content="Windows 8 ra đời kèm theo nhiều tính năng mới rất hữu ích. Đặc biệt ta có thể thấy Windows 8 hoạt động rất mượt mà, tắt và khởi động máy nhanh hơn hẳn người tiền nhiệm. Có được điều này là do Microsoft đã trang bị cho Windows 8 tính năng &ldquo;hybrid boot&rdquo; có thể cải thiện thời gian khởi động nhanh hơn 30-70% so với thời gian khởi động từ chế độ lạnh truyền thống trong Windows 7.
-Cùng với đó, lệnh shutdown trong Windows 8 cũng có nhiều thay đổi. Bài viết này đề cập đến các tham số lệnh và cách sử dụng chúng đồng thời hướng dẫn bạn cách tạo shortcut đơn giản để tắt máy.">
+<meta name="keywords" content="terminal, console, zsh, development, programming, chidokun, lập trình">
+<meta name="description" content="Với những công việc cần thao tác nhiều với dòng lệnh, một Terminal nhiều màu sắc và hỗ trợ nhiều thao tác sẽ có ích hơn là một Terminal nhàm chán với nền đen và chữ trắng. Vì vậy, thông thường mình sẽ cài nhiều plugins đễ hộ trợ cho công việc. Dưới đây là một số plugins của ZSH mà mình dùng để giúp việc làm việc với Terminal dễ dàng hơn.">
 
 
-<meta property="og:description" content="Windows 8 ra đời kèm theo nhiều tính năng mới rất hữu ích. Đặc biệt ta có thể thấy Windows 8 hoạt động rất mượt mà, tắt và khởi động máy nhanh hơn hẳn người tiền nhiệm. Có được điều này là do Microsoft đã trang bị cho Windows 8 tính năng &ldquo;hybrid boot&rdquo; có thể cải thiện thời gian khởi động nhanh hơn 30-70% so với thời gian khởi động từ chế độ lạnh truyền thống trong Windows 7.
-Cùng với đó, lệnh shutdown trong Windows 8 cũng có nhiều thay đổi. Bài viết này đề cập đến các tham số lệnh và cách sử dụng chúng đồng thời hướng dẫn bạn cách tạo shortcut đơn giản để tắt máy.">
+<meta property="og:description" content="Với những công việc cần thao tác nhiều với dòng lệnh, một Terminal nhiều màu sắc và hỗ trợ nhiều thao tác sẽ có ích hơn là một Terminal nhàm chán với nền đen và chữ trắng. Vì vậy, thông thường mình sẽ cài nhiều plugins đễ hộ trợ cho công việc. Dưới đây là một số plugins của ZSH mà mình dùng để giúp việc làm việc với Terminal dễ dàng hơn.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Tìm hiểu lệnh shutdown của Windows 8 và cách tạo shortcut tắt máy">
-<meta name="twitter:title" content="Tìm hiểu lệnh shutdown của Windows 8 và cách tạo shortcut tắt máy">
-<meta property="og:url" content="https://chidokun.github.io/2013/11/tim-hieu-lenh-shutdown-cua-windows-8-va/">
-<meta property="twitter:url" content="https://chidokun.github.io/2013/11/tim-hieu-lenh-shutdown-cua-windows-8-va/">
+<meta property="og:title" content="Những công cụ giúp làm việc hiệu quả hơn trên Terminal">
+<meta name="twitter:title" content="Những công cụ giúp làm việc hiệu quả hơn trên Terminal">
+<meta property="og:url" content="https://chidokun.github.io/2021/12/console-progress-bar/">
+<meta property="twitter:url" content="https://chidokun.github.io/2021/12/console-progress-bar/">
 <meta property="og:site_name" content="Nguyễn Tuấn&#39;s Blog">
-<meta property="og:description" content="Windows 8 ra đời kèm theo nhiều tính năng mới rất hữu ích. Đặc biệt ta có thể thấy Windows 8 hoạt động rất mượt mà, tắt và khởi động máy nhanh hơn hẳn người tiền nhiệm. Có được điều này là do Microsoft đã trang bị cho Windows 8 tính năng &ldquo;hybrid boot&rdquo; có thể cải thiện thời gian khởi động nhanh hơn 30-70% so với thời gian khởi động từ chế độ lạnh truyền thống trong Windows 7.
-Cùng với đó, lệnh shutdown trong Windows 8 cũng có nhiều thay đổi. Bài viết này đề cập đến các tham số lệnh và cách sử dụng chúng đồng thời hướng dẫn bạn cách tạo shortcut đơn giản để tắt máy.">
-<meta name="twitter:description" content="Windows 8 ra đời kèm theo nhiều tính năng mới rất hữu ích. Đặc biệt ta có thể thấy Windows 8 hoạt động rất mượt mà, tắt và khởi động máy nhanh hơn hẳn người tiền nhiệm. Có được điều này là do Microsoft đã trang bị cho Windows 8 tính năng &ldquo;hybrid boot&rdquo; có thể cải thiện thời gian khởi động nhanh hơn 30-70% so với thời gian khởi động từ chế độ lạnh truyền thống trong Windows 7.
-Cùng với đó, lệnh shutdown trong Windows 8 cũng có nhiều thay đổi. Bài viết này đề cập đến các tham số lệnh và cách sử dụng chúng đồng thời hướng dẫn bạn cách tạo shortcut đơn giản để tắt máy.">
+<meta property="og:description" content="Với những công việc cần thao tác nhiều với dòng lệnh, một Terminal nhiều màu sắc và hỗ trợ nhiều thao tác sẽ có ích hơn là một Terminal nhàm chán với nền đen và chữ trắng. Vì vậy, thông thường mình sẽ cài nhiều plugins đễ hộ trợ cho công việc. Dưới đây là một số plugins của ZSH mà mình dùng để giúp việc làm việc với Terminal dễ dàng hơn.">
+<meta name="twitter:description" content="Với những công việc cần thao tác nhiều với dòng lệnh, một Terminal nhiều màu sắc và hỗ trợ nhiều thao tác sẽ có ích hơn là một Terminal nhàm chán với nền đen và chữ trắng. Vì vậy, thông thường mình sẽ cài nhiều plugins đễ hộ trợ cho công việc. Dưới đây là một số plugins của ZSH mà mình dùng để giúp việc làm việc với Terminal dễ dàng hơn.">
 <meta property="og:locale" content="vi">
 
   
-    <meta property="article:published_time" content="2013-11-25T22:29:00">
+    <meta property="article:published_time" content="2021-12-12T15:20:21">
   
   
-    <meta property="article:modified_time" content="2013-11-25T22:29:00">
+    <meta property="article:modified_time" content="2021-12-12T15:20:21">
   
   
   
@@ -79,9 +75,7 @@ Cùng với đó, lệnh shutdown trong Windows 8 cũng có nhiều thay đổi.
   
   
     
-      <meta property="article:tag" content="tin học">
-    
-      <meta property="article:tag" content="thủ thuật">
+      <meta property="article:tag" content="tips">
     
   
 
@@ -101,18 +95,18 @@ Cùng với đó, lệnh shutdown trong Windows 8 cũng có nhiều thay đổi.
 
 
 
-  <meta property="og:image" content="https://chidokun.github.io/images/post/other/lenh-shutdown/3.png">
-  <meta property="twitter:image" content="https://chidokun.github.io/images/post/other/lenh-shutdown/3.png">
+  <meta property="og:image" content="https://chidokun.github.io/thumbnails/terminal.png">
+  <meta property="twitter:image" content="https://chidokun.github.io/thumbnails/terminal.png">
 
 
-    <title>Tìm hiểu lệnh shutdown của Windows 8 và cách tạo shortcut tắt máy</title>
+    <title>Những công cụ giúp làm việc hiệu quả hơn trên Terminal</title>
 
     <link rel="icon" href="https://chidokun.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://chidokun.github.io/2013/11/tim-hieu-lenh-shutdown-cua-windows-8-va/">
+    <link rel="canonical" href="https://chidokun.github.io/2021/12/console-progress-bar/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -314,19 +308,19 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Tìm hiểu lệnh shutdown của Windows 8 và cách tạo shortcut tắt máy
+      Những công cụ giúp làm việc hiệu quả hơn trên Terminal
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2013-11-25T22:29:00&#43;07:00">
+      <time datetime="2021-12-12T15:20:21&#43;07:00">
         
   
   
   
   
-    25 tháng 11 2013
+    12 tháng 12 2021
   
 
       </time>
@@ -346,7 +340,7 @@ if (!doNotTrack) {
 
   <div>
   <div class="fb-like" 
-    data-href="https://chidokun.github.io/2013/11/tim-hieu-lenh-shutdown-cua-windows-8-va/" 
+    data-href="https://chidokun.github.io/2021/12/console-progress-bar/" 
     data-width="" 
     data-layout="button_count" 
     data-action="like" 
@@ -357,49 +351,39 @@ if (!doNotTrack) {
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
-              <p>Windows 8 ra đời kèm theo nhiều tính năng mới rất hữu ích. Đặc biệt ta có thể thấy Windows 8 hoạt động rất mượt mà, tắt và khởi động máy nhanh hơn hẳn người tiền nhiệm. Có được điều này là do Microsoft đã trang bị cho Windows 8 tính năng &ldquo;hybrid boot&rdquo; có thể cải thiện thời gian khởi động nhanh hơn 30-70% so với thời gian khởi động từ chế độ lạnh truyền thống trong Windows 7.
-Cùng với đó, lệnh shutdown trong Windows 8 cũng có nhiều thay đổi. Bài viết này đề cập đến các tham số lệnh và cách sử dụng chúng đồng thời hướng dẫn bạn cách tạo shortcut đơn giản để tắt máy.</p>
-<h1 id="tính-năng-hybrid-boot">Tính năng &ldquo;hybrid boot&rdquo;</h1>
-<p>Tính năng “hybrid boot” của Windows 8 là chế độ lai giữa Shutdown và Hibernate. Microsoft mô tả quá trình tắt máy của Windows 7 của mình như sau: Người sử dụng sẽ tắt máy bằng cách chọn Shutdown từ Start Menu hoặc bằng cách nhấn nút nguồn hoặc một ứng dụng tắt máy bằng cách kích hoạt lệnh API như ExitWindowsEx hoặc InitiateShutdown. Lúc này, cửa sổ chương trình sẽ phát thông điệp tới các ứng dụng đang chạy, cho phép chúng lưu dữ liệu và các thiết lập. Ứng dụng cũng có thể yêu cầu thêm ít thời gian để hoàn tất những gì mà họ đã làm.</p>
-<p>Hybrid boot là sự chấm dứt của việc sử dụng chế độ hibernate trong khởi động cũng như dữ liệu trình điều khiển thiết bị cho lần khởi động tiếp theo. Công nghệ khởi động này làm việc dưới sự hỗ trợ của công nghệ EFI để Windows khởi động nhanh hơn. EFI là sự thay thế cho các BIOS đã được xem lão hóa trên hầu hết máy tính hiện tại, và Windows 8 hỗ trợ đầy đủ công nghệ mới.</p>
-<h1 id="tìm-hiểu-lệnh-shutdown">Tìm hiểu lệnh <code>shutdown</code></h1>
-<p>Để tìm hiểu cú pháp của lệnh này, bạn mở Command Promt dưới quyền Administrator và gõ <code>shutdown /?</code> để liệt kê tất cả các tham số lệnh và cách sử dụng.</p>
+              <p>Với những công việc cần thao tác nhiều với dòng lệnh, một Terminal nhiều màu sắc và hỗ trợ nhiều thao tác sẽ có ích hơn là một Terminal nhàm chán với nền đen và chữ trắng. Vì vậy, thông thường mình sẽ cài nhiều plugins đễ hộ trợ cho công việc. Dưới đây là một số plugins của ZSH mà mình dùng để giúp việc làm việc với Terminal dễ dàng hơn.</p>
+<h1 id="table-of-contents">Mục lục</h1>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-auto-suggestion-tự-nhắc-lệnh">1. Auto suggestion: Tự nhắc lệnh</a></li>
+    <li><a href="#2-syntax-highlighter-định-dạng-cú-pháp-lệnh">2. Syntax Highlighter: Định dạng cú pháp lệnh</a></li>
+    <li><a href="#3-powerlevel10k-zsh-theme-dễ-dùng-và-đầy-đủ-tiện-ích">3. Powerlevel10k: ZSH Theme dễ dùng và đầy đủ tiện ích</a></li>
+    <li><a href="#tham-khảo">Tham khảo</a></li>
+  </ul>
+</nav>
 
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure center" >
-  
-    <a class="fancybox" href="https://chidokun.github.io/images/post/other/lenh-shutdown/1.png" title="Cửa sổ Command Promt" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://chidokun.github.io/images/post/other/lenh-shutdown/1.png" style="width: 90%;" alt="Cửa sổ Command Promt">
-  
-    </a>
-  
-   
-    <span class="caption">Cửa sổ Command Promt</span>
-  
-</div>
-
-<p>Cấu trúc lệnh như sau:</p>
-<pre><code>shutdown [/i | /l | /s | /r | /g | /a | /p | /h | /e | /o] [/hybrid] [/f] [/m \\computer] [/t xxx] [/d [p|u:]xx:yy [/c &quot;comment&quot;]]
+<p>Để sử dụng các plugins bên dưới chúng ta cần cài:</p>
+<ul>
+<li><strong>ZSH</strong>: Trình shell dựa trên Bourne Shell với rất nhiều tính năng, hỗ trợ plugin và theme.</li>
+<li><strong>Oh My ZSH</strong>: Là một plugin framework của ZSH giúp quản lý và load các plugin/theme tốt hơn.</li>
+</ul>
+<h1 id="1-auto-suggestion-tự-nhắc-lệnh">1. Auto suggestion: Tự nhắc lệnh</h1>
+<p>Với các lệnh đã từng gõ trước đó, plugin này sẽ tự động đề xuất các lệnh phù hợp.</p>
+<p>Sau khi gõ một vài ký tự. Plugin sẽ nhắc các gợi ý. Chọn <code>→</code> để fill lệnh hoặc <code>↑</code> hay <code>↓</code> để xem lệnh phù hợp khác.</p>
+<p>Xem hướng dẫn cài đặt tại <a href="https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md">đây</a>.</p>
+<script id="asciicast-37390" src="https://asciinema.org/a/37390.js" async></script>
+<h1 id="2-syntax-highlighter-định-dạng-cú-pháp-lệnh">2. Syntax Highlighter: Định dạng cú pháp lệnh</h1>
+<p>Plugins này giúp tự động highlight lệnh chính và các tham số, dấu ngoặc giúp dễ nhìn hơn.</p>
+<p>Xem hướng dẫn cài đặt tại <a href="https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md">đây</a>.</p>
+<p>Sau khi cài đặt xong phải kích hoạt highlighter cho các tham số, dấu ngoặc vì mặc định chỉ highlight lệnh chính. Chúng ta sẽ thêm vào <code>.zshrc</code> như sau:</p>
+<pre><code class="language-sh">ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 </code></pre>
-<p>Ta chỉ tìm hiểu những tham số quan trọng:</p>
-<ul>
-<li>No arg: Không có tham số. Sẽ hiển thị Trợ giúp</li>
-<li><code>/?</code> : Hiển thị phần trợ giúp</li>
-<li><code>/i</code> : Hiển thị giao diện đồ hoạ người dùng (GUI). Hộp thoại Remote Shutdown Dialog xuất hiện cung cấp cho bạn nhiều tuỳ chọn cao cấp một cách trực quan.</li>
-</ul>
+<h1 id="3-powerlevel10k-zsh-theme-dễ-dùng-và-đầy-đủ-tiện-ích">3. Powerlevel10k: ZSH Theme dễ dùng và đầy đủ tiện ích</h1>
+<p>Mặc định, ZSH đã hỗ trợ rất nhiều theme. Để dễ dàng cấu hình cũng như hiệu chỉnh theme, mình sử dụng <code>Powerlevel10k</code> thay vì các theme khác.</p>
+<p>Xem hướng dẫn cài đặt tại <a href="https://github.com/romkatv/powerlevel10k#oh-my-zsh">đây</a>.</p>
+<p>Sau khi cài đặt xong có thể thiết lập theme bằng cách chạy lệnh:</p>
+<pre><code class="language-sh">p10k configure
+</code></pre>
 
 
  
@@ -416,41 +400,29 @@ Cùng với đó, lệnh shutdown trong Windows 8 cũng có nhiều thay đổi.
 
 <div class="figure center" >
   
-    <a class="fancybox" href="https://chidokun.github.io/images/post/other/lenh-shutdown/2.png" title="Hộp thoại Remote Shutdown Dialog" data-fancybox-group="">
+    <a class="fancybox" href="https://raw.githubusercontent.com/romkatv/powerlevel10k-media/master/configuration-wizard.gif" title="Cấu hình Powerlevel10k" data-fancybox-group="">
   
-    <img class="fig-img" src="https://chidokun.github.io/images/post/other/lenh-shutdown/2.png" style="width: 60%;" alt="Hộp thoại Remote Shutdown Dialog">
+    <img class="fig-img" src="https://raw.githubusercontent.com/romkatv/powerlevel10k-media/master/configuration-wizard.gif" style="width: 100%;" alt="Cấu hình Powerlevel10k">
   
     </a>
   
    
-    <span class="caption">Hộp thoại Remote Shutdown Dialog</span>
+    <span class="caption">Cấu hình Powerlevel10k</span>
   
 </div>
 
+<p>Một số ưu điểm:</p>
 <ul>
-<li><code>/l</code> : Đăng xuất. Không được dùng với <code>/m</code> hoặc <code>/d</code></li>
-<li><code>/s</code> : Tắt máy tính</li>
-<li><code>/r</code> : Tắt máy tính và khởi động lại</li>
-<li><code>/a</code> : Bỏ qua lệnh tắt máy</li>
-<li><code>/h</code> : Hibernate (chế độ ngủ đông)</li>
-<li><code>/hybrid</code> : Tính năng này chỉ đi kèm với <code>/s</code>. Nó sẽ thực hiện việc tắt máy và khởi động nhanh. Lệnh này tương đương khi bạn bấm nút Shutdown từ Windows</li>
-<li><code>/o</code> : Khởi động lại và vào Menu tuỳ chọn nâng cao trong Boot. Chỉ được sử dụng với <code>/r</code>.</li>
-<li><code>/t xxx</code> : Định thời gian tắt máy, xxx là số giây đếm ngược đến thời điểm tắt máy</li>
-<li><code>/c &quot;comment&quot;</code> : Hiển thị thông báo</li>
-</ul>
-<p>Nắm rõ những tham số lệnh cơ bản này bạn có thể điều khiển việc tắt mở máy theo ý muốn. Nếu bạn không muốn phải sử dụng giao diện dòng lệnh rắc rối, hộp thoại Remote Shutdown Dialog có thể giúp bạn.</p>
-<h1 id="sử-dụng-lệnh-shutdown">Sử dụng lệnh <code>shutdown</code></h1>
-<p>Ta có thể kết hợp các tham số lại để tạo lệnh theo ý muốn.</p>
-<p>Ví dụ:</p>
+<li>Rất nhiều tùy chỉnh bằng wizard giúp hiệu chỉnh giao diện theo ý muốn.</li>
+<li>Hỗ trợ nhiều segment khác nhau và dễ dàng thêm hoặc bỏ bớt. Trong đó mình thấy có một vài segment hữu ích như:
 <ul>
-<li>Để tắt máy sau 5 giây ta gõ: <code>shutdown /s /t 05</code></li>
-<li>Để chuyển sang chế độ ngủ đông sau 10 giây với thông báo &ldquo;abc&rdquo; ta gõ: <code>shutdown /h /t 10 /c &quot;abc&quot;</code></li>
-<li>Để tắt máy kèm chế độ khởi động nhanh ngay ta gõ: <code>shutdown /s /hybrid /t 00</code></li>
-<li>Để huỷ bỏ tất cả các lệnh trên nếu chưa quá thời gian ta gõ: <code>shutdown /a</code></li>
-<li>&hellip;</li>
+<li><code>time</code>: Hiển thị thời gian</li>
+<li><code>command_execution_time</code>: Thời gian thực thi lệnh kể từ lệnh cuối.</li>
+<li><code>battery</code>: Hiển thị mức pin.</li>
+<li><code>load</code>: CPU load</li>
 </ul>
-<h1 id="tắt-máy-tính-trong-windows-8">Tắt máy tính trong Windows 8</h1>
-<p>Việc tắt máy tính trong Windows 8 khá lằng nhằng, bạn di chuột lên góc trên bên phải để hiện Charm bar, rồi chọn vào Settings. Chọn Power để hiển thị các tuỳ chọn rồi chọn Shutdown.</p>
+</li>
+</ul>
 
 
  
@@ -467,121 +439,23 @@ Cùng với đó, lệnh shutdown trong Windows 8 cũng có nhiều thay đổi.
 
 <div class="figure center" >
   
-    <a class="fancybox" href="https://chidokun.github.io/images/post/other/lenh-shutdown/3.png" data-fancybox-group="">
+    <a class="fancybox" href="https://raw.githubusercontent.com/romkatv/powerlevel10k-media/master/extravagant-style.png" title="Các segment của Powerlevel10k" data-fancybox-group="">
   
-    <img class="fig-img" src="https://chidokun.github.io/images/post/other/lenh-shutdown/3.png" style="width: 60%;">
-  
-    </a>
-  
-  
-</div>
-
-<h1 id="tạo-shortcut-tắt-máy">Tạo shortcut tắt máy</h1>
-<p>Bạn có thể tạo shortcut tắt máy để việc tắt máy trở nên dễ dàng hơn.</p>
-<p>Đầu tiên, bấm chuột phải chọn New &gt; Shortcut.</p>
-<p>Trong hộp thoại Create Shortcut, bạn gõ lệnh vào theo ý muốn (ở đây là: <code>shutdown /s /hybrid /t 005 /c &quot;computer will be turned off&quot;</code>, nghĩa là tắt máy kèm chế độ khởi động nhanh sau 5 giây đồng thời hiện thông báo nhắc nhở) rồi bấm Next.</p>
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure center" >
-  
-    <a class="fancybox" href="https://chidokun.github.io/images/post/other/lenh-shutdown/4.png" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://chidokun.github.io/images/post/other/lenh-shutdown/4.png" style="width: 80%;">
+    <img class="fig-img" src="https://raw.githubusercontent.com/romkatv/powerlevel10k-media/master/extravagant-style.png" style="width: 100%;" alt="Các segment của Powerlevel10k">
   
     </a>
   
+   
+    <span class="caption">Các segment của Powerlevel10k</span>
   
 </div>
 
-<p>Sau đó đặt tên cho shortcut vừa tạo rồi bấm Finish</p>
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure center" >
-  
-    <a class="fancybox" href="https://chidokun.github.io/images/post/other/lenh-shutdown/5.png" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://chidokun.github.io/images/post/other/lenh-shutdown/5.png" style="width: 80%;">
-  
-    </a>
-  
-  
-</div>
-
-<p>Đổi icon để shortcut trông đẹp hơn</p>
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure center" >
-  
-    <a class="fancybox" href="https://chidokun.github.io/images/post/other/lenh-shutdown/6.png" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://chidokun.github.io/images/post/other/lenh-shutdown/6.png" style="width: 60%;">
-  
-    </a>
-  
-  
-</div>
-
-<p>Ngoài ra, cũng có thể đính vào Start Screen bằng cách chuột phải vào shortcut chọn Pin to Start và xoá đi shortcut trên Desktop một cách an toàn.</p>
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure center" >
-  
-    <a class="fancybox" href="https://chidokun.github.io/images/post/other/lenh-shutdown/7.png" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://chidokun.github.io/images/post/other/lenh-shutdown/7.png" style="width: 80%;">
-  
-    </a>
-  
-  
-</div>
+<h1 id="tham-khảo">Tham khảo</h1>
+<ul>
+<li><a href="https://github.com/zsh-users/zsh-autosuggestions">ZSH Auto Suggestions</a></li>
+<li><a href="https://github.com/zsh-users/zsh-syntax-highlighting">ZSH Syntax Highlighter</a></li>
+<li><a href="https://github.com/romkatv/powerlevel10k">Powerlevel 10k ZSH Theme</a></li>
+</ul>
               
 
             </div>
@@ -594,9 +468,7 @@ Cùng với đó, lệnh shutdown trong Windows 8 cũng có nhiều thay đổi.
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/tin-h%E1%BB%8Dc/">tin học</a>
-
-  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/th%E1%BB%A7-thu%E1%BA%ADt/">thủ thuật</a>
+  <a class="tag tag--primary tag--small" href="https://chidokun.github.io/tags/tips/">tips</a>
 
                   </div>
                 
@@ -609,7 +481,7 @@ Cùng với đó, lệnh shutdown trong Windows 8 cũng có nhiều thay đổi.
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2014/11/japanese-verb-okurigana/" data-tooltip="Phân biệt nhanh động từ nhóm 1 và động từ nhóm 2 trong tiếng Nhật dựa vào okurigana" aria-label="Tiếp: Phân biệt nhanh động từ nhóm 1 và động từ nhóm 2 trong tiếng Nhật dựa vào okurigana">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -617,7 +489,7 @@ Cùng với đó, lệnh shutdown trong Windows 8 cũng có nhiều thay đổi.
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2013/11/tan-man-ve-lucid-dream/" data-tooltip="Tản mạn về Lucid Dream" aria-label="Trước: Tản mạn về Lucid Dream">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/10/mime-type-and-upload-file-problem/en/" data-tooltip="MIME Type and Uploaded File Type Detection Problem" aria-label="Trước: MIME Type and Uploaded File Type Detection Problem">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -635,13 +507,13 @@ Cùng với đó, lệnh shutdown trong Windows 8 cũng có nhiều thay đổi.
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2013/11/tim-hieu-lenh-shutdown-cua-windows-8-va/" title="Chia sẻ với %s Facebook" aria-label="Chia sẻ với %s Facebook">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/12/console-progress-bar/" title="Chia sẻ với %s Facebook" aria-label="Chia sẻ với %s Facebook">
               <i class="fab fa-facebook" aria-hidden="true"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2013/11/tim-hieu-lenh-shutdown-cua-windows-8-va/" title="Chia sẻ với %s Twitter" aria-label="Chia sẻ với %s Twitter">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/12/console-progress-bar/" title="Chia sẻ với %s Twitter" aria-label="Chia sẻ với %s Twitter">
               <i class="fab fa-twitter" aria-hidden="true"></i>
             </a>
           </li>
@@ -670,8 +542,8 @@ Cùng với đó, lệnh shutdown trong Windows 8 cũng có nhiều thay đổi.
             <div class="comment-box">
                 <textarea name="fields[comment]" class="comment-input-control comment-input-animated" placeholder="Comment (markdown is accepted) *" required rows="3"></textarea>
                 <div class="comment-box-tail">
-                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2013/11/tim-hieu-lenh-shutdown-cua-windows-8-va/#comment-submitted">
-                    <input type="hidden" name="options[slug]" value="lenh-shutdown">
+                    <input type="hidden" name="options[redirect]" value="https://chidokun.github.io/2021/12/console-progress-bar/#comment-submitted">
+                    <input type="hidden" name="options[slug]" value="console-terminal-tool">
                     <input type="text" name="fields[name]" class="post-comment-field" placeholder="Name *" required/>
                     <input type="email" name="fields[email]" class="post-comment-field" placeholder="Email address (will not be public) *" required/>
                     <input type="hidden" id="comment-parent" name="fields[reply_to]" value="">
@@ -728,7 +600,7 @@ Cùng với đó, lệnh shutdown trong Windows 8 cũng có nhiều thay đổi.
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2014/11/japanese-verb-okurigana/" data-tooltip="Phân biệt nhanh động từ nhóm 1 và động từ nhóm 2 trong tiếng Nhật dựa vào okurigana" aria-label="Tiếp: Phân biệt nhanh động từ nhóm 1 và động từ nhóm 2 trong tiếng Nhật dựa vào okurigana">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -736,7 +608,7 @@ Cùng với đó, lệnh shutdown trong Windows 8 cũng có nhiều thay đổi.
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2013/11/tan-man-ve-lucid-dream/" data-tooltip="Tản mạn về Lucid Dream" aria-label="Trước: Tản mạn về Lucid Dream">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://chidokun.github.io/2021/10/mime-type-and-upload-file-problem/en/" data-tooltip="MIME Type and Uploaded File Type Detection Problem" aria-label="Trước: MIME Type and Uploaded File Type Detection Problem">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -754,13 +626,13 @@ Cùng với đó, lệnh shutdown trong Windows 8 cũng có nhiều thay đổi.
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2013/11/tim-hieu-lenh-shutdown-cua-windows-8-va/" title="Chia sẻ với %s Facebook" aria-label="Chia sẻ với %s Facebook">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://chidokun.github.io/2021/12/console-progress-bar/" title="Chia sẻ với %s Facebook" aria-label="Chia sẻ với %s Facebook">
               <i class="fab fa-facebook" aria-hidden="true"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2013/11/tim-hieu-lenh-shutdown-cua-windows-8-va/" title="Chia sẻ với %s Twitter" aria-label="Chia sẻ với %s Twitter">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://chidokun.github.io/2021/12/console-progress-bar/" title="Chia sẻ với %s Twitter" aria-label="Chia sẻ với %s Twitter">
               <i class="fab fa-twitter" aria-hidden="true"></i>
             </a>
           </li>
@@ -785,13 +657,13 @@ Cùng với đó, lệnh shutdown trong Windows 8 cũng có nhiều thay đổi.
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2013%2F11%2Ftim-hieu-lenh-shutdown-cua-windows-8-va%2F" aria-label="Chia sẻ với %s Facebook">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fchidokun.github.io%2F2021%2F12%2Fconsole-progress-bar%2F" aria-label="Chia sẻ với %s Facebook">
           <i class="fab fa-facebook" aria-hidden="true"></i><span>Chia sẻ với Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2013%2F11%2Ftim-hieu-lenh-shutdown-cua-windows-8-va%2F" aria-label="Chia sẻ với %s Twitter">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fchidokun.github.io%2F2021%2F12%2Fconsole-progress-bar%2F" aria-label="Chia sẻ với %s Twitter">
           <i class="fab fa-twitter" aria-hidden="true"></i><span>Chia sẻ với Twitter</span>
         </a>
       </li>

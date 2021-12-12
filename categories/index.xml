@@ -6,22 +6,31 @@
     <description>Recent content in Categories on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Wed, 13 Oct 2021 22:54:00 +0700</lastBuildDate><atom:link href="https://chidokun.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 12 Dec 2021 15:20:21 +0700</lastBuildDate><atom:link href="https://chidokun.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lập trình</title>
+      <link>https://chidokun.github.io/categories/l%E1%BA%ADp-tr%C3%ACnh/</link>
+      <pubDate>Sun, 12 Dec 2021 15:20:21 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/categories/l%E1%BA%ADp-tr%C3%ACnh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Thủ thuật</title>
+      <link>https://chidokun.github.io/categories/th%E1%BB%A7-thu%E1%BA%ADt/</link>
+      <pubDate>Sun, 12 Dec 2021 15:20:21 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/categories/th%E1%BB%A7-thu%E1%BA%ADt/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Backend</title>
       <link>https://chidokun.github.io/categories/backend/</link>
       <pubDate>Wed, 13 Oct 2021 22:54:00 +0700</pubDate>
       
       <guid>https://chidokun.github.io/categories/backend/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Lập trình</title>
-      <link>https://chidokun.github.io/categories/l%E1%BA%ADp-tr%C3%ACnh/</link>
-      <pubDate>Wed, 13 Oct 2021 22:54:00 +0700</pubDate>
-      
-      <guid>https://chidokun.github.io/categories/l%E1%BA%ADp-tr%C3%ACnh/</guid>
       <description></description>
     </item>
     
@@ -76,15 +85,6 @@
       <pubDate>Wed, 03 Feb 2021 22:00:00 +0700</pubDate>
       
       <guid>https://chidokun.github.io/categories/visualization/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Thủ thuật</title>
-      <link>https://chidokun.github.io/categories/th%E1%BB%A7-thu%E1%BA%ADt/</link>
-      <pubDate>Wed, 15 Apr 2020 22:30:00 +0700</pubDate>
-      
-      <guid>https://chidokun.github.io/categories/th%E1%BB%A7-thu%E1%BA%ADt/</guid>
       <description></description>
     </item>
     

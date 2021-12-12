@@ -6,7 +6,16 @@
     <description>Recent content in Tags on Nguyễn Tuấn&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Wed, 13 Oct 2021 22:54:00 +0700</lastBuildDate><atom:link href="https://chidokun.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 12 Dec 2021 15:20:21 +0700</lastBuildDate><atom:link href="https://chidokun.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>tips</title>
+      <link>https://chidokun.github.io/tags/tips/</link>
+      <pubDate>Sun, 12 Dec 2021 15:20:21 +0700</pubDate>
+      
+      <guid>https://chidokun.github.io/tags/tips/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>backend</title>
       <link>https://chidokun.github.io/tags/backend/</link>
@@ -85,15 +94,6 @@
       <pubDate>Mon, 12 Jul 2021 22:52:28 +0700</pubDate>
       
       <guid>https://chidokun.github.io/tags/sorting-algorithm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>tips</title>
-      <link>https://chidokun.github.io/tags/tips/</link>
-      <pubDate>Wed, 07 Jul 2021 17:54:21 +0700</pubDate>
-      
-      <guid>https://chidokun.github.io/tags/tips/</guid>
       <description></description>
     </item>
     
