@@ -1,6 +1,6 @@
 ---
 title: "Những công cụ giúp làm việc hiệu quả hơn trên Terminal"
-slug: "console-progress-bar"
+slug: "console-terminal-tool"
 date: 2021-12-12T15:20:21+07:00
 draft: false
 categories:
