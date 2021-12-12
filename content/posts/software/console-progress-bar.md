@@ -55,7 +55,7 @@ Bài viết này, mình dùng Java để cài đặt. Với các ngôn ngữ kh�
 
 ## 2.1. Cơ bản
 
-Trước hết, ta khai báo class `ProgressBar với các thuộc tính cơ bản:
+Trước hết, ta khai báo class `ProgressBar` với các thuộc tính cơ bản:
 
 - *width*: Thể hiện độ dài của thanh tiến trình.
 - *value*: Giá trị hiện tại.
