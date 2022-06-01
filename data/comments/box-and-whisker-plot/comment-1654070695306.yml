@@ -1,0 +1,6 @@
+_id: 85b3b2e0-e181-11ec-a68c-53fc2013ba31
+comment: "ví dụ 2.1 tính các điểm Tứ phương vị có đúng ko? , ad xem lại giùm, sau khi tính đc trung vị (Q2) thì tính tiếp Q1 và Q3 theo cách đó không đúng, test trên python đơn giản như sau:\r\na = [10, 10, 11, 15, 19, 21, 21, 22, 22, 23, 23, 23, 23, 23, 24, 24, 24, 24, 25, 27, 27]\r\na.sort()\r\nprint(a)\r\ns = pd.Series(a)\r\ns.describe()\r\n>>> output:\r\n[10, 10, 11, 15, 19, 21, 21, 22, 22, 23, 23, 23, 23, 23, 24, 24, 24, 24, 25, 27, 27]\r\ncount    21.000000\r\nmean     21.000000\r\nstd       5.138093\r\nmin      10.000000\r\n25%      21.000000\r\n50%      23.000000\r\n75%      24.000000\r\nmax      27.000000\r\ndtype: float64\r\n- Hay nói cách khác Q1(25%) = (median + min)/2 chứ không phải tính Q1 bằng cách tiếp tục lấy trung vị giữa Q2 và min"
+name: kakashi
+email: 042f5871562d8eca9e5169752c4f40de
+reply_to: ''
+date: '2022-06-01T08:04:55.303Z'
