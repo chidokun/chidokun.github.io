@@ -787,6 +787,8 @@ sns.boxplot(x=&quot;day&quot;, y=&quot;total_bill&quot;, hue=&quot;smoker&quot;,
 
   
 
+  
+
     
                     
             
@@ -811,6 +813,8 @@ sns.boxplot(x=&quot;day&quot;, y=&quot;total_bill&quot;, hue=&quot;smoker&quot;,
                         
                     </div>
                 
+  
+
   
 
   
@@ -851,6 +855,8 @@ sns.boxplot(x=&quot;day&quot;, y=&quot;total_bill&quot;, hue=&quot;smoker&quot;,
 
   
 
+  
+
     
                     
             
@@ -875,6 +881,68 @@ sns.boxplot(x=&quot;day&quot;, y=&quot;total_bill&quot;, hue=&quot;smoker&quot;,
                         
                     </div>
                 
+  
+
+  
+
+  
+
+  
+
+  
+
+    
+                    
+            
+                    
+    
+                    <div id="commentid-85b3b2e0-e181-11ec-a68c-53fc2013ba31" class="post-comment">
+                        <div class="post-comment-header">
+                            <img class="post-comment-avatar" src="https://www.gravatar.com/avatar/042f5871562d8eca9e5169752c4f40de?s=70&r=pg&d=identicon">
+                            <div class="post-comment-info">
+                                <span class="post-comment-name"><b>kakashi</b></span>
+                                <a href="#commentid-85b3b2e0-e181-11ec-a68c-53fc2013ba31" title="Permalink to this comment">
+                                <time class="post-time">Thứ Tư, thg 6 1, 2022 at     08:04 UTC</time>
+                                </a>
+                            </div>
+                            <div class="post-comment-reply">
+                                <button id="85b3b2e0-e181-11ec-a68c-53fc2013ba31" class="btn btn--default btn--comment" href="#comment-form" onclick="changeValue('fields[reply_to]', '85b3b2e0-e181-11ec-a68c-53fc2013ba31')">TRẢ LỜI  <b>kakashi</b></button>
+                            </div>
+                        </div>
+                        <div class="comment-message post post-content">
+                            <p>ví dụ 2.1 tính các điểm Tứ phương vị có đúng ko? , ad xem lại giùm, sau khi tính đc trung vị (Q2) thì tính tiếp Q1 và Q3 theo cách đó không đúng, test trên python đơn giản như sau:
+a = [10, 10, 11, 15, 19, 21, 21, 22, 22, 23, 23, 23, 23, 23, 24, 24, 24, 24, 25, 27, 27]
+a.sort()
+print(a)
+s = pd.Series(a)
+s.describe()</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>output:
+[10, 10, 11, 15, 19, 21, 21, 22, 22, 23, 23, 23, 23, 23, 24, 24, 24, 24, 25, 27, 27]
+count    21.000000
+mean     21.000000
+std       5.138093
+min      10.000000
+25%      21.000000
+50%      23.000000
+75%      24.000000
+max      27.000000
+dtype: float64</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<ul>
+<li>Hay nói cách khác Q1(25%) = (median + min)/2 chứ không phải tính Q1 bằng cách tiếp tục lấy trung vị giữa Q2 và min</li>
+</ul>
+
+                        </div>
+                        
+                    </div>
+                
+  
+
   
 
   
