@@ -3,3 +3,5 @@
 logs
 *.log
 public
+
+.hugo_build.lock
